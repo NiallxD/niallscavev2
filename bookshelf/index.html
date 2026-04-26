@@ -63,464 +63,1332 @@
 </div>
 
 
-<div class="standard-page">
-  
+<div class="constellation-page">
 
   
-  <p class="section-label">Bookshelf</p>
-  <div class="book-grid">
+
+  <p class="section-label">Book Constellation</p>
+  <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+
+  <div class="tag-cloud-filter" id="tag-cloud"></div>
+
+  <div class="constellation-wrap" id="constellation-wrap">
+    <svg class="constellation-svg" id="constellation-svg"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    </svg>
+
     
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg" alt="What If?: Serious Scientific Answers to Absurd Hypothetical Questions" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">What If?: Serious Scientific Answers to Absurd Hypothetical Questions</div>
-        <div class="book-card-author">Randall Munroe</div>
-        
-        <div class="book-card-date">Read 15 December 2024</div>
-      </div>
-    </div>
     
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg" alt="Bird Sense: What It&#39;s Like to Be a Bird" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Bird Sense: What It&#39;s Like to Be a Bird</div>
-        <div class="book-card-author">Tim Birkhead</div>
-        
-        <div class="book-card-date">Read 10 December 2024</div>
-      </div>
-    </div>
     
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg" alt="Pale Blue Dot" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Pale Blue Dot</div>
-        <div class="book-card-author">Carl Sagan</div>
-        
-        <div class="book-card-rating">
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
+    
+    <button
+      class="star"
+      data-id="a-most-remarkable-creatureindex.html"
+      style="left: 24%; top: 50%"
+      aria-label="Open details for A Most Remarkable Creature: The Hidden Life and Epic Journey of the World’s Smartest Birds of Prey"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">A Most Remarkable Creature: The Hidden Life and Epic Journey of the World’s Smartest Birds of Prey</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="what-ifindex.html"
+      style="left: 90%; top: 76%"
+      aria-label="Open details for What If?: Serious Scientific Answers to Absurd Hypothetical Questions"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">What If?: Serious Scientific Answers to Absurd Hypothetical Questions</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="bird-senseindex.html"
+      style="left: 28%; top: 28%"
+      aria-label="Open details for Bird Sense: What It&#39;s Like to Be a Bird"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Bird Sense: What It&#39;s Like to Be a Bird</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="what-is-realindex.html"
+      style="left: 88%; top: 42%"
+      aria-label="Open details for What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="pale-blue-dotindex.html"
+      style="left: 80%; top: 86%"
+      aria-label="Open details for Pale Blue Dot"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 16px"></span>
+      <span class="star-label">Pale Blue Dot</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="the-genius-of-birdsindex.html"
+      style="left: 7%; top: 54%"
+      aria-label="Open details for The Genius of Birds"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">The Genius of Birds</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="eight-bearsindex.html"
+      style="left: 66%; top: 62%"
+      aria-label="Open details for Eight Bears"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Eight Bears</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="flight-pathsindex.html"
+      style="left: 9%; top: 38%"
+      aria-label="Open details for Flight Paths"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Flight Paths</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="so-you-want-to-move-to-canada-ehindex.html"
+      style="left: 86%; top: 92%"
+      aria-label="Open details for So You Want To Move to Canada, Eh?"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">So You Want To Move to Canada, Eh?</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="how-to-be-an-epicureanindex.html"
+      style="left: 84%; top: 68%"
+      aria-label="Open details for How To Be An Epicurean"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">How To Be An Epicurean</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="how-to-be-a-stoicindex.html"
+      style="left: 62%; top: 80%"
+      aria-label="Open details for How To Be A Stoic"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">How To Be A Stoic</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="not-the-end-of-the-worldindex.html"
+      style="left: 64%; top: 24%"
+      aria-label="Open details for Not the End of the World"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Not the End of the World</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="was-beethoven-a-birdwatcherindex.html"
+      style="left: 82%; top: 32%"
+      aria-label="Open details for Was Beethoven a Birdwatcher?"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Was Beethoven a Birdwatcher?</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="beethoven-the-man-revealedindex.html"
+      style="left: 22%; top: 10%"
+      aria-label="Open details for Beethoven: The Man Revealed"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Beethoven: The Man Revealed</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="stray-birdsindex.html"
+      style="left: 6%; top: 18%"
+      aria-label="Open details for Stray Birds"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Stray Birds</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="the-cloud-bookindex.html"
+      style="left: 46%; top: 34%"
+      aria-label="Open details for The Cloud Book: How To Understand The Skies"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">The Cloud Book: How To Understand The Skies</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="inglorious-conflict-in-the-uplandsindex.html"
+      style="left: 76%; top: 50%"
+      aria-label="Open details for Inglorious: Conflict in the Uplands"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Inglorious: Conflict in the Uplands</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="humble-piindex.html"
+      style="left: 90%; top: 6%"
+      aria-label="Open details for Humble Pi: A Comedy of Maths Errors"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Humble Pi: A Comedy of Maths Errors</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="enemy-at-the-gatesindex.html"
+      style="left: 48%; top: 88%"
+      aria-label="Open details for Enemy at the Gates: The Battle for Stalingrad"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Enemy at the Gates: The Battle for Stalingrad</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="mozart-the-man-revealedindex.html"
+      style="left: 78%; top: 14%"
+      aria-label="Open details for Mozart: The Man Revealed"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Mozart: The Man Revealed</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="the-indisputable-existence-of-santa-clauseindex.html"
+      style="left: 94%; top: 60%"
+      aria-label="Open details for The Indisputable Existence of Santa Clause"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">The Indisputable Existence of Santa Clause</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="thinking-fast-and-slowindex.html"
+      style="left: 92%; top: 22%"
+      aria-label="Open details for Thinking, Fast and Slow"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 14px"></span>
+      <span class="star-label">Thinking, Fast and Slow</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="inglorious-empireindex.html"
+      style="left: 30%; top: 66%"
+      aria-label="Open details for Inglorious Empire: What the British Did to India"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Inglorious Empire: What the British Did to India</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="where-the-wildflowers-growindex.html"
+      style="left: 12%; top: 76%"
+      aria-label="Open details for Where the Wildflowers Grwo"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Where the Wildflowers Grwo</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="a-brief-history-of-timeindex.html"
+      style="left: 15%; top: 90%"
+      aria-label="Open details for A Brief History of Time"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 14px"></span>
+      <span class="star-label">A Brief History of Time</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="wildlingindex.html"
+      style="left: 26%; top: 84%"
+      aria-label="Open details for Wildling"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Wildling</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="how-bad-are-bananasindex.html"
+      style="left: 58%; top: 44%"
+      aria-label="Open details for How Bad Are Bananas: The Carbon Footprint of Everything"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">How Bad Are Bananas: The Carbon Footprint of Everything</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="how-to-avoid-a-climate-disasterindex.html"
+      style="left: 60%; top: 8%"
+      aria-label="Open details for How to Avoid a Climate Disaster"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">How to Avoid a Climate Disaster</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="mycelium-runningindex.html"
+      style="left: 44%; top: 70%"
+      aria-label="Open details for Mycelium Running: How Mushrooms Can Help Save the World"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Mycelium Running: How Mushrooms Can Help Save the World</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="mushroomsindex.html"
+      style="left: 50%; top: 52%"
+      aria-label="Open details for Mushrooms"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 8px"></span>
+      <span class="star-label">Mushrooms</span>
+    </button>
+    
+    
+    
+    
+    <button
+      class="star"
+      data-id="heaven-and-earthindex.html"
+      style="left: 42%; top: 16%"
+      aria-label="Open details for Heaven &amp; Earth: Unseen by the Naked Eye"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: 12px"></span>
+      <span class="star-label">Heaven &amp; Earth: Unseen by the Naked Eye</span>
+    </button>
+    
+
+    <!-- Floating book card -->
+    <div class="book-float-card" id="book-float-card" aria-hidden="true" aria-label="Book details" role="dialog">
+      <button class="float-card-close" id="float-card-close" aria-label="Close" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="float-card-inner">
+        <img class="float-card-cover" id="float-card-cover" src="" alt="" loading="lazy">
+        <div class="float-card-meta">
+          <h2 class="float-card-title" id="float-card-title"></h2>
+          <p class="float-card-author" id="float-card-author"></p>
+          <div class="float-card-rating" id="float-card-rating" aria-label="Rating"></div>
+          <p class="float-card-note" id="float-card-note"></p>
+          <div class="float-card-tags" id="float-card-tags"></div>
         </div>
-        
-        <div class="book-card-date">Read 20 November 2024</div>
       </div>
     </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1445790452i/25938481.jpg" alt="The Genius of Birds" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">The Genius of Birds</div>
-        <div class="book-card-author">Jennifer Ackerman</div>
-        
-        <div class="book-card-date">Read 12 November 2024</div>
-      </div>
+
+    <div class="constellation-empty-hint" id="constellation-hint-text" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Click any star to open a book
     </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg" alt="Eight Bears" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Eight Bears</div>
-        <div class="book-card-author">Gloria Dickie</div>
-        
-        <div class="book-card-date">Read 2 November 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg" alt="Flight Paths" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Flight Paths</div>
-        <div class="book-card-author">Rebecca Heisman</div>
-        
-        <div class="book-card-date">Read 28 October 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg" alt="So You Want To Move to Canada, Eh?" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">So You Want To Move to Canada, Eh?</div>
-        <div class="book-card-author">Jennifer McCartney</div>
-        
-        <div class="book-card-date">Read 20 October 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg" alt="How To Be An Epicurean" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">How To Be An Epicurean</div>
-        <div class="book-card-author">Catherine Wilson</div>
-        
-        <div class="book-card-date">Read 27 May 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg" alt="How To Be A Stoic" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">How To Be A Stoic</div>
-        <div class="book-card-author">Massimo Pigliucci</div>
-        
-        <div class="book-card-date">Read 7 May 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg" alt="Not the End of the World" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Not the End of the World</div>
-        <div class="book-card-author">Hannah Richie</div>
-        
-        <div class="book-card-date">Read 27 April 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg" alt="Was Beethoven a Birdwatcher?" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Was Beethoven a Birdwatcher?</div>
-        <div class="book-card-author">David Turner</div>
-        
-        <div class="book-card-date">Read 20 April 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg" alt="Beethoven: The Man Revealed" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Beethoven: The Man Revealed</div>
-        <div class="book-card-author">John Suchet</div>
-        
-        <div class="book-card-date">Read 8 April 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347260590i/166350.jpg" alt="Stray Birds" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Stray Birds</div>
-        <div class="book-card-author">Rabindranath Tagore</div>
-        
-        <div class="book-card-date">Read 28 March 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg" alt="The Cloud Book: How To Understand The Skies" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">The Cloud Book: How To Understand The Skies</div>
-        <div class="book-card-author">Richard Hamblyn</div>
-        
-        <div class="book-card-date">Read 1 March 2024</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg" alt="Inglorious: Conflict in the Uplands" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Inglorious: Conflict in the Uplands</div>
-        <div class="book-card-author">Mark Avery</div>
-        
-        <div class="book-card-date">Read 31 December 2023</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg" alt="Humble Pi: A Comedy of Maths Errors" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Humble Pi: A Comedy of Maths Errors</div>
-        <div class="book-card-author">Matt Parker</div>
-        
-        <div class="book-card-date">Read 5 October 2023</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg" alt="Enemy at the Gates: The Battle for Stalingrad" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Enemy at the Gates: The Battle for Stalingrad</div>
-        <div class="book-card-author">William Craig</div>
-        
-        <div class="book-card-date">Read 15 August 2023</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468508169i/30732469.jpg" alt="Mozart: The Man Revealed" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Mozart: The Man Revealed</div>
-        <div class="book-card-author">John Suchet</div>
-        
-        <div class="book-card-date">Read 10 July 2023</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg" alt="The Indisputable Existence of Santa Clause" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">The Indisputable Existence of Santa Clause</div>
-        <div class="book-card-author">Hannah Fry</div>
-        
-        <div class="book-card-date">Read 3 December 2022</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490075230i/34185892.jpg" alt="Inglorious Empire: What the British Did to India" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Inglorious Empire: What the British Did to India</div>
-        <div class="book-card-author">Shashi Tharoor</div>
-        
-        <div class="book-card-date">Read 30 November 2022</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg" alt="Thinking, Fast and Slow" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Thinking, Fast and Slow</div>
-        <div class="book-card-author">Daniel Kahneman</div>
-        
-        <div class="book-card-rating">
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star">★</span>
-          
-        </div>
-        
-        <div class="book-card-date">Read 30 November 2022</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg" alt="Where the Wildflowers Grwo" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Where the Wildflowers Grwo</div>
-        <div class="book-card-author">Leif Bersweden</div>
-        
-        <div class="book-card-date">Read 10 September 2022</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg" alt="A Brief History of Time" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">A Brief History of Time</div>
-        <div class="book-card-author">Stephen Hawking</div>
-        
-        <div class="book-card-rating">
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star filled">★</span>
-          
-            <span class="star">★</span>
-          
-        </div>
-        
-        <div class="book-card-date">Read 1 September 2022</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1521964296i/38891828.jpg" alt="Wildling" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Wildling</div>
-        <div class="book-card-author">Isabella Tree</div>
-        
-        <div class="book-card-date">Read 28 August 2021</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg" alt="How Bad Are Bananas: The Carbon Footprint of Everything" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">How Bad Are Bananas: The Carbon Footprint of Everything</div>
-        <div class="book-card-author">Mike Berners-Lee</div>
-        
-        <div class="book-card-date">Read 18 July 2021</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg" alt="How to Avoid a Climate Disaster" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">How to Avoid a Climate Disaster</div>
-        <div class="book-card-author">Bill Gates</div>
-        
-        <div class="book-card-date">Read 11 April 2021</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg" alt="Mycelium Running: How Mushrooms Can Help Save the World" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Mycelium Running: How Mushrooms Can Help Save the World</div>
-        <div class="book-card-author">Paul Stametes</div>
-        
-        <div class="book-card-date">Read 18 February 2021</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354449995i/16204477.jpg" alt="Mushrooms" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Mushrooms</div>
-        <div class="book-card-author">Peter Marren</div>
-        
-        <div class="book-card-date">Read 10 February 2021</div>
-      </div>
-    </div>
-    
-    <div class="book-card">
-      <div class="book-card-cover">
-        
-        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696297458i/125453392.jpg" alt="Heaven &amp; Earth: Unseen by the Naked Eye" loading="lazy">
-        
-      </div>
-      <div class="book-card-body">
-        <div class="book-card-title">Heaven &amp; Earth: Unseen by the Naked Eye</div>
-        <div class="book-card-author">Katherine Roucoux</div>
-        
-        <div class="book-card-date">Read 1 February 2005</div>
-      </div>
-    </div>
-    
   </div>
-  
+
 </div>
+
+<script>
+(function () {
+  const SKIP_TAGS = new Set(['books']);
+
+  const books = [
+    
+    
+    
+    
+    {
+      id: "a-most-remarkable-creatureindex.html",
+      title: "A Most Remarkable Creature: The Hidden Life and Epic Journey of the World’s Smartest Birds of Prey",
+      author: "Johnathan Meiburg",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1596429654i/54390345.jpg",
+      note: "",
+      tags: ["birds","nature","science"],
+      rating: 3,
+      x: 0.24,
+      y: 0.5
+    },
+    
+    
+    
+    
+    {
+      id: "what-ifindex.html",
+      title: "What If?: Serious Scientific Answers to Absurd Hypothetical Questions",
+      author: "Randall Munroe",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg",
+      note: "",
+      tags: ["science","physics","maths"],
+      rating: 3,
+      x: 0.9,
+      y: 0.76
+    },
+    
+    
+    
+    
+    {
+      id: "bird-senseindex.html",
+      title: "Bird Sense: What It's Like to Be a Bird",
+      author: "Tim Birkhead",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg",
+      note: "",
+      tags: ["birds","nature","science"],
+      rating: 3,
+      x: 0.28,
+      y: 0.28
+    },
+    
+    
+    
+    
+    {
+      id: "what-is-realindex.html",
+      title: "What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics",
+      author: "Adam Becker",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500753932i/35604796.jpg",
+      note: "",
+      tags: ["science","physics","philosophy"],
+      rating: 3,
+      x: 0.88,
+      y: 0.42
+    },
+    
+    
+    
+    
+    {
+      id: "pale-blue-dotindex.html",
+      title: "Pale Blue Dot",
+      author: "Carl Sagan",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg",
+      note: "",
+      tags: ["science","physics","philosophy"],
+      rating: 5,
+      x: 0.8,
+      y: 0.86
+    },
+    
+    
+    
+    
+    {
+      id: "the-genius-of-birdsindex.html",
+      title: "The Genius of Birds",
+      author: "Jennifer Ackerman",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1445790452i/25938481.jpg",
+      note: "",
+      tags: ["birds","nature","science"],
+      rating: 3,
+      x: 0.07,
+      y: 0.54
+    },
+    
+    
+    
+    
+    {
+      id: "eight-bearsindex.html",
+      title: "Eight Bears",
+      author: "Gloria Dickie",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg",
+      note: "",
+      tags: ["wildlife","nature","conservation"],
+      rating: 3,
+      x: 0.66,
+      y: 0.62
+    },
+    
+    
+    
+    
+    {
+      id: "flight-pathsindex.html",
+      title: "Flight Paths",
+      author: "Rebecca Heisman",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg",
+      note: "",
+      tags: ["birds","nature","science"],
+      rating: 3,
+      x: 0.09,
+      y: 0.38
+    },
+    
+    
+    
+    
+    {
+      id: "so-you-want-to-move-to-canada-ehindex.html",
+      title: "So You Want To Move to Canada, Eh?",
+      author: "Jennifer McCartney",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg",
+      note: "",
+      tags: ["canada"],
+      rating: 3,
+      x: 0.86,
+      y: 0.92
+    },
+    
+    
+    
+    
+    {
+      id: "how-to-be-an-epicureanindex.html",
+      title: "How To Be An Epicurean",
+      author: "Catherine Wilson",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg",
+      note: "",
+      tags: ["philosophy"],
+      rating: 3,
+      x: 0.84,
+      y: 0.68
+    },
+    
+    
+    
+    
+    {
+      id: "how-to-be-a-stoicindex.html",
+      title: "How To Be A Stoic",
+      author: "Massimo Pigliucci",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg",
+      note: "",
+      tags: ["philosophy"],
+      rating: 3,
+      x: 0.62,
+      y: 0.8
+    },
+    
+    
+    
+    
+    {
+      id: "not-the-end-of-the-worldindex.html",
+      title: "Not the End of the World",
+      author: "Hannah Richie",
+      cover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg",
+      note: "",
+      tags: ["climate","science","ecology"],
+      rating: 3,
+      x: 0.64,
+      y: 0.24
+    },
+    
+    
+    
+    
+    {
+      id: "was-beethoven-a-birdwatcherindex.html",
+      title: "Was Beethoven a Birdwatcher?",
+      author: "David Turner",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg",
+      note: "Was Beethoven a Birdwatcher?",
+      tags: ["birds","music","nature"],
+      rating: 3,
+      x: 0.82,
+      y: 0.32
+    },
+    
+    
+    
+    
+    {
+      id: "beethoven-the-man-revealedindex.html",
+      title: "Beethoven: The Man Revealed",
+      author: "John Suchet",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg",
+      note: "",
+      tags: ["music","history"],
+      rating: 3,
+      x: 0.22,
+      y: 0.1
+    },
+    
+    
+    
+    
+    {
+      id: "stray-birdsindex.html",
+      title: "Stray Birds",
+      author: "Rabindranath Tagore",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347260590i/166350.jpg",
+      note: "",
+      tags: ["poetry","nature"],
+      rating: 3,
+      x: 0.06,
+      y: 0.18
+    },
+    
+    
+    
+    
+    {
+      id: "the-cloud-bookindex.html",
+      title: "The Cloud Book: How To Understand The Skies",
+      author: "Richard Hamblyn",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg",
+      note: "",
+      tags: ["nature","science","weather"],
+      rating: 3,
+      x: 0.46,
+      y: 0.34
+    },
+    
+    
+    
+    
+    {
+      id: "inglorious-conflict-in-the-uplandsindex.html",
+      title: "Inglorious: Conflict in the Uplands",
+      author: "Mark Avery",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg",
+      note: "",
+      tags: ["conservation","nature","birds","wildlife"],
+      rating: 3,
+      x: 0.76,
+      y: 0.5
+    },
+    
+    
+    
+    
+    {
+      id: "humble-piindex.html",
+      title: "Humble Pi: A Comedy of Maths Errors",
+      author: "Matt Parker",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg",
+      note: "",
+      tags: ["maths","science"],
+      rating: 3,
+      x: 0.9,
+      y: 0.06
+    },
+    
+    
+    
+    
+    {
+      id: "enemy-at-the-gatesindex.html",
+      title: "Enemy at the Gates: The Battle for Stalingrad",
+      author: "William Craig",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg",
+      note: "",
+      tags: ["history"],
+      rating: 3,
+      x: 0.48,
+      y: 0.88
+    },
+    
+    
+    
+    
+    {
+      id: "mozart-the-man-revealedindex.html",
+      title: "Mozart: The Man Revealed",
+      author: "John Suchet",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468508169i/30732469.jpg",
+      note: "",
+      tags: ["music","history"],
+      rating: 3,
+      x: 0.78,
+      y: 0.14
+    },
+    
+    
+    
+    
+    {
+      id: "the-indisputable-existence-of-santa-clauseindex.html",
+      title: "The Indisputable Existence of Santa Clause",
+      author: "Hannah Fry",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg",
+      note: "",
+      tags: ["maths","science"],
+      rating: 3,
+      x: 0.94,
+      y: 0.6
+    },
+    
+    
+    
+    
+    {
+      id: "thinking-fast-and-slowindex.html",
+      title: "Thinking, Fast and Slow",
+      author: "Daniel Kahneman",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg",
+      note: "",
+      tags: ["psychology","science"],
+      rating: 4,
+      x: 0.92,
+      y: 0.22
+    },
+    
+    
+    
+    
+    {
+      id: "inglorious-empireindex.html",
+      title: "Inglorious Empire: What the British Did to India",
+      author: "Shashi Tharoor",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490075230i/34185892.jpg",
+      note: "",
+      tags: ["history"],
+      rating: 3,
+      x: 0.3,
+      y: 0.66
+    },
+    
+    
+    
+    
+    {
+      id: "where-the-wildflowers-growindex.html",
+      title: "Where the Wildflowers Grwo",
+      author: "Leif Bersweden",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg",
+      note: "",
+      tags: ["nature","ecology"],
+      rating: 3,
+      x: 0.12,
+      y: 0.76
+    },
+    
+    
+    
+    
+    {
+      id: "a-brief-history-of-timeindex.html",
+      title: "A Brief History of Time",
+      author: "Stephen Hawking",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg",
+      note: "",
+      tags: ["science","physics"],
+      rating: 4,
+      x: 0.15,
+      y: 0.9
+    },
+    
+    
+    
+    
+    {
+      id: "wildlingindex.html",
+      title: "Wildling",
+      author: "Isabella Tree",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1521964296i/38891828.jpg",
+      note: "",
+      tags: ["nature","ecology","conservation","rewilding"],
+      rating: 3,
+      x: 0.26,
+      y: 0.84
+    },
+    
+    
+    
+    
+    {
+      id: "how-bad-are-bananasindex.html",
+      title: "How Bad Are Bananas: The Carbon Footprint of Everything",
+      author: "Mike Berners-Lee",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg",
+      note: "",
+      tags: ["climate","science","ecology"],
+      rating: 3,
+      x: 0.58,
+      y: 0.44
+    },
+    
+    
+    
+    
+    {
+      id: "how-to-avoid-a-climate-disasterindex.html",
+      title: "How to Avoid a Climate Disaster",
+      author: "Bill Gates",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg",
+      note: "",
+      tags: ["climate","science"],
+      rating: 3,
+      x: 0.6,
+      y: 0.08
+    },
+    
+    
+    
+    
+    {
+      id: "mycelium-runningindex.html",
+      title: "Mycelium Running: How Mushrooms Can Help Save the World",
+      author: "Paul Stametes",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg",
+      note: "",
+      tags: ["fungi","ecology","nature"],
+      rating: 3,
+      x: 0.44,
+      y: 0.7
+    },
+    
+    
+    
+    
+    {
+      id: "mushroomsindex.html",
+      title: "Mushrooms",
+      author: "Peter Marren",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354449995i/16204477.jpg",
+      note: "",
+      tags: ["nature","fungi"],
+      rating: 1,
+      x: 0.5,
+      y: 0.52
+    },
+    
+    
+    
+    
+    {
+      id: "heaven-and-earthindex.html",
+      title: "Heaven & Earth: Unseen by the Naked Eye",
+      author: "Katherine Roucoux",
+      cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696297458i/125453392.jpg",
+      note: "",
+      tags: ["nature","science","weather"],
+      rating: 3,
+      x: 0.42,
+      y: 0.16
+    }
+    
+  ];
+
+  const svg      = document.getElementById('constellation-svg');
+  const wrap     = document.getElementById('constellation-wrap');
+  const card     = document.getElementById('book-float-card');
+  const closeBtn = document.getElementById('float-card-close');
+  const hintText = document.getElementById('constellation-hint-text');
+  const tagCloud = document.getElementById('tag-cloud');
+  const starBtns = Array.from(document.querySelectorAll('.star'));
+
+  let activeTag     = null;
+  let activeId      = null;
+  let isPinned      = false;
+  let hoveredIndex  = null;
+  let draggingIndex = null;
+  let pendingDrag   = null;
+  let dragMoved     = false;
+  let lastTs        = null;
+  let animFrameId   = null;
+  let hoverTimer    = null;
+
+  // ── Speed ramp ────────────────────────────────────────────
+  let speedMult   = 1.0;
+  let speedTarget = 1.0;
+
+  function updateSpeedTarget() {
+    speedTarget = (hoveredIndex !== null || card.classList.contains('open')) ? 0 : 1;
+    if (speedTarget > 0) startAnim();
+  }
+
+  function startAnim() {
+    if (!animFrameId) {
+      lastTs = null;
+      animFrameId = requestAnimationFrame(animate);
+    }
+  }
+
+  // ── Mutable positions and velocities ─────────────────────
+  const pos = books.map(b => ({ x: b.x, y: b.y }));
+
+  function randVel() {
+    const speed = 0.002 + Math.random() * 0.002;
+    const angle = Math.random() * Math.PI * 2;
+    return { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed };
+  }
+  const vel = books.map(() => randVel());
+
+  // ── Build tag cloud ───────────────────────────────────────
+  const allTags = [...new Set(books.flatMap(b => b.tags.filter(t => !SKIP_TAGS.has(t))))].sort();
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-filter-btn';
+    btn.dataset.tag = tag;
+    btn.type = 'button';
+    btn.textContent = tag;
+    tagCloud.appendChild(btn);
+  });
+
+  // ── Track container size for pixel-space SVG coords ──────
+  let wrapW = wrap.offsetWidth;
+  let wrapH = wrap.offsetHeight;
+  new ResizeObserver(entries => {
+    const r = entries[0].contentRect;
+    wrapW = r.width;
+    wrapH = r.height;
+    if (!animFrameId) updateLinePositions();
+  }).observe(wrap);
+
+  // ── Pre-build SVG lines (update in place each frame) ─────
+  const lineData = [];
+  books.forEach((a, i) => {
+    books.forEach((b, j) => {
+      if (j <= i) return;
+      const shared = a.tags.filter(t => !SKIP_TAGS.has(t) && b.tags.includes(t));
+      if (!shared.length) return;
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('stroke-width', shared.length > 1 ? '1.5' : '1');
+      svg.appendChild(line);
+      lineData.push({ el: line, a: i, b: j, shared });
+    });
+  });
+
+  function updateLinePositions() {
+    lineData.forEach(({ el, a, b }) => {
+      el.setAttribute('x1', (pos[a].x * wrapW).toFixed(1));
+      el.setAttribute('y1', (pos[a].y * wrapH).toFixed(1));
+      el.setAttribute('x2', (pos[b].x * wrapW).toFixed(1));
+      el.setAttribute('y2', (pos[b].y * wrapH).toFixed(1));
+    });
+  }
+
+  function updateLineColors() {
+    const hasFilter = activeId || activeTag;
+    lineData.forEach(({ el, a, b, shared }) => {
+      let isActive = false;
+      if (activeId) isActive = books[a].id === activeId || books[b].id === activeId;
+      else if (activeTag) isActive = shared.includes(activeTag);
+      el.setAttribute('stroke', isActive
+        ? 'var(--star-line-active)'
+        : hasFilter ? 'var(--star-line-dim)' : 'var(--star-line)');
+    });
+  }
+
+  updateLinePositions();
+  updateLineColors();
+
+  // ── Animation loop ────────────────────────────────────────
+  function animate(ts) {
+    const dt = lastTs === null ? 0 : Math.min((ts - lastTs) / 1000, 0.05);
+    lastTs = ts;
+
+    speedMult += (speedTarget - speedMult) * 0.05;
+
+    if (speedMult > 0.003 || draggingIndex !== null) {
+      const SEP = 0.07; // soft minimum distance between star centres in 0-1 space
+      const m   = 0.04; // edge margin
+
+      // 1 — move each star by its velocity
+      pos.forEach((p, i) => {
+        if (i === draggingIndex) return;
+        p.x += vel[i].x * dt * speedMult;
+        p.y += vel[i].y * dt * speedMult;
+        if (p.x < m)     { p.x = m;     vel[i].x =  Math.abs(vel[i].x); }
+        if (p.x > 1 - m) { p.x = 1 - m; vel[i].x = -Math.abs(vel[i].x); }
+        if (p.y < m)     { p.y = m;     vel[i].y =  Math.abs(vel[i].y); }
+        if (p.y > 1 - m) { p.y = 1 - m; vel[i].y = -Math.abs(vel[i].y); }
+      });
+
+      // 2 — separation pass: gentle position nudge only, no velocity change
+      for (let i = 0; i < pos.length; i++) {
+        if (i === draggingIndex) continue;
+        for (let j = i + 1; j < pos.length; j++) {
+          if (j === draggingIndex) continue;
+          const dx = pos[i].x - pos[j].x;
+          const dy = pos[i].y - pos[j].y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq >= SEP * SEP || distSq < 1e-8) continue;
+          const dist = Math.sqrt(distSq);
+          const nx = dx / dist, ny = dy / dist;
+          const push = (SEP - dist) * 0.4 * dt * speedMult * 0.5;
+          pos[i].x += nx * push; pos[i].y += ny * push;
+          pos[j].x -= nx * push; pos[j].y -= ny * push;
+        }
+      }
+
+      // 3 — write updated positions to DOM (re-clamp after separation)
+      pos.forEach((p, i) => {
+        if (i === draggingIndex) return;
+        p.x = Math.max(m, Math.min(1 - m, p.x));
+        p.y = Math.max(m, Math.min(1 - m, p.y));
+        starBtns[i].style.left = (p.x * 100).toFixed(3) + '%';
+        starBtns[i].style.top  = (p.y * 100).toFixed(3) + '%';
+      });
+
+      updateLinePositions();
+    }
+
+    // Stop the loop once fully decelerated — startAnim() restarts it when needed
+    if (speedMult > 0.001 || draggingIndex !== null) {
+      animFrameId = requestAnimationFrame(animate);
+    } else {
+      animFrameId = null;
+    }
+  }
+
+  startAnim();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+      lastTs = null;
+    } else {
+      startAnim();
+    }
+  });
+
+  // ── Drag handling ─────────────────────────────────────────
+  function wrapFrac(clientX, clientY) {
+    const r = wrap.getBoundingClientRect();
+    return {
+      x: Math.max(0.04, Math.min(0.96, (clientX - r.left) / r.width)),
+      y: Math.max(0.04, Math.min(0.96, (clientY - r.top)  / r.height))
+    };
+  }
+
+  function onPointerMove(clientX, clientY) {
+    if (!pendingDrag) return;
+    const dx = clientX - pendingDrag.startX;
+    const dy = clientY - pendingDrag.startY;
+    if (!dragMoved && dx * dx + dy * dy > 25) {
+      dragMoved     = true;
+      draggingIndex = pendingDrag.index;
+      vel[draggingIndex] = { x: 0, y: 0 };
+      starBtns[draggingIndex].classList.add('dragging');
+    }
+    if (draggingIndex === null) return;
+    const p = wrapFrac(clientX, clientY);
+    pos[draggingIndex].x = p.x;
+    pos[draggingIndex].y = p.y;
+    if (books[draggingIndex].id === activeId) positionCard(starBtns[draggingIndex]);
+  }
+
+  function onPointerUp() {
+    if (draggingIndex !== null) {
+      vel[draggingIndex] = randVel();
+      starBtns[draggingIndex].classList.remove('dragging');
+      startAnim();
+    }
+    draggingIndex = null;
+    pendingDrag   = null;
+  }
+
+  // ── Position floating card near star ─────────────────────
+  function positionCard(starBtn) {
+    const wrapRect = wrap.getBoundingClientRect();
+    const starRect = starBtn.getBoundingClientRect();
+    const starCx = starRect.left + starRect.width  / 2 - wrapRect.left;
+    const starCy = starRect.top  + starRect.height / 2 - wrapRect.top;
+    const cardW  = card.offsetWidth  || 280;
+    const cardH  = card.offsetHeight || 220;
+    const gap    = 20;
+
+    let left = starCx + gap;
+    if (left + cardW > wrapRect.width - 8) left = starCx - cardW - gap;
+    left = Math.max(4, left);
+
+    let top = starCy - cardH / 2;
+    top = Math.max(4, Math.min(top, wrapRect.height - cardH - 4));
+
+    card.style.left = left + 'px';
+    card.style.top  = top  + 'px';
+  }
+
+  // ── Open / close card ────────────────────────────────────
+  function openCard(book, starBtn) {
+    document.getElementById('float-card-cover').src = book.cover;
+    document.getElementById('float-card-cover').alt = book.title;
+    document.getElementById('float-card-title').textContent  = book.title;
+    document.getElementById('float-card-author').textContent = book.author;
+    document.getElementById('float-card-note').textContent   = book.note;
+
+    document.getElementById('float-card-rating').innerHTML =
+      Array.from({ length: 5 }, (_, i) =>
+        `<span class="star-pip${i < book.rating ? ' on' : ''}" aria-hidden="true">★</span>`
+      ).join('') + `<span class="sr-only">${book.rating} out of 5</span>`;
+
+    document.getElementById('float-card-tags').innerHTML =
+      book.tags.filter(t => !SKIP_TAGS.has(t)).map(t => `<span class="tag">${t}</span>`).join('');
+
+    card.classList.remove('open');
+    card.setAttribute('aria-hidden', 'false');
+    if (hintText) hintText.style.display = 'none';
+
+    requestAnimationFrame(() => {
+      positionCard(starBtn);
+      card.classList.add('open');
+      updateSpeedTarget();
+    });
+  }
+
+  function closeCard() {
+    card.classList.remove('open');
+    card.setAttribute('aria-hidden', 'true');
+    starBtns.forEach(s => s.classList.remove('active'));
+    if (hintText && !activeTag) hintText.style.display = '';
+    activeId = null;
+    isPinned = false;
+    updateLineColors();
+    updateSpeedTarget();
+  }
+
+  // ── Hover: show card on mouseenter, hide on mouseleave ────
+  starBtns.forEach((btn, i) => {
+    btn.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimer);
+      if (pendingDrag || draggingIndex !== null) return;
+      hoveredIndex = i;
+      updateSpeedTarget();
+      if (!isPinned) {
+        starBtns.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        activeId = books[i].id;
+        updateLineColors();
+        openCard(books[i], btn);
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      hoverTimer = setTimeout(() => {
+        hoveredIndex = null;
+        updateSpeedTarget();
+        if (!isPinned) closeCard();
+      }, 160);
+    });
+
+    // ── Drag setup ──────────────────────────────────────────
+    btn.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      pendingDrag = { index: i, startX: e.clientX, startY: e.clientY };
+      dragMoved   = false;
+    });
+    btn.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      pendingDrag = { index: i, startX: t.clientX, startY: t.clientY };
+      dragMoved   = false;
+    }, { passive: true });
+
+    // ── Click: pin / unpin ──────────────────────────────────
+    btn.addEventListener('click', () => {
+      if (dragMoved) return;
+      const book = books[i];
+
+      activeTag = null;
+      document.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+      if (isPinned && activeId === book.id) {
+        isPinned = false;
+        closeCard();
+        return;
+      }
+
+      starBtns.forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      activeId = book.id;
+      isPinned = true;
+      updateLineColors();
+      openCard(book, btn);
+    });
+  });
+
+  // Keep card open when mouse moves from star to card
+  card.addEventListener('mouseenter', () => clearTimeout(hoverTimer));
+  card.addEventListener('mouseleave', () => {
+    hoveredIndex = null;
+    updateSpeedTarget();
+    if (!isPinned) closeCard();
+  });
+
+  document.addEventListener('mousemove', e => onPointerMove(e.clientX, e.clientY));
+  document.addEventListener('touchmove', e => {
+    if (draggingIndex !== null) e.preventDefault();
+    onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  document.addEventListener('mouseup',     onPointerUp);
+  document.addEventListener('touchend',    onPointerUp);
+  document.addEventListener('touchcancel', onPointerUp);
+
+  // ── Tag cloud ─────────────────────────────────────────────
+  tagCloud.addEventListener('click', e => {
+    const btn = e.target.closest('.tag-filter-btn');
+    if (!btn) return;
+    const tag = btn.dataset.tag;
+
+    isPinned = false;
+    closeCard();
+
+    if (activeTag === tag) {
+      activeTag = null;
+      btn.classList.remove('active');
+      if (hintText) hintText.style.display = '';
+    } else {
+      document.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
+      activeTag = tag;
+      btn.classList.add('active');
+      if (hintText) hintText.style.display = 'none';
+    }
+    updateLineColors();
+    starBtns.forEach((btn, i) => {
+      btn.classList.toggle('active', activeTag !== null && books[i].tags.includes(activeTag));
+    });
+  });
+
+  closeBtn.addEventListener('click', () => { isPinned = false; closeCard(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && card.classList.contains('open')) { isPinned = false; closeCard(); }
+  });
+}());
+</script>
 
 </div>
 

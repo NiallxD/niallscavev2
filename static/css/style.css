@@ -16,6 +16,18 @@
   --color-header-bg: rgba(255, 255, 255, 0.94);
   --color-footer-bg: #f9f9f9;
 
+  --constellation-bg:      #e8ecf5;
+  --star-dot-bg:           rgba(25, 30, 75, 0.72);
+  --star-dot-shadow:       rgba(25, 30, 75, 0.22);
+  --star-dot-hover:        rgba(10, 15, 50, 1);
+  --star-dot-hover-shadow: rgba(10, 15, 50, 0.45);
+  --star-label-color:      rgba(15, 20, 60, 0.40);
+  --star-label-active:     rgba(15, 20, 60, 0.88);
+  --star-hint-color:       rgba(15, 20, 60, 0.18);
+  --star-line:             rgba(25, 30, 100, 0.15);
+  --star-line-active:      rgba(255, 134, 13, 0.8);
+  --star-line-dim:         rgba(25, 30, 100, 0.05);
+
   --max-prose: 720px;
   --max-wide:  1200px;
   --nav-height: 76px;
@@ -37,6 +49,18 @@
   --color-border:    #333333;
   --color-header-bg: rgba(17, 17, 17, 0.94);
   --color-footer-bg: #1a1a1a;
+
+  --constellation-bg:      #05090f;
+  --star-dot-bg:           #ffffff;
+  --star-dot-shadow:       rgba(255, 255, 255, 0.30);
+  --star-dot-hover:        #ffffff;
+  --star-dot-hover-shadow: rgba(255, 255, 255, 0.55);
+  --star-label-color:      rgba(255, 255, 255, 0.40);
+  --star-label-active:     rgba(255, 255, 255, 0.92);
+  --star-hint-color:       rgba(255, 255, 255, 0.18);
+  --star-line:             rgba(200, 200, 200, 0.18);
+  --star-line-active:      rgba(255, 160, 80, 0.88);
+  --star-line-dim:         rgba(200, 200, 200, 0.05);
 }
 
 /* ── Reset ────────────────────────────────────────────────── */
@@ -1294,6 +1318,319 @@ p.section-label,
   margin-top: 0.15rem;
 }
 
+/* ── Constellation Bookshelf ──────────────────────────────── */
+.constellation-page {
+  padding-bottom: 4rem;
+}
+
+.constellation-hint {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 1.25rem;
+}
+
+.constellation-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.star { cursor: grab; }
+.star.dragging { cursor: grabbing !important; }
+
+.constellation-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.star-dot {
+  display: block;
+  width: var(--size, 10px);
+  height: var(--size, 10px);
+  border-radius: 50%;
+  background: var(--star-dot-bg);
+  box-shadow: 0 0 6px 1px var(--star-dot-shadow);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.star-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.star:hover .star-dot,
+.star:focus-visible .star-dot {
+  background: var(--color-link);
+  box-shadow: 0 0 10px 3px color-mix(in srgb, var(--color-link) 50%, transparent);
+  transform: scale(1.3);
+}
+
+.star:hover .star-glow,
+.star:focus-visible .star-glow {
+  background: color-mix(in srgb, var(--color-link) 12%, transparent);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.star.active .star-dot {
+  background: var(--color-link);
+  box-shadow: 0 0 14px 4px color-mix(in srgb, var(--color-link) 60%, transparent);
+  transform: scale(1.4);
+}
+
+.star.active .star-glow {
+  background: color-mix(in srgb, var(--color-link) 15%, transparent);
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.star-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 14px);
+  display: block;
+  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  color: var(--star-label-color);
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.star:hover .star-label,
+.star:focus-visible .star-label,
+.star.active .star-label {
+  color: var(--star-label-active);
+}
+
+.constellation-empty-hint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--star-hint-color);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+/* Floating book card */
+.book-float-card {
+  position: absolute;
+  width: auto;
+  max-width: 600px;
+  height: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07);
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.94) translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  overflow: hidden;
+}
+
+.float-card-inner {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.book-float-card.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+}
+
+.float-card-cover {
+  width: auto;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+  background: var(--color-border);
+}
+
+.float-card-cover[src=""] { display: none; }
+
+.float-card-meta {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem;
+  padding-right: 2.2rem;
+  position: relative;
+  overflow-y: auto;
+}
+
+.float-card-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--ease), background var(--ease);
+  z-index: 1;
+}
+
+.float-card-close:hover {
+  color: var(--color-text);
+  background: var(--color-border);
+}
+
+.float-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.float-card-author {
+  font-size: 0.77rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.float-card-rating {
+  display: flex;
+  gap: 1px;
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+}
+
+.star-pip { color: var(--color-border); }
+.star-pip.on { color: var(--color-link); }
+
+.float-card-note {
+  font-size: 0.77rem;
+  line-height: 1.55;
+  color: var(--color-secondary);
+  margin: 0.2rem 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.float-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Tag cloud filter */
+.tag-cloud-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag-filter-btn {
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+  line-height: 1.6;
+}
+
+.tag-filter-btn:hover {
+  border-color: var(--color-link);
+  color: var(--color-link);
+}
+
+.tag-filter-btn.active {
+  background: var(--color-link);
+  border-color: var(--color-link);
+  color: #fff;
+}
+
+/* ── Constellation: mobile ────────────────────────────────── */
+@media (max-width: 700px) {
+  .constellation-wrap {
+    aspect-ratio: 3 / 4;
+  }
+
+  .book-float-card {
+    width: calc(100vw - 2rem);
+    max-width: 380px;
+    height: auto;
+    min-height: 160px;
+  }
+
+  .float-card-meta {
+    width: auto;
+    flex: 1;
+  }
+}
+
 /* ── 3. STANDARD (about, info pages, etc.) ────────────────── */
 .page-meta {
   font-size: 0.9rem;
@@ -2322,5 +2659,8 @@ span.wikilink { color: var(--color-secondary); }
   color: inherit;
   text-decoration: underline;
   font-weight: 700;
+}
+
+ont-weight: 700;
 }
 
