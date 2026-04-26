@@ -1920,7 +1920,52 @@ span.wikilink { color: var(--color-secondary); }
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  transition: max-height 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-cloud.collapsed {
+  max-height: 74px; /* Approx 2 lines of buttons */
+}
+
+.filter-container {
   margin-bottom: 2rem;
+}
+
+.show-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.show-more-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  transition: color var(--ease);
+}
+
+.show-more-btn:hover {
+  color: var(--color-text);
+}
+
+.show-more-btn svg {
+  transition: transform 300ms ease;
+}
+
+.show-more-btn.expanded svg {
+  transform: rotate(180deg);
 }
 
 .filter-btn {

@@ -60,11 +60,19 @@ layout: page.njk
 
   <p class="section-label">All Writing</p>
   
-  <div class="filter-cloud">
-    <button class="filter-btn active" data-filter="all">All</button>
-    {% for tag in collections.posts | getAllTags %}
-    <button class="filter-btn" data-filter="{{ tag }}">{{ tag }}</button>
-    {% endfor %}
+  <div class="filter-container">
+    <div class="filter-cloud collapsed" id="filter-cloud">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {% for tag in collections.posts | getAllTags %}
+      <button class="filter-btn" data-filter="{{ tag }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+    <div class="show-more-wrapper" id="show-more-wrapper">
+      <button class="show-more-btn" id="show-more-btn">
+        <span>MORE TAGS</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
   </div>
 
   {% if collections.regularPosts and collections.regularPosts.length %}
@@ -102,8 +110,43 @@ layout: page.njk
     document.addEventListener('DOMContentLoaded', () => {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const grid = document.getElementById('post-grid');
+      const filterCloud = document.getElementById('filter-cloud');
+      const showMoreBtn = document.getElementById('show-more-btn');
+      const showMoreWrapper = document.getElementById('show-more-wrapper');
+      
       if (!grid) return;
       const postCards = grid.querySelectorAll('.post-card');
+
+      // Check if "More" button is needed
+      const checkOverflow = () => {
+        if (!filterCloud) return;
+        if (filterCloud.scrollHeight > filterCloud.clientHeight + 5) {
+          showMoreWrapper.style.display = 'flex';
+        } else if (!filterCloud.classList.contains('collapsed')) {
+          filterCloud.classList.add('collapsed');
+          const wouldOverflow = filterCloud.scrollHeight > filterCloud.clientHeight + 5;
+          filterCloud.classList.remove('collapsed');
+          if (!wouldOverflow) showMoreWrapper.style.display = 'none';
+        } else {
+          showMoreWrapper.style.display = 'none';
+        }
+      };
+
+      checkOverflow();
+      window.addEventListener('resize', checkOverflow);
+
+      showMoreBtn.addEventListener('click', () => {
+        const isCollapsed = filterCloud.classList.contains('collapsed');
+        if (isCollapsed) {
+          filterCloud.style.maxHeight = filterCloud.scrollHeight + 'px';
+          filterCloud.classList.remove('collapsed');
+        } else {
+          filterCloud.style.maxHeight = '74px';
+          filterCloud.classList.add('collapsed');
+        }
+        showMoreBtn.classList.toggle('expanded', isCollapsed);
+        showMoreBtn.querySelector('span').textContent = isCollapsed ? 'FEWER TAGS' : 'MORE TAGS';
+      });
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -135,3 +178,4 @@ layout: page.njk
     });
   </script>
 </div>
+
