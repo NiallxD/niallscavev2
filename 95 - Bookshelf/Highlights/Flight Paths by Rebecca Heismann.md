@@ -71,5 +71,3 @@ Laysan albatross named Wisdom. Originally banded on Midway Atoll in 1956, she ha
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

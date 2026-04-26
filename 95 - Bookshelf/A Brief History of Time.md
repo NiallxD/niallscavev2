@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg
-dg-permalink: bookshelf/a-breif-history-of-time
+dg-permalink: /bookshelf/a-brief-history-of-time
 Type: Bookshelf
 read: 2022-09-01
 tags:
@@ -18,5 +18,3 @@ dg-note-icon:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

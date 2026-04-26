@@ -29,5 +29,3 @@ persuasion and entreaty I could overpower your oaths, then I should be teaching 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

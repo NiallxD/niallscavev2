@@ -68,5 +68,3 @@ Many ecologists see this belief as having encouraged the over-exploitation of na
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

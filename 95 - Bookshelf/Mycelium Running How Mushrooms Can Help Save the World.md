@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
-dg-permalink: bookshelf/mycelium-running
+dg-permalink: /bookshelf/mycelium-running
 Type: Bookshelf
 read: 2021-02-18
 tags:
@@ -20,5 +20,3 @@ dg-note-icon:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

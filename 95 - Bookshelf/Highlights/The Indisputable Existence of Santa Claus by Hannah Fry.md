@@ -26,5 +26,3 @@ Ham Sandwich Theorem. — location: [994]() ^ref-53232
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

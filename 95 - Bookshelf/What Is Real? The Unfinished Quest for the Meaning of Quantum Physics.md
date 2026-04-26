@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500753932i/35604796.jpg
-dg-permalink: bookshelf/What Is Real The Unfinished Quest for the Meaning of Quantum Physics
+dg-permalink: /bookshelf/what-is-real
 Type: 
 read: 2024-12-03
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Bird Sense by Tim Birkhead|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

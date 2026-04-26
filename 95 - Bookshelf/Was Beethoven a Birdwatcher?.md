@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg
-dg-permalink: bookshelf/was-beethoven-a-birdwatcher
+dg-permalink: /bookshelf/was-beethoven-a-birdwatcher
 Type: Bookshelf
 read: 2024-04-20
 tags:
@@ -21,5 +21,3 @@ highlights: "[[Was Beethoven a Birdwatcher by David Turner|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

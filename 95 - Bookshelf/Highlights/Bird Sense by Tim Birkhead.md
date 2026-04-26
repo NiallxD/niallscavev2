@@ -87,5 +87,3 @@ Under normal circumstances this greeting display lasts a minute or two, but Sara
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

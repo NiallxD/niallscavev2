@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468508169i/30732469.jpg
-dg-permalink: bookshelf/mozart-the-man-revealed
+dg-permalink: /bookshelf/mozart-the-man-revealed
 Type: Bookshelf
 read: 2023-07-10
 tags:
@@ -20,5 +20,3 @@ highlights: "[[Mozart by John Suchet|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

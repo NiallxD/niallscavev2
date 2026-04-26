@@ -41,5 +41,3 @@ Louis Pasteur anticipated that when he said fortune favors the prepared mind. It
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -1,54 +1,56 @@
 ---
-layout: base.njk
+layout: page.njk
 permalink: /photography/index.html
 title: Photography
-description: Wildlife and nature photography by Niall Bell — galleries of British birds, mammals, and wild places.
+description: Wildlife and nature photography from the UK and beyond — birds, mammals, and wild places.
+heroImage: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2560&auto=format&fit=crop"
 ---
 
-<div class="photo-index-header">
-  <h1>Photography</h1>
-  <p>Wildlife and nature photography from the UK and beyond. Documenting birds, mammals, and wild places.</p>
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    <p class="home-intro">{{ description }}</p>
+  </section>
 </div>
 
-<div class="wide">
-
-  {% if collections.galleries and collections.galleries.length %}
-  <p class="section-label">Galleries</p>
-  <div class="gallery-grid">
-    {% for gallery in collections.galleries %}
-    <a href="{{ gallery.url }}" class="gallery-card">
-      <div class="gallery-card-img">
-        {% if gallery.data['header-image'] %}
-        <img src="{{ gallery.data['header-image'] }}" alt="{{ gallery.data.title }}" loading="lazy">
-        {% endif %}
-      </div>
-      <div class="gallery-card-body">
-        <div class="gallery-card-title">{{ gallery.data.title }}</div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  {% if collections.photoStories and collections.photoStories.length %}
-  <p class="section-label">Photo Stories</p>
-  <div class="story-list">
-    {% for story in collections.photoStories %}
-    <a href="{{ story.url }}" class="story-card">
-      <div class="story-card-img">
-        {% if story.data['header-image'] %}
-        <img src="{{ story.data['header-image'] }}" alt="{{ story.data.title }}" loading="lazy">
-        {% endif %}
-      </div>
-      <div class="story-card-body">
-        <div class="story-card-title">{{ story.data.title }}</div>
-        {% if story.data.description %}
-        <div class="story-card-desc">{{ story.data.description }}</div>
-        {% endif %}
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  {% endif %}
-
+{% if collections.galleries and collections.galleries.length %}
+<p class="section-label">Galleries</p>
+<div class="gallery-grid">
+  {% for gallery in collections.galleries %}
+  <a href="{{ gallery.url | url }}" class="gallery-card">
+    <div class="gallery-card-img">
+      {% if gallery.data.coverImage %}
+      <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="gallery-card-body">
+      <div class="gallery-card-title">{{ gallery.data.title }}</div>
+    </div>
+  </a>
+  {% endfor %}
 </div>
+{% endif %}
+
+{% if collections.photoStories and collections.photoStories.length %}
+<p class="section-label">Photo Stories</p>
+<div class="story-list">
+  {% for story in collections.photoStories %}
+  <a href="{{ story.url | url }}" class="story-card">
+    <div class="story-card-img">
+      {% if story.data.coverImage %}
+      <img src="{{ story.data.coverImage }}" alt="{{ story.data.title }}" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="story-card-body">
+      <div class="story-card-title">{{ story.data.title }}</div>
+      {% if story.data.description %}
+      <div class="story-card-desc">{{ story.data.description }}</div>
+      {% endif %}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}

@@ -80,7 +80,6 @@ parable for the plight of thousands of human refugees and the cost — location:
 
 
 ---
-Created by Niall Bell (niall@niallbell.com)
 
 The sloth bear is responsible for more human fatalities than any of the other seven bear species, — location: [861]() ^ref-14305
 
@@ -282,4 +281,3 @@ NOBODY LOCKS THEIR DOORS IN CHURCHILL. The prefabricated houses, painted drab sh
 ---
 But the female offspring of polar bears and grizzly bears are fertile; two pizzly bears can mate and produce more little pizzlies, or “grolars,” if you prefer. — location: [3470]() ^ref-7642
 
----

@@ -36,7 +36,6 @@ I decided to run a year long project to document my photography week by week.
 
 It's important to note that these aren't portfolio images but instead are photos which illustrate my experiences with wildlife and nature. Past weeks can be found at the bottom, I encourage you to have a browse.
 
-📧 Sign up to my newsletter [[Newsletter|here]] to get a email when I share new updates!
 
 > [!tip]+ WC 23rd December 2024
 > And here it is, the final update to My Week In Photos! What a journey this has been!
@@ -1294,6 +1293,3 @@ It's important to note that these aren't portfolio images but instead are photos
 >
 
 
----
-📧 Sign up to my newsletter [[Newsletter|here]].
-Created by Niall Bell (niall@niallbell.com)

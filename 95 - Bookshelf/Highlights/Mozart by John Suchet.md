@@ -43,5 +43,3 @@ Legend has it that Mozart was given a pauper’s funeral and his body thrown in 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

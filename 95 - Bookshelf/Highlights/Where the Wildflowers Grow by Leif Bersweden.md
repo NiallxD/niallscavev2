@@ -39,5 +39,3 @@ Poor soils breed biodiversity. By regularly removing grass cuttings, you end up 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

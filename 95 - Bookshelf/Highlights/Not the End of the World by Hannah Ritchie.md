@@ -265,5 +265,3 @@ the charity evaluator GiveWell is my most trusted reference.2 — location: [470
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

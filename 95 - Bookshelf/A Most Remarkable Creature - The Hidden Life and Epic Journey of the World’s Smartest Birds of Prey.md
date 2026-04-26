@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1596429654i/54390345.jpg
-dg-permalink: bookshelf/A-Most-Remarkable-Creature
+dg-permalink: /bookshelf/a-most-remarkable-creature
 Type: 
 read: 2025-03-01
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Eight Bears by Gloria Dickie|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

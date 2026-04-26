@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg
-dg-permalink: bookshelf/the-cloud-book
+dg-permalink: /bookshelf/the-cloud-book
 Type: Bookshelf
 read: 2024-03-01
 tags:
@@ -18,5 +18,3 @@ highlights:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -2,13 +2,14 @@
 dg-hide: true
 dg-publish: true
 header-image: https://i.imgur.com/diPWwgj.jpeg
-dg-permalink: indias-heart-a-tapestry-of-nature-and-tradition
+dg-permalink: /indias-heart-a-tapestry-of-nature-and-tradition
 dg-metatags:
   og:title: "{{title}}"
   og:description: "{{description}}"
   og:image: "{{header-image}}"
 Type: Photo Story
 created: 2024-04-02
+date: 2024-04-02
 updated: 2024-04-22
 tags:
   - photography
@@ -150,5 +151,3 @@ This trip was extraordinary and it was made so not just by the animals that I so
 Aprit: [Vanvasm](https://www.instagram.com/vanvasm/)
 Tal: [Tigstergram](https://www.instagram.com/tigstergram/)
 
----
-Created by Niall Bell (niall@niallbell.com)

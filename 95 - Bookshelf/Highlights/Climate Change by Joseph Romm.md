@@ -32,5 +32,3 @@ nationally determined contributions (INDCs) — location: [2627]() ^ref-25793
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

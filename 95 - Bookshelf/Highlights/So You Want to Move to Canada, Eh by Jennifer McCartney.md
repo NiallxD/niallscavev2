@@ -32,5 +32,3 @@ Becoming a permanent resident comes with a catch, however. Once you’re approve
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

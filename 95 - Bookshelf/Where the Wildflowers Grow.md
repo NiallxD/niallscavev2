@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg
-dg-permalink: bookshelf/where-the-wildflowers-grow
+dg-permalink: /bookshelf/where-the-wildflowers-grow
 Type: Bookshelf
 read: 2022-09-10
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Where the Wildflowers Grow by Leif Bersweden|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

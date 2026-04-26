@@ -22,5 +22,3 @@ For nearly ten years now I've not received or sent any celebration cards. I made
 
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -22,5 +22,3 @@ Please pop your email into the Google Form below and I'll send you updates here 
 >You're email will be used only so that I can send you a nudge that I've added something new to my site. I won't spam you, sell your email or anything dodgy like that. If you change your mind, just drop me a line and I'll delete your email.
 
 
----
-Created by Niall Bell (niall@niallbell.com)

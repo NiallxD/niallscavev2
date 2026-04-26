@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg
-dg-permalink: bookshelf/eight-bears
+dg-permalink: /bookshelf/eight-bears
 Type: Bookshelf
 read: 2024-11-02
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Eight Bears by Gloria Dickie|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

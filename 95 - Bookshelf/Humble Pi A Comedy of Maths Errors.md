@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
-dg-permalink: bookshelf/chimp-paradox
+dg-permalink: /bookshelf/humble-pi
 Type: Bookshelf
 read: 2023-10-05
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Humble Pi by Matt Parker|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

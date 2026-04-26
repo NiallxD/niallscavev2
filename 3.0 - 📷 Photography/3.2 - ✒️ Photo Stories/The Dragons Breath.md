@@ -2,9 +2,10 @@
 dg-hide: true
 dg-publish: true
 header-image: https://i.imgur.com/8bzvnWQ.png
-dg-permalink: the-dragons-breath
+dg-permalink: /the-dragons-breath
 Type: Photo Story
 created: 2024-04-17
+date: 2024-04-17
 updated: 2024-04-17
 tags:
   - wildlife
@@ -29,5 +30,3 @@ On a particular frosty November morning, I followed a mature stag around the par
 
 The light was warming just as he started reaching up for a morning snack of oak leaves. I set myself about 60 degrees off-centre from the sun in order to catch the stunning backlight, without suffering from the bright direct light. This image came together in a flash with the leaves glowing in autumnal colours, the stags breath set alight and famous dry-stone walls in the background.
 
----
-Created by Niall Bell (niall@niallbell.com)

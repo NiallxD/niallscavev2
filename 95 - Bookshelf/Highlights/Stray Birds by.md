@@ -153,5 +153,3 @@ WE live in this world when we love it. — location: [546]() ^ref-59295
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

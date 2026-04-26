@@ -29,5 +29,3 @@ Chaos were primal, elemental principles that were devoid of any real colour, cha
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -1,0 +1,11 @@
+---
+layout: base.njk
+---
+{% if coverImage %}
+<div class="page-cover-wrap">
+  <img class="page-cover" src="{{ coverImage }}" alt="{{ title }}">
+</div>
+{% endif %}
+<div class="constrained-wide">
+  {{ content | safe }}
+</div>

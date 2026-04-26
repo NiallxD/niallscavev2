@@ -5,6 +5,7 @@ header-image: https://i.imgur.com/rtk0zzy.png
 dg-permalink: /uk-wildlife-nature-photos/tigers/
 Type: Photo Story
 created: 2021-07-17
+date: 2021-07-17
 updated: 2021-07-17
 tags:
   - nature
@@ -100,5 +101,3 @@ I was actually asked to take these photos down by one of the zoos where I took t
 ![](https://i.imgur.com/eDQBDJi.png)
 *The beautiful Sumatran tiger with it's striking dark place lines and rusty orange coat (captive).*
 
----
-Created by Niall Bell (niall@niallbell.com)

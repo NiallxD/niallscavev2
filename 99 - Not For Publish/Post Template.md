@@ -16,5 +16,3 @@ dg-note-icon: "1"
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
 
 
----
-Created by Niall Bell (niall@niallbell.com)

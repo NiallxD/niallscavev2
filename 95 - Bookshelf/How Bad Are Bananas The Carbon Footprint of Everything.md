@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg
-dg-permalink: bookshelf/how-bad-are-bananas
+dg-permalink: /bookshelf/how-bad-are-bananas
 Type: Bookshelf
 read: 2021-07-18
 tags:
@@ -19,5 +19,3 @@ highlights: "[[How Bad Are Bananas by Mike Berners-Lee|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

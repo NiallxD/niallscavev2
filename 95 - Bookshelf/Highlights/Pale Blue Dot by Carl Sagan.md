@@ -76,5 +76,3 @@ The marsh of Camarina became proverbial for eliminating a danger in such a way a
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -32,5 +32,3 @@ Chicken poo is full of nutrients, particularly phosphates. Raising hundreds or t
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

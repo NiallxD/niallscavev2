@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490075230i/34185892.jpg
-dg-permalink: bookshelf/Inglorious-Empire-What-the-British-Did-to-india
+dg-permalink: /bookshelf/inglorious-empire
 Type: Bookshelf
 read: 2022-11-30
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Inglorious Empire by Shashi Tharoor|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

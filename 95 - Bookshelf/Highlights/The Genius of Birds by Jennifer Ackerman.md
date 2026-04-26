@@ -171,5 +171,3 @@ A new study comparing the genomes of birds suggests that, genetically speaking, 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg
-dg-permalink: bookshelf/so-you-want-to-move-to-canada-eh
+dg-permalink: /bookshelf/so-you-want-to-move-to-canada-eh
 Type: Bookshelf
 read: 2024-10-20
 tags:
@@ -18,5 +18,3 @@ highlights: "[[So You Want to Move to Canada, Eh by Jennifer McCartney|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

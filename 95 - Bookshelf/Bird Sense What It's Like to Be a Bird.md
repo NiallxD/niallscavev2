@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg
-dg-permalink: bookshelf/Bird-Sense-What-Its-Like-to-Be-a-Bird
+dg-permalink: /bookshelf/bird-sense
 Type: Bookshelf
 read: 2024-12-10
 tags:
@@ -18,5 +18,3 @@ highlights: "[[Bird Sense by Tim Birkhead|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

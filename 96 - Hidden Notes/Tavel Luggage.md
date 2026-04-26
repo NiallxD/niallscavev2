@@ -32,5 +32,3 @@ Current contact info:
 
 **_This information was last updated on: 30/12/2024_**
 
----
-Created by Niall Bell (niall@niallbell.com)

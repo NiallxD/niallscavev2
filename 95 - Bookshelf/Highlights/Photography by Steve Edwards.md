@@ -62,5 +62,3 @@ Photographs provoke acts of memory recalling us to things, places, and people. T
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -21,5 +21,3 @@ GROUP BY tag
 SORT length(rows.file.link) DESC
 ```
 
----
-Created by Niall Bell (niall@niallbell.com)

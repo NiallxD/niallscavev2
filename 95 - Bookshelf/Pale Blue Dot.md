@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg
-dg-permalink: bookshelf/pale-blue-dot
+dg-permalink: /bookshelf/pale-blue-dot
 Type: Bookshelf
 read: 2024-11-20
 tags:
@@ -18,5 +18,3 @@ dg-note-icon:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

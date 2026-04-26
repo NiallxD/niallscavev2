@@ -243,5 +243,3 @@ Second, there are moral limits that we ought to observe and often fail to: limit
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

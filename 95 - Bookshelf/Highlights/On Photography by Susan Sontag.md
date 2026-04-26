@@ -41,5 +41,3 @@ Mallarmé, said that everything in the world exists in order to end in a book. T
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

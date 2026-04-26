@@ -29,5 +29,3 @@ Indians literally paid for their own oppression. — location: [660]() ^ref-4771
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

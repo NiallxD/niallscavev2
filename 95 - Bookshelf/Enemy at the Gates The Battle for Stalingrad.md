@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg
-dg-permalink: bookshelf/Enemy-at-the-Gates-The-Battle-for-Stalingrad
+dg-permalink: /bookshelf/enemy-at-the-gates
 Type: Bookshelf
 read: 2023-08-15
 tags:
@@ -21,5 +21,3 @@ highlights:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -20,5 +20,3 @@ dg-note-icon: "1"
 
 
 
----
-Created by Niall Bell (niall@niallbell.com)

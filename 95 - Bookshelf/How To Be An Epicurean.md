@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg
-dg-permalink: bookshelf/how-to-be-an-epicurean
+dg-permalink: /bookshelf/how-to-be-an-epicurean
 Type: Bookshelf
 read: 2024-05-27
 tags:
@@ -18,5 +18,3 @@ highlights: "[[How to Be an Epicurean by Catherine Wilson|Link]]"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

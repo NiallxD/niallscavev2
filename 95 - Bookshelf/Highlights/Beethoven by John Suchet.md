@@ -170,5 +170,3 @@ Just over a year and a half after Beethoven’s death, Franz Schubert – one of
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

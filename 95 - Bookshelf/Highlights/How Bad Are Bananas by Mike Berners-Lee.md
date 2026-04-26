@@ -35,5 +35,3 @@ of forest in the UK each year to balance a 5-tonne footprint. That’s for — l
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

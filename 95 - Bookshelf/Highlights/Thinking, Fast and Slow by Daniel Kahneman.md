@@ -32,5 +32,3 @@ resist the anchoring effect — location: [2226]() ^ref-38763
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

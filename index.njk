@@ -1,59 +1,77 @@
 ---
-layout: base.njk
+layout: page.njk
 title: Home
 description: The personal site of Niall Bell — nature photographer, writer, and environmentalist.
 ---
 
-<section class="home-hero">
-  <h1>Niall Bell</h1>
-  <p class="hero-lead">
-    Nature photographer and environmentalist, documenting UK wildlife and wild places.
-    Sharing the beauty of the natural world through photography and writing.
-  </p>
-  <div class="hero-actions">
-    <a href="/photography" class="btn btn-primary">Photography</a>
-    <a href="/blog" class="btn btn-secondary">Writing</a>
-    <a href="/about-me" class="btn btn-secondary">About</a>
-  </div>
-</section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<div class="home-sections">
-  <div class="home-section">
-    <h2>Recent writing</h2>
-    {% if collections.posts and collections.posts.length %}
-    <ul class="post-list">
-      {% for post in collections.posts | slice(0, 6) %}
-      <li>
-        <a href="{{ post.url }}">
-          <span>{{ post.data.title }}</span>
-          {% if post.date %}
-          <span class="post-date">{{ post.date | readableDate }}</span>
-          {% endif %}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    <a href="/blog" class="view-all">All writing →</a>
-    {% else %}
-    <p style="font-size:0.9rem;color:var(--color-muted)">Posts coming soon.</p>
-    {% endif %}
-  </div>
-
-  <div class="home-section">
-    <h2>Photography</h2>
-    {% if collections.galleries and collections.galleries.length %}
-    <div class="home-gallery-preview">
-      {% for gallery in collections.galleries | slice(0, 4) %}
-      {% if gallery.data['header-image'] %}
-      <a href="{{ gallery.url }}" title="{{ gallery.data.title }}">
-        <img src="{{ gallery.data['header-image'] }}" alt="{{ gallery.data.title }}" loading="lazy">
-      </a>
-      {% endif %}
-      {% endfor %}
+<div class="home-hero-wrapper">
+  {% if collections.homeGallery and collections.homeGallery.length %}
+  {% set slides = collections.homeGallery[0].content | extractImages %}
+  {% if slides.length %}
+  <div class="home-slideshow-fs">
+    <div class="swiper home-swiper">
+      <div class="swiper-wrapper">
+        {% for img in slides %}
+        <div class="swiper-slide">
+          <img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy">
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-    <a href="/photography" class="view-all">All galleries →</a>
-    {% else %}
-    <p style="font-size:0.9rem;color:var(--color-muted)">Galleries coming soon.</p>
-    {% endif %}
+  </div>
+  {% endif %}
+  {% endif %}
+
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Niall Bell</h1>
+    <p class="home-intro">
+      I'm Niall — a nature photographer and environmentalist based in the UK. I spend my time
+      documenting the wildlife and wild places of Britain and beyond, sharing the beauty of the
+      natural world through photography and writing.
+    </p>
+  </section>
+</div>
+
+{% if collections.posts and collections.posts.length %}
+<div class="home-posts">
+  <div class="home-block-header">
+    <h2 class="section-label">Recent writing</h2>
+    <a href="{{ '/blog/' | url }}" class="view-all">All writing →</a>
+  </div>
+  <div class="post-grid">
+    {% for post in collections.posts | limit(3) %}
+    <a href="{{ post.url | url }}" class="post-card">
+      <div class="post-card-img">
+        {% if post.data.coverImage %}
+        <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" loading="lazy">
+        {% else %}
+        <div class="post-card-placeholder"></div>
+        {% endif %}
+      </div>
+      <div class="post-card-body">
+        <h2>{{ post.data.title }}</h2>
+        <div class="post-meta">
+          {% if post.date %}<time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>{% endif %}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
   </div>
 </div>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper('.home-swiper', {
+    loop: true,
+    autoplay: { delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false },
+    speed: 800,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  });
+</script>

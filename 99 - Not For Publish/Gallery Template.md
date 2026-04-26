@@ -33,5 +33,3 @@ dg-note-icon: "2"
 </div>
 
 
----
-Created by Niall Bell (niall@niallbell.com)

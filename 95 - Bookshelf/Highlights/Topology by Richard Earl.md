@@ -35,5 +35,3 @@ Given just one sentence for the task, many topologists might choose to describe 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

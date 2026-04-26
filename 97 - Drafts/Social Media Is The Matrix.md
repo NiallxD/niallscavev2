@@ -38,5 +38,3 @@ Quick notes:
 	  lang: 'en',
 	});
 </script>
----
-Created by Niall Bell (niall@niallbell.com)

@@ -20,5 +20,3 @@ dg-note-icon: "1"
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

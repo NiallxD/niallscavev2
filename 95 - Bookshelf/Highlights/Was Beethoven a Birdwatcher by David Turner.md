@@ -191,7 +191,6 @@ Aristotle recorded that the European Nightjar – the species found in Britain �
 
 
 ---
-Created by Niall Bell (niall@niallbell.com)
 
 Dubbed the Pfeilstorch (German for “arrow stork”), — location: [64]() ^ref-55480
 
@@ -242,4 +241,3 @@ The longest-running community science project in the world, however, is the vene
 ---
 Laysan albatross named Wisdom. Originally banded on Midway Atoll in 1956, she has (as far as we know) continued to return to the island to lay an egg each December for at least seventy years, making her the oldest confirmed wild bird in the world. — location: [3025]() ^ref-23703
 
----

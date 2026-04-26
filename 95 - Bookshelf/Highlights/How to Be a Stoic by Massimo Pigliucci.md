@@ -161,5 +161,3 @@ howtobeastoic.org. — location: [2705]() ^ref-21542
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

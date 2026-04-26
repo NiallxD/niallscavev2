@@ -15,5 +15,3 @@ This page is where I host my online GIS maps that I want to share with others.
 </body>
 
 
----
-Created by Niall Bell (niall@niallbell.com)

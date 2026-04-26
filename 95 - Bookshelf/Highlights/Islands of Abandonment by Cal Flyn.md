@@ -23,5 +23,3 @@ to recognise the value of lead when it sits so pale against the flash of silver 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

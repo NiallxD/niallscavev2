@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1521964296i/38891828.jpg
-dg-permalink: bookshelf/wildling
+dg-permalink: /bookshelf/wildling
 Type: Bookshelf
 read: 2021-08-28
 tags:
@@ -18,5 +18,3 @@ highlights:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

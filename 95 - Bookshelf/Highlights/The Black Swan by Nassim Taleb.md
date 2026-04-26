@@ -102,5 +102,3 @@ allows information to be filtered a bit. — location: [3107]() ^ref-19917
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

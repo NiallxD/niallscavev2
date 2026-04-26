@@ -32,5 +32,3 @@ In 1954 it was Lady Tweedsmuir, the Conservative MP for Aberdeen South, who guid
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

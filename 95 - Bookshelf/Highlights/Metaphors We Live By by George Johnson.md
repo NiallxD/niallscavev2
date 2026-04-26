@@ -35,5 +35,3 @@ A far more subtle case of how a metaphorical concept can hide an aspect of our e
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

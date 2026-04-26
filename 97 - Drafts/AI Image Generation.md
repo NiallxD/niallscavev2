@@ -55,5 +55,3 @@ These will never get you there all the time, but they will help you spot the obv
 [^1]: By emergence, I'm referring to the likes of Chat GPT and OpenAI's Stable Diffusion.
 [^2]: An AI Model is kinda like some software that is trained to do something using existing data.
 
----
-Created by Niall Bell (niall@niallbell.com)

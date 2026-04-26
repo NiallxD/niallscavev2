@@ -20,5 +20,3 @@ In 1980 the Texaco oil company was doing some exploratory oil drilling in Lake P
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -7,18 +7,25 @@
   {% if description %}<meta name="description" content="{{ description }}">{% endif %}
   <meta property="og:title" content="{% if title %}{{ title }} — {% endif %}Niall Bell">
   {% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
-  {% if page.url %}<meta property="og:url" content="https://niallxd.github.io/niallscavev2{{ page.url }}">{% endif %}
-  <link rel="stylesheet" href="/static/css/style.css">
+  {% if coverImage %}<meta property="og:image" content="{{ coverImage }}">{% endif %}
+  <link rel="stylesheet" href="{{ '/static/css/style.css' | url }}">
+  {% block head %}{% endblock %}
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" {% if page.url == '/blog/' %}class="active"{% endif %}>Writing</a>
-      <a href="/photography" {% if page.url and '/photography' in page.url %}class="active"{% endif %}>Photography</a>
-      <a href="/bookshelf" {% if page.url == '/bookshelf/' %}class="active"{% endif %}>Bookshelf</a>
-      <a href="/about-me" {% if page.url == '/about-me/' %}class="active"{% endif %}>About</a>
-    </nav>
+  <header class="site-header{% if page.url == '/' or heroImage %} transparent-header{% endif %}">
+    <div class="site-header-inner">
+      <a class="site-title" href="{{ '/' | url }}">
+        <img src="{{ '/static/logo-black.png' | url }}" alt="Niall Bell" class="site-logo logo-black">
+        <img src="{{ '/static/logo-white.png' | url }}" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="{{ '/blog/' | url }}"{% if page.url == '/blog/' %} class="active"{% endif %}>Writing</a>
+        <a href="{{ '/photography/' | url }}"{% if page.url and '/photography' in page.url %} class="active"{% endif %}>Photography</a>
+        <a href="{{ '/bookshelf/' | url }}"{% if page.url == '/bookshelf/' %} class="active"{% endif %}>Bookshelf</a>
+        <a href="{{ '/side-projects/' | url }}"{% if page.url == '/side-projects/' %} class="active"{% endif %}>Projects</a>
+        <a href="{{ '/about-me/' | url }}"{% if page.url == '/about-me/' %} class="active"{% endif %}>About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -26,10 +33,25 @@
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

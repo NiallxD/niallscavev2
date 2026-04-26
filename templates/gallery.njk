@@ -1,27 +1,22 @@
 ---
-layout: base.njk
+layout: page.njk
 ---
+{% block head %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+{% endblock %}
 
-<article>
-  <header class="gallery-header">
+<article class="gallery-page">
+  <header class="page-header">
     <h1>{{ title }}</h1>
     {% if tags and tags.length %}
     <div class="post-meta">
-      {% for tag in tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
+      {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}
     </div>
     {% endif %}
-    {% if description %}
-    <p class="gallery-description">{{ description }}</p>
-    {% endif %}
+    {% if description %}<p class="page-lead">{{ description }}</p>{% endif %}
   </header>
-
-  <div class="gallery-body">
-    {{ content | safe }}
-  </div>
+  <div class="gallery-body">{{ content | safe }}</div>
 </article>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false });</script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>

@@ -23,5 +23,3 @@ A billion years ago, the continental plates were pushed together into one great 
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

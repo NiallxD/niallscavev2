@@ -38,5 +38,3 @@ With Laurene Powell, 1991 — location: [4691]() ^ref-35747
 ---
 
 
----
-Created by Niall Bell (niall@niallbell.com)

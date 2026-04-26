@@ -1,9 +1,9 @@
 export default {
   layout: (data) => {
     if (!data.page?.inputPath?.endsWith(".md")) return data.layout;
-    if (data["dg-home"] === true) return "home.njk";
     if (data.Type === "Gallery") return "gallery.njk";
-    return data.layout || "post.njk";
+    if (["Blog Post", "Photo Story", "Photo Analysis"].includes(data.Type)) return "post.njk";
+    return data.layout || "standard.njk";
   },
 
   permalink: (data) => {
@@ -20,4 +20,7 @@ export default {
     if (!data.page?.inputPath?.endsWith(".md")) return false;
     return data["dg-publish"] !== true;
   },
+
+  // Expose header-image under a hyphen-safe name for Nunjucks templates
+  coverImage: (data) => data["header-image"] || null,
 };

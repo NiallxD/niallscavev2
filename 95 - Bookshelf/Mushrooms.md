@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354449995i/16204477.jpg
-dg-permalink: bookshelf/mushrooms
+dg-permalink: /bookshelf/mushrooms
 Type: Bookshelf
 read: 2021-02-10
 tags:
@@ -17,5 +17,3 @@ dg-note-icon:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1445790452i/25938481.jpg
-dg-permalink: bookshelf/The-Genius-of-Birds
+dg-permalink: /bookshelf/the-genius-of-birds
 Type: Bookshelf
 read: 2024-11-12
 tags:
@@ -18,5 +18,3 @@ dg-note-icon:
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)

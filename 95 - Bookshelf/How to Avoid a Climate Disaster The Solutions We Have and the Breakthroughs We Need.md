@@ -1,8 +1,8 @@
 ---
 dg-hide: true
-dg-publish: false
+dg-publish: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg
-dg-permalink: bookshelf/How-to-avoid-a-climate-disaster
+dg-permalink: /bookshelf/how-to-avoid-a-climate-disaster
 Type: Bookshelf
 read: 2021-04-11
 tags:
@@ -18,5 +18,3 @@ highlights: "[[How to Avoid a Climate Disaster The Solutions We Have and the Bre
 ---
 #books #reading #bookshelf
 
----
-Created by Niall Bell (niall@niallbell.com)
