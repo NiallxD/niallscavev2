@@ -1,0 +1,22 @@
+---
+dg-hide: true
+dg-publish: false
+header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg
+dg-permalink: bookshelf/The-Indisputable-Existence-of-Santa-Clause
+Type: Bookshelf
+read: 2022-12-03
+tags:
+  - books
+  - bookshelf
+  - reading
+title: The Indisputable Existence of Santa Clause
+author: Hannah Fry
+description: 
+goodreads: "[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg)"
+dg-note-icon: 
+highlights: "[[The Indisputable Existence of Santa Claus by Hannah Fry|Link]]"
+---
+#books #reading #bookshelf
+
+---
+Created by Niall Bell (niall@niallbell.com)
