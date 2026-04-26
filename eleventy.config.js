@@ -259,10 +259,22 @@ export default function (eleventyConfig) {
           imgsFound.push(igm[1]);
         }
 
-        // Extract "pure" caption by removing the media tags
+        // Extract all unique raw URLs as a fallback
+        const urlRegex = /(https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
+        const rawUrlsFound = [];
+        let um;
+        while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
+          rawUrlsFound.push(um[1]);
+        }
+        // Deduplicate URLs (regex matches both href and text in <a> tags)
+        const uniqueRawUrls = [...new Set(rawUrlsFound)];
+
+        // Extract "pure" caption by removing the media tags and linkified URLs
         const pureCaption = contentWithoutTitle
           .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
           .replace(/<img[^>]+>/gi, '')
+          .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '') // Remove linkified raw URLs
+          .replace(/(?:https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '') // Remove raw URL strings
           .replace(/<p>\s*<\/p>/gi, '') // Remove empty paragraphs
           .trim();
 
@@ -276,7 +288,7 @@ export default function (eleventyConfig) {
           });
         });
 
-        // Add images as slides (if no iframes in this block, or in addition to iframes)
+        // Add images as slides
         imgsFound.forEach((src, idx) => {
           slides.push({
             type: "image",
@@ -286,19 +298,13 @@ export default function (eleventyConfig) {
           });
         });
 
-        // Check for raw URLs if nothing else found
+        // Fallback to raw URLs if no tags were found
         if (iframesFound.length === 0 && imgsFound.length === 0) {
-          const urlRegex = /(https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
-          const urlsFound = [];
-          let um;
-          while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
-            urlsFound.push(um[1]);
-          }
-          urlsFound.forEach((src, idx) => {
+          uniqueRawUrls.forEach((src, idx) => {
             slides.push({
               type: "image",
               src: src,
-              title: urlsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+              title: uniqueRawUrls.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
               caption: idx === 0 ? pureCaption : ""
             });
           });
