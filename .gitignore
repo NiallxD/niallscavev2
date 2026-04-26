@@ -1,0 +1,7 @@
+.obsidian/
+node_modules/
+_site/
+.env
+.DS_Store
+*.heic
+*.zip

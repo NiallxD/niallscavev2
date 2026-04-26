@@ -1,0 +1,10 @@
+.obsidian/
+node_modules/
+96 - Hidden Notes/
+99 - Not For Publish/
+98 - Media/
+97 - Drafts/
+*.heic
+*.afdesign
+*.zip
+Logo Design.afdesign

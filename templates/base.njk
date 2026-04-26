@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} — {% endif %}Niall's Cave</title>
+  {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">Niall's Cave</a>
+    <nav>
+      <a href="/blog">Blog</a>
+      <a href="/about-me">About</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Niall Bell &middot; <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
+  </footer>
+</body>
+</html>
