@@ -1384,6 +1384,22 @@
   });
 
   closeBtn.addEventListener('click', () => { isPinned = false; closeCard(); });
+
+  // Close card when clicking anywhere outside of it
+  document.addEventListener('click', e => {
+    if (!card.classList.contains('open')) return;
+    
+    // Check if the click was outside the card AND outside any star buttons
+    const clickedInsideCard = card.contains(e.target);
+    const clickedAStar = e.target.closest('.star');
+    const clickedAFilter = e.target.closest('.tag-filter-btn');
+
+    if (!clickedInsideCard && !clickedAStar && !clickedAFilter) {
+      isPinned = false;
+      closeCard();
+    }
+  });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && card.classList.contains('open')) { isPinned = false; closeCard(); }
   });
