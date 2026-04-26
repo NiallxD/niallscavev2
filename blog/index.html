@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Niall's Cave</title>
+  <meta name="description" content="Niall&#39;s Blog">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">Niall's Cave</a>
+    <nav>
+      <a href="/blog">Blog</a>
+      <a href="/about-me">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+  <header class="post-header">
+    <h1>Blog</h1>
+    
+  </header>
+
+  <div class="post-content">
+    <p><img src="https://i.imgur.com/elKE9mb.jpeg" alt=""></p>
+<p>#blog</p>
+<h1>Blog</h1>
+<blockquote>
+<p>[!HOT] My Blog Has Moved
+Over the past year I've found writing this blog to be a little bit robotic. I decided to migrate to a form which is more natural to me. The posts below won't go anywhere, and I may add to this from time to time, but from now on I'm writing over <a href="https://blog.niallbell.com">here</a></p>
+</blockquote>
+<div>
+    <label for="tagFilter" class="filter-element">Filter by tag:</label>
+    <select id="tagFilter" class="filter-element" onchange="filterTable()">
+	    <option value="all">Select a Tag</option>
+        <option value="all">All</option>
+        <!-- Add more options as needed -->
+    </select>
+    <label for="tagSearch" class="filter-element">Search by tag:</label>
+    <input type="text" id="tagSearch" class="filter-element" placeholder="Type a tag...">
+</div>
+<pre><code class="language-dataview">TABLE WITHOUT ID
+  &quot;&lt;img src='&quot; + header-image + &quot;' style='height:160px;'/&gt;&quot; as Cover,
+  file.link as title,
+  &quot;📅 &quot; + created as Created,
+  &quot;🔄 &quot; + date(updated) as Updated,
+  &quot;💭 &quot; + Type as Type,
+  join(file.tags, &quot; &quot;) as Tags
+WHERE Type = &quot;Blog Post&quot; OR Type = &quot;Photo Story&quot; OR Type = &quot;Photo Analysis&quot; OR Type = &quot;Photo Feed&quot;
+SORT date(updated) DESC
+</code></pre>
+<hr>
+<p>📧 Sign up to my newsletter [[Newsletter|here]].
+Created by Niall Bell (niall@niallbell.com)</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Niall Bell &middot; <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleries — Niall's Cave</title>
+  
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">Niall's Cave</a>
+    <nav>
+      <a href="/blog">Blog</a>
+      <a href="/about-me">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+  <header class="post-header">
+    <h1>Galleries</h1>
+    
+  </header>
+
+  <div class="post-content">
+    <p><img src="https://i.imgur.com/2b6HvEW.jpeg" alt=""></p>
+<p>#galleries #photography</p>
+<h1>Galleries</h1>
+<blockquote>
+<p>[!QUOTE] Susan Sontag - On Photography
+<em>Though an event has come to mean, precisely, something worth photographing, it is still ideology</em></p>
+</blockquote>
+<p>Photography is my thing. It's what I do. Work gets in the way sometimes but above all, I photograph nature and wildlife so that I can share it with fine people like you. Have a browse below.</p>
+<blockquote>
+<p>[!WARNING] A recommendation if I may?
+I've curated these galleries from thousands of photos. Take a moment to ditch the social media habits and really look at the images. Rotate your phone and see them big (even save the image to your gallery and study them there if you like). Above all, please enjoy my images. Much time goes into creating them and I ask that you give them a good chance of conveying their stories.</p>
+</blockquote>
+<pre><code class="language-dataview">TABLE WITHOUT ID
+  &quot;&lt;img src='&quot; + header-image + &quot;'/&gt;&quot; as Cover,
+  title-link as &quot;Title&quot;
+WHERE Type = &quot;Gallery&quot;
+FLATTEN date(now) as Now FLATTEN (file.mtime.year + file.mtime.hour + file.mtime.day + file.mtime.hour + file.mtime.minute + file.mtime.second + file.size + Now.hour + Now.minute + Now.second) * 15485863 as Hash FLATTEN ((Hash * Hash * Hash) % 2038074743) / 2038074743 as Rand SORT Rand
+</code></pre>
+<h2>Photo Stories</h2>
+<p>Aside from the galleries above, I also write up some of the stories around the images I make. These photo stories can be found her:</p>
+<pre><code class="language-dataview">TABLE WITHOUT ID
+  &quot;&lt;img src='&quot; + header-image + &quot;' style='height:150px;'/&gt;&quot; as Cover,
+  title-link as &quot;Title&quot;
+WHERE Type = &quot;Photo Story&quot;
+</code></pre>
+<hr>
+<p>📧 Sign up to my newsletter [[Newsletter|here]].
+Created by Niall Bell (niall@niallbell.com)</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Niall Bell &middot; <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
+  </footer>
+</body>
+</html>

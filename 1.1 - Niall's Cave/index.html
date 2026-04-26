@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — Niall's Cave</title>
+  <meta name="description" content="The homepage of Niall&#39;s Cave.">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">Niall's Cave</a>
+    <nav>
+      <a href="/blog">Blog</a>
+      <a href="/about-me">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home">
+  <div class="home-content">
+    <p><img src="https://i.imgur.com/RrXzXbX.jpeg" alt=""></p>
+<h1>Niall's Cave</h1>
+<blockquote>
+<p>[!QUOTE] Plato (The Allegory of The Cave)
+<em>&quot;How could they see anything but the shadows if they were never allowed to move their heads?&quot;</em></p>
+</blockquote>
+<p><strong>Welcome to my Cave.</strong> Here you will see a glimpse into how I perceive the world, be it through photography, books or music. There is plenty to get stuck into here:</p>
+<p>To read some of my musings, have a browse of my <a href="https://blog.niallbell.com">Blog</a>.
+If you want to see some galleries, click here [[1.4 - Galleries|Galleries]].
+You're a book worm? Burrow into my [[1.5 - Bookshelf|Bookshelf]].</p>
+<h2>Featured Galleries</h2>
+<p>Check out some featured galleries. These are usually from recent activity.</p>
+<pre><code class="language-dataview">TABLE WITHOUT ID
+  &quot;&lt;img src='&quot; + header-image + &quot;'/&gt;&quot; as Cover,
+  title-link as &quot;Title&quot;
+WHERE featured = true
+FLATTEN date(now) as Now FLATTEN (file.mtime.year + file.mtime.hour + file.mtime.day + file.mtime.hour + file.mtime.minute + file.mtime.second + file.size + Now.hour + Now.minute + Now.second) * 15485863 as Hash FLATTEN ((Hash * Hash * Hash) % 2038074743) / 2038074743 as Rand SORT Rand
+LIMIT 3
+</code></pre>
+<hr>
+<p>📧 Sign up to my newsletter [[Newsletter|here]].
+Created by Niall Bell (niall@niallbell.com)</p>
+
+  </div>
+
+  
+  <section class="recent-posts">
+    <h2>Recent writing</h2>
+    <ul class="post-list">
+      
+      <li>
+        <a href="/the-famous-one/">The Famous Once</a>
+        
+        <span class="post-date">26 April 2026</span>
+        
+      </li>
+      
+      <li>
+        <a href="/a-mothers-love/">A Mothers Love</a>
+        
+        <span class="post-date">26 April 2026</span>
+        
+      </li>
+      
+      <li>
+        <a href="/uk-wildlife-nature-photos/tigers/">The Plight of the Tiger</a>
+        
+        <span class="post-date">26 April 2026</span>
+        
+      </li>
+      
+      <li>
+        <a href="/the-dragons-breath/">The Dragons Breath</a>
+        
+        <span class="post-date">26 April 2026</span>
+        
+      </li>
+      
+      <li>
+        <a href="/indias-heart-a-tapestry-of-nature-and-tradition/">India&#39;s Heart: A Tapestry of Nature and Tradition</a>
+        
+        <span class="post-date">26 April 2026</span>
+        
+      </li>
+      
+    </ul>
+  </section>
+  
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Niall Bell &middot; <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
+  </footer>
+</body>
+</html>
