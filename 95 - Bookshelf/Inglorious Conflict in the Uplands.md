@@ -6,11 +6,13 @@ publish: true
 permalink: /bookshelf/inglorious-conflict-in-the-uplands
 excerpt: ""
 tags:
-  - birds
-  - books
+  - conservation
   - nature
+  - birds
   - wildlife
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg
+x: 0.76
+y: 0.5
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg
 read: 2023-12-31

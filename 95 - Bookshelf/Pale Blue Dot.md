@@ -6,9 +6,13 @@ publish: true
 permalink: /bookshelf/pale-blue-dot
 excerpt: ""
 tags:
-  - books
+  - science
+  - physics
+  - philosophy
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg
 rating: 5
+x: 0.8
+y: 0.86
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg
 read: 2024-11-20

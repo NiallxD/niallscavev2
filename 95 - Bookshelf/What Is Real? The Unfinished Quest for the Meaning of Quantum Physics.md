@@ -5,8 +5,13 @@ publish: true
 permalink: /bookshelf/what-is-real
 excerpt: ""
 tags:
-  - books
+  - science
+  - physics
+  - philosophy
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500753932i/35604796.jpg
+Type: Bookshelf
+x: 0.88
+y: 0.42
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500753932i/35604796.jpg
 read: 2024-12-03

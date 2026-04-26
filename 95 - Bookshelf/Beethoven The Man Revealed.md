@@ -6,9 +6,11 @@ publish: true
 permalink: /bookshelf/beethoven-the-man-revealed
 excerpt: ""
 tags:
-  - books
   - music
+  - history
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg
+x: 0.22
+y: 0.1
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg
 read: 2024-04-08

@@ -6,8 +6,10 @@ publish: true
 permalink: /bookshelf/how-to-be-a-stoic
 excerpt: ""
 tags:
-  - books
+  - philosophy
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg
+x: 0.62
+y: 0.8
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg
 read: 2024-05-07

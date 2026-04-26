@@ -6,8 +6,10 @@ publish: true
 permalink: /bookshelf/how-to-be-an-epicurean
 excerpt: ""
 tags:
-  - books
+  - philosophy
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg
+x: 0.84
+y: 0.68
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg
 read: 2024-05-27

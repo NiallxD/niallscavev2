@@ -6,9 +6,12 @@ publish: true
 permalink: /bookshelf/how-bad-are-bananas
 excerpt: ""
 tags:
-  - books
-  - nature
+  - climate
+  - science
+  - ecology
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg
+x: 0.58
+y: 0.44
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg
 read: 2021-07-18

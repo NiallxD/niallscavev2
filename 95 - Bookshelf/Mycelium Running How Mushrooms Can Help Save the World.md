@@ -6,11 +6,12 @@ publish: true
 permalink: /bookshelf/mycelium-running
 excerpt: ""
 tags:
-  - birds
-  - books
+  - fungi
+  - ecology
   - nature
-  - wildlife
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
+x: 0.44
+y: 0.7
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
 read: 2021-02-18

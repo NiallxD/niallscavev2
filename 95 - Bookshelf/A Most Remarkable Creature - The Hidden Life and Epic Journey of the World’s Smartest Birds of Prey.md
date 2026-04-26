@@ -5,8 +5,13 @@ publish: true
 permalink: /bookshelf/a-most-remarkable-creature
 excerpt: ""
 tags:
-  - books
+  - birds
+  - nature
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1596429654i/54390345.jpg
+Type: Bookshelf
+x: 0.24
+y: 0.5
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1596429654i/54390345.jpg
 read: 2025-03-01

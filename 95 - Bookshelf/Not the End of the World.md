@@ -6,8 +6,12 @@ publish: true
 permalink: /bookshelf/not-the-end-of-the-world
 excerpt: ""
 tags:
-  - books
+  - climate
+  - science
+  - ecology
 heroImage: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg
+x: 0.64
+y: 0.24
 hide: true
 header-image: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg
 read: 2024-04-27

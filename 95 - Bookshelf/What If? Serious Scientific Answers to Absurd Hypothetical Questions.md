@@ -6,8 +6,12 @@ publish: true
 permalink: /bookshelf/what-if
 excerpt: ""
 tags:
-  - books
+  - science
+  - physics
+  - maths
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg
+x: 0.9
+y: 0.76
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg
 read: 2024-12-15

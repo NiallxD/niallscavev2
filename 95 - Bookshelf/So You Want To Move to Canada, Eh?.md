@@ -6,8 +6,10 @@ publish: true
 permalink: /bookshelf/so-you-want-to-move-to-canada-eh
 excerpt: ""
 tags:
-  - books
+  - canada
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg
+x: 0.86
+y: 0.92
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg
 read: 2024-10-20

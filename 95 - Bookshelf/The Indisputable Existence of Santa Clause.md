@@ -6,8 +6,11 @@ publish: true
 permalink: /bookshelf/the-indisputable-existence-of-santa-clause
 excerpt: ""
 tags:
-  - books
+  - maths
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg
+x: 0.94
+y: 0.6
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg
 read: 2022-12-03

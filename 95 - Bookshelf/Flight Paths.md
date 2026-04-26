@@ -6,8 +6,12 @@ publish: true
 permalink: /bookshelf/flight-paths
 excerpt: ""
 tags:
-  - books
+  - birds
+  - nature
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg
+x: 0.09
+y: 0.38
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg
 read: 2024-10-28

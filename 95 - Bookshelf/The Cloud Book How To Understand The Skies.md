@@ -6,8 +6,12 @@ publish: true
 permalink: /bookshelf/the-cloud-book
 excerpt: ""
 tags:
-  - books
+  - nature
+  - science
+  - weather
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg
+x: 0.46
+y: 0.34
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg
 read: 2024-03-01

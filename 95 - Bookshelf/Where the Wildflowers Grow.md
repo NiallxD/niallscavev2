@@ -6,8 +6,11 @@ publish: true
 permalink: /bookshelf/where-the-wildflowers-grow
 excerpt: ""
 tags:
-  - books
+  - nature
+  - ecology
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg
+x: 0.12
+y: 0.76
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg
 read: 2022-09-10

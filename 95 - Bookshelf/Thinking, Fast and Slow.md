@@ -6,9 +6,12 @@ publish: true
 permalink: /bookshelf/thinking-fast-and-slow
 excerpt: ""
 tags:
-  - books
+  - psychology
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg
 rating: 4
+x: 0.92
+y: 0.22
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg
 read: 2022-11-30

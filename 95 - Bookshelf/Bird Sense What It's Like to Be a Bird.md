@@ -6,8 +6,12 @@ publish: true
 permalink: /bookshelf/bird-sense
 excerpt: ""
 tags:
-  - books
+  - birds
+  - nature
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg
+x: 0.28
+y: 0.28
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg
 read: 2024-12-10

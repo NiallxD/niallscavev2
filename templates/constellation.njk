@@ -1,0 +1,479 @@
+---
+layout: page.njk
+---
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    {% if description %}<p class="home-intro">{{ description }}</p>{% endif %}
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% endif %}
+
+<div class="constellation-page">
+
+  {% if not heroImage %}
+  <div class="listing-header">
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="page-lead">{{ description }}</p>{% endif %}
+  </div>
+  {% endif %}
+
+  <p class="section-label">Book Constellation</p>
+  <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+
+  <div class="tag-cloud-filter" id="tag-cloud"></div>
+
+  <div class="constellation-wrap" id="constellation-wrap">
+    <svg class="constellation-svg" id="constellation-svg"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    </svg>
+
+    {% for book in collections.books %}
+    {% set bx = book.data.x if book.data.x else 0.5 %}
+    {% set by = book.data.y if book.data.y else 0.5 %}
+    {% set rating = book.data.rating if book.data.rating else 3 %}
+    <button
+      class="star"
+      data-id="{{ book.data.permalink | replace('/bookshelf/', '') | replace('/', '') }}"
+      style="left: {{ (bx * 100) | round(2) }}%; top: {{ (by * 100) | round(2) }}%"
+      aria-label="Open details for {{ book.data.title }}"
+      type="button">
+      <span class="star-glow"></span>
+      <span class="star-dot" style="--size: {{ (rating * 2 + 6) }}px"></span>
+      <span class="star-label">{{ book.data.title }}</span>
+    </button>
+    {% endfor %}
+
+    <!-- Floating book card -->
+    <div class="book-float-card" id="book-float-card" aria-hidden="true" aria-label="Book details" role="dialog">
+      <button class="float-card-close" id="float-card-close" aria-label="Close" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="float-card-inner">
+        <img class="float-card-cover" id="float-card-cover" src="" alt="" loading="lazy">
+        <div class="float-card-meta">
+          <h2 class="float-card-title" id="float-card-title"></h2>
+          <p class="float-card-author" id="float-card-author"></p>
+          <div class="float-card-rating" id="float-card-rating" aria-label="Rating"></div>
+          <p class="float-card-note" id="float-card-note"></p>
+          <div class="float-card-tags" id="float-card-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="constellation-empty-hint" id="constellation-hint-text" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Click any star to open a book
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const SKIP_TAGS = new Set(['books']);
+
+  const books = [
+    {% for book in collections.books %}
+    {% set rating = book.data.rating if book.data.rating else 3 %}
+    {% set bx = book.data.x if book.data.x else 0.5 %}
+    {% set by = book.data.y if book.data.y else 0.5 %}
+    {
+      id: {{ (book.data.permalink | replace('/bookshelf/', '') | replace('/', '')) | dump | safe }},
+      title: {{ book.data.title | dump | safe }},
+      author: {{ (book.data.author or '') | dump | safe }},
+      cover: {{ (book.data.heroImage or '') | dump | safe }},
+      note: {{ (book.data.excerpt or '') | dump | safe }},
+      tags: {{ (book.data.tags or []) | dump | safe }},
+      rating: {{ rating }},
+      x: {{ bx }},
+      y: {{ by }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  const svg      = document.getElementById('constellation-svg');
+  const wrap     = document.getElementById('constellation-wrap');
+  const card     = document.getElementById('book-float-card');
+  const closeBtn = document.getElementById('float-card-close');
+  const hintText = document.getElementById('constellation-hint-text');
+  const tagCloud = document.getElementById('tag-cloud');
+  const starBtns = Array.from(document.querySelectorAll('.star'));
+
+  let activeTag     = null;
+  let activeId      = null;
+  let isPinned      = false;
+  let hoveredIndex  = null;
+  let draggingIndex = null;
+  let pendingDrag   = null;
+  let dragMoved     = false;
+  let lastTs        = null;
+  let animFrameId   = null;
+  let hoverTimer    = null;
+
+  // ── Speed ramp ────────────────────────────────────────────
+  let speedMult   = 1.0;
+  let speedTarget = 1.0;
+
+  function updateSpeedTarget() {
+    speedTarget = (hoveredIndex !== null || card.classList.contains('open')) ? 0 : 1;
+    if (speedTarget > 0) startAnim();
+  }
+
+  function startAnim() {
+    if (!animFrameId) {
+      lastTs = null;
+      animFrameId = requestAnimationFrame(animate);
+    }
+  }
+
+  // ── Mutable positions and velocities ─────────────────────
+  const pos = books.map(b => ({ x: b.x, y: b.y }));
+
+  function randVel() {
+    const speed = 0.002 + Math.random() * 0.002;
+    const angle = Math.random() * Math.PI * 2;
+    return { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed };
+  }
+  const vel = books.map(() => randVel());
+
+  // ── Build tag cloud ───────────────────────────────────────
+  const allTags = [...new Set(books.flatMap(b => b.tags.filter(t => !SKIP_TAGS.has(t))))].sort();
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-filter-btn';
+    btn.dataset.tag = tag;
+    btn.type = 'button';
+    btn.textContent = tag;
+    tagCloud.appendChild(btn);
+  });
+
+  // ── Track container size for pixel-space SVG coords ──────
+  let wrapW = wrap.offsetWidth;
+  let wrapH = wrap.offsetHeight;
+  new ResizeObserver(entries => {
+    const r = entries[0].contentRect;
+    wrapW = r.width;
+    wrapH = r.height;
+    if (!animFrameId) updateLinePositions();
+  }).observe(wrap);
+
+  // ── Pre-build SVG lines (update in place each frame) ─────
+  const lineData = [];
+  books.forEach((a, i) => {
+    books.forEach((b, j) => {
+      if (j <= i) return;
+      const shared = a.tags.filter(t => !SKIP_TAGS.has(t) && b.tags.includes(t));
+      if (!shared.length) return;
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('stroke-width', shared.length > 1 ? '1.5' : '1');
+      svg.appendChild(line);
+      lineData.push({ el: line, a: i, b: j, shared });
+    });
+  });
+
+  function updateLinePositions() {
+    lineData.forEach(({ el, a, b }) => {
+      el.setAttribute('x1', (pos[a].x * wrapW).toFixed(1));
+      el.setAttribute('y1', (pos[a].y * wrapH).toFixed(1));
+      el.setAttribute('x2', (pos[b].x * wrapW).toFixed(1));
+      el.setAttribute('y2', (pos[b].y * wrapH).toFixed(1));
+    });
+  }
+
+  function updateLineColors() {
+    const hasFilter = activeId || activeTag;
+    lineData.forEach(({ el, a, b, shared }) => {
+      let isActive = false;
+      if (activeId) isActive = books[a].id === activeId || books[b].id === activeId;
+      else if (activeTag) isActive = shared.includes(activeTag);
+      el.setAttribute('stroke', isActive
+        ? 'var(--star-line-active)'
+        : hasFilter ? 'var(--star-line-dim)' : 'var(--star-line)');
+    });
+  }
+
+  updateLinePositions();
+  updateLineColors();
+
+  // ── Animation loop ────────────────────────────────────────
+  function animate(ts) {
+    const dt = lastTs === null ? 0 : Math.min((ts - lastTs) / 1000, 0.05);
+    lastTs = ts;
+
+    speedMult += (speedTarget - speedMult) * 0.05;
+
+    if (speedMult > 0.003 || draggingIndex !== null) {
+      const SEP = 0.07; // soft minimum distance between star centres in 0-1 space
+      const m   = 0.04; // edge margin
+
+      // 1 — move each star by its velocity
+      pos.forEach((p, i) => {
+        if (i === draggingIndex) return;
+        p.x += vel[i].x * dt * speedMult;
+        p.y += vel[i].y * dt * speedMult;
+        if (p.x < m)     { p.x = m;     vel[i].x =  Math.abs(vel[i].x); }
+        if (p.x > 1 - m) { p.x = 1 - m; vel[i].x = -Math.abs(vel[i].x); }
+        if (p.y < m)     { p.y = m;     vel[i].y =  Math.abs(vel[i].y); }
+        if (p.y > 1 - m) { p.y = 1 - m; vel[i].y = -Math.abs(vel[i].y); }
+      });
+
+      // 2 — separation pass: gentle position nudge only, no velocity change
+      for (let i = 0; i < pos.length; i++) {
+        if (i === draggingIndex) continue;
+        for (let j = i + 1; j < pos.length; j++) {
+          if (j === draggingIndex) continue;
+          const dx = pos[i].x - pos[j].x;
+          const dy = pos[i].y - pos[j].y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq >= SEP * SEP || distSq < 1e-8) continue;
+          const dist = Math.sqrt(distSq);
+          const nx = dx / dist, ny = dy / dist;
+          const push = (SEP - dist) * 0.4 * dt * speedMult * 0.5;
+          pos[i].x += nx * push; pos[i].y += ny * push;
+          pos[j].x -= nx * push; pos[j].y -= ny * push;
+        }
+      }
+
+      // 3 — write updated positions to DOM (re-clamp after separation)
+      pos.forEach((p, i) => {
+        if (i === draggingIndex) return;
+        p.x = Math.max(m, Math.min(1 - m, p.x));
+        p.y = Math.max(m, Math.min(1 - m, p.y));
+        starBtns[i].style.left = (p.x * 100).toFixed(3) + '%';
+        starBtns[i].style.top  = (p.y * 100).toFixed(3) + '%';
+      });
+
+      updateLinePositions();
+    }
+
+    // Stop the loop once fully decelerated — startAnim() restarts it when needed
+    if (speedMult > 0.001 || draggingIndex !== null) {
+      animFrameId = requestAnimationFrame(animate);
+    } else {
+      animFrameId = null;
+    }
+  }
+
+  startAnim();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+      lastTs = null;
+    } else {
+      startAnim();
+    }
+  });
+
+  // ── Drag handling ─────────────────────────────────────────
+  function wrapFrac(clientX, clientY) {
+    const r = wrap.getBoundingClientRect();
+    return {
+      x: Math.max(0.04, Math.min(0.96, (clientX - r.left) / r.width)),
+      y: Math.max(0.04, Math.min(0.96, (clientY - r.top)  / r.height))
+    };
+  }
+
+  function onPointerMove(clientX, clientY) {
+    if (!pendingDrag) return;
+    const dx = clientX - pendingDrag.startX;
+    const dy = clientY - pendingDrag.startY;
+    if (!dragMoved && dx * dx + dy * dy > 25) {
+      dragMoved     = true;
+      draggingIndex = pendingDrag.index;
+      vel[draggingIndex] = { x: 0, y: 0 };
+      starBtns[draggingIndex].classList.add('dragging');
+    }
+    if (draggingIndex === null) return;
+    const p = wrapFrac(clientX, clientY);
+    pos[draggingIndex].x = p.x;
+    pos[draggingIndex].y = p.y;
+    if (books[draggingIndex].id === activeId) positionCard(starBtns[draggingIndex]);
+  }
+
+  function onPointerUp() {
+    if (draggingIndex !== null) {
+      vel[draggingIndex] = randVel();
+      starBtns[draggingIndex].classList.remove('dragging');
+      startAnim();
+    }
+    draggingIndex = null;
+    pendingDrag   = null;
+  }
+
+  // ── Position floating card near star ─────────────────────
+  function positionCard(starBtn) {
+    const wrapRect = wrap.getBoundingClientRect();
+    const starRect = starBtn.getBoundingClientRect();
+    const starCx = starRect.left + starRect.width  / 2 - wrapRect.left;
+    const starCy = starRect.top  + starRect.height / 2 - wrapRect.top;
+    const cardW  = card.offsetWidth  || 280;
+    const cardH  = card.offsetHeight || 220;
+    const gap    = 20;
+
+    let left = starCx + gap;
+    if (left + cardW > wrapRect.width - 8) left = starCx - cardW - gap;
+    left = Math.max(4, left);
+
+    let top = starCy - cardH / 2;
+    top = Math.max(4, Math.min(top, wrapRect.height - cardH - 4));
+
+    card.style.left = left + 'px';
+    card.style.top  = top  + 'px';
+  }
+
+  // ── Open / close card ────────────────────────────────────
+  function openCard(book, starBtn) {
+    document.getElementById('float-card-cover').src = book.cover;
+    document.getElementById('float-card-cover').alt = book.title;
+    document.getElementById('float-card-title').textContent  = book.title;
+    document.getElementById('float-card-author').textContent = book.author;
+    document.getElementById('float-card-note').textContent   = book.note;
+
+    document.getElementById('float-card-rating').innerHTML =
+      Array.from({ length: 5 }, (_, i) =>
+        `<span class="star-pip${i < book.rating ? ' on' : ''}" aria-hidden="true">★</span>`
+      ).join('') + `<span class="sr-only">${book.rating} out of 5</span>`;
+
+    document.getElementById('float-card-tags').innerHTML =
+      book.tags.filter(t => !SKIP_TAGS.has(t)).map(t => `<span class="tag">${t}</span>`).join('');
+
+    card.classList.remove('open');
+    card.setAttribute('aria-hidden', 'false');
+    if (hintText) hintText.style.display = 'none';
+
+    requestAnimationFrame(() => {
+      positionCard(starBtn);
+      card.classList.add('open');
+      updateSpeedTarget();
+    });
+  }
+
+  function closeCard() {
+    card.classList.remove('open');
+    card.setAttribute('aria-hidden', 'true');
+    starBtns.forEach(s => s.classList.remove('active'));
+    if (hintText && !activeTag) hintText.style.display = '';
+    activeId = null;
+    isPinned = false;
+    updateLineColors();
+    updateSpeedTarget();
+  }
+
+  // ── Hover: show card on mouseenter, hide on mouseleave ────
+  starBtns.forEach((btn, i) => {
+    btn.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimer);
+      if (pendingDrag || draggingIndex !== null) return;
+      hoveredIndex = i;
+      updateSpeedTarget();
+      if (!isPinned) {
+        starBtns.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        activeId = books[i].id;
+        updateLineColors();
+        openCard(books[i], btn);
+      }
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      hoverTimer = setTimeout(() => {
+        hoveredIndex = null;
+        updateSpeedTarget();
+        if (!isPinned) closeCard();
+      }, 160);
+    });
+
+    // ── Drag setup ──────────────────────────────────────────
+    btn.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      pendingDrag = { index: i, startX: e.clientX, startY: e.clientY };
+      dragMoved   = false;
+    });
+    btn.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      pendingDrag = { index: i, startX: t.clientX, startY: t.clientY };
+      dragMoved   = false;
+    }, { passive: true });
+
+    // ── Click: pin / unpin ──────────────────────────────────
+    btn.addEventListener('click', () => {
+      if (dragMoved) return;
+      const book = books[i];
+
+      activeTag = null;
+      document.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
+
+      if (isPinned && activeId === book.id) {
+        isPinned = false;
+        closeCard();
+        return;
+      }
+
+      starBtns.forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      activeId = book.id;
+      isPinned = true;
+      updateLineColors();
+      openCard(book, btn);
+    });
+  });
+
+  // Keep card open when mouse moves from star to card
+  card.addEventListener('mouseenter', () => clearTimeout(hoverTimer));
+  card.addEventListener('mouseleave', () => {
+    hoveredIndex = null;
+    updateSpeedTarget();
+    if (!isPinned) closeCard();
+  });
+
+  document.addEventListener('mousemove', e => onPointerMove(e.clientX, e.clientY));
+  document.addEventListener('touchmove', e => {
+    if (draggingIndex !== null) e.preventDefault();
+    onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  document.addEventListener('mouseup',     onPointerUp);
+  document.addEventListener('touchend',    onPointerUp);
+  document.addEventListener('touchcancel', onPointerUp);
+
+  // ── Tag cloud ─────────────────────────────────────────────
+  tagCloud.addEventListener('click', e => {
+    const btn = e.target.closest('.tag-filter-btn');
+    if (!btn) return;
+    const tag = btn.dataset.tag;
+
+    isPinned = false;
+    closeCard();
+
+    if (activeTag === tag) {
+      activeTag = null;
+      btn.classList.remove('active');
+      if (hintText) hintText.style.display = '';
+    } else {
+      document.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
+      activeTag = tag;
+      btn.classList.add('active');
+      if (hintText) hintText.style.display = 'none';
+    }
+    updateLineColors();
+    starBtns.forEach((btn, i) => {
+      btn.classList.toggle('active', activeTag !== null && books[i].tags.includes(activeTag));
+    });
+  });
+
+  closeBtn.addEventListener('click', () => { isPinned = false; closeCard(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && card.classList.contains('open')) { isPinned = false; closeCard(); }
+  });
+}());
+</script>

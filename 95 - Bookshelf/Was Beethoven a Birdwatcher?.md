@@ -8,10 +8,11 @@ description: Was Beethoven a Birdwatcher?
 excerpt: Was Beethoven a Birdwatcher?
 tags:
   - birds
-  - books
+  - music
   - nature
-  - wildlife
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg
+x: 0.82
+y: 0.32
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg
 read: 2024-04-20

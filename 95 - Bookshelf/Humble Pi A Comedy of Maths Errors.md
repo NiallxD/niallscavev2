@@ -6,8 +6,11 @@ publish: true
 permalink: /bookshelf/humble-pi
 excerpt: ""
 tags:
-  - books
+  - maths
+  - science
 heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
+x: 0.9
+y: 0.06
 hide: true
 header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
 read: 2023-10-05
