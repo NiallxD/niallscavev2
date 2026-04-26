@@ -4,11 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me — Niall Bell</title>
-  <meta name="description" content="It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.">
+  <meta name="description" content="Environmentalist and project manager working at the intersection of environmental science and technology.">
   <meta property="og:title" content="About Me — Niall Bell">
-  <meta property="og:description" content="It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.">
-  
+  <meta property="og:description" content="Environmentalist and project manager working at the intersection of environmental science and technology.">
+  <meta property="og:image" content="https://i.imgur.com/9wUq3cS.jpg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
@@ -19,11 +26,15 @@
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/" class="active">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -34,23 +45,170 @@
   
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="https://images.unsplash.com/photo-1470071131384-001b85755b36?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="About Me" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="https://i.imgur.com/9wUq3cS.jpg" alt="About Me" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">About Me</h1>
-    <p class="home-intro">It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.</p>
+    <p class="home-intro">Environmentalist and project manager working at the intersection of environmental science and technology.</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
   </section>
 </div>
 
 
 <div class="standard-page">
   
-  <div class="post-content">
-<p>I’m a passionate environmentalist and lover of all things wildlife and nature. In my spare time I work in sustainable development but most of the time I’m out photographing all that nature has to offer. I believe that by sharing the joys of nature through photography, we can slowly inspire new people to care a little bit more about the world we call home; and if we fail in our mission to protect nature, we will have immortalised the organisms that perished at the hands of humans to allow future generations to hold us accountable.</p>
-<p>If you wish to get in touch about anything on this website, please send me an email at <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
-<p><img src="https://i.imgur.com/9wUq3cS.jpg" alt="">
-<em>One of the few photos where I’m infront of the camera not behind it.</em></p>
-</div>
+  <!-- ME SECTION -->
+  <p class="section-label">Me</p>
+  <div class="about-intro-row">
+    <div class="about-text post-content">
+      <p>I’m a passionate environmentalist and lover of all things wildlife and nature. In my spare time I work in sustainable development but most of the time I’m out photographing all that nature has to offer. I believe that by sharing the joys of nature through photography, we can slowly inspire new people to care a little bit more about the world we call home; and if we fail in our mission to protect nature, we will have immortalised the organisms that perished at the hands of humans to allow future generations to hold us accountable.</p>
+
+    </div>
+    <div class="about-image-wrap">
+      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="About Me">
+    </div>
+  </div>
+
+  <!-- PROFILE SECTION -->
+  <p class="section-label">Profile</p>
+  <div class="profile-intro-full">
+    <p>
+      I'm a passionate environmentalist and lover of all things wildlife and nature. I work at the intersection 
+      of environmental science and technology, visualising data and building platforms, mapping tools, and 
+      decision-support systems that translate conservation science into accessible resources.
+    </p>
+    <p>
+      Currently based in Squamish, BC, my technical work is grounded in deep environmental science knowledge 
+      and an understanding of how these tools are used in practice by non-technical stakeholders.
+    </p>
+    <p>
+      If you wish to get in touch about anything on this website, please send me an email at 
+      <a href="mailto:niall@niallbell.com" style="color: var(--color-link); font-weight: 500;">niall@niallbell.com</a>.
+    </p>
+  </div>
+
+  <div class="cv-container" style="margin-top: 4rem;">
+    
+    <!-- Experience -->
+    <section class="cv-section">
+      <p class="section-label">Experience</p>
+      <div class="experience-list">
+        
+        <div class="experience-card">
+          <div class="exp-sidebar">
+            <div class="exp-company">Nature Squamish</div>
+            <div class="exp-job-title">Volunteer Director & Contractor</div>
+            <div class="exp-meta">Squamish, BC — 2025 - Present</div>
+          </div>
+          <div class="exp-main">
+            <ul>
+              <li>Board member responsible for technology strategy and data infrastructure across conservation programmes.</li>
+              <li>Lead the bird monitoring programme, migrating records to eBird and building a custom web portal for data visualization.</li>
+              <li>Built and maintain the EcoScapes map portal, a Python/Django application integrating Felt mapping with biodiversity data.</li>
+              <li>Developed a personal birding data analysis app for the Apple App Store.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-sidebar">
+            <div class="exp-company">BCCF (WildSafeBC)</div>
+            <div class="exp-job-title">Human-Wildlife Conflict Coordinator</div>
+            <div class="exp-meta">Sea-to-Sky, BC — 2025 - 2026</div>
+          </div>
+          <div class="exp-main">
+            <ul>
+              <li>Seasonal coordinator for wildlife conflict prevention and community education across the Sea-to-Sky region.</li>
+              <li>Liaison with Conservation Officers Service to improve response times and community relationships.</li>
+              <li>Provide community education to raise awareness of conflict mitigation and common causes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-sidebar">
+            <div class="exp-company">City of Doncaster Council</div>
+            <div class="exp-job-title">Low Carbon Development Officer</div>
+            <div class="exp-meta">UK — 2022 - 2024</div>
+          </div>
+          <div class="exp-main">
+            <ul>
+              <li>Led delivery of EV charging infrastructure and solar projects for council assets.</li>
+              <li>Managed a team overseeing utility contracts worth over £10m per year and delivered fuel poverty support.</li>
+              <li>Developed plans for Government funding to boost city-wide EV infrastructure and handled resident consultations.</li>
+              <li>Wrote and managed grant funding bids, timelines, and compliance reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-sidebar">
+            <div class="exp-company">Go Green Ltd</div>
+            <div class="exp-job-title">Sustainability & Projects Specialist</div>
+            <div class="exp-meta">UK — 2017 - 2022</div>
+          </div>
+          <div class="exp-main">
+            <ul>
+              <li>Led on sustainability strategy, carbon reporting, and software project management for a tech-focused SME.</li>
+              <li>Developed and implemented the company's CSR framework and carbon reporting methodology.</li>
+              <li>Project managed software services development and drove internal process improvements.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="cv-section">
+      <p class="section-label">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Conservation</h4>
+          <p>Ecology | Env. Management | Community Science | Spatial Data | Policy | Project Management | Sustainability Strategy | Carbon Reporting | Low Carbon Development | Wildlife Connectivity | Biodiversity Monitoring | Human-Wildlife Conflict | Grant Management | EVCI | Renewables</p>
+        </div>
+        <div class="skill-card">
+          <h4>Technology</h4>
+          <p>Software Development | Python (Primary) | HTML | CSS | JavaScript (Functional) | Swift (Functional) | Django | Flask | Serverless Architecture | GitHub Pages | REST APIs | Pandas | eBird API | Databases | Mapping & GIS | Felt | QGIS | Geospatial Data</p>
+        </div>
+        <div class="skill-card">
+          <h4>Creative</h4>
+          <p>Photography (10+ yrs) | Drone Piloting (Certified) | Graphic Design</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <p class="section-label">Education</p>
+      <div class="education-grid">
+        <div class="edu-card">
+          <h4>MSc Environmental Management</h4>
+          <div class="edu-meta">
+            <span class="edu-school">The Open University</span>
+            <span class="edu-year">2024</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <h4>BSc Natural & Environmental Science</h4>
+          <div class="edu-meta">
+            <span class="edu-school">The Open University</span>
+            <span class="edu-year">2021</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <h4>NVQ Level 3 Mechanical Engineering</h4>
+          <div class="edu-meta">
+            <span class="edu-school">Doncaster College</span>
+            <span class="edu-year">2017</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </div>
 
 </div>
@@ -59,14 +217,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

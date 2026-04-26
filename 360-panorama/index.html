@@ -4,52 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>360 Panorama — Niall Bell</title>
-  
+  <meta name="description" content="A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.">
   <meta property="og:title" content="360 Panorama — Niall Bell">
-  
+  <meta property="og:description" content="A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.">
   <meta property="og:image" content="https://i.imgur.com/4GiYRqG.jpeg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/niallscavev2/">
         <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
 
   <main>
     
-<div class="page-cover-wrap">
-  <img class="page-cover" src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama">
-</div>
-
 <div class="constrained-wide">
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">360 Panorama</h1>
+    <p class="home-intro">A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.</p>
+  </section>
+</div>
 
 
 <article class="gallery-page">
-  <header class="page-header">
-    <h1>360 Panorama</h1>
-    
-    <div class="post-meta">
-      <span class="tag">photography</span><span class="tag">drone</span><span class="tag">360panorama</span>
-    </div>
-    
-    
-  </header>
+  
+
   <div class="gallery-body">
+    <p class="section-label">Gallery</p>
+    
+    
+    
+    <div class="gallery-slideshow-container no-bg">
+      <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/WLxzVoE.jpeg&amp;preview=https://i.imgur.com/WLxzVoE.jpeg" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/F3ef940.jpeg&amp;preview=https://i.imgur.com/F3ef940.jpeg" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/bDr2juW.jpeg&amp;preview=https://i.imgur.com/bDr2juW.jpeg" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/iJIcczb.jpeg&amp;preview=https://i.imgur.com/iJIcczb.jpeg" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/UiXZbs5.jpeg&amp;preview=https://i.imgur.com/UiXZbs5.jpeg" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              
+            </div>
+          </div>
+          
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <div class="gallery-pagination swiper-pagination"></div>
+
+      <div id="gallery-caption-area" class="gallery-caption-external">
+        <h3 id="slide-title"></h3>
+        <p id="slide-desc"></p>
+      </div>
+    </div>
+
+    <script>
+      const galleryData = [{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/WLxzVoE.jpeg&preview=https://i.imgur.com/WLxzVoE.jpeg","title":"Neist Point","caption":"<p>Neist Point is a very recognisable peninsula on the west coast of the Isle of Skye. The peninsula is home to an old lighthouse which is now automated in it’s control.\n<br></p>"},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/F3ef940.jpeg&preview=https://i.imgur.com/F3ef940.jpeg","title":"Valleycliffe (1)","caption":"<p>Valleycliffe is an area in Squamish with excellent views of the surrounding valley. The granite geology here makes for excellent rock climbing and mountain biking for those who are brave enough.\n<br></p>"},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/bDr2juW.jpeg&preview=https://i.imgur.com/bDr2juW.jpeg","title":"Valleycliffe (2)","caption":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/iJIcczb.jpeg&preview=https://i.imgur.com/iJIcczb.jpeg","title":"Valleycliffe (3)","caption":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/UiXZbs5.jpeg&preview=https://i.imgur.com/UiXZbs5.jpeg","title":"Pemberton Meadows","caption":"<p>Pemberton Meadows is a farming community North of the village of Pemberton, in B.C, Canada. In order to ascend to the altitude in the pano below, I had to fly up the side of the mountain so not to exceed 120m AGL. I call this ‘Drone Hiking’.</p>"}];
+    </script>
+    
+
+    
+    <div style="display: none;">
 <h1>360 Panorama</h1>
 <p>For as long as I’ve been flying drones I’ve been creating 360 panoramic images. I find these images engaging and incredibly good at sharing the incredible landscapes that surround us. Here are some of my favourite panoramas created over the years.</p>
 <div class="callout callout-warning"><div class="callout-title">A recommendation if I may?</div><div class="callout-body"><p>These scenes are often vast and therefore are best explored in full screen. Click the fullscreen icon in the top left of image to do so. You can pan around by clicking and dragging (or swiping on mobile), and can zoom with a mouse wheel (or pinching on mobile).</p></div></div>
@@ -57,20 +135,61 @@
 <p>Neist Point is a very recognisable peninsula on the west coast of the Isle of Skye. The peninsula is home to an old lighthouse which is now automated in it’s control.
 <br></p>
 <iframe width="800" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/WLxzVoE.jpeg&preview=https://i.imgur.com/WLxzVoE.jpeg"></iframe>
-## Valleycliffe
+<h2>Valleycliffe</h2>
 <p>Valleycliffe is an area in Squamish with excellent views of the surrounding valley. The granite geology here makes for excellent rock climbing and mountain biking for those who are brave enough.
 <br></p>
 <iframe width="800" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/F3ef940.jpeg&preview=https://i.imgur.com/F3ef940.jpeg"></iframe>
 <iframe width="800" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/bDr2juW.jpeg&preview=https://i.imgur.com/bDr2juW.jpeg"></iframe>
 <iframe width="800" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/iJIcczb.jpeg&preview=https://i.imgur.com/iJIcczb.jpeg"></iframe>
-## Pemberton Meadows
+<h2>Pemberton Meadows</h2>
 <p>Pemberton Meadows is a farming community North of the village of Pemberton, in B.C, Canada. In order to ascend to the altitude in the pano below, I had to fly up the side of the mountain so not to exceed 120m AGL. I call this ‘Drone Hiking’.</p>
 <iframe width="800" height="400" allowfullscreen style="border-style:none;" src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/UiXZbs5.jpeg&preview=https://i.imgur.com/UiXZbs5.jpeg"></iframe>
 </div>
+    
+  </div>
 </article>
 
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const titleEl = document.getElementById('slide-title');
+  const descEl = document.getElementById('slide-desc');
+  const captionArea = document.getElementById('gallery-caption-area');
+
+  const updateCaption = (index) => {
+    if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+    const data = galleryData[index];
+    
+    titleEl.textContent = data.title || "";
+    descEl.innerHTML = data.caption || "";
+    
+    // Hide container if both empty
+    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+  };
+
+  const swiper = new Swiper('.gallery-swiper', {
+    loop: true,
+    keyboard: { enabled: true },
+    speed: 600,
+    pagination: { 
+      el: '.gallery-pagination', 
+      type: 'fraction',
+      renderFraction: function (currentClass, totalClass) {
+        return '<span class="' + currentClass + '"></span>' +
+               ' <span class="fraction-sep">of</span> ' +
+               '<span class="' + totalClass + '"></span>';
+      }
+    },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    on: {
+      init: function () {
+        updateCaption(this.realIndex);
+      },
+      slideChange: function () {
+        updateCaption(this.realIndex);
+      }
+    }
+  });
+</script>
 
 </div>
 
@@ -78,14 +197,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

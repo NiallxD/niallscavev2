@@ -9,6 +9,13 @@
   <meta property="og:description" content="The personal site of Niall Bell — nature photographer, writer, and environmentalist.">
   
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
@@ -19,11 +26,15 @@
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -71,7 +82,6 @@
         </div>
         
       </div>
-      <div class="swiper-pagination"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -86,56 +96,154 @@
       documenting the wildlife and wild places of Britain and beyond, sharing the beauty of the
       natural world through photography and writing.
     </p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
   </section>
 </div>
 
 
 <div class="home-posts">
   <div class="home-block-header">
-    <h2 class="section-label">Recent writing</h2>
+    <p class="section-label">Featured Galleries</p>
+    <a href="/niallscavev2/photography/" class="view-all">All photography →</a>
+  </div>
+  <div class="story-list">
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/astrophotography/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/Jzcv1Jl.jpeg" alt="Astrophotography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">astronomy</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Astrophotography</div>
+        
+        <div class="story-card-desc">Astrophotography is a photographic discipline that involves taking highly detailed images of objects in the night sky. This can be of things as close as the Moon, to planets, to distant galaxies millions of light-years away.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/tiger/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/j35mshs.png" alt="Bengal Tiger" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Bengal Tiger</div>
+        
+        <div class="story-card-desc">The Bengal Tiger is the true king of the jungle. I&#39;ve been obsessed with tigers since first time I photographed a captive Amur tiger at my local wildlife park.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/british-birds/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/FzKzxR4.png" alt="British Birds" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">British Birds</div>
+        
+        <div class="story-card-desc">A collection of Britains frequently seen birds.</div>
+        
+      </div>
+    </a>
+    
+  </div>
+</div>
+
+
+
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Recent writing</p>
     <a href="/niallscavev2/blog/" class="view-all">All writing →</a>
   </div>
-  <div class="post-grid">
+  <div class="story-list">
     
-    <a href="/niallscavev2/brief-review-of-the-zeiss-diascope-65t-fl-green/" class="post-card">
-      <div class="post-card-img">
+    <a href="/niallscavev2/blog/lessons-from-a-fungi-part-1/" class="story-card">
+      <div class="story-card-img">
         
-        <img src="https://i.imgur.com/5KKoRpe.jpeg" alt="Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)" loading="lazy">
+        <img src="https://i.imgur.com/cAFawk5.jpeg" alt="Lessons From a Fungi Part 1" loading="lazy">
         
       </div>
-      <div class="post-card-body">
-        <h2>Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</h2>
-        <div class="post-meta">
-          <time datetime="2025-05-17">17 May 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-13">13 November 2025</time>
+          
         </div>
+        <div class="story-card-title">Lessons From a Fungi Part 1</div>
+        <div class="story-card-desc">I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.</div>
       </div>
     </a>
     
-    <a href="/niallscavev2/squamish-ebird-data/" class="post-card">
-      <div class="post-card-img">
+    <a href="/niallscavev2/blog/doing-things-for-you/" class="story-card">
+      <div class="story-card-img">
         
-        <img src="https://i.imgur.com/6wj3V55.jpeg" alt="Squamish eBird Data" loading="lazy">
+        <img src="https://i.imgur.com/akBHrZy.jpeg" alt="Doing Things For You" loading="lazy">
         
       </div>
-      <div class="post-card-body">
-        <h2>Squamish eBird Data</h2>
-        <div class="post-meta">
-          <time datetime="2025-03-16">16 March 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-08">8 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">on-life</span><span class="tag">photography</span>
+          </div>
+          
         </div>
+        <div class="story-card-title">Doing Things For You</div>
+        <div class="story-card-desc">In an age dominated by social media likes and follows, many creatives find themselves chasing approval rather than pursuing authentic expression. Photographers, for instance, often measure the worth of their work by the number of likes or comments it receives.</div>
       </div>
     </a>
     
-    <a href="/niallscavev2/Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults/" class="post-card">
-      <div class="post-card-img">
+    <a href="/niallscavev2/blog/ethical-captioning/" class="story-card">
+      <div class="story-card-img">
         
-        <img src="https://i.imgur.com/jxxUz6b.jpeg" alt="Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults" loading="lazy">
+        <img src="https://i.imgur.com/eAxWByn.jpeg" alt="Ethical Captioning" loading="lazy">
         
       </div>
-      <div class="post-card-body">
-        <h2>Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults</h2>
-        <div class="post-meta">
-          <time datetime="2025-01-31">31 January 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-05">5 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span>
+          </div>
+          
         </div>
+        <div class="story-card-title">Ethical Captioning</div>
+        <div class="story-card-desc">A case for ethical captioning in photography.</div>
       </div>
     </a>
     
@@ -160,14 +268,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

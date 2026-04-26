@@ -7,8 +7,15 @@
   <meta name="description" content="Things I&#39;ve built and projects I work on outside of photography.">
   <meta property="og:title" content="Side Projects — Niall Bell">
   <meta property="og:description" content="Things I&#39;ve built and projects I work on outside of photography.">
-  
+  <meta property="og:image" content="https://i.imgur.com/Ez04Sne.jpeg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
@@ -19,11 +26,15 @@
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/" class="active">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -34,7 +45,7 @@
   
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Side Projects" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="https://i.imgur.com/Ez04Sne.jpeg" alt="Side Projects" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">Side Projects</h1>
@@ -45,23 +56,40 @@
 
 <div class="standard-page">
   
-  <div class="post-content"><div class="project-card">
-  <div class="project-info">
-    <h3>Project Name</h3>
-    <p>A short description of what this project is, what it does, and why you built it. Keep it to a few sentences.</p>
-    <a href="#" class="project-link">Visit project →</a>
+  <p class="section-label">SIDE PROJECTS</p>
+  
+
+  
+
+  
+  <div class="projects-list">
+    
+    <div class="project-card-wrapper">
+      <a href="https://mbc.naturesquamish.ca" class="project-card-full" target="_blank" rel="noopener">
+        <div class="project-card-img-wrap">
+          
+          <img src="https://i.imgur.com/K8iO3Q6.png" alt="Nature Squamish Monthly Bird Count Portal" class="project-img">
+          
+        </div>
+        <div class="project-card-body">
+          <div class="post-card-author">Niall Bell</div>
+          <div class="post-card-meta">
+            <time class="post-card-date" datetime="2024-01-01">1 January 2024</time>
+            
+            <div class="post-card-tags">
+              <span class="tag">environment</span><span class="tag">nature</span><span class="tag">tech</span>
+            </div>
+            
+          </div>
+          <h2 class="project-title">Nature Squamish Monthly Bird Count Portal</h2>
+          <p class="project-desc">The Nature Squamish Monthly Bird Count is a community even run by Nature Squamish each month in the Squamish Estuary. Since the count started in 1991, over 400 months of bird observation data has been collected by volunteers over many thousands of hours. I created this data portal to take this data in it&#39;s raw form, and make it accessible to anyone who is interested to browse and explore.</p>
+          <span class="project-link-btn">Visit Project →</span>
+        </div>
+      </a>
+    </div>
+    
   </div>
-  <img src="https://placehold.co/600x400" alt="Project Name" class="project-img">
-</div>
-<div class="project-card">
-  <div class="project-info">
-    <h3>Another Project</h3>
-    <p>Description of your second project. What problem does it solve? Who is it for?</p>
-    <a href="#" class="project-link">Visit project →</a>
-  </div>
-  <img src="https://placehold.co/600x400" alt="Another Project" class="project-img">
-</div>
-</div>
+  
 </div>
 
 </div>
@@ -70,14 +98,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

@@ -9,105 +9,436 @@
   <meta property="og:description" content="The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.">
   <meta property="og:image" content="https://i.imgur.com/pQhjAr7.jpg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/niallscavev2/">
         <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
 
   <main>
     
-<div class="page-cover-wrap">
-  <img class="page-cover" src="https://i.imgur.com/pQhjAr7.jpg" alt="Red Squirrel">
-</div>
-
 <div class="constrained-wide">
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://i.imgur.com/pQhjAr7.jpg" alt="Red Squirrel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Red Squirrel</h1>
+    <p class="home-intro">The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.</p>
+  </section>
+</div>
 
 
 <article class="gallery-page">
-  <header class="page-header">
-    <h1>Red Squirrel</h1>
+  
+
+  <div class="gallery-body">
+    <p class="section-label">Gallery</p>
     
-    <div class="post-meta">
-      <span class="tag">wildlife</span><span class="tag">nature</span><span class="tag">photography</span>
+    
+    
+    <div class="gallery-slideshow-container no-bg">
+      <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/1fBEf9f.jpeg" alt="Photo 1 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/1fBEf9f.jpeg" alt="Photo 1 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/B9Xe2BW.jpeg" alt="Photo 2 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/B9Xe2BW.jpeg" alt="Photo 2 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/wjecflS.jpeg" alt="Photo 3 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/wjecflS.jpeg" alt="Photo 3 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/UgB6yNu.jpeg" alt="Photo 4 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/UgB6yNu.jpeg" alt="Photo 4 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/pQhjAr7.jpeg" alt="Photo 5 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/pQhjAr7.jpeg" alt="Photo 5 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/RaSKUym.jpeg" alt="Photo 6 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/RaSKUym.jpeg" alt="Photo 6 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/cAu7Gpy.jpeg" alt="Photo 7 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/cAu7Gpy.jpeg" alt="Photo 7 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/6TfBFre.jpeg" alt="Photo 8 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/6TfBFre.jpeg" alt="Photo 8 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/u1d0sbl.jpeg" alt="Photo 9 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/u1d0sbl.jpeg" alt="Photo 9 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/gtpP4NA.jpeg" alt="Photo 10 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/gtpP4NA.jpeg" alt="Photo 10 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/IdagMep.jpeg" alt="Photo 11 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/IdagMep.jpeg" alt="Photo 11 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Ku6ZGWV.jpeg" alt="Photo 12 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Ku6ZGWV.jpeg" alt="Photo 12 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/KICvJCz.jpeg" alt="Photo 13 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/KICvJCz.jpeg" alt="Photo 13 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/NyJRPG5.jpeg" alt="Photo 14 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/NyJRPG5.jpeg" alt="Photo 14 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/f26pXxx.jpeg" alt="Photo 15 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/f26pXxx.jpeg" alt="Photo 15 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Rb5mCGY.jpeg" alt="Photo 16 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Rb5mCGY.jpeg" alt="Photo 16 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/FXavzXl.jpeg" alt="Photo 17 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/FXavzXl.jpeg" alt="Photo 17 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <div class="gallery-pagination swiper-pagination"></div>
+
+      <div id="gallery-caption-area" class="gallery-caption-external">
+        <h3 id="slide-title"></h3>
+        <p id="slide-desc"></p>
+      </div>
     </div>
+
+    <script>
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/1fBEf9f.jpeg","title":"Photo 1 (1)","caption":"<p><a href=\"https://i.imgur.com/1fBEf9f.jpeg\">https://i.imgur.com/1fBEf9f.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/1fBEf9f.jpeg","title":"Photo 1 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/B9Xe2BW.jpeg","title":"Photo 2 (1)","caption":"<p><a href=\"https://i.imgur.com/B9Xe2BW.jpeg\">https://i.imgur.com/B9Xe2BW.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/B9Xe2BW.jpeg","title":"Photo 2 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/wjecflS.jpeg","title":"Photo 3 (1)","caption":"<p><a href=\"https://i.imgur.com/wjecflS.jpeg\">https://i.imgur.com/wjecflS.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/wjecflS.jpeg","title":"Photo 3 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/UgB6yNu.jpeg","title":"Photo 4 (1)","caption":"<p><a href=\"https://i.imgur.com/UgB6yNu.jpeg\">https://i.imgur.com/UgB6yNu.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/UgB6yNu.jpeg","title":"Photo 4 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/pQhjAr7.jpeg","title":"Photo 5 (1)","caption":"<p><a href=\"https://i.imgur.com/pQhjAr7.jpeg\">https://i.imgur.com/pQhjAr7.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/pQhjAr7.jpeg","title":"Photo 5 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/RaSKUym.jpeg","title":"Photo 6 (1)","caption":"<p><a href=\"https://i.imgur.com/RaSKUym.jpeg\">https://i.imgur.com/RaSKUym.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/RaSKUym.jpeg","title":"Photo 6 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/cAu7Gpy.jpeg","title":"Photo 7 (1)","caption":"<p><a href=\"https://i.imgur.com/cAu7Gpy.jpeg\">https://i.imgur.com/cAu7Gpy.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/cAu7Gpy.jpeg","title":"Photo 7 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/6TfBFre.jpeg","title":"Photo 8 (1)","caption":"<p><a href=\"https://i.imgur.com/6TfBFre.jpeg\">https://i.imgur.com/6TfBFre.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/6TfBFre.jpeg","title":"Photo 8 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/u1d0sbl.jpeg","title":"Photo 9 (1)","caption":"<p><a href=\"https://i.imgur.com/u1d0sbl.jpeg\">https://i.imgur.com/u1d0sbl.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/u1d0sbl.jpeg","title":"Photo 9 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/gtpP4NA.jpeg","title":"Photo 10 (1)","caption":"<p><a href=\"https://i.imgur.com/gtpP4NA.jpeg\">https://i.imgur.com/gtpP4NA.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/gtpP4NA.jpeg","title":"Photo 10 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/IdagMep.jpeg","title":"Photo 11 (1)","caption":"<p><a href=\"https://i.imgur.com/IdagMep.jpeg\">https://i.imgur.com/IdagMep.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/IdagMep.jpeg","title":"Photo 11 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Ku6ZGWV.jpeg","title":"Photo 12 (1)","caption":"<p><a href=\"https://i.imgur.com/Ku6ZGWV.jpeg\">https://i.imgur.com/Ku6ZGWV.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Ku6ZGWV.jpeg","title":"Photo 12 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/KICvJCz.jpeg","title":"Photo 13 (1)","caption":"<p><a href=\"https://i.imgur.com/KICvJCz.jpeg\">https://i.imgur.com/KICvJCz.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/KICvJCz.jpeg","title":"Photo 13 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/NyJRPG5.jpeg","title":"Photo 14 (1)","caption":"<p><a href=\"https://i.imgur.com/NyJRPG5.jpeg\">https://i.imgur.com/NyJRPG5.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/NyJRPG5.jpeg","title":"Photo 14 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/f26pXxx.jpeg","title":"Photo 15 (1)","caption":"<p><a href=\"https://i.imgur.com/f26pXxx.jpeg\">https://i.imgur.com/f26pXxx.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/f26pXxx.jpeg","title":"Photo 15 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Rb5mCGY.jpeg","title":"Photo 16 (1)","caption":"<p><a href=\"https://i.imgur.com/Rb5mCGY.jpeg\">https://i.imgur.com/Rb5mCGY.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Rb5mCGY.jpeg","title":"Photo 16 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/FXavzXl.jpeg","title":"Photo 17 (1)","caption":"<p><a href=\"https://i.imgur.com/FXavzXl.jpeg\">https://i.imgur.com/FXavzXl.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/FXavzXl.jpeg","title":"Photo 17 (2)","caption":""}];
+    </script>
     
-    <p class="page-lead">The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.</p>
-  </header>
-  <div class="gallery-body"><div class="gallery">
-	<a href="https://i.imgur.com/1fBEf9f.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/1fBEf9f.jpeg" alt="Image 112" width="300">
-    </a>
-    <a href="https://i.imgur.com/B9Xe2BW.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/B9Xe2BW.jpeg" alt="Image 1" width="300">
-    </a>
-    <a href="https://i.imgur.com/wjecflS.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/wjecflS.jpeg" alt="Image 2" width="300">
-    </a>
-    <a href="https://i.imgur.com/UgB6yNu.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/UgB6yNu.jpeg" alt="Image 31" width="300">
-    </a>
-    <a href="https://i.imgur.com/pQhjAr7.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/pQhjAr7.jpeg" alt="Image 3" width="300">
-    </a>
-    <a href="https://i.imgur.com/RaSKUym.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/RaSKUym.jpeg" alt="Image 4" width="300">
-    </a>
-    <a href="https://i.imgur.com/cAu7Gpy.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/cAu7Gpy.jpeg" alt="Image 5" width="300">
-    </a>
-    <a href="https://i.imgur.com/6TfBFre.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/6TfBFre.jpeg" alt="Image 6" width="300">
-    </a>
-    <a href="https://i.imgur.com/u1d0sbl.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/u1d0sbl.jpeg" alt="Image 61" width="300">
-    </a>
-    <a href="https://i.imgur.com/gtpP4NA.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/gtpP4NA.jpeg" alt="Image 7" width="300">
-    </a>
-    <a href="https://i.imgur.com/IdagMep.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/IdagMep.jpeg" alt="Image 8" width="300">
-    </a>
-    <a href="https://i.imgur.com/Ku6ZGWV.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/Ku6ZGWV.jpeg" alt="Image 9" width="300">
-    </a>
-    <a href="https://i.imgur.com/KICvJCz.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/KICvJCz.jpeg" alt="Image 91" width="300">
-    </a>
-    <a href="https://i.imgur.com/NyJRPG5.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/NyJRPG5.jpeg" alt="Image 10" width="300">
-    </a>
-    <a href="https://i.imgur.com/f26pXxx.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/f26pXxx.jpeg" alt="Image 111" width="300">
-    </a>
-    <a href="https://i.imgur.com/Rb5mCGY.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/Rb5mCGY.jpeg" alt="Image 11" width="300">
-    </a>
-    <a href="https://i.imgur.com/FXavzXl.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/FXavzXl.jpeg" alt="Image 12" width="300">
-    </a>
-    <!-- Add more images as needed -->
+
+    
+    <div style="display: none;"><h2>Photo 1</h2>
+<p><a href="https://i.imgur.com/1fBEf9f.jpeg">https://i.imgur.com/1fBEf9f.jpeg</a></p>
+<h2>Photo 2</h2>
+<p><a href="https://i.imgur.com/B9Xe2BW.jpeg">https://i.imgur.com/B9Xe2BW.jpeg</a></p>
+<h2>Photo 3</h2>
+<p><a href="https://i.imgur.com/wjecflS.jpeg">https://i.imgur.com/wjecflS.jpeg</a></p>
+<h2>Photo 4</h2>
+<p><a href="https://i.imgur.com/UgB6yNu.jpeg">https://i.imgur.com/UgB6yNu.jpeg</a></p>
+<h2>Photo 5</h2>
+<p><a href="https://i.imgur.com/pQhjAr7.jpeg">https://i.imgur.com/pQhjAr7.jpeg</a></p>
+<h2>Photo 6</h2>
+<p><a href="https://i.imgur.com/RaSKUym.jpeg">https://i.imgur.com/RaSKUym.jpeg</a></p>
+<h2>Photo 7</h2>
+<p><a href="https://i.imgur.com/cAu7Gpy.jpeg">https://i.imgur.com/cAu7Gpy.jpeg</a></p>
+<h2>Photo 8</h2>
+<p><a href="https://i.imgur.com/6TfBFre.jpeg">https://i.imgur.com/6TfBFre.jpeg</a></p>
+<h2>Photo 9</h2>
+<p><a href="https://i.imgur.com/u1d0sbl.jpeg">https://i.imgur.com/u1d0sbl.jpeg</a></p>
+<h2>Photo 10</h2>
+<p><a href="https://i.imgur.com/gtpP4NA.jpeg">https://i.imgur.com/gtpP4NA.jpeg</a></p>
+<h2>Photo 11</h2>
+<p><a href="https://i.imgur.com/IdagMep.jpeg">https://i.imgur.com/IdagMep.jpeg</a></p>
+<h2>Photo 12</h2>
+<p><a href="https://i.imgur.com/Ku6ZGWV.jpeg">https://i.imgur.com/Ku6ZGWV.jpeg</a></p>
+<h2>Photo 13</h2>
+<p><a href="https://i.imgur.com/KICvJCz.jpeg">https://i.imgur.com/KICvJCz.jpeg</a></p>
+<h2>Photo 14</h2>
+<p><a href="https://i.imgur.com/NyJRPG5.jpeg">https://i.imgur.com/NyJRPG5.jpeg</a></p>
+<h2>Photo 15</h2>
+<p><a href="https://i.imgur.com/f26pXxx.jpeg">https://i.imgur.com/f26pXxx.jpeg</a></p>
+<h2>Photo 16</h2>
+<p><a href="https://i.imgur.com/Rb5mCGY.jpeg">https://i.imgur.com/Rb5mCGY.jpeg</a></p>
+<h2>Photo 17</h2>
+<p><a href="https://i.imgur.com/FXavzXl.jpeg">https://i.imgur.com/FXavzXl.jpeg</a></p>
 </div>
-</div>
+    
+  </div>
 </article>
 
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const titleEl = document.getElementById('slide-title');
+  const descEl = document.getElementById('slide-desc');
+  const captionArea = document.getElementById('gallery-caption-area');
+
+  const updateCaption = (index) => {
+    if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+    const data = galleryData[index];
+    
+    titleEl.textContent = data.title || "";
+    descEl.innerHTML = data.caption || "";
+    
+    // Hide container if both empty
+    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+  };
+
+  const swiper = new Swiper('.gallery-swiper', {
+    loop: true,
+    keyboard: { enabled: true },
+    speed: 600,
+    pagination: { 
+      el: '.gallery-pagination', 
+      type: 'fraction',
+      renderFraction: function (currentClass, totalClass) {
+        return '<span class="' + currentClass + '"></span>' +
+               ' <span class="fraction-sep">of</span> ' +
+               '<span class="' + totalClass + '"></span>';
+      }
+    },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    on: {
+      init: function () {
+        updateCaption(this.realIndex);
+      },
+      slideChange: function () {
+        updateCaption(this.realIndex);
+      }
+    }
+  });
+</script>
 
 </div>
 
@@ -115,14 +446,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

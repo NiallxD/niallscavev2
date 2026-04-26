@@ -7,8 +7,15 @@
   <meta name="description" content="Wildlife and nature photography from the UK and beyond — birds, mammals, and wild places.">
   <meta property="og:title" content="Photography — Niall Bell">
   <meta property="og:description" content="Wildlife and nature photography from the UK and beyond — birds, mammals, and wild places.">
-  
+  <meta property="og:image" content="https://i.imgur.com/XeF47GP.jpeg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
@@ -19,11 +26,15 @@
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/" class="active">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -34,355 +45,673 @@
   
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Photography" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="https://i.imgur.com/XeF47GP.jpeg" alt="Photography" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">Photography</h1>
     <p class="home-intro">Wildlife and nature photography from the UK and beyond — birds, mammals, and wild places.</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
   </section>
 </div>
 
 
-<p class="section-label">Galleries</p>
-<div class="gallery-grid">
+<div class="standard-page">
   
-  <a href="/niallscavev2/360-panorama/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">360 Panorama</div>
-    </div>
-  </a>
+
   
-  <a href="/niallscavev2/panoramas/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/kwps586.jpeg" alt="360 Panorama" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">360 Panorama</div>
-    </div>
-  </a>
+  <p class="section-label">Featured Galleries</p>
+  <div class="story-list">
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/astrophotography/" class="story-card" data-tags="astronomy,nature,photography">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/Jzcv1Jl.jpeg" alt="Astrophotography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">astronomy</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Astrophotography</div>
+        
+        <div class="story-card-desc">Astrophotography is a photographic discipline that involves taking highly detailed images of objects in the night sky. This can be of things as close as the Moon, to planets, to distant galaxies millions of light-years away.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/tiger/" class="story-card" data-tags="nature,photography,wildlife">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/j35mshs.png" alt="Bengal Tiger" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Bengal Tiger</div>
+        
+        <div class="story-card-desc">The Bengal Tiger is the true king of the jungle. I&#39;ve been obsessed with tigers since first time I photographed a captive Amur tiger at my local wildlife park.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/british-birds/" class="story-card" data-tags="nature,photography,wildlife">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/FzKzxR4.png" alt="British Birds" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">British Birds</div>
+        
+        <div class="story-card-desc">A collection of Britains frequently seen birds.</div>
+        
+      </div>
+    </a>
+    
+  </div>
   
-  <a href="/niallscavev2/uk-wildlife-nature-photos/astrophotography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/Jzcv1Jl.jpeg" alt="Astrophotography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Astrophotography</div>
-    </div>
-  </a>
+
   
-  <a href="/niallscavev2/uk-wildlife-nature-photos/bald-eagle/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="Bald Eagle" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Bald Eagle</div>
-    </div>
-  </a>
+  <p class="section-label">Galleries</p>
   
-  <a href="/niallscavev2/uk-wildlife-nature-photos/tiger/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/j35mshs.png" alt="Bengal Tiger" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Bengal Tiger</div>
-    </div>
-  </a>
+  <div class="filter-cloud">
+    <button class="filter-btn active" data-filter="all">All</button>
+    
+    <button class="filter-btn" data-filter="astronomy">astronomy</button>
+    
+    <button class="filter-btn" data-filter="birds">birds</button>
+    
+    <button class="filter-btn" data-filter="canada">canada</button>
+    
+    <button class="filter-btn" data-filter="drone">drone</button>
+    
+    <button class="filter-btn" data-filter="gear">gear</button>
+    
+    <button class="filter-btn" data-filter="landscape">landscape</button>
+    
+    <button class="filter-btn" data-filter="macro">macro</button>
+    
+    <button class="filter-btn" data-filter="nature">nature</button>
+    
+    <button class="filter-btn" data-filter="panorama">panorama</button>
+    
+    <button class="filter-btn" data-filter="photography">photography</button>
+    
+    <button class="filter-btn" data-filter="streetphotography">streetphotography</button>
+    
+    <button class="filter-btn" data-filter="wildlife">wildlife</button>
+    
+  </div>
+
+  <div class="gallery-grid" id="gallery-grid">
+    
+    <a href="/niallscavev2/360-panorama/" class="gallery-card" data-tags="drone,panorama,photography">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-07-09">9 July 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">drone</span><span class="tag">panorama</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">360 Panorama</div>
+        
+        <div class="story-card-desc">A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/bald-eagle/" class="gallery-card" data-tags="birds,nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="Bald Eagle" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-01-20">20 January 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Bald Eagle</div>
+        
+        <div class="story-card-desc">The Bald Eagle is a majestic bird of prey, known for being the national bird and symbol of the United States. Adults have striking white heads and tails with dark brown bodies and wings. Their beaks and feet are bright yellow. Juveniles, on the other hand, are mostly brown with mottled white patches and dark beaks. These powerful hunters are often found near large bodies of water, where they hunt for fish, their primary diet.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/canadian-landscapes/" class="gallery-card" data-tags="canada,landscape,nature,photography">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/eH05uEo.jpeg" alt="Canadian Landscapes" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-25">25 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">landscape</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Canadian Landscapes</div>
+        
+        <div class="story-card-desc">This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/canadian-wildlife/" class="gallery-card" data-tags="canada,landscape,nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-25">25 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">landscape</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Canadian Wildlife</div>
+        
+        <div class="story-card-desc">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/drone-photography/" class="gallery-card" data-tags="drone,photography">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/F1ef3kt.jpg" alt="Drone Photography" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">drone</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Drone Photography</div>
+        
+        <div class="story-card-desc">I&#39;ve been flying drones for over a decade and in that time have captured some stunning photographs. Here is a selection of my favourites.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/environments/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-05-12">12 May 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Environments</div>
+        
+        <div class="story-card-desc">A showcase of some of the amazing environments I&#39;ve photographed.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/film-photography/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Film Photography" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Film Photography</div>
+        
+        <div class="story-card-desc">This gallery showcases some of the photographs I&#39;ve taken with my trusty Zenit 11 - all taken by me, developed by me and edited by me.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/fungi/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/2MrhVQh.jpg" alt="Fungi" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Fungi</div>
+        
+        <div class="story-card-desc">A entire taxonomic Kingdom is devoted to fungi. From beer and bread, to antibiotics and packaging; fungi are relied on by millions of people every day.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/grey-seal/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/UudTTEZ.jpg" alt="Grey Seal" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Grey Seal</div>
+        
+        <div class="story-card-desc">The UK&#39;s second largest mammal, or first before red deer depending who you ask. Grey seals breed in huge numbers across the UK&#39;s shorelines and is one the UK&#39;s best wildlife spectacles.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/macro-photography/" class="gallery-card" data-tags="macro,nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/ISBS59V.jpeg" alt="Macro Photography" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-05-12">12 May 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">macro</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Macro Photography</div>
+        
+        <div class="story-card-desc">A selection of macro photography</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/osprey/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/QVk6n9F.jpg" alt="Osprey" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Osprey</div>
+        
+        <div class="story-card-desc">The osprey (Pandion haliaetus), also called sea hawk, river hawk, and fish hawk, is a diurnal, fish-eating bird of prey with a cosmopolitan range. These birds are the big kingfisher, diving into bodies of water to catch fish. Osprey visit the UK from Africa in Summer to breed. The best places to see these birds are in the Scottish Highlands, but you can see them in England as the move up the country.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/photomicrography/" class="gallery-card" data-tags="gear,macro,photography">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/dJxGbhg.jpg" alt="Photomicrography" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">gear</span><span class="tag">macro</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Photomicrography</div>
+        
+        <div class="story-card-desc">Exploring the hidden worlds that exist beyond the limits of human vision through high-magnification photomicrography.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/red-squirrel/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/pQhjAr7.jpg" alt="Red Squirrel" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Red Squirrel</div>
+        
+        <div class="story-card-desc">The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/street-photography/" class="gallery-card" data-tags="photography,streetphotography">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/7eKn5qJ.jpg" alt="Street Photography" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span><span class="tag">streetphotography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">Street Photography</div>
+        
+        <div class="story-card-desc">Street photography isn&#39;t my main genre nor is it a genre that I&#39;m particularly good at. What it is a way of being creative. Nature photography is often as much about reproducing what we see in nature in our photographs as it is being creative and this can stifle your creativity. Street photograph doesn&#39;t have such a constraint in my eyes. The below are a selection of images I&#39;ve taken when out and about. They&#39;re not great, but they were fun to take and edit.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/kingfisher/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/YD0LSDY.jpg" alt="The Kingfisher" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">The Kingfisher</div>
+        
+        <div class="story-card-desc">The Kingfisher is perhaps the UK&#39;s most vibrant and colourful bird. It&#39;s also one of the most enchanting. For the nature lover, little can compare to the feeling of excitement when one sees the characteristic flash of blue the Kingfisher is known for. Here is my gallery of photograph of Kingfishers. Almost all taken from one small spot in the middle of a nearby city.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/red-kite/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/T8Nox8C.png" alt="The Red Kite" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">The Red Kite</div>
+        
+        <div class="story-card-desc">The Red Kite (milvus milvus) is a remarkably elegant bird of prey that can be easily recognised by its reddish-brown plumage, angled wings, and distinctive forked tail. Thanks to one of the longest-running conservation programs in the world, this species was rescued from the brink of extinction in the UK. It has since been successfully reintroduced to England and Scotland and is now protected under Schedule 1 of The Wildlife and Countryside Act.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/the-zoo/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/4Msu0Ig.png" alt="The Zoo" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-29">29 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">The Zoo</div>
+        
+        <div class="story-card-desc">Here are some of my top photos from UK Zoos.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/uk-deer/" class="gallery-card" data-tags="nature,photography,wildlife">
+      <div class="gallery-card-img">
+        
+        <img src="https://i.imgur.com/eM38vZ0.png" alt="UK Deer" loading="lazy">
+        
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="gallery-card-title">UK Deer</div>
+        
+        <div class="story-card-desc">The regal red deer is one of the UK&#39;s most photographed species. The royals dedicated huge swaths of land to keeping them for hunting which has left us with magical deer parks dotted across the UK. These are one of my favourite animals to photograph.</div>
+        
+      </div>
+    </a>
+    
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      const galleryCards = grid.querySelectorAll('.gallery-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) return;
+
+          const filter = btn.getAttribute('data-filter');
+          
+          // Start fade out ONLY on grid
+          grid.classList.add('filtering');
+
+          setTimeout(() => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter cards inside the grid
+            galleryCards.forEach(card => {
+              const tagsAttr = card.getAttribute('data-tags');
+              const tags = tagsAttr ? tagsAttr.split(',') : [];
+              const isMatch = filter === 'all' || tags.includes(filter);
+              card.style.display = isMatch ? 'flex' : 'none';
+            });
+
+            // Trigger fade in
+            grid.classList.remove('filtering');
+          }, 300);
+        });
+      });
+    });
+  </script>
   
-  <a href="/niallscavev2/uk-wildlife-nature-photos/british-birds/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/FzKzxR4.png" alt="British Birds" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">British Birds</div>
-    </div>
-  </a>
+
   
-  <a href="/niallscavev2/uk-wildlife-nature-photos/brown-bear/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/Tip0k1n.jpg" alt="Brown Bear" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Brown Bear</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/canadian-landscapes/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/eH05uEo.jpeg" alt="Canadian Landscapes" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Canadian Landscapes</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/canadian-wildlife/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Canadian Wildlife</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/drone-photography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/F1ef3kt.jpg" alt="Drone Photography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Drone Photography</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/environments/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Environments</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/film-photography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Film Photography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Film Photography</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/fungi/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/2MrhVQh.jpg" alt="Fungi" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Fungi</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/grey-seal/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/UudTTEZ.jpg" alt="Grey Seal" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Grey Seal</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/macro-photography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/ISBS59V.jpeg" alt="Macro Photography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Macro Photography</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/osprey/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/QVk6n9F.jpg" alt="Osprey" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Osprey</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/photomicrography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/dJxGbhg.jpg" alt="Photomicrography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Photomicrography</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/red-squirrel/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/pQhjAr7.jpg" alt="Red Squirrel" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Red Squirrel</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/street-photography/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/7eKn5qJ.jpg" alt="Street Photography" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">Street Photography</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/kingfisher/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/YD0LSDY.jpg" alt="The Kingfisher" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">The Kingfisher</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/red-kite/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/T8Nox8C.png" alt="The Red Kite" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">The Red Kite</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/the-zoo/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/4Msu0Ig.png" alt="The Zoo" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">The Zoo</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/uk-deer/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/eM38vZ0.png" alt="UK Deer" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">UK Deer</div>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/white-tailed-eagles/" class="gallery-card">
-    <div class="gallery-card-img">
-      
-      <img src="https://i.imgur.com/1COPsvs.png" alt="White Tailed Eagle" loading="lazy">
-      
-    </div>
-    <div class="gallery-card-body">
-      <div class="gallery-card-title">White Tailed Eagle</div>
-    </div>
-  </a>
+  <p class="section-label">Photo Stories</p>
+  <div class="story-list">
+    
+    <a href="/niallscavev2/the-dragons-breath/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/8bzvnWQ.png" alt="The Dragons Breath" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">The Dragons Breath</div>
+        
+        <div class="story-card-desc">A particular frosty November morning with a mature Red Deer stag. I set myself to catch the stunning backlight, catching the stags breath set alight.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/indias-heart-a-tapestry-of-nature-and-tradition/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/diPWwgj.jpeg" alt="India&#39;s Heart: A Tapestry of Nature and Tradition" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-02">2 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">india</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">India&#39;s Heart: A Tapestry of Nature and Tradition</div>
+        
+        <div class="story-card-desc">In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/a-mothers-love/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/hpoQKL9.png" alt="A Mothers Love" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2023-04-18">18 April 2023</time>
+          
+        </div>
+        <div class="story-card-title">A Mothers Love</div>
+        
+        <div class="story-card-desc">Female grey seals are known for the remarkably strong but fragile bond they form with their pups. This bond is the sole emotional subject of this image.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/the-famous-one/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/CgPJ6f6.jpeg" alt="The Famous One" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2022-08-17">17 August 2022</time>
+          
+        </div>
+        <div class="story-card-title">The Famous One</div>
+        
+        <div class="story-card-desc">An opportunistic image of a Grouse taken in the stunning Scottish Highlands. The heather was starting to bloom as this specimen popped up in the sun.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/uk-wildlife-nature-photos/tigers/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/rtk0zzy.png" alt="The Plight of the Tiger" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2021-07-17">17 July 2021</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">environment</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">The Plight of the Tiger</div>
+        
+        <div class="story-card-desc">The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.</div>
+        
+      </div>
+    </a>
+    
+  </div>
   
 </div>
-
-
-
-<p class="section-label">Photo Stories</p>
-<div class="story-list">
-  
-  <a href="/niallscavev2/the-dragons-breath/" class="story-card">
-    <div class="story-card-img">
-      
-      <img src="https://i.imgur.com/8bzvnWQ.png" alt="The Dragons Breath" loading="lazy">
-      
-    </div>
-    <div class="story-card-body">
-      <div class="story-card-title">The Dragons Breath</div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/indias-heart-a-tapestry-of-nature-and-tradition/" class="story-card">
-    <div class="story-card-img">
-      
-      <img src="https://i.imgur.com/diPWwgj.jpeg" alt="India&#39;s Heart: A Tapestry of Nature and Tradition" loading="lazy">
-      
-    </div>
-    <div class="story-card-body">
-      <div class="story-card-title">India&#39;s Heart: A Tapestry of Nature and Tradition</div>
-      
-      <div class="story-card-desc">In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.</div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/a-mothers-love/" class="story-card">
-    <div class="story-card-img">
-      
-      <img src="https://i.imgur.com/hpoQKL9.png" alt="A Mothers Love" loading="lazy">
-      
-    </div>
-    <div class="story-card-body">
-      <div class="story-card-title">A Mothers Love</div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/the-famous-one/" class="story-card">
-    <div class="story-card-img">
-      
-      <img src="https://i.imgur.com/CgPJ6f6.jpeg" alt="The Famous One" loading="lazy">
-      
-    </div>
-    <div class="story-card-body">
-      <div class="story-card-title">The Famous One</div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/uk-wildlife-nature-photos/tigers/" class="story-card">
-    <div class="story-card-img">
-      
-      <img src="https://i.imgur.com/rtk0zzy.png" alt="The Plight of the Tiger" loading="lazy">
-      
-    </div>
-    <div class="story-card-body">
-      <div class="story-card-title">The Plight of the Tiger</div>
-      
-      <div class="story-card-desc">The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.</div>
-      
-    </div>
-  </a>
-  
-</div>
-
 
 </div>
 
@@ -390,14 +719,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

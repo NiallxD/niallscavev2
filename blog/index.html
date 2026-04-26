@@ -7,8 +7,15 @@
   <meta name="description" content="Essays, photo stories, and observations on nature and the natural world.">
   <meta property="og:title" content="Writing — Niall Bell">
   <meta property="og:description" content="Essays, photo stories, and observations on nature and the natural world.">
-  
+  <meta property="og:image" content="https://i.imgur.com/2jQznqY.jpeg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
@@ -19,11 +26,15 @@
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/" class="active">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/" class="active">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -34,484 +45,1013 @@
   
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Writing" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="https://i.imgur.com/2jQznqY.jpeg" alt="Writing" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">Writing</h1>
     <p class="home-intro">Essays, photo stories, and observations on nature and the natural world.</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
   </section>
 </div>
 
 
-<div class="post-grid">
+<div class="standard-page">
   
-  <a href="/niallscavev2/brief-review-of-the-zeiss-diascope-65t-fl-green/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/5KKoRpe.jpeg" alt="Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</h2>
-      <div class="post-meta">
-        <time datetime="2025-05-17">17 May 2025</time>
+  
+  
+  <p class="section-label">Featured Writing</p>
+  <div class="story-list">
+    
+    <a href="/niallscavev2/blog/adopting-an-ai-workflow/" class="story-card" data-tags="ai,llm">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/ys96oqz.jpeg" alt="Adopting an AI Workflow" loading="lazy">
+        
       </div>
-      <p class="post-card-desc">Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/squamish-ebird-data/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/6wj3V55.jpeg" alt="Squamish eBird Data" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Squamish eBird Data</h2>
-      <div class="post-meta">
-        <time datetime="2025-03-16">16 March 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-08-12">12 August 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">ai</span><span class="tag">llm</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Adopting an AI Workflow</div>
+        
+        <div class="story-card-desc">It’s 2025 and big tech is force feeding us artificial intelligence everywhere we look. If an app on the App Store didn’t use AI, it’s considered outdated.</div>
+        
       </div>
-      <p class="post-card-desc">Squamish eBird Data</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/jxxUz6b.jpeg" alt="Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-31">31 January 2025</time>
+    </a>
+    
+    <a href="/niallscavev2/my-week-in-photos-wrap-up-2024/" class="story-card" data-tags="photography">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/28al9Ob.jpeg" alt="My Week In Photos Wrap Up" loading="lazy">
+        
       </div>
-      <p class="post-card-desc">This is the report I authored for my master&#39;s degree dissertation. I&#39;m sharing here for those interested in this area of research.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/how-to-buy-a-car-in-bc-canada/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/oiwPNEa.jpeg" alt="How to Buy a Car In British Columbia, Canada" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>How to Buy a Car In British Columbia, Canada</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-25">25 January 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-12-31">31 December 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">My Week In Photos Wrap Up</div>
+        
+        <div class="story-card-desc">This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!</div>
+        
       </div>
-      <p class="post-card-desc">How to Buy a Car In British Columbia, Canada</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/how-to-get-a-phone-contract-canada/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/V9XRV4A.jpeg" alt="How to get a Phone Contract in Canada" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>How to get a Phone Contract in Canada</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-23">23 January 2025</time>
+    </a>
+    
+    <a href="/niallscavev2/DPOTY24/" class="story-card" data-tags="nature,photography,wildlife">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/8bzvnWQ.png" alt="Highly Commended - Deer Photographer of the Year" loading="lazy">
+        
       </div>
-      <p class="post-card-desc">How to get a Phone Contract in Canada</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/bald-eagle-age/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="How To Tell The Age of a Bald Eagle" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>How To Tell The Age of a Bald Eagle</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-20">20 January 2025</time>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-06-24">24 June 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Highly Commended - Deer Photographer of the Year</div>
+        
+        <div class="story-card-desc">Deer Photographer of the Year - My highly commended photograph</div>
+        
       </div>
-      <p class="post-card-desc">Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I&#39;ve taken.</p>
-    </div>
-  </a>
+    </a>
+    
+  </div>
   
-  <a href="/niallscavev2/sin-and-bank-account/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/cSUI4MZ.jpeg" alt="Getting an SIN and Bank Account" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Getting an SIN and Bank Account</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-20">20 January 2025</time>
-      </div>
-      <p class="post-card-desc">Getting an SIN and Bank Account</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/arriving-in-canada/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/2jQznqY.jpeg" alt="Arriving In Canada" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Arriving In Canada</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-12">12 January 2025</time>
-      </div>
-      <p class="post-card-desc">A brief note on my arrival into Canada.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/travelling-to-canada/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/yi0XicL.jpeg" alt="Travelling To Canada" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Travelling To Canada</h2>
-      <div class="post-meta">
-        <time datetime="2025-01-09">9 January 2025</time>
-      </div>
-      <p class="post-card-desc">Travelling To Canada</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/my-week-in-photos-wrap-up-2024/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/28al9Ob.jpeg" alt="My Week In Photos Wrap Up" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>My Week In Photos Wrap Up</h2>
-      <div class="post-meta">
-        <time datetime="2024-12-31">31 December 2024</time>
-      </div>
-      <p class="post-card-desc">This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/doncasters-hoopoe/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/vfEGkKB.jpeg" alt="Doncaster&#39;s Hoopoe" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Doncaster&#39;s Hoopoe</h2>
-      <div class="post-meta">
-        <time datetime="2024-12-22">22 December 2024</time>
-      </div>
-      <p class="post-card-desc">It&#39;s been a good year for birding in the UK, and there seems to have been no shortage of rarities.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/custom-siril-scripts/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/Izkx8aB.jpeg" alt="Custom Siril Scripts for Astrophotography" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Custom Siril Scripts for Astrophotography</h2>
-      <div class="post-meta">
-        <time datetime="2024-11-21">21 November 2024</time>
-      </div>
-      <p class="post-card-desc">Here is how I use custom Siril Scripts for Astrophotography.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/social-media-dilemma/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Social Media Dilemma" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Social Media Dilemma</h2>
-      <div class="post-meta">
-        <time datetime="2024-08-14">14 August 2024</time>
-      </div>
-      <p class="post-card-desc">An essay on my thoughts about social media with the hope of understanding the problems and solutions better.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/international-tiger-day-2024/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/BiYriQv.png" alt="International Tiger Day 2024" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>International Tiger Day 2024</h2>
-      <div class="post-meta">
-        <time datetime="2024-07-29">29 July 2024</time>
-      </div>
-      <p class="post-card-desc">July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/black-winged-pratincole-doncaster-2024/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/IJUcoJt.jpeg" alt="Black Winged Pratincole Doncaster 2024" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Black Winged Pratincole Doncaster 2024</h2>
-      <div class="post-meta">
-        <time datetime="2024-07-08">8 July 2024</time>
-      </div>
-      <p class="post-card-desc">Read about my experience seeing Doncaster&#39;s Black Winged Pratincole!</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/DPOTY24/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/8bzvnWQ.png" alt="Highly Commended - Deer Photographer of the Year" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Highly Commended - Deer Photographer of the Year</h2>
-      <div class="post-meta">
-        <time datetime="2024-06-24">24 June 2024</time>
-      </div>
-      <p class="post-card-desc">Deer Photographer of the Year - My highly commended photograph</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/how-i-process-my-photographs/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/jo6fK8O.jpeg" alt="How I Process My Photographs" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>How I Process My Photographs</h2>
-      <div class="post-meta">
-        <time datetime="2024-05-31">31 May 2024</time>
-      </div>
-      <p class="post-card-desc">How I Process My Photographs</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/an-open-letter-to-ywp/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/1pQK9Zn.jpeg" alt="An Open Letter to YWP" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>An Open Letter to YWP</h2>
-      <div class="post-meta">
-        <time datetime="2024-05-12">12 May 2024</time>
-      </div>
-      <p class="post-card-desc">An Open Letter to YWP</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/analogue-photography/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Analogue Photography" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Analogue Photography</h2>
-      <div class="post-meta">
-        <time datetime="2024-05-02">2 May 2024</time>
-      </div>
-      <p class="post-card-desc">What draws me to analogue photography in 2024?</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/birds-are-musicians/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/rLYIZA3.jpeg" alt="Birds Were the First Musicians" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Birds Were the First Musicians</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-29">29 April 2024</time>
-      </div>
-      <p class="post-card-desc">Who were the first musicians? Do birds make music? When was music created? What is music?</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/photographic-life-list/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/urbFltC.jpeg" alt="Photographic Life List" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Photographic Life List</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-28">28 April 2024</time>
-      </div>
-      <p class="post-card-desc">Here is my photographic life list, where I keep track of all the species I&#39;ve photographed well. It&#39;s constantly being updated so check back!</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/are-commercial-photography-hides-acceptable/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/a0xdQzW.jpeg" alt="Are Commercial Photography Hides Acceptable?" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Are Commercial Photography Hides Acceptable?</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-16">16 April 2024</time>
-      </div>
-      <p class="post-card-desc">Are Commercial Photography Hides Acceptable?</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/The-little-owl/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/4TOgr4b.jpeg" alt="Etymology: The Little Owl" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Etymology: The Little Owl</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-15">15 April 2024</time>
-      </div>
-      <p class="post-card-desc">This is a quick dive into the origins of the Little Owls Latin Name</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/misierere-mei-deus/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/Zn891va.jpeg" alt="Misierere Mei, Deus" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Misierere Mei, Deus</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-11">11 April 2024</time>
-      </div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/cloudspotting/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/EyV94Ox.jpeg" alt="Cloudspotting" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Cloudspotting</h2>
-      <div class="post-meta">
-        <time datetime="2024-04-10">10 April 2024</time>
-      </div>
-      <p class="post-card-desc">Have you ever wondered where the idiom &quot;to be on cloud 9&quot; came from? Well, you&#39;ve got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/canon-r6-crashing-fixed/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/zWS53Em.jpeg" alt="" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2></h2>
-      <div class="post-meta">
-        <time datetime="2024-03-01">1 March 2024</time>
-      </div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/ecotalk-a-greener-phone-network/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/6HNhbjt.jpeg" alt="EcoTalk: A Greener Phone Network" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>EcoTalk: A Greener Phone Network</h2>
-      <div class="post-meta">
-        <time datetime="2024-02-15">15 February 2024</time>
-      </div>
-      <p class="post-card-desc">EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/how-to-build-a-wildlife-pond/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/KSajmT4.jpeg" alt="" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2></h2>
-      <div class="post-meta">
-        <time datetime="2024-02-01">1 February 2024</time>
-      </div>
-      
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/brief-review-of-the-canon-ef-500mm-f-4-5-l-usm/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/jGPwQ43.jpeg" alt="Brief Review of The Canon EF 500mm f/4.5 L USM" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Brief Review of The Canon EF 500mm f/4.5 L USM</h2>
-      <div class="post-meta">
-        <time datetime="2023-11-01">1 November 2023</time>
-      </div>
-      <p class="post-card-desc">Brief Review of The Canon EF 500mm f/4.5 L USM</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/northern-lights/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/9DONEvA.jpeg" alt="Northern Lights in Doncaster!" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>Northern Lights in Doncaster!</h2>
-      <div class="post-meta">
-        <time datetime="2022-09-23">23 September 2022</time>
-      </div>
-      <p class="post-card-desc">n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!</p>
-    </div>
-  </a>
-  
-  <a href="/niallscavev2/the-waste-hierarchy/" class="post-card">
-    <div class="post-card-img">
-      
-      <img src="https://i.imgur.com/6zfWazY.jpeg" alt="The Waste Hierarchy" loading="lazy">
-      
-    </div>
-    <div class="post-card-body">
-      <h2>The Waste Hierarchy</h2>
-      <div class="post-meta">
-        <time datetime="2022-08-28">28 August 2022</time>
-      </div>
-      <p class="post-card-desc">The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.</p>
-    </div>
-  </a>
-  
-</div>
 
+  <p class="section-label">All Writing</p>
+  
+  <div class="filter-cloud">
+    <button class="filter-btn active" data-filter="all">All</button>
+    
+    <button class="filter-btn" data-filter="ageguide">ageguide</button>
+    
+    <button class="filter-btn" data-filter="ai">ai</button>
+    
+    <button class="filter-btn" data-filter="analogue">analogue</button>
+    
+    <button class="filter-btn" data-filter="artificial-intelligence">artificial-intelligence</button>
+    
+    <button class="filter-btn" data-filter="astronomy">astronomy</button>
+    
+    <button class="filter-btn" data-filter="authenticity">authenticity</button>
+    
+    <button class="filter-btn" data-filter="birds">birds</button>
+    
+    <button class="filter-btn" data-filter="canada">canada</button>
+    
+    <button class="filter-btn" data-filter="climate">climate</button>
+    
+    <button class="filter-btn" data-filter="cloudspotting">cloudspotting</button>
+    
+    <button class="filter-btn" data-filter="critical-thinking">critical-thinking</button>
+    
+    <button class="filter-btn" data-filter="dark-room">dark-room</button>
+    
+    <button class="filter-btn" data-filter="doncaster">doncaster</button>
+    
+    <button class="filter-btn" data-filter="environment">environment</button>
+    
+    <button class="filter-btn" data-filter="film-photography">film-photography</button>
+    
+    <button class="filter-btn" data-filter="gear">gear</button>
+    
+    <button class="filter-btn" data-filter="guide">guide</button>
+    
+    <button class="filter-btn" data-filter="hobbies">hobbies</button>
+    
+    <button class="filter-btn" data-filter="internationaltigerday">internationaltigerday</button>
+    
+    <button class="filter-btn" data-filter="knowledge">knowledge</button>
+    
+    <button class="filter-btn" data-filter="lifelist">lifelist</button>
+    
+    <button class="filter-btn" data-filter="llm">llm</button>
+    
+    <button class="filter-btn" data-filter="meteorology">meteorology</button>
+    
+    <button class="filter-btn" data-filter="music">music</button>
+    
+    <button class="filter-btn" data-filter="nature">nature</button>
+    
+    <button class="filter-btn" data-filter="on-life">on-life</button>
+    
+    <button class="filter-btn" data-filter="photography">photography</button>
+    
+    <button class="filter-btn" data-filter="research">research</button>
+    
+    <button class="filter-btn" data-filter="science">science</button>
+    
+    <button class="filter-btn" data-filter="social media">social media</button>
+    
+    <button class="filter-btn" data-filter="tech">tech</button>
+    
+    <button class="filter-btn" data-filter="the-self">the-self</button>
+    
+    <button class="filter-btn" data-filter="values">values</button>
+    
+    <button class="filter-btn" data-filter="virtues">virtues</button>
+    
+    <button class="filter-btn" data-filter="weather">weather</button>
+    
+    <button class="filter-btn" data-filter="wildlife">wildlife</button>
+    
+  </div>
+
+  
+  <div class="post-grid" id="post-grid">
+    
+    <a href="/niallscavev2/blog/lessons-from-a-fungi-part-1/" class="post-card" data-tags="">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/cAFawk5.jpeg" alt="Lessons From a Fungi Part 1" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-13">13 November 2025</time>
+          
+        </div>
+        <h2>Lessons From a Fungi Part 1</h2>
+        <p class="post-card-desc">I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/doing-things-for-you/" class="post-card" data-tags="on-life,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/akBHrZy.jpeg" alt="Doing Things For You" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-08">8 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">on-life</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Doing Things For You</h2>
+        <p class="post-card-desc">In an age dominated by social media likes and follows, many creatives find themselves chasing approval rather than pursuing authentic expression. Photographers, for instance, often measure the worth of their work by the number of likes or comments it receives.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/ethical-captioning/" class="post-card" data-tags="photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/eAxWByn.jpeg" alt="Ethical Captioning" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-05">5 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Ethical Captioning</h2>
+        <p class="post-card-desc">A case for ethical captioning in photography.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/photographic-authenticity/" class="post-card" data-tags="virtues,authenticity,the-self,values,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/a2syp1y.jpeg" alt="Photographic Authenticity" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-10-29">29 October 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">virtues</span><span class="tag">authenticity</span>
+          </div>
+          
+        </div>
+        <h2>Photographic Authenticity</h2>
+        <p class="post-card-desc">I began exploring the topic of authenticity while thinking about what it means to be an ethical photographer, and what us photographers should push for if we were to improve wildlife photography ethics across the community.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/acceptable-use-of-ai/" class="post-card" data-tags="ai,artificial-intelligence,critical-thinking,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/Ti8yODJ.jpeg" alt="Acceptable Use of AI" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-10-26">26 October 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">ai</span><span class="tag">artificial-intelligence</span>
+          </div>
+          
+        </div>
+        <h2>Acceptable Use of AI</h2>
+        <p class="post-card-desc">*In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/try-cloudspotting/" class="post-card" data-tags="cloudspotting,hobbies,meteorology,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/ERuqaWk.jpeg" alt="Try Cloudspotting" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-10-26">26 October 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">cloudspotting</span><span class="tag">hobbies</span>
+          </div>
+          
+        </div>
+        <h2>Try Cloudspotting</h2>
+        <p class="post-card-desc">Cloudspotting, despite what my autocorrect thinks, is a real thing, and I&#39;m here to talk about why I think everybody should try to become just a little bit obsessed with clouds.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/knowledge-should-be-free/" class="post-card" data-tags="knowledge,science,research">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/p6DKgUu.jpeg" alt="Knowledge Should Be Free" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-10-26">26 October 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">knowledge</span><span class="tag">science</span>
+          </div>
+          
+        </div>
+        <h2>Knowledge Should Be Free</h2>
+        <p class="post-card-desc">Scientific knowledge should be free for all. What does this mean?</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/april-showers/" class="post-card" data-tags="weather,climate">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/A0HkQd0.jpeg" alt="April Showers" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-08-10">10 August 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">weather</span><span class="tag">climate</span>
+          </div>
+          
+        </div>
+        <h2>April Showers</h2>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/brief-review-of-the-zeiss-diascope-65t-fl-green/" class="post-card" data-tags="birds,gear,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/5KKoRpe.jpeg" alt="Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-05-17">17 May 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">gear</span>
+          </div>
+          
+        </div>
+        <h2>Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</h2>
+        <p class="post-card-desc">Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/squamish-ebird-data/" class="post-card" data-tags="birds,nature,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/6wj3V55.jpeg" alt="Squamish eBird Data" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-03-16">16 March 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>Squamish eBird Data</h2>
+        <p class="post-card-desc">Squamish eBird Data</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults/" class="post-card" data-tags="environment,nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/jxxUz6b.jpeg" alt="Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-31">31 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">environment</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults</h2>
+        <p class="post-card-desc">This is the report I authored for my master&#39;s degree dissertation. I&#39;m sharing here for those interested in this area of research.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/how-to-buy-a-car-in-bc-canada/" class="post-card" data-tags="canada,guide">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/oiwPNEa.jpeg" alt="How to Buy a Car In British Columbia, Canada" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-25">25 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">guide</span>
+          </div>
+          
+        </div>
+        <h2>How to Buy a Car In British Columbia, Canada</h2>
+        <p class="post-card-desc">How to Buy a Car In British Columbia, Canada</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/how-to-get-a-phone-contract-canada/" class="post-card" data-tags="canada,guide">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/V9XRV4A.jpeg" alt="How to get a Phone Contract in Canada" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-23">23 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">guide</span>
+          </div>
+          
+        </div>
+        <h2>How to get a Phone Contract in Canada</h2>
+        <p class="post-card-desc">How to get a Phone Contract in Canada</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/bald-eagle-age/" class="post-card" data-tags="ageguide,birds,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="How To Tell The Age of a Bald Eagle" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-20">20 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">ageguide</span><span class="tag">birds</span>
+          </div>
+          
+        </div>
+        <h2>How To Tell The Age of a Bald Eagle</h2>
+        <p class="post-card-desc">Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I&#39;ve taken.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/sin-and-bank-account/" class="post-card" data-tags="canada">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/cSUI4MZ.jpeg" alt="Getting an SIN and Bank Account" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-20">20 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span>
+          </div>
+          
+        </div>
+        <h2>Getting an SIN and Bank Account</h2>
+        <p class="post-card-desc">Getting an SIN and Bank Account</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/arriving-in-canada/" class="post-card" data-tags="canada">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/2jQznqY.jpeg" alt="Arriving In Canada" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-12">12 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span>
+          </div>
+          
+        </div>
+        <h2>Arriving In Canada</h2>
+        <p class="post-card-desc">A brief note on my arrival into Canada.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/travelling-to-canada/" class="post-card" data-tags="canada">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/yi0XicL.jpeg" alt="Travelling To Canada" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-01-09">9 January 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span>
+          </div>
+          
+        </div>
+        <h2>Travelling To Canada</h2>
+        <p class="post-card-desc">Travelling To Canada</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/doncasters-hoopoe/" class="post-card" data-tags="birds,doncaster,nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/vfEGkKB.jpeg" alt="Doncaster&#39;s Hoopoe" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-12-22">22 December 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">doncaster</span>
+          </div>
+          
+        </div>
+        <h2>Doncaster&#39;s Hoopoe</h2>
+        <p class="post-card-desc">It&#39;s been a good year for birding in the UK, and there seems to have been no shortage of rarities.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/custom-siril-scripts/" class="post-card" data-tags="astronomy,photography,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/Izkx8aB.jpeg" alt="Custom Siril Scripts for Astrophotography" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-11-21">21 November 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">astronomy</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Custom Siril Scripts for Astrophotography</h2>
+        <p class="post-card-desc">Here is how I use custom Siril Scripts for Astrophotography.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/social-media-dilemma/" class="post-card" data-tags="social media,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Social Media Dilemma" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-08-14">14 August 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">social media</span><span class="tag">tech</span>
+          </div>
+          
+        </div>
+        <h2>Social Media Dilemma</h2>
+        <p class="post-card-desc">An essay on my thoughts about social media with the hope of understanding the problems and solutions better.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/international-tiger-day-2024/" class="post-card" data-tags="environment,internationaltigerday,nature,wildlife">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/BiYriQv.png" alt="International Tiger Day 2024" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-07-29">29 July 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">environment</span><span class="tag">internationaltigerday</span>
+          </div>
+          
+        </div>
+        <h2>International Tiger Day 2024</h2>
+        <p class="post-card-desc">July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/black-winged-pratincole-doncaster-2024/" class="post-card" data-tags="birds,photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/IJUcoJt.jpeg" alt="Black Winged Pratincole Doncaster 2024" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-07-08">8 July 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Black Winged Pratincole Doncaster 2024</h2>
+        <p class="post-card-desc">Read about my experience seeing Doncaster&#39;s Black Winged Pratincole!</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/how-i-process-my-photographs/" class="post-card" data-tags="photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/jo6fK8O.jpeg" alt="How I Process My Photographs" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-05-31">31 May 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>How I Process My Photographs</h2>
+        <p class="post-card-desc">How I Process My Photographs</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/an-open-letter-to-ywp/" class="post-card" data-tags="environment,nature,photography,wildlife">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/1pQK9Zn.jpeg" alt="An Open Letter to YWP" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-05-12">12 May 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">environment</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>An Open Letter to YWP</h2>
+        <p class="post-card-desc">An Open Letter to YWP</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/analogue-photography/" class="post-card" data-tags="analogue,photography,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Analogue Photography" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-05-02">2 May 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">analogue</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Analogue Photography</h2>
+        <p class="post-card-desc">What draws me to analogue photography in 2024?</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/birds-are-musicians/" class="post-card" data-tags="birds,music,nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/rLYIZA3.jpeg" alt="Birds Were the First Musicians" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-29">29 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">music</span>
+          </div>
+          
+        </div>
+        <h2>Birds Were the First Musicians</h2>
+        <p class="post-card-desc">Who were the first musicians? Do birds make music? When was music created? What is music?</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/photographic-life-list/" class="post-card" data-tags="birds,lifelist,nature,photography,wildlife">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/urbFltC.jpeg" alt="Photographic Life List" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-28">28 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">lifelist</span>
+          </div>
+          
+        </div>
+        <h2>Photographic Life List</h2>
+        <p class="post-card-desc">Here is my photographic life list, where I keep track of all the species I&#39;ve photographed well. It&#39;s constantly being updated so check back!</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/are-commercial-photography-hides-acceptable/" class="post-card" data-tags="photography">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/a0xdQzW.jpeg" alt="Are Commercial Photography Hides Acceptable?" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-16">16 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Are Commercial Photography Hides Acceptable?</h2>
+        <p class="post-card-desc">Are Commercial Photography Hides Acceptable?</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/misierere-mei-deus/" class="post-card" data-tags="music">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/Zn891va.jpeg" alt="Misierere Mei, Deus" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-11">11 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">music</span>
+          </div>
+          
+        </div>
+        <h2>Misierere Mei, Deus</h2>
+        <p class="post-card-desc">Even to those who don’t frequent classical music circles let alone those of sacred choral music from the 1600’s, will have heard this music sung in one way or another. Incredibly, this piece was perfo</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/cloudspotting/" class="post-card" data-tags="nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/EyV94Ox.jpeg" alt="Cloudspotting" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-10">10 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>Cloudspotting</h2>
+        
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/canon-r6-crashing-fixed/" class="post-card" data-tags="gear,photography,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/zWS53Em.jpeg" alt="Canon R6 Crashing - Fixed!" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-03-01">1 March 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">gear</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Canon R6 Crashing - Fixed!</h2>
+        <p class="post-card-desc">During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/ecotalk-a-greener-phone-network/" class="post-card" data-tags="tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/6HNhbjt.jpeg" alt="EcoTalk: A Greener Phone Network" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-02-15">15 February 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">tech</span>
+          </div>
+          
+        </div>
+        <h2>EcoTalk: A Greener Phone Network</h2>
+        <p class="post-card-desc">EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/how-to-build-a-wildlife-pond/" class="post-card" data-tags="nature,wildlife">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/KSajmT4.jpeg" alt="" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-02-01">1 February 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">nature</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <h2></h2>
+        <p class="post-card-desc">In spring 2022 I finally decided to build a wildlife pond. Two years on I hoped to reflect on the pond I created and that gave me the idea of writing a blog post about how I created my wildlife pond.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/brief-review-of-the-canon-ef-500mm-f-4-5-l-usm/" class="post-card" data-tags="gear,photography,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/jGPwQ43.jpeg" alt="Brief Review of The Canon EF 500mm f/4.5 L USM" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2023-11-01">1 November 2023</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">gear</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Brief Review of The Canon EF 500mm f/4.5 L USM</h2>
+        <p class="post-card-desc">Brief Review of The Canon EF 500mm f/4.5 L USM</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/camera-recommendations/" class="post-card" data-tags="gear,photography,tech">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/0GszNX9.jpeg" alt="Camera Recommendations" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2023-06-10">10 June 2023</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">gear</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Camera Recommendations</h2>
+        <p class="post-card-desc">Over the years I&#39;ve used a whole range of camera gear from beginner kits to expensive professional grade gear. Many people who are wanting to get a start in photography, or upgrade their existing gear</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/blog/film-photography/" class="post-card" data-tags="film-photography,photography,dark-room">
+      <div class="post-card-img">
+        
+        <div class="post-card-placeholder" style="width: 100%; height: 100%; background: var(--color-surface);"></div>
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2022-12-10">10 December 2022</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">film-photography</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <h2>Film Photography</h2>
+        <p class="post-card-desc">In 2022, a family member very kindly handed me a camera bag filed with camera gear from a past era. This was aZenit-11, a chunky SLR produced in the USSR. This is a reflection on my personal adventure into film photography.</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/northern-lights/" class="post-card" data-tags="astronomy,nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/9DONEvA.jpeg" alt="Northern Lights in Doncaster!" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2022-09-23">23 September 2022</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">astronomy</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>Northern Lights in Doncaster!</h2>
+        <p class="post-card-desc">n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!</p>
+      </div>
+    </a>
+    
+    <a href="/niallscavev2/the-waste-hierarchy/" class="post-card" data-tags="environment,nature">
+      <div class="post-card-img">
+        
+        <img src="https://i.imgur.com/6zfWazY.jpeg" alt="The Waste Hierarchy" loading="lazy">
+        
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2022-08-28">28 August 2022</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">environment</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <h2>The Waste Hierarchy</h2>
+        <p class="post-card-desc">The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.</p>
+      </div>
+    </a>
+    
+  </div>
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const grid = document.getElementById('post-grid');
+      if (!grid) return;
+      const postCards = grid.querySelectorAll('.post-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) return;
+
+          const filter = btn.getAttribute('data-filter');
+          
+          // Start fade out ONLY on grid
+          grid.classList.add('filtering');
+
+          setTimeout(() => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter cards inside the grid
+            postCards.forEach(card => {
+              const tagsAttr = card.getAttribute('data-tags');
+              const tags = tagsAttr ? tagsAttr.split(',') : [];
+              const isMatch = filter === 'all' || tags.includes(filter);
+              card.style.display = isMatch ? 'flex' : 'none';
+            });
+
+            // Trigger fade in
+            grid.classList.remove('filtering');
+          }, 300);
+        });
+      });
+    });
+  </script>
+</div>
 
 </div>
 
@@ -519,14 +1059,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {

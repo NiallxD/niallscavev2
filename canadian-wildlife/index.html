@@ -9,86 +9,328 @@
   <meta property="og:description" content="As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.">
   <meta property="og:image" content="https://i.imgur.com/ZszeHtH.jpeg">
   <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
   
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/niallscavev2/">
         <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
         <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav>
-        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/photography/">Photography</a>
-        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/blog/">Writing</a>
         <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
         <a href="/niallscavev2/about-me/">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </nav>
     </div>
   </header>
 
   <main>
     
-<div class="page-cover-wrap">
-  <img class="page-cover" src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife">
-</div>
-
 <div class="constrained-wide">
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Canadian Wildlife</h1>
+    <p class="home-intro">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</p>
+  </section>
+</div>
 
 
 <article class="gallery-page">
-  <header class="page-header">
-    <h1>Canadian Wildlife</h1>
+  
+
+  <div class="gallery-body">
+    <p class="section-label">Gallery</p>
     
-    <div class="post-meta">
-      <span class="tag">nature</span><span class="tag">photography</span><span class="tag">landscape</span><span class="tag">canada</span><span class="tag">wildlife</span>
+    
+    
+    <div class="gallery-slideshow-container no-bg">
+      <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Photo 1 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Photo 1 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/CW3370x.jpeg" alt="Photo 2 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/CW3370x.jpeg" alt="Photo 2 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/T3WvTgV.jpeg" alt="Photo 3 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/T3WvTgV.jpeg" alt="Photo 3 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/SIqOtek.jpeg" alt="Photo 4 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/SIqOtek.jpeg" alt="Photo 4 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/wQXtuTs.jpeg" alt="Photo 5 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/wQXtuTs.jpeg" alt="Photo 5 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/N6R0VAH.jpeg" alt="Photo 6 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/N6R0VAH.jpeg" alt="Photo 6 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/CL08pFI.jpeg" alt="Photo 7 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/CL08pFI.jpeg" alt="Photo 7 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Dd5ohXb.jpeg" alt="Photo 8 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/Dd5ohXb.jpeg" alt="Photo 8 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/EEyhdcK.jpeg" alt="Photo 9 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/EEyhdcK.jpeg" alt="Photo 9 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/3pTrHbO.jpeg" alt="Photo 10 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/3pTrHbO.jpeg" alt="Photo 10 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/tnQPCeT.jpeg" alt="Photo 11 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/tnQPCeT.jpeg" alt="Photo 11 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <div class="gallery-pagination swiper-pagination"></div>
+
+      <div id="gallery-caption-area" class="gallery-caption-external">
+        <h3 id="slide-title"></h3>
+        <p id="slide-desc"></p>
+      </div>
     </div>
+
+    <script>
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/ZszeHtH.jpeg","title":"Photo 1 (1)","caption":"<p><a href=\"https://i.imgur.com/ZszeHtH.jpeg\">https://i.imgur.com/ZszeHtH.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/ZszeHtH.jpeg","title":"Photo 1 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/CW3370x.jpeg","title":"Photo 2 (1)","caption":"<p><a href=\"https://i.imgur.com/CW3370x.jpeg\">https://i.imgur.com/CW3370x.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/CW3370x.jpeg","title":"Photo 2 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/T3WvTgV.jpeg","title":"Photo 3 (1)","caption":"<p><a href=\"https://i.imgur.com/T3WvTgV.jpeg\">https://i.imgur.com/T3WvTgV.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/T3WvTgV.jpeg","title":"Photo 3 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/SIqOtek.jpeg","title":"Photo 4 (1)","caption":"<p><a href=\"https://i.imgur.com/SIqOtek.jpeg\">https://i.imgur.com/SIqOtek.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/SIqOtek.jpeg","title":"Photo 4 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/wQXtuTs.jpeg","title":"Photo 5 (1)","caption":"<p><a href=\"https://i.imgur.com/wQXtuTs.jpeg\">https://i.imgur.com/wQXtuTs.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/wQXtuTs.jpeg","title":"Photo 5 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/N6R0VAH.jpeg","title":"Photo 6 (1)","caption":"<p><a href=\"https://i.imgur.com/N6R0VAH.jpeg\">https://i.imgur.com/N6R0VAH.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/N6R0VAH.jpeg","title":"Photo 6 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/CL08pFI.jpeg","title":"Photo 7 (1)","caption":"<p><a href=\"https://i.imgur.com/CL08pFI.jpeg\">https://i.imgur.com/CL08pFI.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/CL08pFI.jpeg","title":"Photo 7 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Dd5ohXb.jpeg","title":"Photo 8 (1)","caption":"<p><a href=\"https://i.imgur.com/Dd5ohXb.jpeg\">https://i.imgur.com/Dd5ohXb.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Dd5ohXb.jpeg","title":"Photo 8 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/EEyhdcK.jpeg","title":"Photo 9 (1)","caption":"<p><a href=\"https://i.imgur.com/EEyhdcK.jpeg\">https://i.imgur.com/EEyhdcK.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/EEyhdcK.jpeg","title":"Photo 9 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/3pTrHbO.jpeg","title":"Photo 10 (1)","caption":"<p><a href=\"https://i.imgur.com/3pTrHbO.jpeg\">https://i.imgur.com/3pTrHbO.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/3pTrHbO.jpeg","title":"Photo 10 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/tnQPCeT.jpeg","title":"Photo 11 (1)","caption":"<p><a href=\"https://i.imgur.com/tnQPCeT.jpeg\">https://i.imgur.com/tnQPCeT.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/tnQPCeT.jpeg","title":"Photo 11 (2)","caption":""}];
+    </script>
     
-    <p class="page-lead">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</p>
-  </header>
-  <div class="gallery-body"><div class="gallery">
-    <a href="https://i.imgur.com/ZszeHtH.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Image 1" width="300">
-    </a>
-    <a href="https://i.imgur.com/CW3370x.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/CW3370x.jpeg" alt="Image 2" width="300">
-    </a>
-    <a href="https://i.imgur.com/T3WvTgV.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/T3WvTgV.jpeg" alt="Image 3" width="300">
-    </a>
-    <a href="https://i.imgur.com/SIqOtek.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/SIqOtek.jpeg" alt="Image 4" width="300">
-    </a>
-    <a href="https://i.imgur.com/wQXtuTs.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/wQXtuTs.jpeg" alt="Image 5" width="300">
-    </a>
-    <a href="https://i.imgur.com/N6R0VAH.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/N6R0VAH.jpeg" alt="Image 6" width="300">
-    </a>
-    <a href="https://i.imgur.com/CL08pFI.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/CL08pFI.jpeg" alt="Image 7" width="300">
-    </a>
-    <a href="https://i.imgur.com/Dd5ohXb.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/Dd5ohXb.jpeg" alt="Image 8" width="300">
-    </a>
-    <a href="https://i.imgur.com/EEyhdcK.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/EEyhdcK.jpeg" alt="Image 9" width="300">
-    </a>
-    <a href="https://i.imgur.com/3pTrHbO.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/3pTrHbO.jpeg" alt="Image 10" width="300">
-    </a>
-    <a href="https://i.imgur.com/tnQPCeT.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/tnQPCeT.jpeg" alt="Image 11" width="300">
-    </a>
+
+    
+    <div style="display: none;"><h2>Photo 1</h2>
+<p><a href="https://i.imgur.com/ZszeHtH.jpeg">https://i.imgur.com/ZszeHtH.jpeg</a></p>
+<h2>Photo 2</h2>
+<p><a href="https://i.imgur.com/CW3370x.jpeg">https://i.imgur.com/CW3370x.jpeg</a></p>
+<h2>Photo 3</h2>
+<p><a href="https://i.imgur.com/T3WvTgV.jpeg">https://i.imgur.com/T3WvTgV.jpeg</a></p>
+<h2>Photo 4</h2>
+<p><a href="https://i.imgur.com/SIqOtek.jpeg">https://i.imgur.com/SIqOtek.jpeg</a></p>
+<h2>Photo 5</h2>
+<p><a href="https://i.imgur.com/wQXtuTs.jpeg">https://i.imgur.com/wQXtuTs.jpeg</a></p>
+<h2>Photo 6</h2>
+<p><a href="https://i.imgur.com/N6R0VAH.jpeg">https://i.imgur.com/N6R0VAH.jpeg</a></p>
+<h2>Photo 7</h2>
+<p><a href="https://i.imgur.com/CL08pFI.jpeg">https://i.imgur.com/CL08pFI.jpeg</a></p>
+<h2>Photo 8</h2>
+<p><a href="https://i.imgur.com/Dd5ohXb.jpeg">https://i.imgur.com/Dd5ohXb.jpeg</a></p>
+<h2>Photo 9</h2>
+<p><a href="https://i.imgur.com/EEyhdcK.jpeg">https://i.imgur.com/EEyhdcK.jpeg</a></p>
+<h2>Photo 10</h2>
+<p><a href="https://i.imgur.com/3pTrHbO.jpeg">https://i.imgur.com/3pTrHbO.jpeg</a></p>
+<h2>Photo 11</h2>
+<p><a href="https://i.imgur.com/tnQPCeT.jpeg">https://i.imgur.com/tnQPCeT.jpeg</a></p>
 </div>
-</div>
+    
+  </div>
 </article>
 
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const titleEl = document.getElementById('slide-title');
+  const descEl = document.getElementById('slide-desc');
+  const captionArea = document.getElementById('gallery-caption-area');
+
+  const updateCaption = (index) => {
+    if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+    const data = galleryData[index];
+    
+    titleEl.textContent = data.title || "";
+    descEl.innerHTML = data.caption || "";
+    
+    // Hide container if both empty
+    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+  };
+
+  const swiper = new Swiper('.gallery-swiper', {
+    loop: true,
+    keyboard: { enabled: true },
+    speed: 600,
+    pagination: { 
+      el: '.gallery-pagination', 
+      type: 'fraction',
+      renderFraction: function (currentClass, totalClass) {
+        return '<span class="' + currentClass + '"></span>' +
+               ' <span class="fraction-sep">of</span> ' +
+               '<span class="' + totalClass + '"></span>';
+      }
+    },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    on: {
+      init: function () {
+        updateCaption(this.realIndex);
+      },
+      slideChange: function () {
+        updateCaption(this.realIndex);
+      }
+    }
+  });
+</script>
 
 </div>
 
@@ -96,14 +338,52 @@
 
   <footer class="site-footer">
     <div class="site-footer-inner">
-      <span>© 2025 Niall Bell</span>
-      <div class="footer-links">
-        <a href="mailto:niall@niallbell.com">Email</a>
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/niallscavev2/">
+          <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list">
+          <a href="/niallscavev2/photography/">Photography</a>
+          <a href="/niallscavev2/blog/">Writing</a>
+          <a href="/niallscavev2/side-projects/">Projects</a>
+          <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+          <a href="/niallscavev2/about-me/">About</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorized use.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
     const header = document.querySelector('.site-header');
     const onScroll = () => {
       if (window.scrollY > 10) {
