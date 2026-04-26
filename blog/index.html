@@ -144,81 +144,89 @@
 
   <p class="section-label">All Writing</p>
   
-  <div class="filter-cloud">
-    <button class="filter-btn active" data-filter="all">All</button>
-    
-    <button class="filter-btn" data-filter="ageguide">ageguide</button>
-    
-    <button class="filter-btn" data-filter="ai">ai</button>
-    
-    <button class="filter-btn" data-filter="analogue">analogue</button>
-    
-    <button class="filter-btn" data-filter="artificial-intelligence">artificial-intelligence</button>
-    
-    <button class="filter-btn" data-filter="astronomy">astronomy</button>
-    
-    <button class="filter-btn" data-filter="authenticity">authenticity</button>
-    
-    <button class="filter-btn" data-filter="birds">birds</button>
-    
-    <button class="filter-btn" data-filter="canada">canada</button>
-    
-    <button class="filter-btn" data-filter="climate">climate</button>
-    
-    <button class="filter-btn" data-filter="cloudspotting">cloudspotting</button>
-    
-    <button class="filter-btn" data-filter="critical-thinking">critical-thinking</button>
-    
-    <button class="filter-btn" data-filter="dark-room">dark-room</button>
-    
-    <button class="filter-btn" data-filter="doncaster">doncaster</button>
-    
-    <button class="filter-btn" data-filter="environment">environment</button>
-    
-    <button class="filter-btn" data-filter="film-photography">film-photography</button>
-    
-    <button class="filter-btn" data-filter="gear">gear</button>
-    
-    <button class="filter-btn" data-filter="guide">guide</button>
-    
-    <button class="filter-btn" data-filter="hobbies">hobbies</button>
-    
-    <button class="filter-btn" data-filter="internationaltigerday">internationaltigerday</button>
-    
-    <button class="filter-btn" data-filter="knowledge">knowledge</button>
-    
-    <button class="filter-btn" data-filter="lifelist">lifelist</button>
-    
-    <button class="filter-btn" data-filter="llm">llm</button>
-    
-    <button class="filter-btn" data-filter="meteorology">meteorology</button>
-    
-    <button class="filter-btn" data-filter="music">music</button>
-    
-    <button class="filter-btn" data-filter="nature">nature</button>
-    
-    <button class="filter-btn" data-filter="on-life">on-life</button>
-    
-    <button class="filter-btn" data-filter="photography">photography</button>
-    
-    <button class="filter-btn" data-filter="research">research</button>
-    
-    <button class="filter-btn" data-filter="science">science</button>
-    
-    <button class="filter-btn" data-filter="social media">social media</button>
-    
-    <button class="filter-btn" data-filter="tech">tech</button>
-    
-    <button class="filter-btn" data-filter="the-self">the-self</button>
-    
-    <button class="filter-btn" data-filter="values">values</button>
-    
-    <button class="filter-btn" data-filter="virtues">virtues</button>
-    
-    <button class="filter-btn" data-filter="weather">weather</button>
-    
-    <button class="filter-btn" data-filter="wildlife">wildlife</button>
-    
+  <div class="filter-container">
+    <div class="filter-cloud collapsed" id="filter-cloud">
+      <button class="filter-btn active" data-filter="all">All</button>
+      
+      <button class="filter-btn" data-filter="ageguide">ageguide</button>
+      
+      <button class="filter-btn" data-filter="ai">ai</button>
+      
+      <button class="filter-btn" data-filter="analogue">analogue</button>
+      
+      <button class="filter-btn" data-filter="artificial-intelligence">artificial-intelligence</button>
+      
+      <button class="filter-btn" data-filter="astronomy">astronomy</button>
+      
+      <button class="filter-btn" data-filter="authenticity">authenticity</button>
+      
+      <button class="filter-btn" data-filter="birds">birds</button>
+      
+      <button class="filter-btn" data-filter="canada">canada</button>
+      
+      <button class="filter-btn" data-filter="climate">climate</button>
+      
+      <button class="filter-btn" data-filter="cloudspotting">cloudspotting</button>
+      
+      <button class="filter-btn" data-filter="critical-thinking">critical-thinking</button>
+      
+      <button class="filter-btn" data-filter="dark-room">dark-room</button>
+      
+      <button class="filter-btn" data-filter="doncaster">doncaster</button>
+      
+      <button class="filter-btn" data-filter="environment">environment</button>
+      
+      <button class="filter-btn" data-filter="film-photography">film-photography</button>
+      
+      <button class="filter-btn" data-filter="gear">gear</button>
+      
+      <button class="filter-btn" data-filter="guide">guide</button>
+      
+      <button class="filter-btn" data-filter="hobbies">hobbies</button>
+      
+      <button class="filter-btn" data-filter="internationaltigerday">internationaltigerday</button>
+      
+      <button class="filter-btn" data-filter="knowledge">knowledge</button>
+      
+      <button class="filter-btn" data-filter="lifelist">lifelist</button>
+      
+      <button class="filter-btn" data-filter="llm">llm</button>
+      
+      <button class="filter-btn" data-filter="meteorology">meteorology</button>
+      
+      <button class="filter-btn" data-filter="music">music</button>
+      
+      <button class="filter-btn" data-filter="nature">nature</button>
+      
+      <button class="filter-btn" data-filter="on-life">on-life</button>
+      
+      <button class="filter-btn" data-filter="photography">photography</button>
+      
+      <button class="filter-btn" data-filter="research">research</button>
+      
+      <button class="filter-btn" data-filter="science">science</button>
+      
+      <button class="filter-btn" data-filter="social media">social media</button>
+      
+      <button class="filter-btn" data-filter="tech">tech</button>
+      
+      <button class="filter-btn" data-filter="the-self">the-self</button>
+      
+      <button class="filter-btn" data-filter="values">values</button>
+      
+      <button class="filter-btn" data-filter="virtues">virtues</button>
+      
+      <button class="filter-btn" data-filter="weather">weather</button>
+      
+      <button class="filter-btn" data-filter="wildlife">wildlife</button>
+      
+    </div>
+    <div class="show-more-wrapper" id="show-more-wrapper">
+      <button class="show-more-btn" id="show-more-btn">
+        <span>MORE TAGS</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
   </div>
 
   
@@ -1025,8 +1033,43 @@
     document.addEventListener('DOMContentLoaded', () => {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const grid = document.getElementById('post-grid');
+      const filterCloud = document.getElementById('filter-cloud');
+      const showMoreBtn = document.getElementById('show-more-btn');
+      const showMoreWrapper = document.getElementById('show-more-wrapper');
+      
       if (!grid) return;
       const postCards = grid.querySelectorAll('.post-card');
+
+      // Check if "More" button is needed
+      const checkOverflow = () => {
+        if (!filterCloud) return;
+        if (filterCloud.scrollHeight > filterCloud.clientHeight + 5) {
+          showMoreWrapper.style.display = 'flex';
+        } else if (!filterCloud.classList.contains('collapsed')) {
+          filterCloud.classList.add('collapsed');
+          const wouldOverflow = filterCloud.scrollHeight > filterCloud.clientHeight + 5;
+          filterCloud.classList.remove('collapsed');
+          if (!wouldOverflow) showMoreWrapper.style.display = 'none';
+        } else {
+          showMoreWrapper.style.display = 'none';
+        }
+      };
+
+      checkOverflow();
+      window.addEventListener('resize', checkOverflow);
+
+      showMoreBtn.addEventListener('click', () => {
+        const isCollapsed = filterCloud.classList.contains('collapsed');
+        if (isCollapsed) {
+          filterCloud.style.maxHeight = filterCloud.scrollHeight + 'px';
+          filterCloud.classList.remove('collapsed');
+        } else {
+          filterCloud.style.maxHeight = '74px';
+          filterCloud.classList.add('collapsed');
+        }
+        showMoreBtn.classList.toggle('expanded', isCollapsed);
+        showMoreBtn.querySelector('span').textContent = isCollapsed ? 'FEWER TAGS' : 'MORE TAGS';
+      });
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
