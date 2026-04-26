@@ -7,45 +7,45 @@
   <meta name="description" content="I&#39;ve always found buildings fascinating from the Roman Colosseum to the Baroque-style Schoenbrunn Palace and the Art Nouveau Hunterwassserhaus to the Victorian Gothic Chhatrapati Shivaji and Vienna&#39;s St Stephens Cathedral. There are so many style and interpretations, often executed to precision, it&#39;s hard not to look at these masterpieces in awe of the ability of construction in times past.">
   <meta property="og:title" content="Architecture — Niall Bell">
   <meta property="og:description" content="I&#39;ve always found buildings fascinating from the Roman Colosseum to the Baroque-style Schoenbrunn Palace and the Art Nouveau Hunterwassserhaus to the Victorian Gothic Chhatrapati Shivaji and Vienna&#39;s St Stephens Cathedral. There are so many style and interpretations, often executed to precision, it&#39;s hard not to look at these masterpieces in awe of the ability of construction in times past.">
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/uk-wildlife-nature-photos/architecture/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <meta property="og:image" content="https://i.imgur.com/5SyCzbU.jpg">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <article>
-  <div class="prose">
-    <header class="post-header">
-      <h1>Architecture</h1>
-      <div class="post-meta">
-        
-        
-          
-            <span class="tag">photography</span>
-          
-            <span class="tag">architecture</span>
-          
-        
-      </div>
-    </header>
-
     
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/5SyCzbU.jpg" alt="Architecture">
+</div>
 
-    <div class="post-content">
-      <p>#architecture #photography</p>
-<h1>Architecture</h1>
-<p>I've always found buildings fascinating from the Roman Colosseum to the Baroque-style Schoenbrunn Palace and the Art Nouveau Hunterwassserhaus to the Victorian Gothic Chhatrapati Shivaji and Vienna's St Stephens Cathedral. There are so many style and interpretations, often executed to precision, it's hard not to look at these masterpieces in awe of the ability of construction in times past.</p>
-<br>
-<div class="gallery">
+<div class="constrained-wide">
+  
+
+<div class="standard-page">
+  
+  <div class="listing-header">
+    <h1>Architecture</h1>
+    
+    <p class="page-lead">I&#39;ve always found buildings fascinating from the Roman Colosseum to the Baroque-style Schoenbrunn Palace and the Art Nouveau Hunterwassserhaus to the Victorian Gothic Chhatrapati Shivaji and Vienna&#39;s St Stephens Cathedral. There are so many style and interpretations, often executed to precision, it&#39;s hard not to look at these masterpieces in awe of the ability of construction in times past.</p>
+  </div>
+  
+  <div class="post-content"><div class="gallery">
     <a href="https://i.imgur.com/N9qxSkz.jpeg" data-fancybox="gallery">
         <img src="https://i.imgur.com/N9qxSkz.jpeg" alt="Image 1" width="300">
     </a>
@@ -78,30 +78,33 @@
     </a>
 <p><!-- Add more images as needed --></p>
 </div>
-<h2>Similar Galleries:</h2>
-<p>Here are some similar galleries you may enjoy:</p>
-<p>[[3.1.4.1 - Photomicrography]]
-[[3.1.4.2 - Film Photography]]
-[[3.1.4.3 - Astrophotography]]
-[[3.1.4.4 - Street Photography]]
-[[3.1.4.6 - Drone Photography]]
-[[3.1.4.7 - The Zoo]]
-[[3.1.4.8 - Environments]]
-[[3.1.5.1 - 360 Panorama]]</p>
-<hr>
-<p>Created by Niall Bell (niall@niallbell.com)</p>
+</div>
+</div>
 
-    </div>
-  </div>
-</article>
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

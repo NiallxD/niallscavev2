@@ -7,54 +7,76 @@
   
   <meta property="og:title" content="A Mothers Love — Niall Bell">
   
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/a-mothers-love/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <meta property="og:image" content="https://i.imgur.com/hpoQKL9.png">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <article>
-  <div class="prose">
+    
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/hpoQKL9.png" alt="A Mothers Love">
+</div>
+
+<div class="constrained-wide">
+  <article class="post">
+  <div class="post-body">
     <header class="post-header">
       <h1>A Mothers Love</h1>
       <div class="post-meta">
-        
+        <time datetime="2023-04-18">18 April 2023</time>
         
       </div>
     </header>
-
-    
-
     <div class="post-content">
-      <p>#wildlife #nature #photography #photostory</p>
-<h1>A Mothers Love</h1>
-<p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
-<p><img src="https://i.imgur.com/hpoQKL9.png" alt=""></p>
-<p>Female [[3.1.2.4 - Grey Seal|grey seal]] are known for the remarkably strong but fragile bond they form with their pups. This bond is the sole emotional subject of this image.</p>
-<p>I’ve seen this behavior many times before but this time it was special. Mum and pup were sharing a moment that had I not been there, would have been hidden from the world. I was sure not to disturb them at such a critical stage in the season.</p>
-<hr>
-<p>Created by Niall Bell (niall@niallbell.com)</p>
 
-    </div>
+<p><img src="https://i.imgur.com/hpoQKL9.png" alt=""></p>
+<p>Female <a href="/uk-wildlife-nature-photos/grey-seal/" class="wikilink">grey seal</a> are known for the remarkably strong but fragile bond they form with their pups. This bond is the sole emotional subject of this image.</p>
+<p>I’ve seen this behavior many times before but this time it was special. Mum and pup were sharing a moment that had I not been there, would have been hidden from the world. I was sure not to disturb them at such a critical stage in the season.</p>
+</div>
   </div>
 </article>
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

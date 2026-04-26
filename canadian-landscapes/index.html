@@ -7,50 +7,49 @@
   <meta name="description" content="This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.">
   <meta property="og:title" content="Canadian Landscapes — Niall Bell">
   <meta property="og:description" content="This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.">
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/canadian-landscapes/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <meta property="og:image" content="https://i.imgur.com/eH05uEo.jpeg">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+    
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/eH05uEo.jpeg" alt="Canadian Landscapes">
+</div>
 
-<article>
-  <header class="gallery-header">
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+
+
+<article class="gallery-page">
+  <header class="page-header">
     <h1>Canadian Landscapes</h1>
     
     <div class="post-meta">
-      
-        <span class="tag">nature</span>
-      
-        <span class="tag">photography</span>
-      
-        <span class="tag">landscape</span>
-      
-        <span class="tag">canada</span>
-      
+      <span class="tag">nature</span><span class="tag">photography</span><span class="tag">landscape</span><span class="tag">canada</span>
     </div>
     
-    
-    <p class="gallery-description">This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.</p>
-    
+    <p class="page-lead">This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.</p>
   </header>
-
-  <div class="gallery-body">
-    <p>#nature #photography #landscape #canda</p>
-<h1>Canadian Landscapes</h1>
-<p>I'm definitely not a landscape photography by any means, but I do enjoy photographing the landscapes I see on my travels. This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a 'mountainscape'. Please enjoy!</p>
-<br>
-<div class="gallery">
+  <div class="gallery-body"><div class="gallery">
     <a href="https://i.imgur.com/jB5jkMT.jpeg" data-fancybox="gallery">
         <img src="https://i.imgur.com/jB5jkMT.jpeg" alt="Image 1" width="300">
     </a>
@@ -91,22 +90,36 @@
         <img src="https://i.imgur.com/99nAV46.jpeg" alt="Image 13" width="300">
     </a>
 </div>
-<hr>
-<p>Created by Niall Bell (niall@niallbell.com)</p>
-
-  </div>
+</div>
 </article>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false });</script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

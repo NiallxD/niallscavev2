@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Siril Scripts for Astrophotography — Niall Bell</title>
+  <meta name="description" content="Here is how I use custom Siril Scripts for Astrophotography.">
+  <meta property="og:title" content="Custom Siril Scripts for Astrophotography — Niall Bell">
+  <meta property="og:description" content="Here is how I use custom Siril Scripts for Astrophotography.">
+  <meta property="og:image" content="https://i.imgur.com/Izkx8aB.jpeg">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/Izkx8aB.jpeg" alt="Custom Siril Scripts for Astrophotography">
+</div>
+
+<div class="constrained-wide">
+  <article class="post">
+  <div class="post-body">
+    <header class="post-header">
+      <h1>Custom Siril Scripts for Astrophotography</h1>
+      <div class="post-meta">
+        <time datetime="2024-11-21">21 November 2024</time>
+        
+          <span class="tag">Tech</span><span class="tag">astrophotography</span><span class="tag">Siril</span><span class="tag">imageprocessing</span>
+        
+      </div>
+    </header>
+    <div class="post-content">
+<div class="callout callout-note"><div class="callout-title">Disclaimer</div><div class="callout-body"><p>I’m definitely not an expert when it comes to astrophotography. What I am is a proponent of sharing learnings, and sometimes when you’re just starting out it’s nice to hear from others at your level. So if you’re like me and just getting stuck into Siril for astrophotography, this might be useful.</p></div></div>
+<h2>What to Expect</h2>
+<p>This post will run through some of the custom scripts that I have created to speed up my processing workflow, take away some of the labour involved, and allow for consistent processing. I’ll share a bit about why I use the scripts I do, and why I’ve made them do what they do. I’ll try add something about how to configure them if you choose to use them.</p>
+<p>I wont be going into depth about how to add custom scripts to Siril, nor will I go too deep into exactly how custom scripting works. Siril provides good documentation <a href="https://siril.readthedocs.io/en/latest/Scripts.html">here</a>. There is also loads on YouTube about this.</p>
+<h2>My Workflow</h2>
+<p>Firstly, I wanted to share my workflow. This is imporant as it is key to why I used the scripts I do.</p>
+<ol>
+<li>Shoot the sky.</li>
+<li>Copy the raw files (this includes the calibration files) to folders on my hard drive.</li>
+<li>Load the photos into CaptureOne to cull the really dreadfully bad ones.</li>
+<li>Load up Siril and use my Preprocessing Script (Preprocessing v1.1).</li>
+<li>Then I manually process the image using:
+<ol>
+<li>Photometric Colour Calibration.</li>
+<li>Background Extraction.</li>
+<li>Green Noise Removal.</li>
+<li>GraXpert for noise removal (Siril v1.4 will provide a GUI for this like StarNet!).</li>
+</ol>
+</li>
+<li>Next I remove the Stars with <a href="https://madscientistguy.com/astrophotography/how-to-add-starnet-star-removal-tool-to-siril/">StarNet</a> (I followed this guide to add to Siril).</li>
+<li>Stretch in Siril and export as Tiff.</li>
+<li>Then I edit the starless version in Affinity Photo for colour and exposure.</li>
+<li>Bring back into Siril to recombine with the star map.</li>
+<li>Final tweaks in Affinity.</li>
+</ol>
+<p>The scripting is simply to get a nice stack to work with.</p>
+<h2>Preprocessing v1.1 Script</h2>
+<p>This is my custom Preprocessing Script. You can copy and past this into a text file, save with the extension .ssf, and then load into Siril as per the guide I linked above.</p>
+<p><strong>Note:</strong> I tend to capture over 75 frames per stack so these scripts are optimised for that. If you capture and stack less, you might be better off using Winsorized Sigma Clipping. To do so, replace the “Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65” with the lines below:</p>
+<pre><code># Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65
+stack r_pp_light rej 3 3 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked
+</code></pre>
+<h3>Main Preprocessing script with calibration:</h3>
+<pre><code>############################################
+#                                          #
+# Script for Siril 1.2.0 (1.2.4)           #
+# Updated: November 2024                   #
+# Author: Niall Bell (niallbell.com)       #
+# Script Name: Preprocessing v1.1          #
+#                                          #
+########### PREPROCESSING SCRIPT ###########
+#                                          #
+# Script for colour camera preprocessing   #
+#                                          #
+# Requires 4 sets of RAW images in the     #
+# working directory, within 4 directories: #
+# - biases/                                #
+# - flats/                                 #
+# - darks/                                 #
+# - lights/                                #
+#                                          #
+#  Process files are stored on the SSD in  #
+#       the documents folder those         #
+#  speed up processing. Delete after use.  #
+#                                          #
+############ PREPROCESSING STEPS ###########
+#                                          #
+# 1. Convert the Bias, Flat, Dark, and     #
+#    Light frames to .fits                 #
+# 2. Stack the Bias frames.                #
+# 3. Calibrate the Flat frames with those  #
+#    stacked Bias.                         #
+# 4. Stack the Flat frames.                #
+# 5. Stack the Dark frames.                #
+# 6. Calibrate the Light frames with the   #
+#    stacked Darks and Flats.              #
+# 7. Align (register) the Light frames.    #
+# 8. Stack the registered Light frames     #
+#    rejecting poor quality images.        #
+#                                          #
+############################################
+
+# Requires at least Siril 1.2.0
+requires 1.2.0
+
+# Convert Bias Frames to .fit files
+cd biases
+convert bias -out=/Users/niallbell/siril/Processing/biases_fits
+cd ..
+
+# Convert Flat Frames to .fit files
+cd flats
+convert flat -out=/Users/niallbell/siril/Processing/flats_fits
+cd ..
+
+# Convert Dark Frames to .fit files
+cd darks
+convert dark -out=/Users/niallbell/siril/Processing/darks_fits
+cd ..
+
+# Convert Light Frames to .fit files
+cd lights
+convert light -out=/Users/niallbell/siril/Processing/lights_fits
+cd ..
+
+# Stack Bias Frames to bias_stacked.fit
+cd /Users/niallbell/siril/Processing/biases_fits
+stack bias rej 3 3 -nonorm -out=../export/masters/bias_stacked
+cd ..
+
+# Calibrate Flat Frames
+cd /Users/niallbell/siril/Processing/flats_fits
+calibrate flat -bias=../export/masters/bias_stacked
+
+# Stack Flat Frames to pp_flat_stacked.fit
+cd /Users/niallbell/siril/Processing/flats_fits
+stack pp_flat rej 3 3 -norm=mul -out=../export/masters/pp_flat_stacked
+cd ..
+
+# Stack Dark Frames to dark_stacked.fit
+cd /Users/niallbell/siril/Processing/darks_fits
+stack dark rej 3 3 -nonorm -out=../export/masters/dark_stacked
+cd ..
+
+# Calibrate Light Frames
+cd /Users/niallbell/siril/Processing/lights_fits
+calibrate light -dark=../export/masters/dark_stacked -flat=../export/masters/pp_flat_stacked -cc=dark -cfa -equalize_cfa -debayer
+
+# Align lights
+register pp_light
+
+# Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65
+stack r_pp_light rej g 0.3 0.05 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked
+
+# Load the final stacked file into Siril.
+cd ../export/
+load final_stacked.fit
+
+############ PROCESSING COMPLETE ###########
+#                                          #
+# DO NOT FORGET TO COPY THE FINAL STACKED  #
+#      IMAGE INTO A SAFE LOCATION!!!       #
+#                                          #
+#  ============== WARNING: ==============  #
+#                                          #
+#      RUNNING THIS SCRIPT AGAIN WILL      #
+#    OVERWRITE ANY EXISTING FILES SAVED    #
+#         IN THE PROCESS FOLDER!!!         #
+#                                          #
+############################################
+</code></pre>
+<h2>Script Explained</h2>
+<p>I’ve chopped out the header and footer and I’ll explain each section.</p>
+<pre><code># Requires at least Siril 1.2.0
+requires 1.2.0
+</code></pre>
+<p>All this bit does is tells Siril which version of Siril is needed for the script to run. So as long as you have version 1.2.0 or higher you’re golden.</p>
+<pre><code># Convert Bias Frames to .fit files
+cd biases
+convert bias -out=/Users/niallbell/siril/Processing/biases_fits
+cd ..
+
+# Convert Flat Frames to .fit files
+cd flats
+convert flat -out=/Users/niallbell/siril/Processing/flats_fits
+cd ..
+
+# Convert Dark Frames to .fit files
+cd darks
+convert dark -out=/Users/niallbell/siril/Processing/darks_fits
+cd ..
+
+# Convert Light Frames to .fit files
+cd lights
+convert light -out=/Users/niallbell/siril/Processing/lights_fits
+cd ..
+</code></pre>
+<p>This section converts the Lights, Darks, Biases, and Flats into .fits files. It also creates the necessary sequence files for the next steps. I have configured this to store the files in my files stored on my SSD inside my MacBook. I found this gives me a boost in performance, and it keeps all of the process files (the intermediate .fits files that Siril creates) in one place, so that I can easily delete them without worry of deleting something important!</p>
+<p>There is a note at the bottom of the script reminding me to copy the final result along with master calibration frames, onto my main hard drive.</p>
+<pre><code># Stack Bias Frames to bias_stacked.fit
+cd /Users/niallbell/siril/Processing/biases_fits
+stack bias rej 3 3 -nonorm -out=../export/masters/bias_stacked
+cd ..
+
+# Calibrate Flat Frames
+cd /Users/niallbell/siril/Processing/flats_fits
+calibrate flat -bias=../export/masters/bias_stacked
+</code></pre>
+<p>Here we stack the Bias Frames and use those to calibrate the Flat Frames.</p>
+<p><em>I’m in the process of testing wether to use a more advanced stacking process here such as the one used when stacking the lights. I’ll update if I find it works well.</em></p>
+<pre><code># Stack Flat Frames to pp_flat_stacked.fit
+cd /Users/niallbell/siril/Processing/flats_fits
+stack pp_flat rej 3 3 -norm=mul -out=../export/masters/pp_flat_stacked
+cd ..
+
+# Stack Dark Frames to dark_stacked.fit
+cd /Users/niallbell/siril/Processing/darks_fits
+stack dark rej 3 3 -nonorm -out=../export/masters/dark_stacked
+cd ..
+</code></pre>
+<p>Next we stack the calibrated Flat and Dark Frames to created Master Flat and Master Dark Frames which will be used to calibrate the Light Frames.</p>
+<p><em>I’m in the process of testing wether to use a more advanced stacking process here such as the one used when stacking the lights. I’ll update if I find it works well.</em></p>
+<pre><code># Calibrate Light Frames
+cd /Users/niallbell/siril/Processing/lights_fits
+calibrate light -dark=../export/masters/dark_stacked -flat=../export/masters/pp_flat_stacked -cc=dark -cfa -equalize_cfa -debayer
+</code></pre>
+<p>Here we calibrate the Light Frames using the calibration frames stacked in the previous step.</p>
+<pre><code># Align lights
+register pp_light
+
+# Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65
+stack r_pp_light rej g 0.3 0.05 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked
+</code></pre>
+<p>We’re on the home stretch now, here we align the calibrated light frames, technically called Registration and Alignment, then stack those calibrated/registered Light Frames.</p>
+<p>Here I have oped to use stacking with rejection, using the Generalised Extreme Studentised Deviate Test… because I’ve read it works well. The 0.3 and 0.05 are the lower and upper sigma values used for the GESDT. I also use the -filter-round=0.65 argument to reject images where the average star roundness value is lower that 65% (100% would be perfect). Depending on how sharp you can get the stars, you may wish to adjust this value (higher = more forgiving). Finally, the weight_from_nouse is used to apply a higher stack weighting to images with lower noise. I found this makes a cleaner final result.</p>
+<p>For smaller datasets us the Winsorized Sigma Clipping with high and low values of 3 respectively.</p>
+<pre><code># Load the final stacked file into Siril.
+cd ../export/
+load final_stacked.fit
+</code></pre>
+<p>This step loads the final stacked file into Siril.</p>
+<h2>Summary</h2>
+<p>That’s basically it, the script organises the files in a way that works for me, such as allowing the easy deletion of process files, and uses some slight more advanced stacking algorithms and parameters. It’s nothing special or fancy, but I said I’d share so here it is.</p>
+<h2>Stacking Without Calibration</h2>
+<p>I have another script which I used to stack images without doing any calibration first. I use this when I’m in the middle of a session and don’t need to worry about the noise or artefacts in the final result and just want to get a view of the stacked data. This shares elements of my main script but instead only takes in Light Frames.</p>
+<h3>Preprocessing script without calibiration</h3>
+<pre><code>############################################
+#                                          #
+# Script for Siril 1.2.0 (1.2.4)           #
+# Updated: November 2024                   #
+# Author: Niall Bell (niallbell.com)       #
+# Script Name: Preprocessing No Cal v1.0   #
+#                                          #
+########### PREPROCESSING SCRIPT ###########
+#                                          #
+# Script for colour camera preprocessing   #
+#                                          #
+# Requires just Lights and does not do     #
+# any image calibration.                   #
+#                                          #
+# - lights/                                #
+#                                          #
+#  Process files are stored on the SSD in  #
+#       the documents folder those         #
+#  speed up processing. Delete after use.  #
+#                                          #
+############ PREPROCESSING STEPS ###########
+#                                          #
+# 1. Convert the Light frames to .fits     #
+# 2. Stack the registered Light frames     #
+#    rejecting poor quality images.        #
+#                                          #
+############################################
+
+# Requires at least Siril 1.2.0
+requires 1.2.0
+
+# Convert Light Frames to .fit files
+cd lights
+convert light_seq -debayer -fitseq -out=/Users/niallbell/siril/Processing/lights_fits
+cd ..
+
+# Align lights
+cd /Users/niallbell/siril/Processing/lights_fits
+register light_seq
+
+# Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65
+stack r_light_seq rej g 0.3 0.05 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked
+
+# Load the final stacked file into Siril.
+cd ../export/
+load final_stacked.fit
+
+############ PROCESSING COMPLETE ###########
+#                                          #
+# DO NOT FORGET TO COPY THE FINAL STACKED  #
+#      IMAGE INTO A SAFE LOCATION!!!       #
+#                                          #
+#  ============== WARNING: ==============  #
+#                                          #
+#      RUNNING THIS SCRIPT AGAIN WILL      #
+#    OVERWRITE ANY EXISTING FILES SAVED    #
+#         IN THE PROCESS FOLDER!!!         #
+#                                          #
+############################################
+</code></pre>
+<p>I hope that this was useful to you, if it was and you have any questions, let me know. Otherwise, Clear Skies!</p>
+<p>Niall</p>
+<h4>Header Image</h4>
+<p>The header image for this post was created using these scripts. It should the Horsehead and Flame Nebula in the Orion constellation.</p>
+<p><img src="https://i.imgur.com/Izkx8aB.jpeg" alt=""></p>
+</div>
+  </div>
+</article>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
+</body>
+</html>

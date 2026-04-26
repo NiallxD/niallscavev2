@@ -7,53 +7,49 @@
   <meta name="description" content="As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.">
   <meta property="og:title" content="Canadian Wildlife — Niall Bell">
   <meta property="og:description" content="As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.">
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/canadian-wildlife/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <meta property="og:image" content="https://i.imgur.com/ZszeHtH.jpeg">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+    
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife">
+</div>
 
-<article>
-  <header class="gallery-header">
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+
+
+<article class="gallery-page">
+  <header class="page-header">
     <h1>Canadian Wildlife</h1>
     
     <div class="post-meta">
-      
-        <span class="tag">nature</span>
-      
-        <span class="tag">photography</span>
-      
-        <span class="tag">landscape</span>
-      
-        <span class="tag">canada</span>
-      
-        <span class="tag">wildlife</span>
-      
+      <span class="tag">nature</span><span class="tag">photography</span><span class="tag">landscape</span><span class="tag">canada</span><span class="tag">wildlife</span>
     </div>
     
-    
-    <p class="gallery-description">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</p>
-    
+    <p class="page-lead">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</p>
   </header>
-
-  <div class="gallery-body">
-    <p>#nature #photography #landscape #canda #wildlife</p>
-<h1>Canadian Wildlife</h1>
-<p>Canada is a vast country with a wide range of biomes. This country and it's waters host some of the worlds most incredible wildlife from the tiny Anna's Hummingbird to the gargantuan Humpback whale.</p>
-<p>As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you're new to Canadian wildlife or a local, I hope you enjoy these images.</p>
-<br>
-<div class="gallery">
+  <div class="gallery-body"><div class="gallery">
     <a href="https://i.imgur.com/ZszeHtH.jpeg" data-fancybox="gallery">
         <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Image 1" width="300">
     </a>
@@ -88,22 +84,36 @@
         <img src="https://i.imgur.com/tnQPCeT.jpeg" alt="Image 11" width="300">
     </a>
 </div>
-<hr>
-<p>Created by Niall Bell (niall@niallbell.com)</p>
-
-  </div>
+</div>
 </article>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false });</script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

@@ -7,49 +7,49 @@
   <meta name="description" content="A showcase of some of the amazing environments I&#39;ve photographed.">
   <meta property="og:title" content="Environments — Niall Bell">
   <meta property="og:description" content="A showcase of some of the amazing environments I&#39;ve photographed.">
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/environments/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <meta property="og:image" content="https://i.imgur.com/MBfejyA.jpeg">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+    
+<div class="page-cover-wrap">
+  <img class="page-cover" src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments">
+</div>
 
-<article>
-  <header class="gallery-header">
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+
+
+<article class="gallery-page">
+  <header class="page-header">
     <h1>Environments</h1>
     
     <div class="post-meta">
-      
-        <span class="tag">photography</span>
-      
-        <span class="tag">nature</span>
-      
-        <span class="tag">wildlife</span>
-      
+      <span class="tag">photography</span><span class="tag">nature</span><span class="tag">wildlife</span>
     </div>
     
-    
-    <p class="gallery-description">A showcase of some of the amazing environments I&#39;ve photographed.</p>
-    
+    <p class="page-lead">A showcase of some of the amazing environments I&#39;ve photographed.</p>
   </header>
-
-  <div class="gallery-body">
-    <p>#drone #photography</p>
-<h1>Environments</h1>
-<p>The environments in which I photograph wildlife are often just as awe inspiring as the animals themselves. You may see these as landscape photographs but I would argue that these images are more than just landscapes, they focus on the habitats within those landscapes which I have chose to refer to as 'Environments'.</p>
-<p>Can you pick out the habitats contained within the photographs?
-<br></p>
-<div class="gallery">
+  <div class="gallery-body"><div class="gallery">
 	<a href="https://i.imgur.com/MBfejyA.jpeg" data-fancybox="gallery">
 	    <img src="https://i.imgur.com/MBfejyA.jpeg" alt="New Image 14" width="300" >
 	</a>
@@ -102,31 +102,36 @@
 	    <img src="https://i.imgur.com/tiavAy7.jpeg" alt="New Image 13" width="300" >
 	</a>
 </div>
-<h2>Similar Galleries:</h2>
-<p>Here are some similar galleries you may enjoy:</p>
-<p>[[3.1.4.1 - Photomicrography]]
-[[3.1.4.2 - Film Photography]]
-[[3.1.4.3 - Astrophotography]]
-[[3.1.4.4 - Street Photography]]
-[[3.1.4.5 - Architecture]]
-[[3.1.4.6 - Drone Photography]]
-[[3.1.5.1 - 360 Panorama]]</p>
-<hr>
-<p>Created by Niall Bell (niall@niallbell.com)</p>
-
-  </div>
+</div>
 </article>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
-<script>Fancybox.bind('[data-fancybox]', { groupAll: false });</script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

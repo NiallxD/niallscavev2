@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page Gallery — Niall Bell</title>
+  
+  <meta property="og:title" content="Home Page Gallery — Niall Bell">
+  
+  
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+
+
+<article class="gallery-page">
+  <header class="page-header">
+    <h1>Home Page Gallery</h1>
+    
+    
+  </header>
+  <div class="gallery-body"><p><img src="https://i.imgur.com/eM38vZ0.png" alt="">
+<img src="https://i.imgur.com/pQhjAr7.jpg" alt="">
+<img src="https://i.imgur.com/4Msu0Ig.png" alt="">
+<img src="https://i.imgur.com/2MrhVQh.jpg" alt="">
+<img src="https://i.imgur.com/UudTTEZ.jpg" alt="">
+<img src="https://i.imgur.com/4GiYRqG.jpeg" alt="">
+<img src="https://i.imgur.com/kwps586.jpeg" alt=""></p>
+</div>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false, Thumbs: false });</script>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
+</body>
+</html>

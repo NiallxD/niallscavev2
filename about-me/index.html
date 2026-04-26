@@ -4,62 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me — Niall Bell</title>
-  
+  <meta name="description" content="It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.">
   <meta property="og:title" content="About Me — Niall Bell">
+  <meta property="og:description" content="It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.">
   
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/about-me/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" class="active">About</a>
-    </nav>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/" class="active">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <article>
-  <div class="prose">
-    <header class="post-header">
-      <h1>About Me</h1>
-      <div class="post-meta">
-        
-        
-      </div>
-    </header>
-
     
+<div class="constrained-wide">
+  
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://images.unsplash.com/photo-1470071131384-001b85755b36?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="About Me" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">About Me</h1>
+    <p class="home-intro">It&#39;s customary to share a little bit about yourself when you have a portfolio online. I&#39;ll keep it short and sweet.</p>
+  </section>
+</div>
 
-    <div class="post-content">
-      <p><img src="https://i.imgur.com/sT9enS0.jpeg" alt=""></p>
-<p>#aboutme #niallbell</p>
-<h1>About Me</h1>
-<p>It's customary to share a little bit about yourself when you have a portfolio online. I'll keep it short and sweet.</p>
-<blockquote>
-<p>I'm a passionate environmentalist and lover of all things wildlife and nature. In my spare time I work in sustainable development but most of the time I'm out photographing all that nature has to offer. I believe that by sharing the joys of nature through photography, we can slowly inspire new people to care a little bit more about the world we call home; and if we fail in our mission to protect nature, we will have immortalised the organisms that perished at the hands of humans to allow future generations to hold us accountable.</p>
-</blockquote>
+
+<div class="standard-page">
+  
+  <div class="post-content">
+<p>I’m a passionate environmentalist and lover of all things wildlife and nature. In my spare time I work in sustainable development but most of the time I’m out photographing all that nature has to offer. I believe that by sharing the joys of nature through photography, we can slowly inspire new people to care a little bit more about the world we call home; and if we fail in our mission to protect nature, we will have immortalised the organisms that perished at the hands of humans to allow future generations to hold us accountable.</p>
 <p>If you wish to get in touch about anything on this website, please send me an email at <a href="mailto:niall@niallbell.com">niall@niallbell.com</a></p>
 <p><img src="https://i.imgur.com/9wUq3cS.jpg" alt="">
-<em>One of the few photos where I'm infront of the camera not behind it.</em></p>
-<hr>
-<p>📧 Sign up to my newsletter [[Newsletter|here]].
-Created by Niall Bell (niall@niallbell.com)</p>
+<em>One of the few photos where I’m infront of the camera not behind it.</em></p>
+</div>
+</div>
 
-    </div>
-  </div>
-</article>
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

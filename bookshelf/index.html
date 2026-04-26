@@ -4,67 +4,451 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookshelf — Niall Bell</title>
-  
+  <meta name="description" content="Books I&#39;ve read and recommend. Mostly nature, science, and philosophy.">
   <meta property="og:title" content="Bookshelf — Niall Bell">
+  <meta property="og:description" content="Books I&#39;ve read and recommend. Mostly nature, science, and philosophy.">
   
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/bookshelf/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" >Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" class="active">Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/" class="active">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <article>
-  <div class="prose">
-    <header class="post-header">
-      <h1>Bookshelf</h1>
-      <div class="post-meta">
-        
-        
-      </div>
-    </header>
-
     
-
-    <div class="post-content">
-      <p><img src="https://i.imgur.com/TTCOcvc.jpeg" alt=""></p>
-<p>#books #reading</p>
-<h1>Bookshelf</h1>
-<p>I was never into reading when I was younger, and throughout my twenties I spent that much time studying that I really couldn't face reading <em>even more</em> words on a page. Since finishing my masters degree I've been able to put more time towards reading, and I love it!</p>
-<p>Here are the books I've read and recommend. Some books don't make it into my bookshelf if I don't feel they are recommendable. You can view my highlights by clicking the 📝 link below each book.</p>
-<pre><code class="language-dataview">TABLE WITHOUT ID
-  &quot;&lt;img src='&quot; + header-image + &quot;' style='height:300px;'/&gt;&quot; as Cover,
-  &quot;📖 &quot; + title as &quot;Title&quot;,
-  &quot;👤 &quot; + author as &quot;Author&quot;,
-  &quot;👀 &quot; + read as &quot;Read&quot;,
-  &quot;📝 &quot; + highlights as &quot;Highlights&quot;,
-  goodreads as &quot;GoodReads&quot;
-WHERE Type = &quot;Bookshelf&quot;
-SORT read desc
-</code></pre>
-<hr>
-<p>📧 Sign up to my newsletter [[Newsletter|here]].
-Created by Niall Bell (niall@niallbell.com)</p>
-
-    </div>
+<div class="constrained-wide">
+  
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Bookshelf" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
-</article>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Bookshelf</h1>
+    <p class="home-intro">Books I&#39;ve read and recommend. Mostly nature, science, and philosophy.</p>
+  </section>
+</div>
+
+
+<div class="book-grid">
+  
+  <a href="/niallscavev2/bookshelf/what-if/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg" alt="What If?: Serious Scientific Answers to Absurd Hypothetical Questions" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">What If?: Serious Scientific Answers to Absurd Hypothetical Questions</div>
+      <div class="book-card-author">Randall Munroe</div>
+      <div class="book-card-date">Read 15 December 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/bird-sense/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg" alt="Bird Sense: What It&#39;s Like to Be a Bird" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Bird Sense: What It&#39;s Like to Be a Bird</div>
+      <div class="book-card-author">Tim Birkhead</div>
+      <div class="book-card-date">Read 10 December 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/pale-blue-dot/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg" alt="Pale Blue Dot" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Pale Blue Dot</div>
+      <div class="book-card-author">Carl Sagan</div>
+      <div class="book-card-date">Read 20 November 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/the-genius-of-birds/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1445790452i/25938481.jpg" alt="The Genius of Birds" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">The Genius of Birds</div>
+      <div class="book-card-author">Jennifer Ackerman</div>
+      <div class="book-card-date">Read 12 November 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/eight-bears/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg" alt="Eight Bears" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Eight Bears</div>
+      <div class="book-card-author">Gloria Dickie</div>
+      <div class="book-card-date">Read 2 November 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/flight-paths/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg" alt="Flight Paths" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Flight Paths</div>
+      <div class="book-card-author">Rebecca Heisman</div>
+      <div class="book-card-date">Read 28 October 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/so-you-want-to-move-to-canada-eh/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg" alt="So You Want To Move to Canada, Eh?" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">So You Want To Move to Canada, Eh?</div>
+      <div class="book-card-author">Jennifer McCartney</div>
+      <div class="book-card-date">Read 20 October 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/how-to-be-an-epicurean/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg" alt="How To Be An Epicurean" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">How To Be An Epicurean</div>
+      <div class="book-card-author">Catherine Wilson</div>
+      <div class="book-card-date">Read 27 May 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/how-to-be-a-stoic/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg" alt="How To Be A Stoic" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">How To Be A Stoic</div>
+      <div class="book-card-author">Massimo Pigliucci</div>
+      <div class="book-card-date">Read 7 May 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/not-the-end-of-the-world/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg" alt="Not the End of the World" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Not the End of the World</div>
+      <div class="book-card-author">Hannah Richie</div>
+      <div class="book-card-date">Read 27 April 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/was-beethoven-a-birdwatcher/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg" alt="Was Beethoven a Birdwatcher?" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Was Beethoven a Birdwatcher?</div>
+      <div class="book-card-author">David Turner</div>
+      <div class="book-card-date">Read 20 April 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/beethoven-the-man-revealed/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg" alt="Beethoven: The Man Revealed" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Beethoven: The Man Revealed</div>
+      <div class="book-card-author">John Suchet</div>
+      <div class="book-card-date">Read 8 April 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/stray-birds/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347260590i/166350.jpg" alt="Stray Birds" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Stray Birds</div>
+      <div class="book-card-author">Rabindranath Tagore</div>
+      <div class="book-card-date">Read 28 March 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/the-cloud-book/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg" alt="The Cloud Book: How To Understand The Skies" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">The Cloud Book: How To Understand The Skies</div>
+      <div class="book-card-author">Richard Hamblyn</div>
+      <div class="book-card-date">Read 1 March 2024</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/inglorious-conflict-in-the-uplands/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg" alt="Inglorious: Conflict in the Uplands" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Inglorious: Conflict in the Uplands</div>
+      <div class="book-card-author">Mark Avery</div>
+      <div class="book-card-date">Read 31 December 2023</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/humble-pi/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg" alt="Humble Pi: A Comedy of Maths Errors" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Humble Pi: A Comedy of Maths Errors</div>
+      <div class="book-card-author">Matt Parker</div>
+      <div class="book-card-date">Read 5 October 2023</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/enemy-at-the-gates/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg" alt="Enemy at the Gates: The Battle for Stalingrad" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Enemy at the Gates: The Battle for Stalingrad</div>
+      <div class="book-card-author">William Craig</div>
+      <div class="book-card-date">Read 15 August 2023</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/mozart-the-man-revealed/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468508169i/30732469.jpg" alt="Mozart: The Man Revealed" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Mozart: The Man Revealed</div>
+      <div class="book-card-author">John Suchet</div>
+      <div class="book-card-date">Read 10 July 2023</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/the-indisputable-existence-of-santa-clause/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg" alt="The Indisputable Existence of Santa Clause" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">The Indisputable Existence of Santa Clause</div>
+      <div class="book-card-author">Hannah Fry</div>
+      <div class="book-card-date">Read 3 December 2022</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/inglorious-empire/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490075230i/34185892.jpg" alt="Inglorious Empire: What the British Did to India" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Inglorious Empire: What the British Did to India</div>
+      <div class="book-card-author">Shashi Tharoor</div>
+      <div class="book-card-date">Read 30 November 2022</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/thinking-fast-and-slow/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg" alt="Thinking, Fast and Slow" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Thinking, Fast and Slow</div>
+      <div class="book-card-author">Daniel Kahneman</div>
+      <div class="book-card-date">Read 30 November 2022</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/where-the-wildflowers-grow/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg" alt="Where the Wildflowers Grwo" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Where the Wildflowers Grwo</div>
+      <div class="book-card-author">Leif Bersweden</div>
+      <div class="book-card-date">Read 10 September 2022</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/a-brief-history-of-time/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg" alt="A Brief History of Time" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">A Brief History of Time</div>
+      <div class="book-card-author">Stephen Hawking</div>
+      <div class="book-card-date">Read 1 September 2022</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/wildling/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1521964296i/38891828.jpg" alt="Wildling" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Wildling</div>
+      <div class="book-card-author">Isabella Tree</div>
+      <div class="book-card-date">Read 28 August 2021</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/how-bad-are-bananas/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg" alt="How Bad Are Bananas: The Carbon Footprint of Everything" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">How Bad Are Bananas: The Carbon Footprint of Everything</div>
+      <div class="book-card-author">Mike Berners-Lee</div>
+      <div class="book-card-date">Read 18 July 2021</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/how-to-avoid-a-climate-disaster/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg" alt="How to Avoid a Climate Disaster" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">How to Avoid a Climate Disaster</div>
+      <div class="book-card-author">Bill Gates</div>
+      <div class="book-card-date">Read 11 April 2021</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/mycelium-running/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg" alt="Mycelium Running: How Mushrooms Can Help Save the World" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Mycelium Running: How Mushrooms Can Help Save the World</div>
+      <div class="book-card-author">Paul Stametes</div>
+      <div class="book-card-date">Read 18 February 2021</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/mushrooms/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354449995i/16204477.jpg" alt="Mushrooms" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Mushrooms</div>
+      <div class="book-card-author">Peter Marren</div>
+      <div class="book-card-date">Read 10 February 2021</div>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bookshelf/heaven-and-earth/" class="book-card">
+    <div class="book-card-cover">
+      
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696297458i/125453392.jpg" alt="Heaven &amp; Earth: Unseen by the Naked Eye" loading="lazy">
+      
+    </div>
+    <div class="book-card-body">
+      <div class="book-card-title">Heaven &amp; Earth: Unseen by the Naked Eye</div>
+      <div class="book-card-author">Katherine Roucoux</div>
+      <div class="book-card-date">Read 1 February 2005</div>
+    </div>
+  </a>
+  
+</div>
+
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

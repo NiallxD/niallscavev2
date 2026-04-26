@@ -3,80 +3,540 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Niall Bell</title>
-  <meta name="description" content="Niall&#39;s Blog">
-  <meta property="og:title" content="Blog — Niall Bell">
-  <meta property="og:description" content="Niall&#39;s Blog">
-  <meta property="og:url" content="https://niallxd.github.io/niallscavev2/blog/">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Writing — Niall Bell</title>
+  <meta name="description" content="Essays, photo stories, and observations on nature and the natural world.">
+  <meta property="og:title" content="Writing — Niall Bell">
+  <meta property="og:description" content="Essays, photo stories, and observations on nature and the natural world.">
+  
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-title" href="/">Niall Bell</a>
-    <nav>
-      <a href="/blog" class="active">Writing</a>
-      <a href="/photography" >Photography</a>
-      <a href="/bookshelf" >Bookshelf</a>
-      <a href="/about-me" >About</a>
-    </nav>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/" class="active">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <article>
-  <div class="prose">
-    <header class="post-header">
-      <h1>Blog</h1>
-      <div class="post-meta">
-        
-        
-      </div>
-    </header>
-
     
-
-    <div class="post-content">
-      <p><img src="https://i.imgur.com/elKE9mb.jpeg" alt=""></p>
-<p>#blog</p>
-<h1>Blog</h1>
-<blockquote>
-<p>[!HOT] My Blog Has Moved
-Over the past year I've found writing this blog to be a little bit robotic. I decided to migrate to a form which is more natural to me. The posts below won't go anywhere, and I may add to this from time to time, but from now on I'm writing over <a href="https://blog.niallbell.com">here</a></p>
-</blockquote>
-<div>
-    <label for="tagFilter" class="filter-element">Filter by tag:</label>
-    <select id="tagFilter" class="filter-element" onchange="filterTable()">
-	    <option value="all">Select a Tag</option>
-        <option value="all">All</option>
-        <!-- Add more options as needed -->
-    </select>
-    <label for="tagSearch" class="filter-element">Search by tag:</label>
-    <input type="text" id="tagSearch" class="filter-element" placeholder="Type a tag...">
-</div>
-<pre><code class="language-dataview">TABLE WITHOUT ID
-  &quot;&lt;img src='&quot; + header-image + &quot;' style='height:160px;'/&gt;&quot; as Cover,
-  file.link as title,
-  &quot;📅 &quot; + created as Created,
-  &quot;🔄 &quot; + date(updated) as Updated,
-  &quot;💭 &quot; + Type as Type,
-  join(file.tags, &quot; &quot;) as Tags
-WHERE Type = &quot;Blog Post&quot; OR Type = &quot;Photo Story&quot; OR Type = &quot;Photo Analysis&quot; OR Type = &quot;Photo Feed&quot;
-SORT date(updated) DESC
-</code></pre>
-<hr>
-<p>📧 Sign up to my newsletter [[Newsletter|here]].
-Created by Niall Bell (niall@niallbell.com)</p>
-
-    </div>
+<div class="constrained-wide">
+  
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Writing" style="width: 100%; height: 100%; object-fit: cover; display: block;">
   </div>
-</article>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Writing</h1>
+    <p class="home-intro">Essays, photo stories, and observations on nature and the natural world.</p>
+  </section>
+</div>
+
+
+<div class="post-grid">
+  
+  <a href="/niallscavev2/brief-review-of-the-zeiss-diascope-65t-fl-green/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/5KKoRpe.jpeg" alt="Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</h2>
+      <div class="post-meta">
+        <time datetime="2025-05-17">17 May 2025</time>
+      </div>
+      <p class="post-card-desc">Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/squamish-ebird-data/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/6wj3V55.jpeg" alt="Squamish eBird Data" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Squamish eBird Data</h2>
+      <div class="post-meta">
+        <time datetime="2025-03-16">16 March 2025</time>
+      </div>
+      <p class="post-card-desc">Squamish eBird Data</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/jxxUz6b.jpeg" alt="Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-31">31 January 2025</time>
+      </div>
+      <p class="post-card-desc">This is the report I authored for my master&#39;s degree dissertation. I&#39;m sharing here for those interested in this area of research.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/how-to-buy-a-car-in-bc-canada/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/oiwPNEa.jpeg" alt="How to Buy a Car In British Columbia, Canada" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>How to Buy a Car In British Columbia, Canada</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-25">25 January 2025</time>
+      </div>
+      <p class="post-card-desc">How to Buy a Car In British Columbia, Canada</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/how-to-get-a-phone-contract-canada/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/V9XRV4A.jpeg" alt="How to get a Phone Contract in Canada" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>How to get a Phone Contract in Canada</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-23">23 January 2025</time>
+      </div>
+      <p class="post-card-desc">How to get a Phone Contract in Canada</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/bald-eagle-age/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="How To Tell The Age of a Bald Eagle" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>How To Tell The Age of a Bald Eagle</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-20">20 January 2025</time>
+      </div>
+      <p class="post-card-desc">Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I&#39;ve taken.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/sin-and-bank-account/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/cSUI4MZ.jpeg" alt="Getting an SIN and Bank Account" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Getting an SIN and Bank Account</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-20">20 January 2025</time>
+      </div>
+      <p class="post-card-desc">Getting an SIN and Bank Account</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/arriving-in-canada/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/2jQznqY.jpeg" alt="Arriving In Canada" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Arriving In Canada</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-12">12 January 2025</time>
+      </div>
+      <p class="post-card-desc">A brief note on my arrival into Canada.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/travelling-to-canada/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/yi0XicL.jpeg" alt="Travelling To Canada" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Travelling To Canada</h2>
+      <div class="post-meta">
+        <time datetime="2025-01-09">9 January 2025</time>
+      </div>
+      <p class="post-card-desc">Travelling To Canada</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/my-week-in-photos-wrap-up-2024/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/28al9Ob.jpeg" alt="My Week In Photos Wrap Up" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>My Week In Photos Wrap Up</h2>
+      <div class="post-meta">
+        <time datetime="2024-12-31">31 December 2024</time>
+      </div>
+      <p class="post-card-desc">This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/doncasters-hoopoe/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/vfEGkKB.jpeg" alt="Doncaster&#39;s Hoopoe" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Doncaster&#39;s Hoopoe</h2>
+      <div class="post-meta">
+        <time datetime="2024-12-22">22 December 2024</time>
+      </div>
+      <p class="post-card-desc">It&#39;s been a good year for birding in the UK, and there seems to have been no shortage of rarities.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/custom-siril-scripts/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/Izkx8aB.jpeg" alt="Custom Siril Scripts for Astrophotography" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Custom Siril Scripts for Astrophotography</h2>
+      <div class="post-meta">
+        <time datetime="2024-11-21">21 November 2024</time>
+      </div>
+      <p class="post-card-desc">Here is how I use custom Siril Scripts for Astrophotography.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/social-media-dilemma/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Social Media Dilemma" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Social Media Dilemma</h2>
+      <div class="post-meta">
+        <time datetime="2024-08-14">14 August 2024</time>
+      </div>
+      <p class="post-card-desc">An essay on my thoughts about social media with the hope of understanding the problems and solutions better.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/international-tiger-day-2024/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/BiYriQv.png" alt="International Tiger Day 2024" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>International Tiger Day 2024</h2>
+      <div class="post-meta">
+        <time datetime="2024-07-29">29 July 2024</time>
+      </div>
+      <p class="post-card-desc">July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/black-winged-pratincole-doncaster-2024/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/IJUcoJt.jpeg" alt="Black Winged Pratincole Doncaster 2024" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Black Winged Pratincole Doncaster 2024</h2>
+      <div class="post-meta">
+        <time datetime="2024-07-08">8 July 2024</time>
+      </div>
+      <p class="post-card-desc">Read about my experience seeing Doncaster&#39;s Black Winged Pratincole!</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/DPOTY24/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/8bzvnWQ.png" alt="Highly Commended - Deer Photographer of the Year" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Highly Commended - Deer Photographer of the Year</h2>
+      <div class="post-meta">
+        <time datetime="2024-06-24">24 June 2024</time>
+      </div>
+      <p class="post-card-desc">Deer Photographer of the Year - My highly commended photograph</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/how-i-process-my-photographs/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/jo6fK8O.jpeg" alt="How I Process My Photographs" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>How I Process My Photographs</h2>
+      <div class="post-meta">
+        <time datetime="2024-05-31">31 May 2024</time>
+      </div>
+      <p class="post-card-desc">How I Process My Photographs</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/an-open-letter-to-ywp/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/1pQK9Zn.jpeg" alt="An Open Letter to YWP" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>An Open Letter to YWP</h2>
+      <div class="post-meta">
+        <time datetime="2024-05-12">12 May 2024</time>
+      </div>
+      <p class="post-card-desc">An Open Letter to YWP</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/analogue-photography/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/9wUq3cS.jpg" alt="Analogue Photography" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Analogue Photography</h2>
+      <div class="post-meta">
+        <time datetime="2024-05-02">2 May 2024</time>
+      </div>
+      <p class="post-card-desc">What draws me to analogue photography in 2024?</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/birds-are-musicians/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/rLYIZA3.jpeg" alt="Birds Were the First Musicians" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Birds Were the First Musicians</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-29">29 April 2024</time>
+      </div>
+      <p class="post-card-desc">Who were the first musicians? Do birds make music? When was music created? What is music?</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/photographic-life-list/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/urbFltC.jpeg" alt="Photographic Life List" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Photographic Life List</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-28">28 April 2024</time>
+      </div>
+      <p class="post-card-desc">Here is my photographic life list, where I keep track of all the species I&#39;ve photographed well. It&#39;s constantly being updated so check back!</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/are-commercial-photography-hides-acceptable/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/a0xdQzW.jpeg" alt="Are Commercial Photography Hides Acceptable?" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Are Commercial Photography Hides Acceptable?</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-16">16 April 2024</time>
+      </div>
+      <p class="post-card-desc">Are Commercial Photography Hides Acceptable?</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/The-little-owl/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/4TOgr4b.jpeg" alt="Etymology: The Little Owl" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Etymology: The Little Owl</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-15">15 April 2024</time>
+      </div>
+      <p class="post-card-desc">This is a quick dive into the origins of the Little Owls Latin Name</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/misierere-mei-deus/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/Zn891va.jpeg" alt="Misierere Mei, Deus" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Misierere Mei, Deus</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-11">11 April 2024</time>
+      </div>
+      
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/cloudspotting/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/EyV94Ox.jpeg" alt="Cloudspotting" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Cloudspotting</h2>
+      <div class="post-meta">
+        <time datetime="2024-04-10">10 April 2024</time>
+      </div>
+      <p class="post-card-desc">Have you ever wondered where the idiom &quot;to be on cloud 9&quot; came from? Well, you&#39;ve got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/canon-r6-crashing-fixed/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/zWS53Em.jpeg" alt="" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2></h2>
+      <div class="post-meta">
+        <time datetime="2024-03-01">1 March 2024</time>
+      </div>
+      
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/ecotalk-a-greener-phone-network/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/6HNhbjt.jpeg" alt="EcoTalk: A Greener Phone Network" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>EcoTalk: A Greener Phone Network</h2>
+      <div class="post-meta">
+        <time datetime="2024-02-15">15 February 2024</time>
+      </div>
+      <p class="post-card-desc">EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/how-to-build-a-wildlife-pond/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/KSajmT4.jpeg" alt="" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2></h2>
+      <div class="post-meta">
+        <time datetime="2024-02-01">1 February 2024</time>
+      </div>
+      
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/brief-review-of-the-canon-ef-500mm-f-4-5-l-usm/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/jGPwQ43.jpeg" alt="Brief Review of The Canon EF 500mm f/4.5 L USM" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Brief Review of The Canon EF 500mm f/4.5 L USM</h2>
+      <div class="post-meta">
+        <time datetime="2023-11-01">1 November 2023</time>
+      </div>
+      <p class="post-card-desc">Brief Review of The Canon EF 500mm f/4.5 L USM</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/northern-lights/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/9DONEvA.jpeg" alt="Northern Lights in Doncaster!" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>Northern Lights in Doncaster!</h2>
+      <div class="post-meta">
+        <time datetime="2022-09-23">23 September 2022</time>
+      </div>
+      <p class="post-card-desc">n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!</p>
+    </div>
+  </a>
+  
+  <a href="/niallscavev2/the-waste-hierarchy/" class="post-card">
+    <div class="post-card-img">
+      
+      <img src="https://i.imgur.com/6zfWazY.jpeg" alt="The Waste Hierarchy" loading="lazy">
+      
+    </div>
+    <div class="post-card-body">
+      <h2>The Waste Hierarchy</h2>
+      <div class="post-meta">
+        <time datetime="2022-08-28">28 August 2022</time>
+      </div>
+      <p class="post-card-desc">The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.</p>
+    </div>
+  </a>
+  
+</div>
+
+
+</div>
 
   </main>
 
   <footer class="site-footer">
-    <span>© 2025 Niall Bell</span>
-    <div class="footer-links">
-      <a href="mailto:niall@niallbell.com">Email</a>
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
 </body>
 </html>

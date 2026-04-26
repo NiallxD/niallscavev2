@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side Projects — Niall Bell</title>
+  <meta name="description" content="Things I&#39;ve built and projects I work on outside of photography.">
+  <meta property="og:title" content="Side Projects — Niall Bell">
+  <meta property="og:description" content="Things I&#39;ve built and projects I work on outside of photography.">
+  
+  <link rel="stylesheet" href="/niallscavev2/static/css/style.css">
+  
+</head>
+<body>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/niallscavev2/">
+        <img src="/niallscavev2/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/niallscavev2/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav>
+        <a href="/niallscavev2/blog/">Writing</a>
+        <a href="/niallscavev2/photography/">Photography</a>
+        <a href="/niallscavev2/bookshelf/">Bookshelf</a>
+        <a href="/niallscavev2/side-projects/" class="active">Projects</a>
+        <a href="/niallscavev2/about-me/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+<div class="constrained-wide">
+  
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&amp;w=2560&amp;auto=format&amp;fit=crop" alt="Side Projects" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Side Projects</h1>
+    <p class="home-intro">Things I&#39;ve built and projects I work on outside of photography.</p>
+  </section>
+</div>
+
+
+<div class="standard-page">
+  
+  <div class="post-content"><div class="project-card">
+  <div class="project-info">
+    <h3>Project Name</h3>
+    <p>A short description of what this project is, what it does, and why you built it. Keep it to a few sentences.</p>
+    <a href="#" class="project-link">Visit project →</a>
+  </div>
+  <img src="https://placehold.co/600x400" alt="Project Name" class="project-img">
+</div>
+<div class="project-card">
+  <div class="project-info">
+    <h3>Another Project</h3>
+    <p>Description of your second project. What problem does it solve? Who is it for?</p>
+    <a href="#" class="project-link">Visit project →</a>
+  </div>
+  <img src="https://placehold.co/600x400" alt="Another Project" class="project-img">
+</div>
+</div>
+</div>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span>© 2025 Niall Bell</span>
+      <div class="footer-links">
+        <a href="mailto:niall@niallbell.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+  </script>
+</body>
+</html>
