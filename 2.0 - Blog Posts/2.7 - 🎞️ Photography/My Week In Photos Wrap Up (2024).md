@@ -11,11 +11,8 @@ featured: true
 tags:
   - photography
 heroImage: https://i.imgur.com/28al9Ob.jpeg
-hide: true
-header-image: https://i.imgur.com/28al9Ob.jpeg
 created: 2024-12-31
 updated: 2024-12-31
-icon: 1
 ---
 
 #photo #photography #myweekinphotos #photostory 

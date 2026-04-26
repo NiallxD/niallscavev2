@@ -1,17 +1,16 @@
 ---
+title: How to Build a Wildlife Pond
 author: Niall Bell
 date: 2024-02-01
 Type: Blog Post
 publish: true
 permalink: /how-to-build-a-wildlife-pond
-description: In spring 2022 I finally decided to build a wildlife pond. Two years on I hoped to reflect on the pond I created and that gave me the idea of writing a blog post about how I created my wildlife pond.
-excerpt: In spring 2022 I finally decided to build a wildlife pond. Two years on I hoped to reflect on the pond I created and that gave me the idea of writing a blog post about how I created my wildlife pond.
+description: In spring 2022 I built a wildlife pond for under £50. Two years on I'm sharing the full process — from planning and digging to lining, planting, and the lessons I learned along the way.
+excerpt: In spring 2022 I built a wildlife pond for under £50. Two years on I'm sharing the full process — from planning and digging to lining, planting, and the lessons I learned along the way.
 tags:
   - nature
   - wildlife
 heroImage: https://i.imgur.com/KSajmT4.jpeg
-hide: true
-header-image: https://i.imgur.com/KSajmT4.jpeg
 created: 2024-02-01
 updated: 2024-04-22
 ---

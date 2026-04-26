@@ -5,17 +5,14 @@ date: 2025-01-25
 Type: Blog Post
 publish: true
 permalink: /how-to-buy-a-car-in-bc-canada
-description: How to Buy a Car In British Columbia, Canada
-excerpt: How to Buy a Car In British Columbia, Canada
+description: A step-by-step guide to buying a used car in British Columbia — from searching Facebook Marketplace to completing the ICBC transfer, paying tax, and driving away with plates.
+excerpt: A step-by-step guide to buying a used car in British Columbia — from searching Facebook Marketplace to completing the ICBC transfer, paying tax, and driving away with plates.
 tags:
   - canada
   - guide
 heroImage: https://i.imgur.com/oiwPNEa.jpeg
-hide: true
-header-image: https://i.imgur.com/oiwPNEa.jpeg
 created: 2025-01-25
 updated: 2025-01-25
-icon: 1
 ---
 
 #canada #travel #IEC #car #auto #vehicle

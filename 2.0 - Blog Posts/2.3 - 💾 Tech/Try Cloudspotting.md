@@ -13,7 +13,6 @@ tags:
   - meteorology
   - photography
 heroImage: https://i.imgur.com/ERuqaWk.jpeg
-header-image: https://i.imgur.com/ERuqaWk.jpeg
 ---
 Cloudspotting, despite what my autocorrect thinks, is a real thing, and I'm here to talk about why I think everybody should try to become just a little bit obsessed with clouds.
 

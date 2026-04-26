@@ -1,11 +1,17 @@
 ---
 title: Haecceity
+author: Niall Bell
 date: 2024-12-13
 Type: Living Note
 publish: true
+permalink: /haecceity
 description: Haecciety is a Latin term which translates to 'thisness' and refers to the something of a thing which makes it itself. It is what determines the difference between 'a man' and 'Socrates'.
 excerpt: Haecciety is a Latin term which translates to 'thisness' and refers to the something of a thing which makes it itself. It is what determines the difference between 'a man' and 'Socrates'.
-hide: true
+tags:
+  - philosophy
+  - identity
+  - on-life
+heroImage: https://i.imgur.com/p6DKgUu.jpeg
 created: 2024-12-13
 updated: 2024-12-13
 maturity-level: Low

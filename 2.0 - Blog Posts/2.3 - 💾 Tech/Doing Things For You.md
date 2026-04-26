@@ -11,7 +11,6 @@ tags:
   - on-life
   - photography
 heroImage: https://i.imgur.com/akBHrZy.jpeg
-header-image: https://i.imgur.com/akBHrZy.jpeg
 ---
 
 ![]()

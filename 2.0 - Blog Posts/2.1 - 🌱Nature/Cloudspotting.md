@@ -6,12 +6,10 @@ Type: Blog Post
 publish: true
 permalink: /cloudspotting
 description: Have you ever wondered where the idiom "to be on cloud 9" came from? Well, you've got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!
-excerpt: ""
+excerpt: Have you ever wondered where the idiom "to be on cloud 9" came from? Well, you've got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!
 tags:
   - nature
 heroImage: https://i.imgur.com/EyV94Ox.jpeg
-hide: true
-header-image: https://i.imgur.com/EyV94Ox.jpeg
 created: 2024-04-10
 updated: 2024-04-30
 ---

@@ -29,142 +29,158 @@ layout: page.njk
     </div>
   </div>
 
-  <!-- PROFILE SECTION -->
-  <p class="section-label">Profile</p>
-  <div class="profile-intro-full">
-    <p>
-      I'm a passionate environmentalist and lover of all things wildlife and nature. I work at the intersection 
-      of environmental science and technology, visualising data and building platforms, mapping tools, and 
-      decision-support systems that translate conservation science into accessible resources.
-    </p>
-    <p>
-      Currently based in Squamish, BC, my technical work is grounded in deep environmental science knowledge 
-      and an understanding of how these tools are used in practice by non-technical stakeholders.
-    </p>
-    <p>
-      If you wish to get in touch about anything on this website, please send me an email at 
-      <a href="mailto:niall@niallbell.com" style="color: var(--color-link); font-weight: 500;">niall@niallbell.com</a>.
-    </p>
-  </div>
+  <!-- PROFILE SECTION (collapsible) -->
+  <details class="profile-card">
+    <summary class="profile-card-header">
+      <span class="section-label-no-margin">Professional Profile</span>
+      <span class="profile-card-toggle">
+        <svg class="toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </summary>
 
-  <div class="cv-container" style="margin-top: 4rem;">
-    
-    <!-- Experience -->
-    <section class="cv-section">
-      <p class="section-label">Experience</p>
-      <div class="experience-list">
-        
-        <div class="experience-card">
-          <div class="exp-sidebar">
-            <div class="exp-company">Nature Squamish</div>
-            <div class="exp-job-title">Volunteer Director & Contractor</div>
-            <div class="exp-meta">Squamish, BC — 2025 - Present</div>
-          </div>
-          <div class="exp-main">
-            <ul>
-              <li>Board member responsible for technology strategy and data infrastructure across conservation programmes.</li>
-              <li>Lead the bird monitoring programme, migrating records to eBird and building a custom web portal for data visualization.</li>
-              <li>Built and maintain the EcoScapes map portal, a Python/Django application integrating Felt mapping with biodiversity data.</li>
-              <li>Developed a personal birding data analysis app for the Apple App Store.</li>
-            </ul>
-          </div>
-        </div>
+    <div class="profile-card-body">
 
-        <div class="experience-card">
-          <div class="exp-sidebar">
-            <div class="exp-company">BCCF (WildSafeBC)</div>
-            <div class="exp-job-title">Human-Wildlife Conflict Coordinator</div>
-            <div class="exp-meta">Sea-to-Sky, BC — 2025 - 2026</div>
-          </div>
-          <div class="exp-main">
-            <ul>
-              <li>Seasonal coordinator for wildlife conflict prevention and community education across the Sea-to-Sky region.</li>
-              <li>Liaison with Conservation Officers Service to improve response times and community relationships.</li>
-              <li>Provide community education to raise awareness of conflict mitigation and common causes.</li>
-            </ul>
-          </div>
-        </div>
+      <div class="profile-intro-full">
+        <p>
+          Environmentalist and project manager with an MSc in Environmental Management and a background spanning
+          mechanical engineering, sustainable management, local government, and green technology. I work at the intersection
+          of environmental science and technology, visualising data and building platforms, mapping tools, and decision-support
+          systems that translate conservation science into accessible resources for land managers, planners, and the public.
+        </p>
+        <p>
+          Currently based in Squamish, BC, where I serve on the board of Nature Squamish and contract to the region's Wildlife
+          Connectivity Project. I build and maintain the EcoScapes website and map portal, a WordPress/Python-based web
+          platform integrating Felt mapping with biodiversity and connectivity data for the Sea-to-Sky region. My technical work
+          is grounded in deep environmental science knowledge and an understanding of how these tools are used in practice
+          by non-technical stakeholders.
+        </p>
+        <p>
+          If you wish to get in touch about anything on this website, please send me an email at
+          <a href="mailto:niall@niallbell.com" style="color: var(--color-link); font-weight: 500;">niall@niallbell.com</a>.
+        </p>
+      </div>
 
-        <div class="experience-card">
-          <div class="exp-sidebar">
-            <div class="exp-company">City of Doncaster Council</div>
-            <div class="exp-job-title">Low Carbon Development Officer</div>
-            <div class="exp-meta">UK — 2022 - 2024</div>
-          </div>
-          <div class="exp-main">
-            <ul>
-              <li>Led delivery of EV charging infrastructure and solar projects for council assets.</li>
-              <li>Managed a team overseeing utility contracts worth over £10m per year and delivered fuel poverty support.</li>
-              <li>Developed plans for Government funding to boost city-wide EV infrastructure and handled resident consultations.</li>
-              <li>Wrote and managed grant funding bids, timelines, and compliance reporting.</li>
-            </ul>
-          </div>
-        </div>
+      <div class="cv-container">
 
-        <div class="experience-card">
-          <div class="exp-sidebar">
-            <div class="exp-company">Go Green Ltd</div>
-            <div class="exp-job-title">Sustainability & Projects Specialist</div>
-            <div class="exp-meta">UK — 2017 - 2022</div>
+        <!-- Experience -->
+        <section class="cv-section">
+          <p class="section-label">Experience</p>
+          <div class="experience-list">
+
+            <div class="experience-card">
+              <div class="exp-sidebar">
+                <div class="exp-company">Nature Squamish</div>
+                <div class="exp-job-title">Volunteer Director & Contractor</div>
+                <div class="exp-meta">Squamish, BC — 2025 - Present</div>
+              </div>
+              <div class="exp-main">
+                <ul>
+                  <li>Board member responsible for technology strategy and data infrastructure across conservation programmes.</li>
+                  <li>Lead the bird monitoring programme, migrating records to eBird and building a custom web portal for data visualization.</li>
+                  <li>Built and maintain the EcoScapes map portal, a Python/Django application integrating Felt mapping with biodiversity data.</li>
+                  <li>Developed a personal birding data analysis app for the Apple App Store.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-card">
+              <div class="exp-sidebar">
+                <div class="exp-company">BCCF (WildSafeBC)</div>
+                <div class="exp-job-title">Human-Wildlife Conflict Coordinator</div>
+                <div class="exp-meta">Sea-to-Sky, BC — 2025 - 2026</div>
+              </div>
+              <div class="exp-main">
+                <ul>
+                  <li>Seasonal coordinator for wildlife conflict prevention and community education across the Sea-to-Sky region.</li>
+                  <li>Liaison with Conservation Officers Service to improve response times and community relationships.</li>
+                  <li>Provide community education to raise awareness of conflict mitigation and common causes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-card">
+              <div class="exp-sidebar">
+                <div class="exp-company">City of Doncaster Council</div>
+                <div class="exp-job-title">Low Carbon Development Officer</div>
+                <div class="exp-meta">UK — 2022 - 2024</div>
+              </div>
+              <div class="exp-main">
+                <ul>
+                  <li>Led delivery of EV charging infrastructure and solar projects for council assets.</li>
+                  <li>Managed a team overseeing utility contracts worth over £10m per year and delivered fuel poverty support.</li>
+                  <li>Developed plans for Government funding to boost city-wide EV infrastructure and handled resident consultations.</li>
+                  <li>Wrote and managed grant funding bids, timelines, and compliance reporting.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-card">
+              <div class="exp-sidebar">
+                <div class="exp-company">Go Green Ltd</div>
+                <div class="exp-job-title">Sustainability & Projects Specialist</div>
+                <div class="exp-meta">UK — 2017 - 2022</div>
+              </div>
+              <div class="exp-main">
+                <ul>
+                  <li>Led on sustainability strategy, carbon reporting, and software project management for a tech-focused SME.</li>
+                  <li>Developed and implemented the company's CSR framework and carbon reporting methodology.</li>
+                  <li>Project managed software services development and drove internal process improvements.</li>
+                </ul>
+              </div>
+            </div>
+
           </div>
-          <div class="exp-main">
-            <ul>
-              <li>Led on sustainability strategy, carbon reporting, and software project management for a tech-focused SME.</li>
-              <li>Developed and implemented the company's CSR framework and carbon reporting methodology.</li>
-              <li>Project managed software services development and drove internal process improvements.</li>
-            </ul>
+        </section>
+
+        <!-- Skills -->
+        <section class="cv-section">
+          <p class="section-label">Technical Skills</p>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h4>Conservation</h4>
+              <p>Ecology | Env. Management | Community Science | Spatial Data | Policy | Project Management | Sustainability Strategy | Carbon Reporting | Low Carbon Development | Wildlife Connectivity | Biodiversity Monitoring | Human-Wildlife Conflict | Grant Management | EVCI | Renewables</p>
+            </div>
+            <div class="skill-card">
+              <h4>Technology</h4>
+              <p>Software Development | Python (Primary) | HTML | CSS | JavaScript (Functional) | Swift (Functional) | Django | Flask | Serverless Architecture | GitHub Pages | REST APIs | Pandas | eBird API | Databases | Mapping & GIS | Felt | QGIS | Geospatial Data</p>
+            </div>
+            <div class="skill-card">
+              <h4>Creative</h4>
+              <p>Photography (10+ yrs) | Drone Piloting (Certified) | Graphic Design</p>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <!-- Education -->
+        <section class="cv-section">
+          <p class="section-label">Education</p>
+          <div class="education-grid">
+            <div class="edu-card">
+              <h4>MSc Environmental Management</h4>
+              <div class="edu-meta">
+                <span class="edu-school">The Open University</span>
+                <span class="edu-year">2024</span>
+              </div>
+            </div>
+            <div class="edu-card">
+              <h4>BSc Natural & Environmental Science</h4>
+              <div class="edu-meta">
+                <span class="edu-school">The Open University</span>
+                <span class="edu-year">2021</span>
+              </div>
+            </div>
+            <div class="edu-card">
+              <h4>NVQ Level 3 Mechanical Engineering</h4>
+              <div class="edu-meta">
+                <span class="edu-school">Doncaster College</span>
+                <span class="edu-year">2017</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </div>
-    </section>
+    </div>
+  </details>
 
-    <!-- Skills -->
-    <section class="cv-section">
-      <p class="section-label">Technical Skills</p>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h4>Conservation</h4>
-          <p>Ecology | Env. Management | Community Science | Spatial Data | Policy | Project Management | Sustainability Strategy | Carbon Reporting | Low Carbon Development | Wildlife Connectivity | Biodiversity Monitoring | Human-Wildlife Conflict | Grant Management | EVCI | Renewables</p>
-        </div>
-        <div class="skill-card">
-          <h4>Technology</h4>
-          <p>Software Development | Python (Primary) | HTML | CSS | JavaScript (Functional) | Swift (Functional) | Django | Flask | Serverless Architecture | GitHub Pages | REST APIs | Pandas | eBird API | Databases | Mapping & GIS | Felt | QGIS | Geospatial Data</p>
-        </div>
-        <div class="skill-card">
-          <h4>Creative</h4>
-          <p>Photography (10+ yrs) | Drone Piloting (Certified) | Graphic Design</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="cv-section">
-      <p class="section-label">Education</p>
-      <div class="education-grid">
-        <div class="edu-card">
-          <h4>MSc Environmental Management</h4>
-          <div class="edu-meta">
-            <span class="edu-school">The Open University</span>
-            <span class="edu-year">2024</span>
-          </div>
-        </div>
-        <div class="edu-card">
-          <h4>BSc Natural & Environmental Science</h4>
-          <div class="edu-meta">
-            <span class="edu-school">The Open University</span>
-            <span class="edu-year">2021</span>
-          </div>
-        </div>
-        <div class="edu-card">
-          <h4>NVQ Level 3 Mechanical Engineering</h4>
-          <div class="edu-meta">
-            <span class="edu-school">Doncaster College</span>
-            <span class="edu-year">2017</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
 </div>

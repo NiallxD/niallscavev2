@@ -13,11 +13,8 @@ tags:
   - nature
   - wildlife
 heroImage: https://i.imgur.com/BiYriQv.png
-hide: true
-header-image: https://i.imgur.com/BiYriQv.png
 created: 2024-07-29
 updated: 2024-07-29
-icon: 1
 ---
 
 #internationaltigerday #tigers #nature #wildlife #conservation 

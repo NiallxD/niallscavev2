@@ -1,6 +1,8 @@
 ---
 title: Canada Travel FAQ
+author: Niall Bell
 date: 2024-02-15
+Type: Blog Post
 publish: true
 permalink: /canada-faq
 description: I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.
@@ -9,8 +11,6 @@ tags:
   - canada
   - photography
 heroImage: https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg
-hide: true
-header-image: https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg
 created: 2024-02-15
 updated: 2024-05-09
 ---

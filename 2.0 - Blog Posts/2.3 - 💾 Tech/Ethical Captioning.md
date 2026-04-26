@@ -10,7 +10,6 @@ excerpt: A case for ethical captioning in photography.
 tags:
   - photography
 heroImage: https://i.imgur.com/eAxWByn.jpeg
-header-image: https://i.imgur.com/eAxWByn.jpeg
 ---
 A case for ethical captioning in photography.
 

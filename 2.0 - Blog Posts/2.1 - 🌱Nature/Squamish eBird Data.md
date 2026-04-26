@@ -5,18 +5,15 @@ date: 2025-03-16
 Type: Blog Post
 publish: true
 permalink: /squamish-ebird-data
-description: Squamish eBird Data
-excerpt: Squamish eBird Data
+description: I built a data portal to make the Nature Squamish Monthly Bird Count data — spanning over 400 months of community observations — accessible and explorable by anyone.
+excerpt: I built a data portal to make the Nature Squamish Monthly Bird Count data — spanning over 400 months of community observations — accessible and explorable by anyone.
 tags:
   - birds
   - nature
   - tech
 heroImage: https://i.imgur.com/6wj3V55.jpeg
-hide: true
-header-image: https://i.imgur.com/6wj3V55.jpeg
 created: 2025-03-16
 updated: 2025-03-16
-icon: 1
 ---
 
 ![](https://i.imgur.com/XaKZYYT.jpeg)

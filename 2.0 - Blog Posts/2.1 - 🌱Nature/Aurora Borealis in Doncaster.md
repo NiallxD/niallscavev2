@@ -11,8 +11,6 @@ tags:
   - astronomy
   - nature
 heroImage: https://i.imgur.com/9DONEvA.jpeg
-hide: true
-header-image: https://i.imgur.com/9DONEvA.jpeg
 created: 2022-09-23
 updated: 2024-05-11
 ---

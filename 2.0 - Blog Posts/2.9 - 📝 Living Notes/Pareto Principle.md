@@ -1,11 +1,17 @@
 ---
 title: Pareto Principle
+author: Niall Bell
 date: 2024-12-31
 Type: Living Note
 publish: true
-description: 'Examples:'
-excerpt: 'Examples:'
-hide: true
+permalink: /pareto-principle
+description: The Pareto Principle — the idea that roughly 80% of outcomes come from 20% of causes — and how it applies across nature, business, and everyday decision-making.
+excerpt: The Pareto Principle — the idea that roughly 80% of outcomes come from 20% of causes — and how it applies across nature, business, and everyday decision-making.
+tags:
+  - productivity
+  - philosophy
+  - on-life
+heroImage: https://i.imgur.com/p6DKgUu.jpeg
 created: 2024-12-31
 updated: 2024-12-21
 maturity-level: Low

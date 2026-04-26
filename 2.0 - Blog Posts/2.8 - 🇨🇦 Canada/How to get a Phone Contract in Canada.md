@@ -5,17 +5,14 @@ date: 2025-01-23
 Type: Blog Post
 publish: true
 permalink: /how-to-get-a-phone-contract-canada
-description: How to get a Phone Contract in Canada
-excerpt: How to get a Phone Contract in Canada
+description: Navigating Canadian phone contracts as a new arrival from the UK — from a temporary Saily eSIM and a Chatr talk-and-text SIM to eventually landing on Freedom Mobile once we had our bank account sorted.
+excerpt: Navigating Canadian phone contracts as a new arrival from the UK — from a temporary Saily eSIM and a Chatr talk-and-text SIM to eventually landing on Freedom Mobile once we had our bank account sorted.
 tags:
   - canada
   - guide
 heroImage: https://i.imgur.com/V9XRV4A.jpeg
-hide: true
-header-image: https://i.imgur.com/V9XRV4A.jpeg
 created: 2025-01-23
 updated: 2025-01-23
-icon: 1
 ---
 
 #canada #travel #IEC #phone #phoneplan

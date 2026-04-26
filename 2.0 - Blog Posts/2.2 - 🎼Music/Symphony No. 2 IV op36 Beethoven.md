@@ -2,14 +2,14 @@
 title: Symphony No. 2 IV Op 36
 author: Niall Bell
 date: 2024-04-18
+Type: Blog Post
 publish: true
+permalink: /symphony-no-2-iv-beethoven
 description: The fourth movement of Beethoven’s second symphony.
 excerpt: The fourth movement of Beethoven’s second symphony.
 tags:
   - music
 heroImage: https://i.imgur.com/Zn891va.jpeg
-hide: true
-header-image: https://i.imgur.com/Zn891va.jpeg
 created: 2024-04-18
 updated: 2024-04-18
 ---

@@ -5,16 +5,13 @@ date: 2024-05-31
 Type: Blog Post
 publish: true
 permalink: /how-i-process-my-photographs
-description: How I Process My Photographs
-excerpt: How I Process My Photographs
+description: A transparent look at my wildlife photography workflow and editing philosophy — from RAW import through to final export, with thoughts on what it means to process photographs ethically.
+excerpt: A transparent look at my wildlife photography workflow and editing philosophy — from RAW import through to final export, with thoughts on what it means to process photographs ethically.
 tags:
   - photography
 heroImage: https://i.imgur.com/jo6fK8O.jpeg
-hide: true
-header-image: https://i.imgur.com/jo6fK8O.jpeg
 created: 2024-05-31
 updated: 2024-05-31
-icon: 1
 ---
 
 #photography #photo #postprocessing

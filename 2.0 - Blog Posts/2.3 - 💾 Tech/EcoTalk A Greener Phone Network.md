@@ -10,8 +10,6 @@ excerpt: 'EcoTalk: A Greener Phone Network. Ever wondered about the carbon impac
 tags:
   - tech
 heroImage: https://i.imgur.com/6HNhbjt.jpeg
-hide: true
-header-image: https://i.imgur.com/6HNhbjt.jpeg
 created: 2024-02-15
 updated: 2024-04-16
 ---

@@ -12,11 +12,8 @@ tags:
   - birds
   - photography
 heroImage: https://i.imgur.com/FEpNXc5.jpeg
-hide: true
-header-image: https://i.imgur.com/FEpNXc5.jpeg
 created: 2025-01-20
 updated: 2025-02-06
-icon: 1
 ---
 
 #eagle #ageguide #photography #birding

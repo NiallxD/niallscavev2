@@ -12,11 +12,8 @@ tags:
   - doncaster
   - nature
 heroImage: https://i.imgur.com/vfEGkKB.jpeg
-hide: true
-header-image: https://i.imgur.com/vfEGkKB.jpeg
 created: 2024-12-22
 updated: 2024-12-22
-icon: 1
 ---
 
 #birding #nature #hoopoe #doncaster #rarebird #birds

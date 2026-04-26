@@ -5,16 +5,13 @@ date: 2025-01-20
 Type: Blog Post
 publish: true
 permalink: /sin-and-bank-account
-description: Getting an SIN and Bank Account
-excerpt: Getting an SIN and Bank Account
+description: A practical walkthrough of getting your Social Insurance Number and opening a Canadian bank account as a UK national on an IEC work permit — including what documents to bring and what to expect.
+excerpt: A practical walkthrough of getting your Social Insurance Number and opening a Canadian bank account as a UK national on an IEC work permit — including what documents to bring and what to expect.
 tags:
   - canada
 heroImage: https://i.imgur.com/cSUI4MZ.jpeg
-hide: true
-header-image: https://i.imgur.com/cSUI4MZ.jpeg
 created: 2025-01-20
 updated: 2025-01-20
-icon: 1
 ---
 
 #canada #travel #IEC #SIN

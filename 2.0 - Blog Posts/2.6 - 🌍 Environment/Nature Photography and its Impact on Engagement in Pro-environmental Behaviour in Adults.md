@@ -4,18 +4,15 @@ author: Niall Bell
 date: 2025-01-31
 Type: Blog Post
 publish: true
-permalink: /Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults
+permalink: /nature-photography-and-pro-environmental-behaviour
 description: This is the report I authored for my master's degree dissertation. I'm sharing here for those interested in this area of research.
 excerpt: This is the report I authored for my master's degree dissertation. I'm sharing here for those interested in this area of research.
 tags:
   - environment
   - nature
 heroImage: https://i.imgur.com/jxxUz6b.jpeg
-hide: true
-header-image: https://i.imgur.com/jxxUz6b.jpeg
 created: 2025-01-31
 updated: 2025-01-31
-icon: 1
 ---
 
 #natureconnectedness #universitydissertation

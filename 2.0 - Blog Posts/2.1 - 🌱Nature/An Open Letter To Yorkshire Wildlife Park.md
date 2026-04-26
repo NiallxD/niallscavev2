@@ -5,19 +5,16 @@ date: 2024-05-12
 Type: Blog Post
 publish: true
 permalink: /an-open-letter-to-ywp
-description: An Open Letter to YWP
-excerpt: An Open Letter to YWP
+description: An open letter to Yorkshire Wildlife Park responding to my membership cancellation. I set out my side of the story, the concerns I've been raising for years about the park's practices, and why I believe YWP has an untapped potential to genuinely change how people connect with wildlife.
+excerpt: An open letter to Yorkshire Wildlife Park responding to my membership cancellation. I set out my side of the story, the concerns I've been raising for years about the park's practices, and why I believe YWP has an untapped potential to genuinely change how people connect with wildlife.
 tags:
   - environment
   - nature
   - photography
   - wildlife
 heroImage: https://i.imgur.com/1pQK9Zn.jpeg
-hide: true
-header-image: https://i.imgur.com/1pQK9Zn.jpeg
 created: 2024-05-12
 updated: 2024-05-12
-icon: 1
 ---
 
 #conservation #nature #wildlife #photography 

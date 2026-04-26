@@ -12,8 +12,6 @@ tags:
   - music
   - nature
 heroImage: https://i.imgur.com/rLYIZA3.jpeg
-hide: true
-header-image: https://i.imgur.com/rLYIZA3.jpeg
 created: 2024-04-29
 updated: 2024-05-02
 ---

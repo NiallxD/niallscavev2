@@ -10,11 +10,8 @@ excerpt: A brief note on my arrival into Canada.
 tags:
   - canada
 heroImage: https://i.imgur.com/2jQznqY.jpeg
-hide: true
-header-image: https://i.imgur.com/2jQznqY.jpeg
 created: 2025-01-12
 updated: 2025-01-12
-icon: 1
 ---
 
 #canada #travel #calgary #vancouver

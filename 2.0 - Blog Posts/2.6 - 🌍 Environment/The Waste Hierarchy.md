@@ -11,8 +11,6 @@ tags:
   - environment
   - nature
 heroImage: https://i.imgur.com/6zfWazY.jpeg
-hide: true
-header-image: https://i.imgur.com/6zfWazY.jpeg
 created: 2022-08-28
 updated: 2024-04-16
 ---

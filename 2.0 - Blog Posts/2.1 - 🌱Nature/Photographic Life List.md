@@ -14,8 +14,6 @@ tags:
   - photography
   - wildlife
 heroImage: https://i.imgur.com/urbFltC.jpeg
-hide: true
-header-image: https://i.imgur.com/urbFltC.jpeg
 created: 2024-04-28
 updated: 2025-06-22
 ---

@@ -5,12 +5,13 @@ date: 2022-12-10
 Type: Blog Post
 publish: true
 permalink: /blog/film-photography
-description: "In 2022, a family member very kindly handed me a camera bag filed with camera gear from a past era. This was aZenit-11, a chunky SLR produced in the USSR. This is a reflection on my personal adventure into film photography."
-excerpt: "In 2022, a family member very kindly handed me a camera bag filed with camera gear from a past era. This was aZenit-11, a chunky SLR produced in the USSR. This is a reflection on my personal adventure into film photography."
+description: In 2022, a family member very kindly handed me a camera bag filed with camera gear from a past era. This was aZenit-11, a chunky SLR produced in the USSR. This is a reflection on my personal adventure into film photography.
+excerpt: In 2022, a family member very kindly handed me a camera bag filed with camera gear from a past era. This was aZenit-11, a chunky SLR produced in the USSR. This is a reflection on my personal adventure into film photography.
 tags:
   - film-photography
   - photography
   - dark-room
+heroImage: https://i.imgur.com/9wUq3cS.jpg
 ---
 
 > [!NOTE] 

@@ -5,15 +5,13 @@ date: 2025-05-17
 Type: Blog Post
 publish: true
 permalink: /brief-review-of-the-zeiss-diascope-65t-fl-green
-description: Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
-excerpt: Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
+description: Online information about the older green-bodied Zeiss DiaScope 65T* FL is almost non-existent. Having bought one for C$1,480, here are my thoughts on its optics, build, and whether it's worth picking up second-hand.
+excerpt: Online information about the older green-bodied Zeiss DiaScope 65T* FL is almost non-existent. Having bought one for C$1,480, here are my thoughts on its optics, build, and whether it's worth picking up second-hand.
 tags:
   - birds
   - gear
   - tech
 heroImage: https://i.imgur.com/5KKoRpe.jpeg
-hide: true
-header-image: https://i.imgur.com/5KKoRpe.jpeg
 created: 2025-05-17
 updated: 2025-05-17
 ---

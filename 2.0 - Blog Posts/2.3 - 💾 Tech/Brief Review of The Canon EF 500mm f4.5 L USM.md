@@ -5,15 +5,13 @@ date: 2023-11-01
 Type: Blog Post
 publish: true
 permalink: /brief-review-of-the-canon-ef-500mm-f-4-5-l-usm
-description: Brief Review of The Canon EF 500mm f/4.5 L USM
-excerpt: Brief Review of The Canon EF 500mm f/4.5 L USM
+description: The Canon EF 500mm f/4.5 L USM is one of Canon's most overlooked wildlife lenses. There's almost nothing written about it online — here are my honest thoughts after using this 1990s prime extensively in the field.
+excerpt: The Canon EF 500mm f/4.5 L USM is one of Canon's most overlooked wildlife lenses. There's almost nothing written about it online — here are my honest thoughts after using this 1990s prime extensively in the field.
 tags:
   - gear
   - photography
   - tech
 heroImage: https://i.imgur.com/jGPwQ43.jpeg
-hide: true
-header-image: https://i.imgur.com/jGPwQ43.jpeg
 created: 2023-11-01
 updated: 2024-04-15
 ---

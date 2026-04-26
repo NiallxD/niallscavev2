@@ -13,11 +13,8 @@ tags:
   - photography
   - wildlife
 heroImage: https://i.imgur.com/8bzvnWQ.png
-hide: true
-header-image: https://i.imgur.com/8bzvnWQ.png
 created: 2024-06-24
 updated: 2024-06-24
-icon: 1
 ---
 
 #photo #photography #nature #wildlife #deer 

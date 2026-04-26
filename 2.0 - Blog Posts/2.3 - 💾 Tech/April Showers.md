@@ -5,11 +5,12 @@ date: 2025-08-10
 Type: Blog Post
 publish: true
 permalink: /blog/april-showers
+description: Why do April showers happen? A short explainer on the meteorology behind the UK's famous spring rainfall — from warming sun angles and rising air pockets to the unstable atmosphere that makes spring so unpredictable.
+excerpt: Why do April showers happen? A short explainer on the meteorology behind the UK's famous spring rainfall — from warming sun angles and rising air pockets to the unstable atmosphere that makes spring so unpredictable.
 tags:
   - weather
   - climate
 heroImage: https://i.imgur.com/A0HkQd0.jpeg
-header-image: https://i.imgur.com/A0HkQd0.jpeg
 ---
 
 # April Showers

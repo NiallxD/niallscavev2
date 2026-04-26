@@ -10,8 +10,6 @@ excerpt: Even to those who don’t frequent classical music circles let alone th
 tags:
   - music
 heroImage: https://i.imgur.com/Zn891va.jpeg
-hide: true
-header-image: https://i.imgur.com/Zn891va.jpeg
 created: 2024-04-11
 updated: 2024-04-11
 ---

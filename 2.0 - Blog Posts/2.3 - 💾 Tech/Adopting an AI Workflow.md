@@ -12,7 +12,6 @@ tags:
   - ai
   - llm
 heroImage: https://i.imgur.com/ys96oqz.jpeg
-header-image: https://i.imgur.com/ys96oqz.jpeg
 ---
 It’s 2025 and big tech is force feeding us artificial intelligence everywhere we look. If an app on the App Store didn’t use AI, it’s considered outdated.
 

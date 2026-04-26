@@ -11,8 +11,6 @@ tags:
   - astronomy
   - photography
 heroImage: https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&format=webp
-hide: true
-header-image: https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&format=webp
 created: 2024-04-22
 updated: 2024-04-22
 ---

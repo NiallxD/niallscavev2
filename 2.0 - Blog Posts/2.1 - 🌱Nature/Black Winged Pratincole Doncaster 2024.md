@@ -11,8 +11,6 @@ tags:
   - birds
   - photography
 heroImage: https://i.imgur.com/IJUcoJt.jpeg
-hide: true
-header-image: https://i.imgur.com/IJUcoJt.jpeg
 created: 2024-07-08
 updated: 2024-07-08
 ---

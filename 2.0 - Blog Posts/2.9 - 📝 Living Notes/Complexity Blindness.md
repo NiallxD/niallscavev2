@@ -1,11 +1,17 @@
 ---
 title: Complexity Blindness
+author: Niall Bell
 date: 2024-12-13
 Type: Living Note
 publish: true
-description: The crooks of the issue are this, humans struggle to understand, or appreciate, the complexity of the things around them. They form a mental model of a particular issue based on a tip-of-the-iceberg u
-excerpt: The crooks of the issue are this, humans struggle to understand, or appreciate, the complexity of the things around them. They form a mental model of a particular issue based on a tip-of-the-iceberg u
-hide: true
+permalink: /complexity-blindness
+description: Humans consistently underestimate the complexity of systems they interact with, forming mental models from surface-level observations. This is a living note exploring complexity blindness and its implications.
+excerpt: Humans consistently underestimate the complexity of systems they interact with, forming mental models from surface-level observations. This is a living note exploring complexity blindness and its implications.
+tags:
+  - critical-thinking
+  - philosophy
+  - on-life
+heroImage: https://i.imgur.com/p6DKgUu.jpeg
 created: 2024-12-13
 updated: 2024-12-19
 maturity-level: Medium

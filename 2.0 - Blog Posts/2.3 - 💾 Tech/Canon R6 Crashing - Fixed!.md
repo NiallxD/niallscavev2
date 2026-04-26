@@ -12,8 +12,6 @@ tags:
   - photography
   - tech
 heroImage: https://i.imgur.com/zWS53Em.jpeg
-hide: false
-header-image: https://i.imgur.com/zWS53Em.jpeg
 created: 2024-03-01
 updated: 2024-04-15
 ---

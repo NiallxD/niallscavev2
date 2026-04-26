@@ -5,13 +5,11 @@ date: 2024-04-16
 Type: Blog Post
 publish: true
 permalink: /are-commercial-photography-hides-acceptable
-description: Are Commercial Photography Hides Acceptable?
-excerpt: Are Commercial Photography Hides Acceptable?
+description: A candid look at the ethics of commercial photography hides — are they acceptable practice for wildlife photographers? I work through the facts and share my personal view on a topic that divides the wildlife photography community.
+excerpt: A candid look at the ethics of commercial photography hides — are they acceptable practice for wildlife photographers? I work through the facts and share my personal view on a topic that divides the wildlife photography community.
 tags:
   - photography
 heroImage: https://i.imgur.com/a0xdQzW.jpeg
-hide: true
-header-image: https://i.imgur.com/a0xdQzW.jpeg
 created: 2024-04-16
 updated: 2024-04-16
 ---

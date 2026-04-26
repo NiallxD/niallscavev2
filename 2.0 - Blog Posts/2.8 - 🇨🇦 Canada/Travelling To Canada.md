@@ -5,16 +5,13 @@ date: 2025-01-09
 Type: Blog Post
 publish: true
 permalink: /travelling-to-canada
-description: Travelling To Canada
-excerpt: Travelling To Canada
+description: The story of how Claudia and I planned and prepared an eight-year-in-the-making move to Canada on the International Experience Canada work permit — two degrees, tonnes of work experience, and a lot of patience later.
+excerpt: The story of how Claudia and I planned and prepared an eight-year-in-the-making move to Canada on the International Experience Canada work permit — two degrees, tonnes of work experience, and a lot of patience later.
 tags:
   - canada
 heroImage: https://i.imgur.com/yi0XicL.jpeg
-hide: true
-header-image: https://i.imgur.com/yi0XicL.jpeg
 created: 2025-01-09
 updated: 2025-01-09
-icon: 1
 ---
 
 #canada #travel #IEC

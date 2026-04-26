@@ -9,9 +9,9 @@
   --color-text:      #111111;
   --color-secondary: #444444;
   --color-muted:     #888888;
-  --color-link:      #2d6a4f;
-  --color-link-hover:#1b4332;
-  --color-accent:    #52b788;
+  --color-link:      #FF860D;
+  --color-link-hover:#cc6a00;
+  --color-accent:    #FF860D;
   --color-border:    #e8e8e4;
   --color-header-bg: rgba(255, 255, 255, 0.94);
   --color-footer-bg: #f9f9f9;
@@ -31,9 +31,9 @@
   --color-text:      #f5f5f3;
   --color-secondary: #cccccc;
   --color-muted:     #888888;
-  --color-link:      #52b788;
-  --color-link-hover:#74c69d;
-  --color-accent:    #40916c;
+  --color-link:      #FF860D;
+  --color-link-hover:#ffa040;
+  --color-accent:    #FF860D;
   --color-border:    #333333;
   --color-header-bg: rgba(17, 17, 17, 0.94);
   --color-footer-bg: #1a1a1a;
@@ -227,7 +227,7 @@ p {
 .nav-menu a.active,
 .site-header.transparent-header:not(.scrolled) .nav-menu a.active,
 [data-theme="dark"] .nav-menu a.active {
-  color: #ea580c !important; /* Orange */
+  color: #FF860D !important;
 }
 
 /* Theme Toggle */
@@ -909,7 +909,6 @@ main {
   justify-content: space-between;
   margin-bottom: 1.5rem;
 }
-
 p.section-label,
 .section-label {
   font-family: var(--font-sans) !important;
@@ -919,6 +918,18 @@ p.section-label,
   letter-spacing: 0.1em !important;
   color: var(--color-muted) !important;
   margin-bottom: 0.75rem !important;
+  line-height: 1 !important;
+  display: block !important;
+}
+
+.section-label-no-margin {
+  font-family: var(--font-sans) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: var(--color-muted) !important;
+  margin-bottom: 0 !important;
   line-height: 1 !important;
   display: block !important;
 }
@@ -1388,6 +1399,59 @@ p.section-label,
   }
 }
 
+
+/* ── Profile collapsible card ─────────────────────────────── */
+.profile-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  background: var(--color-surface);
+  transition: background 0.15s ease;
+}
+
+.profile-card-header::-webkit-details-marker { display: none; }
+
+.profile-card-header:hover {
+  background: var(--color-border);
+}
+
+.profile-card-header .section-label {
+  margin: 0;
+}
+
+.toggle-icon {
+  transition: transform 0.2s ease;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.profile-card[open] .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.profile-card-body {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.profile-card-body .cv-container {
+  margin-top: 2rem;
+}
+
+.profile-intro-full {
+  margin-bottom: 0;
+}
 
 /* ── About Page Intro ─────────────────────────────────────── */
 .about-intro-row {

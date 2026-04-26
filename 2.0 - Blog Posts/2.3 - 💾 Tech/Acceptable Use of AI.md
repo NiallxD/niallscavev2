@@ -5,14 +5,13 @@ date: 2025-10-26
 Type: Blog Post
 publish: true
 permalink: /blog/acceptable-use-of-ai
-description: "*In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*"
-excerpt: "*In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*"
+description: '*In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*'
+excerpt: '*In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*'
 tags:
   - ai
   - artificial-intelligence
   - critical-thinking
   - photography
-header-image: https://i.imgur.com/Ti8yODJ.jpeg
 heroImage: https://i.imgur.com/Ti8yODJ.jpeg
 ---
 *In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*

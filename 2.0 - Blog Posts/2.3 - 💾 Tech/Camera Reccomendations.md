@@ -12,10 +12,7 @@ tags:
   - photography
   - tech
 heroImage: https://i.imgur.com/0GszNX9.jpeg
-hide: true
-header-image: https://i.imgur.com/0GszNX9.jpeg
 updated: 2024-04-22
-icon: 1
 ---
 
 #photography #cameras #lenses #cameragear

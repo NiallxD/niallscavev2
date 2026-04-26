@@ -11,11 +11,8 @@ tags:
   - social media
   - tech
 heroImage: https://i.imgur.com/9wUq3cS.jpg
-hide: true
-header-image: https://i.imgur.com/9wUq3cS.jpg
 created: 2024-08-14
 updated: 2024-08-14
-icon: 1
 ---
 
 #socialmedia #socials #instagram #facebook

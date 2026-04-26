@@ -12,8 +12,6 @@ tags:
   - birds
   - nature
 heroImage: https://i.imgur.com/4TOgr4b.jpeg
-hide: true
-header-image: https://i.imgur.com/4TOgr4b.jpeg
 created: 2024-04-15
 updated: 2024-05-10
 ---
