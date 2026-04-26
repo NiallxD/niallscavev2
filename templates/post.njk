@@ -1,23 +1,28 @@
 ---
 layout: base.njk
 ---
-<article class="post">
-  <header class="post-header">
-    <h1>{{ title }}</h1>
-    {% if date %}
-    <div class="post-meta">
-      <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
-      {% if tags and tags.length %}
-        &middot;
-        {% for tag in tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      {% endif %}
-    </div>
-    {% endif %}
-  </header>
+<article>
+  <div class="prose">
+    <header class="post-header">
+      <h1>{{ title }}</h1>
+      <div class="post-meta">
+        {% if date %}
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+        {% endif %}
+        {% if tags and tags.length %}
+          {% for tag in tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </header>
 
-  <div class="post-content">
-    {{ content | safe }}
+    {% if header-image %}
+      <img class="post-cover" src="{{ header-image }}" alt="{{ title }}">
+    {% endif %}
+
+    <div class="post-content">
+      {{ content | safe }}
+    </div>
   </div>
 </article>

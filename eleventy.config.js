@@ -5,11 +5,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     if (!dateObj) return "";
     const d = dateObj instanceof Date ? dateObj : new Date(dateObj);
-    return d.toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   });
 
   eleventyConfig.addFilter("isoDate", (dateObj) => {
@@ -18,25 +14,24 @@ export default function (eleventyConfig) {
     return d.toISOString().split("T")[0];
   });
 
-  // All published notes
-  eleventyConfig.addCollection("published", (api) =>
-    api
-      .getAll()
-      .filter((item) => item.data["dg-publish"] === true)
+  eleventyConfig.addCollection("posts", (api) =>
+    api.getAll()
+      .filter((i) =>
+        i.data["dg-publish"] === true &&
+        ["Blog Post", "Photo Story", "Photo Analysis"].includes(i.data.Type)
+      )
       .sort((a, b) => b.date - a.date)
   );
 
-  // Blog posts (Type: Blog Post or Photo Story)
-  eleventyConfig.addCollection("posts", (api) =>
-    api
-      .getAll()
-      .filter(
-        (item) =>
-          item.data["dg-publish"] === true &&
-          ["Blog Post", "Photo Story", "Photo Analysis"].includes(
-            item.data.Type
-          )
-      )
+  eleventyConfig.addCollection("galleries", (api) =>
+    api.getAll()
+      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Gallery")
+      .sort((a, b) => (a.data.title || "").localeCompare(b.data.title || ""))
+  );
+
+  eleventyConfig.addCollection("photoStories", (api) =>
+    api.getAll()
+      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Photo Story")
       .sort((a, b) => b.date - a.date)
   );
 

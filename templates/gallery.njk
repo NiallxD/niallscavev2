@@ -1,0 +1,27 @@
+---
+layout: base.njk
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
+
+<article>
+  <header class="gallery-header">
+    <h1>{{ title }}</h1>
+    {% if tags and tags.length %}
+    <div class="post-meta">
+      {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if description %}
+    <p class="gallery-description">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="gallery-body">
+    {{ content | safe }}
+  </div>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+<script>Fancybox.bind('[data-fancybox]', { groupAll: false });</script>
