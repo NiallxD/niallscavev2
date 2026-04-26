@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="/static/css/style.css">
   <script>
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
@@ -25,19 +24,26 @@
         <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
         <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
-      <nav>
+      <nav class="nav-menu">
         <a href="/photography/">Photography</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
         <a href="/about-me/">About</a>
+      </nav>
+      <div class="header-controls">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
-      </nav>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-overlay"></div>
 
   <main>
     
@@ -64,14 +70,14 @@
     
     
     
-    <div class="gallery-slideshow-container no-bg">
+    <div class="gallery-slideshow-container no-bg desktop-only">
       <div class="swiper gallery-swiper">
         <div class="swiper-wrapper">
           
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/FHDzlCt.jpeg" alt="Photo 1 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/FHDzlCt.jpeg" alt="Photo 1" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -79,7 +85,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/FHDzlCt.jpeg" alt="Photo 1 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/aHZEFil.jpeg" alt="Photo 2" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -87,7 +93,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/aHZEFil.jpeg" alt="Photo 2 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/tEw4i0H.jpeg" alt="Photo 3" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -95,7 +101,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/aHZEFil.jpeg" alt="Photo 2 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/KkEUUjZ.jpeg" alt="Photo 4" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -103,7 +109,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/tEw4i0H.jpeg" alt="Photo 3 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/r1J3Pg8.jpeg" alt="Photo 5" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -111,7 +117,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/tEw4i0H.jpeg" alt="Photo 3 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/Vv8qe42.jpeg" alt="Photo 6" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -119,7 +125,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/KkEUUjZ.jpeg" alt="Photo 4 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/iS00PeC.jpeg" alt="Photo 7" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -127,7 +133,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/KkEUUjZ.jpeg" alt="Photo 4 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/Rn9G10s.jpeg" alt="Photo 8" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -135,7 +141,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/r1J3Pg8.jpeg" alt="Photo 5 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/b683zi2.jpeg" alt="Photo 9" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -143,7 +149,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/r1J3Pg8.jpeg" alt="Photo 5 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/vRWAJhK.jpeg" alt="Photo 10" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -151,7 +157,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/Vv8qe42.jpeg" alt="Photo 6 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/Mupm9aZ.jpeg" alt="Photo 11" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -159,7 +165,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/Vv8qe42.jpeg" alt="Photo 6 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/5dbfil7.jpeg" alt="Photo 12" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -167,111 +173,7 @@
           <div class="swiper-slide">
             <div class="slide-inner">
               
-                <img src="https://i.imgur.com/iS00PeC.jpeg" alt="Photo 7 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/iS00PeC.jpeg" alt="Photo 7 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/Rn9G10s.jpeg" alt="Photo 8 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/Rn9G10s.jpeg" alt="Photo 8 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/b683zi2.jpeg" alt="Photo 9 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/b683zi2.jpeg" alt="Photo 9 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/vRWAJhK.jpeg" alt="Photo 10 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/vRWAJhK.jpeg" alt="Photo 10 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/Mupm9aZ.jpeg" alt="Photo 11 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/Mupm9aZ.jpeg" alt="Photo 11 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/5dbfil7.jpeg" alt="Photo 12 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/5dbfil7.jpeg" alt="Photo 12 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/KjAa1WW.jpeg" alt="Photo 13 (1)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-              
-            </div>
-          </div>
-          
-          <div class="swiper-slide">
-            <div class="slide-inner">
-              
-                <img src="https://i.imgur.com/KjAa1WW.jpeg" alt="Photo 13 (2)" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="https://i.imgur.com/KjAa1WW.jpeg" alt="Photo 13" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
               
             </div>
           </div>
@@ -289,38 +191,250 @@
       </div>
     </div>
 
+    <div class="gallery-mobile-grid mobile-only">
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/FHDzlCt.jpeg" alt="Photo 1" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 1</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/aHZEFil.jpeg" alt="Photo 2" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 2</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/tEw4i0H.jpeg" alt="Photo 3" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 3</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/KkEUUjZ.jpeg" alt="Photo 4" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 4</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/r1J3Pg8.jpeg" alt="Photo 5" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 5</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/Vv8qe42.jpeg" alt="Photo 6" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 6</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/iS00PeC.jpeg" alt="Photo 7" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 7</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/Rn9G10s.jpeg" alt="Photo 8" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 8</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/b683zi2.jpeg" alt="Photo 9" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 9</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/vRWAJhK.jpeg" alt="Photo 10" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 10</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/Mupm9aZ.jpeg" alt="Photo 11" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 11</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/5dbfil7.jpeg" alt="Photo 12" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 12</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/KjAa1WW.jpeg" alt="Photo 13" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Photo 13</h4>
+          <div class="mobile-grid-caption"><p>Caption goes here…
+</p></div>
+        </div>
+        
+      </div>
+      
+    </div>
+
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/FHDzlCt.jpeg","title":"Photo 1 (1)","caption":"<p><a href=\"https://i.imgur.com/FHDzlCt.jpeg\">https://i.imgur.com/FHDzlCt.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/FHDzlCt.jpeg","title":"Photo 1 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/aHZEFil.jpeg","title":"Photo 2 (1)","caption":"<p><a href=\"https://i.imgur.com/aHZEFil.jpeg\">https://i.imgur.com/aHZEFil.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/aHZEFil.jpeg","title":"Photo 2 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/tEw4i0H.jpeg","title":"Photo 3 (1)","caption":"<p><a href=\"https://i.imgur.com/tEw4i0H.jpeg\">https://i.imgur.com/tEw4i0H.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/tEw4i0H.jpeg","title":"Photo 3 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/KkEUUjZ.jpeg","title":"Photo 4 (1)","caption":"<p><a href=\"https://i.imgur.com/KkEUUjZ.jpeg\">https://i.imgur.com/KkEUUjZ.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/KkEUUjZ.jpeg","title":"Photo 4 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/r1J3Pg8.jpeg","title":"Photo 5 (1)","caption":"<p><a href=\"https://i.imgur.com/r1J3Pg8.jpeg\">https://i.imgur.com/r1J3Pg8.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/r1J3Pg8.jpeg","title":"Photo 5 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Vv8qe42.jpeg","title":"Photo 6 (1)","caption":"<p><a href=\"https://i.imgur.com/Vv8qe42.jpeg\">https://i.imgur.com/Vv8qe42.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Vv8qe42.jpeg","title":"Photo 6 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/iS00PeC.jpeg","title":"Photo 7 (1)","caption":"<p><a href=\"https://i.imgur.com/iS00PeC.jpeg\">https://i.imgur.com/iS00PeC.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/iS00PeC.jpeg","title":"Photo 7 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Rn9G10s.jpeg","title":"Photo 8 (1)","caption":"<p><a href=\"https://i.imgur.com/Rn9G10s.jpeg\">https://i.imgur.com/Rn9G10s.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Rn9G10s.jpeg","title":"Photo 8 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/b683zi2.jpeg","title":"Photo 9 (1)","caption":"<p><a href=\"https://i.imgur.com/b683zi2.jpeg\">https://i.imgur.com/b683zi2.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/b683zi2.jpeg","title":"Photo 9 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/vRWAJhK.jpeg","title":"Photo 10 (1)","caption":"<p><a href=\"https://i.imgur.com/vRWAJhK.jpeg\">https://i.imgur.com/vRWAJhK.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/vRWAJhK.jpeg","title":"Photo 10 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/Mupm9aZ.jpeg","title":"Photo 11 (1)","caption":"<p><a href=\"https://i.imgur.com/Mupm9aZ.jpeg\">https://i.imgur.com/Mupm9aZ.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/Mupm9aZ.jpeg","title":"Photo 11 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/5dbfil7.jpeg","title":"Photo 12 (1)","caption":"<p><a href=\"https://i.imgur.com/5dbfil7.jpeg\">https://i.imgur.com/5dbfil7.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/5dbfil7.jpeg","title":"Photo 12 (2)","caption":""},{"type":"image","src":"https://i.imgur.com/KjAa1WW.jpeg","title":"Photo 13 (1)","caption":"<p><a href=\"https://i.imgur.com/KjAa1WW.jpeg\">https://i.imgur.com/KjAa1WW.jpeg</a></p>"},{"type":"image","src":"https://i.imgur.com/KjAa1WW.jpeg","title":"Photo 13 (2)","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/FHDzlCt.jpeg","title":"Photo 1","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/aHZEFil.jpeg","title":"Photo 2","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/tEw4i0H.jpeg","title":"Photo 3","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/KkEUUjZ.jpeg","title":"Photo 4","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/r1J3Pg8.jpeg","title":"Photo 5","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Vv8qe42.jpeg","title":"Photo 6","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/iS00PeC.jpeg","title":"Photo 7","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Rn9G10s.jpeg","title":"Photo 8","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/b683zi2.jpeg","title":"Photo 9","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/vRWAJhK.jpeg","title":"Photo 10","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Mupm9aZ.jpeg","title":"Photo 11","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/5dbfil7.jpeg","title":"Photo 12","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/KjAa1WW.jpeg","title":"Photo 13","caption":"<p>Caption goes here…\n</p>"}];
     </script>
     
 
     
     <div style="display: none;"><h2>Photo 1</h2>
-<p><a href="https://i.imgur.com/FHDzlCt.jpeg">https://i.imgur.com/FHDzlCt.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/FHDzlCt.jpeg">https://i.imgur.com/FHDzlCt.jpeg</a></p>
 <h2>Photo 2</h2>
-<p><a href="https://i.imgur.com/aHZEFil.jpeg">https://i.imgur.com/aHZEFil.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/aHZEFil.jpeg">https://i.imgur.com/aHZEFil.jpeg</a></p>
 <h2>Photo 3</h2>
-<p><a href="https://i.imgur.com/tEw4i0H.jpeg">https://i.imgur.com/tEw4i0H.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/tEw4i0H.jpeg">https://i.imgur.com/tEw4i0H.jpeg</a></p>
 <h2>Photo 4</h2>
-<p><a href="https://i.imgur.com/KkEUUjZ.jpeg">https://i.imgur.com/KkEUUjZ.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/KkEUUjZ.jpeg">https://i.imgur.com/KkEUUjZ.jpeg</a></p>
 <h2>Photo 5</h2>
-<p><a href="https://i.imgur.com/r1J3Pg8.jpeg">https://i.imgur.com/r1J3Pg8.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/r1J3Pg8.jpeg">https://i.imgur.com/r1J3Pg8.jpeg</a></p>
 <h2>Photo 6</h2>
-<p><a href="https://i.imgur.com/Vv8qe42.jpeg">https://i.imgur.com/Vv8qe42.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/Vv8qe42.jpeg">https://i.imgur.com/Vv8qe42.jpeg</a></p>
 <h2>Photo 7</h2>
-<p><a href="https://i.imgur.com/iS00PeC.jpeg">https://i.imgur.com/iS00PeC.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/iS00PeC.jpeg">https://i.imgur.com/iS00PeC.jpeg</a></p>
 <h2>Photo 8</h2>
-<p><a href="https://i.imgur.com/Rn9G10s.jpeg">https://i.imgur.com/Rn9G10s.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/Rn9G10s.jpeg">https://i.imgur.com/Rn9G10s.jpeg</a></p>
 <h2>Photo 9</h2>
-<p><a href="https://i.imgur.com/b683zi2.jpeg">https://i.imgur.com/b683zi2.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/b683zi2.jpeg">https://i.imgur.com/b683zi2.jpeg</a></p>
 <h2>Photo 10</h2>
-<p><a href="https://i.imgur.com/vRWAJhK.jpeg">https://i.imgur.com/vRWAJhK.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/vRWAJhK.jpeg">https://i.imgur.com/vRWAJhK.jpeg</a></p>
 <h2>Photo 11</h2>
-<p><a href="https://i.imgur.com/Mupm9aZ.jpeg">https://i.imgur.com/Mupm9aZ.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/Mupm9aZ.jpeg">https://i.imgur.com/Mupm9aZ.jpeg</a></p>
 <h2>Photo 12</h2>
-<p><a href="https://i.imgur.com/5dbfil7.jpeg">https://i.imgur.com/5dbfil7.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/5dbfil7.jpeg">https://i.imgur.com/5dbfil7.jpeg</a></p>
 <h2>Photo 13</h2>
-<p><a href="https://i.imgur.com/KjAa1WW.jpeg">https://i.imgur.com/KjAa1WW.jpeg</a></p>
+<p>Caption goes here…
+<a href="https://i.imgur.com/KjAa1WW.jpeg">https://i.imgur.com/KjAa1WW.jpeg</a></p>
 </div>
     
   </div>
@@ -411,6 +525,10 @@
     </div>
   </footer>
 
+  <div id="image-protection-toast" class="image-protection-toast">
+    If you would like to use one of my photographs, please <a href="mailto:niall@niallbell.com">get in touch</a>.
+  </div>
+
   <script>
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
@@ -418,6 +536,29 @@
       const target = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', target);
       localStorage.setItem('theme', target);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    const toggleMenu = () => {
+      const isOpen = body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (body.classList.contains('menu-open')) {
+          toggleMenu();
+        }
+      });
     });
 
     const header = document.querySelector('.site-header');
@@ -430,6 +571,42 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Right-click protection for images
+    document.addEventListener('DOMContentLoaded', () => {
+      const toast = document.getElementById('image-protection-toast');
+      let toastTimeout;
+
+      const showToast = (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          e.preventDefault();
+          
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+          return true;
+        }
+        return false;
+      };
+
+      document.addEventListener('contextmenu', showToast, false);
+      
+      // Handle mobile long-press
+      let touchTimer;
+      document.addEventListener('touchstart', (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          touchTimer = setTimeout(() => {
+            showToast(e);
+          }, 500); // 500ms for long press
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchend', () => {
+        clearTimeout(touchTimer);
+      }, false);
+    });
   </script>
 </body>
 </html>

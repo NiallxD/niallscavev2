@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="/static/css/style.css">
   <script>
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
@@ -25,19 +24,26 @@
         <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
         <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
-      <nav>
+      <nav class="nav-menu">
         <a href="/photography/">Photography</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
         <a href="/about-me/">About</a>
+      </nav>
+      <div class="header-controls">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
           <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
-      </nav>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
     </div>
   </header>
+  <div class="nav-overlay"></div>
 
   <main>
     
@@ -130,6 +136,10 @@
     </div>
   </footer>
 
+  <div id="image-protection-toast" class="image-protection-toast">
+    If you would like to use one of my photographs, please <a href="mailto:niall@niallbell.com">get in touch</a>.
+  </div>
+
   <script>
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
@@ -137,6 +147,29 @@
       const target = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', target);
       localStorage.setItem('theme', target);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    const toggleMenu = () => {
+      const isOpen = body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (body.classList.contains('menu-open')) {
+          toggleMenu();
+        }
+      });
     });
 
     const header = document.querySelector('.site-header');
@@ -149,6 +182,42 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Right-click protection for images
+    document.addEventListener('DOMContentLoaded', () => {
+      const toast = document.getElementById('image-protection-toast');
+      let toastTimeout;
+
+      const showToast = (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          e.preventDefault();
+          
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+          return true;
+        }
+        return false;
+      };
+
+      document.addEventListener('contextmenu', showToast, false);
+      
+      // Handle mobile long-press
+      let touchTimer;
+      document.addEventListener('touchstart', (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          touchTimer = setTimeout(() => {
+            showToast(e);
+          }, 500); // 500ms for long press
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchend', () => {
+        clearTimeout(touchTimer);
+      }, false);
+    });
   </script>
 </body>
 </html>
