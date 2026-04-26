@@ -1,21 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/2jQznqY.jpeg
-dg-permalink: /arriving-in-canada
-Type: Blog Post
-created: 2025-01-12
+title: Arriving In Canada
+author: Niall Bell
 date: 2025-01-12
-updated: 2025-01-12
+Type: Blog Post
+publish: true
+permalink: /arriving-in-canada
+description: A brief note on my arrival into Canada.
+excerpt: A brief note on my arrival into Canada.
 tags:
   - canada
-  - travel
-  - calgary
-  - vancouver
-title: Arriving In Canada
-description: A brief note on my arrival into Canada.
-dg-note-icon: "1"
+heroImage: https://i.imgur.com/2jQznqY.jpeg
+hide: true
+header-image: https://i.imgur.com/2jQznqY.jpeg
+created: 2025-01-12
+updated: 2025-01-12
+icon: 1
 ---
+
 #canada #travel #calgary #vancouver
 # Arriving In Canada
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -76,4 +77,3 @@ So with all that out the way, we are free to explore Canada. We found the travel
 I hope this was helpful and as always feel free to get in touch if you have any questions!
 
 Cheers!
-

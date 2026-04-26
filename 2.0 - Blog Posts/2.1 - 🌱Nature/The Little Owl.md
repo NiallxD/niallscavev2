@@ -1,20 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/4TOgr4b.jpeg
-Type: Blog Post
-created: 2024-04-15
+title: 'Etymology: The Little Owl'
+author: Niall Bell
 date: 2024-04-15
-updated: 2024-05-10
-tags:
-  - Nature
-  - Birds
-  - birding
-dg-note-icon: 
-title: "Etymology: The Little Owl"
+Type: Blog Post
+publish: true
+permalink: /The-little-owl
 description: This is a quick dive into the origins of the Little Owls Latin Name
-dg-permalink: /The-little-owl
+excerpt: This is a quick dive into the origins of the Little Owls Latin Name
+featured: true
+tags:
+  - birds
+  - nature
+heroImage: https://i.imgur.com/4TOgr4b.jpeg
+hide: true
+header-image: https://i.imgur.com/4TOgr4b.jpeg
+created: 2024-04-15
+updated: 2024-05-10
 ---
+
 #nature #birds #littleowl #etymology 
 # The Little Owl
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -43,4 +46,3 @@ I love to learn about the history of how things became to be called what they ar
 
 ![](https://i.imgur.com/ZfR4CBC.jpeg)
 *A little owl perched in an oak that has succumb to brown rot*
-

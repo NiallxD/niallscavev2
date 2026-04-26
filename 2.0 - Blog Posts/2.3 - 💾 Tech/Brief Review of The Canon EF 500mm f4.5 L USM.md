@@ -1,20 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/jGPwQ43.jpeg
-dg-permalink: /brief-review-of-the-canon-ef-500mm-f-4-5-l-usm
-Type: Blog Post
-created: 2023-11-01
-date: 2023-11-01
-updated: 2024-04-15
-tags:
-  - Camera
-  - Photography
-  - tech
 title: Brief Review of The Canon EF 500mm f/4.5 L USM
+author: Niall Bell
+date: 2023-11-01
+Type: Blog Post
+publish: true
+permalink: /brief-review-of-the-canon-ef-500mm-f-4-5-l-usm
 description: Brief Review of The Canon EF 500mm f/4.5 L USM
-dg-note-icon:
+excerpt: Brief Review of The Canon EF 500mm f/4.5 L USM
+tags:
+  - gear
+  - photography
+  - tech
+heroImage: https://i.imgur.com/jGPwQ43.jpeg
+hide: true
+header-image: https://i.imgur.com/jGPwQ43.jpeg
+created: 2023-11-01
+updated: 2024-04-15
 ---
+
 #tech #cameras #photography 
 # Brief Review of The Canon EF 500mm f/4.5 L USM
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -100,4 +103,3 @@ If your looking for a fast canon prime but don’t want to shell out nearly £2k
 - AF is rapid and accurate, with no issues tracking fast-moving subjects
 - The lens is a bit front heavy but in practice, it makes no odds
 - Overall image quality is what you’d expect from a Canon L lens
-

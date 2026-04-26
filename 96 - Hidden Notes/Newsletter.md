@@ -1,13 +1,14 @@
 ---
-dg-publish: true
-dg-hide: true
-dg-permalink: /newsletter
 title: 📧 Newsletter
+publish: true
+permalink: /newsletter
+description: Hello! Thanks for wanting to sign-up to my newsletter.
+excerpt: Hello! Thanks for wanting to sign-up to my newsletter.
+hide: true
 created: 2024-05-10
 updated: 2024-05-10
-dg-note-icon: 
-cssclasses:
 ---
+
 # Newsletter
 
 Hello! Thanks for wanting to sign-up to my newsletter.
@@ -20,5 +21,3 @@ Please pop your email into the Google Form below and I'll send you updates here 
 >This for is just a way for you to tell me you want me to send you an email about my updates. Your email will be stored on Google's servers where they store Google Form data. You're giving me your email as a friend, this is not a public service.
 >
 >You're email will be used only so that I can send you a nudge that I've added something new to my site. I won't spam you, sell your email or anything dodgy like that. If you change your mind, just drop me a line and I'll delete your email.
-
-

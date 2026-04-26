@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "7526"
-  title: "So You Want to Move to Canada, Eh?: Stuff to Know Before You Go"
-  author: McCartney, Jennifer
-  highlightsCount: 5
+publish: true
+description: 'It’s connected to the New Brunswick mainland by Confederation Bridge, the longest bridge in the world over a body of water that freezes. — location: [159]() ^ref-8144'
+excerpt: 'It’s connected to the New Brunswick mainland by Confederation Bridge, the longest bridge in the world over a body of water that freezes. — location: [159]() ^ref-8144'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # So You Want to Move to Canada, Eh?
@@ -30,5 +28,3 @@ The current maple leaf design by George Stanley was the unanimous winner. — lo
 Becoming a permanent resident comes with a catch, however. Once you’re approved, you must still fulfill the Canadian residency requirement to maintain your status: you must live in Canada for at least 730 days (two years) out of every five years. Once you’ve fulfilled this residency requirement, you can also apply for Canadian citizenship. Or you can stay a permanent resident indefinitely as long as you follow the rules. — location: [600]() ^ref-4038
 
 ---
-
-

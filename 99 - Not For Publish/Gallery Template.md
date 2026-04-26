@@ -1,7 +1,7 @@
 ---
-dg-hide: true
-dg-publish: false
-dg-permalink: 
+hide: true
+publish: false
+permalink: 
 Type: 
 Published: 
 tags:
@@ -10,8 +10,9 @@ tags:
   - photography
 title: 
 description: 
-dg-note-icon: "2"
+icon: "2"
 ---
+
 #
 # TITLE
 
@@ -31,5 +32,3 @@ dg-note-icon: "2"
 
     <!-- Add more images as needed -->
 </div>
-
-

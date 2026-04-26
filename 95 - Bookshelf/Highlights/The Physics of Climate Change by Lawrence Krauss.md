@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "1000"
-  title: The Physics of Climate Change
-  author: Krauss, Lawrence M.
-  highlightsCount: 8
+publish: true
+description: 'Hadean period, — location: [375]() ^ref-309'
+excerpt: 'Hadean period, — location: [375]() ^ref-309'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # The Physics of Climate Change
@@ -39,5 +37,3 @@ Jim Hansen compared the predicted and observed temperature change for the Vostok
 Louis Pasteur anticipated that when he said fortune favors the prepared mind. It makes no guarantees. It just offers better odds. I’ll take that any day. — location: [2079]() ^ref-34258
 
 ---
-
-

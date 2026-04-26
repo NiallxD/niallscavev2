@@ -1,22 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/V9XRV4A.jpeg
-dg-permalink: /how-to-get-a-phone-contract-canada
-Type: Blog Post
-created: 2025-01-23
+title: How to get a Phone Contract in Canada
+author: Niall Bell
 date: 2025-01-23
-updated: 2025-01-23
+Type: Blog Post
+publish: true
+permalink: /how-to-get-a-phone-contract-canada
+description: How to get a Phone Contract in Canada
+excerpt: How to get a Phone Contract in Canada
 tags:
   - canada
-  - travel
-  - IEC
-  - phone
-  - phoneplan
-title: How to get a Phone Contract in Canada
-description: How to get a Phone Contract in Canada
-dg-note-icon: "1"
+  - guide
+heroImage: https://i.imgur.com/V9XRV4A.jpeg
+hide: true
+header-image: https://i.imgur.com/V9XRV4A.jpeg
+created: 2025-01-23
+updated: 2025-01-23
+icon: 1
 ---
+
 #canada #travel #IEC #phone #phoneplan
 # How to get a Phone Contract in Canada
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -60,4 +61,3 @@ I'll update this with a review of Freedom once I've had chance to properly use i
 
 >[!NOTE] Header Image: 
 >A photograph I took of a traditional sculpture called an Inuksuk which were build by several indigenous peoples of the far north. It serves as a navigational aid and landmark. This one is located on Sunshine Beach in Vancouver.
-

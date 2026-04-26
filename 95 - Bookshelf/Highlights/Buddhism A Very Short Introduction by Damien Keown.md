@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "1775"
-  title: (Very Short Introductions) Damien Keown - Buddhism_ A Very Short Introduction-Oxford University Press (2013)
-  author: Damien Keown
-  highlightsCount: 15
+publish: true
+description: In connection with the study of Buddhism, then, we must be alert to the risk of ‘culture blindness’, and the misunderstandings which can arise from the assumption that Western categories and concepts
+excerpt: In connection with the study of Buddhism, then, we must be alert to the risk of ‘culture blindness’, and the misunderstandings which can arise from the assumption that Western categories and concepts
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Buddhism A Very Short Introduction by Damien Keown
@@ -66,5 +64,3 @@ In the traditional Christian view, man is the caretaker or custodian of the natu
 Many ecologists see this belief as having encouraged the over-exploitation of nature and having fostered an attitude of indifference to the well-being of other species. — location: [2272]() ^ref-46264
 
 ---
-
-

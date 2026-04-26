@@ -1,21 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/Izkx8aB.jpeg
-Type: Blog Post
-dg-permalink: /custom-siril-scripts
-created: 2024-11-21
-date: 2024-11-21
-updated: 2024-11-21
-tags:
-  - Tech
-  - astrophotography
-  - Siril
-  - imageprocessing
 title: Custom Siril Scripts for Astrophotography
+author: Niall Bell
+date: 2024-11-21
+Type: Blog Post
+publish: true
+permalink: /custom-siril-scripts
 description: Here is how I use custom Siril Scripts for Astrophotography.
-dg-note-icon:
+excerpt: Here is how I use custom Siril Scripts for Astrophotography.
+tags:
+  - astronomy
+  - photography
+  - tech
+heroImage: https://i.imgur.com/Izkx8aB.jpeg
+hide: true
+header-image: https://i.imgur.com/Izkx8aB.jpeg
+created: 2024-11-21
+updated: 2024-11-21
 ---
+
 #tech #astrophotography #siril #imageprocessing
 # Custom Siril Scripts for Astrophotography
 
@@ -348,8 +350,6 @@ Niall
 
 #### Header Image
 
-The header image for this post was created using these scripts. It should the Horsehead and Flame Nebula in the Orion constellation.
+The header image for this post was created using these scripts. It shows the Horsehead and Flame Nebula in the Orion constellation.
 
 ![](https://i.imgur.com/Izkx8aB.jpeg)
-
-

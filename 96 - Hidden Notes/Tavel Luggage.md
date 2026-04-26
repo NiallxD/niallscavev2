@@ -1,10 +1,10 @@
 ---
-dg-publish: true
-dg-hide: true
-dg-permalink: /travel
 title: 🧳 Travel Luggage
-dg-note-icon: 
-cssclasses:
+publish: true
+permalink: /travel
+description: <script type="text/javascript"> var meta = document.createElement('meta'); meta.name = "robots"; meta.content = "noindex, nofollow"; document.getElementsByTagName('head')[0].appendChild(meta);  </scri
+excerpt: <script type="text/javascript"> var meta = document.createElement('meta'); meta.name = "robots"; meta.content = "noindex, nofollow"; document.getElementsByTagName('head')[0].appendChild(meta);  </scri
+hide: true
 ---
 
 <script type="text/javascript">
@@ -31,4 +31,3 @@ Current contact info:
 🏠 21 Greenlands Ave, Doncaster, DN11 0EN
 
 **_This information was last updated on: 30/12/2024_**
-

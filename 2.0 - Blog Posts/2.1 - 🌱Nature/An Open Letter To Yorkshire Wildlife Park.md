@@ -1,21 +1,25 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/1pQK9Zn.jpeg
-dg-permalink: /an-open-letter-to-ywp
-Type: Blog Post
-created: 2024-05-12
-date: 2024-05-12
-updated: 2024-05-12
-tags:
-  - conservation
-  - nature
-  - wildlife
-  - photography
 title: An Open Letter to YWP
+author: Niall Bell
+date: 2024-05-12
+Type: Blog Post
+publish: true
+permalink: /an-open-letter-to-ywp
 description: An Open Letter to YWP
-dg-note-icon: "1"
+excerpt: An Open Letter to YWP
+tags:
+  - environment
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/1pQK9Zn.jpeg
+hide: true
+header-image: https://i.imgur.com/1pQK9Zn.jpeg
+created: 2024-05-12
+updated: 2024-05-12
+icon: 1
 ---
+
 #conservation #nature #wildlife #photography 
 # An Open Letter To Yorkshire Wildlife Park
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -135,4 +139,3 @@ Here are the issues for which I've been advocating for change. Some are bespoke 
 [^12]: YWP continue to ignore local planning laws by developing with permission and then seeking retrospective permission. This places a lot of pressure on the local authority and prevent residents from having their say ahead of the development. Some of this with is less than 500 m from peoples homes.
 [^13]: Im referring to occasions where half the animals were locked away due to a power failure and nobody telling paying guests at the entrance or when they have advertised a new animal but failed to share the fact that it is off-show. Recent updates on the website banner have helped address these issues which is nice to see!
 [^14]: When justifying the importance of the Big Wheel, YWP stated it is crucial to the parks success.  This is contained in planning documents on the Doncaster Council Planning Portal.
-

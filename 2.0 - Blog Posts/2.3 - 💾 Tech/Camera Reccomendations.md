@@ -1,22 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/0GszNX9.jpeg
-dg-permalink: /camera-recommendations
-Type: 
-created: 2023-06-10
+title: Camera Recommendations
+author: Niall Bell
 date: 2023-06-10
-updated: 2024-04-22
+Type: Blog Post
+publish: true
+permalink: /camera-recommendations
+description: Over the years I've used a whole range of camera gear from beginner kits to expensive professional grade gear. Many people who are wanting to get a start in photography, or upgrade their existing gear
+excerpt: Over the years I've used a whole range of camera gear from beginner kits to expensive professional grade gear. Many people who are wanting to get a start in photography, or upgrade their existing gear
 tags:
+  - gear
   - photography
-  - cameras
-  - lenses
-  - cameragear
   - tech
-title: "Camera Recommendations"
-description: 
-dg-note-icon: "1"
+heroImage: https://i.imgur.com/0GszNX9.jpeg
+hide: true
+header-image: https://i.imgur.com/0GszNX9.jpeg
+updated: 2024-04-22
+icon: 1
 ---
+
 #photography #cameras #lenses #cameragear
 
 # Camera Recommendations
@@ -228,7 +229,3 @@ In summary, I think this post shows how difficult it can be to recommend a certa
 
 If you wish to chat over email, please get in touch. I'll help advise best I can.
 [Click here to send me an email](mailto:niall@niallbell.com)
-
-
-
-

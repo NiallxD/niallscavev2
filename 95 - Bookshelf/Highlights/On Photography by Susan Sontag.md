@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "41026"
-  title: On Photography (Penguin Modern Classics)
-  author: Sontag, Susan
-  highlightsCount: 8
+publish: true
+description: 'undiscriminating, promiscuous, or self-effacing do not lessen the didacticism — location: [88]() ^ref-21070'
+excerpt: 'undiscriminating, promiscuous, or self-effacing do not lessen the didacticism — location: [88]() ^ref-21070'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # On Photography
@@ -39,5 +37,3 @@ Bergen-Belsen and Dachau — location: [253]() ^ref-9466
 Mallarmé, said that everything in the world exists in order to end in a book. Today everything exists to end in a photograph. — location: [318]() ^ref-26563
 
 ---
-
-

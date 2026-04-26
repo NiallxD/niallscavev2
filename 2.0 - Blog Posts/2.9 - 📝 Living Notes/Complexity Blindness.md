@@ -1,13 +1,16 @@
 ---
-dg-hide: true
-dg-publish: true
-Type: Living Note
-created: 2024-12-13
-date: 2024-12-13
-updated: 2024-12-19
 title: Complexity Blindness
+date: 2024-12-13
+Type: Living Note
+publish: true
+description: The crooks of the issue are this, humans struggle to understand, or appreciate, the complexity of the things around them. They form a mental model of a particular issue based on a tip-of-the-iceberg u
+excerpt: The crooks of the issue are this, humans struggle to understand, or appreciate, the complexity of the things around them. They form a mental model of a particular issue based on a tip-of-the-iceberg u
+hide: true
+created: 2024-12-13
+updated: 2024-12-19
 maturity-level: Medium
 ---
+
 #complexity #systemsthinking #heuristics #congnitivebias
 # Complexity Blindness
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -41,5 +44,3 @@ Some questions which I think can invoke Complexity Blindness:
 The Dunning-Kruger Effect/Syndrome is a cognitive bias in which people who lack competence in a specific domain greatly overestimate their performance. For example, photographers who have not been doing the hobby long can believe they are performing incredibly well. It is only when they realise how much they don't know, that they start to realise their performance is not as good as they initially thought.
 
 I draw similarities between the Dunning-Kruger Effect and Complexity Blindness because they are both a cognitive biases rooted in incompetency. On reflection, I could argue that Complexity Blindness is a symptom of the Dunning-Kruger Effect in that people make decisions based on their understanding of a topic, asserting their competency to make those decisions, yet suffering from the K-D Effect. Where Complexity Blindness diverges from K-D is that the bias results from a lack of understanding of the concept material, not a lack of understanding about the depth of a particular topic. The difference is in K-D people may know they are noobs and don't know it all, but still over-rate their performance, whereas Complexity Blindness is an inability to see that the concept/topic is far more complex than they realise. This leads them to believe they understand the topic in depth and therefore have authority, when they don't.
-
-

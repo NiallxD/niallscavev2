@@ -1,16 +1,17 @@
 ---
-dg-hide: true
-dg-publish: false
+hide: true
+publish: false
 header-image: 
-dg-permalink: 
+permalink: 
 Type: 
 created: 
 updated: 
 tags: 
 title: 
 description: 
-dg-note-icon: "1"
+icon: "1"
 ---
+
 #Socialmedia #socials #instagram #facebook #twitterx
 # Social Media Is The Matrix
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>

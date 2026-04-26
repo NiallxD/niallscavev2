@@ -1,20 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/6zfWazY.jpeg
-dg-permalink: /the-waste-hierarchy
-Type: Blog Post
-created: 2022-08-28
+title: The Waste Hierarchy
+author: Niall Bell
 date: 2022-08-28
-updated: 2024-04-16
+Type: Blog Post
+publish: true
+permalink: /the-waste-hierarchy
+description: The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.
+excerpt: The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.
 tags:
-  - waste
   - environment
   - nature
-title: The Waste Hierarchy
-description: The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.
-dg-note-icon:
+heroImage: https://i.imgur.com/6zfWazY.jpeg
+hide: true
+header-image: https://i.imgur.com/6zfWazY.jpeg
+created: 2022-08-28
+updated: 2024-04-16
 ---
+
 #waste #environment #sustainability 
 # The Waste Hierarchy
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -93,5 +95,3 @@ Waste management is a vast topic and there are so many interesting things to div
 ## References:
 
 [^1]: The New Scientist (2022). _The end of waste:_ _The grand plan to build a truly circular economy._ Available at: [https://www.newscientist.com/article/mg25333730-800-the-end-of-waste-the-grand-plan-to-build-a-truly-circular-economy/](https://niallbell.com/%22https://www.newscientist.com/article/mg25333730-800-the-end-of-waste-the-grand-plan-to-build-a-truly-circular-economy//%22)
-
-

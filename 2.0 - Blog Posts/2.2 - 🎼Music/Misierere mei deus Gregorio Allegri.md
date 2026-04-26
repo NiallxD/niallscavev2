@@ -1,18 +1,21 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/Zn891va.jpeg
-dg-permalink: /misierere-mei-deus
-Type: Blog Post
-created: 2024-04-11
-date: 2024-04-11
-updated: 2024-04-11
-tags:
-  - Music
-  - Baroque
-dg-note-icon: 
 title: Misierere Mei, Deus
+author: Niall Bell
+date: 2024-04-11
+Type: Blog Post
+publish: true
+permalink: /misierere-mei-deus
+description: Even to those who don’t frequent classical music circles let alone those of sacred choral music from the 1600’s, will have heard this music sung in one way or another. Incredibly, this piece was perfo
+excerpt: Even to those who don’t frequent classical music circles let alone those of sacred choral music from the 1600’s, will have heard this music sung in one way or another. Incredibly, this piece was perfo
+tags:
+  - music
+heroImage: https://i.imgur.com/Zn891va.jpeg
+hide: true
+header-image: https://i.imgur.com/Zn891va.jpeg
+created: 2024-04-11
+updated: 2024-04-11
 ---
+
 #music #composers 
 # Misierere Mei, Deus - Gregorio Allegri
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -63,4 +66,3 @@ I’m not religious at all but I feel the emotions of this piece and think it ca
 That’s a lot for 00:19 on a Thursday morning, but c’est la vie!
 
 Niall
-

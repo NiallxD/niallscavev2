@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "34243"
-  title: Beethoven
-  author: Suchet, John
-  highlightsCount: 51
+publish: true
+description: 'Beethoven wrote nine symphonies; Mozart forty-one; Haydn an extraordinary 104. — location: [58]() ^ref-56847'
+excerpt: 'Beethoven wrote nine symphonies; Mozart forty-one; Haydn an extraordinary 104. — location: [58]() ^ref-56847'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Beethoven
@@ -168,5 +166,3 @@ What is fact is that at 6 p.m. on 26 March 1827 – at the age of fifty-six year
 Just over a year and a half after Beethoven’s death, Franz Schubert – one of those pallbearers who had accompanied the coffin and stood at the graveside with lighted torch – was buried alongside the man he admired so much. — location: [5012]() ^ref-10883
 
 ---
-
-

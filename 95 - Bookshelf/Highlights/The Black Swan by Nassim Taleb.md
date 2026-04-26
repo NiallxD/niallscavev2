@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "34746"
-  title: "The Black Swan: The Impact of the Highly Improbable"
-  author: Nassim Nicholas Taleb
-  highlightsCount: 19
+publish: true
+description: 'people who have been mistreated by history. There were the poètes — location: [388]() ^ref-46425'
+excerpt: 'people who have been mistreated by history. There were the poètes — location: [388]() ^ref-46425'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # The Black Swan
@@ -100,5 +98,3 @@ Because they are mathematicians...
 allows information to be filtered a bit. — location: [3107]() ^ref-19917
 
 ---
-
-

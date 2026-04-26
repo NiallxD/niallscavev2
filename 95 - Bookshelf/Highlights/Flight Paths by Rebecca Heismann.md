@@ -1,11 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "49858"
-  title: Flight Paths
-  highlightsCount: 16
+publish: true
+description: 'Rating: ⭐️⭐️⭐️⭐️'
+excerpt: 'Rating: ⭐️⭐️⭐️⭐️'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Flight Paths
@@ -69,5 +68,3 @@ The longest-running community science project in the world, however, is the vene
 Laysan albatross named Wisdom. Originally banded on Midway Atoll in 1956, she has (as far as we know) continued to return to the island to lay an egg each December for at least seventy years, making her the oldest confirmed wild bird in the world. — location: [3025]() ^ref-23703
 
 ---
-
-

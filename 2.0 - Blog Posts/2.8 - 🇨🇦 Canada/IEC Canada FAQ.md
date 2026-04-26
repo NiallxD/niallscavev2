@@ -1,21 +1,20 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg
-dg-permalink: /canada-faq
-Type: 
-created: 2024-02-15
-date: 2024-02-15
-updated: 2024-05-09
-tags:
-  - BlogPost
-  - blog
-  - travel
-  - canada
 title: Canada Travel FAQ
+date: 2024-02-15
+publish: true
+permalink: /canada-faq
 description: I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.
-dg-note-icon:
+excerpt: I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.
+tags:
+  - canada
+  - photography
+heroImage: https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg
+hide: true
+header-image: https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg
+created: 2024-02-15
+updated: 2024-05-09
 ---
+
 #travel #canada
 # IEC Canada FAQ
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -243,4 +242,3 @@ So I’ve set up this FAQ where I’ll put all the responses to the questions th
 
 [^1]: Please note that I’m not an Canadian immigration expert, I’m learning just like you. Check with Alliance or Immigration Canada if you’re unsure of anything. This FAQ is just for tips to get started.
 [^2]: If you recognise one of your messages on here and you want it removing, just send me an email and I'll happily do so [niall@niallbell.com](mailto:niall@niallbell.com).
-

@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "9631"
-  title: Mozart
-  author: Suchet, John
-  highlightsCount: 7
+publish: true
+description: 'Mozart was born on 27 January 1756 — location: [97]() ^ref-51319'
+excerpt: 'Mozart was born on 27 January 1756 — location: [97]() ^ref-51319'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Mozart
@@ -41,5 +39,3 @@ so it runs down your chin. — location: [2125]()
 Legend has it that Mozart was given a pauper’s funeral and his body thrown in a paupers’ grave. It is not true. — location: [4206]() ^ref-35971
 
 ---
-
-

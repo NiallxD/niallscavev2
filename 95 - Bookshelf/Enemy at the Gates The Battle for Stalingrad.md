@@ -1,23 +1,20 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg
-dg-permalink: /bookshelf/enemy-at-the-gates
+title: 'Enemy at the Gates: The Battle for Stalingrad'
+author: William Craig
 Type: Bookshelf
-read: 2023-08-15
+publish: true
+permalink: /bookshelf/enemy-at-the-gates
+excerpt: ""
 tags:
+  - birds
   - books
-  - bookshelf
-  - reading
-  - Birds
   - nature
   - wildlife
-title: "Enemy at the Gates: The Battle for Stalingrad"
-author: William Craig
-description: 
-goodreads: "[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg)"
-dg-note-icon: 
-highlights:
+heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg
+hide: true
+header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg
+read: 2023-08-15
+goodreads: '[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg)'
 ---
-#books #reading #bookshelf
 
+#books #reading #bookshelf

@@ -1,20 +1,19 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
-dg-permalink: /bookshelf/humble-pi
+title: 'Humble Pi: A Comedy of Maths Errors'
+author: Matt Parker
 Type: Bookshelf
-read: 2023-10-05
+publish: true
+permalink: /bookshelf/humble-pi
+excerpt: ""
 tags:
   - books
-  - bookshelf
-  - reading
-title: "Humble Pi: A Comedy of Maths Errors"
-author: Matt Parker
-description: 
-goodreads: "[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg)"
-dg-note-icon: 
-highlights: "[[Humble Pi by Matt Parker|Link]]"
+heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
+hide: true
+header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg
+read: 2023-10-05
+goodreads: '[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg)'
+highlights:
+  - - Humble Pi by Matt Parker|Link
 ---
-#books #reading #bookshelf
 
+#books #reading #bookshelf

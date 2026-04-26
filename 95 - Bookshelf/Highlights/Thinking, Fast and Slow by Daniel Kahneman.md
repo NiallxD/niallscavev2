@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "6294"
-  title: Thinking, Fast and Slow
-  author: Kahneman, Daniel
-  highlightsCount: 5
+publish: true
+description: 'Attention and Effort, — location: [602]() ^ref-14595'
+excerpt: 'Attention and Effort, — location: [602]() ^ref-14595'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Thinking, Fast and Slow
@@ -30,5 +28,3 @@ Intelligence is not only the ability to reason; it is also the ability to find r
 resist the anchoring effect — location: [2226]() ^ref-38763
 
 ---
-
-

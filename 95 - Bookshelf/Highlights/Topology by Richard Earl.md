@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "9149"
-  title: "Topology: A Very Short Introduction"
-  author: Richard Earl
-  highlightsCount: 6
+publish: true
+description: 'The oldest metro network in the world is the London Underground. — location: [789]() ^ref-49175'
+excerpt: 'The oldest metro network in the world is the London Underground. — location: [789]() ^ref-49175'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Topology
@@ -33,5 +31,3 @@ The Möbius strip is an example of a non-orientable surface. Like the cylinder i
 Given just one sentence for the task, many topologists might choose to describe their subject as the study of continuity. — location: [1508]() ^ref-56151
 
 ---
-
-

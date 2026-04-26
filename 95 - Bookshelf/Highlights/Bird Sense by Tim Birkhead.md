@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "64088"
-  title: "Bird Sense: What It’s Like to Be a Bird"
-  author: Tim Birkhead
-  highlightsCount: 23
+publish: true
+description: ⭐️⭐️⭐️⭐️
+excerpt: ⭐️⭐️⭐️⭐️
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Bird Sense
@@ -85,5 +83,3 @@ The Emlen funnel revolutionised the study of bird migration. It consists of a bl
 Under normal circumstances this greeting display lasts a minute or two, but Sarah Wanless, who studied gannets at Bempton Cliffs in northern England, observed a particularly prolonged instance. At one of the nests she was regularly checking, the female of the pair disappeared, leaving the male to care for the tiny chick alone, which, against all the odds, he did. One evening, the female returned after a remarkable five-week absence and luckily Sarah was there to witness it. To her amazement, the two birds performed an intense greeting ceremony that lasted a full seventeen minutes! — location: [3351]() ^ref-54884
 
 ---
-
-

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-{% if coverImage %}
+{% if coverImage and not heroImage %}
 <div class="page-cover-wrap">
   <img class="page-cover" src="{{ coverImage }}" alt="{{ title }}">
 </div>

@@ -1,21 +1,24 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/6wj3V55.jpeg
-dg-permalink: /squamish-ebird-data
-Type: Blog Post
-created: 2025-03-16
-date: 2025-03-16
-updated: 2025-03-16
-tags:
-  - ebird
-  - Birds
-  - nature
-  - data
 title: Squamish eBird Data
+author: Niall Bell
+date: 2025-03-16
+Type: Blog Post
+publish: true
+permalink: /squamish-ebird-data
 description: Squamish eBird Data
-dg-note-icon: "1"
+excerpt: Squamish eBird Data
+tags:
+  - birds
+  - nature
+  - tech
+heroImage: https://i.imgur.com/6wj3V55.jpeg
+hide: true
+header-image: https://i.imgur.com/6wj3V55.jpeg
+created: 2025-03-16
+updated: 2025-03-16
+icon: 1
 ---
+
 ![](https://i.imgur.com/XaKZYYT.jpeg)
 
 #ebird #birds #nature #data
@@ -28,5 +31,3 @@ dg-note-icon: "1"
 Here is a screenshot of the application I created. Go explore!🦅
 
 ![](https://i.imgur.com/K8iO3Q6.png)
-
-

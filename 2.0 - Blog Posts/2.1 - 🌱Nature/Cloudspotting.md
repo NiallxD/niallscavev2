@@ -1,20 +1,21 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/EyV94Ox.jpeg
-dg-permalink: /cloudspotting
-Type: Blog Post
-created: 2024-04-10
-date: 2024-04-10
-updated: 2024-04-30
-tags:
-  - Nature
-  - Atmosphere
-  - clouds
-dg-note-icon:
 title: Cloudspotting
+author: Niall Bell
+date: 2024-04-10
+Type: Blog Post
+publish: true
+permalink: /cloudspotting
 description: Have you ever wondered where the idiom "to be on cloud 9" came from? Well, you've got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!
+excerpt: ""
+tags:
+  - nature
+heroImage: https://i.imgur.com/EyV94Ox.jpeg
+hide: true
+header-image: https://i.imgur.com/EyV94Ox.jpeg
+created: 2024-04-10
+updated: 2024-04-30
 ---
+
 #nature #weather
 # Cloudspotting☁️
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -81,5 +82,4 @@ Clouds form differently in different temperature conditions. A period of warm fo
 
 So, this was a whistle stop note sharing some info about clouds. I hope you were looking for how ACTUAL clouds work, and not how the internet CLOUD works, or else you might have been disappointed.
 
-**I'd just like to point out that I'm position 29 in the WORLD for cloudspotting on the cloudspotting leaderboard. This might not seem impressive but let me tell you right now...it is. I will climb the leaderboard some more but in order to do so I need to visit the Southern Hemisphere, spot a cloud on Antarctica and experience a tornado. I'm working on it.** 
-
+**I'd just like to point out that I'm position 29 in the WORLD for cloudspotting on the cloudspotting leaderboard. This might not seem impressive but let me tell you right now...it is. I will climb the leaderboard some more but in order to do so I need to visit the Southern Hemisphere, spot a cloud on Antarctica and experience a tornado. I'm working on it.**

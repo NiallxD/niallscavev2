@@ -1,18 +1,23 @@
 ---
-dg-publish: true
-dg-hide: true
-header-image: https://i.imgur.com/zWS53Em.jpeg
-dg-permalink: /canon-r6-crashing-fixed
-Type: Blog Post
-created: 2024-03-01
+title: Canon R6 Crashing - Fixed!
+author: Niall Bell
 date: 2024-03-01
-updated: 2024-04-15
+Type: Blog Post
+publish: true
+permalink: /canon-r6-crashing-fixed
+description: During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.
+excerpt: During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.
 tags:
-  - Camera
+  - gear
   - photography
   - tech
-dg-note-icon:
+heroImage: https://i.imgur.com/zWS53Em.jpeg
+hide: false
+header-image: https://i.imgur.com/zWS53Em.jpeg
+created: 2024-03-01
+updated: 2024-04-15
 ---
+
 #tech #cameras #photography
 # Canon R6 Crashing - Fixed!
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>

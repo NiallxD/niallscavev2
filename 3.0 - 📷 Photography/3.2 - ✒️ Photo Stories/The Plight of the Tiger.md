@@ -1,22 +1,26 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/rtk0zzy.png
-dg-permalink: /uk-wildlife-nature-photos/tigers/
-Type: Photo Story
-created: 2021-07-17
-date: 2021-07-17
-updated: 2021-07-17
-tags:
-  - nature
-  - wildlife
-  - photography
-  - conservation
 title: The Plight of the Tiger
-title-link: "[[The Plight of the Tiger]]"
+author: Niall Bell
+date: 2021-07-17
+Type: Photo Story
+publish: true
+permalink: /uk-wildlife-nature-photos/tigers/
 description: The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.
-dg-note-icon:
+excerpt: The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.
+tags:
+  - environment
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/rtk0zzy.png
+hide: true
+header-image: https://i.imgur.com/rtk0zzy.png
+created: 2021-07-17
+updated: 2021-07-17
+title-link:
+  - - The Plight of the Tiger
 ---
+
 #nature #wildlife #cats #tigers #conservation
 # The Plight of the Tiger
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -100,4 +104,3 @@ I was actually asked to take these photos down by one of the zoos where I took t
 
 ![](https://i.imgur.com/eDQBDJi.png)
 *The beautiful Sumatran tiger with it's striking dark place lines and rusty orange coat (captive).*
-

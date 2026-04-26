@@ -1,22 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/IJUcoJt.jpeg
-dg-permalink: /black-winged-pratincole-doncaster-2024
-Type: Blog Post
-created: 2024-07-08
-date: 2024-07-08
-updated: 2024-07-08
-tags:
-  - Birds
-  - rarebird
-  - pratincole
-  - photography
-  - birding
 title: Black Winged Pratincole Doncaster 2024
+author: Niall Bell
+date: 2024-07-08
+Type: Blog Post
+publish: true
+permalink: /black-winged-pratincole-doncaster-2024
 description: Read about my experience seeing Doncaster's Black Winged Pratincole!
-dg-note-icon:
+excerpt: Read about my experience seeing Doncaster's Black Winged Pratincole!
+tags:
+  - birds
+  - photography
+heroImage: https://i.imgur.com/IJUcoJt.jpeg
+hide: true
+header-image: https://i.imgur.com/IJUcoJt.jpeg
+created: 2024-07-08
+updated: 2024-07-08
 ---
+
 #birds #rarebird #pratincole #photography #nature #wildlife
 # Doncaster's Black Winged Pratincole
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -69,4 +69,3 @@ Of course, here is a gallery of images I've managed to capture of the BWP. The c
 
 Thanks for reading, and good luck!
 Niall,
-

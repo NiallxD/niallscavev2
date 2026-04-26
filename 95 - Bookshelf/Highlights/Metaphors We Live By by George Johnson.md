@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "49825"
-  title: Metaphors We Live By
-  author: George Lakoff & Mark Johnson
-  highlightsCount: 6
+publish: true
+description: 'It is in this sense that the ARGUMENT IS WAR metaphor is one that we live by in this culture; it structures the actions we perform in arguing. — location: [156]() ^ref-277'
+excerpt: 'It is in this sense that the ARGUMENT IS WAR metaphor is one that we live by in this culture; it structures the actions we perform in arguing. — location: [156]() ^ref-277'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Metaphors We Live By
@@ -33,5 +31,3 @@ The metaphorical concepts TIME IS MONEY, TIME IS A RESOURCE, and TIME IS A VALUA
 A far more subtle case of how a metaphorical concept can hide an aspect of our experience can be seen in what Michael Reddy has called the "conduit metaphor." Reddy observes that our language about language is structured roughly by the following complex metaphor: IDEAS (or MEANINGS) ARE OBJECTS. LINGUISTIC EXPRESSIONS ARE CONTAINERS. COMMUNICATION IS SENDING. — location: [233]() ^ref-19001
 
 ---
-
-

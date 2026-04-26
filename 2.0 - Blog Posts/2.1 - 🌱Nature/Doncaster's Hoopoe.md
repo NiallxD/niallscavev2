@@ -1,23 +1,24 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/vfEGkKB.jpeg
-dg-permalink: /doncasters-hoopoe
-Type: Blog Post
-created: 2024-12-22
-date: 2024-12-22
-updated: 2024-12-22
-tags:
-  - birding
-  - nature
-  - hoopoe
-  - doncaster
-  - rarebird
-  - Birds
 title: Doncaster's Hoopoe
+author: Niall Bell
+date: 2024-12-22
+Type: Blog Post
+publish: true
+permalink: /doncasters-hoopoe
 description: It's been a good year for birding in the UK, and there seems to have been no shortage of rarities.
-dg-note-icon: "1"
+excerpt: It's been a good year for birding in the UK, and there seems to have been no shortage of rarities.
+tags:
+  - birds
+  - doncaster
+  - nature
+heroImage: https://i.imgur.com/vfEGkKB.jpeg
+hide: true
+header-image: https://i.imgur.com/vfEGkKB.jpeg
+created: 2024-12-22
+updated: 2024-12-22
+icon: 1
 ---
+
 #birding #nature #hoopoe #doncaster #rarebird #birds
 # Doncaster's Hoopoe
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -75,4 +76,3 @@ The Hoopoe commonly feeds on larval insects which are buried in the soil which i
 So we have an awesome bird in our midst and it's exciting times for those interested in birding. Once I've collected some more data on the sightings of the bird I'll update this post to include some maps of the data.
 
 [^1]: I found some information online which suggests that there have been some records of Hoopoe overwintering in the UK, notably; Bournemouth 07/12/1992-22/03/1993; Little Shelford 01/10/2011-2012; Lowestoft 31/12/2011-28/03/2012; Hamworthy 23/01/2013-19/03/2013. This isn't all reports on this forum so it's worth checking out, still the number is less than 10 instances. [Link](https://www.birdforum.net/threads/over-wintering-hoopoe-in-britain.318246/)
-

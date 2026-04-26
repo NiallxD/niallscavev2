@@ -1,13 +1,16 @@
 ---
-dg-hide: true
-dg-publish: true
-Type: Living Note
-created: 2024-12-31
-date: 2024-12-31
-updated: 2024-12-21
 title: Pareto Principle
+date: 2024-12-31
+Type: Living Note
+publish: true
+description: 'Examples:'
+excerpt: 'Examples:'
+hide: true
+created: 2024-12-31
+updated: 2024-12-21
 maturity-level: Low
 ---
+
 #80/20
 # Pareto Principle
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -22,4 +25,3 @@ Examples:
 5. 80% of a cities traffic occurs on 20% of it's roads.
 
 I've left this note as one to develop as there might be other interesting cases which I'd like to reflect on.
-

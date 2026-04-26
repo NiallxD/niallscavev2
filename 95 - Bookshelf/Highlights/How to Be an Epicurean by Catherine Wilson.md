@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "61836"
-  title: "How to Be an Epicurean: The Ancient Art of Living Well"
-  author: Catherine Wilson
-  highlightsCount: 74
+publish: true
+description: 'And Lucretius’s Epicurean poem, On the Nature of Things, — location: [128]() ^ref-34411'
+excerpt: 'And Lucretius’s Epicurean poem, On the Nature of Things, — location: [128]() ^ref-34411'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # How to Be an Epicurean
@@ -241,5 +239,3 @@ Second, there are moral limits that we ought to observe and often fail to: limit
 *  Main Concepts: Ontology Stoics: Pneuma Epicureans: Atoms and void Main Concepts: Causality Stoics: Determinism, fate Epicureans: Chance, free will Main Concepts: Purpose of ethics Stoics: Virtue Epicureans: Freedom from harm Main Concepts: Source of moralauthority Stoics: Natural law Epicureans: Human agreement Main Concepts: Orientation Stoics: Universalist Epicureans: Relativist Main Concepts: Emotions Stoics: Generally bad Epicureans: Generally good Main Concepts: Family Life Stoics: Important Epicureans: Inessential Main Concepts: Suicide Stoics: Recommended in difficult circumstances Epicureans: Not recommended Main Concepts: Suffering Stoics: Inevitable Epicureans: Minimisable Main Concepts: Pleasure Stoics: Generally bad Epicureans: Generally good Main Concepts: Happiness Stoics: Freedom from all emotional disturbance Epicureans: Freedom from anxiety and fear Main Concepts: Education Stoics: Develops human curiosity and capability Epicureans: Undermines superstition Main Concepts: Warfare Stoics: Opportunity to display virtue Epicureans: Motivated by greed and ambition — location: [3279]() ^ref-34835
 
 ---
-
-

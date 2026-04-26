@@ -1,23 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/5KKoRpe.jpeg
-dg-permalink: /brief-review-of-the-zeiss-diascope-65t-fl-green
-Type: Blog Post
-created: 2025-05-17
-date: 2025-05-17
-updated: 2025-05-17
-tags:
-  - tech
-  - lenses
-  - spottingscope
-  - zeiss
-  - diascope
-  - birding
 title: Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
+author: Niall Bell
+date: 2025-05-17
+Type: Blog Post
+publish: true
+permalink: /brief-review-of-the-zeiss-diascope-65t-fl-green
 description: Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
-dg-note-icon:
+excerpt: Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
+tags:
+  - birds
+  - gear
+  - tech
+heroImage: https://i.imgur.com/5KKoRpe.jpeg
+hide: true
+header-image: https://i.imgur.com/5KKoRpe.jpeg
+created: 2025-05-17
+updated: 2025-05-17
 ---
+
 #tech #lenses #spottingscope #zeiss #diascope #birding
 # Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -184,4 +184,3 @@ In summary, I would say that this is an excellent spotting scope for most people
 I'll update this post as I get more use out of it and see if anything changes, but for now here is a my take.
 
 If you have any questions or want to chat about this optic, get in touch, I'm active on emails.
-

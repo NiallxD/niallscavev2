@@ -1,18 +1,21 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/6HNhbjt.jpeg
-dg-permalink: /ecotalk-a-greener-phone-network
-Type: Blog Post
-created: 2024-02-15
+title: 'EcoTalk: A Greener Phone Network'
+author: Niall Bell
 date: 2024-02-15
-updated: 2024-04-16
+Type: Blog Post
+publish: true
+permalink: /ecotalk-a-greener-phone-network
+description: 'EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.'
+excerpt: 'EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.'
 tags:
-  - Tech
-title: "EcoTalk: A Greener Phone Network"
-description: "EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think."
-dg-note-icon:
+  - tech
+heroImage: https://i.imgur.com/6HNhbjt.jpeg
+hide: true
+header-image: https://i.imgur.com/6HNhbjt.jpeg
+created: 2024-02-15
+updated: 2024-04-16
 ---
+
 #tech #sustainability #phones
 # EcoTalk: A Greener Phone Network
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -60,4 +63,3 @@ All in all, I’ve been using EcoTalk for over 3 months, and I’m happy with th
 And with that, I’ll wrap it up. I wanted to share a bit about my experience with EcoTalk incase anyone else is on the fence. I thought it was a good time to dive into some of the carbon surrounding phone use with the hope of helping you understand why you might want to consider a more ethical network provider.
 
 Niall
-

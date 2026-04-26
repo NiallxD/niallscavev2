@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "10106"
-  title: "Steve Jobs: The Exclusive Biography"
-  author: Isaacson, Walter
-  highlightsCount: 7
+publish: true
+description: 'better to be a pirate than to join the navy.” He — location: [2699]() ^ref-5023'
+excerpt: 'better to be a pirate than to join the navy.” He — location: [2699]() ^ref-5023'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Steve Jobs
@@ -36,5 +34,3 @@ the three took their stools. Gates, looking like a high school sophomore, — lo
 With Laurene Powell, 1991 — location: [4691]() ^ref-35747
 
 ---
-
-

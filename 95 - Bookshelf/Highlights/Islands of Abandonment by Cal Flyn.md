@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "52967"
-  title: "Islands of Abandonment: Life in the Post-Human Landscape"
-  author: Flyn, Cal
-  highlightsCount: 2
+publish: true
+description: 'The neuroscientist David Eagleman once proposed that we have three deaths: the first at the point at which the body ceases to function, the second upon burial, and the third being ‘that moment, someti'
+excerpt: 'The neuroscientist David Eagleman once proposed that we have three deaths: the first at the point at which the body ceases to function, the second upon burial, and the third being ‘that moment, someti'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Islands of Abandonment
@@ -21,5 +19,3 @@ The neuroscientist David Eagleman once proposed that we have three deaths: the f
 to recognise the value of lead when it sits so pale against the flash of silver or gold. But — location: [308]() ^ref-31810
 
 ---
-
-

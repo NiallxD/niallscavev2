@@ -1,21 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&format=webp
-dg-permalink: /michael-collins-eagles-return
-Type: Photo Analysis
-created: 2024-04-22
-date: 2024-04-22
-updated: 2024-04-22
-tags:
-  - photography
-  - photostory
-  - astrophotography
-  - space
 title: Eagle's Return
+author: Niall Bell
+date: 2024-04-22
+Type: Photo Analysis
+publish: true
+permalink: /michael-collins-eagles-return
 description: The photo Eagle's Return is incredibly special as it depicts the Eagle Lunar Lander suspended above the Moon's surface with Earth in the distance.
-dg-note-icon:
+excerpt: The photo Eagle's Return is incredibly special as it depicts the Eagle Lunar Lander suspended above the Moon's surface with Earth in the distance.
+tags:
+  - astronomy
+  - photography
+heroImage: https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&format=webp
+hide: true
+header-image: https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&format=webp
+created: 2024-04-22
+updated: 2024-04-22
 ---
+
 #photography #photostory #astrophotography #space 
 # Eagle's Return
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -42,4 +43,3 @@ Collins was often dubbed the loneliest man in the world during and after his tri
 >[!QUOTE] *"Oh God, those poor little white mice, I hope they're doing alright..."*
 
 [^1]: Photo credit remains that of NASA. Original photograph taken 21 July 1969 and scanned 10 October 2017.
-

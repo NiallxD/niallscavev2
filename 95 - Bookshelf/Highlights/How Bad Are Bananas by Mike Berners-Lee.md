@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "49191"
-  title: How Bad Are Bananas?
-  author: Berners-Lee, Mike
-  highlightsCount: 6
+publish: true
+description: 'In the UK, the total impact on the climate breaks down like this: carbon dioxide (81 per cent), methane (11 per cent), nitrous oxide (5 per cent) and refrigerant and other gases (3 per cent). — locati'
+excerpt: 'In the UK, the total impact on the climate breaks down like this: carbon dioxide (81 per cent), methane (11 per cent), nitrous oxide (5 per cent) and refrigerant and other gases (3 per cent). — locati'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # How Bad Are Bananas?
@@ -33,5 +31,3 @@ disaster, describes the whole project as NASA’s somewhat unjustifiable raison 
 of forest in the UK each year to balance a 5-tonne footprint. That’s for — location: [3228]() ^ref-31334
 
 ---
-
-

@@ -1,23 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/oiwPNEa.jpeg
-dg-permalink: /how-to-buy-a-car-in-bc-canada
-Type: Blog Post
-created: 2025-01-25
+title: How to Buy a Car In British Columbia, Canada
+author: Niall Bell
 date: 2025-01-25
-updated: 2025-01-25
+Type: Blog Post
+publish: true
+permalink: /how-to-buy-a-car-in-bc-canada
+description: How to Buy a Car In British Columbia, Canada
+excerpt: How to Buy a Car In British Columbia, Canada
 tags:
   - canada
-  - travel
-  - IEC
-  - car
-  - auto
-  - vehicle
-title: How to Buy a Car In British Columbia, Canada
-description: How to Buy a Car In British Columbia, Canada
-dg-note-icon: "1"
+  - guide
+heroImage: https://i.imgur.com/oiwPNEa.jpeg
+hide: true
+header-image: https://i.imgur.com/oiwPNEa.jpeg
+created: 2025-01-25
+updated: 2025-01-25
+icon: 1
 ---
+
 #canada #travel #IEC #car #auto #vehicle
 # How to Buy a Car In British Columbia, Canada
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -73,4 +73,3 @@ That's all for now, as always if you spot any errors or want to ask a question, 
 
 >[!NOTE] Header Image: 
 >A photograph I took of our new car, a 2008 Ford Escape XLT. We were out exploring and the mountain looked great behind our car!
-

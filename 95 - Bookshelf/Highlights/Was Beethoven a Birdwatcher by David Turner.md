@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "36453"
-  title: "Flight Paths: How a Passionate and Quirky Group of Pioneering Scientists Solved the Mystery of Bird Migration"
-  author: Rebecca Heisman
-  highlightsCount: 16
+publish: true
+description: 'which are more likely to be found in British gardens by the eagle-eyed (or sparrowhawk-eyed even) than any other raptor — location: [855]() ^ref-26513'
+excerpt: 'which are more likely to be found in British gardens by the eagle-eyed (or sparrowhawk-eyed even) than any other raptor — location: [855]() ^ref-26513'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Was Beethoven a Birdwatcher
@@ -240,4 +238,3 @@ The longest-running community science project in the world, however, is the vene
 
 ---
 Laysan albatross named Wisdom. Originally banded on Midway Atoll in 1956, she has (as far as we know) continued to return to the island to lay an egg each December for at least seventy years, making her the oldest confirmed wild bird in the world. — location: [3025]() ^ref-23703
-

@@ -1,19 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/jxxUz6b.jpeg
-dg-permalink: /Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults
-Type: Blog Post
-created: 2025-01-31
-date: 2025-01-31
-updated: 2025-01-31
-tags:
-  - natureconnectedness
-  - universitydissertation
 title: Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults
+author: Niall Bell
+date: 2025-01-31
+Type: Blog Post
+publish: true
+permalink: /Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults
 description: This is the report I authored for my master's degree dissertation. I'm sharing here for those interested in this area of research.
-dg-note-icon: "1"
+excerpt: This is the report I authored for my master's degree dissertation. I'm sharing here for those interested in this area of research.
+tags:
+  - environment
+  - nature
+heroImage: https://i.imgur.com/jxxUz6b.jpeg
+hide: true
+header-image: https://i.imgur.com/jxxUz6b.jpeg
+created: 2025-01-31
+updated: 2025-01-31
+icon: 1
 ---
+
 #natureconnectedness #universitydissertation
 # Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -450,6 +454,3 @@ van Valkengoed, A.M., Abrahamse, W. and Steg, L. (2022) ‘To select effective i
 Wells, N.M. and Lekies, K.S. (2006) ‘Nature and the Life Course: Pathways from Childhood Nature Experiences to Adult Environmentalism’, _Children, Youth and Environments_, 16(1), pp. 1–24.
 
 The Wildlife Trusts (2024) ’30 Days Wild’, The Wildlife Trusts. Available at: <https://www.wildlifetrusts.org/30dayswild> (Accessed: 10<sup>th</sup> March 2024)
-
-
-

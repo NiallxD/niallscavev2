@@ -1,20 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/jo6fK8O.jpeg
-dg-permalink: /how-i-process-my-photographs
-Type: Blog Post
-created: 2024-05-31
-date: 2024-05-31
-updated: 2024-05-31
-tags:
-  - photo
-  - photography
-  - postprocessing
 title: How I Process My Photographs
+author: Niall Bell
+date: 2024-05-31
+Type: Blog Post
+publish: true
+permalink: /how-i-process-my-photographs
 description: How I Process My Photographs
-dg-note-icon: "1"
+excerpt: How I Process My Photographs
+tags:
+  - photography
+heroImage: https://i.imgur.com/jo6fK8O.jpeg
+hide: true
+header-image: https://i.imgur.com/jo6fK8O.jpeg
+created: 2024-05-31
+updated: 2024-05-31
+icon: 1
 ---
+
 #photography #photo #postprocessing
 # How I Process My Photographs
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -93,4 +95,3 @@ Below is a selection of before and after images. My web skills are not sufficien
 
 ![](https://i.imgur.com/F03wIhX.jpeg)
 *This final example shows how RAW files allow more control in the edit. The sky was bright so I had to balance exposure of the light sky and the dark shadows. These could be tweaks afterwards to make a pleasing photograph.*
-

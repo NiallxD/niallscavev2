@@ -1,21 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/rLYIZA3.jpeg
-dg-permalink: /birds-are-musicians
-Type: Blog Post
-created: 2024-04-29
-date: 2024-04-29
-updated: 2024-05-02
-tags:
-  - Birds
-  - Music
-  - nature
-  - birding
 title: Birds Were the First Musicians
+author: Niall Bell
+date: 2024-04-29
+Type: Blog Post
+publish: true
+permalink: /birds-are-musicians
 description: Who were the first musicians? Do birds make music? When was music created? What is music?
-dg-note-icon:
+excerpt: Who were the first musicians? Do birds make music? When was music created? What is music?
+tags:
+  - birds
+  - music
+  - nature
+heroImage: https://i.imgur.com/rLYIZA3.jpeg
+hide: true
+header-image: https://i.imgur.com/rLYIZA3.jpeg
+created: 2024-04-29
+updated: 2024-05-02
 ---
+
 #wildlife #nature #Birds #Music   
 # Birds Were the First Musicians
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -111,4 +113,3 @@ So there you have it, birds invented music and Beethoven probably plagiarised th
 
 [^1]: Was Beethoven a Bird Watcher? David Turner. Kindle Edition.
 [^2]: Beethoven (p. 335). Elliott & Thompson. Kindle Edition.
-

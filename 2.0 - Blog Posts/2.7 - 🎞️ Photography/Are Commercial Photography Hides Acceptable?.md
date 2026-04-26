@@ -1,18 +1,21 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/a0xdQzW.jpeg
-dg-permalink: /are-commercial-photography-hides-acceptable
-Type: Blog Post
-created: 2024-04-16
+title: Are Commercial Photography Hides Acceptable?
+author: Niall Bell
 date: 2024-04-16
-updated: 2024-04-16
+Type: Blog Post
+publish: true
+permalink: /are-commercial-photography-hides-acceptable
+description: Are Commercial Photography Hides Acceptable?
+excerpt: Are Commercial Photography Hides Acceptable?
 tags:
   - photography
-title: Are Commercial Photography Hides Acceptable?
-description: Are Commercial Photography Hides Acceptable?
-dg-note-icon:
+heroImage: https://i.imgur.com/a0xdQzW.jpeg
+hide: true
+header-image: https://i.imgur.com/a0xdQzW.jpeg
+created: 2024-04-16
+updated: 2024-04-16
 ---
+
 #photography #wildlife #ethics
 # Are Commercial Photography Hides Acceptable?
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -158,5 +161,3 @@ The first rule was always part of my philosophy when it comes to wildlife photog
 If you made it this far, well done. This was a bit of a rant, a bit of self exploration and a bit of an open discussion into a topic I feel is important for other wildlife photographer to be aware of.
 
 Niall,
-
-

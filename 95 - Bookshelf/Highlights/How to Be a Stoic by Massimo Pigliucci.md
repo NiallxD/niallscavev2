@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "21461"
-  title: Massimo Pigliucci - How to Be a Stoic_ Using Ancient Philosophy to Live a Modern Life-Basic Books (2017)
-  author: Massimo Pigliucci
-  highlightsCount: 48
+publish: true
+description: 'We must make the best of those things that are in our power, and take the rest as nature gives it. —EPICTETUS, DISCOURSES, I.1 — location: [353]() ^ref-56007'
+excerpt: 'We must make the best of those things that are in our power, and take the rest as nature gives it. —EPICTETUS, DISCOURSES, I.1 — location: [353]() ^ref-56007'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # How to Be a Stoic by Massimo Pigliucci
@@ -159,5 +157,3 @@ platofootnote.org — location: [2705]() ^ref-35595
 howtobeastoic.org. — location: [2705]() ^ref-21542
 
 ---
-
-

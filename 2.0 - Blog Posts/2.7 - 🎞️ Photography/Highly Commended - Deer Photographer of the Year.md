@@ -1,22 +1,25 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/8bzvnWQ.png
-dg-permalink: /DPOTY24
-Type: Blog Post
-created: 2024-06-24
-date: 2024-06-24
-updated: 2024-06-24
-tags:
-  - photo
-  - photography
-  - nature
-  - wildlife
-  - deer
 title: Highly Commended - Deer Photographer of the Year
+author: Niall Bell
+date: 2024-06-24
+Type: Blog Post
+publish: true
+permalink: /DPOTY24
 description: Deer Photographer of the Year - My highly commended photograph
-dg-note-icon: "1"
+excerpt: Deer Photographer of the Year - My highly commended photograph
+featured: true
+tags:
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/8bzvnWQ.png
+hide: true
+header-image: https://i.imgur.com/8bzvnWQ.png
+created: 2024-06-24
+updated: 2024-06-24
+icon: 1
 ---
+
 #photo #photography #nature #wildlife #deer 
 # Deer Photographer of the Year - Highly Commended
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -49,5 +52,3 @@ I've now had a certificate through for this image and wanted to add to this post
 ![](https://i.imgur.com/tZSbhke.jpeg)
 
 Cheers!
-
-

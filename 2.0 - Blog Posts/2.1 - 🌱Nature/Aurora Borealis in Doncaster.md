@@ -1,20 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/9DONEvA.jpeg
-Type: Blog Post
-created: 2022-09-23
-date: 2022-09-23
-updated: 2024-05-11
-tags:
-  - northernlights
-  - auroraborealis
-  - nature
-dg-note-icon: 
 title: Northern Lights in Doncaster!
+author: Niall Bell
+date: 2022-09-23
+Type: Blog Post
+publish: true
+permalink: /northern-lights
 description: n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!
-dg-permalink: /northern-lights
+excerpt: n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!
+tags:
+  - astronomy
+  - nature
+heroImage: https://i.imgur.com/9DONEvA.jpeg
+hide: true
+header-image: https://i.imgur.com/9DONEvA.jpeg
+created: 2022-09-23
+updated: 2024-05-11
 ---
+
 #nature #weather #northernlights #auroraborealis
 # Northern Lights in Doncaster☁️
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -60,4 +62,3 @@ I think this is a great example of how the Earth is a living and breathing syste
 
 ![](https://i.imgur.com/ugwhsrG.jpeg)
 *My first experience of the Aurora Borealis - Iceland 2016*
-

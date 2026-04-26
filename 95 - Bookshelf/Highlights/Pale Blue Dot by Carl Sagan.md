@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "52437"
-  title: Pale Blue Dot
-  author: Carl Sagan
-  highlightsCount: 19
+publish: true
+description: ⭐️⭐️⭐️⭐️⭐️
+excerpt: ⭐️⭐️⭐️⭐️⭐️
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Pale Blue Dot
@@ -74,5 +72,3 @@ The word “month” and the second day of the week are both named after the Moo
 The marsh of Camarina became proverbial for eliminating a danger in such a way as to usher in another, much worse. — location: [3692]() ^ref-30060
 
 ---
-
-

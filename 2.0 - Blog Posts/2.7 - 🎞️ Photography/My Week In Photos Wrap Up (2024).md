@@ -1,21 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/28al9Ob.jpeg
-dg-permalink: /my-week-in-photos-wrap-up-2024
-Type: Blog Post
-created: 2024-12-31
-date: 2024-12-31
-updated: 2024-12-31
-tags:
-  - photo
-  - photography
-  - myweekinphotos
-  - photostory
 title: My Week In Photos Wrap Up
+author: Niall Bell
+date: 2024-12-31
+Type: Blog Post
+publish: true
+permalink: /my-week-in-photos-wrap-up-2024
 description: This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!
-dg-note-icon: "1"
+excerpt: This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!
+featured: true
+tags:
+  - photography
+heroImage: https://i.imgur.com/28al9Ob.jpeg
+hide: true
+header-image: https://i.imgur.com/28al9Ob.jpeg
+created: 2024-12-31
+updated: 2024-12-31
+icon: 1
 ---
+
 #photo #photography #myweekinphotos #photostory 
 # My Week In Photos Wrap Up (2024)
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>So here we have it, the wrap up of my 2024 photography project, **My Week In Photos!** I started this project at the beginning of 2024 for several reasons, but above all I wanted to create an ongoing log of photographs I'd created over the year, good and bad. I love the idea that us photographers shouldn't always strive to create ever better images each time we go out with our camera. I'm not a competitive person, and this is probably why I like this concept.
@@ -67,4 +69,3 @@ In terms of the positive feelings about the concept of this project, I really en
 I'd love to hear your thoughts on this project so please do get in touch!
 
 Niall.
-

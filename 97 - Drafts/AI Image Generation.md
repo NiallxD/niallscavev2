@@ -1,6 +1,6 @@
 ---
-dg-hide: true
-dg-publish: false
+hide: true
+publish: false
 header-image: 
 Type: 
 created: 2024-04-15
@@ -10,8 +10,9 @@ tags:
   - AI
 title: AI Image Generation
 description: This is a fluid post about AI Image Generation.
-dg-note-icon:
+icon:
 ---
+
 #tech #ai #photography #computers
 # AI Image Generation
 
@@ -54,4 +55,3 @@ These will never get you there all the time, but they will help you spot the obv
 
 [^1]: By emergence, I'm referring to the likes of Chat GPT and OpenAI's Stable Diffusion.
 [^2]: An AI Model is kinda like some software that is trained to do something using existing data.
-

@@ -1,0 +1,160 @@
+---
+layout: page.njk
+---
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    <p class="home-intro">{{ description }}</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% else %}
+<div class="page-intro">
+  <h1>{{ title }}</h1>
+  <p class="page-lead">{{ description }}</p>
+</div>
+{% endif %}
+
+<div class="standard-page">
+  {% if content %}
+  <div class="post-content">{{ content | safe }}</div>
+  {% endif %}
+
+  {% if collections.featuredGalleries and collections.featuredGalleries.length %}
+  <p class="section-label">Featured Galleries</p>
+  <div class="story-list">
+    {% for gallery in collections.featuredGalleries | limit(3) %}
+    <a href="{{ gallery.url | url }}" class="story-card" data-tags="{{ gallery.data.tags | join(',') if gallery.data.tags else '' }}">
+      <div class="story-card-img">
+        {% if gallery.data.coverImage %}
+        <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          {% if gallery.date %}<time class="post-card-date" datetime="{{ gallery.date | isoDate }}">{{ gallery.date | readableDate }}</time>{% endif %}
+          {% if gallery.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in gallery.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ gallery.data.title }}</div>
+        {% if gallery.data.excerpt %}
+        <div class="story-card-desc">{{ gallery.data.excerpt }}</div>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if collections.regularGalleries and collections.regularGalleries.length %}
+  <p class="section-label">Galleries</p>
+  
+  <div class="filter-cloud">
+    <button class="filter-btn active" data-filter="all">All</button>
+    {% for tag in collections.galleries | getAllTags %}
+    <button class="filter-btn" data-filter="{{ tag }}">{{ tag }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="gallery-grid" id="gallery-grid">
+    {% for gallery in collections.regularGalleries %}
+    <a href="{{ gallery.url | url }}" class="gallery-card" data-tags="{{ gallery.data.tags | join(',') if gallery.data.tags else '' }}">
+      <div class="gallery-card-img">
+        {% if gallery.data.coverImage %}
+        <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          {% if gallery.date %}<time class="post-card-date" datetime="{{ gallery.date | isoDate }}">{{ gallery.date | readableDate }}</time>{% endif %}
+          {% if gallery.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in gallery.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="gallery-card-title">{{ gallery.data.title }}</div>
+        {% if gallery.data.excerpt %}
+        <div class="story-card-desc">{{ gallery.data.excerpt }}</div>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      const galleryCards = grid.querySelectorAll('.gallery-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) return;
+
+          const filter = btn.getAttribute('data-filter');
+          
+          // Start fade out ONLY on grid
+          grid.classList.add('filtering');
+
+          setTimeout(() => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter cards inside the grid
+            galleryCards.forEach(card => {
+              const tagsAttr = card.getAttribute('data-tags');
+              const tags = tagsAttr ? tagsAttr.split(',') : [];
+              const isMatch = filter === 'all' || tags.includes(filter);
+              card.style.display = isMatch ? 'flex' : 'none';
+            });
+
+            // Trigger fade in
+            grid.classList.remove('filtering');
+          }, 300);
+        });
+      });
+    });
+  </script>
+  {% endif %}
+
+  {% if collections.photoStories and collections.photoStories.length %}
+  <p class="section-label">Photo Stories</p>
+  <div class="story-list">
+    {% for story in collections.photoStories %}
+    <a href="{{ story.url | url }}" class="story-card">
+      <div class="story-card-img">
+        {% if story.data.coverImage %}
+        <img src="{{ story.data.coverImage }}" alt="{{ story.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          {% if story.date %}<time class="post-card-date" datetime="{{ story.date | isoDate }}">{{ story.date | readableDate }}</time>{% endif %}
+          {% if story.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in story.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ story.data.title }}</div>
+        {% if story.data.excerpt %}
+        <div class="story-card-desc">{{ story.data.excerpt }}</div>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

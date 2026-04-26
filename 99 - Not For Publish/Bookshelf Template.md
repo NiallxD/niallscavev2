@@ -1,8 +1,8 @@
 ---
-dg-hide: true
-dg-publish: false
+hide: true
+publish: false
 header-image: 
-dg-permalink: /bookshelf/
+permalink: /bookshelf/
 Type: 
 read: 
 tags:
@@ -16,7 +16,7 @@ title:
 author: 
 description: 
 goodreads: "[GoodReads]()"
-dg-note-icon: "1"
+icon: "1"
 ---
-#books #reading #bookshelf
 
+#books #reading #bookshelf

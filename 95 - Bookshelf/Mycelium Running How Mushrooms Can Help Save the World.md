@@ -1,22 +1,20 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
-dg-permalink: /bookshelf/mycelium-running
+title: 'Mycelium Running: How Mushrooms Can Help Save the World'
+author: Paul Stametes
 Type: Bookshelf
-read: 2021-02-18
+publish: true
+permalink: /bookshelf/mycelium-running
+excerpt: ""
 tags:
+  - birds
   - books
-  - bookshelf
-  - reading
-  - Birds
   - nature
   - wildlife
-title: "Mycelium Running: How Mushrooms Can Help Save the World"
-author: Paul Stametes
-description: 
-goodreads: "[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg)"
-dg-note-icon:
+heroImage: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
+hide: true
+header-image: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg
+read: 2021-02-18
+goodreads: '[GoodReads](https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg)'
 ---
-#books #reading #bookshelf
 
+#books #reading #bookshelf

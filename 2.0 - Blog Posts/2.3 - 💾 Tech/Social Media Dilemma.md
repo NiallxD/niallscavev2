@@ -1,22 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/9wUq3cS.jpg
-dg-permalink: /social-media-dilemma
-Type: Blog Post
-created: 2024-08-14
-date: 2024-08-14
-updated: 2024-08-14
-tags:
-  - socials
-  - Socialmedia
-  - instagram
-  - facebook
-  - tech
 title: Social Media Dilemma
+author: Niall Bell
+date: 2024-08-14
+Type: Blog Post
+publish: true
+permalink: /social-media-dilemma
 description: An essay on my thoughts about social media with the hope of understanding the problems and solutions better.
-dg-note-icon: "1"
+excerpt: An essay on my thoughts about social media with the hope of understanding the problems and solutions better.
+tags:
+  - social media
+  - tech
+heroImage: https://i.imgur.com/9wUq3cS.jpg
+hide: true
+header-image: https://i.imgur.com/9wUq3cS.jpg
+created: 2024-08-14
+updated: 2024-08-14
+icon: 1
 ---
+
 #socialmedia #socials #instagram #facebook
 # Social Media Dilemma
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -96,4 +97,3 @@ Considering the content I don't want to see on social media, things like fake ne
 I'm still not sure if I want to start engaging with social media again. I don't know if the compromises are worth it. It's like voluntarily buying a car where the windows steam up all the time and the wheels only rotate one way. I'll spend some more time pondering but have found drafting out these thoughts useful. I'll be sure to update this post if I my thoughts develop further.
 
 [^1]: [Wayback Machine (archive.org)](https://web.archive.org/web/20140622171150/http://www.turnthetide.info/id54.htm)
-

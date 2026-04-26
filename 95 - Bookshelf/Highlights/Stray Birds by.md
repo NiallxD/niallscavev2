@@ -1,11 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "52075"
-  title: Stray Birds
-  highlightsCount: 41
+publish: true
+description: 'IT is the tears of the earth that keep her smiles in bloom. — location: [18]() ^ref-23064'
+excerpt: 'IT is the tears of the earth that keep her smiles in bloom. — location: [18]() ^ref-23064'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Stray Birds
@@ -151,5 +150,3 @@ LET not the sword-blade mock its handle for being blunt. — location: [493]() ^
 WE live in this world when we love it. — location: [546]() ^ref-59295
 
 ---
-
-

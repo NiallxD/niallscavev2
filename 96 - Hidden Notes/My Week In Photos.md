@@ -1,14 +1,17 @@
 ---
-dg-hide: true
-dg-publish: true
-dg-permalink: /my-week-in-photos
-Type: Blog Post
-header-image: https://i.imgur.com/xe4JJVg.jpeg
 title: My Week In Photos
-title-link: "[[My Week In Photos|My Week In Photos]]"
+author: Niall Bell
+Type: Blog Post
+publish: true
+permalink: /my-week-in-photos
+description: '![](https://i.imgur.com/LyTYh2U.jpeg)'
+excerpt: '![](https://i.imgur.com/LyTYh2U.jpeg)'
+hide: true
+header-image: https://i.imgur.com/xe4JJVg.jpeg
+title-link:
+  - - My Week In Photos|My Week In Photos
 created: 2024-01-01
 updated: 2024-12-31
-dg-note-icon: 
 cssclasses:
   - cards
   - cards-cols-3
@@ -16,6 +19,7 @@ cssclasses:
   - cards-cover-no-border
   - cards-title-hide-icons
 ---
+
 ![](https://i.imgur.com/LyTYh2U.jpeg)
 
 #photography #photofeed
@@ -1291,5 +1295,3 @@ It's important to note that these aren't portfolio images but instead are photos
 > 
 > ![](https://i.imgur.com/VqOPDmM.jpeg)
 >
-
-

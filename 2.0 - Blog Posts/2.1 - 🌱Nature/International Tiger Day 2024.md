@@ -1,22 +1,25 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/BiYriQv.png
-dg-permalink: /international-tiger-day-2024
-Type: Blog Post
-created: 2024-07-29
+title: International Tiger Day 2024
+author: Niall Bell
 date: 2024-07-29
-updated: 2024-07-29
+Type: Blog Post
+publish: true
+permalink: /international-tiger-day-2024
+description: July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.
+excerpt: July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.
 tags:
+  - environment
   - internationaltigerday
-  - tigers
   - nature
   - wildlife
-  - conservation
-title: International Tiger Day 2024
-description: July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.
-dg-note-icon: "1"
+heroImage: https://i.imgur.com/BiYriQv.png
+hide: true
+header-image: https://i.imgur.com/BiYriQv.png
+created: 2024-07-29
+updated: 2024-07-29
+icon: 1
 ---
+
 #internationaltigerday #tigers #nature #wildlife #conservation 
 # International Tiger Day 2024
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -141,7 +144,3 @@ Recently, I was fortunate enough to go and photograph tigers in the wild. The be
     </a>
     <!-- Add more images as needed -->
 </div>
-
-
-
-

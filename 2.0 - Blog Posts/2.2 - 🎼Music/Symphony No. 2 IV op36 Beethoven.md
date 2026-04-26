@@ -1,20 +1,19 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/Zn891va.jpeg
-dg-permalink: 
-/Type: Blog Post
-created: 2024-04-18
-date: 2024-04-18
-updated: 2024-04-18
-tags:
-  - Music
-  - composers
-  - classical
 title: Symphony No. 2 IV Op 36
+author: Niall Bell
+date: 2024-04-18
+publish: true
 description: The fourth movement of Beethoven’s second symphony.
-dg-note-icon:
+excerpt: The fourth movement of Beethoven’s second symphony.
+tags:
+  - music
+heroImage: https://i.imgur.com/Zn891va.jpeg
+hide: true
+header-image: https://i.imgur.com/Zn891va.jpeg
+created: 2024-04-18
+updated: 2024-04-18
 ---
+
 #Music #classical 
 # Beethoven’s Second Symphony
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -35,4 +34,3 @@ Beethoven spent a lot of time out of the city at his brothers residence which wa
 Go listen to the movement and the bird song and see if you pick up on it. It’s remarkably similar! As much as I love Beethoven, I think the Cetti’s warbler does it better!
 
 Niall
-

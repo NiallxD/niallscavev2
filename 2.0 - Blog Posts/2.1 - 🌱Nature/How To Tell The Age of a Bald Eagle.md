@@ -1,21 +1,24 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/FEpNXc5.jpeg
-dg-permalink: /bald-eagle-age
-Type: Blog Post
-created: 2025-01-20
-date: 2025-01-20
-updated: 2025-02-06
-tags:
-  - Eagle
-  - photo
-  - photography
-  - "#ageguide"
 title: How To Tell The Age of a Bald Eagle
+author: Niall Bell
+date: 2025-01-20
+Type: Blog Post
+publish: true
+permalink: /bald-eagle-age
 description: Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I've taken.
-dg-note-icon: "1"
+excerpt: Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I've taken.
+tags:
+  - ageguide
+  - birds
+  - photography
+heroImage: https://i.imgur.com/FEpNXc5.jpeg
+hide: true
+header-image: https://i.imgur.com/FEpNXc5.jpeg
+created: 2025-01-20
+updated: 2025-02-06
+icon: 1
 ---
+
 #eagle #ageguide #photography #birding
 # How To Tell The Age of a Bald Eagle
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -144,4 +147,3 @@ The depth of the bill can also be an indicator of sex with the female bill being
 Thanks for reading, I hope you found this useful. If there is anything you think I should add, or if you noticed any errors please [do let me know](mailto:niall@niallbell.com). I'm learning as I go here!
 
 Niall
-

@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "45558"
-  title: "Photography: A very short introduction"
-  author: Steve Edwards
-  highlightsCount: 15
+publish: true
+description: 'The photographic document, like other kinds of document, is typically perceived to be a neutral, styleless, and objective record of information. — location: [323]() ^ref-46483'
+excerpt: 'The photographic document, like other kinds of document, is typically perceived to be a neutral, styleless, and objective record of information. — location: [323]() ^ref-46483'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Photography
@@ -60,5 +58,3 @@ For these writers, even the most happy and innocent photographs – perhaps espe
 Photographs provoke acts of memory recalling us to things, places, and people. They establish connections across time and space, inducing chains of association. — location: [1765]() ^ref-33712
 
 ---
-
-

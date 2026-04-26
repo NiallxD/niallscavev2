@@ -1,18 +1,21 @@
 ---
-dg-publish: true
-dg-hide: true
-header-image: https://i.imgur.com/KSajmT4.jpeg
-dg-permalink: /how-to-build-a-wildlife-pond
-Type: Blog Post
-created: 2024-02-01
+author: Niall Bell
 date: 2024-02-01
-updated: 2024-04-22
+Type: Blog Post
+publish: true
+permalink: /how-to-build-a-wildlife-pond
+description: In spring 2022 I finally decided to build a wildlife pond. Two years on I hoped to reflect on the pond I created and that gave me the idea of writing a blog post about how I created my wildlife pond.
+excerpt: In spring 2022 I finally decided to build a wildlife pond. Two years on I hoped to reflect on the pond I created and that gave me the idea of writing a blog post about how I created my wildlife pond.
 tags:
-  - Wildlife
-  - Gardening
   - nature
-dg-note-icon:
+  - wildlife
+heroImage: https://i.imgur.com/KSajmT4.jpeg
+hide: true
+header-image: https://i.imgur.com/KSajmT4.jpeg
+created: 2024-02-01
+updated: 2024-04-22
 ---
+
 #nature #wildlife #gardening
 # How to Build a Wildlife Pond
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>

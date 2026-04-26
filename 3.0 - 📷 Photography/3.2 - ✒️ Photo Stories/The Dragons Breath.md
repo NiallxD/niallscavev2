@@ -1,23 +1,25 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/8bzvnWQ.png
-dg-permalink: /the-dragons-breath
-Type: Photo Story
-created: 2024-04-17
-date: 2024-04-17
-updated: 2024-04-17
-tags:
-  - wildlife
-  - nature
-  - deer
-  - photography
-  - photostory
 title: The Dragons Breath
-title-link: "[[The Dragons Breath]]"
-description: 
-dg-note-icon:
+author: Niall Bell
+date: 2024-04-17
+Type: Photo Story
+publish: true
+permalink: /the-dragons-breath
+description: A magical encounter with a mature Red Deer stag on a particular frosty November morning.
+excerpt: A particular frosty November morning with a mature Red Deer stag. I set myself to catch the stunning backlight, catching the stags breath set alight.
+tags:
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/8bzvnWQ.png
+hide: true
+header-image: https://i.imgur.com/8bzvnWQ.png
+created: 2024-04-17
+updated: 2024-04-17
+title-link:
+  - - The Dragons Breath
 ---
+
 #wildlife #nature #deer #photography #photostory
 # The Dragons Breath
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -29,4 +31,3 @@ The Dragons Breath is an image that I created of a [[3.1.2.2 - UK Deer|Red Deer]
 On a particular frosty November morning, I followed a mature stag around the park for about 30 minutes prior to sunrise. We photographers often visualise the image we want, and then watch nature do the complete opposite. On this occasion, my deer friend got the memo and headed down to the open plain, just beside the path, exactly where I wanted him.
 
 The light was warming just as he started reaching up for a morning snack of oak leaves. I set myself about 60 degrees off-centre from the sun in order to catch the stunning backlight, without suffering from the bright direct light. This image came together in a flash with the leaves glowing in autumnal colours, the stags breath set alight and famous dry-stone walls in the background.
-

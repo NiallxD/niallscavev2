@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "30383"
-  title: Not the End of the World
-  author: Ritchie, Hannah
-  highlightsCount: 82
+publish: true
+description: '‘Three minutes with Hans Rosling will change your mind about the world.’6 It changed mine. — location: [312]() ^ref-43093'
+excerpt: '‘Three minutes with Hans Rosling will change your mind about the world.’6 It changed mine. — location: [312]() ^ref-43093'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Not the End of the World
@@ -263,5 +261,3 @@ flounder and lobster can have a very high footprint. If — location: [4554]() ^
 the charity evaluator GiveWell is my most trusted reference.2 — location: [4707]() ^ref-59421
 
 ---
-
-

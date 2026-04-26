@@ -1,0 +1,59 @@
+---
+layout: page.njk
+---
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    <p class="home-intro">{{ description }}</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% else %}
+<div class="listing-header">
+  <h1>{{ title }}</h1>
+  <p class="page-lead">{{ description }}</p>
+</div>
+{% endif %}
+
+<div class="standard-page">
+  {% if content %}
+  <div class="post-content">{{ content | safe }}</div>
+  {% endif %}
+
+  {% if collections.books and collections.books.length %}
+  <p class="section-label">Bookshelf</p>
+  <div class="book-grid">
+    {% for book in collections.books %}
+    <div class="book-card">
+      <div class="book-card-cover">
+        {% if book.data.coverImage %}
+        <img src="{{ book.data.coverImage }}" alt="{{ book.data.title }}" loading="lazy">
+        {% else %}
+        <div class="book-card-placeholder"></div>
+        {% endif %}
+      </div>
+      <div class="book-card-body">
+        <div class="book-card-title">{{ book.data.title }}</div>
+        {% if book.data.author %}<div class="book-card-author">{{ book.data.author }}</div>{% endif %}
+        {% if book.data.rating %}
+        <div class="book-card-rating">
+          {% for i in range(0, 5) %}
+            <span class="star{% if i < book.data.rating %} filled{% endif %}">★</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if book.data.read %}<div class="book-card-date">Read {{ book.data.read | readableDate }}</div>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">Books coming soon.</p>
+  {% endif %}
+</div>

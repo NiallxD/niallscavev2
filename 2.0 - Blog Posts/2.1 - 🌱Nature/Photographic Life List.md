@@ -1,22 +1,25 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/urbFltC.jpeg
-dg-permalink: /photographic-life-list
-Type: Blog Post
-created: 2024-04-28
-date: 2024-04-28
-updated: 2025-06-22
-tags:
-  - photography
-  - nature
-  - wildlife
-  - lifelist
-  - birding
 title: Photographic Life List
+author: Niall Bell
+date: 2024-04-28
+Type: Blog Post
+publish: true
+permalink: /photographic-life-list
 description: Here is my photographic life list, where I keep track of all the species I've photographed well. It's constantly being updated so check back!
-dg-note-icon:
+excerpt: Here is my photographic life list, where I keep track of all the species I've photographed well. It's constantly being updated so check back!
+tags:
+  - birds
+  - lifelist
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/urbFltC.jpeg
+hide: true
+header-image: https://i.imgur.com/urbFltC.jpeg
+created: 2024-04-28
+updated: 2025-06-22
 ---
+
 #photography #nature #lifelist
 # My Photographic Life list
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -1693,4 +1696,3 @@ _Canada (British Columbia) - 2025_
 *Footnote: fungi identification is difficult. These are my best guesses and should **NOT** be used to identify any species of fungus.*
 
 _Note: I'm aware lichen are not just fungi, I'm just lumping them in with fungi for the purposes of this list._
-

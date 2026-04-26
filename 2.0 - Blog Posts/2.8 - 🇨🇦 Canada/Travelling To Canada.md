@@ -1,20 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/yi0XicL.jpeg
-dg-permalink: /travelling-to-canada
-Type: Blog Post
-created: 2025-01-09
+title: Travelling To Canada
+author: Niall Bell
 date: 2025-01-09
-updated: 2025-01-09
+Type: Blog Post
+publish: true
+permalink: /travelling-to-canada
+description: Travelling To Canada
+excerpt: Travelling To Canada
 tags:
   - canada
-  - travel
-  - IEC
-title: Travelling To Canada
-description: Travelling To Canada
-dg-note-icon: "1"
+heroImage: https://i.imgur.com/yi0XicL.jpeg
+hide: true
+header-image: https://i.imgur.com/yi0XicL.jpeg
+created: 2025-01-09
+updated: 2025-01-09
+icon: 1
 ---
+
 #canada #travel #IEC
 # Travelling To Canada
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -46,5 +48,3 @@ I plan to share updates through here for future reference, but also to help thos
 
 >[!NOTE] Header Image: 
 >A photograph I took of a printed photograph by Photographer Ottomar Anschütz (1891-1896) of Otto Lilienthal's Flight III. The photograph was hung on the wall in the elevator lobby of a hotel.
-
-

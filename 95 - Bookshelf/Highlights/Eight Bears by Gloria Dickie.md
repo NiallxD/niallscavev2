@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: '27895'
-  title: 'Eight Bears: Mythic Past and Imperiled Future'
-  author: Gloria Dickie
-  highlightsCount: 86
+publish: true
+description: 'Rating: ⭐️⭐️⭐️⭐️'
+excerpt: 'Rating: ⭐️⭐️⭐️⭐️'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Eight Bears
@@ -280,4 +278,3 @@ NOBODY LOCKS THEIR DOORS IN CHURCHILL. The prefabricated houses, painted drab sh
 
 ---
 But the female offspring of polar bears and grizzly bears are fertile; two pizzly bears can mate and produce more little pizzlies, or “grolars,” if you prefer. — location: [3470]() ^ref-7642
-

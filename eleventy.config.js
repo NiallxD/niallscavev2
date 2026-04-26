@@ -15,8 +15,8 @@ function buildWikilinkMap(rootDir) {
           } else if (extname(entry) === ".md") {
             const raw = readFileSync(full, "utf8");
             const fm = raw.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? "";
-            if (!/^dg-publish:\s*true/m.test(fm)) continue;
-            const permalink = fm.match(/^dg-permalink:\s*(.+)$/m)?.[1]?.trim();
+            if (!/^publish:\s*true/m.test(fm)) continue;
+            const permalink = fm.match(/^permalink:\s*(.+)$/m)?.[1]?.trim();
             const title = fm.match(/^title:\s*(.+)$/m)?.[1]?.trim().replace(/^["']|["']$/g, "");
             if (!permalink) continue;
             const url = (permalink.startsWith("/") ? permalink : "/" + permalink).replace(/\/?$/, "/");
@@ -94,7 +94,7 @@ export default function (eleventyConfig) {
 
   // Strip Obsidian artifacts from rendered post content
   eleventyConfig.addTransform("stripObsidianArtifacts", (content, outputPath) => {
-    if (!outputPath?.endsWith(".html")) return content;
+    if (typeof outputPath !== "string" || !outputPath.endsWith(".html")) return content;
     // Remove hashtag-only paragraphs (#nature #wildlife etc.)
     content = content.replace(/<p>(\s*#[\w-]+)+\s*<\/p>/g, "");
     // Remove reading-time paragraph (Obsidian plugin, JS never runs)
@@ -109,7 +109,7 @@ export default function (eleventyConfig) {
 
   // Transform Obsidian callouts into styled divs
   eleventyConfig.addTransform("callouts", (content, outputPath) => {
-    if (!outputPath?.endsWith(".html")) return content;
+    if (typeof outputPath !== "string" || !outputPath.endsWith(".html")) return content;
     return content.replace(
       /<blockquote>\s*<p>\[!([\w-]+)\]([^<\n]*)([\s\S]*?)<\/blockquote>/g,
       (_, type, titleRaw, bodyRaw) => {
@@ -128,6 +128,15 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+  eleventyConfig.addFilter("year", () => new Date().getFullYear());
+
+  eleventyConfig.addFilter("getAllTags", (collection) => {
+    const tags = new Set();
+    (collection || []).forEach(item => {
+      (item.data.tags || []).forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     if (!dateObj) return "";
@@ -143,19 +152,61 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("posts", (api) =>
     api.getAll()
-      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Blog Post")
-      .sort((a, b) => b.date - a.date)
+      .filter((i) => {
+        const publish = String(i.data.publish).trim().toLowerCase() === "true";
+        const type = String(i.data.Type || "").trim().toLowerCase() === "blog post";
+        return publish && type;
+      })
+      .sort((a, b) => (b.date || 0) - (a.date || 0))
+  );
+
+  eleventyConfig.addCollection("featuredPosts", (api) =>
+    api.getAll()
+      .filter((i) => {
+        const publish = String(i.data.publish).trim().toLowerCase() === "true";
+        const type = String(i.data.Type || "").trim().toLowerCase() === "blog post";
+        return publish && type && i.data.featured === true;
+      })
+      .sort((a, b) => (b.date || 0) - (a.date || 0))
+  );
+
+  eleventyConfig.addCollection("regularPosts", (api) =>
+    api.getAll()
+      .filter((i) => {
+        const publish = String(i.data.publish).trim().toLowerCase() === "true";
+        const type = String(i.data.Type || "").trim().toLowerCase() === "blog post";
+        return publish && type && i.data.featured !== true;
+      })
+      .sort((a, b) => (b.date || 0) - (a.date || 0))
+  );
+
+  eleventyConfig.addCollection("projects", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Project")
+      .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   );
 
   eleventyConfig.addCollection("galleries", (api) =>
     api.getAll()
-      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Gallery" && !i.data["home-gallery"])
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Gallery" && !i.data["home-gallery"])
+      .sort((a, b) => (a.data.title || "").localeCompare(b.data.title || ""))
+  );
+
+  eleventyConfig.addCollection("featuredGalleries", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Gallery" && i.data.featured === true && !i.data["home-gallery"])
+      .sort((a, b) => (a.data.title || "").localeCompare(b.data.title || ""))
+  );
+
+  eleventyConfig.addCollection("regularGalleries", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Gallery" && i.data.featured !== true && !i.data["home-gallery"])
       .sort((a, b) => (a.data.title || "").localeCompare(b.data.title || ""))
   );
 
   eleventyConfig.addCollection("homeGallery", (api) =>
     api.getAll()
-      .filter((i) => i.data["dg-publish"] === true && i.data["home-gallery"] === true)
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data["home-gallery"] === true)
   );
 
   eleventyConfig.addFilter("extractImages", (html) => {
@@ -172,15 +223,112 @@ export default function (eleventyConfig) {
     return imgs;
   });
 
+  eleventyConfig.addFilter("parseGalleryBlocks", (html) => {
+    if (!html) return [];
+    
+    const hasH2 = /<h2/i.test(html);
+    const slides = [];
+
+    if (hasH2) {
+      const blocks = html.split(/(?=<h2)/i);
+      for (let block of blocks) {
+        if (!block.trim()) continue;
+        
+        let blockTitle = "";
+        const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+        if (titleMatch) {
+          blockTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+        }
+        
+        // Isolate everything that ISN'T the title and ISN'T the media tags to find the caption
+        const contentWithoutTitle = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
+        
+        // Collect all iframes
+        const iframeRegex = /<iframe[^>]+src="([^"]+)"[^>]*>.*?<\/iframe>/gi;
+        const iframesFound = [];
+        let im;
+        while ((im = iframeRegex.exec(contentWithoutTitle)) !== null) {
+          iframesFound.push(im[1]);
+        }
+
+        // Collect all images
+        const imgRegex = /<img[^>]+src="([^"]+)"/gi;
+        const imgsFound = [];
+        let igm;
+        while ((igm = imgRegex.exec(contentWithoutTitle)) !== null) {
+          imgsFound.push(igm[1]);
+        }
+
+        // Extract "pure" caption by removing the media tags
+        const pureCaption = contentWithoutTitle
+          .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
+          .replace(/<img[^>]+>/gi, '')
+          .replace(/<p>\s*<\/p>/gi, '') // Remove empty paragraphs
+          .trim();
+
+        // Add iframes as slides
+        iframesFound.forEach((src, idx) => {
+          slides.push({
+            type: "iframe",
+            src: src,
+            title: iframesFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+            caption: idx === 0 ? pureCaption : ""
+          });
+        });
+
+        // Add images as slides (if no iframes in this block, or in addition to iframes)
+        imgsFound.forEach((src, idx) => {
+          slides.push({
+            type: "image",
+            src: src,
+            title: imgsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+            caption: (idx === 0 && iframesFound.length === 0) ? pureCaption : ""
+          });
+        });
+
+        // Check for raw URLs if nothing else found
+        if (iframesFound.length === 0 && imgsFound.length === 0) {
+          const urlRegex = /(https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
+          const urlsFound = [];
+          let um;
+          while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
+            urlsFound.push(um[1]);
+          }
+          urlsFound.forEach((src, idx) => {
+            slides.push({
+              type: "image",
+              src: src,
+              title: urlsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+              caption: idx === 0 ? pureCaption : ""
+            });
+          });
+        }
+      }
+    }
+
+    if (slides.length === 0) {
+      const re = /<img\s[^>]*>/g;
+      let m;
+      while ((m = re.exec(html)) !== null) {
+        const tag = m[0];
+        const imgsrc = (tag.match(/src="([^"]+)"/) || [])[1];
+        const imgalt = (tag.match(/alt="([^"]*)"/) || [])[1] || "";
+        if (imgsrc) slides.push({ type: "image", src: imgsrc, title: imgalt, caption: "" });
+      }
+    }
+    
+    return slides;
+  });
+
   eleventyConfig.addCollection("photoStories", (api) =>
     api.getAll()
-      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Photo Story")
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Photo Story")
       .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("books", (api) =>
     api.getAll()
-      .filter((i) => i.data["dg-publish"] === true && i.data.Type === "Bookshelf")
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Bookshelf")
       .sort((a, b) => {
         const aDate = a.data.read ? new Date(a.data.read) : new Date(0);
         const bDate = b.data.read ? new Date(b.data.read) : new Date(0);

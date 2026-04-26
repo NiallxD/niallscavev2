@@ -1,27 +1,26 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/diPWwgj.jpeg
-dg-permalink: /indias-heart-a-tapestry-of-nature-and-tradition
-dg-metatags:
-  og:title: "{{title}}"
-  og:description: "{{description}}"
-  og:image: "{{header-image}}"
-Type: Photo Story
-created: 2024-04-02
+title: 'India''s Heart: A Tapestry of Nature and Tradition'
+author: Niall Bell
 date: 2024-04-02
-updated: 2024-04-22
-tags:
-  - photography
-  - nature
-  - wildlife
-  - india
-  - tigers
-title: "India's Heart: A Tapestry of Nature and Tradition"
-title-link: "[[India's Heart A Tapestry of Nature and Tradition]]"
+Type: Photo Story
+publish: true
+permalink: /indias-heart-a-tapestry-of-nature-and-tradition
 description: In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.
-dg-note-icon:
+excerpt: In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.
+tags:
+  - india
+  - nature
+  - photography
+  - wildlife
+heroImage: https://i.imgur.com/diPWwgj.jpeg
+hide: true
+header-image: https://i.imgur.com/diPWwgj.jpeg
+created: 2024-04-02
+updated: 2024-04-22
+title-link:
+  - - India's Heart A Tapestry of Nature and Tradition
 ---
+
 #photostory #photography #india
 
 >[!QUOTE] *“The one who plants trees, knowing that he will never sit in their shade, has at least started to understand the meaning of life.” - Rabindranath Tagore*
@@ -150,4 +149,3 @@ This trip was extraordinary and it was made so not just by the animals that I so
 
 Aprit: [Vanvasm](https://www.instagram.com/vanvasm/)
 Tal: [Tigstergram](https://www.instagram.com/tigstergram/)
-

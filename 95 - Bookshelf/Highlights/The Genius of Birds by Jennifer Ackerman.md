@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "48668"
-  title: The Genius of Birds
-  author: Jennifer Ackerman
-  highlightsCount: 50
+publish: true
+description: ⭐️⭐️⭐️⭐️
+excerpt: ⭐️⭐️⭐️⭐️
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # The Genius of Birds
@@ -169,5 +167,3 @@ In the past half century, the United Kingdom has lost an average of fifty house 
 A new study comparing the genomes of birds suggests that, genetically speaking, the turkey is closer to its dinosaur ancestors than any other bird is; its chromosomes have undergone fewer changes than other birds since the days of feathered dinosaurs. — location: [4172]() ^ref-53406
 
 ---
-
-

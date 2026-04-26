@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "13811"
-  title: Inglorious Empire
-  author: Tharoor, Shashi
-  highlightsCount: 4
+publish: true
+description: 'laying out the ‘Evils of Empire’, however, I feel duty-bound to take into account the arguments for the British — location: [184]() ^ref-2083'
+excerpt: 'laying out the ‘Evils of Empire’, however, I feel duty-bound to take into account the arguments for the British — location: [184]() ^ref-2083'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Inglorious Empire
@@ -27,5 +25,3 @@ Indians literally paid for their own oppression. — location: [660]() ^ref-4771
 £4,187,922,732. — location: [698]() ^ref-34344
 
 ---
-
-

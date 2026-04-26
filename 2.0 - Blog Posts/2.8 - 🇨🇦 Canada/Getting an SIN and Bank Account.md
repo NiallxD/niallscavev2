@@ -1,21 +1,22 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/cSUI4MZ.jpeg
-dg-permalink: /sin-and-bank-account
-Type: Blog Post
-created: 2025-01-20
+title: Getting an SIN and Bank Account
+author: Niall Bell
 date: 2025-01-20
-updated: 2025-01-20
+Type: Blog Post
+publish: true
+permalink: /sin-and-bank-account
+description: Getting an SIN and Bank Account
+excerpt: Getting an SIN and Bank Account
 tags:
   - canada
-  - travel
-  - IEC
-  - SIN
-title: Getting an SIN and Bank Account
-description: Getting an SIN and Bank Account
-dg-note-icon: "1"
+heroImage: https://i.imgur.com/cSUI4MZ.jpeg
+hide: true
+header-image: https://i.imgur.com/cSUI4MZ.jpeg
+created: 2025-01-20
+updated: 2025-01-20
+icon: 1
 ---
+
 #canada #travel #IEC #SIN
 # Getting an SIN and Bank Account
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -56,4 +57,3 @@ So, it was a simple as that. It took less than an hour in total, though we got o
 
 >[!NOTE] Header Image: 
 >A photograph I took of a mural which says 'Welcome to Squamish' followed by the traditional First Nation name for Squamish, SKWXWÜ7MESH. Behind this building, towering above is the famous Stawmus Cheif!
-

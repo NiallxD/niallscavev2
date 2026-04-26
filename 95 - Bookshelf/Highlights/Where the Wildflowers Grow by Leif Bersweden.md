@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "15614"
-  title: "Where the Wildflowers Grow: My Botanical Journey Through Britain and Ireland"
-  author: Bersweden, Leif
-  highlightsCount: 6
+publish: true
+description: 'vernalisation. — location: [308]() ^ref-23474'
+excerpt: 'vernalisation. — location: [308]() ^ref-23474'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Where the Wildflowers Grow
@@ -37,5 +35,3 @@ is only found on the poorest soils and disappears at the slightest whiff of fert
 Poor soils breed biodiversity. By regularly removing grass cuttings, you end up with more wildflowers. — location: [4304]() ^ref-39867
 
 ---
-
-

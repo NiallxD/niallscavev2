@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "23887"
-  title: Inglorious
-  author: Avery, Mark
-  highlightsCount: 5
+publish: true
+description: 'Human interference accounted for at least 30% of the failures of nests on grouse moors but very few of the failures in the other habitat categories — location: [414]() ^ref-40689'
+excerpt: 'Human interference accounted for at least 30% of the failures of nests on grouse moors but very few of the failures in the other habitat categories — location: [414]() ^ref-40689'
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Inglorious
@@ -30,5 +28,3 @@ On 4 June 1954 the Churchill government had enacted the Protection of Birds Act,
 In 1954 it was Lady Tweedsmuir, the Conservative MP for Aberdeen South, who guided the passage of what became the Protection of Birds Act, — location: [3341]() ^ref-60853
 
 ---
-
-

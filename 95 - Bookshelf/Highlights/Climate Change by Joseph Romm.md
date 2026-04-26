@@ -1,12 +1,10 @@
 ---
-dg-hide: true
-dg-publish: true
-kindle-sync:
-  bookId: "21673"
-  title: Climate Change (What Everyone Needs To Know®)
-  author: Romm, Joseph
-  highlightsCount: 5
+publish: true
+description: “Phytoplankton—photosynthetic microbes that drift in sunlit water—produces a compound called dimethylsulphide (DMS). Some of this enters the atmosphere and reacts to make sulphuric acid, which clumps
+excerpt: “Phytoplankton—photosynthetic microbes that drift in sunlit water—produces a compound called dimethylsulphide (DMS). Some of this enters the atmosphere and reacts to make sulphuric acid, which clumps
+hide: true
 ---
+
 #books #reading #bookshelf
 
 # Climate Change
@@ -30,5 +28,3 @@ the warming that we have had to date is due to CO2 levels from last century. As 
 nationally determined contributions (INDCs) — location: [2627]() ^ref-25793
 
 ---
-
-

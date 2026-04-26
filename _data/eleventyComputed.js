@@ -8,9 +8,10 @@ export default {
 
   permalink: (data) => {
     if (!data.page?.inputPath?.endsWith(".md")) return undefined;
-    if (data["dg-publish"] !== true) return false;
-    if (data["dg-permalink"]) {
-      const p = data["dg-permalink"].replace(/\/$/, "");
+    const publish = String(data.publish).trim().toLowerCase() === "true";
+    if (!publish || data.Type === "Project") return false;
+    if (data.permalink) {
+      const p = data.permalink.replace(/\/$/, "");
       return p + "/index.html";
     }
     return undefined;
@@ -18,9 +19,10 @@ export default {
 
   eleventyExcludeFromCollections: (data) => {
     if (!data.page?.inputPath?.endsWith(".md")) return false;
-    return data["dg-publish"] !== true;
+    const publish = String(data.publish).trim().toLowerCase() === "true";
+    return !publish;
   },
 
-  // Expose header-image under a hyphen-safe name for Nunjucks templates
-  coverImage: (data) => data["header-image"] || null,
+  // Ensure we have a coverImage property from any of the standard sources
+  coverImage: (data) => data.coverImage || data["header-image"] || data.heroImage || null,
 };

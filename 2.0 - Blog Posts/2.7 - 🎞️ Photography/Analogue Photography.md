@@ -1,22 +1,23 @@
 ---
-dg-hide: true
-dg-publish: true
-header-image: https://i.imgur.com/9wUq3cS.jpg
-dg-permalink: /analogue-photography
-Type: Blog Post
-created: 2024-05-02
-date: 2024-05-02
-updated: 2024-05-09
-tags:
-  - blog
-  - photography
-  - analogue
-  - analoguephotography
-  - tech
 title: Analogue Photography
+author: Niall Bell
+date: 2024-05-02
+Type: Blog Post
+publish: true
+permalink: /analogue-photography
 description: What draws me to analogue photography in 2024?
-dg-note-icon:
+excerpt: What draws me to analogue photography in 2024?
+tags:
+  - analogue
+  - photography
+  - tech
+heroImage: https://i.imgur.com/9wUq3cS.jpg
+hide: true
+header-image: https://i.imgur.com/9wUq3cS.jpg
+created: 2024-05-02
+updated: 2024-05-09
 ---
+
 #photography #analoguephotography #analogue 
 # Analogue Photography
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
@@ -134,4 +135,3 @@ To end with a quote, because we all love a quote but also I think this is quite 
 
 >[!QUOTE] Susan Sontag - On Photography:
 >*"All photographs are memento mori. To take a photograph is to participate in another person’s (or thing’s) mortality, vulnerability, mutability. Precisely by slicing out this moment and freezing it, all photographs testify to time’s relentless melt."*
-
