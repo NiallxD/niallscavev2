@@ -149,21 +149,21 @@ p {
 }
 
 .site-header.transparent-header {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 [data-theme="dark"] .site-header.transparent-header {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .site-header.transparent-header.scrolled {
-  background: var(--color-header-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-header-inner {
@@ -197,9 +197,9 @@ p {
 
 /* Light Mode (default) Logo Logic */
 /* By default, standard pages and scrolled headers show the black logo. */
-/* Transparent (unscrolled) hero headers show the white logo. */
-.site-header.transparent-header:not(.scrolled) .logo-black { opacity: 0; }
-.site-header.transparent-header:not(.scrolled) .logo-white { opacity: 1; }
+/* Transparent hero headers always show the white logo. */
+.site-header.transparent-header .logo-black { opacity: 0 !important; }
+.site-header.transparent-header .logo-white { opacity: 1 !important; }
 
 /* Dark Mode Logo Logic */
 /* In dark mode, the white logo is ALWAYS shown. */
@@ -235,12 +235,12 @@ p {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* On transparent unscrolled headers (light mode), nav links are white */
-.site-header.transparent-header:not(.scrolled) .nav-menu a {
+/* On transparent headers, nav links are white-ish across all states */
+.site-header.transparent-header .nav-menu a {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.site-header.transparent-header:not(.scrolled) .nav-menu a:hover,
+.site-header.transparent-header .nav-menu a:hover,
 [data-theme="dark"] .nav-menu a:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
@@ -272,11 +272,11 @@ p {
   background: var(--color-surface);
   color: var(--color-text);
 }
-.site-header.transparent-header:not(.scrolled) .theme-toggle,
+.site-header.transparent-header .theme-toggle,
 [data-theme="dark"] .theme-toggle {
   color: rgba(255, 255, 255, 0.9);
 }
-.site-header.transparent-header:not(.scrolled) .theme-toggle:hover,
+.site-header.transparent-header .theme-toggle:hover,
 [data-theme="dark"] .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
@@ -305,12 +305,12 @@ p {
   color: var(--color-text);
 }
 
-.site-header.transparent-header:not(.scrolled) .menu-toggle,
+.site-header.transparent-header .menu-toggle,
 [data-theme="dark"] .menu-toggle {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.site-header.transparent-header:not(.scrolled) .menu-toggle:hover,
+.site-header.transparent-header .menu-toggle:hover,
 [data-theme="dark"] .menu-toggle:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
@@ -742,7 +742,7 @@ main {
   padding-bottom: 5rem;
   padding-left: max(2rem, calc((100vw - var(--max-wide)) / 2 + 2rem));
   padding-right: max(2rem, calc((100vw - var(--max-wide)) / 2 + 2rem));
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65));
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.85));
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -1383,7 +1383,7 @@ p.section-label,
 .constellation-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 5 / 3;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -2700,6 +2700,26 @@ span.wikilink { color: var(--color-secondary); }
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   transition: transform 400ms cubic-bezier(0.2, 0, 0.2, 1), opacity 400ms ease;
   opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.image-protection-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-protection-toast a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+ont-weight: 700;
+}
+
+ty: 0;
   pointer-events: none;
   white-space: nowrap;
 }
