@@ -1,6 +1,10 @@
 ---
 layout: page.njk
 ---
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+{% endblock %}
+
 {% if heroImage %}
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
@@ -28,5 +32,107 @@ layout: page.njk
     {% if description %}<p class="page-lead">{{ description }}</p>{% endif %}
   </div>
   {% endif %}
-  <div class="post-content">{{ content | safe }}</div>
+
+  <div class="post-content">{{ content | stripGalleryBlocks | safe }}</div>
+
+  {% set slides = content | parseGalleryBlocks %}
+  {% if slides.length %}
+  <div class="gallery-body">
+    <p class="section-label">Gallery</p>
+    
+    <div class="gallery-slideshow-container no-bg desktop-only">
+      <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper">
+          {% for img in slides %}
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              {% if img.type == 'iframe' %}
+                <iframe src="{{ img.src }}" allowfullscreen class="gallery-iframe-viewer"></iframe>
+              {% else %}
+                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <div class="gallery-pagination swiper-pagination"></div>
+
+      <div id="gallery-caption-area" class="gallery-caption-external">
+        <h3 id="slide-title"></h3>
+        <p id="slide-desc"></p>
+      </div>
+    </div>
+
+    <div class="gallery-mobile-grid mobile-only">
+      {% for img in slides %}
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          {% if img.type == 'iframe' %}
+            <div class="iframe-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              <span>Video Content</span>
+            </div>
+          {% else %}
+            <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy">
+          {% endif %}
+        </div>
+        {% if img.title or img.caption %}
+        <div class="mobile-grid-content">
+          {% if img.title %}<h4 class="mobile-grid-title">{{ img.title }}</h4>{% endif %}
+          {% if img.caption %}<div class="mobile-grid-caption">{{ img.caption | safe }}</div>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <script>
+      const galleryData = {{ slides | dump | safe }};
+    </script>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const titleEl = document.getElementById('slide-title');
+      const descEl = document.getElementById('slide-desc');
+      const captionArea = document.getElementById('gallery-caption-area');
+
+      const updateCaption = (index) => {
+        if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+        const data = galleryData[index];
+        titleEl.textContent = data.title || "";
+        descEl.innerHTML = data.caption || "";
+        captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+      };
+
+      const swiperElements = document.querySelectorAll('.gallery-swiper');
+      if (swiperElements.length > 0) {
+        const swiper = new Swiper('.gallery-swiper', {
+          loop: true,
+          keyboard: { enabled: true },
+          speed: 600,
+          pagination: { 
+            el: '.gallery-pagination', 
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+              return '<span class="' + currentClass + '"></span>' +
+                     ' <span class="fraction-sep">of</span> ' +
+                     '<span class="' + totalClass + '"></span>';
+            }
+          },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          on: {
+            init: function () { updateCaption(this.realIndex); },
+            slideChange: function () { updateCaption(this.realIndex); }
+          }
+        });
+      }
+    });
+  </script>
+  {% endif %}
 </div>

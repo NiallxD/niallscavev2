@@ -128,6 +128,12 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+
+  eleventyConfig.addFilter("stripGalleryBlocks", (html) => {
+    if (!html) return "";
+    return html.replace(/<h2[^>]*>[\s\S]*?gallery-start[\s\S]*?<\/h2>[\s\S]*?<h2[^>]*>[\s\S]*?gallery-end[\s\S]*?<\/h2>/gi, "");
+  });
+
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
 
   eleventyConfig.addFilter("getAllTags", (collection) => {
@@ -226,11 +232,31 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("parseGalleryBlocks", (html) => {
     if (!html) return [];
     
-    const hasH2 = /<h2/i.test(html);
+    let targetHtml = html;
+
+    // Use a simpler search for the content between the markers
+    const startIdx = html.toLowerCase().indexOf("gallery-start");
+    const endIdx = html.toLowerCase().indexOf("gallery-end");
+
+    if (startIdx !== -1 && endIdx !== -1) {
+      // Find the tag containing the start marker
+      const startTagMatch = html.substring(0, startIdx).match(/<h2[^>]*>$/i);
+      // Find the closing tag after the end marker
+      const endTagMatch = html.substring(endIdx).match(/^[\s\S]*?<\/h2>/i);
+      
+      if (startTagMatch && endTagMatch) {
+        // Extract everything after the <h2>gallery-start</h2> and before the <h2>gallery-end</h2>
+        const actualStart = html.indexOf('>', startIdx) + 1;
+        const actualEnd = html.substring(0, endIdx).lastIndexOf('<');
+        targetHtml = html.substring(actualStart, actualEnd);
+      }
+    }
+
+    const hasH2 = /<h2/i.test(targetHtml);
     const slides = [];
 
     if (hasH2) {
-      const blocks = html.split(/(?=<h2)/i);
+      const blocks = targetHtml.split(/(?=<h2)/i);
       for (let block of blocks) {
         if (!block.trim()) continue;
         
@@ -240,10 +266,11 @@ export default function (eleventyConfig) {
           blockTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
         }
         
-        // Isolate everything that ISN'T the title and ISN'T the media tags to find the caption
+        if (blockTitle.toLowerCase().includes('gallery-start') || 
+            blockTitle.toLowerCase().includes('gallery-end')) continue;
+
         const contentWithoutTitle = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
         
-        // Collect all iframes
         const iframeRegex = /<iframe[^>]+src="([^"]+)"[^>]*>.*?<\/iframe>/gi;
         const iframesFound = [];
         let im;
@@ -251,7 +278,6 @@ export default function (eleventyConfig) {
           iframesFound.push(im[1]);
         }
 
-        // Collect all images
         const imgRegex = /<img[^>]+src="([^"]+)"/gi;
         const imgsFound = [];
         let igm;
@@ -259,26 +285,22 @@ export default function (eleventyConfig) {
           imgsFound.push(igm[1]);
         }
 
-        // Extract all unique raw URLs as a fallback
         const urlRegex = /(https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
         const rawUrlsFound = [];
         let um;
         while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
           rawUrlsFound.push(um[1]);
         }
-        // Deduplicate URLs (regex matches both href and text in <a> tags)
         const uniqueRawUrls = [...new Set(rawUrlsFound)];
 
-        // Extract "pure" caption by removing the media tags and linkified URLs
         const pureCaption = contentWithoutTitle
           .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
           .replace(/<img[^>]+>/gi, '')
-          .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '') // Remove linkified raw URLs
-          .replace(/(?:https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '') // Remove raw URL strings
-          .replace(/<p>\s*<\/p>/gi, '') // Remove empty paragraphs
+          .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '')
+          .replace(/(?:https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '')
+          .replace(/<p>\s*<\/p>/gi, '')
           .trim();
 
-        // Add iframes as slides
         iframesFound.forEach((src, idx) => {
           slides.push({
             type: "iframe",
@@ -288,7 +310,6 @@ export default function (eleventyConfig) {
           });
         });
 
-        // Add images as slides
         imgsFound.forEach((src, idx) => {
           slides.push({
             type: "image",
@@ -298,7 +319,6 @@ export default function (eleventyConfig) {
           });
         });
 
-        // Fallback to raw URLs if no tags were found
         if (iframesFound.length === 0 && imgsFound.length === 0) {
           uniqueRawUrls.forEach((src, idx) => {
             slides.push({
@@ -312,7 +332,7 @@ export default function (eleventyConfig) {
       }
     }
 
-    if (slides.length === 0) {
+    if (slides.length === 0 && startIdx === -1) {
       const re = /<img\s[^>]*>/g;
       let m;
       while ((m = re.exec(html)) !== null) {

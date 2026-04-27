@@ -97,7 +97,8 @@ p {
 /* Shared inner constraint used by nav, footer, and all page types */
 .site-header-inner,
 .site-footer-inner,
-.constrained-wide {
+.constrained-wide,
+.standard-page {
   max-width: var(--max-wide);
   margin-left: auto;
   margin-right: auto;
@@ -426,7 +427,57 @@ p {
   }
 }
 
-/* ── Main ─────────────────────────────────────────────────── */
+/* ── Utilities ────────────────────────────────────────────── */
+.content-row {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin: 2.5rem 0;
+}
+
+.content-row > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.content-row img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+/* Float Utilities (Text wraps around and below image) */
+.image-float-right {
+  float: right;
+  width: 45%;
+  margin-left: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.image-float-left {
+  float: left;
+  width: 45%;
+  margin-right: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 768px) {
+  .content-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .image-float-right, .image-float-left {
+    float: none;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 2rem;
+  }
+}
 main {
   flex: 1;
   padding-top: var(--nav-height);
@@ -2131,7 +2182,6 @@ p.section-label,
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  margin: 2rem 0;
   display: block;
 }
 
@@ -2264,6 +2314,11 @@ span.wikilink { color: var(--color-secondary); }
 .gallery-body {
   padding-top: 0;
   padding-bottom: 1rem;
+  margin-top: 0;
+}
+
+.gallery-body .section-label {
+  margin-top: 1rem !important;
 }
 
 /* Gallery masonry layout */
