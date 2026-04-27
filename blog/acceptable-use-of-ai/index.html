@@ -49,6 +49,10 @@
     
 <div class="constrained-wide">
   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
     <img src="https://i.imgur.com/Ti8yODJ.jpeg" alt="Acceptable Use of AI" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -123,6 +127,111 @@
 <p>I want to add on last point, AI integration. I reject the notion that we need AI in everything. Machine learning is cool and can make life easier (photo tagging in Apple Photos is a amazing!), but I don’t need my fridge to tell me what meals I can cook, or my email client to rewrite my email.</p>
 <p>I’d be curious to know what others think on this topic, so get in touch!</p>
 </div>
+
+    
+    
+    <div class="gallery-body" style="margin-top: 2rem;">
+      <p class="section-label">Gallery</p>
+      
+      <div class="gallery-slideshow-container no-bg desktop-only">
+        <div class="swiper gallery-swiper">
+          <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+              <div class="slide-inner">
+                
+                  <img src="https://i.imgur.com/kTGIAGs.jpeg" alt="Acceptable IMO" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        
+        <div class="gallery-pagination swiper-pagination"></div>
+
+        <div id="gallery-caption-area" class="gallery-caption-external">
+          <h3 id="slide-title"></h3>
+          <p id="slide-desc"></p>
+        </div>
+      </div>
+
+      <div class="gallery-mobile-grid mobile-only">
+        
+        <div class="mobile-grid-item">
+          <div class="mobile-grid-media">
+            
+              <img src="https://i.imgur.com/kTGIAGs.jpeg" alt="Acceptable IMO" loading="lazy">
+            
+          </div>
+          
+          <div class="mobile-grid-content">
+            <h4 class="mobile-grid-title">Acceptable IMO</h4>
+            <div class="mobile-grid-caption"><h3>Boring Stuff</h3>
+<p>AI can be super useful. Once such example is dealing with boring stuff. I often take handwritten notes on my iPad because I find it to be far more natural than typing. I can scribble away far quicker than I can type, and I’m a fast typist! So I frequently throw my handwritten notes into an LLM and ask it to digitise it into markdown text so I can paste it into my digital note taking app. I can totally type the notes up, they are rarely long, but it’s a bit boring. I know what you’re thinking, we can use OCR for this, we don’t need LLMs and you would be correct, but what you haven’t considered is how dreadful my handwriting is and how bad I am at taking notes. OCR works but takes me forever to fix the errors, an LLM can do this on the fly.</p>
+<p>This is in my opinion and acceptable use of AI.</p>
+<h3>The Tedious Stuff</h3>
+<p>Tedious stuff is another area I think LLMs excel. My photography portfolio is a static site generated from markdown files. To add photographs to a gallery I have to actually type the code and then paste in all the links to the images, this is tedious. Here is an example of the code, I have this code block repeated for every image in a gallery:</p>
+<pre><code class="language-html">&lt;a href=&quot;&quot; data-fancybox=&quot;gallery&quot;&gt;
+        &lt;img src=&quot;&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;
+&lt;/a&gt;
+</code></pre>
+<p>So what I do is copy and pasta this into and LLM along with a bunch of image links and say, create me a list of code blocks each with a unique link from the list. Within a second or two, I have the whole code block ready to drop into my gallery. To do this manually for 20 photographs might take me 10 minutes if I’m being careful not to make any syntax errors.</p>
+<p>Another use case here is summarising audio transcripts. Typically I take notes and I think this is the best thing to do, but sometimes I want to be in the moment and to focus, so I set my audio recorder going. I will re-listen to bits but generally will have an LLM produce a summary. This is so I can archive the recording without fear of losing information. Usually I request timestamps so I can revisit the recording. This is kinda old tech now tho so I don’t really consider it ‘AI’ in the current sense.</p>
+<p>This is in my opinion an acceptable use of AI.</p></div>
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <script>
+        const galleryData = [{"type":"image","src":"https://i.imgur.com/kTGIAGs.jpeg","title":"Acceptable IMO","caption":"<h3>Boring Stuff</h3>\n<p>AI can be super useful. Once such example is dealing with boring stuff. I often take handwritten notes on my iPad because I find it to be far more natural than typing. I can scribble away far quicker than I can type, and I’m a fast typist! So I frequently throw my handwritten notes into an LLM and ask it to digitise it into markdown text so I can paste it into my digital note taking app. I can totally type the notes up, they are rarely long, but it’s a bit boring. I know what you’re thinking, we can use OCR for this, we don’t need LLMs and you would be correct, but what you haven’t considered is how dreadful my handwriting is and how bad I am at taking notes. OCR works but takes me forever to fix the errors, an LLM can do this on the fly.</p>\n<p>This is in my opinion and acceptable use of AI.</p>\n<h3>The Tedious Stuff</h3>\n<p>Tedious stuff is another area I think LLMs excel. My photography portfolio is a static site generated from markdown files. To add photographs to a gallery I have to actually type the code and then paste in all the links to the images, this is tedious. Here is an example of the code, I have this code block repeated for every image in a gallery:</p>\n<pre><code class=\"language-html\">&lt;a href=&quot;&quot; data-fancybox=&quot;gallery&quot;&gt;\n        &lt;img src=&quot;&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;\n&lt;/a&gt;\n</code></pre>\n<p>So what I do is copy and pasta this into and LLM along with a bunch of image links and say, create me a list of code blocks each with a unique link from the list. Within a second or two, I have the whole code block ready to drop into my gallery. To do this manually for 20 photographs might take me 10 minutes if I’m being careful not to make any syntax errors.</p>\n<p>Another use case here is summarising audio transcripts. Typically I take notes and I think this is the best thing to do, but sometimes I want to be in the moment and to focus, so I set my audio recorder going. I will re-listen to bits but generally will have an LLM produce a summary. This is so I can archive the recording without fear of losing information. Usually I request timestamps so I can revisit the recording. This is kinda old tech now tho so I don’t really consider it ‘AI’ in the current sense.</p>\n<p>This is in my opinion an acceptable use of AI.</p>"}];
+      </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const titleEl = document.getElementById('slide-title');
+        const descEl = document.getElementById('slide-desc');
+        const captionArea = document.getElementById('gallery-caption-area');
+
+        const updateCaption = (index) => {
+          if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+          const data = galleryData[index];
+          titleEl.textContent = data.title || "";
+          descEl.innerHTML = data.caption || "";
+          captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+        };
+
+        const swiperElements = document.querySelectorAll('.gallery-swiper');
+        if (swiperElements.length > 0) {
+          const swiper = new Swiper('.gallery-swiper', {
+            loop: true,
+            keyboard: { enabled: true },
+            speed: 600,
+            pagination: { 
+              el: '.gallery-pagination', 
+              type: 'fraction',
+              renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                       ' <span class="fraction-sep">of</span> ' +
+                       '<span class="' + totalClass + '"></span>';
+              }
+            },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            on: {
+              init: function () { updateCaption(this.realIndex); },
+              slideChange: function () { updateCaption(this.realIndex); }
+            }
+          });
+        }
+      });
+    </script>
+    
   </div>
 </article>
 

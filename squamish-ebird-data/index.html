@@ -49,6 +49,10 @@
     
 <div class="constrained-wide">
   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
     <img src="https://i.imgur.com/6wj3V55.jpeg" alt="Squamish eBird Data" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -77,6 +81,112 @@
 <p>Here is a screenshot of the application I created. Go explore!🦅</p>
 <p><img src="https://i.imgur.com/K8iO3Q6.png" alt=""></p>
 </div>
+
+    
+    
+    <div class="gallery-body" style="margin-top: 2rem;">
+      <p class="section-label">Gallery</p>
+      
+      <div class="gallery-slideshow-container no-bg desktop-only">
+        <div class="swiper gallery-swiper">
+          <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+              <div class="slide-inner">
+                
+                  <img src="https://i.imgur.com/XaKZYYT.jpeg" alt="" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                
+              </div>
+            </div>
+            
+            <div class="swiper-slide">
+              <div class="slide-inner">
+                
+                  <img src="https://i.imgur.com/K8iO3Q6.png" alt="" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        
+        <div class="gallery-pagination swiper-pagination"></div>
+
+        <div id="gallery-caption-area" class="gallery-caption-external">
+          <h3 id="slide-title"></h3>
+          <p id="slide-desc"></p>
+        </div>
+      </div>
+
+      <div class="gallery-mobile-grid mobile-only">
+        
+        <div class="mobile-grid-item">
+          <div class="mobile-grid-media">
+            
+              <img src="https://i.imgur.com/XaKZYYT.jpeg" alt="" loading="lazy">
+            
+          </div>
+          
+        </div>
+        
+        <div class="mobile-grid-item">
+          <div class="mobile-grid-media">
+            
+              <img src="https://i.imgur.com/K8iO3Q6.png" alt="" loading="lazy">
+            
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <script>
+        const galleryData = [{"type":"image","src":"https://i.imgur.com/XaKZYYT.jpeg","title":"","caption":""},{"type":"image","src":"https://i.imgur.com/K8iO3Q6.png","title":"","caption":""}];
+      </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const titleEl = document.getElementById('slide-title');
+        const descEl = document.getElementById('slide-desc');
+        const captionArea = document.getElementById('gallery-caption-area');
+
+        const updateCaption = (index) => {
+          if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+          const data = galleryData[index];
+          titleEl.textContent = data.title || "";
+          descEl.innerHTML = data.caption || "";
+          captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+        };
+
+        const swiperElements = document.querySelectorAll('.gallery-swiper');
+        if (swiperElements.length > 0) {
+          const swiper = new Swiper('.gallery-swiper', {
+            loop: true,
+            keyboard: { enabled: true },
+            speed: 600,
+            pagination: { 
+              el: '.gallery-pagination', 
+              type: 'fraction',
+              renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                       ' <span class="fraction-sep">of</span> ' +
+                       '<span class="' + totalClass + '"></span>';
+              }
+            },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            on: {
+              init: function () { updateCaption(this.realIndex); },
+              slideChange: function () { updateCaption(this.realIndex); }
+            }
+          });
+        }
+      });
+    </script>
+    
   </div>
 </article>
 
