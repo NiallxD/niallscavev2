@@ -58,6 +58,7 @@ isGalleryView: true
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -97,23 +98,82 @@ isGalleryView: true
     <div class="post-content" style="margin-top: 2rem;">{{ content | safe }}</div>
     {% endif %}
   </div>
+
 </article>
+
+{% if ethics or location %}
+<div class="gallery-info-row">
+  {% if ethics %}
+  <div class="ethics-card">
+    <div class="ethics-card-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Ethics</span>
+    </div>
+    <div class="ethics-card-body">{{ ethics }}</div>
+  </div>
+  {% endif %}
+  {% if location %}
+  <div class="gallery-meta-card">
+    <div class="gallery-meta-item">
+      <div class="gallery-meta-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Location
+      </div>
+      <div class="gallery-meta-value">{{ location }}</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% set related = collections.galleries | relatedGalleries(page.url, tags) %}
+{% if related and related.length %}
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    {% for gallery in related %}
+    <a href="{{ gallery.url | url }}" class="story-card">
+      <div class="story-card-img">
+        {% if gallery.data.coverImage %}
+        <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          {% if gallery.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in gallery.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ gallery.data.title }}</div>
+        {% if gallery.data.excerpt %}<div class="story-card-desc">{{ gallery.data.excerpt }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

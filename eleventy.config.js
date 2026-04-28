@@ -285,7 +285,7 @@ export default function (eleventyConfig) {
           imgsFound.push(igm[1]);
         }
 
-        const urlRegex = /(https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
+        const urlRegex = /((?:https?:\/\/|\/)[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
         const rawUrlsFound = [];
         let um;
         while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
@@ -293,20 +293,31 @@ export default function (eleventyConfig) {
         }
         const uniqueRawUrls = [...new Set(rawUrlsFound)];
 
-        const pureCaption = contentWithoutTitle
+        let pureCaption = contentWithoutTitle
           .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
           .replace(/<img[^>]+>/gi, '')
           .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '')
-          .replace(/(?:https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '')
+          .replace(/(?:(?:https?:\/\/|\/)[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '')
           .replace(/<p>\s*<\/p>/gi, '')
           .trim();
+
+        // Extract pipe-separated gear line from caption (works whether inline or separate paragraph)
+        const plainText = pureCaption.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+        const lines = plainText.split('\n').map(l => l.trim()).filter(l => l);
+        const gearLine = lines.find(l => l.includes('|'));
+        const gear = gearLine || "";
+        if (gear) {
+          const captionText = lines.filter(l => l !== gearLine).join(' ').trim();
+          pureCaption = captionText ? `<p>${captionText}</p>` : "";
+        }
 
         iframesFound.forEach((src, idx) => {
           slides.push({
             type: "iframe",
             src: src,
             title: iframesFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
-            caption: idx === 0 ? pureCaption : ""
+            caption: idx === 0 ? pureCaption : "",
+            gear: idx === 0 ? gear : ""
           });
         });
 
@@ -315,7 +326,8 @@ export default function (eleventyConfig) {
             type: "image",
             src: src,
             title: imgsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
-            caption: (idx === 0 && iframesFound.length === 0) ? pureCaption : ""
+            caption: (idx === 0 && iframesFound.length === 0) ? pureCaption : "",
+            gear: (idx === 0 && iframesFound.length === 0) ? gear : ""
           });
         });
 
@@ -325,7 +337,8 @@ export default function (eleventyConfig) {
               type: "image",
               src: src,
               title: uniqueRawUrls.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
-              caption: idx === 0 ? pureCaption : ""
+              caption: idx === 0 ? pureCaption : "",
+              gear: idx === 0 ? gear : ""
             });
           });
         }
@@ -340,6 +353,38 @@ export default function (eleventyConfig) {
       .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Photo Story")
       .sort((a, b) => b.date - a.date)
   );
+
+  eleventyConfig.addFilter("relatedGalleries", (collection, currentUrl, tags) => {
+    if (!collection?.length || !tags?.length) return [];
+
+    const pageTags = Array.from(tags).map(t => String(t).toLowerCase().trim());
+
+    // Count how often each tag appears so common tags score less
+    const freq = {};
+    collection.forEach(i => {
+      (i.data.tags || []).forEach(t => {
+        const k = String(t).toLowerCase().trim();
+        freq[k] = (freq[k] || 0) + 1;
+      });
+    });
+
+    return collection
+      .filter(i => {
+        if (i.url === currentUrl) return false;
+        const itemTags = (i.data.tags || []).map(t => String(t).toLowerCase().trim());
+        return itemTags.some(t => pageTags.includes(t));
+      })
+      .map(i => {
+        const itemTags = (i.data.tags || []).map(t => String(t).toLowerCase().trim());
+        const score = itemTags
+          .filter(t => pageTags.includes(t))
+          .reduce((sum, t) => sum + 1 / (freq[t] || 1), 0);
+        return { item: i, score };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .map(r => r.item);
+  });
 
   eleventyConfig.addCollection("books", (api) =>
     api.getAll()

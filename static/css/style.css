@@ -489,6 +489,10 @@ figure.image-float-left figcaption {
 }
 
 @media (max-width: 768px) {
+  .gallery-info-row {
+    grid-template-columns: 1fr;
+  }
+
   .content-row {
     flex-direction: column;
     gap: 1.5rem;
@@ -915,9 +919,29 @@ main {
 
 .gallery-caption-external h3 {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   font-weight: 600;
   color: var(--color-text);
+}
+
+.slide-gear {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.gear-pill {
+  font-size: 0.62rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
 }
 
 .gallery-caption-external p {
@@ -2321,6 +2345,88 @@ span.wikilink { color: var(--color-secondary); }
 /* ── 4. GALLERY ───────────────────────────────────────────── */
 .gallery-page { }
 
+.gallery-info-row {
+  max-width: var(--max-wide);
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.ethics-card {
+  padding: 2.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
+}
+
+.ethics-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ethics-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.ethics-card-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-secondary);
+}
+
+.gallery-meta-card {
+  padding: 2.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
+}
+
+.gallery-meta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-meta-item {}
+
+.gallery-meta-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.gallery-meta-value {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-secondary);
+}
+
+.gallery-related {
+  max-width: var(--max-wide);
+  margin: 3rem auto 0;
+  padding-bottom: 4rem;
+}
+
 .page-header {
   padding-top: 2.5rem;
   padding-bottom: 2rem;
@@ -2337,7 +2443,7 @@ span.wikilink { color: var(--color-secondary); }
 
 .gallery-body {
   padding-top: 0;
-  padding-bottom: 1rem;
+  padding-bottom: 0;
   margin-top: 0;
 }
 
