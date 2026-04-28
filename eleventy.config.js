@@ -332,17 +332,6 @@ export default function (eleventyConfig) {
       }
     }
 
-    if (slides.length === 0 && startIdx === -1) {
-      const re = /<img\s[^>]*>/g;
-      let m;
-      while ((m = re.exec(html)) !== null) {
-        const tag = m[0];
-        const imgsrc = (tag.match(/src="([^"]+)"/) || [])[1];
-        const imgalt = (tag.match(/alt="([^"]*)"/) || [])[1] || "";
-        if (imgsrc) slides.push({ type: "image", src: imgsrc, title: imgalt, caption: "" });
-      }
-    }
-    
     return slides;
   });
 

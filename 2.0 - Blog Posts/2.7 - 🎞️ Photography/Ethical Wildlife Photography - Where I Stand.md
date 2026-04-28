@@ -1,0 +1,105 @@
+---
+title: "Ethical Wildlife Photography: Where I Stand"
+author: Niall Bell
+date: 2205-04-27
+Type: Blog Post
+publish: true
+permalink: /ethical-wildlife-photography-where-i-stand
+description: I've been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it's time to pull it all together, because the more I sit with it, the more I realise these aren't separate issues. They're two symptoms of the same disease.
+excerpt: I've been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it's time to pull it all together, because the more I sit with it, the more I realise these aren't separate issues. They're two symptoms of the same disease.
+tags:
+  - photography
+  - ethics
+heroImage: https://i.imgur.com/AwPl6UT.jpeg
+created: 2025-04-27
+updated: 2025-04-27
+---
+I've been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it's time to pull it all together, because the more I sit with it, the more I realise these aren't separate issues. They're two symptoms of the same disease.
+
+Wildlife photography has an honesty problem.
+
+## How We Actually Photograph Wildlife
+
+Before I get into the thorny stuff, it helps to lay out what our options actually are when we go out with a camera. As I see it, there are five main ways photographers encounter and photograph wildlife:
+
+- **Wild**: Exploring a habitat you know contains wildlife.
+- **Wild baited**: Using bait in a natural habitat to draw animals closer.
+- **Nature reserve**: Visiting a habitat specifically managed for wildlife, like an RSPB reserve.
+- **Commercial photography hide**: Paying to use a purpose-built hide, usually with managed feeding (a genre of wild baited).
+- **Chance**: Stumbling across something unexpected when you weren't even looking.
+
+Each of these comes with a different ethical profile. The wild approaches, done carefully, can be entirely harm-free. Nature reserves build in protections. Chance is by definition unplanned. But baiting, in any form, introduces complications that are worth taking seriously.
+
+## In the Field
+<figure class="image-float-right">
+<img src="https://i.imgur.com/CKZ1P2F.jpeg" alt="Bald eagle on the Squamish River"><figcaption>I use a 500mm lens with a high resolution Canon R5 to ensure I can get 'close' to the animal while staying at a safe distance.</figcaption></figure>
+
+Before we even get to hides and captions, there's a more fundamental question that I don't think gets enough airtime: how do you actually behave when you're out there?
+
+This matters because it's the foundation everything else is built on. You can have the most ethical caption in the world and still have spent the morning flushing a roosting owl from its tree to get a flight shot, or crawling through a tern colony because the light was good on that side of the beach. I've seen both, more times than I'd like.
+
+The basics aren't complicated, even if they're sometimes inconvenient. Keep your distance. Learn the difference between an animal that's calm and one that's alert, because that shift in posture is telling you something. If a bird stops what it's doing and watches you, you're already too close. Back off. If you're near a nest, don't be near a nest. The photograph is not worth the brood.
+
+Think about what you're leaving behind too. Trampled vegetation, a path worn through a meadow to a badger sett, a pile of bait that attracts the wrong species. These things outlast your visit by weeks or months. The habitat doesn't reset when you drive home.
+
+There's a version of wildlife photography that treats nature as a backdrop and the animal as a subject to be extracted from it. I understand the impulse, I've felt it myself, that tunnel vision when you're locked onto something and the rest of the world drops away. But the animal lives in that habitat. Its stress response didn't evolve to account for someone with a 500mm lens who just wants one more frame.
+
+The rule I try to hold myself to is simple: leave the animal doing what it was doing before you arrived. If it's feeding, it should still be feeding when you back away. If it's resting, it should still be resting. That's not always achievable, but it's worth aiming for.
+
+## The Hide Question
+
+Let me be upfront: I've been to commercial photography hides. Twice, actually, over five years ago, plus a boat trip where bait was used. I did my due diligence at the time, I made sure I wasn't attending the really harmful kind, the ones where bait is nailed down and the animal has no choice but to perform. But I've grown in my thinking since then, and I now feel the need to be vocal about it.
+
+So what is a commercial photography hide? My best definition: _a purpose-built wildlife hide that photographers pay to use, where the income generated forms a source of income for the hide owner._ That definition opens up some genuinely tricky edge cases. What if the land is your own? What if the proceeds go to conservation? What if it's free? I don't have clean answers to all of those, and I think that ambiguity is part of why this topic divides people so sharply.
+
+Here's where I've landed, though. The ethics of a hide ultimately come down to two questions:
+
+**One: Does it harm the wildlife?**
+
+If bait is used, we have to honestly reckon with what that means. Baiting can reduce an animal's ability to source its own food. It can spread disease. It can create unnatural conflicts between animals and develop a dangerous tameness toward humans. It puts animals in stressful, sometimes dangerous situations, I've seen videos of kingfishers hitting the bottom of tanks and sit dazed on a perch, and that image hasn't left me.
+
+I want to be fair here. There are cases where supplemental feeding is genuinely conservationist, garden birds struggling with habitat loss, red squirrels and red kites whose populations have collapsed due to human pressure and need intervention to survive. Feeding stations in Wales and Scotland helped bring red kites back from the edge. That's not the same thing as running a kingfisher hide for a profit.
+
+**Two: Is it authentic?**
+
+This is the question that snuck up on me during my trip to Poland to photograph white-tailed eagles. I was in the hide, I got my shots, and somewhere in the middle of it I started feeling uneasy, not because anything unethical was happening in that moment, but because I knew what I'd be going home with and what I _wouldn't_ be saying about it.
+
+Commercial hides raise the bar so high that it becomes almost impossible to meet that standard of image without paying to be there. And as that bar rises, so does the pressure on wildlife, as more and more hides open to meet demand from photographers trying to compete. It's a feedback loop, and it's not a healthy one.
+
+## The Captioning Gap
+
+This is where the second issue comes in, and honestly, it might be the more urgent one.
+
+Scroll through wildlife photography on Instagram or Facebook for ten minutes. I guarantee you'll see at least one photograph that was produced in conditions the caption doesn't mention. The bird that "landed right in front of me" was actually fishing in a baited tank. The deer that "let me get so close" was photographed at 150 metres with a 600mm lens, but the viewer doesn't know that, and they walk away thinking it's acceptable to approach a deer for a photograph. People get injured. Wildlife gets stressed.
+
+I've been adding an 'Ethical Note:' to my posts for at least four years now. The response has been everything from "what's the point?" to "that's actually super important." I believe it should be the norm, and I want to make the case for why.
+
+The harm here is subtle but real. When photographers share images without context, those images set an invisible standard. The viewer sees the kingfisher in perfect focus, mid-dive, droplets frozen in the air. They don't see the hide, the sticklebacks dropped into the tank, the stressed bird just trying to feed its young, the fifteen attempts it took, or the bird sitting stunned on the perch afterward. All they see is what they _could_ achieve, and they adjust their expectations accordingly.
+
+Meanwhile, the photographer who sat in the rain for five sessions waiting for a bird to come by naturally shares their shot, maybe not as technically perfect, but real, earned, and ethical. Without context, it looks like the lesser image. The playing field isn't level when one side is hiding its advantages.
+
+## What Ethical Captioning Actually Looks Like
+
+I want to be clear: I'm not proposing a bureaucratic checklist or a standardised form. I don't think it needs to be complicated or prescriptive. A nod to the circumstances is often enough.
+
+At the lighter end: _"Ethical Caption: I took this from a paid hide."_ That's it. That single sentence changes everything about how the image is read.
+
+At the fuller end, something like: _"Ethical Caption: This photograph was taken from an appropriate distance. After ten minutes, we left so as not to cause undue stress. The bird was still there when we passed an hour later."_ That kind of transparency tells viewers not just what happened, but how the photographer thinks, and it raises the bar in the right direction.
+
+We're already seeing AI tagging roll out on Instagram. The infrastructure for this kind of disclosure clearly exists. What's missing is the cultural expectation that photographers should use it.
+
+## Where I've Landed
+
+I've spent a long time working through this, and I'll admit my position has shifted. I used to think the hide question was mostly about ethics in the narrow sense, does it harm the animal in front of the lens. I now think that's necessary but not sufficient. The photograph doesn't end when you leave the hide. It goes out into the world and shapes what people think is possible, normal, and acceptable.
+
+So here's where I am, commercial hides can be acceptable if, and only if, they meet two conditions. The hide is run ethically, with genuine care for the welfare of the animals and their long-term wellbeing. And the photographer shares the nature of how the image was taken.
+
+That second condition is the one most people skip, and it's the one that does the most damage when it's missing.
+
+Start adding an ethical caption to your posts. It doesn't have to be long. It doesn't have to be a confession. Just tell people something true about how the photograph came to exist. I think you'll find it changes not just how others see your work, but how you see it too.
+
+Let's make **#EthicalCaption** something that sticks.
+
+>[!NOTE] Header Image
+>
+>The photograph of a Northern pygmy owl used in this article was taken from the side of a fairly busy trail. I was sat in my car and folk were walking past with their dogs unaware of the owl. It continued to look for prey down below and didn't really pay much attention to me or others. This is a relaxed bird doing it's thing.
