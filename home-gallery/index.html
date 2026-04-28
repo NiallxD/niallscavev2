@@ -80,23 +80,33 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

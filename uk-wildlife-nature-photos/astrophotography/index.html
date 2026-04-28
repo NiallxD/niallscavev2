@@ -188,6 +188,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -391,7 +392,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/FHDzlCt.jpeg","title":"Photo 1","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/aHZEFil.jpeg","title":"Photo 2","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/tEw4i0H.jpeg","title":"Photo 3","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/KkEUUjZ.jpeg","title":"Photo 4","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/r1J3Pg8.jpeg","title":"Photo 5","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Vv8qe42.jpeg","title":"Photo 6","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/iS00PeC.jpeg","title":"Photo 7","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Rn9G10s.jpeg","title":"Photo 8","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/b683zi2.jpeg","title":"Photo 9","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/vRWAJhK.jpeg","title":"Photo 10","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/Mupm9aZ.jpeg","title":"Photo 11","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/5dbfil7.jpeg","title":"Photo 12","caption":"<p>Caption goes here…\n</p>"},{"type":"image","src":"https://i.imgur.com/KjAa1WW.jpeg","title":"Photo 13","caption":"<p>Caption goes here…\n</p>"}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/FHDzlCt.jpeg","title":"Photo 1","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/aHZEFil.jpeg","title":"Photo 2","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/tEw4i0H.jpeg","title":"Photo 3","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/KkEUUjZ.jpeg","title":"Photo 4","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/r1J3Pg8.jpeg","title":"Photo 5","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/Vv8qe42.jpeg","title":"Photo 6","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/iS00PeC.jpeg","title":"Photo 7","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/Rn9G10s.jpeg","title":"Photo 8","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/b683zi2.jpeg","title":"Photo 9","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/vRWAJhK.jpeg","title":"Photo 10","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/Mupm9aZ.jpeg","title":"Photo 11","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/5dbfil7.jpeg","title":"Photo 12","caption":"<p>Caption goes here…\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/KjAa1WW.jpeg","title":"Photo 13","caption":"<p>Caption goes here…\n</p>","gear":""}];
     </script>
     
 
@@ -438,23 +439,33 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

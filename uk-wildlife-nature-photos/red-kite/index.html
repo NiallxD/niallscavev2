@@ -148,6 +148,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -268,7 +269,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/JpKAgVo.png","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/ScHEIqI.png","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/T8Nox8C.png","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/gUVijk6.png","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/vIA65Ss.png","title":"Photo 5","caption":""},{"type":"image","src":"https://i.imgur.com/iscY64n.png","title":"Photo 6","caption":""},{"type":"image","src":"https://i.imgur.com/7QVq4lj.png","title":"Photo 7","caption":""},{"type":"image","src":"https://i.imgur.com/PQI2Pnm.png","title":"Photo 8","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/JpKAgVo.png","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/ScHEIqI.png","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/T8Nox8C.png","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/gUVijk6.png","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/vIA65Ss.png","title":"Photo 5","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/iscY64n.png","title":"Photo 6","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/7QVq4lj.png","title":"Photo 7","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/PQI2Pnm.png","title":"Photo 8","caption":"","gear":""}];
     </script>
     
 
@@ -292,23 +293,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/uk-wildlife-nature-photos/osprey/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/QVk6n9F.jpg" alt="Osprey" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">raptors</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Osprey</div>
+        <div class="story-card-desc">The osprey (Pandion haliaetus), also called sea hawk, river hawk, and fish hawk, is a diurnal, fish-eating bird of prey with a cosmopolitan range. These birds are the big kingfisher, diving into bodies of water to catch fish. Osprey visit the UK from Africa in Summer to breed. The best places to see these birds are in the Scottish Highlands, but you can see them in England as the move up the country.</div>
+      </div>
+    </a>
+    
+    <a href="/uk-wildlife-nature-photos/white-tailed-eagles/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/1COPsvs.png" alt="White Tailed Eagle" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">eagles</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">White Tailed Eagle</div>
+        <div class="story-card-desc">The White Tailed Eagle is the UK&#39;s largest bird of prey and one of the largest predatory birds in the world! Adults are dark brown with a bright white tail and a yellow beak whereas youngsters are mottled brown and white with a blackish beak. I&#39;ve been fortunate enough to photograph White Tailed Eagles in both Scotland and Poland.</div>
+      </div>
+    </a>
+    
+    <a href="/uk-wildlife-nature-photos/british-birds/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/FzKzxR4.png" alt="British Birds" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">British Birds</div>
+        <div class="story-card-desc">A collection of Britains frequently seen birds.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

@@ -188,6 +188,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -378,7 +379,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/jB5jkMT.jpeg","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/YhPbnXK.jpeg","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/U4DC7Gm.jpeg","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/WDr0oJB.jpeg","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/26zi65X.jpeg","title":"Photo 5","caption":""},{"type":"image","src":"https://i.imgur.com/y3qJxIP.jpeg","title":"Photo 6","caption":""},{"type":"image","src":"https://i.imgur.com/eH05uEo.jpeg","title":"Photo 7","caption":""},{"type":"image","src":"https://i.imgur.com/cNe6xAN.jpeg","title":"Photo 8","caption":""},{"type":"image","src":"https://i.imgur.com/BwzYkjf.jpeg","title":"Photo 9","caption":""},{"type":"image","src":"https://i.imgur.com/lHZOt4n.jpeg","title":"Photo 10","caption":""},{"type":"image","src":"https://i.imgur.com/2F2C4WF.jpeg","title":"Photo 11","caption":""},{"type":"image","src":"https://i.imgur.com/4GiYRqG.jpeg","title":"Photo 12","caption":""},{"type":"image","src":"https://i.imgur.com/99nAV46.jpeg","title":"Photo 13","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/jB5jkMT.jpeg","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/YhPbnXK.jpeg","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/U4DC7Gm.jpeg","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/WDr0oJB.jpeg","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/26zi65X.jpeg","title":"Photo 5","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/y3qJxIP.jpeg","title":"Photo 6","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/eH05uEo.jpeg","title":"Photo 7","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/cNe6xAN.jpeg","title":"Photo 8","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/BwzYkjf.jpeg","title":"Photo 9","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/lHZOt4n.jpeg","title":"Photo 10","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/2F2C4WF.jpeg","title":"Photo 11","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/4GiYRqG.jpeg","title":"Photo 12","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/99nAV46.jpeg","title":"Photo 13","caption":"","gear":""}];
     </script>
     
 
@@ -412,23 +413,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/uk-wildlife-nature-photos/bald-eagle/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/FEpNXc5.jpeg" alt="Bald Eagle" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">eagles</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Bald Eagle</div>
+        <div class="story-card-desc">The Bald Eagle is a majestic bird of prey, known for being the national bird and symbol of the United States. Adults have striking white heads and tails with dark brown bodies and wings. Their beaks and feet are bright yellow. Juveniles, on the other hand, are mostly brown with mottled white patches and dark beaks. These powerful hunters are often found near large bodies of water, where they hunt for fish, their primary diet.</div>
+      </div>
+    </a>
+    
+    <a href="/canadian-wildlife/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">mammals</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Canadian Wildlife</div>
+        <div class="story-card-desc">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</div>
+      </div>
+    </a>
+    
+    <a href="/360-panorama/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">panorama</span><span class="tag">landscapes</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">360 Panorama</div>
+        <div class="story-card-desc">A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

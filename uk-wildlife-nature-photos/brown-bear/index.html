@@ -132,6 +132,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -226,7 +227,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/Tip0k1n.jpg","title":"River Watch","caption":"<p>A large brown bear scouting the river for its next meal.\n</p>"},{"type":"image","src":"https://i.imgur.com/vcMzrC0.jpg","title":"Fishing","caption":"<p>Patiently waiting for the salmon to jump.\n</p>"},{"type":"image","src":"https://i.imgur.com/wiz8HT1.jpeg","title":"Rest Time","caption":""},{"type":"image","src":"https://i.imgur.com/N6iarDQ.jpeg","title":"On the Prowl","caption":""},{"type":"image","src":"https://i.imgur.com/gUrmfKl.jpeg","title":"Deep Forest","caption":""},{"type":"image","src":"https://i.imgur.com/6RuMr1y.jpeg","title":"The Stare","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/Tip0k1n.jpg","title":"River Watch","caption":"<p>A large brown bear scouting the river for its next meal.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/vcMzrC0.jpg","title":"Fishing","caption":"<p>Patiently waiting for the salmon to jump.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/wiz8HT1.jpeg","title":"Rest Time","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/N6iarDQ.jpeg","title":"On the Prowl","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/gUrmfKl.jpeg","title":"Deep Forest","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/6RuMr1y.jpeg","title":"The Stare","caption":"","gear":""}];
     </script>
     
 
@@ -248,23 +249,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/uk-wildlife-nature-photos/tiger/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/j35mshs.png" alt="Bengal Tiger" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">mammals</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Bengal Tiger</div>
+        <div class="story-card-desc">The Bengal Tiger is the true king of the jungle. I&#39;ve been obsessed with tigers since first time I photographed a captive Amur tiger at my local wildlife park.</div>
+      </div>
+    </a>
+    
+    <a href="/canadian-wildlife/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/ZszeHtH.jpeg" alt="Canadian Wildlife" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">mammals</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Canadian Wildlife</div>
+        <div class="story-card-desc">As I explore this wonderful country, I am photographing all the wildlife I can, most of it new to me. This gallery is dedicated to this work. So if you&#39;re new to Canadian wildlife or a local, I hope you enjoy these images.</div>
+      </div>
+    </a>
+    
+    <a href="/uk-wildlife-nature-photos/grey-seal/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/UudTTEZ.jpg" alt="Grey Seal" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">mammals</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Grey Seal</div>
+        <div class="story-card-desc">The UK&#39;s second largest mammal, or first before red deer depending who you ask. Grey seals breed in huge numbers across the UK&#39;s shorelines and is one the UK&#39;s best wildlife spectacles.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

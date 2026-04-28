@@ -148,6 +148,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -268,7 +269,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/7eKn5qJ.jpeg","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/WSyh7lo.jpeg","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/8NI4i7L.jpeg","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/8P7VKtM.jpeg","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/GRmUryA.jpeg","title":"Photo 5","caption":""},{"type":"image","src":"https://i.imgur.com/hlCt6lr.jpeg","title":"Photo 6","caption":""},{"type":"image","src":"https://i.imgur.com/zyV7S5Z.jpeg","title":"Photo 7","caption":""},{"type":"image","src":"https://i.imgur.com/qDChCTX.jpeg","title":"Photo 8","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/7eKn5qJ.jpeg","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/WSyh7lo.jpeg","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/8NI4i7L.jpeg","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/8P7VKtM.jpeg","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/GRmUryA.jpeg","title":"Photo 5","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/hlCt6lr.jpeg","title":"Photo 6","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/zyV7S5Z.jpeg","title":"Photo 7","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/qDChCTX.jpeg","title":"Photo 8","caption":"","gear":""}];
     </script>
     
 
@@ -292,23 +293,33 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

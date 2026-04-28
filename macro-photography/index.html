@@ -196,6 +196,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -400,7 +401,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/ISBS59V.jpeg","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/PUK5L60.jpeg","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/ntjj4j3.jpeg","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/7O1Qixa.jpeg","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/M5qZ4NL.jpeg","title":"Photo 5","caption":""},{"type":"image","src":"https://i.imgur.com/In7ExyM.jpeg","title":"Photo 6","caption":""},{"type":"image","src":"https://i.imgur.com/DJuf0O1.jpeg","title":"Photo 7","caption":""},{"type":"image","src":"https://i.imgur.com/Glc4xQ5.jpeg","title":"Photo 8","caption":""},{"type":"image","src":"https://i.imgur.com/7zFpzVu.jpeg","title":"Photo 9","caption":""},{"type":"image","src":"https://i.imgur.com/wQN3sqY.jpeg","title":"Photo 10","caption":""},{"type":"image","src":"https://i.imgur.com/Eq0JM30.jpeg","title":"Photo 11","caption":""},{"type":"image","src":"https://i.imgur.com/LQ1fiWw.jpeg","title":"Photo 12","caption":""},{"type":"image","src":"https://i.imgur.com/eKubDoI.jpeg","title":"Photo 13","caption":""},{"type":"image","src":"https://i.imgur.com/pDc80gd.jpeg","title":"Photo 14","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/ISBS59V.jpeg","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/PUK5L60.jpeg","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/ntjj4j3.jpeg","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/7O1Qixa.jpeg","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/M5qZ4NL.jpeg","title":"Photo 5","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/In7ExyM.jpeg","title":"Photo 6","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/DJuf0O1.jpeg","title":"Photo 7","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/Glc4xQ5.jpeg","title":"Photo 8","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/7zFpzVu.jpeg","title":"Photo 9","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/wQN3sqY.jpeg","title":"Photo 10","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/Eq0JM30.jpeg","title":"Photo 11","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/LQ1fiWw.jpeg","title":"Photo 12","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/eKubDoI.jpeg","title":"Photo 13","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/pDc80gd.jpeg","title":"Photo 14","caption":"","gear":""}];
     </script>
     
 
@@ -436,23 +437,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/uk-wildlife-nature-photos/fungi/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/2MrhVQh.jpg" alt="Fungi" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">fungi</span><span class="tag">macro</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Fungi</div>
+        <div class="story-card-desc">A entire taxonomic Kingdom is devoted to fungi. From beer and bread, to antibiotics and packaging; fungi are relied on by millions of people every day.</div>
+      </div>
+    </a>
+    
+    <a href="/environments/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">landscapes</span><span class="tag">environments</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Environments</div>
+        <div class="story-card-desc">A showcase of some of the amazing environments I&#39;ve photographed.</div>
+      </div>
+    </a>
+    
+    <a href="/photomicrography/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/dJxGbhg.jpg" alt="Photomicrography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">microscopy</span><span class="tag">macro</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Photomicrography</div>
+        <div class="story-card-desc">Exploring the hidden worlds that exist beyond the limits of human vision through high-magnification photomicrography.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

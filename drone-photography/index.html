@@ -124,6 +124,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -202,7 +203,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/F1ef3kt.jpeg","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/Jv4hhtd.jpeg","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/tOlH8YW.jpeg","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/esCyvAD.jpeg","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/iqFdzU0.jpeg","title":"Photo 5","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/F1ef3kt.jpeg","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/Jv4hhtd.jpeg","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/tOlH8YW.jpeg","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/esCyvAD.jpeg","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/iqFdzU0.jpeg","title":"Photo 5","caption":"","gear":""}];
     </script>
     
 
@@ -220,23 +221,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/360-panorama/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="360 Panorama" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">panorama</span><span class="tag">landscapes</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">360 Panorama</div>
+        <div class="story-card-desc">A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.</div>
+      </div>
+    </a>
+    
+    <a href="/canadian-landscapes/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/eH05uEo.jpeg" alt="Canadian Landscapes" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">canada</span><span class="tag">landscapes</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Canadian Landscapes</div>
+        <div class="story-card-desc">This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.</div>
+      </div>
+    </a>
+    
+    <a href="/environments/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">landscapes</span><span class="tag">environments</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Environments</div>
+        <div class="story-card-desc">A showcase of some of the amazing environments I&#39;ve photographed.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {

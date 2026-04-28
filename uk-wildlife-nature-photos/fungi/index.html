@@ -132,6 +132,7 @@
       <div id="gallery-caption-area" class="gallery-caption-external">
         <h3 id="slide-title"></h3>
         <p id="slide-desc"></p>
+        <div id="slide-gear" class="slide-gear"></div>
       </div>
     </div>
 
@@ -224,7 +225,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/KgIi56J.jpeg","title":"Photo 1","caption":""},{"type":"image","src":"https://i.imgur.com/TQk0Ydw.jpeg","title":"Photo 2","caption":""},{"type":"image","src":"https://i.imgur.com/2MrhVQh.jpeg","title":"Photo 3","caption":""},{"type":"image","src":"https://i.imgur.com/N3cutJ8.jpeg","title":"Photo 4","caption":""},{"type":"image","src":"https://i.imgur.com/Jx5qB8u.jpeg","title":"Photo 5","caption":""},{"type":"image","src":"https://i.imgur.com/1WnqV0R.jpeg","title":"Photo 6","caption":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/KgIi56J.jpeg","title":"Photo 1","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/TQk0Ydw.jpeg","title":"Photo 2","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/2MrhVQh.jpeg","title":"Photo 3","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/N3cutJ8.jpeg","title":"Photo 4","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/Jx5qB8u.jpeg","title":"Photo 5","caption":"","gear":""},{"type":"image","src":"https://i.imgur.com/1WnqV0R.jpeg","title":"Photo 6","caption":"","gear":""}];
     </script>
     
 
@@ -244,23 +245,97 @@
 </div>
     
   </div>
+
 </article>
+
+
+
+
+
+<div class="gallery-related">
+  <p class="section-label">Related Galleries</p>
+  <div class="story-list">
+    
+    <a href="/macro-photography/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/ISBS59V.jpeg" alt="Macro Photography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">macro</span><span class="tag">insects</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Macro Photography</div>
+        <div class="story-card-desc">A selection of macro photography</div>
+      </div>
+    </a>
+    
+    <a href="/environments/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/MBfejyA.jpeg" alt="Environments" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">landscapes</span><span class="tag">environments</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Environments</div>
+        <div class="story-card-desc">A showcase of some of the amazing environments I&#39;ve photographed.</div>
+      </div>
+    </a>
+    
+    <a href="/photomicrography/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/dJxGbhg.jpg" alt="Photomicrography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">microscopy</span><span class="tag">macro</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Photomicrography</div>
+        <div class="story-card-desc">Exploring the hidden worlds that exist beyond the limits of human vision through high-magnification photomicrography.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
+  const gearEl = document.getElementById('slide-gear');
   const descEl = document.getElementById('slide-desc');
   const captionArea = document.getElementById('gallery-caption-area');
 
   const updateCaption = (index) => {
     if (typeof galleryData === 'undefined' || !galleryData[index]) return;
     const data = galleryData[index];
-    
+
     titleEl.textContent = data.title || "";
+    gearEl.innerHTML = data.gear
+      ? data.gear.split('|').map(s => `<span class="gear-pill">${s.trim()}</span>`).join('')
+      : '';
+    gearEl.style.display = data.gear ? 'flex' : 'none';
     descEl.innerHTML = data.caption || "";
-    
-    // Hide container if both empty
-    captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+
+    captionArea.style.display = (data.title || data.caption || data.gear) ? 'block' : 'none';
   };
 
   const swiper = new Swiper('.gallery-swiper', {
