@@ -3332,7 +3332,7 @@ span.wikilink { color: var(--color-secondary); }
   .home-hero-wrapper { height: 100vh; }
 
   .gallery-body .gallery { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
   .story-list { grid-template-columns: 1fr; }
 
   .home-gallery-preview { grid-template-columns: 1fr 1fr; }
