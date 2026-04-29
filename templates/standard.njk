@@ -8,7 +8,7 @@ layout: page.njk
 {% if heroImage %}
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="img-cover">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">{{ title }}</h1>
@@ -37,6 +37,164 @@ layout: page.njk
 
   {% set slides = [] %}
   {% if 'gallery-start' in content %}{% set slides = content | parseGalleryBlocks %}{% endif %}
+  {% if bookingCta %}
+  <div class="booking-cta">
+    <p class="booking-cta-eyebrow">{{ bookingCtaEyebrow | default("Interested?") }}</p>
+    <h2 class="booking-cta-heading">{{ bookingCtaHeading | default("Request a Booking") }}</h2>
+    <p class="booking-cta-body">{{ bookingCtaText | default("Get in touch and I'll come back to you to arrange a date and time that works.") }}</p>
+    <button type="button" class="booking-cta-btn" id="booking-open">Request Booking</button>
+  </div>
+
+  <div class="booking-backdrop" id="booking-backdrop" aria-hidden="true"></div>
+  <div class="booking-modal" id="booking-modal" role="dialog" aria-modal="true" aria-label="Booking request form">
+    <button class="booking-close" id="booking-close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="booking-form-wrap" id="booking-form-wrap">
+      <p class="booking-eyebrow">{{ title }}</p>
+      <h2 class="booking-heading">Request a Booking</h2>
+      <p class="booking-subhead">Fill in your details and I'll get back to you to confirm availability and arrange a time that works.</p>
+
+      <form class="booking-form" id="booking-form" novalidate>
+        <input type="hidden" name="access_key" value="{{ bookingAccessKey }}">
+        <input type="hidden" name="subject" value="Booking Request — {{ title }}">
+        <input type="hidden" name="service" value="{{ title }}">
+        <input type="checkbox" name="botcheck" style="display:none">
+
+        <div class="booking-field">
+          <label class="booking-label" for="bk-name">Your Name</label>
+          <input class="booking-input" type="text" id="bk-name" name="name" autocomplete="name" placeholder="Jane Smith" required>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label" for="bk-email">Email Address</label>
+          <input class="booking-input" type="email" id="bk-email" name="email" autocomplete="email" placeholder="jane@example.com" required>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label" for="bk-date">Preferred Date / Time <span class="booking-optional">Optional</span></label>
+          <input class="booking-input" type="text" id="bk-date" name="preferred_date" placeholder="e.g. Weekend mornings, late April…">
+        </div>
+
+        {% if bookingShowSkillLevel %}
+        <div class="booking-field">
+          <label class="booking-label" for="bk-skill">Skill Level <span class="booking-skill-value" id="bk-skill-label">4 — Intermediate</span></label>
+          <div class="booking-slider-wrap">
+            <span class="booking-slider-edge">New</span>
+            <input class="booking-slider" type="range" id="bk-skill" name="skill_level" min="1" max="7" value="4">
+            <span class="booking-slider-edge">Pro</span>
+          </div>
+          <div class="booking-slider-pips" aria-hidden="true">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if bookingShowGear %}
+        <div class="booking-field">
+          <label class="booking-label" for="bk-gear">Camera Gear <span class="booking-optional">Optional</span></label>
+          <input class="booking-input" type="text" id="bk-gear" name="camera_gear" placeholder="e.g. Sony A7 IV, 100-400mm lens…">
+        </div>
+        {% endif %}
+
+        <div class="booking-field">
+          <label class="booking-label" for="bk-message">Anything else? <span class="booking-optional">Optional</span></label>
+          <textarea class="booking-input booking-textarea" id="bk-message" name="message" placeholder="{{ bookingMessagePlaceholder | default('Group size, experience level, questions…') }}" rows="4"></textarea>
+        </div>
+
+        <p class="booking-error" id="booking-error" aria-live="polite"></p>
+
+        <button type="submit" class="booking-submit" id="booking-submit">
+          <span class="booking-submit-text">Send Request</span>
+          <svg class="booking-spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="booking-thanks" id="booking-thanks" aria-live="polite">
+      <div class="booking-thanks-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h2 class="booking-thanks-heading">Request Sent</h2>
+      <p class="booking-thanks-body">Thanks — I'll be in touch soon to confirm details and arrange a time.</p>
+      <button type="button" class="booking-thanks-close" id="booking-thanks-close">Close</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const open = document.getElementById('booking-open');
+      const close = document.getElementById('booking-close');
+      const modal = document.getElementById('booking-modal');
+      const backdrop = document.getElementById('booking-backdrop');
+      const form = document.getElementById('booking-form');
+      const submit = document.getElementById('booking-submit');
+      const errorEl = document.getElementById('booking-error');
+      const formWrap = document.getElementById('booking-form-wrap');
+      const thanks = document.getElementById('booking-thanks');
+      const thanksClose = document.getElementById('booking-thanks-close');
+
+      const skillLabels = ['', 'New', 'Beginner', 'Developing', 'Intermediate', 'Experienced', 'Advanced', 'Pro'];
+      const skillSlider = document.getElementById('bk-skill');
+      const skillLabel = document.getElementById('bk-skill-label');
+      if (skillSlider && skillLabel) {
+        const updateSkill = () => { skillLabel.textContent = skillSlider.value + ' — ' + skillLabels[skillSlider.value]; };
+        skillSlider.addEventListener('input', updateSkill);
+        updateSkill();
+      }
+
+      const openModal = () => {
+        modal.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modal.querySelector('#bk-name').focus();
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+
+      open.addEventListener('click', openModal);
+      close.addEventListener('click', closeModal);
+      thanksClose.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.textContent = '';
+
+        const data = new FormData(form);
+        submit.classList.add('loading');
+        submit.disabled = true;
+
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+          const json = await res.json();
+
+          if (json.success) {
+            formWrap.style.display = 'none';
+            thanks.classList.add('visible');
+          } else {
+            errorEl.textContent = json.message || 'Something went wrong — please try again.';
+          }
+        } catch {
+          errorEl.textContent = 'Could not send — please check your connection and try again.';
+        } finally {
+          submit.classList.remove('loading');
+          submit.disabled = false;
+        }
+      });
+    })();
+  </script>
+  {% endif %}
+
   {% if slides.length %}
   <div class="gallery-body">
     <p class="section-label">Gallery</p>
@@ -50,7 +208,7 @@ layout: page.njk
               {% if img.type == 'iframe' %}
                 <iframe src="{{ img.src }}" allowfullscreen class="gallery-iframe-viewer"></iframe>
               {% else %}
-                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy" onload="const _r=this.naturalWidth/this.naturalHeight;this.classList.add(_r>1.05?'is-landscape':_r<0.95?'is-portrait':'is-square')">
               {% endif %}
             </div>
           </div>

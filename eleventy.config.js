@@ -136,7 +136,8 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("ensureArray", (val) => {
     if (!val) return [];
-    return Array.isArray(val) ? val : [val];
+    if (Array.isArray(val)) return val;
+    return String(val).split(',').map(s => s.trim()).filter(Boolean);
   });
 
   eleventyConfig.addFilter("stripGalleryBlocks", (html) => {

@@ -27,8 +27,8 @@
         <img src="{{ '/static/images/Logo_White_Large.png' | url }}" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav class="nav-menu">
-        <a href="{{ '/photography/' | url }}"{% if page.url and '/photography' in page.url %} class="active"{% endif %}>Photo</a>
-        <a href="{{ '/videography/' | url }}"{% if page.url and '/videography' in page.url %} class="active"{% endif %}>Video</a>
+        <a href="{{ '/photography/' | url }}"{% if page.url and '/photography/' in page.url %} class="active"{% endif %}>Photo</a>
+        <a href="{{ '/videography/' | url }}"{% if page.url and '/videography/' in page.url %} class="active"{% endif %}>Video</a>
         <a href="{{ '/prints/' | url }}"{% if page.url == '/prints/' %} class="active"{% endif %}>Prints</a>
         <a href="{{ '/blog/' | url }}"{% if page.url == '/blog/' %} class="active"{% endif %}>Writing</a>
         <a href="{{ '/side-projects/' | url }}"{% if page.url == '/side-projects/' %} class="active"{% endif %}>Projects</a>

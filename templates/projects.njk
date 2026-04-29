@@ -4,7 +4,7 @@ layout: page.njk
 {% if heroImage %}
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="img-cover">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">{{ title }}</h1>
@@ -14,6 +14,31 @@ layout: page.njk
 {% endif %}
 
 <div class="standard-page">
+
+  <!-- SERVICES -->
+  <p class="section-label">Services</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-card-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M5.5 17.5l2-5 2.5 2 2-4 2.5 5 2-3"/><path d="M3 21h18"/></svg>
+      </div>
+      <h3 class="service-card-title">Nature Walks</h3>
+      <p class="service-card-desc">Guided walks in the Sea-to-Sky region focused on wildlife observation and ecology. Suitable for all ages and experience levels — whether you want to find your first bird or deepen an existing interest in the natural world.</p>
+      <a href="/nature-walks/" class="service-card-btn">Learn more</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-card-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <h3 class="service-card-title">Photography Workshops</h3>
+      <p class="service-card-desc">Small-group and one-to-one workshops covering wildlife and landscape photography in the field. From camera settings and composition to finding and approaching subjects — I'll help you take images you're proud of.</p>
+      <a href="/photography-workshops/" class="service-card-btn">Learn more</a>
+    </div>
+
+  </div>
+
   {% if sectionLabel %}
   <p class="section-label">{{ sectionLabel }}</p>
   {% endif %}

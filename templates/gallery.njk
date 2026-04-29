@@ -7,7 +7,7 @@ isGalleryView: true
 {% if heroImage %}
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
-    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <img src="{{ heroImage }}" alt="{{ title }}" class="img-cover">
   </div>
   <section class="home-hero-overlay">
     <h1 class="home-title">{{ title }}</h1>
@@ -43,7 +43,7 @@ isGalleryView: true
               {% if img.type == 'iframe' %}
                 <iframe src="{{ img.src }}" allowfullscreen class="gallery-iframe-viewer"></iframe>
               {% else %}
-                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy"{% if img.verticalAlign and img.verticalAlign != 'center' %} style="object-position: center {{ img.verticalAlign }}"{% endif %} onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy"{% if img.verticalAlign and img.verticalAlign != 'center' %} style="object-position: center {{ img.verticalAlign }}"{% endif %} onload="const _r=this.naturalWidth/this.naturalHeight;this.classList.add(_r>1.05?'is-landscape':_r<0.95?'is-portrait':'is-square')">
               {% endif %}
             </div>
           </div>
@@ -118,6 +118,7 @@ isGalleryView: true
 </article>
 
 {% if ethics or location %}
+<p class="section-label gallery-info-label">Additional Info</p>
 <div class="gallery-info-row">
   {% if ethics %}
   <div class="ethics-card">
