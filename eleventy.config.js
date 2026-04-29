@@ -134,6 +134,11 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
+  eleventyConfig.addFilter("ensureArray", (val) => {
+    if (!val) return [];
+    return Array.isArray(val) ? val : [val];
+  });
+
   eleventyConfig.addFilter("stripGalleryBlocks", (html) => {
     if (!html) return "";
     return html.replace(/<h2[^>]*>\s*gallery-start\s*<\/h2>[\s\S]*?<h2[^>]*>\s*gallery-end\s*<\/h2>/gi, "");
@@ -228,7 +233,12 @@ export default function (eleventyConfig) {
     while ((m = re.exec(html)) !== null) {
       const tag = m[0];
       const src = (tag.match(/src="([^"]+)"/) || [])[1];
-      const alt = (tag.match(/alt="([^"]*)"/) || [])[1] || "";
+      let alt = (tag.match(/alt="([^"]*)"/) || [])[1] || "";
+      alt = alt.replace(/&amp;/g, '&')
+               .replace(/&lt;/g, '<')
+               .replace(/&gt;/g, '>')
+               .replace(/&quot;/g, '"')
+               .replace(/&#39;/g, "'");
       if (src) imgs.push({ src, alt });
     }
     return imgs;
@@ -266,9 +276,45 @@ export default function (eleventyConfig) {
         if (!block.trim()) continue;
         
         let blockTitle = "";
+        let printStatus = "";
+        let verticalAlign = "center";
         const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
         if (titleMatch) {
-          blockTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+          let rawTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+          
+          // Extract print status: [P] = printable, [E] = exclusive (sold), [X] = private
+          const statusMatch = rawTitle.match(/\[([PEX])\]/i);
+          if (statusMatch) {
+            const status = statusMatch[1].toUpperCase();
+            if (status === 'P') printStatus = 'available';
+            else if (status === 'E') printStatus = 'exclusive';
+            else if (status === 'X') printStatus = 'private';
+            rawTitle = rawTitle.replace(/\[[PEX]\]/i, '').trim();
+          }
+
+          // Extract vertical alignment: [U] = Up (top), [D] = Down (bottom)
+          // Also supports nudges: [U10], [D25] etc.
+          const alignMatch = rawTitle.match(/\[([UD])(\d*)\]/i);
+          if (alignMatch) {
+            const dir = alignMatch[1].toUpperCase();
+            const val = alignMatch[2];
+            if (!val) {
+              verticalAlign = (dir === 'U') ? 'top' : 'bottom';
+            } else {
+              // Convert nudge value to percentage
+              // U10 means 10% from top, D10 means 10% from bottom (90%)
+              const percent = parseInt(val, 10);
+              verticalAlign = (dir === 'U') ? `${percent}%` : `${100 - percent}%`;
+            }
+            rawTitle = rawTitle.replace(/\[[UD]\d*\]/i, '').trim();
+          }
+
+          blockTitle = rawTitle
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
         }
         
         if (blockTitle.toLowerCase().includes('gallery-start') || 
@@ -318,6 +364,11 @@ export default function (eleventyConfig) {
           .replace(/<img[^>]+>/gi, '')
           .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '')
           .replace(/(?:(?:https?:\/\/|\/)[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi, '')
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'")
           .replace(/<p>\s*<\/p>/gi, '')
           .trim();
 
@@ -336,6 +387,8 @@ export default function (eleventyConfig) {
             type: "iframe",
             src: src,
             title: iframesFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+            printStatus: idx === 0 ? printStatus : "",
+            verticalAlign: idx === 0 ? verticalAlign : "center",
             caption: idx === 0 ? pureCaption : "",
             gear: idx === 0 ? gear : ""
           });
@@ -346,6 +399,8 @@ export default function (eleventyConfig) {
             type: "image",
             src: src,
             title: imgsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+            printStatus: (idx === 0 && iframesFound.length === 0) ? printStatus : "",
+            verticalAlign: (idx === 0 && iframesFound.length === 0) ? verticalAlign : "center",
             caption: (idx === 0 && iframesFound.length === 0) ? pureCaption : "",
             gear: (idx === 0 && iframesFound.length === 0) ? gear : ""
           });
@@ -357,6 +412,8 @@ export default function (eleventyConfig) {
               type: "image",
               src: src,
               title: uniqueRawUrls.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
+              printStatus: idx === 0 ? printStatus : "",
+              verticalAlign: idx === 0 ? verticalAlign : "center",
               caption: idx === 0 ? pureCaption : "",
               gear: idx === 0 ? gear : ""
             });
@@ -380,7 +437,12 @@ export default function (eleventyConfig) {
 
       const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
       if (!titleMatch) continue;
-      const title = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+      const title = titleMatch[1].replace(/<[^>]+>/g, '').trim()
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
 
       const content = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
       const plainText = content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();

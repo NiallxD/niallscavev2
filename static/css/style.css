@@ -1033,6 +1033,122 @@ main {
   color: var(--color-text);
 }
 
+.gallery-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.print-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  flex-shrink: 0;
+  cursor: help;
+  position: relative;
+  line-height: 1;
+}
+
+.print-pill svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+/* Tooltip Styling */
+.print-pill[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(8px);
+  padding: 0.4rem 0.7rem;
+  background: #111;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+[data-theme="dark"] .print-pill[data-tooltip]::before {
+  background: #fff;
+  color: #111;
+}
+
+.print-pill[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(0);
+  border: 6px solid transparent;
+  border-right-color: #111;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .print-pill[data-tooltip]::after {
+  border-right-color: #fff;
+}
+
+.print-pill[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(12px);
+}
+
+.print-pill[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0px);
+}
+
+.print-pill.available {
+  color: #2d6a4f;
+  opacity: 1;
+}
+
+.print-pill.exclusive {
+  color: #d4af37; /* Gold */
+  opacity: 1;
+}
+
+.print-pill.private {
+  color: #d62828; /* Red */
+  opacity: 1;
+}
+
+.mobile-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-title-row .print-pill {
+  width: 18px;
+  height: 18px;
+  border-width: 1px;
+}
+
 .slide-gear {
   display: flex;
   flex-wrap: wrap;
@@ -2800,7 +2916,6 @@ span.wikilink { color: var(--color-secondary); }
   flex-direction: column;
   text-decoration: none;
   border-radius: var(--radius-md);
-  overflow: hidden;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
@@ -2816,6 +2931,7 @@ span.wikilink { color: var(--color-secondary); }
   aspect-ratio: 3/2;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .gallery-card-img img {
@@ -2852,6 +2968,59 @@ span.wikilink { color: var(--color-secondary); }
   margin: 0;
 }
 
+.gallery-card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.gallery-card-prints {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.gallery-card-prints .print-pill {
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+}
+
+.gallery-card-prints .print-pill svg {
+  width: 8px;
+  height: 8px;
+}
+
+.gallery-card-prints .print-pill[data-tooltip]::before {
+  top: auto;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gallery-card-prints .print-pill[data-tooltip]:hover::before {
+  transform: translateX(-50%);
+}
+
+.gallery-card-prints .print-pill[data-tooltip]::after {
+  top: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-right-color: transparent;
+  border-top-color: #111;
+}
+
+[data-theme="dark"] .gallery-card-prints .print-pill[data-tooltip]::after {
+  border-top-color: #fff;
+}
+
+.gallery-card-prints .print-pill[data-tooltip]:hover::after {
+  transform: translateX(-50%);
+}
+
 .story-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -2866,7 +3035,6 @@ span.wikilink { color: var(--color-secondary); }
   flex-direction: column;
   text-decoration: none;
   border-radius: var(--radius-md);
-  overflow: hidden;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
@@ -2882,6 +3050,7 @@ span.wikilink { color: var(--color-secondary); }
   aspect-ratio: 3/2;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .story-card-img img {

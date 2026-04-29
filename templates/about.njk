@@ -28,7 +28,7 @@ layout: page.njk
       <img src="{{ profilePicture }}" alt="{{ title }}">
       <div class="about-contact-card">
         <div class="about-contact-header">Get in touch</div>
-        <p class="about-contact-note">Get in touch via email</p>
+        <p class="about-contact-note">Get in touch via email or social media:</p>
         <span class="about-contact-link reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Click to reveal email
@@ -38,6 +38,7 @@ layout: page.njk
           @niallbellcom
         </a>
       </div>
+      <a href="/now/" class="about-now-btn">Check out what I'm up to now →</a>
     </div>
   </div>
 
@@ -65,10 +66,6 @@ layout: page.njk
           platform integrating Felt mapping with biodiversity and connectivity data for the Sea-to-Sky region. My technical work
           is grounded in deep environmental science knowledge and an understanding of how these tools are used in practice
           by non-technical stakeholders.
-        </p>
-        <p>
-          If you wish to get in touch about anything on this website, please send me an email at
-          <a href="mailto:niall@niallbell.com" style="color: var(--color-link); font-weight: 500;">niall@niallbell.com</a>.
         </p>
       </div>
 
@@ -197,3 +194,23 @@ layout: page.njk
 
 </div>
 
+<style>
+  .about-now-btn {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    background: var(--color-accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .about-now-btn:hover {
+    background: var(--color-link-hover);
+    transform: translateY(-2px);
+  }
+</style>

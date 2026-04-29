@@ -72,7 +72,7 @@ layout: page.njk
     </div>
 
     <div class="prints-option-card prints-option-featured">
-      <div class="prints-option-badge">Most Flexible</div>
+      <div class="prints-option-badge">Most Popular</div>
       <div class="prints-option-header">
         <div class="prints-option-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -137,14 +137,70 @@ layout: page.njk
     <div class="prints-cta-content">
       <p class="prints-cta-eyebrow">Ready to enquire?</p>
       <h2 class="prints-cta-heading">Let's find the perfect print for you</h2>
-      <p class="prints-cta-body">Browse the galleries across the site and when something catches your eye, drop me a message. I'll get back to you with pricing, available sizes, and the relevant conservation charity for that image.</p>
+      <p class="prints-cta-body">Browse my galleries and look for the icons indicating which photographs are available for print. Email me with the name of the photograph I'll get back to you with pricing, available sizes, and the relevant conservation charity for that photograph.</p>
       <div class="prints-cta-btns">
 	    <a href="/photography" class="prints-cta-btn prints-cta-btn--ghost">Browse Galleries →</a>
-        <a href="mailto:niall@niallbell.com" class="prints-cta-btn">Get in Touch →</a>
+        <button type="button" class="prints-cta-btn" id="enquiry-open">Get in Touch →</button>
       </div>
     </div>
   </div>
 
+</div>
+
+<!-- Print Enquiry Modal -->
+<div class="enquiry-backdrop" id="enquiry-backdrop" aria-hidden="true"></div>
+<div class="enquiry-modal" id="enquiry-modal" role="dialog" aria-modal="true" aria-label="Print enquiry form">
+  <button class="enquiry-close" id="enquiry-close" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+
+  <div class="enquiry-form-wrap" id="enquiry-form-wrap">
+    <p class="enquiry-eyebrow">Print Enquiry</p>
+    <h2 class="enquiry-heading">Get in Touch</h2>
+    <p class="enquiry-subhead">Tell me which photograph you're interested in and I'll come back to you with sizing, pricing, and the conservation charity your purchase will support.</p>
+
+    <form class="enquiry-form" id="enquiry-form" novalidate>
+      <input type="hidden" name="access_key" value="defc3825-081d-4a5a-b0cb-69af74ae3e4c">
+      <input type="hidden" name="subject" value="Print Enquiry from niallbell.com">
+      <input type="checkbox" name="botcheck" style="display:none">
+
+      <div class="enquiry-field">
+        <label class="enquiry-label" for="enq-name">Your Name</label>
+        <input class="enquiry-input" type="text" id="enq-name" name="name" autocomplete="name" placeholder="Jane Smith" required>
+      </div>
+
+      <div class="enquiry-field">
+        <label class="enquiry-label" for="enq-email">Email Address</label>
+        <input class="enquiry-input" type="email" id="enq-email" name="email" autocomplete="email" placeholder="jane@example.com" required>
+      </div>
+
+      <div class="enquiry-field">
+        <label class="enquiry-label" for="enq-photo">Photograph</label>
+        <input class="enquiry-input" type="text" id="enq-photo" name="photo" placeholder="e.g. Bengal Tiger at Dusk" required>
+      </div>
+
+      <div class="enquiry-field">
+        <label class="enquiry-label" for="enq-notes">Anything else? <span class="enquiry-optional">Optional</span></label>
+        <textarea class="enquiry-input enquiry-textarea" id="enq-notes" name="message" placeholder="Preferred size, framing questions, timeline…" rows="4"></textarea>
+      </div>
+
+      <p class="enquiry-error" id="enquiry-error" aria-live="polite"></p>
+
+      <button type="submit" class="enquiry-submit" id="enquiry-submit">
+        <span class="enquiry-submit-text">Send Enquiry</span>
+        <svg class="enquiry-spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <div class="enquiry-thanks" id="enquiry-thanks" aria-live="polite">
+    <div class="enquiry-thanks-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h2 class="enquiry-thanks-heading">Message Sent</h2>
+    <p class="enquiry-thanks-body">Thanks — I'll be in touch soon with details on sizing, pricing, and the conservation charity your purchase will support.</p>
+    <button type="button" class="enquiry-thanks-close" id="enquiry-thanks-close">Close</button>
+  </div>
 </div>
 
 <style>
@@ -384,6 +440,7 @@ layout: page.njk
     letter-spacing: 0.12em;
     color: var(--color-accent);
     margin-bottom: 0.75rem;
+	text-align: center;
   }
   .prints-cta-heading {
     font-size: clamp(1.4rem, 3vw, 2rem);
@@ -414,12 +471,14 @@ layout: page.njk
     font-size: 0.9rem;
     font-weight: 700;
     padding: 0.85rem 2.25rem;
+    border: none;
     border-radius: var(--radius-sm);
     text-decoration: none;
     letter-spacing: 0.03em;
     transition: background 200ms ease, transform 200ms ease;
     min-width: 220px;
     text-align: center;
+    cursor: pointer;
   }
   .prints-cta-btn:hover {
     background: var(--color-link-hover);
@@ -441,4 +500,284 @@ layout: page.njk
     .prints-cta { padding: 2.5rem 1.5rem; }
     .prints-strip-item { width: 150px; }
   }
+
+  /* ── Enquiry Modal ── */
+  .enquiry-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+  .enquiry-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .enquiry-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(560px, calc(100vw - 2rem));
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    z-index: 201;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 16px)) scale(0.98);
+    pointer-events: none;
+    transition: opacity 300ms ease, transform 300ms cubic-bezier(0.2,0,0.2,1);
+  }
+  .enquiry-modal.open {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+  }
+
+  .enquiry-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color var(--ease), background var(--ease);
+  }
+  .enquiry-close:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+
+  .enquiry-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin: 0 0 0.5rem;
+  }
+  .enquiry-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.75rem;
+  }
+  .enquiry-subhead {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    text-align: left;
+  }
+
+  .enquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .enquiry-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .enquiry-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .enquiry-optional {
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+  .enquiry-input {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.9rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .enquiry-input::placeholder { color: var(--color-muted); }
+  .enquiry-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent);
+  }
+  .enquiry-textarea { resize: vertical; min-height: 100px; }
+
+  .enquiry-error {
+    font-size: 0.85rem;
+    color: #d62828;
+    margin: 0;
+    min-height: 1.2em;
+  }
+
+  .enquiry-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    width: 100%;
+    transition: background 200ms ease, transform 200ms ease;
+    margin-top: 0.25rem;
+  }
+  .enquiry-submit:hover { background: var(--color-link-hover); transform: translateY(-1px); }
+  .enquiry-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .enquiry-spinner {
+    display: none;
+    animation: spin 0.7s linear infinite;
+  }
+  .enquiry-submit.loading .enquiry-submit-text { display: none; }
+  .enquiry-submit.loading .enquiry-spinner { display: block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Thank you state */
+  .enquiry-thanks {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0 1rem;
+  }
+  .enquiry-thanks.visible { display: flex; }
+  .enquiry-thanks-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .enquiry-thanks-heading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+  }
+  .enquiry-thanks-body {
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+  .enquiry-thanks-close {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: background var(--ease), color var(--ease);
+  }
+  .enquiry-thanks-close:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  #enquiry-open { cursor: pointer; }
 </style>
+
+<script>
+  (() => {
+    const open = document.getElementById('enquiry-open');
+    const close = document.getElementById('enquiry-close');
+    const modal = document.getElementById('enquiry-modal');
+    const backdrop = document.getElementById('enquiry-backdrop');
+    const form = document.getElementById('enquiry-form');
+    const submit = document.getElementById('enquiry-submit');
+    const errorEl = document.getElementById('enquiry-error');
+    const formWrap = document.getElementById('enquiry-form-wrap');
+    const thanks = document.getElementById('enquiry-thanks');
+    const thanksClose = document.getElementById('enquiry-thanks-close');
+
+    const openModal = () => {
+      modal.classList.add('open');
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('#enq-name').focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    open.addEventListener('click', openModal);
+    close.addEventListener('click', closeModal);
+    thanksClose.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.textContent = '';
+
+      const data = new FormData(form);
+      submit.classList.add('loading');
+      submit.disabled = true;
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          formWrap.style.display = 'none';
+          thanks.classList.add('visible');
+        } else {
+          errorEl.textContent = json.message || 'Something went wrong — please try again.';
+        }
+      } catch {
+        errorEl.textContent = 'Could not send — please check your connection and try again.';
+      } finally {
+        submit.classList.remove('loading');
+        submit.disabled = false;
+      }
+    });
+  })();
+</script>
