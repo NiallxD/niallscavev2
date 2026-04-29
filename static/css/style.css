@@ -2020,7 +2020,6 @@ p.section-label,
 .about-text {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 .about-text p,
@@ -3041,7 +3040,3 @@ ty: 0;
   text-decoration: underline;
   font-weight: 700;
 }
-
-ont-weight: 700;
-}
-

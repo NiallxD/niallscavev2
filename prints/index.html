@@ -189,8 +189,8 @@
       <h2 class="prints-cta-heading">Let's find the perfect print for you</h2>
       <p class="prints-cta-body">Browse the galleries across the site and when something catches your eye, drop me a message. I'll get back to you with pricing, available sizes, and the relevant conservation charity for that image.</p>
       <div class="prints-cta-btns">
+	    <a href="/photography" class="prints-cta-btn prints-cta-btn--ghost">Browse Galleries →</a>
         <a href="mailto:niall@niallbell.com" class="prints-cta-btn">Get in Touch →</a>
-        <a href="/photography" class="prints-cta-btn prints-cta-btn--ghost">Browse Galleries →</a>
       </div>
     </div>
   </div>
@@ -376,6 +376,7 @@
     inset: -25%;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     gap: 8px;
     transform: rotate(-12deg);
     transform-origin: center center;
@@ -387,11 +388,13 @@
     gap: 8px;
     flex-shrink: 0;
     padding-bottom: 8px;
-    animation: mosaic-scroll 30s linear infinite;
+    animation: mosaic-scroll 90s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .prints-mosaic-col--offset {
     margin-top: -120px;
-    animation-duration: 38s;
+    animation-duration: 114s;
   }
   .prints-mosaic-col img {
     width: 160px;
@@ -402,8 +405,8 @@
     flex-shrink: 0;
   }
   @keyframes mosaic-scroll {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(0, -50%, 0); }
   }
 
   /* Dark overlay */
@@ -445,6 +448,7 @@
     line-height: 1.75;
     max-width: 520px;
     margin: 0 auto 2rem;
+	text-align: center;
   }
   .prints-cta-btns {
     display: flex;
@@ -464,6 +468,8 @@
     text-decoration: none;
     letter-spacing: 0.03em;
     transition: background 200ms ease, transform 200ms ease;
+    min-width: 220px;
+    text-align: center;
   }
   .prints-cta-btn:hover {
     background: var(--color-link-hover);
