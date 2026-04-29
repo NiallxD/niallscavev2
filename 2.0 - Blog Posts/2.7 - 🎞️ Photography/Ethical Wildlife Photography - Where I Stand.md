@@ -1,7 +1,7 @@
 ---
 title: "Ethical Wildlife Photography: Where I Stand"
 author: Niall Bell
-date: 2205-04-27
+date: 2025-04-27
 Type: Blog Post
 publish: true
 permalink: /ethical-wildlife-photography-where-i-stand

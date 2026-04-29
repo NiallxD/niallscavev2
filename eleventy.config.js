@@ -127,6 +127,11 @@ export default function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addFilter("markdown", (content) => {
+    if (!content) return "";
+    return md.render(content);
+  });
+
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
   eleventyConfig.addFilter("stripGalleryBlocks", (html) => {
