@@ -2,6 +2,9 @@ export default {
   layout: (data) => {
     if (!data.page?.inputPath?.endsWith(".md")) return data.layout;
     if (data.Type === "Gallery") return "gallery.njk";
+    if (data.Type === "Video") return "video.njk";
+    if (data.Type === "Map") return "map.njk";
+    if (data.Type === "ECard") return "ecard.njk";
     if (["Blog Post", "Photo Story", "Photo Analysis"].includes(data.Type)) return "post.njk";
     return data.layout || "standard.njk";
   },
@@ -11,6 +14,7 @@ export default {
     const publish = String(data.publish).trim().toLowerCase() === "true";
     if (!publish || data.Type === "Project") return false;
     if (data.permalink) {
+      if (data.permalink.endsWith(".html")) return data.permalink;
       const p = data.permalink.replace(/\/$/, "");
       return p + "/index.html";
     }

@@ -1,0 +1,110 @@
+---
+layout: page.njk
+---
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    {% if description %}<p class="home-intro">{{ description }}</p>{% endif %}
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% endif %}
+
+<div class="standard-page">
+
+  <p class="section-label">Just for fun</p>
+  <div class="skills-grid" style="margin-bottom:0.75rem;">
+
+    <div class="skill-card">
+      <div class="now-emoji">🇨🇦</div>
+      <h4>Canada</h4>
+      <p>My partner and I are exploring Canada — Squamish, BC is home for now. Much of our time is spent out in the mountains and wilderness exploring.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="now-emoji">📷</div>
+      <h4>Photography</h4>
+      <p>If you've browsed any other page on this site you'll know my hobsession<sup>*</sup> is nature photography. I'm making a conscious effort to get out with the camera more — it makes me happy.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="now-emoji">📖</div>
+      <h4>Exploring Philosophies</h4>
+      <p>I've spent time reading about Stoicism and Epicureanism. Next up is a deeper dive into Buddhism and Taoism. Ancient philosophy is endlessly fascinating.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="now-emoji">🧠</div>
+      <h4>Managing Self</h4>
+      <p>My brain works a bit differently — neurodivergent, ADD/ADHD, pick your label. I've started emptying my brain into notes so I can focus on the important things. So far it's working… I think.</p>
+    </div>
+
+  </div>
+  <p style="font-size:0.78rem;color:var(--color-muted);margin-top:0.4rem;margin-bottom:2.5rem;"><sup>*</sup> A Hobby one is Obsessed with — a portmanteau I'm rather pleased with.</p>
+
+  <p class="section-label">A bit more serious</p>
+  <p style="font-size:0.95rem;color:var(--color-secondary);line-height:1.7;margin-bottom:1.5rem;">Right now I'm not working — exploring and enjoying myself for a bit. I'm looking for work casually, hopefully something in my field comes up. In the meantime I'm volunteering with the Squamish Environment Society.</p>
+
+  <div class="experience-list" style="margin-bottom:0.5rem;">
+
+    <div class="experience-card">
+      <div class="exp-sidebar">
+        <div class="exp-company">Purple Martin Nest Boxes</div>
+        <div class="exp-meta">Squamish Environment Society</div>
+      </div>
+      <div class="exp-main">
+        <ul>
+          <li>Reviewing nest box footage to identify behaviours and interesting observations of nesting purple martins.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="exp-sidebar">
+        <div class="exp-company">Wildlife Connectivity</div>
+        <div class="exp-meta">Squamish Environment Society</div>
+      </div>
+      <div class="exp-main">
+        <ul>
+          <li>Supporting the Society's Wildlife Connectivity project — engagement, outreach, and storytelling around habitat corridors.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="exp-sidebar">
+        <div class="exp-company">Bird Count</div>
+        <div class="exp-meta">Squamish Environment Society — running since 1991</div>
+      </div>
+      <div class="exp-main">
+        <ul>
+          <li>Attending the monthly bird counts and helping improve data collection, storage, and analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout callout-tip" style="display:flex;gap:1rem;align-items:flex-start;margin-top:3rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;color:var(--color-accent);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <div>
+      <p class="callout-title">The /now Movement</p>
+      <p style="margin:0;font-size:0.95rem;color:var(--color-secondary);">This page was inspired by the <a href="https://nownownow.com/about">/now Movement</a>. It's a way to share what I'm focused on at the scale of months, not days. Check out my <a href="https://nownownow.com/p/9pwa">nownownow.com profile</a>. If you have a website, I highly recommend joining.</p>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .now-emoji {
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+</style>

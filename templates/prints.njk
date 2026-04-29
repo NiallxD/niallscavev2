@@ -1,0 +1,438 @@
+---
+layout: page.njk
+---
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    {% if description %}<p class="home-intro">{{ description }}</p>{% endif %}
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% endif %}
+
+<div class="standard-page">
+
+  <!-- Why buy -->
+  <p class="section-label">Why Buy From Me?</p>
+  <div class="skills-grid prints-why-grid">
+
+    <div class="skill-card prints-why-card">
+      <div class="prints-why-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>Exclusive & Flexible</h4>
+      <p>Every print is one of a kind — you'll be the only person who ever owns a printed copy, backed by a certificate of exclusivity. Choose to receive a physical print shipped to your door, or a full resolution digital file with a print release for unlimited personal printing.</p>
+    </div>
+
+    <div class="skill-card prints-why-card">
+      <div class="prints-why-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h4>Local Photographs</h4>
+      <p>Each image comes from somewhere meaningful — somewhere you might know, love, or have stood yourself. I place emphasis on connecting local people with photographs of local places.</p>
+    </div>
+
+    <div class="skill-card prints-why-card">
+      <div class="prints-why-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h4>Prints For Conservation</h4>
+      <p>20% of every sale is donated to a conservation charity relevant to the species or landscape in the photograph. You take the credit for the donation if you wish — I just facilitate it.</p>
+    </div>
+
+  </div>
+
+  <!-- Print options -->
+  <p class="section-label" style="margin-top:3rem;">Print Options</p>
+  <div class="prints-options-grid">
+
+    <div class="prints-option-card">
+      <div class="prints-option-header">
+        <div class="prints-option-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div>
+          <p class="prints-option-label">Option 1</p>
+          <h3 class="prints-option-title">Printed & Shipped</h3>
+        </div>
+      </div>
+      <p class="prints-option-desc">I handle printing through a professional lab and ship the finished photograph directly to you, printed on premium archival paper and ready to frame.</p>
+      <ul class="prints-option-list">
+        <li>Professional print lab quality</li>
+        <li>Archival, fade-resistant paper</li>
+        <li>Multiple size options available</li>
+        <li>Exclusivity certificate included</li>
+      </ul>
+    </div>
+
+    <div class="prints-option-card prints-option-featured">
+      <div class="prints-option-badge">Most Flexible</div>
+      <div class="prints-option-header">
+        <div class="prints-option-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <p class="prints-option-label">Option 2</p>
+          <h3 class="prints-option-title">Digital File & Print Release</h3>
+        </div>
+      </div>
+      <p class="prints-option-desc">Receive the full resolution digital file with a print release agreement — print anywhere, any size, as many times as you like for personal use.</p>
+      <ul class="prints-option-list">
+        <li>Full resolution master file</li>
+        <li>Unlimited personal use prints</li>
+        <li>Print at any lab, any size</li>
+        <li>Exclusivity certificate included</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="prints-cta">
+    <div class="prints-cta-mosaic" aria-hidden="true">
+      <div class="prints-mosaic-col">
+        <img src="https://i.imgur.com/2MrhVQh.jpeg" alt=""><img src="https://i.imgur.com/07iwNfF.jpeg" alt=""><img src="https://i.imgur.com/3pfGzWb.jpeg" alt=""><img src="https://i.imgur.com/5dbfil7.jpeg" alt=""><img src="https://i.imgur.com/6jYeJ5F.jpeg" alt=""><img src="https://i.imgur.com/8fiFvO2.jpeg" alt="">
+        <img src="https://i.imgur.com/2MrhVQh.jpeg" alt=""><img src="https://i.imgur.com/07iwNfF.jpeg" alt=""><img src="https://i.imgur.com/3pfGzWb.jpeg" alt=""><img src="https://i.imgur.com/5dbfil7.jpeg" alt=""><img src="https://i.imgur.com/6jYeJ5F.jpeg" alt=""><img src="https://i.imgur.com/8fiFvO2.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col prints-mosaic-col--offset">
+        <img src="https://i.imgur.com/1fBEf9f.jpeg" alt=""><img src="https://i.imgur.com/26zi65X.jpeg" alt=""><img src="https://i.imgur.com/4GiYRqG.jpeg" alt=""><img src="https://i.imgur.com/7eKn5qJ.jpeg" alt=""><img src="https://i.imgur.com/9wUq3cS.jpeg" alt=""><img src="https://i.imgur.com/B65Vd5l.jpeg" alt="">
+        <img src="https://i.imgur.com/1fBEf9f.jpeg" alt=""><img src="https://i.imgur.com/26zi65X.jpeg" alt=""><img src="https://i.imgur.com/4GiYRqG.jpeg" alt=""><img src="https://i.imgur.com/7eKn5qJ.jpeg" alt=""><img src="https://i.imgur.com/9wUq3cS.jpeg" alt=""><img src="https://i.imgur.com/B65Vd5l.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col">
+        <img src="https://i.imgur.com/23oBfYT.jpeg" alt=""><img src="https://i.imgur.com/2F2C4WF.jpeg" alt=""><img src="https://i.imgur.com/5SyCzbU.jpeg" alt=""><img src="https://i.imgur.com/6TfBFre.jpeg" alt=""><img src="https://i.imgur.com/8NI4i7L.jpeg" alt=""><img src="https://i.imgur.com/bDr2juW.jpeg" alt="">
+        <img src="https://i.imgur.com/23oBfYT.jpeg" alt=""><img src="https://i.imgur.com/2F2C4WF.jpeg" alt=""><img src="https://i.imgur.com/5SyCzbU.jpeg" alt=""><img src="https://i.imgur.com/6TfBFre.jpeg" alt=""><img src="https://i.imgur.com/8NI4i7L.jpeg" alt=""><img src="https://i.imgur.com/bDr2juW.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col prints-mosaic-col--offset">
+        <img src="https://i.imgur.com/1WnqV0R.jpeg" alt=""><img src="https://i.imgur.com/28srvG6.jpeg" alt=""><img src="https://i.imgur.com/5EMDky2.jpeg" alt=""><img src="https://i.imgur.com/7O1Qixa.jpeg" alt=""><img src="https://i.imgur.com/99nAV46.jpeg" alt=""><img src="https://i.imgur.com/aBrLreF.jpeg" alt="">
+        <img src="https://i.imgur.com/1WnqV0R.jpeg" alt=""><img src="https://i.imgur.com/28srvG6.jpeg" alt=""><img src="https://i.imgur.com/5EMDky2.jpeg" alt=""><img src="https://i.imgur.com/7O1Qixa.jpeg" alt=""><img src="https://i.imgur.com/99nAV46.jpeg" alt=""><img src="https://i.imgur.com/aBrLreF.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col">
+        <img src="https://i.imgur.com/3pTrHbO.jpeg" alt=""><img src="https://i.imgur.com/5uRALRL.jpeg" alt=""><img src="https://i.imgur.com/6RuMr1y.jpeg" alt=""><img src="https://i.imgur.com/8P7VKtM.jpeg" alt=""><img src="https://i.imgur.com/aHZEFil.jpeg" alt=""><img src="https://i.imgur.com/BQDH39x.jpeg" alt="">
+        <img src="https://i.imgur.com/3pTrHbO.jpeg" alt=""><img src="https://i.imgur.com/5uRALRL.jpeg" alt=""><img src="https://i.imgur.com/6RuMr1y.jpeg" alt=""><img src="https://i.imgur.com/8P7VKtM.jpeg" alt=""><img src="https://i.imgur.com/aHZEFil.jpeg" alt=""><img src="https://i.imgur.com/BQDH39x.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col prints-mosaic-col--offset">
+        <img src="https://i.imgur.com/3V7M4oO.jpeg" alt=""><img src="https://i.imgur.com/5vBbRwP.jpeg" alt=""><img src="https://i.imgur.com/7zFpzVu.jpeg" alt=""><img src="https://i.imgur.com/8PaizOp.jpeg" alt=""><img src="https://i.imgur.com/am07pJg.jpeg" alt=""><img src="https://i.imgur.com/b683zi2.jpeg" alt="">
+        <img src="https://i.imgur.com/3V7M4oO.jpeg" alt=""><img src="https://i.imgur.com/5vBbRwP.jpeg" alt=""><img src="https://i.imgur.com/7zFpzVu.jpeg" alt=""><img src="https://i.imgur.com/8PaizOp.jpeg" alt=""><img src="https://i.imgur.com/am07pJg.jpeg" alt=""><img src="https://i.imgur.com/b683zi2.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col">
+        <img src="https://i.imgur.com/B9Xe2BW.jpeg" alt=""><img src="https://i.imgur.com/bIWM78N.jpeg" alt=""><img src="https://i.imgur.com/2QJ1hqd.jpeg" alt=""><img src="https://i.imgur.com/3Sg2Y6K.jpeg" alt=""><img src="https://i.imgur.com/1sTd3Kq.jpeg" alt=""><img src="https://i.imgur.com/2Shpcaa.jpeg" alt="">
+        <img src="https://i.imgur.com/B9Xe2BW.jpeg" alt=""><img src="https://i.imgur.com/bIWM78N.jpeg" alt=""><img src="https://i.imgur.com/2QJ1hqd.jpeg" alt=""><img src="https://i.imgur.com/3Sg2Y6K.jpeg" alt=""><img src="https://i.imgur.com/1sTd3Kq.jpeg" alt=""><img src="https://i.imgur.com/2Shpcaa.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col prints-mosaic-col--offset">
+        <img src="https://i.imgur.com/UudTTEZ.jpeg" alt=""><img src="https://i.imgur.com/VGftTqs.jpeg" alt=""><img src="https://i.imgur.com/Vv8qe42.jpeg" alt=""><img src="https://i.imgur.com/WDr0oJB.jpeg" alt=""><img src="https://i.imgur.com/wiz8HT1.jpeg" alt=""><img src="https://i.imgur.com/YD0LSDY.jpeg" alt="">
+        <img src="https://i.imgur.com/UudTTEZ.jpeg" alt=""><img src="https://i.imgur.com/VGftTqs.jpeg" alt=""><img src="https://i.imgur.com/Vv8qe42.jpeg" alt=""><img src="https://i.imgur.com/WDr0oJB.jpeg" alt=""><img src="https://i.imgur.com/wiz8HT1.jpeg" alt=""><img src="https://i.imgur.com/YD0LSDY.jpeg" alt="">
+      </div>
+      <div class="prints-mosaic-col">
+        <img src="https://i.imgur.com/z9cVNFJ.jpeg" alt=""><img src="https://i.imgur.com/ZDM2XcQ.jpeg" alt=""><img src="https://i.imgur.com/zyV7S5Z.jpeg" alt=""><img src="https://i.imgur.com/yVcwpuF.jpeg" alt=""><img src="https://i.imgur.com/xvVoxK2.jpeg" alt=""><img src="https://i.imgur.com/WSyh7lo.jpeg" alt="">
+        <img src="https://i.imgur.com/z9cVNFJ.jpeg" alt=""><img src="https://i.imgur.com/ZDM2XcQ.jpeg" alt=""><img src="https://i.imgur.com/zyV7S5Z.jpeg" alt=""><img src="https://i.imgur.com/yVcwpuF.jpeg" alt=""><img src="https://i.imgur.com/xvVoxK2.jpeg" alt=""><img src="https://i.imgur.com/WSyh7lo.jpeg" alt="">
+      </div>
+    </div>
+    <div class="prints-cta-overlay"></div>
+    <div class="prints-cta-content">
+      <p class="prints-cta-eyebrow">Ready to enquire?</p>
+      <h2 class="prints-cta-heading">Let's find the perfect print for you</h2>
+      <p class="prints-cta-body">Browse the galleries across the site and when something catches your eye, drop me a message. I'll get back to you with pricing, available sizes, and the relevant conservation charity for that image.</p>
+      <div class="prints-cta-btns">
+        <a href="mailto:niall@niallbell.com" class="prints-cta-btn">Get in Touch →</a>
+        <a href="/photography" class="prints-cta-btn prints-cta-btn--ghost">Browse Galleries →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .prints-intro {
+    font-size: 1.05rem;
+    color: var(--color-secondary);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Why cards */
+  .prints-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 0;
+  }
+  .prints-why-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+  }
+  .prints-why-card h4 { margin-bottom: 0.5rem; }
+
+  /* Print options */
+  .prints-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .prints-option-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    position: relative;
+    transition: transform 450ms cubic-bezier(0.2,0,0.2,1), box-shadow 450ms ease;
+  }
+  .prints-option-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  .prints-option-featured { border-color: var(--color-accent); }
+  .prints-option-badge {
+    position: absolute;
+    top: -1px;
+    right: 1.5rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+  .prints-option-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .prints-option-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+  }
+  .prints-option-label {
+    font-size: 0.7rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin: 0 0 0.2rem;
+  }
+  .prints-option-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .prints-option-desc {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+  .prints-option-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .prints-option-list li {
+    font-size: 0.88rem;
+    color: var(--color-secondary);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .prints-option-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* Scrolling photo strip */
+  .prints-strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.75rem calc(-1 * var(--page-pad, 2rem)) 0;
+    padding: 0 var(--page-pad, 2rem);
+  }
+  .prints-strip::-webkit-scrollbar { display: none; }
+  .prints-strip-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    padding-bottom: 0.5rem;
+  }
+  .prints-strip-item {
+    flex-shrink: 0;
+    width: 200px;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transition: transform 350ms ease, box-shadow 350ms ease;
+  }
+  .prints-strip-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  }
+  .prints-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* CTA band */
+  .prints-cta {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mosaic background */
+  .prints-cta-mosaic {
+    position: absolute;
+    inset: -25%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    transform: rotate(-12deg);
+    transform-origin: center center;
+    pointer-events: none;
+  }
+  .prints-mosaic-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+    padding-bottom: 8px;
+    animation: mosaic-scroll 30s linear infinite;
+  }
+  .prints-mosaic-col--offset {
+    margin-top: -120px;
+    animation-duration: 38s;
+  }
+  .prints-mosaic-col img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    flex-shrink: 0;
+  }
+  @keyframes mosaic-scroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  /* Dark overlay */
+  .prints-cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.72);
+    pointer-events: none;
+  }
+
+  /* Content on top */
+  .prints-cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 2.5rem;
+    width: 100%;
+  }
+
+  .prints-cta-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+  .prints-cta-heading {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .prints-cta-body {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .prints-cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .prints-cta-btn {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.85rem 2.25rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .prints-cta-btn:hover {
+    background: var(--color-link-hover);
+    transform: translateY(-2px);
+  }
+  .prints-cta-btn--ghost {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+  }
+  .prints-cta-btn--ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 800px) {
+    .prints-why-grid { grid-template-columns: 1fr; }
+    .prints-options-grid { grid-template-columns: 1fr; }
+    .prints-cta { padding: 2.5rem 1.5rem; }
+    .prints-strip-item { width: 150px; }
+  }
+</style>

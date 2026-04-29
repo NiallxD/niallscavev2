@@ -1,5 +1,5 @@
 ---
-title: Nature Squamish Monthly Bird Count Portal
+title: "Nature Squamish: Bird Count Portal"
 date: 2024-01-01
 Type: Project
 publish: true
@@ -9,9 +9,9 @@ tags:
   - environment
   - nature
   - tech
-coverImage: https://i.imgur.com/K8iO3Q6.png
+icon: chart
 link: https://mbc.naturesquamish.ca
-order: 1
+order: 3
 ---
 
 

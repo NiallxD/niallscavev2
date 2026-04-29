@@ -1,0 +1,74 @@
+---
+layout: page.njk
+---
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+
+{% if heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    {% if description %}<p class="home-intro">{{ description }}</p>{% endif %}
+  </section>
+</div>
+{% endif %}
+
+<div class="standard-page">
+  {% if not heroImage %}
+  <header class="page-header">
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="page-lead">{{ description }}</p>{% endif %}
+  </header>
+  {% endif %}
+
+  <div id="photo-map"></div>
+
+  <div style="display:none;">{{ content | safe }}</div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  const pins = {{ content | parseMapBlocks | dump | safe }};
+
+  const map = L.map('photo-map', {
+    scrollWheelZoom: false,
+    touchZoom: true,
+    minZoom: 2,
+    maxBounds: [[-85, -180], [85, 180]],
+    maxBoundsViscosity: 1.0
+  }).setView([20, 0], 2);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  const cluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+  pins.forEach(pin => {
+    const icon = L.divIcon({
+      className: 'photo-marker',
+      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
+      iconSize: [56, 56],
+      iconAnchor: [28, 28]
+    });
+    L.marker([pin.lat, pin.lng], { icon })
+      .bindPopup(`
+        <div class="map-popup">
+          <img src="${pin.image}" alt="${pin.title}" class="map-popup-img">
+          <div class="map-popup-title">${pin.title}</div>
+        </div>
+      `, { maxWidth: 220, className: 'photo-map-popup' })
+      .addTo(cluster);
+  });
+  map.addLayer(cluster);
+
+  if (pins.length > 0) {
+    const group = L.featureGroup(pins.map(p => L.marker([p.lat, p.lng])));
+    map.fitBounds(group.getBounds().pad(0.3));
+  }
+</script>

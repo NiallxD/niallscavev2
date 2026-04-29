@@ -131,7 +131,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("stripGalleryBlocks", (html) => {
     if (!html) return "";
-    return html.replace(/<h2[^>]*>[\s\S]*?gallery-start[\s\S]*?<\/h2>[\s\S]*?<h2[^>]*>[\s\S]*?gallery-end[\s\S]*?<\/h2>/gi, "");
+    return html.replace(/<h2[^>]*>\s*gallery-start\s*<\/h2>[\s\S]*?<h2[^>]*>\s*gallery-end\s*<\/h2>/gi, "");
   });
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
@@ -278,6 +278,21 @@ export default function (eleventyConfig) {
           iframesFound.push(im[1]);
         }
 
+        // Detect raw YouTube/Vimeo URLs and convert to embed URLs
+        const ytRegex = /https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([\w-]+)/gi;
+        const ytShortRegex = /https?:\/\/youtu\.be\/([\w-]+)/gi;
+        const vimeoRegex = /https?:\/\/(?:www\.)?vimeo\.com\/(\d+)/gi;
+        let vm;
+        while ((vm = ytRegex.exec(contentWithoutTitle)) !== null) {
+          iframesFound.push(`https://www.youtube.com/embed/${vm[1]}`);
+        }
+        while ((vm = ytShortRegex.exec(contentWithoutTitle)) !== null) {
+          iframesFound.push(`https://www.youtube.com/embed/${vm[1]}`);
+        }
+        while ((vm = vimeoRegex.exec(contentWithoutTitle)) !== null) {
+          iframesFound.push(`https://player.vimeo.com/video/${vm[1]}`);
+        }
+
         const imgRegex = /<img[^>]+src="([^"]+)"/gi;
         const imgsFound = [];
         let igm;
@@ -348,9 +363,66 @@ export default function (eleventyConfig) {
     return slides;
   });
 
+  eleventyConfig.addFilter("parseMapBlocks", (html) => {
+    if (!html) return [];
+    const pins = [];
+    const hasH2 = /<h2/i.test(html);
+    if (!hasH2) return [];
+
+    const blocks = html.split(/(?=<h2)/i);
+    for (const block of blocks) {
+      if (!block.trim()) continue;
+
+      const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+      if (!titleMatch) continue;
+      const title = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+
+      const content = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
+      const plainText = content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+      // Find image URL (http or local path)
+      const imgMatch = plainText.match(/((?:https?:\/\/|\/)\S+\.(?:jpg|jpeg|png|gif|webp|avif))/i);
+      const image = imgMatch ? imgMatch[1] : null;
+
+      // Find coordinates — match "lat, lng" or "lat,lng"
+      const coordMatch = plainText.match(/(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)/);
+      if (!coordMatch) continue;
+      const lat = parseFloat(coordMatch[1]);
+      const lng = parseFloat(coordMatch[2]);
+
+      if (image && !isNaN(lat) && !isNaN(lng)) {
+        pins.push({ title, image, lat, lng });
+      }
+    }
+    return pins;
+  });
+
+  eleventyConfig.addCollection("maps", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Map")
+  );
+
   eleventyConfig.addCollection("photoStories", (api) =>
     api.getAll()
       .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Photo Story")
+      .sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("videos", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Video")
+      .sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("featuredVideos", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Video" && i.data.featured === true)
+      .sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("regularVideos", (api) =>
+    api.getAll()
+      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Video" && i.data.featured !== true)
       .sort((a, b) => b.date - a.date)
   );
 

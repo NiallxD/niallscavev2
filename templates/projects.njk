@@ -27,14 +27,20 @@ layout: page.njk
     {% for project in collections.projects %}
     <div class="project-card-wrapper">
       <a href="{{ project.data.link | default('#') }}" class="project-card-full" target="_blank" rel="noopener">
-        <div class="project-card-img-wrap">
-          {% if project.data.coverImage %}
-          <img src="{{ project.data.coverImage }}" alt="{{ project.data.title }}" class="project-img">
-          {% else %}
-          <div class="post-card-placeholder"></div>
-          {% endif %}
-        </div>
         <div class="project-card-body">
+          <div class="project-card-icon-wrap">
+            {% if project.data.icon == 'chart' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+            {% elif project.data.icon == 'phone' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            {% elif project.data.icon == 'map' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            {% elif project.data.icon == 'walk' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-8 4 4 4-6 4 10"/></svg>
+            {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            {% endif %}
+          </div>
           <div class="post-card-author">{{ project.data.author | default("Niall Bell") }}</div>
           <div class="post-card-meta">
             {% if project.date %}<time class="post-card-date" datetime="{{ project.date | isoDate }}">{{ project.date | readableDate }}</time>{% endif %}

@@ -35,7 +35,8 @@ layout: page.njk
 
   <div class="post-content">{{ content | stripGalleryBlocks | safe }}</div>
 
-  {% set slides = content | parseGalleryBlocks %}
+  {% set slides = [] %}
+  {% if 'gallery-start' in content %}{% set slides = content | parseGalleryBlocks %}{% endif %}
   {% if slides.length %}
   <div class="gallery-body">
     <p class="section-label">Gallery</p>

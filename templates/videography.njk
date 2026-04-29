@@ -1,0 +1,115 @@
+---
+layout: page.njk
+---
+{% if heroVideo or heroImage %}
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    {% if heroVideo %}
+    <div id="hero-video-container" style="width:100%;height:100%;position:relative;overflow:hidden;">
+      <video id="hero-video" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="{{ heroVideo }}" type="video/mp4">
+      </video>
+    </div>
+    {% if heroVideoFallback %}
+    <script>
+      (function() {
+        const vid = document.getElementById('hero-video');
+        const container = document.getElementById('hero-video-container');
+        const fallbackSrc = '{{ heroVideoFallback }}?autoplay=1&mute=1&loop=1&playlist={{ heroVideoFallback | replace("https://www.youtube.com/embed/", "") }}&controls=0&rel=0&iv_load_policy=3&modestbranding=1';
+        const showFallback = () => {
+          vid.remove();
+          const iframe = document.createElement('iframe');
+          iframe.src = fallbackSrc;
+          iframe.allow = 'autoplay; fullscreen';
+          iframe.style.cssText = 'position:absolute;top:50%;left:50%;width:177.77vh;height:100vh;min-width:100%;transform:translate(-50%,-50%);border:0;';
+          container.appendChild(iframe);
+        };
+        vid.addEventListener('error', showFallback);
+        // If no playback starts within 4s, fall back
+        const timer = setTimeout(showFallback, 4000);
+        vid.addEventListener('playing', () => clearTimeout(timer));
+      })();
+    </script>
+    {% endif %}
+    {% else %}
+    <img src="{{ heroImage }}" alt="{{ title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    {% endif %}
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">{{ title }}</h1>
+    <p class="home-intro">{{ description }}</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+{% else %}
+<div class="page-intro">
+  <h1>{{ title }}</h1>
+  <p class="page-lead">{{ description }}</p>
+</div>
+{% endif %}
+
+<div class="standard-page">
+  {% if content %}
+  <div class="post-content">{{ content | safe }}</div>
+  {% endif %}
+
+  {% if collections.featuredVideos and collections.featuredVideos.length %}
+  <p class="section-label">Featured</p>
+  <div class="story-list">
+    {% for video in collections.featuredVideos | limit(3) %}
+    <a href="{{ video.url | url }}" class="story-card">
+      <div class="story-card-img">
+        {% if video.data.coverImage %}
+        <img src="{{ video.data.coverImage }}" alt="{{ video.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          {% if video.date %}<time class="post-card-date" datetime="{{ video.date | isoDate }}">{{ video.date | readableDate }}</time>{% endif %}
+          {% if video.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in video.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ video.data.title }}</div>
+        {% if video.data.excerpt %}<div class="story-card-desc">{{ video.data.excerpt }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if collections.regularVideos and collections.regularVideos.length %}
+  <p class="section-label">All Videos</p>
+  <div class="gallery-grid" id="video-grid">
+    {% for video in collections.regularVideos %}
+    <a href="{{ video.url | url }}" class="gallery-card">
+      <div class="gallery-card-img">
+        {% if video.data.coverImage %}
+        <img src="{{ video.data.coverImage }}" alt="{{ video.data.title }}" loading="lazy">
+        {% else %}
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--color-bg-alt);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+        </div>
+        {% endif %}
+      </div>
+      <div class="gallery-card-body">
+        <div class="post-card-meta">
+          {% if video.date %}<time class="post-card-date" datetime="{{ video.date | isoDate }}">{{ video.date | readableDate }}</time>{% endif %}
+          {% if video.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in video.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="gallery-card-title">{{ video.data.title }}</div>
+        {% if video.data.excerpt %}<div class="story-card-desc">{{ video.data.excerpt }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

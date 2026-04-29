@@ -1,0 +1,167 @@
+---
+layout: page.njk
+title: Home
+description: The personal site of Niall Bell, a nature photographer, writer, and environmentalist from England, living in BC.
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+
+<div class="home-hero-wrapper">
+  {% if collections.homeGallery and collections.homeGallery.length %}
+  {% set slides = collections.homeGallery[0].content | extractImages %}
+  {% if slides.length %}
+  <div class="home-slideshow-fs">
+    <div class="swiper home-swiper">
+      <div class="swiper-wrapper">
+        {% for img in slides %}
+        <div class="swiper-slide">
+          <img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy">
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Niall Bell</h1>
+    <p class="home-intro">
+      I'm Niall, a nature photographer and environmentalist based in the UK. I spend my time documenting the wildlife and wild places of Britain and beyond, sharing the beauty of the natural world through photography and writing.
+    </p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+
+{% if collections.featuredGalleries and collections.featuredGalleries.length %}
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Featured Galleries</p>
+    <a href="{{ '/photography/' | url }}" class="view-all">All photography →</a>
+  </div>
+  <div class="story-list">
+    {% for gallery in collections.featuredGalleries | limit(3) %}
+    <a href="{{ gallery.url | url }}" class="story-card">
+      <div class="story-card-img">
+        {% if gallery.data.coverImage %}
+        <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          {% if gallery.date %}<time class="post-card-date" datetime="{{ gallery.date | isoDate }}">{{ gallery.date | readableDate }}</time>{% endif %}
+          {% if gallery.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in gallery.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ gallery.data.title }}</div>
+        {% if gallery.data.excerpt %}
+        <div class="story-card-desc">{{ gallery.data.excerpt }}</div>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if collections.posts and collections.posts.length %}
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Recent writing</p>
+    <a href="{{ '/blog/' | url }}" class="view-all">All writing →</a>
+  </div>
+  <div class="story-list">
+    {% for post in collections.posts | limit(3) %}
+    <a href="{{ post.url | url }}" class="story-card">
+      <div class="story-card-img">
+        {% if post.data.coverImage %}
+        <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" loading="lazy">
+        {% else %}
+        <div class="post-card-placeholder" style="width: 100%; height: 100%; background: var(--color-surface);"></div>
+        {% endif %}
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          {% if post.date %}<time class="post-card-date" datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>{% endif %}
+          {% if post.data.tags %}
+          <div class="post-card-tags">
+            {% for tag in post.data.tags | limit(2) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <div class="story-card-title">{{ post.data.title }}</div>
+        {% if post.data.excerpt %}<div class="story-card-desc">{{ post.data.excerpt }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% set mapPage = collections.maps | first %}
+{% if mapPage %}
+{% set mapPins = mapPage.content | parseMapBlocks %}
+{% if mapPins.length %}
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Photo Map</p>
+    <a href="{{ '/photo-map/' | url }}" class="view-all">Full map →</a>
+  </div>
+  <div id="home-photo-map"></div>
+</div>
+{% endif %}
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  new Swiper('.home-swiper', {
+    loop: true,
+    autoplay: { delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false },
+    speed: 800,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  });
+
+  {% if mapPins and mapPins.length %}
+  const homePins = {{ mapPins | dump | safe }};
+  const worldBounds = [[-85, -180], [85, 180]];
+  const homeMap = L.map('home-photo-map', {
+    scrollWheelZoom: false,
+    touchZoom: true,
+    minZoom: 2,
+    maxBounds: worldBounds,
+    maxBoundsViscosity: 1.0
+  }).setView([20, 0], 2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(homeMap);
+  const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+  homePins.forEach(pin => {
+    const icon = L.divIcon({
+      className: 'photo-marker',
+      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
+      iconSize: [56, 56],
+      iconAnchor: [28, 28]
+    });
+    L.marker([pin.lat, pin.lng], { icon })
+      .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
+        { maxWidth: 220, className: 'photo-map-popup' })
+      .addTo(homeCluster);
+  });
+  homeMap.addLayer(homeCluster);
+  {% endif %}
+</script>
