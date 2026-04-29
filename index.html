@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — Niall Bell</title>
+  <meta name="description" content="The personal site of Niall Bell, a nature photographer, writer, and environmentalist from England, living in BC.">
+  
+  <meta property="og:title" content="Home — Niall Bell">
+  <meta property="og:description" content="The personal site of Niall Bell, a nature photographer, writer, and environmentalist from England, living in BC.">
+  
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+  
+</head>
+<body>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/">
+        <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav class="nav-menu">
+        <a href="/photography/">Photo</a>
+        <a href="/videography/">Video</a>
+        <a href="/prints/">Prints</a>
+        <a href="/blog/">Writing</a>
+        <a href="/side-projects/">Projects</a>
+        <a href="/bookshelf/">Bookshelf</a>
+        <a href="/about-me/">About</a>
+      </nav>
+      <div class="header-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay"></div>
+
+  <main>
+    
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+
+<div class="home-hero-wrapper">
+  
+  
+  
+  <div class="home-slideshow-fs">
+    <div class="swiper home-swiper">
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/eM38vZ0.png" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/pQhjAr7.jpg" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/4Msu0Ig.png" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/2MrhVQh.jpg" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/UudTTEZ.jpg" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/4GiYRqG.jpeg" alt="" loading="lazy">
+        </div>
+        
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/kwps586.jpeg" alt="" loading="lazy">
+        </div>
+        
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  
+  
+
+  <section class="home-hero-overlay">
+    <h1 class="home-title">Niall Bell</h1>
+    <p class="home-intro">
+      I'm Niall, a nature photographer and environmentalist based in the UK. I spend my time documenting the wildlife and wild places of Britain and beyond, sharing the beauty of the natural world through photography and writing.
+    </p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+
+
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Featured Galleries</p>
+    <a href="/photography/" class="view-all">All photography →</a>
+  </div>
+  <div class="story-list">
+    
+    <a href="/uk-wildlife-nature-photos/astrophotography/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/Jzcv1Jl.jpeg" alt="Astrophotography" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">astrophotography</span><span class="tag">astronomy</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Astrophotography</div>
+        
+        <div class="story-card-desc">Astrophotography is a photographic discipline that involves taking highly detailed images of objects in the night sky. This can be of things as close as the Moon, to planets, to distant galaxies millions of light-years away.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/uk-wildlife-nature-photos/tiger/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/j35mshs.png" alt="Bengal Tiger" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">mammals</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Bengal Tiger</div>
+        
+        <div class="story-card-desc">The Bengal Tiger is the true king of the jungle. I&#39;ve been obsessed with tigers since first time I photographed a captive Amur tiger at my local wildlife park.</div>
+        
+      </div>
+    </a>
+    
+    <a href="/uk-wildlife-nature-photos/british-birds/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/FzKzxR4.png" alt="British Birds" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2024-04-17">17 April 2024</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">birds</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">British Birds</div>
+        
+        <div class="story-card-desc">A collection of Britains frequently seen birds.</div>
+        
+      </div>
+    </a>
+    
+  </div>
+</div>
+
+
+
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Recent writing</p>
+    <a href="/blog/" class="view-all">All writing →</a>
+  </div>
+  <div class="story-list">
+    
+    <a href="/ethical-wildlife-photography-where-i-stand/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/AwPl6UT.jpeg" alt="Ethical Wildlife Photography: Where I Stand" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2205-04-27">27 April 2205</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span><span class="tag">ethics</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Ethical Wildlife Photography: Where I Stand</div>
+        <div class="story-card-desc">I&#39;ve been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it&#39;s time to pull it all together, because the more I sit with it, the more I realise these aren&#39;t separate issues. They&#39;re two symptoms of the same disease.</div>
+      </div>
+    </a>
+    
+    <a href="/blog/lessons-from-a-fungi-part-1/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/cAFawk5.jpeg" alt="Lessons From a Fungi Part 1" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-13">13 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">fungi</span><span class="tag">nature</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Lessons From a Fungi Part 1</div>
+        <div class="story-card-desc">I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.</div>
+      </div>
+    </a>
+    
+    <a href="/blog/doing-things-for-you/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/akBHrZy.jpeg" alt="Doing Things For You" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2025-11-08">8 November 2025</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">on-life</span><span class="tag">photography</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Doing Things For You</div>
+        <div class="story-card-desc">In an age dominated by social media likes and follows, many creatives find themselves chasing approval rather than pursuing authentic expression. Photographers, for instance, often measure the worth of their work by the number of likes or comments it receives.</div>
+      </div>
+    </a>
+    
+  </div>
+</div>
+
+
+
+
+
+
+<div class="home-posts">
+  <div class="home-block-header">
+    <p class="section-label">Photo Map</p>
+    <a href="/photo-map/" class="view-all">Full map →</a>
+  </div>
+  <div id="home-photo-map"></div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  new Swiper('.home-swiper', {
+    loop: true,
+    autoplay: { delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false },
+    speed: 800,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  });
+
+  
+  const homePins = [{"title":"Squamish Estuary","image":"https://i.imgur.com/FEpNXc5.jpeg","lat":49.7016,"lng":-123.1558},{"title":"Canadian Rockies","image":"https://i.imgur.com/eH05uEo.jpeg","lat":51.4254,"lng":-116.1773},{"title":"Scottish Highlands","image":"https://i.imgur.com/T8Nox8C.png","lat":57.12,"lng":-4.72}];
+  const worldBounds = [[-85, -180], [85, 180]];
+  const homeMap = L.map('home-photo-map', {
+    scrollWheelZoom: false,
+    touchZoom: true,
+    minZoom: 2,
+    maxBounds: worldBounds,
+    maxBoundsViscosity: 1.0
+  }).setView([20, 0], 2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(homeMap);
+  const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+  homePins.forEach(pin => {
+    const icon = L.divIcon({
+      className: 'photo-marker',
+      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
+      iconSize: [56, 56],
+      iconAnchor: [28, 28]
+    });
+    L.marker([pin.lat, pin.lng], { icon })
+      .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
+        { maxWidth: 220, className: 'photo-map-popup' })
+      .addTo(homeCluster);
+  });
+  homeMap.addLayer(homeCluster);
+  
+</script>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/">
+          <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">Click to reveal email</span>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list footer-links-two-col">
+          <a href="/photography/">Photo</a>
+          <a href="/videography/">Video</a>
+          <a href="/prints/">Prints</a>
+          <a href="/blog/">Writing</a>
+          <a href="/side-projects/">Projects</a>
+          <a href="/bookshelf/">Bookshelf</a>
+          <a href="/about-me/">About</a>
+          <a href="/now/">Now</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="image-protection-toast" class="image-protection-toast">
+	  <a href="mailto:niall@niallbell.com">Get in touch</a> for photo licensing.
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    const toggleMenu = () => {
+      const isOpen = body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (body.classList.contains('menu-open')) {
+          toggleMenu();
+        }
+      });
+    });
+
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+
+    // Right-click protection for images
+    document.addEventListener('DOMContentLoaded', () => {
+      const toast = document.getElementById('image-protection-toast');
+      let toastTimeout;
+
+      const showToast = (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          e.preventDefault();
+          
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+          return true;
+        }
+        return false;
+      };
+
+      document.addEventListener('contextmenu', showToast, false);
+      
+      // Handle mobile long-press
+      let touchTimer;
+      document.addEventListener('touchstart', (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          touchTimer = setTimeout(() => {
+            showToast(e);
+          }, 500); // 500ms for long press
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchend', () => {
+        clearTimeout(touchTimer);
+      }, false);
+
+      document.querySelectorAll('.reveal-email').forEach(el => {
+        el.addEventListener('click', () => {
+          const email = el.dataset.u + '@' + el.dataset.d;
+          const cls = el.className.replace('reveal-email', '').trim();
+          const inner = el.querySelector('svg')
+            ? el.querySelector('svg').outerHTML + email
+            : email;
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
