@@ -2546,6 +2546,48 @@ span.wikilink { color: var(--color-secondary); }
   color: var(--color-secondary);
 }
 
+.ethics-card-body a,
+.gallery-meta-value a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 134, 13, 0.4);
+  transition: var(--ease);
+}
+
+.ethics-card-body a:hover,
+.gallery-meta-value a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.ethics-card-body ul,
+.gallery-meta-value ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ethics-card-body li,
+.gallery-meta-value li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--color-secondary);
+  text-align: left;
+}
+
+.ethics-card-body li::before,
+.gallery-meta-value li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
 .gallery-meta-card {
   padding: 2.5rem;
   background: var(--color-bg);
