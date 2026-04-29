@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eagle&#39;s Return — Niall Bell</title>
   <meta name="description" content="The photo Eagle&#39;s Return is incredibly special as it depicts the Eagle Lunar Lander suspended above the Moon&#39;s surface with Earth in the distance.">
+  
   <meta property="og:title" content="Eagle&#39;s Return — Niall Bell">
   <meta property="og:description" content="The photo Eagle&#39;s Return is incredibly special as it depicts the Eagle Lunar Lander suspended above the Moon&#39;s surface with Earth in the distance.">
   <meta property="og:image" content="https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg?w=2048&amp;format=webp">
@@ -21,11 +22,13 @@
   <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/">
-        <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-        <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav class="nav-menu">
-        <a href="/photography/">Photography</a>
+        <a href="/photography/">Photo</a>
+        <a href="/videography/">Video</a>
+        <a href="/prints/">Prints</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
@@ -91,101 +94,6 @@
 
     
     
-    <div class="gallery-body" style="margin-top: 2rem;">
-      <p class="section-label">Gallery</p>
-      
-      <div class="gallery-slideshow-container no-bg desktop-only">
-        <div class="swiper gallery-swiper">
-          <div class="swiper-wrapper">
-            
-            <div class="swiper-slide">
-              <div class="slide-inner">
-                
-                  <img src="https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg" alt="" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-                
-              </div>
-            </div>
-            
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-        
-        <div class="gallery-pagination swiper-pagination"></div>
-
-        <div id="gallery-caption-area" class="gallery-caption-external">
-          <h3 id="slide-title"></h3>
-          <p id="slide-desc"></p>
-        </div>
-      </div>
-
-      <div class="gallery-mobile-grid mobile-only">
-        
-        <div class="mobile-grid-item">
-          <div class="mobile-grid-media">
-            
-              <img src="https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg" alt="" loading="lazy">
-            
-          </div>
-          
-          <div class="mobile-grid-content">
-            
-            <div class="mobile-grid-caption">
-<h1>Eagle’s Return</h1>
-
-<p>I wanted to share some thoughts on this photograph more than analyse it from a technical perspective. While there was likely some planning and pre-thought, it really is a moment captured in time as opposed to a meticulously planned image (thought it might have been, you get my gist). This is an image that I’ve thought about a lot since discovering it over five years ago. I never used to study others images, however as I’ve developed as a photographer I derive great pleasure from looking at others’ images, whether it be to extract the story the photographer wanted to tell, or as is the case for this photograph, to discover the hidden meaning behind the photographs we take.</p>
-<p>
-<em>Eagle’s Return - Michael Collins (NASA[^1])</em></p></div>
-          </div>
-          
-        </div>
-        
-      </div>
-
-      <script>
-        const galleryData = [{"type":"image","src":"https://science.nasa.gov/wp-content/uploads/2023/08/as11_44_6642.jpg","title":"","caption":"\n<h1>Eagle’s Return</h1>\n<p id=\"reading-time\" style=\"font-style: italic;\">⏱️ Approx Reading Time:  <span id=\"inserted-text\"></span> mins</p>\n<p>I wanted to share some thoughts on this photograph more than analyse it from a technical perspective. While there was likely some planning and pre-thought, it really is a moment captured in time as opposed to a meticulously planned image (thought it might have been, you get my gist). This is an image that I’ve thought about a lot since discovering it over five years ago. I never used to study others images, however as I’ve developed as a photographer I derive great pleasure from looking at others’ images, whether it be to extract the story the photographer wanted to tell, or as is the case for this photograph, to discover the hidden meaning behind the photographs we take.</p>\n<p>\n<em>Eagle’s Return - Michael Collins (NASA[^1])</em></p>","gear":""}];
-      </script>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const titleEl = document.getElementById('slide-title');
-        const descEl = document.getElementById('slide-desc');
-        const captionArea = document.getElementById('gallery-caption-area');
-
-        const updateCaption = (index) => {
-          if (typeof galleryData === 'undefined' || !galleryData[index]) return;
-          const data = galleryData[index];
-          titleEl.textContent = data.title || "";
-          descEl.innerHTML = data.caption || "";
-          captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
-        };
-
-        const swiperElements = document.querySelectorAll('.gallery-swiper');
-        if (swiperElements.length > 0) {
-          const swiper = new Swiper('.gallery-swiper', {
-            loop: true,
-            keyboard: { enabled: true },
-            speed: 600,
-            pagination: { 
-              el: '.gallery-pagination', 
-              type: 'fraction',
-              renderFraction: function (currentClass, totalClass) {
-                return '<span class="' + currentClass + '"></span>' +
-                       ' <span class="fraction-sep">of</span> ' +
-                       '<span class="' + totalClass + '"></span>';
-              }
-            },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            on: {
-              init: function () { updateCaption(this.realIndex); },
-              slideChange: function () { updateCaption(this.realIndex); }
-            }
-          });
-        }
-      });
-    </script>
     
   </div>
 </article>
@@ -198,14 +106,14 @@
     <div class="site-footer-inner">
       <div class="footer-col brand">
         <a class="footer-logo" href="/">
-          <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-          <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+          <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
         </a>
         <p class="footer-web-address">niallbell.com</p>
         <div class="footer-contact">
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+            <span class="reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">Click to reveal email</span>
           </div>
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -216,12 +124,15 @@
       
       <div class="footer-col sitemap">
         <p class="section-label">Site Map</p>
-        <div class="footer-links-list">
-          <a href="/photography/">Photography</a>
+        <div class="footer-links-list footer-links-two-col">
+          <a href="/photography/">Photo</a>
+          <a href="/videography/">Video</a>
+          <a href="/prints/">Prints</a>
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
           <a href="/about-me/">About</a>
+          <a href="/now/">Now</a>
         </div>
       </div>
 
@@ -314,6 +225,17 @@
       document.addEventListener('touchend', () => {
         clearTimeout(touchTimer);
       }, false);
+
+      document.querySelectorAll('.reveal-email').forEach(el => {
+        el.addEventListener('click', () => {
+          const email = el.dataset.u + '@' + el.dataset.d;
+          const cls = el.className.replace('reveal-email', '').trim();
+          const inner = el.querySelector('svg')
+            ? el.querySelector('svg').outerHTML + email
+            : email;
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+        });
+      });
     });
   </script>
 </body>

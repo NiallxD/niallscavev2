@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Siril Scripts for Astrophotography — Niall Bell</title>
   <meta name="description" content="Here is how I use custom Siril Scripts for Astrophotography.">
+  
   <meta property="og:title" content="Custom Siril Scripts for Astrophotography — Niall Bell">
   <meta property="og:description" content="Here is how I use custom Siril Scripts for Astrophotography.">
   <meta property="og:image" content="https://i.imgur.com/Izkx8aB.jpeg">
@@ -21,11 +22,13 @@
   <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/">
-        <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-        <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav class="nav-menu">
-        <a href="/photography/">Photography</a>
+        <a href="/photography/">Photo</a>
+        <a href="/videography/">Video</a>
+        <a href="/prints/">Prints</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
@@ -359,161 +362,6 @@ load final_stacked.fit
 
     
     
-    <div class="gallery-body" style="margin-top: 2rem;">
-      <p class="section-label">Gallery</p>
-      
-      <div class="gallery-slideshow-container no-bg desktop-only">
-        <div class="swiper gallery-swiper">
-          <div class="swiper-wrapper">
-            
-            <div class="swiper-slide">
-              <div class="slide-inner">
-                
-                  <img src="https://i.imgur.com/Izkx8aB.jpeg" alt="Stacking Without Calibration" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
-                
-              </div>
-            </div>
-            
-          </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-        
-        <div class="gallery-pagination swiper-pagination"></div>
-
-        <div id="gallery-caption-area" class="gallery-caption-external">
-          <h3 id="slide-title"></h3>
-          <p id="slide-desc"></p>
-        </div>
-      </div>
-
-      <div class="gallery-mobile-grid mobile-only">
-        
-        <div class="mobile-grid-item">
-          <div class="mobile-grid-media">
-            
-              <img src="https://i.imgur.com/Izkx8aB.jpeg" alt="Stacking Without Calibration" loading="lazy">
-            
-          </div>
-          
-          <div class="mobile-grid-content">
-            <h4 class="mobile-grid-title">Stacking Without Calibration</h4>
-            <div class="mobile-grid-caption"><p>I have another script which I used to stack images without doing any calibration first. I use this when I’m in the middle of a session and don’t need to worry about the noise or artefacts in the final result and just want to get a view of the stacked data. This shares elements of my main script but instead only takes in Light Frames.</p>
-<h3>Preprocessing script without calibiration</h3>
-<pre><code>############################################
-#                                          #
-# Script for Siril 1.2.0 (1.2.4)           #
-# Updated: November 2024                   #
-# Author: Niall Bell (niallbell.com)       #
-# Script Name: Preprocessing No Cal v1.0   #
-#                                          #
-########### PREPROCESSING SCRIPT ###########
-#                                          #
-# Script for colour camera preprocessing   #
-#                                          #
-# Requires just Lights and does not do     #
-# any image calibration.                   #
-#                                          #
-# - lights/                                #
-#                                          #
-#  Process files are stored on the SSD in  #
-#       the documents folder those         #
-#  speed up processing. Delete after use.  #
-#                                          #
-############ PREPROCESSING STEPS ###########
-#                                          #
-# 1. Convert the Light frames to .fits     #
-# 2. Stack the registered Light frames     #
-#    rejecting poor quality images.        #
-#                                          #
-############################################
-
-# Requires at least Siril 1.2.0
-requires 1.2.0
-
-# Convert Light Frames to .fit files
-cd lights
-convert light_seq -debayer -fitseq -out=/Users/niallbell/siril/Processing/lights_fits
-cd ..
-
-# Align lights
-cd /Users/niallbell/siril/Processing/lights_fits
-register light_seq
-
-# Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65
-stack r_light_seq rej g 0.3 0.05 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked
-
-# Load the final stacked file into Siril.
-cd ../export/
-load final_stacked.fit
-
-############ PROCESSING COMPLETE ###########
-#                                          #
-# DO NOT FORGET TO COPY THE FINAL STACKED  #
-#      IMAGE INTO A SAFE LOCATION!!!       #
-#                                          #
-#  ============== WARNING: ==============  #
-#                                          #
-#      RUNNING THIS SCRIPT AGAIN WILL      #
-#    OVERWRITE ANY EXISTING FILES SAVED    #
-#         IN THE PROCESS FOLDER!!!         #
-#                                          #
-############################################
-</code></pre>
-<p>I hope that this was useful to you, if it was and you have any questions, let me know. Otherwise, Clear Skies!</p>
-<p>Niall</p>
-<h4>Header Image</h4>
-<p>The header image for this post was created using these scripts. It shows the Horsehead and Flame Nebula in the Orion constellation.</p></div>
-          </div>
-          
-        </div>
-        
-      </div>
-
-      <script>
-        const galleryData = [{"type":"image","src":"https://i.imgur.com/Izkx8aB.jpeg","title":"Stacking Without Calibration","caption":"<p>I have another script which I used to stack images without doing any calibration first. I use this when I’m in the middle of a session and don’t need to worry about the noise or artefacts in the final result and just want to get a view of the stacked data. This shares elements of my main script but instead only takes in Light Frames.</p>\n<h3>Preprocessing script without calibiration</h3>\n<pre><code>############################################\n#                                          #\n# Script for Siril 1.2.0 (1.2.4)           #\n# Updated: November 2024                   #\n# Author: Niall Bell (niallbell.com)       #\n# Script Name: Preprocessing No Cal v1.0   #\n#                                          #\n########### PREPROCESSING SCRIPT ###########\n#                                          #\n# Script for colour camera preprocessing   #\n#                                          #\n# Requires just Lights and does not do     #\n# any image calibration.                   #\n#                                          #\n# - lights/                                #\n#                                          #\n#  Process files are stored on the SSD in  #\n#       the documents folder those         #\n#  speed up processing. Delete after use.  #\n#                                          #\n############ PREPROCESSING STEPS ###########\n#                                          #\n# 1. Convert the Light frames to .fits     #\n# 2. Stack the registered Light frames     #\n#    rejecting poor quality images.        #\n#                                          #\n############################################\n\n# Requires at least Siril 1.2.0\nrequires 1.2.0\n\n# Convert Light Frames to .fit files\ncd lights\nconvert light_seq -debayer -fitseq -out=/Users/niallbell/siril/Processing/lights_fits\ncd ..\n\n# Align lights\ncd /Users/niallbell/siril/Processing/lights_fits\nregister light_seq\n\n# Stack calibrated lights to final_stacked.fit rejecting those with a star roundness greater than 0.65\nstack r_light_seq rej g 0.3 0.05 -norm=addscale -filter-round=0.65 -weight_from_noise -output_norm -rgb_equal -out=../export/final_stacked\n\n# Load the final stacked file into Siril.\ncd ../export/\nload final_stacked.fit\n\n############ PROCESSING COMPLETE ###########\n#                                          #\n# DO NOT FORGET TO COPY THE FINAL STACKED  #\n#      IMAGE INTO A SAFE LOCATION!!!       #\n#                                          #\n#  ============== WARNING: ==============  #\n#                                          #\n#      RUNNING THIS SCRIPT AGAIN WILL      #\n#    OVERWRITE ANY EXISTING FILES SAVED    #\n#         IN THE PROCESS FOLDER!!!         #\n#                                          #\n############################################\n</code></pre>\n<p>I hope that this was useful to you, if it was and you have any questions, let me know. Otherwise, Clear Skies!</p>\n<p>Niall</p>\n<h4>Header Image</h4>\n<p>The header image for this post was created using these scripts. It shows the Horsehead and Flame Nebula in the Orion constellation.</p>","gear":""}];
-      </script>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const titleEl = document.getElementById('slide-title');
-        const descEl = document.getElementById('slide-desc');
-        const captionArea = document.getElementById('gallery-caption-area');
-
-        const updateCaption = (index) => {
-          if (typeof galleryData === 'undefined' || !galleryData[index]) return;
-          const data = galleryData[index];
-          titleEl.textContent = data.title || "";
-          descEl.innerHTML = data.caption || "";
-          captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
-        };
-
-        const swiperElements = document.querySelectorAll('.gallery-swiper');
-        if (swiperElements.length > 0) {
-          const swiper = new Swiper('.gallery-swiper', {
-            loop: true,
-            keyboard: { enabled: true },
-            speed: 600,
-            pagination: { 
-              el: '.gallery-pagination', 
-              type: 'fraction',
-              renderFraction: function (currentClass, totalClass) {
-                return '<span class="' + currentClass + '"></span>' +
-                       ' <span class="fraction-sep">of</span> ' +
-                       '<span class="' + totalClass + '"></span>';
-              }
-            },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            on: {
-              init: function () { updateCaption(this.realIndex); },
-              slideChange: function () { updateCaption(this.realIndex); }
-            }
-          });
-        }
-      });
-    </script>
     
   </div>
 </article>
@@ -526,14 +374,14 @@ load final_stacked.fit
     <div class="site-footer-inner">
       <div class="footer-col brand">
         <a class="footer-logo" href="/">
-          <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-          <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+          <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
         </a>
         <p class="footer-web-address">niallbell.com</p>
         <div class="footer-contact">
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+            <span class="reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">Click to reveal email</span>
           </div>
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -544,12 +392,15 @@ load final_stacked.fit
       
       <div class="footer-col sitemap">
         <p class="section-label">Site Map</p>
-        <div class="footer-links-list">
-          <a href="/photography/">Photography</a>
+        <div class="footer-links-list footer-links-two-col">
+          <a href="/photography/">Photo</a>
+          <a href="/videography/">Video</a>
+          <a href="/prints/">Prints</a>
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
           <a href="/about-me/">About</a>
+          <a href="/now/">Now</a>
         </div>
       </div>
 
@@ -642,6 +493,17 @@ load final_stacked.fit
       document.addEventListener('touchend', () => {
         clearTimeout(touchTimer);
       }, false);
+
+      document.querySelectorAll('.reveal-email').forEach(el => {
+        el.addEventListener('click', () => {
+          const email = el.dataset.u + '@' + el.dataset.d;
+          const cls = el.className.replace('reveal-email', '').trim();
+          const inner = el.querySelector('svg')
+            ? el.querySelector('svg').outerHTML + email
+            : email;
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+        });
+      });
     });
   </script>
 </body>

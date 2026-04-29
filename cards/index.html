@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Happy Birthday</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Georgia', serif;
+      overflow-x: clip;
+      overflow-y: hidden;
+      position: relative;
+    }
+
+    /* Subtle starfield background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 70%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 15%, rgba(255,255,255,0.35) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Outer wrapper handles the slide — no animation here so transition works cleanly */
+    .ecard-scene {
+      position: relative;
+      z-index: 1;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .ecard-scene.opened {
+      transform: translateX(calc(min(230px, 45vw, 18vh)));
+    }
+
+    /* Inner wrapper handles the float — separate from slide */
+    .ecard-float {
+      perspective: 1200px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .ecard-scene.opened .ecard-float {
+      animation: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* The card — constrained by both viewport width and height */
+    .ecard-card {
+      position: relative;
+      width: min(460px, 90vw, calc(72vh * 3 / 4));
+      aspect-ratio: 3 / 4;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Front cover — flips open on the left hinge */
+    .ecard-front-panel {
+      position: absolute;
+      inset: 0;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+      border-radius: 4px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .ecard-scene.opened .ecard-front-panel {
+      transform: rotateY(-170deg);
+    }
+
+    /* Front face — the cover image */
+    .ecard-front-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+
+    .ecard-front-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Back of front panel — inner left page, revealed when cover swings open */
+    .ecard-front-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+      background: #f9f5f0;
+    }
+
+    .ecard-front-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Inner right page — always visible beneath the front cover */
+    .ecard-inside-panel {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      z-index: 1;
+      background: #f9f5f0;
+      box-shadow: inset -4px 0 12px rgba(0,0,0,0.15);
+    }
+
+    .ecard-inside-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* "Tap to open / close" hint */
+    .ecard-hint {
+      margin-top: 2rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+      transition: opacity 0.5s;
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* From label */
+    .ecard-from {
+      margin-top: 1.2rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 1;
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.6s 0.8s;
+    }
+
+    @media (max-width: 600px) {
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+      .ecard-hint { font-size: 0.7rem; margin-top: 1.2rem; }
+      .ecard-from  { font-size: 0.65rem; margin-top: 0.8rem; }
+    }
+
+    /* Sparkle canvas — behind the card so particles appear to burst from behind */
+    #sparkle-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="sparkle-canvas"></canvas>
+
+  <div class="ecard-scene" id="ecardScene">
+    <div class="ecard-float">
+      <div class="ecard-card" id="ecardCard">
+
+        <!-- Inner right page (always visible underneath) -->
+        <div class="ecard-inside-panel">
+          
+        </div>
+
+        <!-- Front cover panel (flips open, reveals inner left on its back face) -->
+        <div class="ecard-front-panel" id="frontPanel">
+          <div class="ecard-front-face">
+            
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;">
+                <p style="color:rgba(255,255,255,0.8);font-size:1.4rem;text-align:center;padding:2rem;">Happy Birthday</p>
+              </div>
+            
+          </div>
+          <div class="ecard-front-back">
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <p class="ecard-hint" id="ecardHint">Tap to open</p>
+  
+
+  <script>
+    const scene = document.getElementById('ecardScene');
+    const hint = document.getElementById('ecardHint');
+    const fromLabel = document.getElementById('ecardFrom');
+    let opened = false;
+
+    scene.addEventListener('click', () => {
+      opened = !opened;
+      scene.classList.toggle('opened', opened);
+      if (hint) hint.textContent = opened ? 'Tap to close' : 'Tap to open';
+      if (fromLabel) fromLabel.style.opacity = opened ? '1' : '0';
+      if (opened) launchSparkles();
+    });
+
+    // Sparkle effect
+    const canvas = document.getElementById('sparkle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function launchSparkles() {
+      const rect = scene.getBoundingClientRect();
+      const colors = ['#ffd700','#fff5cc','#ffecb3','#ffe082','#ffffff','#ffc107'];
+
+      for (let i = 0; i < 120; i++) {
+        // Random point along all four edges of the card
+        const edge = Math.floor(Math.random() * 4);
+        let x, y;
+        if (edge === 0) { x = rect.left + Math.random() * rect.width; y = rect.top; }
+        else if (edge === 1) { x = rect.left + Math.random() * rect.width; y = rect.bottom; }
+        else if (edge === 2) { x = rect.left; y = rect.top + Math.random() * rect.height; }
+        else              { x = rect.right; y = rect.top + Math.random() * rect.height; }
+
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 2 + Math.random() * 6;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1,
+          alpha: 1,
+          size: 4 + Math.random() * 8,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          decay: 0.01 + Math.random() * 0.012,
+          gravity: 0.08
+        });
+      }
+      requestAnimationFrame(animateSparkles);
+    }
+
+    function animateSparkles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(p => p.alpha > 0);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.alpha -= p.decay;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+      if (particles.length > 0) requestAnimationFrame(animateSparkles);
+    }
+  </script>
+</body>
+</html>

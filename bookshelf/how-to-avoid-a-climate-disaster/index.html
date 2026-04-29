@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to Avoid a Climate Disaster — Niall Bell</title>
   
+  
   <meta property="og:title" content="How to Avoid a Climate Disaster — Niall Bell">
   
   <meta property="og:image" content="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg">
@@ -21,11 +22,13 @@
   <header class="site-header transparent-header">
     <div class="site-header-inner">
       <a class="site-title" href="/">
-        <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-        <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+        <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
       </a>
       <nav class="nav-menu">
-        <a href="/photography/">Photography</a>
+        <a href="/photography/">Photo</a>
+        <a href="/videography/">Video</a>
+        <a href="/prints/">Prints</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
@@ -77,6 +80,7 @@
 
   
   
+  
 </div>
 
 </div>
@@ -87,14 +91,14 @@
     <div class="site-footer-inner">
       <div class="footer-col brand">
         <a class="footer-logo" href="/">
-          <img src="/static/logo-black.png" alt="Niall Bell" class="site-logo logo-black">
-          <img src="/static/logo-white.png" alt="Niall Bell" class="site-logo logo-white">
+          <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
         </a>
         <p class="footer-web-address">niallbell.com</p>
         <div class="footer-contact">
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:niall@niallbell.com">niall@niallbell.com</a>
+            <span class="reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">Click to reveal email</span>
           </div>
           <div class="contact-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -105,12 +109,15 @@
       
       <div class="footer-col sitemap">
         <p class="section-label">Site Map</p>
-        <div class="footer-links-list">
-          <a href="/photography/">Photography</a>
+        <div class="footer-links-list footer-links-two-col">
+          <a href="/photography/">Photo</a>
+          <a href="/videography/">Video</a>
+          <a href="/prints/">Prints</a>
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
           <a href="/about-me/">About</a>
+          <a href="/now/">Now</a>
         </div>
       </div>
 
@@ -203,6 +210,17 @@
       document.addEventListener('touchend', () => {
         clearTimeout(touchTimer);
       }, false);
+
+      document.querySelectorAll('.reveal-email').forEach(el => {
+        el.addEventListener('click', () => {
+          const email = el.dataset.u + '@' + el.dataset.d;
+          const cls = el.className.replace('reveal-email', '').trim();
+          const inner = el.querySelector('svg')
+            ? el.querySelector('svg').outerHTML + email
+            : email;
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+        });
+      });
     });
   </script>
 </body>

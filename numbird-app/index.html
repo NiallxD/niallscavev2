@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NumBird - iOS App — Niall Bell</title>
+  <meta name="description" content="NumBird is an app for iOS which takes a users eBird data and performs a range of data analysis to present the data and allow the user to analyse their birding history.">
+  
+  <meta property="og:title" content="NumBird - iOS App — Niall Bell">
+  <meta property="og:description" content="NumBird is an app for iOS which takes a users eBird data and performs a range of data analysis to present the data and allow the user to analyse their birding history.">
+  <meta property="og:image" content="https://i.imgur.com/ivXjySy.jpeg">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+  
+</head>
+<body>
+  <header class="site-header transparent-header">
+    <div class="site-header-inner">
+      <a class="site-title" href="/">
+        <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+        <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
+      </a>
+      <nav class="nav-menu">
+        <a href="/photography/">Photo</a>
+        <a href="/videography/">Video</a>
+        <a href="/prints/">Prints</a>
+        <a href="/blog/">Writing</a>
+        <a href="/side-projects/">Projects</a>
+        <a href="/bookshelf/">Bookshelf</a>
+        <a href="/about-me/">About</a>
+      </nav>
+      <div class="header-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay"></div>
+
+  <main>
+    
+<div class="constrained-wide">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+
+
+<div class="home-hero-wrapper">
+  <div class="home-slideshow-fs">
+    <img src="https://i.imgur.com/ivXjySy.jpeg" alt="NumBird - iOS App" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </div>
+  <section class="home-hero-overlay">
+    <h1 class="home-title">NumBird - iOS App</h1>
+    <p class="home-intro">NumBird is an app for iOS which takes a users eBird data and performs a range of data analysis to present the data and allow the user to analyse their birding history.</p>
+    <div class="scroll-hint">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+</div>
+
+
+<div class="standard-page">
+  
+  <p class="section-label">NUMBIRD APP</p>
+  
+  
+  
+
+  <div class="post-content"><figure class="image-float-right">
+<img src="https://i.imgur.com/ivXjySy.jpeg" alt="Graphic showing the various screens of the NumBird app"><figcaption>Graphic showing the various screens of the NumBird app. NumBird has over 20 different analyses including a taxonomy explorer.</figcaption></figure>
+<p>Unlocking Your eBird Journey: Meet numbird 🐦📈</p>
+<p>If you’re a birder, you likely know the feeling: you spend hours in the field
+recording sightings on eBird, but when it comes time to actually look at your
+data, you’re often left clicking through static web pages or waiting for slow
+reloads.</p>
+<p>Enter numbird, a clean, powerful, and privacy-focused iOS app designed by
+Niall Bell for the “birding data nerd.” It’s built on a simple premise: your
+birding history is a treasure trove of stories, and you should be able to
+explore them instantly, anywhere, even when you’re deep in the forest without a
+signal.</p>
+<h3>What makes numbird different?</h3>
+<p>While the official eBird app is perfect for recording, numbird is designed for
+analysis. By importing your eBird data export, numbird processes your entire
+history locally on your device.</p>
+<p>Here’s a glimpse at what you can do:</p>
+<ul>
+<li><strong>Visualise Your Growth:</strong> From sparkline charts on your dashboard to species
+accumulation graphs, see exactly how your life list has grown year-over-year.</li>
+<li><strong>Deep-Dive Analytics:</strong> Explore “Phenology” heatmaps to see when you
+typically record specific species, or check “Productive Times” to find out
+exactly when you’re most successful in the field.</li>
+<li><strong>A Media-First Experience:</strong> numbird turns your sightings into a visual
+story. Browse a dedicated Photo Stream or listen through your Audio Life List
+with native players and spectrographs powered by the Macaulay Library.</li>
+<li><strong>Smart Exploration:</strong> Use Universal Search to ask questions like “Where did
+I last see a Dipper?” or “Phenology for Anna’s Hummingbird.” It understands
+natural language and jumps you straight to the data.</li>
+<li><strong>Global Context:</strong> Integrated with GBIF data, you can view Global Range Maps
+for any species to see how your personal sightings fit into the bigger
+picture of world-wide bird populations.</li>
+</ul>
+<h3>Built by a birder, for birders</h3>
+<p>Niall created numbird to solve his own frustration with the lack of fast,
+mobile-friendly analysis tools. Because it’s a personal labor of love, the app
+is free to use and respects your privacy, all your data analysis happens on your
+phone, not a server.</p>
+<p>Whether you’re trying to track your “Yorkshire” county list or just want a
+beautiful way to revisit your favourite birding memories, numbird gives your
+data the home it deserves.</p>
+<p>Ready to start? Download your eBird data, import it into numbird, and see your
+birding history in a whole new light.</p>
+<p><strong>Support the project:</strong> If you love the app, you can buy Niall a coffee<br>
+(<a href="https://buymeacoffee.com/niallbell">https://buymeacoffee.com/niallbell</a>) to help keep the project flying!</p>
+
+</div>
+
+  
+  
+  
+  <div class="gallery-body">
+    <p class="section-label">Gallery</p>
+    
+    <div class="gallery-slideshow-container no-bg desktop-only">
+      <div class="swiper gallery-swiper">
+        <div class="swiper-wrapper">
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/8UMdUBb.jpeg" alt="Yellow-rumped Warbler" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/jt3kVwN.jpeg" alt="Spotted Towhee" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/BWat7Sv.jpeg" alt="Bald Eagles with Mountains" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/07Fmn4O.jpeg" alt="Early Waking Black Bear" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/uSoSGwH.jpeg" alt="Pygmy Owl Eyes up Prey" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/p7Zjhop.jpeg" alt="Anna’s Hummingbird Stretches His Wings" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/l29dLBO.jpeg" alt="A Bald Eagle Flying Low at Sunset" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="slide-inner">
+              
+                <img src="https://i.imgur.com/acHu74e.jpeg" alt="Belted Kingfisher Diving for Fish at Sunset" loading="lazy" onload="this.classList.add(this.naturalWidth > this.naturalHeight ? 'is-landscape' : 'is-portrait')">
+              
+            </div>
+          </div>
+          
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      
+      <div class="gallery-pagination swiper-pagination"></div>
+
+      <div id="gallery-caption-area" class="gallery-caption-external">
+        <h3 id="slide-title"></h3>
+        <p id="slide-desc"></p>
+      </div>
+    </div>
+
+    <div class="gallery-mobile-grid mobile-only">
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/8UMdUBb.jpeg" alt="Yellow-rumped Warbler" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Yellow-rumped Warbler</h4>
+          <div class="mobile-grid-caption"><p>A yellow-rumped warbler sits proud among the shrubs.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/jt3kVwN.jpeg" alt="Spotted Towhee" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Spotted Towhee</h4>
+          <div class="mobile-grid-caption"><p>Spotted towhee frequently perch on the railway tracks, looking for an easy meal.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/BWat7Sv.jpeg" alt="Bald Eagles with Mountains" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Bald Eagles with Mountains</h4>
+          <div class="mobile-grid-caption"><p>Evening roosting bald eagles find tall, supportive, branches to perch and preen.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/07Fmn4O.jpeg" alt="Early Waking Black Bear" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Early Waking Black Bear</h4>
+          <div class="mobile-grid-caption"><p>Black bears start waking from hibernation in spring and start feeding on early plants.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/uSoSGwH.jpeg" alt="Pygmy Owl Eyes up Prey" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Pygmy Owl Eyes up Prey</h4>
+          <div class="mobile-grid-caption"><p>This pygmy owl was not bothered by walkers as it scanned the ground for prey.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/p7Zjhop.jpeg" alt="Anna’s Hummingbird Stretches His Wings" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Anna’s Hummingbird Stretches His Wings</h4>
+          <div class="mobile-grid-caption"><p>Even birds need to stretch from time to time!
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/l29dLBO.jpeg" alt="A Bald Eagle Flying Low at Sunset" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">A Bald Eagle Flying Low at Sunset</h4>
+          <div class="mobile-grid-caption"><p>Back lit bald eagles are a magnificent sight during winter.
+</p></div>
+        </div>
+        
+      </div>
+      
+      <div class="mobile-grid-item">
+        <div class="mobile-grid-media">
+          
+            <img src="https://i.imgur.com/acHu74e.jpeg" alt="Belted Kingfisher Diving for Fish at Sunset" loading="lazy">
+          
+        </div>
+        
+        <div class="mobile-grid-content">
+          <h4 class="mobile-grid-title">Belted Kingfisher Diving for Fish at Sunset</h4>
+          <div class="mobile-grid-caption"><p>After leaping from a high perch, kingfishers plunge into the water to snap up a fish!
+</p></div>
+        </div>
+        
+      </div>
+      
+    </div>
+
+    <script>
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/8UMdUBb.jpeg","title":"Yellow-rumped Warbler","caption":"<p>A yellow-rumped warbler sits proud among the shrubs.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/jt3kVwN.jpeg","title":"Spotted Towhee","caption":"<p>Spotted towhee frequently perch on the railway tracks, looking for an easy meal.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/BWat7Sv.jpeg","title":"Bald Eagles with Mountains","caption":"<p>Evening roosting bald eagles find tall, supportive, branches to perch and preen.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/07Fmn4O.jpeg","title":"Early Waking Black Bear","caption":"<p>Black bears start waking from hibernation in spring and start feeding on early plants.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/uSoSGwH.jpeg","title":"Pygmy Owl Eyes up Prey","caption":"<p>This pygmy owl was not bothered by walkers as it scanned the ground for prey.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/p7Zjhop.jpeg","title":"Anna’s Hummingbird Stretches His Wings","caption":"<p>Even birds need to stretch from time to time!\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/l29dLBO.jpeg","title":"A Bald Eagle Flying Low at Sunset","caption":"<p>Back lit bald eagles are a magnificent sight during winter.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/acHu74e.jpeg","title":"Belted Kingfisher Diving for Fish at Sunset","caption":"<p>After leaping from a high perch, kingfishers plunge into the water to snap up a fish!\n</p>","gear":""}];
+    </script>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const titleEl = document.getElementById('slide-title');
+      const descEl = document.getElementById('slide-desc');
+      const captionArea = document.getElementById('gallery-caption-area');
+
+      const updateCaption = (index) => {
+        if (typeof galleryData === 'undefined' || !galleryData[index]) return;
+        const data = galleryData[index];
+        titleEl.textContent = data.title || "";
+        descEl.innerHTML = data.caption || "";
+        captionArea.style.display = (data.title || data.caption) ? 'block' : 'none';
+      };
+
+      const swiperElements = document.querySelectorAll('.gallery-swiper');
+      if (swiperElements.length > 0) {
+        const swiper = new Swiper('.gallery-swiper', {
+          loop: true,
+          keyboard: { enabled: true },
+          speed: 600,
+          pagination: { 
+            el: '.gallery-pagination', 
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+              return '<span class="' + currentClass + '"></span>' +
+                     ' <span class="fraction-sep">of</span> ' +
+                     '<span class="' + totalClass + '"></span>';
+            }
+          },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          on: {
+            init: function () { updateCaption(this.realIndex); },
+            slideChange: function () { updateCaption(this.realIndex); }
+          }
+        });
+      }
+    });
+  </script>
+  
+</div>
+
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="footer-col brand">
+        <a class="footer-logo" href="/">
+          <img src="/static/images/Logo_Black_Large.png" alt="Niall Bell" class="site-logo logo-black">
+          <img src="/static/images/Logo_White_Large.png" alt="Niall Bell" class="site-logo logo-white">
+        </a>
+        <p class="footer-web-address">niallbell.com</p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="reveal-email" data-u="niall" data-d="niallbell.com" style="cursor:pointer;">Click to reveal email</span>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Squamish, BC</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-col sitemap">
+        <p class="section-label">Site Map</p>
+        <div class="footer-links-list footer-links-two-col">
+          <a href="/photography/">Photo</a>
+          <a href="/videography/">Video</a>
+          <a href="/prints/">Prints</a>
+          <a href="/blog/">Writing</a>
+          <a href="/side-projects/">Projects</a>
+          <a href="/bookshelf/">Bookshelf</a>
+          <a href="/about-me/">About</a>
+          <a href="/now/">Now</a>
+        </div>
+      </div>
+
+      <div class="footer-col legal">
+        <p class="section-label">Legal</p>
+        <p class="copyright">© 2026 Niall Bell</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="image-protection-toast" class="image-protection-toast">
+	  <a href="mailto:niall@niallbell.com">Get in touch</a> for photo licensing.
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('theme', target);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    const toggleMenu = () => {
+      const isOpen = body.classList.toggle('menu-open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (body.classList.contains('menu-open')) {
+          toggleMenu();
+        }
+      });
+    });
+
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // trigger immediately on load
+
+    // Right-click protection for images
+    document.addEventListener('DOMContentLoaded', () => {
+      const toast = document.getElementById('image-protection-toast');
+      let toastTimeout;
+
+      const showToast = (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          e.preventDefault();
+          
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+          return true;
+        }
+        return false;
+      };
+
+      document.addEventListener('contextmenu', showToast, false);
+      
+      // Handle mobile long-press
+      let touchTimer;
+      document.addEventListener('touchstart', (e) => {
+        if (e.target.tagName && e.target.tagName.toUpperCase() === 'IMG') {
+          touchTimer = setTimeout(() => {
+            showToast(e);
+          }, 500); // 500ms for long press
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchend', () => {
+        clearTimeout(touchTimer);
+      }, false);
+
+      document.querySelectorAll('.reveal-email').forEach(el => {
+        el.addEventListener('click', () => {
+          const email = el.dataset.u + '@' + el.dataset.d;
+          const cls = el.className.replace('reveal-email', '').trim();
+          const inner = el.querySelector('svg')
+            ? el.querySelector('svg').outerHTML + email
+            : email;
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
