@@ -90,17 +90,25 @@ With all the above in mind, here is a selection of my favourite captive tiger im
 
 I was actually asked to take these photos down by one of the zoos where I took them after we fell out because I don't believe they are satisfactorily meeting the above criteria of a good zoo. For the record said zoo, these are my photos of which I own the copyright. I don't make money from them and instead use them for the purposes you should be championing, not trying to shut down.
 
-![](https://i.imgur.com/YM8JB0f.jpeg)
-*Superb backlit photograph of a tiger sprinting as if to chase down her prey (captive).*
+## gallery-start
+## Tiger in Full Sprint
+An Amur tiger charges directly toward the camera, caught mid-stride in sharp backlight. Tigers are capable of short bursts reaching 65 kilometres per hour. Despite their size, they are ambush hunters, relying on stealth and a rapid, explosive approach rather than sustained pursuit to close the distance to prey.
+https://i.imgur.com/YM8JB0f.jpeg
 
-![](https://i.imgur.com/4Msu0Ig.png)
-*Tigers, unlike most cats, love to swim and get wet (captive).*
+## Cooling in the Shallows
+An Amur tiger lies stretched in shallow water, tongue lolling, in a posture of relaxed heat regulation. Unlike most felids, tigers actively seek water and are strong swimmers, readily crossing rivers. The cool water helps dissipate body heat in warm weather and tigers will readily immerse themselves fully.
+https://i.imgur.com/4Msu0Ig.png
 
-![](https://i.imgur.com/v3dgeOx.png)
-*Stalked by a larger male Amur tiger (captive).*
+## Through the Willows
+An Amur tiger peers through a curtain of hanging willow foliage, head low, eyes fixed forward. This crouched, concealed posture mirrors the hunting stance tigers use in long grass and forest understorey. The pale eyes and bold facial markings remain visible even as the body blends into the surrounding vegetation.
+https://i.imgur.com/v3dgeOx.png
 
-![](https://i.imgur.com/QXS2OUx.png)
-*A Amur tiger cub sites on a rock in evening golden light (captive).*
+## Cub on the Rocks
+An Amur tiger cub rests on a lichen-covered rock in warm golden light, its spotted juvenile coat still faintly visible beneath the emerging adult pattern. Tiger cubs remain with their mother for up to three years, gradually learning to hunt. The Amur subspecies is adapted to cold climates with thicker fur than southern tigers.
+https://i.imgur.com/QXS2OUx.png
 
-![](https://i.imgur.com/eDQBDJi.png)
-*The beautiful Sumatran tiger with it's striking dark place lines and rusty orange coat (captive).*
+## Sumatran Tiger Portrait
+A Sumatran tiger sits upright in dense understorey vegetation, gaze directed upward. The Sumatran tiger is the smallest surviving tiger subspecies, distinguished by closely spaced dark stripes on a rich orange coat. Critically endangered, fewer than 400 individuals survive in the fragmented forest habitats of Sumatra.
+https://i.imgur.com/eDQBDJi.png
+
+## gallery-end

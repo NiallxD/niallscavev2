@@ -5,3 +5,6 @@ _site/
 .DS_Store
 *.heic
 *.zip
+CLAUDE.md
+gemini.md
+SITE-GUIDE.md
