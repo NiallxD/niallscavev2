@@ -52,7 +52,592 @@
   <main>
     
 <div class="constrained-wide">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<style>
+/* ══════════════════════════════════════════════════════════
+   GALLERY ROOM OVERLAY
+   ══════════════════════════════════════════════════════════ */
+:root {
+  --gr-wall-color:    #f5ede0;
+  --gr-ceiling-color: #2a1f14;
+  --gr-floor-color:   #8b6914;
+  --gr-frame-outer:   #2c1e0f;
+  --gr-frame-mat:     #faf6f0;
+  --gr-plaque-bg:     #b8860b;
+  --gr-plaque-text:   #1a0e00;
+  --gr-font-pixel:    'Press Start 2P', monospace;
+  --gr-font-pixel-sm: 'Silkscreen', monospace;
+}
+
+/* Trigger button */
+.gr-trigger-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.25rem;
+}
+.gr-enter-btn {
+  font-family: 'Silkscreen', monospace;
+  font-size: 0.7rem;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--ease), border-color var(--ease), color var(--ease);
+}
+.gr-enter-btn:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+/* Overlay wrapper */
+#gallery-room-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  overflow: hidden;
+  background: #000;
+}
+#gallery-room-overlay.gr-visible { display: flex; flex-direction: column; }
+
+/* Blackout */
+.gr-blackout {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 800ms ease;
+  pointer-events: none;
+}
+.gr-blackout.gr-fade-out { opacity: 0; }
+
+/* Welcome screen */
+.gr-welcome-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 600ms ease;
+}
+.gr-welcome-screen.gr-hidden { opacity: 0; }
+.gr-welcome-text {
+  font-family: var(--gr-font-pixel);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms ease, transform 500ms ease;
+  margin: 0;
+}
+.gr-welcome-text.gr-text-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: gr-welcome-pulse 2s ease-in-out infinite;
+}
+
+/* Room */
+.gr-room {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2a1f14 #000;
+  opacity: 0;
+  transition: opacity 600ms ease;
+  cursor: grab;
+  user-select: none;
+}
+.gr-room:active { cursor: grabbing; }
+.gr-room.gr-room-visible { opacity: 1; }
+
+/* Scroll track */
+.gr-scroll-track {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: max-content;
+  min-width: 100vw;
+}
+
+/* Ceiling */
+.gr-ceiling-strip {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px),
+    linear-gradient(to bottom, #1a1208 0px, #2a1f14 30px, #3a2d1e 55px, #2a1f14 80px);
+  image-rendering: pixelated;
+}
+
+/* Wall — spacing comes from explicit 500px deco-slot items, not CSS gap */
+.gr-wall {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+  padding: 0 80px 0 60px;
+  gap: 0;
+  width: max-content;
+  min-width: 100vw;
+  background:
+    linear-gradient(
+      to bottom,
+      #f5ede0 0%, #f5ede0 63%,
+      #e0d0bc 63%, #e0d0bc 65%,
+      #c8b8a0 65%, #c8b8a0 67%,
+      #e0d0bc 67%, #e0d0bc 70%,
+      #eedcc8 70%, #eedcc8 100%
+    );
+}
+
+/* Floor */
+.gr-floor {
+  width: 100%;
+  height: 120px;
+  flex-shrink: 0;
+  border-top: 6px solid #1a1208;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 47px, rgba(0,0,0,0.12) 47px, rgba(0,0,0,0.12) 48px),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 47px, rgba(0,0,0,0.12) 47px, rgba(0,0,0,0.12) 48px),
+    linear-gradient(to bottom, #9a7520 0px, #8b6914 20px, #7a5c10 120px);
+  image-rendering: pixelated;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────── */
+
+/* Full-screen darkness layer — sits above wall/floor (z-index 1 inside room stacking context)
+   but photo items are z-index 2 so they poke through */
+.gr-darkness {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(8, 4, 1, 0);
+  pointer-events: none;
+  transition: background 700ms ease;
+}
+.gr-dark .gr-darkness { background: rgba(8, 4, 1, 0.92); }
+
+/* Photos float above darkness */
+.gr-wall-item--photo { z-index: 2; }
+
+/* Ceiling and floor dim directly (no children to protect) */
+.gr-dark .gr-ceiling-strip { filter: brightness(0.4); transition: filter 700ms ease; }
+.gr-dark .gr-floor         { filter: brightness(0.18); transition: filter 700ms ease; }
+
+/* Spotlight cone emanates from top of each photo item down onto the frame */
+.gr-wall-item--photo {
+  background: transparent;
+  transition: background 700ms ease;
+}
+.gr-dark .gr-wall-item--photo {
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 42%,
+    rgba(255, 238, 148, 0.16) 0%,
+    rgba(255, 238, 148, 0.08) 45%,
+    transparent 75%
+  );
+}
+
+/* Subtle warm glow on the frame itself in dark mode */
+.gr-dark .gr-frame {
+  box-shadow:
+    0 0 0 4px #1a1208,
+    0 0 0 16px var(--gr-frame-outer),
+    0 0 0 18px #4a3020,
+    0 12px 44px rgba(0,0,0,0.8),
+    0 3px 10px rgba(0,0,0,0.6),
+    0 0 80px rgba(255, 220, 120, 0.18);
+}
+
+/* Light switch */
+.gr-door-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 24px;
+}
+.gr-door-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+/* Entrance furniture — sized independently of the sprite-column rules */
+.gr-entrance-items {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+}
+.gr-entrance-bench {
+  display: block;
+  height: 11vh;
+  width: auto;
+  aspect-ratio: 40 / 22;
+  image-rendering: pixelated;
+}
+.gr-entrance-trashcan {
+  display: block;
+  height: 14vh;
+  width: auto;
+  aspect-ratio: 10 / 18;
+  image-rendering: pixelated;
+}
+.gr-lightswitch-wrap {
+  align-self: flex-end;
+  margin-bottom: 15vh;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.gr-lightswitch-wrap:hover { opacity: 0.8; }
+.gr-switch-svg {
+  display: block;
+  height: 5vh;
+  width: auto;
+  aspect-ratio: 6 / 10;
+  image-rendering: pixelated;
+}
+/* Rocker and LED respond to dark mode */
+.gr-switch-rocker { fill: #444; transition: fill 500ms ease; }
+.gr-dark .gr-switch-rocker { fill: #d8d4c4; }
+.gr-switch-led { fill: #555; transition: fill 500ms ease; }
+.gr-dark .gr-switch-led { fill: #66bb6a; }
+
+/* ── UI bar ─────────────────────────────────────────────────────── */
+/* UI bar */
+.gr-ui-bar {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 2010;
+}
+.gr-leave-btn {
+  font-family: var(--gr-font-pixel-sm);
+  font-size: 0.65rem;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+.gr-leave-btn:hover {
+  background: rgba(60,40,20,0.9);
+  border-color: #b8860b;
+  color: #b8860b;
+}
+
+/* Scroll hint */
+.gr-scroll-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2010;
+  font-family: var(--gr-font-pixel-sm);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.55);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 800ms ease;
+}
+.gr-scroll-hint.gr-hint-hidden { opacity: 0; }
+
+/* Wall items */
+.gr-wall-item {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+.gr-wall-item--photo {
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 44px;
+}
+
+/* Photo unit: groups frame + plaque, centered, natural width */
+.gr-photo-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  position: relative;
+  z-index: 2;
+}
+
+/* Nameplate — plaque sits just above the door, both pinned to floor */
+.gr-nameplate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: 20px;
+}
+.gr-nameplate-inner {
+  font-family: var(--gr-font-pixel);
+  font-size: 10px;
+  color: #3a2010;
+  text-align: center;
+  line-height: 2.2;
+  max-width: 260px;
+  text-transform: uppercase;
+  padding: 22px 28px;
+  border: 2px solid #b8860b;
+  background: rgba(255,255,255,0.35);
+  box-shadow:
+    inset 0 0 0 5px rgba(184,134,11,0.12),
+    3px 3px 0 rgba(0,0,0,0.15);
+}
+
+/* Firework wrapper — absolutely centred above entranceItems */
+.gr-visitor-wrap {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.gr-firework {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.gr-spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  opacity: 0;
+}
+.gr-firework-active .gr-spark { animation: gr-spark-fly 0.9s ease-out forwards; }
+.gr-spark { width: 6px; height: 6px; }
+.gr-spark:nth-child(1)  { background:#ffd700; --sdx:0px;   --sdy:-64px; }
+.gr-spark:nth-child(2)  { background:#ff6020; --sdx:45px;  --sdy:-45px; animation-delay:0.05s; }
+.gr-spark:nth-child(3)  { background:#ffd700; --sdx:64px;  --sdy:0px;   animation-delay:0.02s; }
+.gr-spark:nth-child(4)  { background:#ff6020; --sdx:45px;  --sdy:45px;  animation-delay:0.07s; }
+.gr-spark:nth-child(5)  { background:#ffd700; --sdx:0px;   --sdy:64px;  animation-delay:0.03s; }
+.gr-spark:nth-child(6)  { background:#ff6020; --sdx:-45px; --sdy:45px;  animation-delay:0.06s; }
+.gr-spark:nth-child(7)  { background:#ffd700; --sdx:-64px; --sdy:0px;   animation-delay:0.01s; }
+.gr-spark:nth-child(8)  { background:#ff6020; --sdx:-45px; --sdy:-45px; animation-delay:0.04s; }
+.gr-spark:nth-child(9)  { background:#ffaa00; --sdx:20px;  --sdy:-60px; animation-delay:0.08s; }
+.gr-spark:nth-child(10) { background:#ffd700; --sdx:60px;  --sdy:-20px; animation-delay:0.10s; }
+.gr-spark:nth-child(11) { background:#ff6020; --sdx:-20px; --sdy:-60px; animation-delay:0.09s; }
+.gr-spark:nth-child(12) { background:#ffaa00; --sdx:-60px; --sdy:-20px; animation-delay:0.11s; }
+@keyframes gr-spark-fly {
+  0%   { transform: translate(-3px,-3px) scale(1);   opacity: 1; }
+  40%  { opacity: 1; }
+  100% { transform: translate(calc(var(--sdx) - 3px), calc(var(--sdy) - 3px)) scale(0.4); opacity: 0; }
+}
+/* Visitor counter sign */
+.gr-visitor-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px 10px;
+  background: #120c04;
+  border: 3px solid #b8860b;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.5), inset 0 0 0 1px #8a6008;
+}
+.gr-visitor-label {
+  font-family: var(--gr-font-pixel);
+  font-size: 5px;
+  color: #b8860b;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+.gr-visitor-badge {
+  display: block;
+  height: 18px;
+  width: auto;
+  image-rendering: auto;
+  /* Recolour to gold-on-dark to match room palette */
+  filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(0.9);
+}
+
+/* Door — scale reference at the entrance */
+.gr-door {
+  display: block;
+  height: 43vh;
+  width: auto;
+  aspect-ratio: 16 / 32;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+/* Frame */
+.gr-frame {
+  position: relative;
+  padding: 14px;
+  background: var(--gr-frame-mat);
+  box-shadow:
+    0 0 0 4px #1a1208,
+    0 0 0 16px var(--gr-frame-outer),
+    0 0 0 18px #4a3020,
+    0 12px 44px rgba(0,0,0,0.65),
+    0 3px 10px rgba(0,0,0,0.45);
+  flex-shrink: 0;
+}
+.gr-frame img.gr-photo {
+  display: block;
+  height: 55vh;
+  width: auto;
+  image-rendering: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Deco slot — 500px fixed-width gap between photos; may contain a sprite */
+.gr-deco-slot {
+  width: 500px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* Sprites in slots sit on the floor (overlap the floor line for depth) */
+.gr-deco-slot .gr-sprite {
+  transform: translate(var(--gr-sprite-x, 0px), var(--gr-sprite-y, 22px));
+}
+
+/* Plaque */
+.gr-plaque {
+  position: relative;
+  min-width: 100px;
+  max-width: 240px;
+  min-height: 34px;
+  background: var(--gr-plaque-bg);
+  border: 2px solid #8b6200;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    2px 2px 0 rgba(0,0,0,0.4);
+}
+.gr-plaque-text {
+  font-family: var(--gr-font-pixel);
+  font-size: 6px;
+  color: var(--gr-plaque-text);
+  text-align: center;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+/* Sprite base — don't set width/height here; per-type rules handle sizing */
+.gr-sprite {
+  image-rendering: pixelated;
+  display: block;
+}
+
+/*
+ * Sprite sizing: both max-height AND max-width are set so whichever
+ * constraint binds first (tall viewport vs narrow column) keeps the sprite
+ * inside its column at all viewport ratios. aspect-ratio preserves
+ * the pixel-art proportions automatically.
+ */
+/* Sprite heights scaled to door (43vh = 2m).
+   height: Xvh (not max-height) overrides the SVG's hardcoded attribute. */
+[data-deco-type="guard"] .gr-sprite {
+  height: 50vh; width: auto; aspect-ratio: 26 / 42; image-rendering: pixelated; display: block;
+}
+[data-deco-type="plant"] .gr-sprite {
+  height: 26vh; width: auto; aspect-ratio: 24 / 38; image-rendering: pixelated; display: block;
+}
+[data-deco-type="plant2"] .gr-sprite {
+  height: 26vh; width: auto; aspect-ratio: 20 / 38; image-rendering: pixelated; display: block;
+}
+[data-deco-type="plant3"] .gr-sprite {
+  height: 26vh; width: auto; aspect-ratio: 20 / 38; image-rendering: pixelated; display: block;
+}
+[data-deco-type="mouse"] .gr-sprite {
+  height: 4vh;  width: auto; aspect-ratio: 18 / 14; image-rendering: pixelated; display: block;
+}
+[data-deco-type="bench"] .gr-sprite {
+  height: 15vh; width: auto; aspect-ratio: 40 / 22; image-rendering: pixelated; display: block;
+}
+[data-deco-type="cat"] .gr-sprite {
+  height: 15vh;  width: auto; aspect-ratio: 36 / 26; image-rendering: pixelated; display: block;
+}
+[data-deco-type="exit-sign"] .gr-sprite {
+  height: 5vh;  width: auto; aspect-ratio: 44 / 20; image-rendering: pixelated; display: block;
+}
+
+/* Overlap the floor line for depth — sprites stand ON the floor, not above it */
+.gr-wall-item--deco .gr-sprite,
+.gr-wall-item--deco .gr-quote-wrap {
+  transform: translateY(22px);
+}
+
+/* Quote card: sized via its wrapper, not directly */
+.gr-quote-wrap {
+  position: relative;
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+}
+.gr-quote-wrap .gr-sprite {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 72 / 52;
+  max-height: 40vh;
+}
+.gr-quote-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--gr-font-pixel);
+  font-size: 5px;
+  color: #2a1a08;
+  text-align: center;
+  padding: 18%;
+  line-height: 2.2;
+  pointer-events: none;
+  margin: 0;
+}
+
+/* Sprite animations */
+[data-deco-type="cat"]   .gr-cat-tail { transform-box: fill-box; transform-origin: right top; animation: gr-cat-tail-swish 6s ease-in-out infinite; }
+[data-deco-type="guard"] .gr-sprite .gr-note-1 { animation: gr-note-rise 2.4s ease-in-out infinite; }
+[data-deco-type="guard"] .gr-sprite .gr-note-2 { animation: gr-note-rise 2.4s ease-in-out 1.2s infinite; }
+
+/* Keyframes */
+@keyframes gr-welcome-pulse  { 0%,100% { opacity: 1; } 50% { opacity: 0.65; } }
+@keyframes gr-cat-tail-swish { 0%,45%,100% { transform: rotate(0deg); } 55% { transform: rotate(-30deg); } 65% { transform: rotate(22deg); } 75% { transform: rotate(-18deg); } 85% { transform: rotate(10deg); } 92% { transform: rotate(-5deg); } }
+@keyframes gr-note-rise      { 0% { transform: translateY(0); opacity: 0.8; } 70% { opacity: 0.5; } 100% { transform: translateY(-5px); opacity: 0; } }
+</style>
 
 
 
@@ -137,8 +722,8 @@
     loop: true,
     keyboard: { enabled: true },
     speed: 600,
-    pagination: { 
-      el: '.gallery-pagination', 
+    pagination: {
+      el: '.gallery-pagination',
       type: 'fraction',
       renderFraction: function (currentClass, totalClass) {
         return '<span class="' + currentClass + '"></span>' +
@@ -156,6 +741,729 @@
       }
     }
   });
+</script>
+
+<script>
+(function () {
+  function stripTags(str) {
+    return str ? str.replace(/<[^>]*>/g, '').trim() : '';
+  }
+
+  const GalleryRoom = {
+    overlay: null,
+    wall: null,
+    room: null,
+    blackout: null,
+    welcome: null,
+    welcomeText: null,
+    scrollHint: null,
+    _domBuilt: false,
+    _onKeyDown: null,
+    _onMouseDown: null,
+    _onMouseMove: null,
+    _onMouseUp: null,
+
+    init() {
+      const btn = document.getElementById('gr-enter-btn');
+      if (!btn) return;
+      if (typeof galleryData === 'undefined' || !galleryData.length) {
+        btn.style.display = 'none';
+        return;
+      }
+      btn.addEventListener('click', () => this.open());
+    },
+
+    open() {
+      if (!this._domBuilt) {
+        this._buildDOM();
+        this._domBuilt = true;
+      }
+      this._buildScene();
+      this._enterSequence();
+    },
+
+    close() {
+      this._exitSequence();
+    },
+
+    _buildDOM() {
+      const overlay = document.createElement('div');
+      overlay.id = 'gallery-room-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Gallery Room');
+      overlay.innerHTML = `
+        <div class="gr-blackout"></div>
+        <div class="gr-welcome-screen">
+          <h2 class="gr-welcome-text">Welcome</h2>
+        </div>
+        <div class="gr-room">
+          <div class="gr-ui-bar">
+            <button class="gr-leave-btn" aria-label="Leave the gallery">&larr; Leave The Gallery</button>
+          </div>
+          <div class="gr-scroll-hint">&#x2192; scroll to explore</div>
+          <div class="gr-darkness"></div>
+          <div class="gr-scroll-track">
+            <div class="gr-ceiling-strip"></div>
+            <div class="gr-wall"></div>
+            <div class="gr-floor"></div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      this.overlay     = overlay;
+      this.blackout    = overlay.querySelector('.gr-blackout');
+      this.welcome     = overlay.querySelector('.gr-welcome-screen');
+      this.welcomeText = overlay.querySelector('.gr-welcome-text');
+      this.room        = overlay.querySelector('.gr-room');
+      this.wall        = overlay.querySelector('.gr-wall');
+      this.scrollHint  = overlay.querySelector('.gr-scroll-hint');
+      overlay.querySelector('.gr-leave-btn').addEventListener('click', () => this.close());
+    },
+
+    _buildScene() {
+      this.wall.innerHTML = '';
+      const placements = this._getDecoElements();
+      placements.forEach(p => {
+        if (p.type === 'photo') {
+          const item = galleryData[p.idx];
+          if (item) this.wall.appendChild(this._renderPhoto(item, p.idx));
+        } else if (p.type === 'slot') {
+          this.wall.appendChild(this._renderSlot(p.sprite));
+        } else {
+          this.wall.appendChild(this._renderDeco(p.type));
+        }
+      });
+    },
+
+    _getDecoElements() {
+      const spritePool = ['plant', 'plant2', 'plant3', 'bench', 'cat', 'mouse'];
+      const photos = galleryData.filter(item => item.type !== 'iframe');
+      const result = [];
+      let spriteIdx = 0;
+      let consecutiveBlanks = 0;
+
+      result.push({ type: 'nameplate' });
+      // Guard always stands between the entrance and the first photo
+      result.push({ type: 'slot', sprite: 'guard' });
+
+      photos.forEach((item, i) => {
+        result.push({ type: 'photo', idx: galleryData.indexOf(item) });
+        if (i < photos.length - 1) {
+          const forceSprite = consecutiveBlanks >= 2;
+          if (forceSprite || Math.random() < 0.65) {
+            result.push({ type: 'slot', sprite: spritePool[spriteIdx % spritePool.length] });
+            spriteIdx++;
+            consecutiveBlanks = 0;
+          } else {
+            result.push({ type: 'slot', sprite: null });
+            consecutiveBlanks++;
+          }
+        }
+      });
+
+      return result;
+    },
+
+    _renderPhoto(item, idx) {
+      const wrap = document.createElement('div');
+      wrap.className = 'gr-wall-item gr-wall-item--photo';
+
+      // Unit groups frame + plaque so plaque is always centered under the photo
+      const unit = document.createElement('div');
+      unit.className = 'gr-photo-unit';
+
+      const frame = document.createElement('div');
+      frame.className = 'gr-frame';
+
+      const img = document.createElement('img');
+      img.className = 'gr-photo';
+      img.src = item.url || item.src || '';
+      img.alt = item.title || '';
+      img.loading = 'lazy';
+      frame.appendChild(img);
+      unit.appendChild(frame);
+
+      if (item.title) {
+        const plaque = document.createElement('div');
+        plaque.className = 'gr-plaque';
+        const plaqueText = document.createElement('span');
+        plaqueText.className = 'gr-plaque-text';
+        plaqueText.textContent = item.title;
+        plaque.appendChild(plaqueText);
+        unit.appendChild(plaque);
+      }
+
+      wrap.appendChild(unit);
+      return wrap;
+    },
+
+    _spritePositions: {
+      guard:      { y: '22px',   xRange: ['0px'] },
+      plant:      { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      plant2:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      plant3:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      bench:      { y: '22px',   xRange: ['-80px', '-40px', '0px', '40px', '80px'] },
+      mouse:      { y: '0px',   xRange: ['-80px', '-50px', '-20px', '20px', '50px', '80px'] },
+      cat:        { y: '25px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      'exit-sign':{ y: '-120px', xRange: ['-40px', '0px', '40px'] },
+      'quote-card':{ y: '-60px', xRange: ['-30px', '0px', '30px'] },
+    },
+
+    _renderSlot(spriteName) {
+      const wrap = document.createElement('div');
+      wrap.className = 'gr-wall-item gr-deco-slot';
+      if (spriteName) {
+        wrap.dataset.decoType = spriteName;
+        const pos = this._spritePositions[spriteName] || { y: '22px', xRange: ['0px'] };
+        const x = pos.xRange[Math.floor(Math.random() * pos.xRange.length)];
+        wrap.style.setProperty('--gr-sprite-x', x);
+        wrap.style.setProperty('--gr-sprite-y', pos.y);
+        const fn = this.sprites[spriteName];
+        if (fn) wrap.innerHTML = fn();
+      }
+      return wrap;
+    },
+
+    _renderDeco(type) {
+      const wallTypes = ['exit-sign', 'quote-card'];
+      const wrap = document.createElement('div');
+
+      if (type === 'blank') {
+        wrap.className = 'gr-wall-item--blank';
+        return wrap;
+      }
+
+      if (type === 'nameplate') {
+        wrap.className = 'gr-wall-item gr-nameplate';
+        const spacer = document.createElement('div');
+        spacer.style.flex = '1';
+        wrap.appendChild(spacer);
+        // Outer row: [door+plaque column] [switch]  — switch is a sibling so it
+        // doesn't affect the centering of the plaque over the door
+        const bottomRow = document.createElement('div');
+        bottomRow.className = 'gr-door-row';
+        // Door + plaque column — plaque centers over door naturally
+        const doorCol = document.createElement('div');
+        doorCol.className = 'gr-door-col';
+        const inner = document.createElement('div');
+        inner.className = 'gr-nameplate-inner';
+        inner.textContent = (typeof galleryTitle !== 'undefined' && galleryTitle) ? galleryTitle : 'The Gallery';
+        doorCol.appendChild(inner);
+        const doorSvgWrap = document.createElement('div');
+        doorSvgWrap.innerHTML = this.sprites.door();
+        doorCol.appendChild(doorSvgWrap);
+        // Bench + trash can — visitor sign sits absolutely centred above this
+        const entranceItems = document.createElement('div');
+        entranceItems.className = 'gr-entrance-items';
+        entranceItems.innerHTML = this.sprites.entranceBench() + this.sprites.trashCan();
+        // Visitor counter sign (absolutely positioned above centre of bench row)
+        const visitorSign = document.createElement('div');
+        visitorSign.className = 'gr-visitor-sign';
+        const visitorLabel = document.createElement('div');
+        visitorLabel.className = 'gr-visitor-label';
+        visitorLabel.textContent = 'Visitors';
+        const badge = document.createElement('img');
+        badge.className = 'gr-visitor-badge';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
+        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=111100&labelColor=111100&label=visitors`;
+        badge.alt = 'visitor count';
+        visitorSign.appendChild(visitorLabel);
+        visitorSign.appendChild(badge);
+        const visitorWrap = document.createElement('div');
+        visitorWrap.className = 'gr-visitor-wrap';
+        const firework = document.createElement('div');
+        firework.className = 'gr-firework';
+        for (let i = 0; i < 12; i++) {
+          const spark = document.createElement('div');
+          spark.className = 'gr-spark';
+          firework.appendChild(spark);
+        }
+        visitorWrap.appendChild(visitorSign);
+        visitorWrap.appendChild(firework);
+        entranceItems.appendChild(visitorWrap);
+        this._firework = firework;
+        bottomRow.appendChild(entranceItems);
+        bottomRow.appendChild(doorCol);
+        // Switch to the right, lifted to handle height
+        const switchWrap = document.createElement('div');
+        switchWrap.className = 'gr-lightswitch-wrap';
+        switchWrap.innerHTML = this.sprites.lightSwitch();
+        switchWrap.addEventListener('click', () => this._toggleLights());
+        bottomRow.appendChild(switchWrap);
+        wrap.appendChild(bottomRow);
+        return wrap;
+      }
+
+      wrap.className = 'gr-wall-item ' + (wallTypes.includes(type) ? 'gr-wall-item--deco-wall' : 'gr-wall-item--deco');
+      wrap.dataset.decoType = type;
+
+      const fn = this.sprites[type];
+      if (fn) {
+        if (type === 'quote-card') {
+          // Wrap SVG + text in a relative container so the text overlays the SVG only
+          const desc = (typeof galleryDescription !== 'undefined')
+            ? stripTags(galleryDescription).substring(0, 100)
+            : '';
+          const wrapEl = document.createElement('div');
+          wrapEl.className = 'gr-quote-wrap';
+          wrapEl.innerHTML = fn(desc);
+          wrap.appendChild(wrapEl);
+        } else {
+          wrap.innerHTML = fn();
+        }
+      }
+      return wrap;
+    },
+
+    _enterSequence() {
+      this.overlay.classList.add('gr-visible');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        setTimeout(() => this.welcomeText.classList.add('gr-text-visible'), 100);
+        setTimeout(() => this.welcomeText.classList.remove('gr-text-visible'), 2000);
+        setTimeout(() => {
+          this.welcome.classList.add('gr-hidden');
+          this.room.classList.add('gr-room-visible');
+          this.blackout.classList.add('gr-fade-out');
+        }, 2600);
+        setTimeout(() => {
+          this._bindScroll();
+          setTimeout(() => this.scrollHint.classList.add('gr-hint-hidden'), 3000);
+        }, 3400);
+        setTimeout(() => {
+          const fw = this._firework;
+          if (!fw) return;
+          const burst = () => {
+            fw.classList.remove('gr-firework-active');
+            void fw.offsetWidth; // force reflow so animation restarts
+            fw.classList.add('gr-firework-active');
+          };
+          burst();
+          setTimeout(burst, 1100);
+        }, 5200);
+      });
+    },
+
+    _exitSequence() {
+      this._unbindScroll();
+      this.blackout.classList.remove('gr-fade-out');
+      this.room.classList.remove('gr-room-visible');
+      setTimeout(() => {
+        this.overlay.classList.remove('gr-visible');
+        this.overlay.classList.remove('gr-dark');
+        document.body.style.overflow = '';
+        this.welcome.classList.remove('gr-hidden');
+        this.welcomeText.classList.remove('gr-text-visible');
+        this.room.scrollLeft = 0;
+        this.scrollHint.classList.remove('gr-hint-hidden');
+        const btn = document.getElementById('gr-enter-btn');
+        if (btn) btn.focus();
+      }, 900);
+    },
+
+    _bindScroll() {
+      const room = this.room;
+      let isDragging = false, startX = 0, scrollStart = 0;
+
+      this._onKeyDown = (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); this._scrollBy(280); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); this._scrollBy(-280); }
+        if (e.key === 'Escape')     this.close();
+      };
+      this._onMouseDown = (e) => {
+        if (e.button !== 0) return;
+        isDragging = true; startX = e.pageX; scrollStart = room.scrollLeft;
+        e.preventDefault();
+      };
+      this._onMouseMove = (e) => {
+        if (!isDragging) return;
+        room.scrollLeft = scrollStart - (e.pageX - startX);
+      };
+      this._onMouseUp = () => { isDragging = false; };
+
+      // Redirect vertical wheel/trackpad scroll to horizontal
+      this._onWheel = (e) => {
+        e.preventDefault();
+        room.scrollLeft += e.deltaY + e.deltaX;
+      };
+
+      document.addEventListener('keydown', this._onKeyDown);
+      room.addEventListener('mousedown', this._onMouseDown);
+      window.addEventListener('mousemove', this._onMouseMove);
+      window.addEventListener('mouseup', this._onMouseUp);
+      room.addEventListener('wheel', this._onWheel, { passive: false });
+    },
+
+    _unbindScroll() {
+      if (this._onKeyDown)   document.removeEventListener('keydown', this._onKeyDown);
+      if (this._onMouseDown && this.room) this.room.removeEventListener('mousedown', this._onMouseDown);
+      if (this._onMouseMove) window.removeEventListener('mousemove', this._onMouseMove);
+      if (this._onMouseUp)   window.removeEventListener('mouseup', this._onMouseUp);
+      if (this._onWheel && this.room)     this.room.removeEventListener('wheel', this._onWheel);
+    },
+
+    _scrollBy(dx) {
+      this.room.scrollBy({ left: dx, behavior: 'smooth' });
+    },
+
+    _toggleLights() {
+      this.overlay.classList.toggle('gr-dark');
+    },
+
+    sprites: {
+      'door': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 32" shape-rendering="crispEdges" class="gr-door">
+  <!-- Door frame -->
+  <rect width="16" height="32" fill="#2c1e0f"/>
+  <!-- Door body -->
+  <rect x="1" y="0" width="14" height="30" fill="#6b4226"/>
+  <!-- Top-left panel -->
+  <rect x="2" y="2" width="5" height="10" fill="#3a2010"/>
+  <rect x="2" y="2" width="5" height="1" fill="#9a6040"/>
+  <rect x="2" y="2" width="1" height="10" fill="#9a6040"/>
+  <rect x="3" y="3" width="3" height="8" fill="#5a3820"/>
+  <!-- Top-right panel -->
+  <rect x="9" y="2" width="5" height="10" fill="#3a2010"/>
+  <rect x="9" y="2" width="5" height="1" fill="#9a6040"/>
+  <rect x="9" y="2" width="1" height="10" fill="#9a6040"/>
+  <rect x="10" y="3" width="3" height="8" fill="#5a3820"/>
+  <!-- Bottom-left panel (taller) -->
+  <rect x="2" y="14" width="5" height="14" fill="#3a2010"/>
+  <rect x="2" y="14" width="5" height="1" fill="#9a6040"/>
+  <rect x="2" y="14" width="1" height="14" fill="#9a6040"/>
+  <rect x="3" y="15" width="3" height="12" fill="#5a3820"/>
+  <!-- Bottom-right panel -->
+  <rect x="9" y="14" width="5" height="14" fill="#3a2010"/>
+  <rect x="9" y="14" width="5" height="1" fill="#9a6040"/>
+  <rect x="9" y="14" width="1" height="14" fill="#9a6040"/>
+  <rect x="10" y="15" width="3" height="12" fill="#5a3820"/>
+  <!-- Handle backplate -->
+  <rect x="11" y="19" width="1" height="5" fill="#8b6200"/>
+  <!-- Handle knob -->
+  <rect x="12" y="20" width="2" height="3" fill="#b8860b"/>
+  <rect x="12" y="20" width="1" height="1" fill="#daa520"/>
+  <!-- Keyhole -->
+  <rect x="11" y="23" width="1" height="2" fill="#1a1208"/>
+  <!-- Threshold -->
+  <rect x="0" y="30" width="16" height="2" fill="#1a1208"/>
+</svg>`,
+      'lightSwitch': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 10" shape-rendering="crispEdges" class="gr-switch-svg">
+  <!-- Plate shadow (right + bottom) -->
+  <rect width="6" height="10" fill="#8a8070"/>
+  <!-- Plate face -->
+  <rect x="0" y="0" width="5" height="9" fill="#d4ccbc"/>
+  <!-- LED indicator -->
+  <rect x="3" y="1" width="1" height="1" class="gr-switch-led"/>
+  <!-- Rocker -->
+  <rect x="1" y="3" width="3" height="5" class="gr-switch-rocker"/>
+  <!-- Rocker top highlight -->
+  <rect x="1" y="3" width="3" height="1" fill="rgba(255,255,255,0.25)"/>
+</svg>`,
+      'guard': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 26 42" shape-rendering="crispEdges" class="gr-sprite">
+  <!-- Cap crown -->
+  <rect x="4" y="0" width="8" height="2" fill="#1a2040"/>
+  <!-- Cap brim -->
+  <rect x="3" y="2" width="10" height="1" fill="#1a2040"/>
+  <!-- Cap badge -->
+  <rect x="7" y="0" width="2" height="1" fill="#ffd700"/>
+  <!-- Cap underside shadow -->
+  <rect x="3" y="3" width="10" height="1" fill="#0d1020"/>
+  <!-- Face -->
+  <rect x="5" y="3" width="6" height="5" fill="#e8b59a"/>
+  <!-- Eyes (half-closed, relaxed) -->
+  <rect x="6" y="5" width="2" height="1" fill="#2a1a0a"/>
+  <rect x="9" y="5" width="2" height="1" fill="#2a1a0a"/>
+  <!-- Ears -->
+  <rect x="4" y="4" width="1" height="2" fill="#d4a088"/>
+  <rect x="11" y="4" width="1" height="2" fill="#d4a088"/>
+  <!-- Whistling mouth — small puckered O -->
+  <rect x="7" y="7" width="2" height="1" fill="#c08878"/>
+  <rect x="7" y="7" width="1" height="1" fill="#903030"/>
+  <rect x="8" y="7" width="1" height="1" fill="#903030"/>
+  <!-- Neck -->
+  <rect x="7" y="8" width="2" height="1" fill="#e8b59a"/>
+  <!-- Shoulders -->
+  <rect x="3" y="9" width="10" height="1" fill="#1a2040"/>
+  <!-- Epaulettes -->
+  <rect x="3" y="9" width="2" height="2" fill="#c8a000"/>
+  <rect x="11" y="9" width="2" height="2" fill="#c8a000"/>
+  <!-- Arms at sides -->
+  <rect x="3" y="11" width="2" height="7" fill="#1a2040"/>
+  <rect x="11" y="11" width="2" height="7" fill="#1a2040"/>
+  <!-- Torso — plain dark uniform -->
+  <rect x="5" y="9" width="6" height="8" fill="#1a2040"/>
+  <!-- Shirt front / centre seam -->
+  <rect x="7" y="9" width="2" height="7" fill="#151530"/>
+  <!-- Badge left chest -->
+  <rect x="5" y="11" width="2" height="2" fill="#ffd700"/>
+  <!-- Buttons -->
+  <rect x="7" y="11" width="1" height="1" fill="#c8a000"/>
+  <rect x="7" y="13" width="1" height="1" fill="#c8a000"/>
+  <rect x="7" y="15" width="1" height="1" fill="#c8a000"/>
+  <!-- Belt -->
+  <rect x="4" y="17" width="8" height="1" fill="#2a1a00"/>
+  <rect x="7" y="17" width="2" height="1" fill="#c8a000"/>
+  <!-- Hands -->
+  <rect x="3" y="18" width="2" height="1" fill="#e8b59a"/>
+  <rect x="11" y="18" width="2" height="1" fill="#e8b59a"/>
+  <!-- Legs -->
+  <rect x="5" y="18" width="2" height="9" fill="#0d0d2a"/>
+  <rect x="6" y="18" width="1" height="8" fill="#1a1a3e"/>
+  <rect x="9" y="18" width="2" height="9" fill="#0d0d2a"/>
+  <rect x="10" y="18" width="1" height="8" fill="#1a1a3e"/>
+  <!-- Shoes — extend to bottom of viewBox -->
+  <rect x="4" y="27" width="4" height="3" fill="#111"/>
+  <rect x="8" y="27" width="4" height="3" fill="#111"/>
+  <!-- Ground shadow -->
+  <rect x="4" y="30" width="8" height="1" fill="rgba(0,0,0,0.18)"/>
+  <!-- Musical notes drifting top-right -->
+  <g class="gr-note-1">
+    <rect x="16" y="-4" width="1" height="4" fill="#555"/>
+    <rect x="14" y="-1" width="3" height="2" fill="#555"/>
+    <rect x="16" y="-4" width="3" height="1" fill="#555"/>
+  </g>
+  <g class="gr-note-2">
+    <rect x="21" y="-8" width="1" height="4" fill="#555"/>
+    <rect x="19" y="-5" width="3" height="2" fill="#555"/>
+    <rect x="21" y="-8" width="3" height="1" fill="#555"/>
+  </g>
+</svg>`,
+
+      'mouse': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 14" shape-rendering="crispEdges" class="gr-sprite">
+  <!-- Hole arch (dark, no background — wall shows through) -->
+  <rect x="5" y="0" width="8" height="1" fill="#0e0600"/>
+  <rect x="4" y="1" width="10" height="1" fill="#0e0600"/>
+  <rect x="3" y="2" width="12" height="12" fill="#0e0600"/>
+  <!-- Mouse head inside hole, sitting at the bottom -->
+  <rect x="5" y="8" width="8" height="6" fill="#b8b8b8"/>
+  <rect x="6" y="7" width="6" height="2" fill="#b8b8b8"/>
+  <!-- Ears -->
+  <rect x="4" y="8" width="2" height="2" fill="#aaa"/>
+  <rect x="12" y="8" width="2" height="2" fill="#aaa"/>
+  <rect x="4" y="8" width="1" height="1" fill="#e08888"/>
+  <rect x="13" y="8" width="1" height="1" fill="#e08888"/>
+  <!-- Eyes -->
+  <rect x="6" y="10" width="2" height="1" fill="#111"/>
+  <rect x="10" y="10" width="2" height="1" fill="#111"/>
+  <!-- Nose -->
+  <rect x="8" y="12" width="2" height="1" fill="#d06060"/>
+  <!-- Whiskers -->
+  <rect x="2" y="11" width="3" height="1" fill="#777"/>
+  <rect x="13" y="11" width="3" height="1" fill="#777"/>
+</svg>`,
+
+      'entranceBench': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 22" shape-rendering="crispEdges" class="gr-entrance-bench">
+  <rect x="2" y="2" width="36" height="2" fill="#8b4a2b"/>
+  <rect x="2" y="4" width="36" height="2" fill="#6b3a1f"/>
+  <rect x="4" y="0" width="2" height="8" fill="#4a2810"/>
+  <rect x="34" y="0" width="2" height="8" fill="#4a2810"/>
+  <rect x="2" y="6" width="36" height="3" fill="#8b4a2b"/>
+  <rect x="2" y="9" width="36" height="3" fill="#6b3a1f"/>
+  <rect x="4" y="12" width="3" height="10" fill="#4a2810"/>
+  <rect x="33" y="12" width="3" height="10" fill="#4a2810"/>
+  <rect x="4" y="17" width="32" height="2" fill="#5a3015"/>
+</svg>`,
+
+      'trashCan': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 18" shape-rendering="crispEdges" class="gr-entrance-trashcan">
+  <!-- handle -->
+  <rect x="3" y="0" width="4" height="1" fill="#6a7588"/>
+  <!-- lid -->
+  <rect x="1" y="1" width="8" height="1" fill="#6a7588"/>
+  <rect x="1" y="2" width="8" height="2" fill="#5a6578"/>
+  <!-- lid rim -->
+  <rect x="0" y="3" width="10" height="1" fill="#3a4558"/>
+  <!-- body -->
+  <rect x="1" y="4" width="8" height="12" fill="#4a5568"/>
+  <!-- highlight stripe -->
+  <rect x="2" y="4" width="1" height="11" fill="#7a8598"/>
+  <!-- vertical seam -->
+  <rect x="5" y="4" width="1" height="12" fill="#3a4558"/>
+  <!-- base -->
+  <rect x="0" y="16" width="10" height="2" fill="#3a4558"/>
+</svg>`,
+
+      'bench': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 22" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="2" y="2" width="36" height="2" fill="#8b4a2b"/>
+  <rect x="2" y="4" width="36" height="2" fill="#6b3a1f"/>
+  <rect x="4" y="0" width="2" height="8" fill="#4a2810"/>
+  <rect x="34" y="0" width="2" height="8" fill="#4a2810"/>
+  <rect x="2" y="6" width="36" height="3" fill="#8b4a2b"/>
+  <rect x="2" y="9" width="36" height="3" fill="#6b3a1f"/>
+  <rect x="4" y="12" width="3" height="10" fill="#4a2810"/>
+  <rect x="33" y="12" width="3" height="10" fill="#4a2810"/>
+  <rect x="4" y="17" width="32" height="2" fill="#5a3015"/>
+</svg>`,
+
+      'plant': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 38" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="10" y="0" width="4" height="10" fill="#3d7a25"/>
+  <rect x="5" y="3" width="7" height="5" fill="#2d5a1b"/>
+  <rect x="12" y="3" width="7" height="5" fill="#2d5a1b"/>
+  <rect x="6" y="7" width="12" height="6" fill="#3d7a25"/>
+  <rect x="4" y="9" width="6" height="5" fill="#2d5a1b"/>
+  <rect x="14" y="9" width="6" height="5" fill="#2d5a1b"/>
+  <rect x="7" y="12" width="10" height="5" fill="#4a9030"/>
+  <rect x="10" y="17" width="4" height="5" fill="#4a7a28"/>
+  <rect x="5" y="22" width="14" height="3" fill="#c8960c"/>
+  <rect x="6" y="25" width="12" height="8" fill="#8b6914"/>
+  <rect x="7" y="31" width="10" height="4" fill="#6b4f0a"/>
+  <rect x="7" y="25" width="2" height="6" fill="#b8860b"/>
+</svg>`,
+
+      'plant2': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 38" shape-rendering="crispEdges" class="gr-sprite">
+  <!-- Cactus: saguaro style with two arms -->
+  <!-- Main stem -->
+  <rect x="7" y="3" width="6" height="25" fill="#4a8a20"/>
+  <rect x="8" y="3" width="4" height="24" fill="#5aa028"/>
+  <rect x="9" y="3" width="2" height="22" fill="#6ab832"/>
+  <!-- Top dome -->
+  <rect x="8" y="2" width="4" height="2" fill="#5aa028"/>
+  <rect x="9" y="1" width="2" height="2" fill="#6ab832"/>
+  <!-- Left arm -->
+  <rect x="2" y="14" width="5" height="4" fill="#4a8a20"/>
+  <rect x="2" y="8" width="4" height="10" fill="#4a8a20"/>
+  <rect x="3" y="8" width="2" height="10" fill="#5aa028"/>
+  <rect x="3" y="7" width="2" height="2" fill="#6ab832"/>
+  <!-- Right arm -->
+  <rect x="13" y="16" width="5" height="4" fill="#4a8a20"/>
+  <rect x="14" y="10" width="4" height="10" fill="#4a8a20"/>
+  <rect x="15" y="10" width="2" height="10" fill="#5aa028"/>
+  <rect x="15" y="9" width="2" height="2" fill="#6ab832"/>
+  <!-- Spines -->
+  <rect x="6" y="7" width="1" height="1" fill="#ddeebb"/>
+  <rect x="13" y="7" width="1" height="1" fill="#ddeebb"/>
+  <rect x="6" y="13" width="1" height="1" fill="#ddeebb"/>
+  <rect x="13" y="13" width="1" height="1" fill="#ddeebb"/>
+  <rect x="6" y="20" width="1" height="1" fill="#ddeebb"/>
+  <rect x="13" y="20" width="1" height="1" fill="#ddeebb"/>
+  <rect x="1" y="11" width="1" height="1" fill="#ddeebb"/>
+  <rect x="6" y="11" width="1" height="1" fill="#ddeebb"/>
+  <rect x="14" y="13" width="1" height="1" fill="#ddeebb"/>
+  <rect x="18" y="18" width="1" height="1" fill="#ddeebb"/>
+  <!-- Pot -->
+  <rect x="5" y="28" width="10" height="3" fill="#c8640a"/>
+  <rect x="6" y="31" width="8" height="5" fill="#a85208"/>
+  <rect x="7" y="34" width="6" height="4" fill="#8b4206"/>
+</svg>`,
+
+      'plant3': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 38" shape-rendering="crispEdges" class="gr-sprite">
+  <!-- Snake plant (Sansevieria): tall upright pointed leaves with yellow edges and banding -->
+  <!-- Left leaf -->
+  <rect x="2" y="10" width="5" height="18" fill="#2a5a1a"/>
+  <rect x="3" y="10" width="3" height="17" fill="#3d7a25"/>
+  <rect x="4" y="10" width="1" height="15" fill="#4a9030"/>
+  <rect x="3" y="14" width="3" height="2" fill="#5aaa38"/>
+  <rect x="3" y="20" width="3" height="2" fill="#5aaa38"/>
+  <rect x="2" y="10" width="1" height="18" fill="#c8a020"/>
+  <rect x="6" y="10" width="1" height="18" fill="#c8a020"/>
+  <rect x="3" y="8" width="3" height="3" fill="#2a5a1a"/>
+  <rect x="4" y="7" width="1" height="2" fill="#2a5a1a"/>
+  <!-- Center leaf (tallest) -->
+  <rect x="8" y="2" width="5" height="26" fill="#2a5a1a"/>
+  <rect x="9" y="2" width="3" height="25" fill="#3d7a25"/>
+  <rect x="10" y="2" width="1" height="23" fill="#4a9030"/>
+  <rect x="9" y="6" width="3" height="2" fill="#5aaa38"/>
+  <rect x="9" y="12" width="3" height="2" fill="#5aaa38"/>
+  <rect x="9" y="18" width="3" height="2" fill="#5aaa38"/>
+  <rect x="8" y="2" width="1" height="26" fill="#c8a020"/>
+  <rect x="12" y="2" width="1" height="26" fill="#c8a020"/>
+  <rect x="9" y="0" width="3" height="3" fill="#2a5a1a"/>
+  <rect x="10" y="0" width="1" height="2" fill="#3d7a25"/>
+  <!-- Right leaf -->
+  <rect x="13" y="7" width="5" height="21" fill="#2a5a1a"/>
+  <rect x="14" y="7" width="3" height="20" fill="#3d7a25"/>
+  <rect x="15" y="7" width="1" height="18" fill="#4a9030"/>
+  <rect x="14" y="11" width="3" height="2" fill="#5aaa38"/>
+  <rect x="14" y="17" width="3" height="2" fill="#5aaa38"/>
+  <rect x="13" y="7" width="1" height="21" fill="#c8a020"/>
+  <rect x="17" y="7" width="1" height="21" fill="#c8a020"/>
+  <rect x="14" y="5" width="3" height="3" fill="#2a5a1a"/>
+  <rect x="15" y="4" width="1" height="2" fill="#2a5a1a"/>
+  <!-- Pot -->
+  <rect x="5" y="28" width="10" height="3" fill="#c8960c"/>
+  <rect x="6" y="31" width="8" height="5" fill="#8b6914"/>
+  <rect x="7" y="34" width="6" height="4" fill="#6b4f0a"/>
+</svg>`,
+
+      'cat': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 26" shape-rendering="crispEdges" overflow="visible" class="gr-sprite">
+  <!-- Chair -->
+  <rect x="2" y="15" width="32" height="3" fill="#8b4a2b"/>
+  <rect x="2" y="18" width="32" height="2" fill="#6b3a1f"/>
+  <rect x="28" y="5" width="2" height="13" fill="#4a2810"/>
+  <rect x="28" y="5" width="6" height="2" fill="#6b3a1f"/>
+  <rect x="3" y="20" width="2" height="6" fill="#4a2810"/>
+  <rect x="31" y="20" width="2" height="6" fill="#4a2810"/>
+  <!-- Cat body -->
+  <rect x="5" y="9" width="18" height="7" fill="#888"/>
+  <rect x="6" y="8" width="16" height="8" fill="#999"/>
+  <rect x="8" y="9" width="1" height="5" fill="#666"/>
+  <rect x="13" y="9" width="1" height="5" fill="#666"/>
+  <rect x="18" y="9" width="1" height="5" fill="#666"/>
+  <!-- Head -->
+  <rect x="17" y="7" width="6" height="5" fill="#999"/>
+  <rect x="17" y="5" width="2" height="2" fill="#888"/>
+  <rect x="21" y="5" width="2" height="2" fill="#888"/>
+  <rect x="17" y="5" width="1" height="1" fill="#cc9999"/>
+  <rect x="21" y="5" width="1" height="1" fill="#cc9999"/>
+  <rect x="18" y="9" width="2" height="1" fill="#555"/>
+  <rect x="21" y="9" width="2" height="1" fill="#555"/>
+  <rect x="20" y="10" width="1" height="1" fill="#cc7777"/>
+  <!-- Paw -->
+  <rect x="5" y="14" width="2" height="2" fill="#888"/>
+  <rect x="4" y="12" width="2" height="2" fill="#777"/>
+  <rect x="5" y="10" width="2" height="2" fill="#888"/>
+  <!-- Tail — rotates from base where it meets rump -->
+  <g class="gr-cat-tail">
+    <rect x="3" y="13" width="2" height="3" fill="#888"/>
+    <rect x="2" y="16" width="2" height="2" fill="#888"/>
+    <rect x="1" y="17" width="2" height="3" fill="#999"/>
+    <rect x="0" y="19" width="2" height="1" fill="#aaa"/>
+  </g>
+</svg>`,
+
+      'exit-sign': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 20" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="0" y="0" width="44" height="20" fill="#004400"/>
+  <rect x="1" y="1" width="42" height="18" fill="#007700"/>
+  <rect x="4" y="4" width="1" height="12" fill="#00ff00"/>
+  <rect x="4" y="4" width="6" height="2" fill="#00ff00"/>
+  <rect x="4" y="9" width="5" height="2" fill="#00ff00"/>
+  <rect x="4" y="14" width="6" height="2" fill="#00ff00"/>
+  <rect x="13" y="4" width="2" height="2" fill="#00ff00"/>
+  <rect x="17" y="4" width="2" height="2" fill="#00ff00"/>
+  <rect x="15" y="8" width="2" height="2" fill="#00ff00"/>
+  <rect x="13" y="12" width="2" height="2" fill="#00ff00"/>
+  <rect x="17" y="12" width="2" height="2" fill="#00ff00"/>
+  <rect x="15" y="16" width="2" height="2" fill="#00ff00"/>
+  <rect x="22" y="4" width="4" height="2" fill="#00ff00"/>
+  <rect x="23" y="6" width="2" height="8" fill="#00ff00"/>
+  <rect x="22" y="14" width="4" height="2" fill="#00ff00"/>
+  <rect x="29" y="4" width="6" height="2" fill="#00ff00"/>
+  <rect x="31" y="6" width="2" height="10" fill="#00ff00"/>
+</svg>`,
+
+      'quote-card': (text) => {
+        const safe = (text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 52" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="0" y="0" width="72" height="52" fill="#2c1e0f"/>
+  <rect x="3" y="3" width="66" height="46" fill="#faf6f0"/>
+  <rect x="6" y="6" width="60" height="1" fill="#c8b090"/>
+  <rect x="6" y="45" width="60" height="1" fill="#c8b090"/>
+  <rect x="6" y="6" width="1" height="40" fill="#c8b090"/>
+  <rect x="65" y="6" width="1" height="40" fill="#c8b090"/>
+  <rect x="7" y="7" width="4" height="1" fill="#8b6914"/>
+  <rect x="7" y="7" width="1" height="4" fill="#8b6914"/>
+  <rect x="61" y="7" width="4" height="1" fill="#8b6914"/>
+  <rect x="64" y="7" width="1" height="4" fill="#8b6914"/>
+  <rect x="7" y="44" width="4" height="1" fill="#8b6914"/>
+  <rect x="7" y="41" width="1" height="4" fill="#8b6914"/>
+  <rect x="61" y="44" width="4" height="1" fill="#8b6914"/>
+  <rect x="64" y="41" width="1" height="4" fill="#8b6914"/>
+</svg><p class="gr-quote-text">${safe || 'Light is the subject.'}</p>`;
+      }
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => { GalleryRoom.init(); });
+})();
 </script>
 
 </div>
