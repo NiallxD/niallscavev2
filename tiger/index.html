@@ -240,40 +240,157 @@
 
 /* ── Dark mode ──────────────────────────────────────────────────── */
 
-/* Full-screen darkness layer — sits above wall/floor (z-index 1 inside room stacking context)
-   but photo items are z-index 2 so they poke through */
+/* Full-screen darkness layer — sits above wall/floor (z-index 10)
+   but photo items can poke through */
 .gr-darkness {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 10;
   background: rgba(8, 4, 1, 0);
   pointer-events: none;
   transition: background 700ms ease;
 }
-.gr-dark .gr-darkness { background: rgba(8, 4, 1, 0.92); }
+.gr-dark .gr-darkness,
+.gr-spotlight-mode .gr-darkness { background: rgba(8, 4, 1, 0.94); }
 
-/* Photos float above darkness */
-.gr-wall-item--photo { z-index: 2; }
-
-/* Ceiling and floor dim directly (no children to protect) */
-.gr-dark .gr-ceiling-strip { filter: brightness(0.4); transition: filter 700ms ease; }
-.gr-dark .gr-floor         { filter: brightness(0.18); transition: filter 700ms ease; }
-
-/* Spotlight cone emanates from top of each photo item down onto the frame */
-.gr-wall-item--photo {
-  background: transparent;
-  transition: background 700ms ease;
+/* Photos by default sit below the darkness */
+.gr-wall-item--photo { 
+  z-index: 2; 
+  cursor: pointer;
+  transition: transform 300ms ease;
 }
-.gr-dark .gr-wall-item--photo {
+
+/* In general dark mode (switch), all photos poke through */
+.gr-dark .gr-wall-item--photo { z-index: 20; }
+
+/* In spotlight mode, ONLY the focused one rises */
+.gr-spotlight-mode .gr-wall-item--photo { z-index: 2; }
+.gr-spotlight-mode .gr-wall-item--photo.gr-focused { 
+  z-index: 20; 
+}
+
+.gr-wall-item--photo .gr-photo-unit {
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
+  transform: scale(1.02) translateX(-18vw);
+}
+
+@media (max-width: 1000px) {
+  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
+    transform: scale(1.02) translateX(-12vw);
+  }
+}
+
+/* Caption on the right */
+.gr-spotlight-info {
+  position: absolute;
+  left: calc(50% + 12vw);
+  width: 32vw;
+  max-width: 480px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(30px);
+  /* Fast exit transition */
+  transition: opacity 150ms ease, transform 150ms ease;
+  color: #fff;
+  z-index: 21;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gr-wall-item--photo.gr-focused .gr-spotlight-info {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  /* Elegant entry transition with delay */
+  transition: opacity 500ms ease 200ms, transform 500ms ease 200ms;
+}
+
+.gr-spotlight-title {
+  font-family: var(--gr-font-pixel);
+  font-size: clamp(10px, 1.2vw, 16px);
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.gr-spotlight-desc {
+  font-family: var(--gr-font-pixel-sm);
+  font-size: clamp(8px, 0.9vw, 12px);
+  line-height: 2.2;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.gr-spotlight-desc p {
+  margin-bottom: 1.2em;
+}
+
+.gr-spotlight-gear {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.gr-spotlight-gear span {
+  font-family: var(--gr-font-pixel-sm);
+  font-size: clamp(6px, 0.7vw, 9px);
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+/* Ceiling and floor dim directly */
+.gr-dark .gr-ceiling-strip, .gr-spotlight-mode .gr-ceiling-strip { filter: brightness(0.3); transition: filter 700ms ease; }
+.gr-dark .gr-floor, .gr-spotlight-mode .gr-floor                 { filter: brightness(0.12); transition: filter 700ms ease; }
+
+/* Spotlight circle projected behind the focused frame */
+.gr-wall-item--photo.gr-focused .gr-photo-unit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140vh;
+  height: 140vh;
+  transform: translate(-50%, -50%);
   background: radial-gradient(
-    ellipse 75% 55% at 50% 42%,
-    rgba(255, 238, 148, 0.16) 0%,
-    rgba(255, 238, 148, 0.08) 45%,
-    transparent 75%
+    circle at center,
+    rgba(255, 248, 220, 0.18) 0%,
+    rgba(255, 248, 220, 0.08) 25%,
+    rgba(255, 248, 220, 0.02) 45%,
+    transparent 70%
   );
+  pointer-events: none;
+  z-index: -1;
+  animation: gr-spotlight-flicker 4s infinite alternate;
 }
 
-/* Subtle warm glow on the frame itself in dark mode */
+@keyframes gr-spotlight-flicker {
+  0%, 100% { opacity: 1; filter: blur(0px); }
+  50% { opacity: 0.94; filter: blur(1px); }
+  80% { opacity: 0.98; }
+}
+
+/* Focused frame gets a stronger warm glow */
+.gr-wall-item--photo.gr-focused .gr-frame {
+  box-shadow:
+    0 0 0 4px #1a1208,
+    0 0 0 16px var(--gr-frame-outer),
+    0 0 0 18px #4a3020,
+    0 25px 60px rgba(0,0,0,0.9),
+    0 0 100px rgba(255, 235, 150, 0.25);
+}
+
+/* Subtle warm glow on the frame itself in general dark mode */
 .gr-dark .gr-frame {
   box-shadow:
     0 0 0 4px #1a1208,
@@ -340,14 +457,16 @@
 .gr-dark .gr-switch-led { fill: #66bb6a; }
 
 /* ── UI bar ─────────────────────────────────────────────────────── */
-/* UI bar */
 .gr-ui-bar {
   position: fixed;
   top: 1.25rem;
   right: 1.5rem;
   z-index: 2010;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 }
-.gr-leave-btn {
+.gr-leave-btn, .gr-light-toggle {
   font-family: var(--gr-font-pixel-sm);
   font-size: 0.65rem;
   color: #fff;
@@ -357,12 +476,34 @@
   cursor: pointer;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+  transition: all 150ms ease;
 }
-.gr-leave-btn:hover {
+.gr-leave-btn:hover, .gr-light-toggle:hover {
   background: rgba(60,40,20,0.9);
   border-color: #b8860b;
   color: #b8860b;
+}
+
+/* Subtle light toggle: only shows when lights are off */
+.gr-light-toggle {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  pointer-events: none;
+  background: rgba(255, 235, 150, 0.1);
+  border-color: rgba(255, 235, 150, 0.2);
+  color: rgba(255, 235, 150, 0.8);
+}
+.gr-dark .gr-light-toggle {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.gr-light-toggle:hover {
+  background: rgba(255, 235, 150, 0.2);
+  border-color: #ffd700;
+  color: #ffd700;
 }
 
 /* Scroll hint */
@@ -534,6 +675,9 @@
 @media (max-width: 768px) {
   .gr-frame img.gr-photo {
     height: 42vh;
+    max-width: calc(100vw - 70px);
+    width: auto;
+    object-fit: contain;
   }
 }
 
@@ -543,6 +687,12 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .gr-deco-slot {
+    width: 200px;
+  }
 }
 /* Sprites in slots sit on the floor (overlap the floor line for depth) */
 .gr-deco-slot .gr-sprite {
@@ -1228,10 +1378,14 @@
     welcomeText: null,
     scrollHint: null,
     _domBuilt: false,
+    _focusedPhoto: null,
+    _isProgrammaticScroll: false,
     _onKeyDown: null,
     _onMouseDown: null,
     _onMouseMove: null,
     _onMouseUp: null,
+    _onWheel: null,
+    _onScroll: null,
 
     init() {
       const btn = document.getElementById('gr-enter-btn');
@@ -1286,6 +1440,7 @@
         </div>
         <div class="gr-room">
           <div class="gr-ui-bar">
+            <button class="gr-light-toggle" aria-label="Turn lights on">Restore Lights</button>
             <button class="gr-leave-btn" aria-label="Leave the gallery">&larr; Leave The Gallery</button>
           </div>
           <div class="gr-scroll-hint">&#x2192; scroll to explore</div>
@@ -1306,6 +1461,7 @@
       this.wall        = overlay.querySelector('.gr-wall');
       this.scrollHint  = overlay.querySelector('.gr-scroll-hint');
       overlay.querySelector('.gr-leave-btn').addEventListener('click', () => this.close());
+      overlay.querySelector('.gr-light-toggle').addEventListener('click', () => this._toggleLights());
     },
 
     _buildScene() {
@@ -1415,6 +1571,45 @@
       }
 
       wrap.appendChild(unit);
+
+      // Spotlight info (shown on the right when focused)
+      if (item.title || item.caption || item.gear) {
+        const info = document.createElement('div');
+        info.className = 'gr-spotlight-info';
+        
+        if (item.title) {
+          const t = document.createElement('h3');
+          t.className = 'gr-spotlight-title';
+          t.textContent = item.title;
+          info.appendChild(t);
+        }
+
+        if (item.caption) {
+          const d = document.createElement('div');
+          d.className = 'gr-spotlight-desc';
+          d.innerHTML = item.caption;
+          info.appendChild(d);
+        }
+
+        if (item.gear) {
+          const g = document.createElement('div');
+          g.className = 'gr-spotlight-gear';
+          item.gear.split('|').forEach(str => {
+            const span = document.createElement('span');
+            span.textContent = str.trim();
+            g.appendChild(span);
+          });
+          info.appendChild(g);
+        }
+        wrap.appendChild(info);
+      }
+
+      // Add spotlight trigger
+      wrap.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this._toggleSpotlight(wrap);
+      });
+
       return wrap;
     },
 
@@ -1431,7 +1626,7 @@
       'cat-ginger':{ y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
       'cat-flipped':{ y: '25px', xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
       'statue':    { y: '22px',  xRange: ['-20px', '0px', '20px'] },
-      'cctv':      { y: '-72vh', xRange: ['-80px', '80px'] },
+      'cctv':      { y: '-62vh', xRange: ['-80px', '80px'] },
       'fire-extinguisher': { y: '-100px', xRange: ['-60px', '60px'] },
       'exit-sign':{ y: '-120px', xRange: ['-40px', '0px', '40px'] },
       'quote-card':{ y: '-60px', xRange: ['-30px', '0px', '30px'] },
@@ -1454,7 +1649,9 @@
             const s = wrap.querySelector('.gr-sprite');
             if (s) {
               const flip = Math.random() > 0.5;
-              s.style.transform = flip ? 'scaleX(-1) rotate(45deg)' : 'rotate(45deg)';
+              const flipStr = flip ? 'scaleX(-1)' : '';
+              // We must include the CSS variables for translation so they don't get overwritten
+              s.style.transform = `translate(var(--gr-sprite-x, 0px), var(--gr-sprite-y, 22px)) ${flipStr} rotate(45deg)`;
               s.style.transformOrigin = flip ? 'right center' : 'left center';
             }
           }
@@ -1670,7 +1867,10 @@
       this._onMouseDown = (e) => {
         if (e.button !== 0) return;
         isDragging = true; startX = e.pageX; scrollStart = room.scrollLeft;
-        e.preventDefault();
+        // Clicking the floor/wall should also clear spotlight
+        if (e.target.closest('.gr-wall') && !e.target.closest('.gr-wall-item--photo')) {
+          this._clearSpotlight();
+        }
       };
       this._onMouseMove = (e) => {
         if (!isDragging) return;
@@ -1684,11 +1884,20 @@
         room.scrollLeft += e.deltaY + e.deltaX;
       };
 
+      this._onScroll = () => {
+        if (this._isProgrammaticScroll) return;
+        // Only clear if movement is significant (to avoid clearing on tiny jitter)
+        if (this._focusedPhoto) {
+          this._clearSpotlight();
+        }
+      };
+
       document.addEventListener('keydown', this._onKeyDown);
       room.addEventListener('mousedown', this._onMouseDown);
       window.addEventListener('mousemove', this._onMouseMove);
       window.addEventListener('mouseup', this._onMouseUp);
       room.addEventListener('wheel', this._onWheel, { passive: false });
+      room.addEventListener('scroll', this._onScroll);
     },
 
     _unbindScroll() {
@@ -1697,6 +1906,7 @@
       if (this._onMouseMove) window.removeEventListener('mousemove', this._onMouseMove);
       if (this._onMouseUp)   window.removeEventListener('mouseup', this._onMouseUp);
       if (this._onWheel && this.room)     this.room.removeEventListener('wheel', this._onWheel);
+      if (this._onScroll && this.room)    this.room.removeEventListener('scroll', this._onScroll);
     },
 
     _scrollBy(dx) {
@@ -1704,7 +1914,46 @@
     },
 
     _toggleLights() {
+      this._clearSpotlight();
       this.overlay.classList.toggle('gr-dark');
+    },
+
+    _toggleSpotlight(photoItem) {
+      if (this._focusedPhoto === photoItem) {
+        this._clearSpotlight();
+      } else {
+        this._clearSpotlight();
+        this._focusedPhoto = photoItem;
+        this._focusedPhoto.classList.add('gr-focused');
+        this.overlay.classList.add('gr-spotlight-mode');
+        // Ensure general dark mode is off so we don't have conflicting bright photos
+        this.overlay.classList.remove('gr-dark');
+
+        // Center the photo item in the viewport
+        this._isProgrammaticScroll = true;
+        const roomWidth = this.room.clientWidth;
+        const itemLeft = photoItem.offsetLeft;
+        const itemWidth = photoItem.clientWidth;
+        // Target scroll to center the item
+        const targetScroll = itemLeft - (roomWidth / 2) + (itemWidth / 2);
+        
+        this.room.scrollTo({
+          left: targetScroll,
+          behavior: 'smooth'
+        });
+
+        // Re-enable scroll-to-clear after the animation finishes
+        setTimeout(() => {
+          this._isProgrammaticScroll = false;
+        }, 800);
+      }
+    },
+
+    _clearSpotlight() {
+      if (!this._focusedPhoto) return;
+      this._focusedPhoto.classList.remove('gr-focused');
+      this._focusedPhoto = null;
+      this.overlay.classList.remove('gr-spotlight-mode');
     },
 
     sprites: {
