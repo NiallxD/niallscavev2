@@ -62,7 +62,7 @@
 :root {
   --gr-wall-color:    #f5ede0;
   --gr-ceiling-color: #2a1f14;
-  --gr-floor-color:   #8b6914;
+  --gr-floor-color:   #704d24;
   --gr-frame-outer:   #2c1e0f;
   --gr-frame-mat:     #faf6f0;
   --gr-plaque-bg:     #b8860b;
@@ -72,10 +72,15 @@
 }
 
 /* Trigger button */
+.gallery-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
 .gr-trigger-wrap {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 1.25rem;
 }
 .gr-enter-btn {
   font-family: 'Silkscreen', monospace;
@@ -199,11 +204,11 @@
   background:
     linear-gradient(
       to bottom,
-      #f5ede0 0%, #f5ede0 63%,
-      #e0d0bc 63%, #e0d0bc 65%,
-      #c8b8a0 65%, #c8b8a0 67%,
-      #e0d0bc 67%, #e0d0bc 70%,
-      #eedcc8 70%, #eedcc8 100%
+      var(--gr-wall-main, #f5ede0) 0%, var(--gr-wall-main, #f5ede0) 63%,
+      var(--gr-wall-trim, #e0d0bc) 63%, var(--gr-wall-trim, #e0d0bc) 65%,
+      var(--gr-wall-accent, #c8b8a0) 65%, var(--gr-wall-accent, #c8b8a0) 67%,
+      var(--gr-wall-trim, #e0d0bc) 67%, var(--gr-wall-trim, #e0d0bc) 70%,
+      var(--gr-wall-bottom, #eedcc8) 70%, var(--gr-wall-bottom, #eedcc8) 100%
     );
 }
 
@@ -214,9 +219,22 @@
   flex-shrink: 0;
   border-top: 6px solid #1a1208;
   background-image:
-    repeating-linear-gradient(90deg, transparent 0px, transparent 47px, rgba(0,0,0,0.12) 47px, rgba(0,0,0,0.12) 48px),
-    repeating-linear-gradient(0deg, transparent 0px, transparent 47px, rgba(0,0,0,0.12) 47px, rgba(0,0,0,0.12) 48px),
-    linear-gradient(to bottom, #9a7520 0px, #8b6914 20px, #7a5c10 120px);
+    /* Diagonal floorboard lines */
+    repeating-linear-gradient(60deg, 
+      rgba(0,0,0,0.2) 0px, 
+      rgba(0,0,0,0.2) 2px, 
+      transparent 2px, 
+      transparent 48px
+    ),
+    /* Fine wood grain */
+    repeating-linear-gradient(60deg, 
+      rgba(0,0,0,0.05) 0px, 
+      rgba(0,0,0,0.05) 1px, 
+      transparent 1px, 
+      transparent 4px
+    ),
+    /* Base floor gradient */
+    linear-gradient(to bottom, #8a6435 0px, var(--gr-floor-color) 20px, #4d3318 120px);
   image-rendering: pixelated;
 }
 
@@ -415,7 +433,7 @@
 /* Firework wrapper — absolutely centred above entranceItems */
 .gr-visitor-wrap {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 50px);
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -513,6 +531,11 @@
   -webkit-user-drag: none;
   pointer-events: none;
 }
+@media (max-width: 768px) {
+  .gr-frame img.gr-photo {
+    height: 42vh;
+  }
+}
 
 /* Deco slot — 500px fixed-width gap between photos; may contain a sprite */
 .gr-deco-slot {
@@ -592,6 +615,30 @@
 [data-deco-type="exit-sign"] .gr-sprite {
   height: 5vh;  width: auto; aspect-ratio: 44 / 20; image-rendering: pixelated; display: block;
 }
+[data-deco-type="statue"] .gr-sprite {
+  height: 46vh; width: auto; aspect-ratio: 24 / 44; image-rendering: pixelated; display: block;
+}
+[data-deco-type="fire-extinguisher"] .gr-sprite {
+  height: 12vh; width: auto; aspect-ratio: 10 / 22; image-rendering: pixelated; display: block;
+}
+[data-deco-type="bench-plant"] .gr-sprite {
+  height: 26vh; width: auto; aspect-ratio: 60 / 38; image-rendering: pixelated; display: block;
+}
+[data-deco-type="cat-black"] .gr-sprite,
+[data-deco-type="cat-ginger"] .gr-sprite,
+[data-deco-type="cat-flipped"] .gr-sprite {
+  height: 15vh; width: auto; aspect-ratio: 36 / 26; image-rendering: pixelated; display: block;
+}
+
+[data-deco-type="cctv"] .gr-sprite,
+[data-deco-type="cctv-angled"] .gr-sprite {
+  height: 6vh; width: auto; aspect-ratio: 16 / 12; image-rendering: pixelated; display: block;
+}
+.gr-cctv-led { animation: gr-blink-red 1s steps(1) infinite; }
+@keyframes gr-blink-red {
+  0%, 100% { fill: #f00; }
+  50% { fill: #400; }
+}
 
 /* Overlap the floor line for depth — sprites stand ON the floor, not above it */
 .gr-wall-item--deco .gr-sprite,
@@ -629,7 +676,7 @@
 }
 
 /* Sprite animations */
-[data-deco-type="cat"]   .gr-cat-tail { transform-box: fill-box; transform-origin: right top; animation: gr-cat-tail-swish 6s ease-in-out infinite; }
+[data-deco-type^="cat"] .gr-cat-tail { transform-box: fill-box; transform-origin: right top; animation: gr-cat-tail-swish 6s ease-in-out infinite; }
 [data-deco-type="guard"] .gr-sprite .gr-note-1 { animation: gr-note-rise 2.4s ease-in-out infinite; }
 [data-deco-type="guard"] .gr-sprite .gr-note-2 { animation: gr-note-rise 2.4s ease-in-out 1.2s infinite; }
 
@@ -655,13 +702,18 @@
   
 
   <div class="gallery-body">
-    <p class="section-label">Gallery</p>
     
     
-    
-    <div class="gr-trigger-wrap">
-      <button id="gr-enter-btn" class="gr-enter-btn">&#x25B6; Visit The Gallery</button>
+    <div class="gallery-section-header">
+      <p class="section-label" style="margin-bottom: 0;">Gallery</p>
+      
+      <div class="gr-trigger-wrap">
+        <button id="gr-enter-btn" class="gr-enter-btn">&#x25B6; Visit The Gallery</button>
+      </div>
+      
     </div>
+    
+    
     <div class="gallery-slideshow-container no-bg desktop-only">
       <div class="swiper gallery-swiper">
         <div class="swiper-wrapper">
@@ -952,6 +1004,57 @@
       const galleryTitle = "Osprey";
       const galleryDescription = "The osprey (Pandion haliaetus), also called sea hawk, river hawk, and fish hawk, is a diurnal, fish-eating bird of prey with a cosmopolitan range. These birds are the big kingfisher, diving into bodies of water to catch fish. Osprey visit the UK from Africa in Summer to breed. The best places to see these birds are in the Scottish Highlands, but you can see them in England as the move up the country.";
       const galleryUrl = "/uk-wildlife-nature-photos/osprey/";
+      const otherGalleries = [
+        
+        { title: "360 Panorama", url: "/360-panorama/" },
+        
+        { title: "Astrophotography", url: "/uk-wildlife-nature-photos/astrophotography/" },
+        
+        { title: "Bald Eagle", url: "/uk-wildlife-nature-photos/bald-eagle/" },
+        
+        { title: "Bengal Tiger", url: "/tiger/" },
+        
+        { title: "British Birds", url: "/uk-wildlife-nature-photos/british-birds/" },
+        
+        { title: "Brown Bear", url: "/uk-wildlife-nature-photos/brown-bear/" },
+        
+        { title: "Canadian Landscapes", url: "/canadian-landscapes/" },
+        
+        { title: "Canadian Wildlife", url: "/canadian-wildlife/" },
+        
+        { title: "Drone Photography", url: "/drone-photography/" },
+        
+        { title: "Environments", url: "/environments/" },
+        
+        { title: "Film Photography", url: "/uk-wildlife-nature-photos/film-photography/" },
+        
+        { title: "Fungi", url: "/uk-wildlife-nature-photos/fungi/" },
+        
+        { title: "Grey Seal", url: "/uk-wildlife-nature-photos/grey-seal/" },
+        
+        { title: "Macro Photography", url: "/macro-photography/" },
+        
+        { title: "Photomicrography", url: "/photomicrography/" },
+        
+        { title: "Red Squirrel", url: "/uk-wildlife-nature-photos/red-squirrel/" },
+        
+        { title: "Street Photography", url: "/uk-wildlife-nature-photos/street-photography/" },
+        
+        { title: "The Kingfisher", url: "/uk-wildlife-nature-photos/kingfisher/" },
+        
+        { title: "The Red Kite", url: "/uk-wildlife-nature-photos/red-kite/" },
+        
+        { title: "The Zoo", url: "/the-zoo/" },
+        
+        { title: "UK Deer", url: "/uk-wildlife-nature-photos/uk-deer/" },
+        
+        { title: "White Tailed Eagle", url: "/uk-wildlife-nature-photos/white-tailed-eagles/" }
+        
+      ];
+      // Pick a random next gallery
+      const nextGallery = otherGalleries.length > 0 
+        ? otherGalleries[Math.floor(Math.random() * otherGalleries.length)]
+        : null;
     </script>
     
 
@@ -1162,8 +1265,25 @@
         this._buildDOM();
         this._domBuilt = true;
       }
+      this._setRandomTheme();
       this._buildScene();
       this._enterSequence();
+    },
+
+    _setRandomTheme() {
+      const themes = [
+        { main: '#f5ede0', trim: '#e0d0bc', accent: '#c8b8a0', bottom: '#eedcc8' }, // Classic Cream
+        { main: '#e8f0e8', trim: '#d0dfd0', accent: '#b8cbb8', bottom: '#deede0' }, // Sage Green
+        { main: '#e0e4f5', trim: '#c8cfef', accent: '#b0bbdf', bottom: '#d0d6ef' }, // Slate Blue
+        { main: '#fdf2e9', trim: '#fbe5d6', accent: '#f7cbac', bottom: '#fdf2e9' }, // Peach
+        { main: '#f4f4f2', trim: '#e2e2df', accent: '#d6d6d2', bottom: '#f8f8f6' }  // Minimal Grey
+      ];
+      const theme = themes[Math.floor(Math.random() * themes.length)];
+      const root = this.overlay;
+      root.style.setProperty('--gr-wall-main', theme.main);
+      root.style.setProperty('--gr-wall-trim', theme.trim);
+      root.style.setProperty('--gr-wall-accent', theme.accent);
+      root.style.setProperty('--gr-wall-bottom', theme.bottom);
     },
 
     close() {
@@ -1221,23 +1341,52 @@
     },
 
     _getDecoElements() {
-      const spritePool = ['plant', 'plant2', 'plant3', 'bench', 'cat', 'mouse'];
       const photos = galleryData.filter(item => item.type !== 'iframe');
       const result = [];
-      let spriteIdx = 0;
       let consecutiveBlanks = 0;
 
       result.push({ type: 'nameplate' });
-      // Guard always stands between the entrance and the first photo
       result.push({ type: 'slot', sprite: 'guard' });
 
       photos.forEach((item, i) => {
         result.push({ type: 'photo', idx: galleryData.indexOf(item) });
+        
+        // Add a slot between photos (except after the last one)
         if (i < photos.length - 1) {
-          const forceSprite = consecutiveBlanks >= 2;
-          if (forceSprite || Math.random() < 0.65) {
-            result.push({ type: 'slot', sprite: spritePool[spriteIdx % spritePool.length] });
-            spriteIdx++;
+          // 40% chance for empty, 60% for a sprite. Force one if 2 blanks in a row.
+          const shouldHaveSprite = (consecutiveBlanks >= 2) || (Math.random() < 0.6);
+          
+          if (shouldHaveSprite) {
+            let sprite = 'bench';
+            const sRoll = Math.random() * 100;
+            
+            if (sRoll < 50) {
+              // 50% Bench (split between plain and with plant)
+              sprite = Math.random() < 0.8 ? 'bench' : 'bench-plant';
+            } else if (sRoll < 60) {
+              // 10% Fire Extinguisher
+              sprite = 'fire-extinguisher';
+            } else if (sRoll < 70) {
+              // 10% Cat
+              sprite = 'cat';
+            } else if (sRoll < 80) {
+              // 10% Plant 1
+              sprite = 'plant';
+            } else if (sRoll < 90) {
+              // 10% Plant 2
+              sprite = 'plant2';
+            } else if (sRoll < 98) {
+              // 8% CCTV Camera
+              sprite = 'cctv';
+            } else if (sRoll < 99) {
+              // 1% Statue
+              sprite = 'statue';
+            } else {
+              // 1% Mouse
+              sprite = 'mouse';
+            }
+
+            result.push({ type: 'slot', sprite: sprite });
             consecutiveBlanks = 0;
           } else {
             result.push({ type: 'slot', sprite: null });
@@ -1245,6 +1394,10 @@
           }
         }
       });
+
+      // Mirror the entrance at the end (Exit)
+      result.push({ type: 'slot', sprite: 'guard' });
+      result.push({ type: 'exit' });
 
       return result;
     },
@@ -1288,8 +1441,15 @@
       plant2:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
       plant3:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
       bench:      { y: '22px',   xRange: ['-80px', '-40px', '0px', '40px', '80px'] },
+      'bench-plant': { y: '22px', xRange: ['0px'] },
       mouse:      { y: '0px',   xRange: ['-80px', '-50px', '-20px', '20px', '50px', '80px'] },
       cat:        { y: '25px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      'cat-black': { y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      'cat-ginger':{ y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      'cat-flipped':{ y: '25px', xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
+      'statue':    { y: '22px',  xRange: ['-20px', '0px', '20px'] },
+      'cctv':      { y: '-72vh', xRange: ['-80px', '80px'] },
+      'fire-extinguisher': { y: '-100px', xRange: ['-60px', '60px'] },
       'exit-sign':{ y: '-120px', xRange: ['-40px', '0px', '40px'] },
       'quote-card':{ y: '-60px', xRange: ['-30px', '0px', '30px'] },
     },
@@ -1304,7 +1464,18 @@
         wrap.style.setProperty('--gr-sprite-x', x);
         wrap.style.setProperty('--gr-sprite-y', pos.y);
         const fn = this.sprites[spriteName];
-        if (fn) wrap.innerHTML = fn();
+        if (fn) {
+          wrap.innerHTML = fn();
+          // Apply random flip and rotation for CCTV sprites in slots
+          if (spriteName === 'cctv') {
+            const s = wrap.querySelector('.gr-sprite');
+            if (s) {
+              const flip = Math.random() > 0.5;
+              s.style.transform = flip ? 'scaleX(-1) rotate(45deg)' : 'rotate(45deg)';
+              s.style.transformOrigin = flip ? 'right center' : 'left center';
+            }
+          }
+        }
       }
       return wrap;
     },
@@ -1318,62 +1489,120 @@
         return wrap;
       }
 
-      if (type === 'nameplate') {
-        wrap.className = 'gr-wall-item gr-nameplate';
+      if (type === 'nameplate' || type === 'exit') {
+        const isExit = type === 'exit';
+        wrap.className = 'gr-wall-item gr-nameplate' + (isExit ? ' gr-exit' : '');
+
+        // Permanent CCTV Camera
+        const securityCam = document.createElement('div');
+        securityCam.style.position = 'absolute';
+        securityCam.style.top = '8vh';
+        if (isExit) {
+          securityCam.style.right = '40px';
+          // Mirror the camera sprite for the exit
+          securityCam.style.transform = 'scaleX(-1)';
+        } else {
+          securityCam.style.left = '40px';
+        }
+        securityCam.dataset.decoType = 'cctv-angled';
+        securityCam.innerHTML = this.sprites['cctv-angled']();
+        wrap.appendChild(securityCam);
+
         const spacer = document.createElement('div');
         spacer.style.flex = '1';
         wrap.appendChild(spacer);
-        // Outer row: [door+plaque column] [switch]  — switch is a sibling so it
-        // doesn't affect the centering of the plaque over the door
+
         const bottomRow = document.createElement('div');
         bottomRow.className = 'gr-door-row';
-        // Door + plaque column — plaque centers over door naturally
-        const doorCol = document.createElement('div');
-        doorCol.className = 'gr-door-col';
-        const inner = document.createElement('div');
-        inner.className = 'gr-nameplate-inner';
-        inner.textContent = (typeof galleryTitle !== 'undefined' && galleryTitle) ? galleryTitle : 'The Gallery';
-        doorCol.appendChild(inner);
-        const doorSvgWrap = document.createElement('div');
-        doorSvgWrap.innerHTML = this.sprites.door();
-        doorCol.appendChild(doorSvgWrap);
-        // Bench + trash can — visitor sign sits absolutely centred above this
+        if (isExit) bottomRow.style.flexDirection = 'row-reverse';
+
+        // Bench container
+        const benchWrap = document.createElement('div');
+        benchWrap.style.position = 'relative';
+        benchWrap.style.display = 'flex';
+        benchWrap.innerHTML = this.sprites.entranceBench();
+
         const entranceItems = document.createElement('div');
         entranceItems.className = 'gr-entrance-items';
-        entranceItems.innerHTML = this.sprites.entranceBench() + this.sprites.trashCan();
-        // Visitor counter sign (absolutely positioned above centre of bench row)
-        const visitorSign = document.createElement('div');
-        visitorSign.className = 'gr-visitor-sign';
-        const visitorLabel = document.createElement('div');
-        visitorLabel.className = 'gr-visitor-label';
-        visitorLabel.textContent = 'Visitors';
-        const badge = document.createElement('img');
-        badge.className = 'gr-visitor-badge';
-        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=111100&labelColor=111100&label=visitors`;
-        badge.alt = 'visitor count';
-        visitorSign.appendChild(visitorLabel);
-        visitorSign.appendChild(badge);
-        const visitorWrap = document.createElement('div');
-        visitorWrap.className = 'gr-visitor-wrap';
-        const firework = document.createElement('div');
-        firework.className = 'gr-firework';
-        for (let i = 0; i < 12; i++) {
-          const spark = document.createElement('div');
-          spark.className = 'gr-spark';
-          firework.appendChild(spark);
+        if (isExit) entranceItems.style.flexDirection = 'row-reverse';
+        
+        // Only show visitor sign at the entrance
+        if (!isExit) {
+          const visitorSign = document.createElement('div');
+          visitorSign.className = 'gr-visitor-sign';
+          const visitorLabel = document.createElement('div');
+          visitorLabel.className = 'gr-visitor-label';
+          visitorLabel.textContent = 'Visitors';
+          const badge = document.createElement('img');
+          badge.className = 'gr-visitor-badge';
+          const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
+          badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=111100&labelColor=111100&label=visitors`;
+          badge.alt = 'visitor count';
+          visitorSign.appendChild(visitorLabel);
+          visitorSign.appendChild(badge);
+
+          const visitorWrap = document.createElement('div');
+          visitorWrap.className = 'gr-visitor-wrap';
+          const firework = document.createElement('div');
+          firework.className = 'gr-firework';
+          for (let i = 0; i < 12; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'gr-spark';
+            firework.appendChild(spark);
+          }
+          visitorWrap.appendChild(visitorSign);
+          visitorWrap.appendChild(firework);
+          benchWrap.appendChild(visitorWrap);
+          this._firework = firework;
         }
-        visitorWrap.appendChild(visitorSign);
-        visitorWrap.appendChild(firework);
-        entranceItems.appendChild(visitorWrap);
-        this._firework = firework;
-        bottomRow.appendChild(entranceItems);
-        bottomRow.appendChild(doorCol);
-        // Switch to the right, lifted to handle height
+
+        entranceItems.appendChild(benchWrap);
+        const trash = document.createElement('div');
+        trash.innerHTML = this.sprites.trashCan();
+        entranceItems.appendChild(trash);
+
+        // Door + plaque column
+        const doorCol = document.createElement('div');
+        doorCol.className = 'gr-door-col';
+        
+        // Add Exit sign above door if it's the exit
+        if (isExit) {
+          const exitSign = document.createElement('div');
+          exitSign.dataset.decoType = 'exit-sign';
+          exitSign.innerHTML = this.sprites['exit-sign']();
+          exitSign.style.marginBottom = '-10px';
+          doorCol.appendChild(exitSign);
+        }
+
+        const inner = document.createElement('div');
+        inner.className = 'gr-nameplate-inner';
+        if (isExit) {
+          inner.textContent = (typeof nextGallery !== 'undefined' && nextGallery) ? nextGallery.title : 'Next Gallery';
+        } else {
+          inner.textContent = (typeof galleryTitle !== 'undefined' && galleryTitle) ? galleryTitle : 'The Gallery';
+        }
+        doorCol.appendChild(inner);
+
+        const doorSvgWrap = document.createElement('div');
+        doorSvgWrap.innerHTML = this.sprites.door();
+        if (isExit && typeof nextGallery !== 'undefined' && nextGallery) {
+          doorSvgWrap.style.cursor = 'pointer';
+          doorSvgWrap.addEventListener('click', () => {
+            // Append ?room=auto to the next gallery URL
+            const targetUrl = nextGallery.url.endsWith('/') ? nextGallery.url : nextGallery.url + '/';
+            window.location.href = targetUrl + '?room=auto';
+          });
+        }
+        doorCol.appendChild(doorSvgWrap);
+
+        // Switch
         const switchWrap = document.createElement('div');
         switchWrap.className = 'gr-lightswitch-wrap';
         switchWrap.innerHTML = this.sprites.lightSwitch();
         switchWrap.addEventListener('click', () => this._toggleLights());
+
+        bottomRow.appendChild(entranceItems);
+        bottomRow.appendChild(doorCol);
         bottomRow.appendChild(switchWrap);
         wrap.appendChild(bottomRow);
         return wrap;
@@ -1496,6 +1725,61 @@
     },
 
     sprites: {
+      'cat': () => {
+        const variants = ['cat-grey', 'cat-black', 'cat-ginger', 'cat-flipped'];
+        const v = variants[Math.floor(Math.random() * variants.length)];
+        if (v === 'cat-black') return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 26" shape-rendering="crispEdges" overflow="visible" class="gr-sprite">
+  <rect x="2" y="15" width="32" height="3" fill="#8b4a2b"/><rect x="2" y="18" width="32" height="2" fill="#6b3a1f"/><rect x="28" y="5" width="2" height="13" fill="#4a2810"/><rect x="28" y="5" width="6" height="2" fill="#6b3a1f"/><rect x="3" y="20" width="2" height="6" fill="#4a2810"/><rect x="31" y="20" width="2" height="6" fill="#4a2810"/>
+  <rect x="5" y="9" width="18" height="7" fill="#111"/><rect x="6" y="8" width="16" height="8" fill="#222"/><rect x="8" y="9" width="1" height="5" fill="#000"/><rect x="13" y="9" width="1" height="5" fill="#000"/><rect x="18" y="9" width="1" height="5" fill="#000"/><rect x="17" y="7" width="6" height="5" fill="#222"/><rect x="17" y="5" width="2" height="2" fill="#111"/><rect x="21" y="5" width="2" height="2" fill="#111"/><rect x="17" y="5" width="1" height="1" fill="#cc9999"/><rect x="21" y="5" width="1" height="1" fill="#cc9999"/><rect x="18" y="9" width="2" height="1" fill="#555"/><rect x="21" y="9" width="2" height="1" fill="#555"/><rect x="20" y="10" width="1" height="1" fill="#cc7777"/><rect x="5" y="14" width="2" height="2" fill="#111"/><rect x="4" y="12" width="2" height="2" fill="#000"/><rect x="5" y="10" width="2" height="2" fill="#111"/>
+  <g class="gr-cat-tail"><rect x="3" y="13" width="2" height="3" fill="#111"/><rect x="2" y="16" width="2" height="2" fill="#111"/><rect x="1" y="17" width="2" height="3" fill="#222"/><rect x="0" y="19" width="2" height="1" fill="#333"/></g></svg>`;
+        if (v === 'cat-ginger') return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 26" shape-rendering="crispEdges" overflow="visible" class="gr-sprite">
+  <rect x="2" y="15" width="32" height="3" fill="#8b4a2b"/><rect x="2" y="18" width="32" height="2" fill="#6b3a1f"/><rect x="28" y="5" width="2" height="13" fill="#4a2810"/><rect x="28" y="5" width="6" height="2" fill="#6b3a1f"/><rect x="3" y="20" width="2" height="6" fill="#4a2810"/><rect x="31" y="20" width="2" height="6" fill="#4a2810"/>
+  <rect x="5" y="9" width="18" height="7" fill="#d35400"/><rect x="6" y="8" width="16" height="8" fill="#e67e22"/><rect x="8" y="9" width="1" height="5" fill="#ba4a00"/><rect x="13" y="9" width="1" height="5" fill="#ba4a00"/><rect x="18" y="9" width="1" height="5" fill="#ba4a00"/><rect x="17" y="7" width="6" height="5" fill="#e67e22"/><rect x="17" y="5" width="2" height="2" fill="#d35400"/><rect x="21" y="5" width="2" height="2" fill="#d35400"/><rect x="17" y="5" width="1" height="1" fill="#cc9999"/><rect x="21" y="5" width="1" height="1" fill="#cc9999"/><rect x="18" y="9" width="2" height="1" fill="#555"/><rect x="21" y="9" width="2" height="1" fill="#555"/><rect x="20" y="10" width="1" height="1" fill="#cc7777"/><rect x="5" y="14" width="2" height="2" fill="#d35400"/><rect x="4" y="12" width="2" height="2" fill="#ba4a00"/><rect x="5" y="10" width="2" height="2" fill="#d35400"/>
+  <g class="gr-cat-tail"><rect x="3" y="13" width="2" height="3" fill="#d35400"/><rect x="2" y="16" width="2" height="2" fill="#d35400"/><rect x="1" y="17" width="2" height="3" fill="#e67e22"/><rect x="0" y="19" width="2" height="1" fill="#ff9f43"/></g></svg>`;
+        if (v === 'cat-flipped') return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 26" shape-rendering="crispEdges" overflow="visible" class="gr-sprite" style="transform: scaleX(-1)">
+  <rect x="2" y="15" width="32" height="3" fill="#8b4a2b"/><rect x="2" y="18" width="32" height="2" fill="#6b3a1f"/><rect x="28" y="5" width="2" height="13" fill="#4a2810"/><rect x="28" y="5" width="6" height="2" fill="#6b3a1f"/><rect x="3" y="20" width="2" height="6" fill="#4a2810"/><rect x="31" y="20" width="2" height="6" fill="#4a2810"/>
+  <rect x="5" y="9" width="18" height="7" fill="#888"/><rect x="6" y="8" width="16" height="8" fill="#999"/><rect x="8" y="9" width="1" height="5" fill="#666"/><rect x="13" y="9" width="1" height="5" fill="#666"/><rect x="18" y="9" width="1" height="5" fill="#666"/><rect x="17" y="7" width="6" height="5" fill="#999"/><rect x="17" y="5" width="2" height="2" fill="#888"/><rect x="21" y="5" width="2" height="2" fill="#888"/><rect x="17" y="5" width="1" height="1" fill="#cc9999"/><rect x="21" y="5" width="1" height="1" fill="#cc9999"/><rect x="18" y="9" width="2" height="1" fill="#555"/><rect x="21" y="9" width="2" height="1" fill="#555"/><rect x="20" y="10" width="1" height="1" fill="#cc7777"/><rect x="5" y="14" width="2" height="2" fill="#888"/><rect x="4" y="12" width="2" height="2" fill="#777"/><rect x="5" y="10" width="2" height="2" fill="#888"/>
+  <g class="gr-cat-tail"><rect x="3" y="13" width="2" height="3" fill="#888"/><rect x="2" y="16" width="2" height="2" fill="#888"/><rect x="1" y="17" width="2" height="3" fill="#999"/><rect x="0" y="19" width="2" height="1" fill="#aaa"/></g></svg>`;
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 26" shape-rendering="crispEdges" overflow="visible" class="gr-sprite">
+  <rect x="2" y="15" width="32" height="3" fill="#8b4a2b"/><rect x="2" y="18" width="32" height="2" fill="#6b3a1f"/><rect x="28" y="5" width="2" height="13" fill="#4a2810"/><rect x="28" y="5" width="6" height="2" fill="#6b3a1f"/><rect x="3" y="20" width="2" height="6" fill="#4a2810"/><rect x="31" y="20" width="2" height="6" fill="#4a2810"/>
+  <rect x="5" y="9" width="18" height="7" fill="#888"/><rect x="6" y="8" width="16" height="8" fill="#999"/><rect x="8" y="9" width="1" height="5" fill="#666"/><rect x="13" y="9" width="1" height="5" fill="#666"/><rect x="18" y="9" width="1" height="5" fill="#666"/><rect x="17" y="7" width="6" height="5" fill="#999"/><rect x="17" y="5" width="2" height="2" fill="#888"/><rect x="21" y="5" width="2" height="2" fill="#888"/><rect x="17" y="5" width="1" height="1" fill="#cc9999"/><rect x="21" y="5" width="1" height="1" fill="#cc9999"/><rect x="18" y="9" width="2" height="1" fill="#555"/><rect x="21" y="9" width="2" height="1" fill="#555"/><rect x="20" y="10" width="1" height="1" fill="#cc7777"/><rect x="5" y="14" width="2" height="2" fill="#888"/><rect x="4" y="12" width="2" height="2" fill="#777"/><rect x="5" y="10" width="2" height="2" fill="#888"/>
+  <g class="gr-cat-tail"><rect x="3" y="13" width="2" height="3" fill="#888"/><rect x="2" y="16" width="2" height="2" fill="#888"/><rect x="1" y="17" width="2" height="3" fill="#999"/><rect x="0" y="19" width="2" height="1" fill="#aaa"/></g></svg>`;
+      },
+      'bench-plant': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 38" shape-rendering="crispEdges" class="gr-sprite">
+  <g transform="translate(0, 16)">
+    <rect x="2" y="2" width="36" height="2" fill="#8b4a2b"/><rect x="2" y="4" width="36" height="2" fill="#6b3a1f"/><rect x="4" y="0" width="2" height="8" fill="#4a2810"/><rect x="34" y="0" width="2" height="8" fill="#4a2810"/><rect x="2" y="6" width="36" height="3" fill="#8b4a2b"/><rect x="2" y="9" width="36" height="3" fill="#6b3a1f"/><rect x="4" y="12" width="3" height="10" fill="#4a2810"/><rect x="33" y="12" width="3" height="10" fill="#4a2810"/><rect x="4" y="17" width="32" height="2" fill="#5a3015"/>
+  </g>
+  <g transform="translate(33, 0)">
+    <rect x="10" y="0" width="4" height="10" fill="#3d7a25"/><rect x="5" y="3" width="7" height="5" fill="#2d5a1b"/><rect x="12" y="3" width="7" height="5" fill="#2d5a1b"/><rect x="6" y="7" width="12" height="6" fill="#3d7a25"/><rect x="4" y="9" width="6" height="5" fill="#2d5a1b"/><rect x="14" y="9" width="6" height="5" fill="#2d5a1b"/><rect x="7" y="12" width="10" height="5" fill="#4a9030"/><rect x="10" y="17" width="4" height="5" fill="#4a7a28"/><rect x="5" y="22" width="14" height="3" fill="#c8960c"/><rect x="6" y="25" width="12" height="8" fill="#8b6914"/><rect x="7" y="31" width="10" height="4" fill="#6b4f0a"/><rect x="7" y="25" width="2" height="6" fill="#b8860b"/>
+  </g></svg>`,
+      'statue': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 44" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="4" y="40" width="16" height="4" fill="#d0d0d0"/><rect x="4" y="40" width="16" height="1" fill="#e8e8e8"/>
+  <rect x="6" y="38" width="12" height="2" fill="#d0d0d0"/><rect x="6" y="38" width="12" height="1" fill="#e8e8e8"/>
+  <rect x="8" y="14" width="8" height="24" fill="#d0d0d0"/><rect x="8" y="14" width="1" height="24" fill="#b0b0b0"/><rect x="10" y="14" width="1" height="24" fill="#b0b0b0"/><rect x="13" y="14" width="1" height="24" fill="#b0b0b0"/><rect x="9" y="14" width="1" height="24" fill="#e8e8e8"/>
+  <rect x="6" y="12" width="12" height="2" fill="#d0d0d0"/><rect x="6" y="12" width="12" height="1" fill="#e8e8e8"/>
+  <rect x="10" y="11" width="4" height="1" fill="#b0b0b0"/>
+  <rect x="7" y="7" width="10" height="4" fill="#d0d0d0"/><rect x="8" y="7" width="8" height="3" fill="#e8e8e8"/><rect x="11" y="7" width="2" height="4" fill="#d0d0d0"/>
+  <rect x="10" y="5" width="4" height="2" fill="#e8e8e8"/><rect x="12" y="5" width="2" height="2" fill="#d0d0d0"/>
+  <rect x="8" y="0" width="8" height="6" fill="#e8e8e8"/><rect x="12" y="0" width="4" height="6" fill="#d0d0d0"/>
+  <rect x="10" y="2" width="2" height="1" fill="#b0b0b0"/><rect x="13" y="2" width="2" height="1" fill="#909090"/><rect x="11" y="3" width="1" height="2" fill="#b0b0b0"/></svg>`,
+      'fire-extinguisher': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 22" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="2" y="4" width="6" height="16" fill="#b00"/><rect x="3" y="4" width="4" height="15" fill="#d22"/><rect x="4" y="4" width="1" height="14" fill="#f44"/><rect x="2" y="8" width="6" height="3" fill="#fff"/><rect x="3" y="1" width="4" height="3" fill="#333"/><rect x="2" y="2" width="2" height="1" fill="#333"/><rect x="6" y="2" width="3" height="4" fill="#333"/></svg>`,
+      'cctv': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12" shape-rendering="crispEdges" class="gr-sprite">
+  <rect x="0" y="2" width="4" height="2" fill="#444"/>
+  <rect x="3" y="0" width="12" height="8" fill="#ccc"/>
+  <rect x="4" y="1" width="10" height="6" fill="#eee"/>
+  <rect x="13" y="2" width="2" height="4" fill="#222"/>
+  <rect x="13" y="3" width="1" height="1" fill="#f00" class="gr-cctv-led"/>
+  <rect x="3" y="8" width="8" height="2" fill="#bbb"/>
+</svg>`,
+      'cctv-angled': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12" shape-rendering="crispEdges" class="gr-sprite" style="transform: rotate(45deg); transform-origin: left center;">
+  <rect x="0" y="2" width="4" height="2" fill="#444"/>
+  <rect x="3" y="0" width="12" height="8" fill="#ccc"/>
+  <rect x="4" y="1" width="10" height="6" fill="#eee"/>
+  <rect x="13" y="2" width="2" height="4" fill="#222"/>
+  <rect x="13" y="3" width="1" height="1" fill="#f00" class="gr-cctv-led"/>
+  <rect x="3" y="8" width="8" height="2" fill="#bbb"/>
+</svg>`,
       'door': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 32" shape-rendering="crispEdges" class="gr-door">
   <!-- Door frame -->
   <rect width="16" height="32" fill="#2c1e0f"/>
@@ -1807,19 +2091,26 @@
       'exit-sign': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 20" shape-rendering="crispEdges" class="gr-sprite">
   <rect x="0" y="0" width="44" height="20" fill="#004400"/>
   <rect x="1" y="1" width="42" height="18" fill="#007700"/>
+  <!-- E -->
   <rect x="4" y="4" width="1" height="12" fill="#00ff00"/>
   <rect x="4" y="4" width="6" height="2" fill="#00ff00"/>
   <rect x="4" y="9" width="5" height="2" fill="#00ff00"/>
   <rect x="4" y="14" width="6" height="2" fill="#00ff00"/>
+  <!-- X -->
   <rect x="13" y="4" width="2" height="2" fill="#00ff00"/>
   <rect x="17" y="4" width="2" height="2" fill="#00ff00"/>
-  <rect x="15" y="8" width="2" height="2" fill="#00ff00"/>
-  <rect x="13" y="12" width="2" height="2" fill="#00ff00"/>
-  <rect x="17" y="12" width="2" height="2" fill="#00ff00"/>
-  <rect x="15" y="16" width="2" height="2" fill="#00ff00"/>
+  <rect x="14" y="6" width="2" height="2" fill="#00ff00"/>
+  <rect x="16" y="6" width="2" height="2" fill="#00ff00"/>
+  <rect x="15" y="8" width="2" height="4" fill="#00ff00"/>
+  <rect x="14" y="12" width="2" height="2" fill="#00ff00"/>
+  <rect x="16" y="12" width="2" height="2" fill="#00ff00"/>
+  <rect x="13" y="14" width="2" height="2" fill="#00ff00"/>
+  <rect x="17" y="14" width="2" height="2" fill="#00ff00"/>
+  <!-- I -->
   <rect x="22" y="4" width="4" height="2" fill="#00ff00"/>
   <rect x="23" y="6" width="2" height="8" fill="#00ff00"/>
   <rect x="22" y="14" width="4" height="2" fill="#00ff00"/>
+  <!-- T -->
   <rect x="29" y="4" width="6" height="2" fill="#00ff00"/>
   <rect x="31" y="6" width="2" height="10" fill="#00ff00"/>
 </svg>`,
@@ -1846,7 +2137,9 @@
     }
   };
 
-  document.addEventListener('DOMContentLoaded', () => { GalleryRoom.init(); });
+  document.addEventListener('DOMContentLoaded', () => { 
+    GalleryRoom.init(); 
+  });
 })();
 </script>
 
