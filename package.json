@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "eleventy --serve",
+    "dev": "eleventy --serve --port 8080",
     "build": "eleventy"
   },
   "devDependencies": {
