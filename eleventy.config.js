@@ -86,6 +86,16 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("static");
   eleventyConfig.addPassthroughCopy("robots.txt");
 
+  eleventyConfig.addGlobalData("galleryAudioTracks", () => {
+    const dir = join("static", "audio");
+    const exts = new Set([".mp3", ".ogg", ".wav", ".m4a", ".flac"]);
+    try {
+      return readdirSync(dir)
+        .filter(f => exts.has(extname(f).toLowerCase()))
+        .map(f => `/static/audio/${f}`);
+    } catch { return []; }
+  });
+
   // Markdown-it with HTML enabled + wikilinks
   const wikilinkMap = buildWikilinkMap(".");
   const md = markdownIt({ html: true, linkify: true, typographer: true });
