@@ -53,6 +53,8 @@
     
 <div class="constrained-wide">
   
+
+
 <div class="home-hero-wrapper">
   <div class="home-slideshow-fs">
     <img src="https://i.imgur.com/2jQznqY.jpeg" alt="Writing" class="img-cover">
@@ -69,7 +71,7 @@
 
 <div class="standard-page">
   
-  
+
   
   <p class="section-label">Featured Writing</p>
   <div class="story-list">
@@ -146,8 +148,135 @@
   </div>
   
 
+  <!-- ═══════════════════════════════════════════════════════
+       WRITING MAP
+       ═══════════════════════════════════════════════════════ -->
+  <div style="display:none">
+  <p class="section-label">Writing Map</p>
+
+  <!-- Post data for graph JS -->
+  <script>
+  const WG_POSTS = [
+    
+    { id: "p1", title: "niallbell.com Updates", url: "/blog/niallbell-com-updates/", tags: ["photography","web","webdevelopment"] },
+    
+    { id: "p2", title: "Lessons From a Fungi Part 1", url: "/blog/lessons-from-a-fungi-part-1/", tags: ["fungi","nature","science","mycology"] },
+    
+    { id: "p3", title: "Doing Things For You", url: "/blog/doing-things-for-you/", tags: ["on-life","photography"] },
+    
+    { id: "p4", title: "Ethical Captioning", url: "/blog/ethical-captioning/", tags: ["photography"] },
+    
+    { id: "p5", title: "Photographic Authenticity", url: "/blog/photographic-authenticity/", tags: ["virtues","authenticity","the-self","values","photography"] },
+    
+    { id: "p6", title: "Acceptable Use of AI", url: "/blog/acceptable-use-of-ai/", tags: ["ai","artificial-intelligence","critical-thinking","photography"] },
+    
+    { id: "p7", title: "Try Cloudspotting", url: "/blog/try-cloudspotting/", tags: ["cloudspotting","hobbies","meteorology","photography"] },
+    
+    { id: "p8", title: "Knowledge Should Be Free", url: "/blog/knowledge-should-be-free/", tags: ["knowledge","science","research"] },
+    
+    { id: "p9", title: "Adopting an AI Workflow", url: "/blog/adopting-an-ai-workflow/", tags: ["ai","llm"] },
+    
+    { id: "p10", title: "April Showers", url: "/blog/april-showers/", tags: ["weather","climate"] },
+    
+    { id: "p11", title: "Brief Review of The Zeiss DiaScope 65T* FL (Green - Straight Tube)", url: "/brief-review-of-the-zeiss-diascope-65t-fl-green/", tags: ["birds","gear","tech"] },
+    
+    { id: "p12", title: "Ethical Wildlife Photography: Where I Stand", url: "/ethical-wildlife-photography-where-i-stand/", tags: ["photography","ethics"] },
+    
+    { id: "p13", title: "Squamish eBird Data", url: "/squamish-ebird-data/", tags: ["birds","nature","tech"] },
+    
+    { id: "p14", title: "Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults", url: "/nature-photography-and-pro-environmental-behaviour/", tags: ["environment","nature"] },
+    
+    { id: "p15", title: "How to Buy a Car In British Columbia, Canada", url: "/how-to-buy-a-car-in-bc-canada/", tags: ["canada","guide"] },
+    
+    { id: "p16", title: "How to get a Phone Contract in Canada", url: "/how-to-get-a-phone-contract-canada/", tags: ["canada","guide"] },
+    
+    { id: "p17", title: "How To Tell The Age of a Bald Eagle", url: "/bald-eagle-age/", tags: ["ageguide","birds","photography"] },
+    
+    { id: "p18", title: "Getting an SIN and Bank Account", url: "/sin-and-bank-account/", tags: ["canada"] },
+    
+    { id: "p19", title: "Arriving In Canada", url: "/arriving-in-canada/", tags: ["canada"] },
+    
+    { id: "p20", title: "Travelling To Canada", url: "/travelling-to-canada/", tags: ["canada"] },
+    
+    { id: "p21", title: "My Week In Photos Wrap Up", url: "/my-week-in-photos-wrap-up-2024/", tags: ["photography"] },
+    
+    { id: "p22", title: "Doncaster's Hoopoe", url: "/doncasters-hoopoe/", tags: ["birds","doncaster","nature"] },
+    
+    { id: "p23", title: "Custom Siril Scripts for Astrophotography", url: "/custom-siril-scripts/", tags: ["astronomy","photography","tech"] },
+    
+    { id: "p24", title: "Social Media Dilemma", url: "/social-media-dilemma/", tags: ["social media","tech"] },
+    
+    { id: "p25", title: "International Tiger Day 2024", url: "/international-tiger-day-2024/", tags: ["environment","internationaltigerday","nature","wildlife"] },
+    
+    { id: "p26", title: "Black Winged Pratincole Doncaster 2024", url: "/black-winged-pratincole-doncaster-2024/", tags: ["birds","photography"] },
+    
+    { id: "p27", title: "Highly Commended - Deer Photographer of the Year", url: "/DPOTY24/", tags: ["nature","photography","wildlife"] },
+    
+    { id: "p28", title: "How I Process My Photographs", url: "/how-i-process-my-photographs/", tags: ["photography"] },
+    
+    { id: "p29", title: "An Open Letter to YWP", url: "/an-open-letter-to-ywp/", tags: ["environment","nature","photography","wildlife"] },
+    
+    { id: "p30", title: "Analogue Photography", url: "/analogue-photography/", tags: ["analogue","photography","tech"] },
+    
+    { id: "p31", title: "Birds Were the First Musicians", url: "/birds-are-musicians/", tags: ["birds","music","nature"] },
+    
+    { id: "p32", title: "Photographic Life List", url: "/photographic-life-list/", tags: ["birds","lifelist","nature","photography","wildlife"] },
+    
+    { id: "p33", title: "Symphony No. 2 IV Op 36", url: "/symphony-no-2-iv-beethoven/", tags: ["music"] },
+    
+    { id: "p34", title: "Are Commercial Photography Hides Acceptable?", url: "/are-commercial-photography-hides-acceptable/", tags: ["photography"] },
+    
+    { id: "p35", title: "Etymology: The Little Owl", url: "/The-little-owl/", tags: ["birds","nature"] },
+    
+    { id: "p36", title: "Misierere Mei, Deus", url: "/misierere-mei-deus/", tags: ["music"] },
+    
+    { id: "p37", title: "Cloudspotting", url: "/cloudspotting/", tags: ["nature"] },
+    
+    { id: "p38", title: "Canon R6 Crashing - Fixed!", url: "/canon-r6-crashing-fixed/", tags: ["gear","photography","tech"] },
+    
+    { id: "p39", title: "Canada Travel FAQ", url: "/canada-faq/", tags: ["canada","photography"] },
+    
+    { id: "p40", title: "EcoTalk: A Greener Phone Network", url: "/ecotalk-a-greener-phone-network/", tags: ["tech"] },
+    
+    { id: "p41", title: "How to Build a Wildlife Pond", url: "/how-to-build-a-wildlife-pond/", tags: ["nature","wildlife"] },
+    
+    { id: "p42", title: "Brief Review of The Canon EF 500mm f/4.5 L USM", url: "/brief-review-of-the-canon-ef-500mm-f-4-5-l-usm/", tags: ["gear","photography","tech"] },
+    
+    { id: "p43", title: "Camera Recommendations", url: "/camera-recommendations/", tags: ["gear","photography","tech"] },
+    
+    { id: "p44", title: "Film Photography", url: "/blog/film-photography/", tags: ["film-photography","photography","dark-room"] },
+    
+    { id: "p45", title: "Northern Lights in Doncaster!", url: "/northern-lights/", tags: ["astronomy","nature"] },
+    
+    { id: "p46", title: "The Waste Hierarchy", url: "/the-waste-hierarchy/", tags: ["environment","nature"] }
+    
+  ];
+  </script>
+
+  <div class="filter-container" id="wg-tag-container">
+    <div class="filter-cloud wg-tag-strip collapsed" id="wg-tag-strip"></div>
+    <div class="show-more-wrapper" id="wg-show-more-wrapper" style="display:none">
+      <button class="show-more-btn" id="wg-show-more-btn">
+        <span>MORE TAGS</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wg-wrap" id="wg-wrap">
+    <!-- Force-directed graph -->
+    <div class="wg-graph-area" id="wg-graph-area">
+      <svg id="wg-svg" class="wg-svg"></svg>
+    </div>
+    <!-- Info panel -->
+    <div class="wg-info-bar">
+      <span class="wg-hint" id="wg-hint">Click a tag or post to explore connections</span>
+      <div class="wg-result-list" id="wg-result-list"></div>
+    </div>
+  </div>
+  </div>
+
   <p class="section-label">All Writing</p>
-  
+
   <div class="filter-container">
     <div class="filter-cloud collapsed" id="filter-cloud">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -1131,76 +1260,443 @@
   </div>
   
 
+  <style>
+  /* ── Writing Map ────────────────────────────────────────── */
+  .wg-wrap {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  /* Graph canvas */
+  .wg-graph-area { position: relative; height: 420px; background: var(--color-bg); }
+  .wg-svg { display: block; width: 100%; height: 100%; }
+
+  /* SVG node styles */
+  .wg-node { transition: opacity 200ms; }
+  .wg-node--tag rect  { fill: var(--color-link); }
+  .wg-node--tag text  { fill: #fff; font-family: var(--font-sans); font-size: 11px; font-weight: 600; pointer-events: none; user-select: none; }
+  .wg-node--post circle { fill: var(--color-muted); opacity: 0.5; transition: fill 150ms, opacity 150ms; }
+  .wg-node--post:hover circle { fill: var(--color-link); opacity: 0.9; }
+  .wg-edge { stroke: var(--color-border); stroke-width: 1.5; transition: stroke 200ms, opacity 200ms; }
+  .wg-edge--lit { stroke: var(--color-link); stroke-width: 2; opacity: 0.5; }
+  .wg-node--dimmed { opacity: 0.07; }
+  .wg-edge--dimmed { opacity: 0.04; }
+
+  /* Info bar */
+  .wg-info-bar {
+    padding: 0.875rem 1.25rem;
+    border-top: 1px solid var(--color-border);
+    min-height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .wg-hint {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    color: var(--color-muted);
+  }
+  .wg-result-list { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  .wg-post-link {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-link);
+    text-decoration: none;
+    transition: all var(--ease);
+    padding: 0.2rem 0.5rem;
+    background: rgba(45, 106, 79, 0.05);
+    border-radius: 4px;
+  }
+  .wg-post-link:hover { background: var(--color-link); color: #fff; text-decoration: none; }
+  .wg-inline-tag {
+    font-family: var(--font-sans);
+    background: rgba(45, 106, 79, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    padding: 0.15em 0.65em;
+    font-size: 0.775rem;
+    color: var(--color-secondary);
+  }
+
+  /* ── Filter Cloud ────────────────────────────────────────── */
+  .filter-btn:hover { border-color: var(--color-link); color: var(--color-link); }
+  .filter-btn.active { background: var(--color-link); border-color: var(--color-link); color: #fff; }
+  .show-more-btn:hover { color: var(--color-link); }
+  </style>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const grid = document.getElementById('post-grid');
-      const filterCloud = document.getElementById('filter-cloud');
-      const showMoreBtn = document.getElementById('show-more-btn');
-      const showMoreWrapper = document.getElementById('show-more-wrapper');
-      
-      if (!grid) return;
+  document.addEventListener('DOMContentLoaded', () => {
+
+    /* ── Filter cloud (existing) ──────────────────────────── */
+    const filterBtns    = document.querySelectorAll('.filter-btn');
+    const grid          = document.getElementById('post-grid');
+    const filterCloud   = document.getElementById('filter-cloud');
+    const showMoreBtn   = document.getElementById('show-more-btn');
+    const showMoreWrap  = document.getElementById('show-more-wrapper');
+
+    if (grid) {
       const postCards = grid.querySelectorAll('.post-card');
 
-      // Check if "More" button is needed
       const checkOverflow = () => {
         if (!filterCloud) return;
         if (filterCloud.scrollHeight > filterCloud.clientHeight + 5) {
-          showMoreWrapper.style.display = 'flex';
+          showMoreWrap.style.display = 'flex';
         } else if (!filterCloud.classList.contains('collapsed')) {
           filterCloud.classList.add('collapsed');
-          const wouldOverflow = filterCloud.scrollHeight > filterCloud.clientHeight + 5;
+          const would = filterCloud.scrollHeight > filterCloud.clientHeight + 5;
           filterCloud.classList.remove('collapsed');
-          if (!wouldOverflow) showMoreWrapper.style.display = 'none';
+          if (!would) showMoreWrap.style.display = 'none';
         } else {
-          showMoreWrapper.style.display = 'none';
+          showMoreWrap.style.display = 'none';
         }
       };
-
       checkOverflow();
       window.addEventListener('resize', checkOverflow);
 
       showMoreBtn.addEventListener('click', () => {
-        const isCollapsed = filterCloud.classList.contains('collapsed');
-        if (isCollapsed) {
+        const collapsed = filterCloud.classList.contains('collapsed');
+        if (collapsed) {
           filterCloud.style.maxHeight = filterCloud.scrollHeight + 'px';
           filterCloud.classList.remove('collapsed');
         } else {
           filterCloud.style.maxHeight = '74px';
           filterCloud.classList.add('collapsed');
         }
-        showMoreBtn.classList.toggle('expanded', isCollapsed);
-        showMoreBtn.querySelector('span').textContent = isCollapsed ? 'FEWER TAGS' : 'MORE TAGS';
+        showMoreBtn.classList.toggle('expanded', collapsed);
+        showMoreBtn.querySelector('span').textContent = collapsed ? 'FEWER TAGS' : 'MORE TAGS';
       });
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           if (btn.classList.contains('active')) return;
-
           const filter = btn.getAttribute('data-filter');
-          
-          // Start fade out ONLY on grid
           grid.classList.add('filtering');
-
           setTimeout(() => {
-            // Update active state
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Filter cards inside the grid
             postCards.forEach(card => {
-              const tagsAttr = card.getAttribute('data-tags');
-              const tags = tagsAttr ? tagsAttr.split(',') : [];
-              const isMatch = filter === 'all' || tags.includes(filter);
-              card.style.display = isMatch ? 'flex' : 'none';
+              const tags = (card.getAttribute('data-tags') || '').split(',');
+              card.style.display = (filter === 'all' || tags.includes(filter)) ? 'flex' : 'none';
             });
-
-            // Trigger fade in
             grid.classList.remove('filtering');
           }, 300);
         });
       });
+    }
+
+    /* ── Writing Map graph ────────────────────────────────── */
+    if (typeof WG_POSTS === 'undefined' || !WG_POSTS.length) return;
+
+    const NS    = 'http://www.w3.org/2000/svg';
+    const svgEl = document.getElementById('wg-svg');
+    const stripEl = document.getElementById('wg-tag-strip');
+    const hintEl  = document.getElementById('wg-hint');
+    const listEl  = document.getElementById('wg-result-list');
+    const areaEl  = document.getElementById('wg-graph-area');
+
+    /* Build tag map */
+    const tagMap = new Map(); // tag → { count }
+    const tagIdx = new Map(); // tag → node index
+    WG_POSTS.forEach(p => (p.tags || []).forEach(t => {
+      if (!tagMap.has(t)) tagMap.set(t, { count: 0 });
+      tagMap.get(t).count++;
+    }));
+
+    /* Build nodes array: posts then tags */
+    const nodes = [];
+    WG_POSTS.forEach((p, i) => {
+      nodes.push({ type: 'post', id: p.id, title: p.title, url: p.url, tags: p.tags || [], r: 6 });
     });
+    tagMap.forEach((data, tag) => {
+      tagIdx.set(tag, nodes.length);
+      const pw = Math.max(48, tag.length * 7.5 + 22);
+      const r  = pw / 2 + 4;
+      nodes.push({ type: 'tag', label: tag, count: data.count, r, pw });
+    });
+
+    /* Build links */
+    const links = [];
+    WG_POSTS.forEach((p, pi) => {
+      (p.tags || []).forEach(t => {
+        if (tagIdx.has(t)) links.push({ source: pi, target: tagIdx.get(t) });
+      });
+    });
+
+    /* Layout dims */
+    const W  = areaEl.clientWidth || 680;
+    const H  = 380;
+    const cx = W / 2, cy = H / 2;
+    svgEl.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    /* Seed positions: tags in a ring, posts scattered inside */
+    const tagNodes  = nodes.filter(n => n.type === 'tag');
+    const postNodes = nodes.filter(n => n.type === 'post');
+    tagNodes.forEach((n, i) => {
+      const a = (i / tagNodes.length) * Math.PI * 2;
+      const r = Math.min(W, H) * 0.32;
+      n.x = cx + Math.cos(a) * r;
+      n.y = cy + Math.sin(a) * r;
+      n.vx = 0; n.vy = 0;
+    });
+    postNodes.forEach(n => {
+      const a = Math.random() * Math.PI * 2;
+      const r = (0.1 + Math.random() * 0.4) * Math.min(W, H) * 0.3;
+      n.x = cx + Math.cos(a) * r;
+      n.y = cy + Math.sin(a) * r;
+      n.vx = 0; n.vy = 0;
+    });
+
+    /* Force tick */
+    function tick() {
+      const REP   = 1400, SPRING = 0.1, REST = 80, GRAV = 0.012, DAMP = 0.80;
+      const n = nodes.length;
+      for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+          const a = nodes[i], b = nodes[j];
+          let dx = b.x - a.x || 0.01, dy = b.y - a.y || 0.01;
+          const d2 = dx * dx + dy * dy;
+          const d  = Math.sqrt(d2) || 1;
+          const f  = REP / d2;
+          a.vx -= (dx / d) * f; a.vy -= (dy / d) * f;
+          b.vx += (dx / d) * f; b.vy += (dy / d) * f;
+        }
+      }
+      links.forEach(l => {
+        const a = nodes[l.source], b = nodes[l.target];
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const d  = Math.sqrt(dx * dx + dy * dy) || 1;
+        const f  = (d - REST) * SPRING;
+        const fx = (dx / d) * f, fy = (dy / d) * f;
+        a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+      });
+      nodes.forEach(n => {
+        n.vx += (cx - n.x) * GRAV; n.vy += (cy - n.y) * GRAV;
+        n.vx *= DAMP; n.vy *= DAMP;
+        n.x = Math.max(n.r + 12, Math.min(W - n.r - 12, n.x + n.vx));
+        n.y = Math.max(n.r + 14, Math.min(H - n.r - 14, n.y + n.vy));
+      });
+    }
+
+    /* Pre-settle before first paint */
+    for (let i = 0; i < 280; i++) tick();
+
+    /* Build SVG */
+    function mkEl(tag, attrs) {
+      const e = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+      return e;
+    }
+
+    /* Edges */
+    const edgeG   = mkEl('g', {});
+    svgEl.appendChild(edgeG);
+    const svgEdges = links.map(l => {
+      const a = nodes[l.source], b = nodes[l.target];
+      const line = mkEl('line', {
+        x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+        class: 'wg-edge'
+      });
+      edgeG.appendChild(line);
+      return line;
+    });
+
+    /* Nodes */
+    const nodeG    = mkEl('g', {});
+    svgEl.appendChild(nodeG);
+    const svgNodes = nodes.map((n, i) => {
+      const g = mkEl('g', {
+        class: 'wg-node wg-node--' + n.type,
+        transform: `translate(${n.x},${n.y})`,
+        style: 'cursor:pointer'
+      });
+      if (n.type === 'tag') {
+        const ph   = 26;
+        const rect = mkEl('rect', { x: -(n.pw/2), y: -(ph/2), width: n.pw, height: ph, rx: 13 });
+        const text = mkEl('text', { y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'middle' });
+        text.textContent = n.label;
+        g.appendChild(rect);
+        g.appendChild(text);
+      } else {
+        const tip = document.createElementNS(NS, 'title');
+        tip.textContent = n.title;
+        g.appendChild(tip);
+        g.appendChild(mkEl('circle', { r: n.r }));
+      }
+      nodeG.appendChild(g);
+      return g;
+    });
+
+    /* ── Interaction ────────────────────────────────────────── */
+    let selected = null;
+
+    function highlight(type, idx) {
+      selected = { type, idx };
+      const litNodes = new Set([idx]);
+      const litEdges = new Set();
+
+      if (type === 'tag') {
+        links.forEach((l, li) => {
+          if (l.target === idx) { litNodes.add(l.source); litEdges.add(li); }
+        });
+      } else {
+        const myTags = new Set();
+        links.forEach((l, li) => {
+          if (l.source === idx) { litNodes.add(l.target); litEdges.add(li); myTags.add(l.target); }
+        });
+        links.forEach((l, li) => {
+          if (myTags.has(l.target)) { litNodes.add(l.source); litEdges.add(li); }
+        });
+      }
+
+      svgNodes.forEach((g, i) => {
+        g.classList.toggle('wg-node--dimmed', !litNodes.has(i));
+      });
+      svgEdges.forEach((line, i) => {
+        const lit = litEdges.has(i);
+        line.classList.toggle('wg-edge--lit', lit);
+        line.classList.toggle('wg-edge--dimmed', !lit);
+      });
+
+      document.querySelectorAll('.wg-chip').forEach(chip => {
+        chip.classList.toggle('active', litNodes.has(+chip.dataset.ni));
+      });
+
+      /* Info panel */
+      const n = nodes[idx];
+      if (type === 'tag') {
+        const matched = links.filter(l => l.target === idx).map(l => nodes[l.source]);
+        hintEl.textContent = n.label + ' — ' + matched.length + ' post' + (matched.length !== 1 ? 's' : '');
+        listEl.innerHTML = matched.map(p =>
+          `<a href="${p.url}" class="wg-post-link">${esc(p.title)}</a>`
+        ).join('');
+      } else {
+        hintEl.textContent = esc(n.title);
+        listEl.innerHTML = (n.tags || []).map(t =>
+          `<span class="wg-inline-tag">${esc(t)}</span>`
+        ).join('');
+      }
+
+      /* Sync filter cloud below */
+      if (type === 'tag') {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        const match = [...filterBtns].find(b => b.dataset.filter === nodes[idx].label);
+        if (match) match.classList.add('active');
+        if (grid) {
+          const label = nodes[idx].label;
+          grid.querySelectorAll('.post-card').forEach(card => {
+            const tags = (card.getAttribute('data-tags') || '').split(',');
+            card.style.display = tags.includes(label) ? 'flex' : 'none';
+          });
+        }
+      }
+    }
+
+    function clearHighlight() {
+      selected = null;
+      svgNodes.forEach(g => g.classList.remove('wg-node--dimmed'));
+      svgEdges.forEach(line => {
+        line.classList.remove('wg-edge--lit');
+        line.classList.remove('wg-edge--dimmed');
+      });
+      document.querySelectorAll('.wg-chip').forEach(c => c.classList.remove('active'));
+      hintEl.textContent = 'click a tag or post to explore connections';
+      listEl.innerHTML = '';
+      /* Reset filter */
+      filterBtns.forEach(b => b.classList.remove('active'));
+      const allBtn = [...filterBtns].find(b => b.dataset.filter === 'all');
+      if (allBtn) allBtn.classList.add('active');
+      if (grid) grid.querySelectorAll('.post-card').forEach(c => (c.style.display = 'flex'));
+    }
+
+    svgNodes.forEach((g, i) => {
+      g.addEventListener('click', e => {
+        e.stopPropagation();
+        selected && selected.idx === i ? clearHighlight() : highlight(nodes[i].type, i);
+      });
+      if (nodes[i].type === 'post') {
+        g.addEventListener('mouseenter', () => {
+          if (selected) return;
+          hintEl.textContent = nodes[i].title;
+          listEl.innerHTML = (nodes[i].tags || []).map(t =>
+            `<span class="wg-inline-tag">${esc(t)}</span>`
+          ).join('');
+        });
+        g.addEventListener('mouseleave', () => {
+          if (selected) return;
+          hintEl.textContent = 'click a tag or post to explore connections';
+          listEl.innerHTML = '';
+        });
+      }
+    });
+
+    svgEl.addEventListener('click', clearHighlight);
+
+    /* ── Tag strip ────────────────────────────────────────── */
+    [...tagMap.keys()]
+      .sort()
+      .forEach(tag => {
+        const ni  = tagIdx.get(tag);
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn wg-chip';
+        btn.dataset.ni = ni;
+        btn.textContent = tag;
+        btn.addEventListener('click', () => {
+          selected && selected.idx === ni ? clearHighlight() : highlight('tag', ni);
+        });
+        stripEl.appendChild(btn);
+      });
+
+    /* Show-more for tag strip */
+    const wgShowMoreWrap = document.getElementById('wg-show-more-wrapper');
+    const wgShowMoreBtn  = document.getElementById('wg-show-more-btn');
+    const checkWgOverflow = () => {
+      if (!stripEl || !wgShowMoreWrap) return;
+      wgShowMoreWrap.style.display = stripEl.scrollHeight > stripEl.clientHeight + 5 ? 'flex' : 'none';
+    };
+    checkWgOverflow();
+    window.addEventListener('resize', checkWgOverflow);
+    wgShowMoreBtn.addEventListener('click', () => {
+      const collapsed = stripEl.classList.contains('collapsed');
+      stripEl.style.maxHeight = collapsed ? stripEl.scrollHeight + 'px' : '74px';
+      stripEl.classList.toggle('collapsed', !collapsed);
+      wgShowMoreBtn.classList.toggle('expanded', collapsed);
+      wgShowMoreBtn.querySelector('span').textContent = collapsed ? 'FEWER TAGS' : 'MORE TAGS';
+    });
+
+    /* Sync filter cloud → graph */
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-filter');
+        if (f === 'all') { clearHighlight(); return; }
+        if (tagIdx.has(f)) highlight('tag', tagIdx.get(f));
+      });
+    });
+
+    /* ── Animated post-paint settle ──────────────────────── */
+    let frames = 60;
+    function animate() {
+      if (frames-- <= 0) return;
+      tick();
+      svgNodes.forEach((g, i) => g.setAttribute('transform', `translate(${nodes[i].x},${nodes[i].y})`));
+      svgEdges.forEach((line, i) => {
+        const a = nodes[links[i].source], b = nodes[links[i].target];
+        line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+        line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+      });
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+  }); // DOMContentLoaded
   </script>
 </div>
 
