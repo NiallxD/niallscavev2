@@ -307,22 +307,46 @@
 }
 
 @media (max-width: 768px) {
-  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
-    transform: scale(1.02) translateY(-18vh) translateX(0);
-  }
-
-  .gr-spotlight-info {
+  /* Pin focused photo just below the ceiling */
+  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit {
+    position: fixed;
+    top: 90px;
     left: 50%;
-    top: calc(50% + 12vh);
-    width: 85vw;
-    max-width: 500px;
-    transform: translate(-50%, 20px);
-    text-align: center;
-    gap: 0.75rem;
+    transform: translateX(-50%);
+    z-index: 25;
   }
 
-  .gr-wall-item--photo.gr-focused .gr-spotlight-info {
-    transform: translate(-50%, 0);
+  /* Constrain image height to leave room for the caption panel */
+  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-frame img.gr-photo {
+    height: 34vh;
+    max-width: calc(100vw - 48px);
+  }
+
+  /* Caption sits directly below the pinned photo.
+     Use #gallery-room-overlay to beat the base .gr-spotlight-info rule that
+     appears later in the file and would otherwise win via cascade order. */
+  #gallery-room-overlay .gr-spotlight-info {
+    position: fixed;
+    top: calc(90px + 34vh + 68px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1.5rem;
+    transform: translateY(10px);
+    text-align: center;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 25;
+  }
+
+  #gallery-room-overlay .gr-wall-item--photo.gr-focused .gr-spotlight-info {
+    transform: translateY(0);
+  }
+
+  /* Hide wall plaque when focused to avoid clutter with the rich caption */
+  .gr-wall-item--photo.gr-focused .gr-plaque {
+    display: none;
   }
 
   .gr-spotlight-gear {
@@ -331,14 +355,16 @@
   }
 
   .gr-spotlight-title {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .gr-spotlight-desc {
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 10px;
+    max-height: 22vh;
+    overflow-y: auto;
   }
 }
-
 /* Caption on the right */
 .gr-spotlight-info {
   position: absolute;
@@ -657,6 +683,20 @@
     3px 3px 0 rgba(0,0,0,0.15);
 }
 
+.gr-nameplate-sub {
+  font-family: var(--gr-font-pixel);
+  font-size: 8px;
+  color: rgba(58, 32, 16, 0.7);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  line-height: 1;
+}
+.gr-nameplate-sub-arrow {
+  font-size: 16px;
+}
+
 /* Firework wrapper — sits on the piano */
 .gr-visitor-wrap {
   position: absolute;
@@ -775,12 +815,18 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
+  z-index: 3;
 }
 
 @media (max-width: 768px) {
   .gr-deco-slot {
     width: 200px;
   }
+
+  [data-deco-type="cctv"] {
+    display: none;
+  }
+
 }
 /* Sprites in slots sit on the floor (overlap the floor line for depth) */
 .gr-deco-slot .gr-sprite {
@@ -1555,10 +1601,15 @@
           if (shouldHaveSprite) {
             let sprite = 'bench';
             const sRoll = Math.random() * 100;
+            const isMobile = window.innerWidth <= 768;
 
             if (sRoll < 50) {
-              // 50% Bench (split between plain and with plant)
-              sprite = Math.random() < 0.8 ? 'bench' : 'bench-plant';
+              // 50% Bench/plant — skip on mobile (too wide), use cat or fire extinguisher instead
+              if (isMobile) {
+                sprite = Math.random() < 0.5 ? 'cat' : 'fire-extinguisher';
+              } else {
+                sprite = Math.random() < 0.8 ? 'bench' : 'bench-plant';
+              }
             } else if (sRoll < 60) {
               // 10% Fire Extinguisher
               sprite = 'fire-extinguisher';
@@ -1566,11 +1617,11 @@
               // 10% Cat
               sprite = 'cat';
             } else if (sRoll < 80) {
-              // 10% Plant 1
-              sprite = 'plant';
+              // 10% Plant 1 — skip on mobile
+              sprite = isMobile ? 'mouse' : 'plant';
             } else if (sRoll < 90) {
-              // 10% Plant 2
-              sprite = 'plant2';
+              // 10% Plant 2 — skip on mobile
+              sprite = isMobile ? 'cat' : 'plant2';
             } else if (sRoll < 98) {
               // 8% CCTV Camera
               sprite = 'cctv';
@@ -1670,22 +1721,22 @@
     },
 
     _spritePositions: {
-      guard:      { y: '22px',   xRange: ['0px'] },
-      plant:      { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      plant2:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      plant3:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      bench:      { y: '22px',   xRange: ['-80px', '-40px', '0px', '40px', '80px'] },
-      'bench-plant': { y: '22px', xRange: ['0px'] },
-      mouse:      { y: '0px',   xRange: ['-80px', '-50px', '-20px', '20px', '50px', '80px'] },
-      cat:        { y: '25px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      'cat-black': { y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      'cat-ginger':{ y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      'cat-flipped':{ y: '25px', xRange: ['-60px', '-30px', '0px', '30px', '60px'] },
-      'statue':    { y: '22px',  xRange: ['-20px', '0px', '20px'] },
-      'cctv':      { y: '-62vh', xRange: ['-80px', '80px'] },
-      'fire-extinguisher': { y: '-100px', xRange: ['-60px', '60px'] },
-      'exit-sign':{ y: '-120px', xRange: ['-40px', '0px', '40px'] },
-      'quote-card':{ y: '-60px', xRange: ['-30px', '0px', '30px'] },
+      guard:      { y: '22px',   xRange: ['0px'],                                         mobileXRange: ['0px'] },
+      plant:      { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      plant2:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      plant3:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      bench:      { y: '22px',   xRange: ['-80px', '-40px', '0px', '40px', '80px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      'bench-plant': { y: '22px', xRange: ['0px'],                                        mobileXRange: ['0px'] },
+      mouse:      { y: '0px',    xRange: ['-80px', '-50px', '-20px', '20px', '50px', '80px'], mobileXRange: ['-20px', '0px', '20px'] },
+      cat:        { y: '25px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      'cat-black': { y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      'cat-ginger':{ y: '25px',  xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      'cat-flipped':{ y: '25px', xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      'statue':    { y: '22px',  xRange: ['-20px', '0px', '20px'],                        mobileXRange: ['-10px', '0px', '10px'] },
+      'cctv':      { y: '-62vh', xRange: ['-80px', '80px'],                               mobileXRange: ['0px'] },
+      'fire-extinguisher': { y: '-100px', xRange: ['-60px', '60px'],                      mobileXRange: ['-20px', '0px', '20px'] },
+      'exit-sign':{ y: '-120px', xRange: ['-40px', '0px', '40px'],                        mobileXRange: ['-15px', '0px', '15px'] },
+      'quote-card':{ y: '-60px', xRange: ['-30px', '0px', '30px'],                        mobileXRange: ['-15px', '0px', '15px'] },
     },
 
     _renderSlot(spriteName) {
@@ -1694,7 +1745,9 @@
       if (spriteName) {
         wrap.dataset.decoType = spriteName;
         const pos = this._spritePositions[spriteName] || { y: '22px', xRange: ['0px'] };
-        const x = pos.xRange[Math.floor(Math.random() * pos.xRange.length)];
+        const isMobile = window.innerWidth <= 768;
+        const range = (isMobile && pos.mobileXRange) ? pos.mobileXRange : pos.xRange;
+        const x = range[Math.floor(Math.random() * range.length)];
         wrap.style.setProperty('--gr-sprite-x', x);
         wrap.style.setProperty('--gr-sprite-y', pos.y);
         const fn = this.sprites[spriteName];
@@ -1876,6 +1929,13 @@
         }
         doorCol.appendChild(inner);
 
+        if (!isExit) {
+          const sub = document.createElement('div');
+          sub.className = 'gr-nameplate-sub';
+          sub.innerHTML = 'Gallery this way <span class="gr-nameplate-sub-arrow">→</span>';
+          doorCol.appendChild(sub);
+        }
+
         const doorSvgWrap = document.createElement('div');
         doorSvgWrap.innerHTML = this.sprites.door();
         if (isExit && typeof nextGallery !== 'undefined' && nextGallery) {
@@ -1894,9 +1954,9 @@
         switchWrap.innerHTML = this.sprites.lightSwitch();
         switchWrap.addEventListener('click', () => this._toggleLights());
 
-        bottomRow.appendChild(entranceItems);
         bottomRow.appendChild(doorCol);
         bottomRow.appendChild(switchWrap);
+        bottomRow.appendChild(entranceItems);
         wrap.appendChild(bottomRow);
         return wrap;
       }
@@ -1945,9 +2005,14 @@
             void fw.offsetWidth; // force reflow so animation restarts
             fw.classList.add('gr-firework-active');
           };
-          burst();
-          setTimeout(burst, 1100);
-        }, 5200);
+          const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              observer.disconnect();
+              setTimeout(() => { burst(); setTimeout(burst, 1100); }, 500);
+            }
+          }, { threshold: 0.5 });
+          observer.observe(fw);
+        }, 3400);
       });
     },
 
@@ -1997,6 +2062,22 @@
         room.scrollLeft += e.deltaY + e.deltaX;
       };
 
+      // Redirect vertical touch swipes to horizontal scroll
+      let touchStartX = 0, touchStartY = 0, touchScrollStart = 0;
+      this._onTouchStart = (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchScrollStart = room.scrollLeft;
+      };
+      this._onTouchMove = (e) => {
+        const dx = e.touches[0].clientX - touchStartX;
+        const dy = e.touches[0].clientY - touchStartY;
+        if (Math.abs(dy) > Math.abs(dx)) {
+          e.preventDefault();
+          room.scrollLeft = touchScrollStart - dy;
+        }
+      };
+
       this._onScroll = () => {
         if (this._isProgrammaticScroll) return;
         // Only clear if movement is significant (to avoid clearing on tiny jitter)
@@ -2010,6 +2091,8 @@
       window.addEventListener('mousemove', this._onMouseMove);
       window.addEventListener('mouseup', this._onMouseUp);
       room.addEventListener('wheel', this._onWheel, { passive: false });
+      room.addEventListener('touchstart', this._onTouchStart, { passive: true });
+      room.addEventListener('touchmove', this._onTouchMove, { passive: false });
       room.addEventListener('scroll', this._onScroll);
     },
 
@@ -2019,6 +2102,8 @@
       if (this._onMouseMove) window.removeEventListener('mousemove', this._onMouseMove);
       if (this._onMouseUp)   window.removeEventListener('mouseup', this._onMouseUp);
       if (this._onWheel && this.room)     this.room.removeEventListener('wheel', this._onWheel);
+      if (this._onTouchStart && this.room) this.room.removeEventListener('touchstart', this._onTouchStart);
+      if (this._onTouchMove && this.room)  this.room.removeEventListener('touchmove', this._onTouchMove);
       if (this._onScroll && this.room)    this.room.removeEventListener('scroll', this._onScroll);
     },
 
