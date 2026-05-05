@@ -777,6 +777,11 @@ isGalleryView: true
     display: none;
   }
 
+  /* Push entrance/exit CCTV cameras above the nameplate on small screens */
+  .gr-nameplate [data-deco-type="cctv-angled"] {
+    top: 2vh !important;
+  }
+
 }
 /* Sprites in slots sit on the floor (overlap the floor line for depth) */
 .gr-deco-slot .gr-sprite {
@@ -1823,20 +1828,45 @@ isGalleryView: true
         room.scrollLeft += e.deltaY + e.deltaX;
       };
 
-      // Redirect vertical touch swipes to horizontal scroll
+      // Redirect vertical touch swipes to horizontal scroll, with momentum
       let touchStartX = 0, touchStartY = 0, touchScrollStart = 0;
+      let touchLastY = 0, touchVelocity = 0, touchLastTime = 0;
+      let momentumRaf = null;
+
+      const stopMomentum = () => {
+        if (momentumRaf) { cancelAnimationFrame(momentumRaf); momentumRaf = null; }
+      };
+
       this._onTouchStart = (e) => {
+        stopMomentum();
         touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
+        touchStartY = touchLastY = e.touches[0].clientY;
         touchScrollStart = room.scrollLeft;
+        touchVelocity = 0;
+        touchLastTime = Date.now();
       };
       this._onTouchMove = (e) => {
         const dx = e.touches[0].clientX - touchStartX;
         const dy = e.touches[0].clientY - touchStartY;
         if (Math.abs(dy) > Math.abs(dx)) {
           e.preventDefault();
+          const now = Date.now();
+          const dt = now - touchLastTime || 1;
+          touchVelocity = (e.touches[0].clientY - touchLastY) / dt;
+          touchLastY = e.touches[0].clientY;
+          touchLastTime = now;
           room.scrollLeft = touchScrollStart - dy;
         }
+      };
+      this._onTouchEnd = () => {
+        let velocity = -touchVelocity * 16; // px per frame at 60fps
+        const decelerate = () => {
+          if (Math.abs(velocity) < 0.5) { momentumRaf = null; return; }
+          room.scrollLeft += velocity;
+          velocity *= 0.92;
+          momentumRaf = requestAnimationFrame(decelerate);
+        };
+        if (Math.abs(velocity) > 0.5) momentumRaf = requestAnimationFrame(decelerate);
       };
 
       this._onScroll = () => {
@@ -1854,6 +1884,7 @@ isGalleryView: true
       room.addEventListener('wheel', this._onWheel, { passive: false });
       room.addEventListener('touchstart', this._onTouchStart, { passive: true });
       room.addEventListener('touchmove', this._onTouchMove, { passive: false });
+      room.addEventListener('touchend', this._onTouchEnd, { passive: true });
       room.addEventListener('scroll', this._onScroll);
     },
 
@@ -1865,6 +1896,7 @@ isGalleryView: true
       if (this._onWheel && this.room)     this.room.removeEventListener('wheel', this._onWheel);
       if (this._onTouchStart && this.room) this.room.removeEventListener('touchstart', this._onTouchStart);
       if (this._onTouchMove && this.room)  this.room.removeEventListener('touchmove', this._onTouchMove);
+      if (this._onTouchEnd && this.room)   this.room.removeEventListener('touchend', this._onTouchEnd);
       if (this._onScroll && this.room)    this.room.removeEventListener('scroll', this._onScroll);
     },
 
