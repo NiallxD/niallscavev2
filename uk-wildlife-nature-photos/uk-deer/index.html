@@ -263,6 +263,29 @@
 /* In general dark mode (switch), all photos poke through */
 .gr-dark .gr-wall-item--photo { z-index: 20; }
 
+/* Spotlight for the piano in dark mode */
+.gr-dark .gr-piano-wrap {
+  z-index: 20;
+}
+.gr-dark .gr-piano-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vh;
+  height: 120vh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 248, 220, 0.15) 0%,
+    rgba(255, 248, 220, 0.05) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: gr-spotlight-flicker 5s infinite alternate;
+}
+
 /* In spotlight mode, ONLY the focused one rises */
 .gr-spotlight-mode .gr-wall-item--photo { z-index: 2; }
 .gr-spotlight-mode .gr-wall-item--photo.gr-focused { 
@@ -280,6 +303,39 @@
 @media (max-width: 1000px) {
   .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
     transform: scale(1.02) translateX(-12vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
+    transform: scale(1.02) translateY(-18vh) translateX(0);
+  }
+
+  .gr-spotlight-info {
+    left: 50%;
+    top: calc(50% + 12vh);
+    width: 85vw;
+    max-width: 500px;
+    transform: translate(-50%, 20px);
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .gr-wall-item--photo.gr-focused .gr-spotlight-info {
+    transform: translate(-50%, 0);
+  }
+
+  .gr-spotlight-gear {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .gr-spotlight-title {
+    font-size: 11px;
+  }
+
+  .gr-spotlight-desc {
+    line-height: 1.8;
   }
 }
 
@@ -420,7 +476,8 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  gap: 10px;
+  gap: 40px;
+  padding-right: 40px;
 }
 .gr-entrance-bench {
   display: block;
@@ -436,7 +493,16 @@
   aspect-ratio: 10 / 18;
   image-rendering: pixelated;
 }
+.gr-entrance-piano {
+  display: block;
+  height: var(--gr-piano-height, 40vh);
+  width: auto;
+  aspect-ratio: 64 / 42;
+  image-rendering: pixelated;
+}
+
 .gr-lightswitch-wrap {
+
   align-self: flex-end;
   margin-bottom: 15vh;
   cursor: pointer;
@@ -466,7 +532,7 @@
   gap: 0.75rem;
   align-items: center;
 }
-.gr-leave-btn, .gr-light-toggle {
+.gr-leave-btn, .gr-light-toggle, .gr-mute-btn {
   font-family: var(--gr-font-pixel-sm);
   font-size: 0.65rem;
   color: #fff;
@@ -477,12 +543,32 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: all 150ms ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.gr-leave-btn:hover, .gr-light-toggle:hover {
+.gr-leave-btn:hover, .gr-light-toggle:hover, .gr-mute-btn:hover {
   background: rgba(60,40,20,0.9);
   border-color: #b8860b;
   color: #b8860b;
 }
+
+.gr-mute-btn {
+  position: fixed;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 2010;
+}
+
+.gr-mute-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.gr-mute-btn.is-muted .unmute-icon { display: block; }
+.gr-mute-btn.is-muted .mute-icon { display: none; }
+.gr-mute-btn:not(.is-muted) .unmute-icon { display: none; }
+.gr-mute-btn:not(.is-muted) .mute-icon { display: block; }
 
 /* Subtle light toggle: only shows when lights are off */
 .gr-light-toggle {
@@ -571,13 +657,15 @@
     3px 3px 0 rgba(0,0,0,0.15);
 }
 
-/* Firework wrapper — absolutely centred above entranceItems */
+/* Firework wrapper — sits on the piano */
 .gr-visitor-wrap {
   position: absolute;
-  bottom: calc(100% + 50px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 32%;
+  top: 15%;
+  transform: translate(-50%, -100%);
   white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
 }
 .gr-firework {
   position: absolute;
@@ -612,28 +700,28 @@
   40%  { opacity: 1; }
   100% { transform: translate(calc(var(--sdx) - 3px), calc(var(--sdy) - 3px)) scale(0.4); opacity: 0; }
 }
-/* Visitor counter sign */
+/* Visitor counter sign - styled as a small stand on the piano */
 .gr-visitor-sign {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px 10px;
-  background: #120c04;
-  border: 3px solid #b8860b;
-  box-shadow: 3px 3px 0 rgba(0,0,0,0.5), inset 0 0 0 1px #8a6008;
+  gap: 3px;
+  padding: 4px 8px;
+  background: #1a1208;
+  border: 1px solid #b8860b;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.6);
 }
 .gr-visitor-label {
   font-family: var(--gr-font-pixel);
-  font-size: 5px;
+  font-size: 4px;
   color: #b8860b;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.05em;
   white-space: nowrap;
 }
 .gr-visitor-badge {
   display: block;
-  height: 18px;
+  height: 10px;
   width: auto;
   image-rendering: auto;
   /* Recolour to gold-on-dark to match room palette */
@@ -770,6 +858,9 @@
 }
 [data-deco-type="fire-extinguisher"] .gr-sprite {
   height: 12vh; width: auto; aspect-ratio: 10 / 22; image-rendering: pixelated; display: block;
+}
+[data-deco-type="visitor-counter"] .gr-sprite {
+  height: 35vh; width: auto; aspect-ratio: 18 / 31; image-rendering: pixelated; display: block;
 }
 [data-deco-type="bench-plant"] .gr-sprite {
   height: 26vh; width: auto; aspect-ratio: 60 / 38; image-rendering: pixelated; display: block;
@@ -1620,12 +1711,21 @@
 
   const GalleryRoom = {
     overlay: null,
+    pianoHeight: '55vh',
+    pianoGrounding: '100px',
     wall: null,
     room: null,
     blackout: null,
     welcome: null,
     welcomeText: null,
     scrollHint: null,
+    audioTracks: [
+      '/static/audio/surprising_media-soft-jazz-336513.mp3',
+      '/static/audio/vibedepot-jazz-cafe-2-416061.mp3',
+      '/static/audio/waveloom-jazz-ambient-516752.mp3'
+    ],
+    audioElement: null,
+    isMuted: false,
     _domBuilt: false,
     _focusedPhoto: null,
     _isProgrammaticScroll: false,
@@ -1651,9 +1751,11 @@
         this._buildDOM();
         this._domBuilt = true;
       }
+      this.overlay.style.setProperty('--gr-piano-height', this.pianoHeight);
       this._setRandomTheme();
       this._buildScene();
       this._enterSequence();
+      this._playNextTrack();
     },
 
     _setRandomTheme() {
@@ -1673,6 +1775,10 @@
     },
 
     close() {
+      if (this.audioElement) {
+        this.audioElement.pause();
+        this.audioElement.currentTime = 0;
+      }
       this._exitSequence();
     },
 
@@ -1688,6 +1794,11 @@
           <h2 class="gr-welcome-text">Welcome</h2>
         </div>
         <div class="gr-room">
+          <button class="gr-mute-btn" aria-label="Toggle music">
+            <svg class="mute-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+            <svg class="unmute-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            Music
+          </button>
           <div class="gr-ui-bar">
             <button class="gr-light-toggle" aria-label="Turn lights on">Restore Lights</button>
             <button class="gr-leave-btn" aria-label="Leave the gallery">&larr; Leave The Gallery</button>
@@ -1711,6 +1822,34 @@
       this.scrollHint  = overlay.querySelector('.gr-scroll-hint');
       overlay.querySelector('.gr-leave-btn').addEventListener('click', () => this.close());
       overlay.querySelector('.gr-light-toggle').addEventListener('click', () => this._toggleLights());
+      overlay.querySelector('.gr-mute-btn').addEventListener('click', () => this._toggleMute());
+    },
+
+    _setupAudio() {
+      if (this.audioElement) return;
+      this.audioElement = new Audio();
+      this.audioElement.volume = 0.5;
+      this.audioElement.addEventListener('ended', () => this._playNextTrack());
+    },
+
+    _playNextTrack() {
+      if (!this.audioElement) this._setupAudio();
+      // Pick a random track
+      const track = this.audioTracks[Math.floor(Math.random() * this.audioTracks.length)];
+      this.audioElement.src = track;
+      this.audioElement.muted = this.isMuted;
+      this.audioElement.play().catch(err => console.log("Audio play blocked:", err));
+    },
+
+    _toggleMute() {
+      this.isMuted = !this.isMuted;
+      if (this.audioElement) {
+        this.audioElement.muted = this.isMuted;
+      }
+      const btn = this.overlay.querySelector('.gr-mute-btn');
+      if (btn) {
+        btn.classList.toggle('is-muted', this.isMuted);
+      }
     },
 
     _buildScene() {
@@ -1734,20 +1873,22 @@
       let consecutiveBlanks = 0;
 
       result.push({ type: 'nameplate' });
-      result.push({ type: 'slot', sprite: 'guard' });
+      result.push({ type: 'visitor-counter' });
+      // Buffer slot to keep spacing before first photo
+      result.push({ type: 'slot', sprite: null });
 
       photos.forEach((item, i) => {
         result.push({ type: 'photo', idx: galleryData.indexOf(item) });
         
-        // Add a slot between photos (except after the last one)
+        // Add a slot after every photo
         if (i < photos.length - 1) {
           // 40% chance for empty, 60% for a sprite. Force one if 2 blanks in a row.
           const shouldHaveSprite = (consecutiveBlanks >= 2) || (Math.random() < 0.6);
-          
+
           if (shouldHaveSprite) {
             let sprite = 'bench';
             const sRoll = Math.random() * 100;
-            
+
             if (sRoll < 50) {
               // 50% Bench (split between plain and with plant)
               sprite = Math.random() < 0.8 ? 'bench' : 'bench-plant';
@@ -1781,8 +1922,7 @@
             consecutiveBlanks++;
           }
         }
-      });
-
+        });
       // Mirror the entrance at the end (Exit)
       result.push({ type: 'slot', sprite: 'guard' });
       result.push({ type: 'exit' });
@@ -1918,6 +2058,75 @@
         return wrap;
       }
 
+      if (type === 'visitor-counter') {
+        wrap.className = 'gr-wall-item gr-wall-item--visitor-counter';
+        wrap.dataset.decoType = 'visitor-counter';
+        wrap.style.paddingLeft = '40px';
+        wrap.style.paddingRight = '40px';
+        wrap.style.justifyContent = 'flex-end';
+        
+        // Container for Stand + Plaque
+        const standWrap = document.createElement('div');
+        standWrap.className = 'gr-stand-container';
+        standWrap.style.position = 'relative';
+        standWrap.style.display = 'flex';
+        standWrap.style.flexDirection = 'column';
+        standWrap.style.alignItems = 'center';
+        standWrap.innerHTML = this.sprites.infoStand();
+        standWrap.style.transform = 'translateY(22px)'; // Ground it
+
+        const visitorSign = document.createElement('div');
+        visitorSign.className = 'gr-visitor-sign';
+        visitorSign.style.position = 'absolute';
+        visitorSign.style.top = '14%'; // Centered vertically in the SVG's plaque area
+        visitorSign.style.left = '50%';
+        visitorSign.style.transform = 'translate(-50%, -50%)';
+        visitorSign.style.background = 'transparent';
+        visitorSign.style.border = 'none';
+        visitorSign.style.boxShadow = 'none';
+        visitorSign.style.padding = '0';
+        visitorSign.style.gap = '2px';
+        visitorSign.style.width = '80%';
+        visitorSign.style.display = 'flex';
+        visitorSign.style.flexDirection = 'column';
+        visitorSign.style.alignItems = 'center';
+
+        const visitorLabel = document.createElement('div');
+        visitorLabel.className = 'gr-visitor-label';
+        visitorLabel.textContent = 'Visitors';
+        visitorLabel.style.fontSize = '0.7rem';
+        visitorLabel.style.color = '#b8860b'; // Gold color
+        visitorLabel.style.fontWeight = 'bold';
+        visitorLabel.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
+        
+        const badge = document.createElement('img');
+        badge.className = 'gr-visitor-badge';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
+        // Using b8860b (gold) for the hits.sh badge colors
+        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=b8860b&labelColor=1a1208&label=visitors`;
+        badge.alt = 'visitor count';
+        badge.style.height = '18px';
+        badge.style.filter = 'drop-shadow(1px 1px 0px rgba(0,0,0,0.5))';
+
+        visitorSign.appendChild(visitorLabel);
+        visitorSign.appendChild(badge);
+
+        const firework = document.createElement('div');
+        firework.className = 'gr-firework';
+        firework.style.top = '14%'; // Fireworks explode from the plaque
+        for (let i = 0; i < 12; i++) {
+          const spark = document.createElement('div');
+          spark.className = 'gr-spark';
+          firework.appendChild(spark);
+        }
+
+        standWrap.appendChild(visitorSign);
+        standWrap.appendChild(firework);
+        wrap.appendChild(standWrap);
+        this._firework = firework;
+        return wrap;
+      }
+
       if (type === 'nameplate' || type === 'exit') {
         const isExit = type === 'exit';
         wrap.className = 'gr-wall-item gr-nameplate' + (isExit ? ' gr-exit' : '');
@@ -1945,11 +2154,20 @@
         bottomRow.className = 'gr-door-row';
         if (isExit) bottomRow.style.flexDirection = 'row-reverse';
 
-        // Bench container
-        const benchWrap = document.createElement('div');
-        benchWrap.style.position = 'relative';
-        benchWrap.style.display = 'flex';
-        benchWrap.innerHTML = this.sprites.entranceBench();
+        // Furniture container
+        const furnitureWrap = document.createElement('div');
+        furnitureWrap.style.position = 'relative';
+        furnitureWrap.style.display = 'flex';
+        
+        if (isExit) {
+          furnitureWrap.innerHTML = this.sprites.entranceBench();
+        } else {
+          // Entrance gets the Piano
+          furnitureWrap.className = 'gr-piano-wrap';
+          furnitureWrap.innerHTML = this.sprites.piano();
+          // Adjust vertical position to sit on floor correctly
+          furnitureWrap.style.transform = `translateY(${this.pianoGrounding})`;
+        }
 
         const entranceItems = document.createElement('div');
         entranceItems.className = 'gr-entrance-items';
@@ -1957,38 +2175,17 @@
         
         // Only show visitor sign at the entrance
         if (!isExit) {
-          const visitorSign = document.createElement('div');
-          visitorSign.className = 'gr-visitor-sign';
-          const visitorLabel = document.createElement('div');
-          visitorLabel.className = 'gr-visitor-label';
-          visitorLabel.textContent = 'Visitors';
-          const badge = document.createElement('img');
-          badge.className = 'gr-visitor-badge';
-          const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-          badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=111100&labelColor=111100&label=visitors`;
-          badge.alt = 'visitor count';
-          visitorSign.appendChild(visitorLabel);
-          visitorSign.appendChild(badge);
-
-          const visitorWrap = document.createElement('div');
-          visitorWrap.className = 'gr-visitor-wrap';
-          const firework = document.createElement('div');
-          firework.className = 'gr-firework';
-          for (let i = 0; i < 12; i++) {
-            const spark = document.createElement('div');
-            spark.className = 'gr-spark';
-            firework.appendChild(spark);
-          }
-          visitorWrap.appendChild(visitorSign);
-          visitorWrap.appendChild(firework);
-          benchWrap.appendChild(visitorWrap);
-          this._firework = firework;
+          // logic removed, handled by visitor-counter deco type
         }
 
-        entranceItems.appendChild(benchWrap);
-        const trash = document.createElement('div');
-        trash.innerHTML = this.sprites.trashCan();
-        entranceItems.appendChild(trash);
+        entranceItems.appendChild(furnitureWrap);
+        
+        // Only show trash can at the exit
+        if (isExit) {
+          const trash = document.createElement('div');
+          trash.innerHTML = this.sprites.trashCan();
+          entranceItems.appendChild(trash);
+        }
 
         // Door + plaque column
         const doorCol = document.createElement('div');
@@ -2399,6 +2596,136 @@
   <!-- Whiskers -->
   <rect x="2" y="11" width="3" height="1" fill="#777"/>
   <rect x="13" y="11" width="3" height="1" fill="#777"/>
+</svg>`,
+
+      'piano': () => {
+        const skins = ['#e8b59a', '#d4a088', '#8d5524', '#c68642', '#f1c27d', '#ffdbac'];
+        const hairs = ['#2a1a0a', '#4a3a2a', '#111', '#8b4513', '#d2b48c', '#e9c6af'];
+        const eyes  = ['#2a1a0a', '#3d2b1f', '#4682b4', '#556b2f', '#708090'];
+        const s = skins[Math.floor(Math.random() * skins.length)];
+        const h = hairs[Math.floor(Math.random() * hairs.length)];
+        const e = eyes[Math.floor(Math.random() * eyes.length)];
+
+        return `<svg width="100%" height="100%" viewBox="0 0 64 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="gr-entrance-piano" style="fill-rule:evenodd;clip-rule:evenodd;image-rendering:pixelated;">
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(7.34788e-16,12,-12,7.34788e-16,14,4)">
+            <stop offset="0" style="stop-color:rgb(26,26,26);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(8,8,8);stop-opacity:1"/>
+        </linearGradient>
+    </defs>
+    <g transform="matrix(1.07117,0,0,1,-4.19904,0)">
+        <rect x="5" y="38" width="54" height="2" style="fill-opacity:0.15;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="14" y="16" width="40" height="12" style="fill:rgb(42,26,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="16" y="17" width="36" height="10" style="fill:rgb(58,42,16);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="18" y="18" width="30" height="1" style="fill:rgb(255,215,0);fill-opacity:0.1;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="18" y="20" width="32" height="1" style="fill:rgb(255,215,0);fill-opacity:0.1;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="18" y="22" width="28" height="1" style="fill:rgb(255,215,0);fill-opacity:0.1;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <path d="M14,16L54,16L48,28L24,28L14,16Z" style="fill-opacity:0.4;fill-rule:nonzero;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <path d="M12.378,16.439L54,16L54,7.861L52.732,5.91L50.369,4L35.423,4L32.337,6.266L31.005,10.22L26.493,13.688L12.378,16.439Z" style="fill:url(#_Linear1);fill-rule:nonzero;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <path d="M12.378,16.439L26.053,13.792L31.025,10.22L32.335,6.073L35.309,4L50.096,4L52.2,5.837L54,7.493L54,16" style="fill:none;fill-rule:nonzero;stroke:rgb(42,42,42);stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-0.00757432,0.439389)">
+        <rect x="52" y="4" width="1" height="12" style="fill:rgb(123,77,54);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="12" y="16" width="46" height="12" style="fill:rgb(8,8,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="12" y="16" width="46" height="1" style="fill:rgb(26,26,26);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="16" y="28" width="3" height="10" style="fill:rgb(8,8,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="44" y="28" width="3" height="10" style="fill:rgb(8,8,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,2.60276,0)">
+        <rect x="54" y="28" width="2" height="8" style="fill:rgb(8,8,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,4.04626,1)">
+        <rect x="8" y="19" width="6" height="5" style="fill:rgb(8,8,8);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,4.04626,1)">
+        <rect x="8" y="20" width="5" height="1" style="fill:rgb(240,240,240);"/>
+    </g>
+    <g class="gr-pianist">
+        <rect x="2" y="28" width="8" height="2" style="fill:rgb(44,30,15);"/>
+        <rect x="3" y="30" width="1" height="8" style="fill:rgb(44,30,15);"/>
+        <rect x="8" y="30" width="1" height="8" style="fill:rgb(44,30,15);"/>
+        <g transform="matrix(1.3906,0,0,1.20498,0.921431,-7.81121)">
+            <rect x="6" y="28" width="2" height="10" style="fill:rgb(8,8,8);"/>
+        </g>
+        <g transform="matrix(4.25749e-17,0.695302,-0.242409,1.48433e-17,20.7853,32.4158)">
+            <rect x="6" y="28" width="2" height="10" style="fill:rgb(8,8,8);"/>
+        </g>
+        <g transform="matrix(9.15312e-17,-1.49482,0.826505,5.06088e-17,-20.1421,37.8869)">
+            <rect x="6" y="28" width="2" height="10" style="fill:rgb(8,8,8);"/>
+        </g>
+        <rect x="3" y="18" width="6" height="10" style="fill:rgb(17,17,17);"/>
+        <g transform="matrix(0.554645,0,0,1,4.56284,0)">
+            <rect x="4" y="18" width="4" height="6" style="fill:white;"/>
+        </g>
+        <g transform="matrix(1,0,0,2,0,-19)">
+            <rect x="5" y="19" width="2" height="1"/>
+        </g>
+        <path d="M9,11L9,15L10.022,15L10.009,15.973L9,15.983L9,18L4,18L4,11L9,11Z" style="fill:${s};"/>
+        <rect x="4" y="11" width="5" height="2" style="fill:${h};"/>
+        <g transform="matrix(1,0,0,1,1.78142,0)">
+            <rect x="5" y="14" width="1" height="1" style="fill:${e};"/>
+        </g>
+        <g class="gr-piano-arms">
+            <rect x="7" y="20" width="5" height="2" style="fill:rgb(17,17,17);"/>
+            <rect x="11" y="20" width="2" height="2" style="fill:${s};"/>
+        </g>
+    </g>
+    <style>
+      .gr-pianist { 
+        animation: gr-piano-sway 8s ease-in-out infinite; 
+        transform-origin: 5px 38px; 
+      }
+      .gr-piano-arms { 
+        animation: gr-piano-fingers 0.6s steps(2) infinite; 
+      }
+      @keyframes gr-piano-sway {
+        0%, 100% { transform: rotate(-1deg); }
+        50% { transform: rotate(2deg); }
+      }
+      @keyframes gr-piano-fingers {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(1px, -1px); }
+      }
+    </style>
+</svg>`;
+      },
+
+      'infoStand': () => `<svg width="100%" height="100%" viewBox="0 0 18 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:2;image-rendering:pixelated;" class="gr-sprite">
+    <g transform="matrix(1.74552,0,0,1.74552,-82.87,-2.07942)">
+        <rect x="52" y="4" width="1" height="12" style="fill:rgb(123,77,54);"/>
+    </g>
+    <g transform="matrix(15.8626,0,0,0.677356,-824.019,-1.8709)">
+        <rect x="52" y="4" width="1" height="12" style="fill:rgb(123,77,54);stroke:rgb(232,181,53);stroke-width:0.07px;"/>
+    </g>
+    <g transform="matrix(1.27556e-16,2.08315,-1,6.12323e-17,18.7698,-80.3919)">
+        <rect x="52" y="4" width="1" height="12" style="fill:rgb(38,24,17);"/>
+    </g>
+    <g transform="matrix(1.27556e-16,2.08315,-0.590037,3.61294e-17,14.6702,-82.4751)">
+        <rect x="52" y="4" width="1" height="12" style="fill:rgb(38,24,17);"/>
+    </g>
 </svg>`,
 
       'entranceBench': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 22" shape-rendering="crispEdges" class="gr-entrance-bench">
