@@ -94,10 +94,23 @@
   text-transform: uppercase;
   transition: background var(--ease), border-color var(--ease), color var(--ease);
 }
+.gr-enter-btn::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 0.5em;
+  animation: gr-pixel-blink 1s steps(1) infinite;
+}
 .gr-enter-btn:hover {
   background: var(--color-text);
   color: var(--color-bg);
   border-color: var(--color-text);
+}
+.gr-enter-btn:hover::before {
+  animation: none;
+}
+@keyframes gr-pixel-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* Overlay wrapper */
@@ -1043,8 +1056,10 @@
     <div class="gallery-section-header">
       <p class="section-label" style="margin-bottom: 0;">Gallery</p>
       
+      
+      
       <div class="gr-trigger-wrap">
-        <button id="gr-enter-btn" class="gr-enter-btn">&#x25B6; Visit The Gallery</button>
+        <button id="gr-enter-btn" class="gr-enter-btn">Visit The Gallery</button>
       </div>
       
     </div>
@@ -1524,11 +1539,7 @@
     welcome: null,
     welcomeText: null,
     scrollHint: null,
-    audioTracks: [
-      '/static/audio/surprising_media-soft-jazz-336513.mp3',
-      '/static/audio/vibedepot-jazz-cafe-2-416061.mp3',
-      '/static/audio/waveloom-jazz-ambient-516752.mp3'
-    ],
+    audioTracks: ["/static/audio/surprising_media-soft-jazz-336513.mp3","/static/audio/vibedepot-jazz-cafe-2-416061.mp3","/static/audio/waveloom-jazz-ambient-516752.mp3"],
     audioElement: null,
     isMuted: false,
     _domBuilt: false,
@@ -1549,9 +1560,15 @@
         return;
       }
       btn.addEventListener('click', () => this.open());
+
+      // Auto-open when arriving via the gallery room door (?room=auto)
+      if (new URLSearchParams(window.location.search).get('room') === 'auto') {
+        history.replaceState(null, '', window.location.pathname);
+        this.open(true);
+      }
     },
 
-    open() {
+    open(skipWelcome = false) {
       if (!this._domBuilt) {
         this._buildDOM();
         this._domBuilt = true;
@@ -1559,7 +1576,11 @@
       this.overlay.style.setProperty('--gr-piano-height', this.pianoHeight);
       this._setRandomTheme();
       this._buildScene();
-      this._enterSequence();
+      if (skipWelcome) {
+        this._enterSequenceFast();
+      } else {
+        this._enterSequence();
+      }
       this._playNextTrack();
     },
 
@@ -2040,6 +2061,10 @@
 
         const doorSvgWrap = document.createElement('div');
         doorSvgWrap.innerHTML = this.sprites.door();
+        if (!isExit) {
+          doorSvgWrap.style.cursor = 'pointer';
+          doorSvgWrap.addEventListener('click', () => this.close());
+        }
         if (isExit && typeof nextGallery !== 'undefined' && nextGallery) {
           doorSvgWrap.style.cursor = 'pointer';
           doorSvgWrap.addEventListener('click', () => {
@@ -2082,6 +2107,35 @@
         }
       }
       return wrap;
+    },
+
+    _enterSequenceFast() {
+      this.overlay.classList.add('gr-visible');
+      document.body.style.overflow = 'hidden';
+      this.welcome.classList.add('gr-hidden');
+      requestAnimationFrame(() => {
+        this.room.classList.add('gr-room-visible');
+        this.blackout.classList.add('gr-fade-out');
+        this._bindScroll();
+        this.scrollHint.classList.remove('gr-hint-hidden');
+        setTimeout(() => this.scrollHint.classList.add('gr-hint-hidden'), 3000);
+        setTimeout(() => {
+          const fw = this._firework;
+          if (!fw) return;
+          const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              observer.disconnect();
+              const burst = () => {
+                fw.classList.remove('gr-firework-active');
+                void fw.offsetWidth;
+                fw.classList.add('gr-firework-active');
+              };
+              setTimeout(() => { burst(); setTimeout(burst, 1100); }, 500);
+            }
+          }, { threshold: 0.5 });
+          observer.observe(fw);
+        }, 800);
+      });
     },
 
     _enterSequence() {
