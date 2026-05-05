@@ -546,6 +546,16 @@ export default function (eleventyConfig) {
       })
   );
 
+  eleventyConfig.addCollection("currentlyReading", (api) =>
+    api.getAll()
+      .filter((i) => i.data.Type === "Bookshelf" && i.data.currently_reading === true)
+  );
+
+  eleventyConfig.addCollection("currentProject", (api) =>
+    api.getAll()
+      .filter((i) => i.data.current_project === true)
+  );
+
   return {
     pathPrefix: process.env.ELEVENTY_PATH_PREFIX || "/",
     dir: {

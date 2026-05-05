@@ -113,16 +113,78 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
 {% if mapPage %}
 {% set mapPins = mapPage.content | parseMapBlocks %}
 {% if mapPins.length %}
-<div class="home-posts">
-  <div class="home-block-header">
-    <p class="section-label">Photo Map</p>
-    <a href="{{ '/photo-map/' | url }}" class="view-all">Full map →</a>
-  </div>
-  <div id="home-photo-map"></div>
+<div class="home-map-row">
+    <div class="home-map-col">
+      <div class="home-block-header">
+        <p class="section-label">Photo Map</p>
+        <a href="{{ '/photo-map/' | url }}" class="view-all">Full map →</a>
+      </div>
+      <div id="home-photo-map"></div>
+    </div>
+    <aside class="home-reading-col">
+      <div class="home-block-header">
+        <p class="section-label">Reading Now</p>
+        <a href="{{ '/bookshelf/' | url }}" class="view-all">Bookshelf →</a>
+      </div>
+      {% set currentBook = collections.currentlyReading | first %}
+      {% if currentBook %}
+      <a href="{{ '/bookshelf/' | url }}" class="home-reading-card">
+        {% if currentBook.data.heroImage %}
+        <img class="home-reading-cover" src="{{ currentBook.data.heroImage }}" alt="{{ currentBook.data.title }}">
+        {% endif %}
+        <div class="home-reading-info">
+          <p class="home-reading-title">{{ currentBook.data.title }}</p>
+          {% if currentBook.data.author %}<p class="home-reading-author">{{ currentBook.data.author }}</p>{% endif %}
+          {% if currentBook.data.tags %}
+          <div class="home-reading-tags">
+            {% for tag in currentBook.data.tags | limit(3) %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </a>
+      {% else %}
+      <div class="home-reading-card home-reading-card--empty">
+        <p class="home-reading-empty">Nothing on the shelf right now.</p>
+      </div>
+      {% endif %}
+    </aside>
 </div>
 {% endif %}
 {% endif %}
 
+<div class="home-prints-row">
+  <aside class="home-project-col">
+    <div class="home-block-header">
+      <p class="section-label">Current Project</p>
+      <a href="{{ '/side-projects/' | url }}" class="view-all">Projects →</a>
+    </div>
+    {% set currentProject = collections.currentProject | first %}
+    {% if currentProject %}
+    <a href="{{ currentProject.url | url }}" class="home-reading-card">
+      {% if currentProject.data.coverImage or currentProject.data.heroImage %}
+      <img class="home-reading-cover" src="{{ currentProject.data.coverImage or currentProject.data.heroImage }}" alt="{{ currentProject.data.title }}">
+      {% endif %}
+      <div class="home-reading-info">
+        <p class="home-reading-title">{{ currentProject.data.title }}</p>
+        {% if currentProject.data.excerpt %}<p class="home-reading-excerpt">{{ currentProject.data.excerpt }}</p>{% endif %}
+        {% if currentProject.data.tags %}
+        <div class="home-reading-tags">
+          {% for tag in currentProject.data.tags | limit(3) %}<span class="tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </a>
+    {% else %}
+    <div class="home-reading-card home-reading-card--empty">
+      <p class="home-reading-empty">No active project right now.</p>
+    </div>
+    {% endif %}
+  </aside>
+  <div class="home-prints-col">
+    <div class="home-block-header">
+      <p class="section-label">Prints</p>
+      <a href="{{ '/prints/' | url }}" class="view-all">Prints page →</a>
+    </div>
 <div class="prints-cta prints-cta--compact">
   <div class="prints-cta-mosaic" aria-hidden="true">
     <div class="prints-mosaic-col">
@@ -173,6 +235,8 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
     </div>
   </div>
 </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -195,7 +259,7 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
     minZoom: 2,
     maxBounds: worldBounds,
     maxBoundsViscosity: 1.0
-  }).setView([20, 0], 2);
+  }).setView([50, -15], 1);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
