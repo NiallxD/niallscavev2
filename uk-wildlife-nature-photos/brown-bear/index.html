@@ -2112,11 +2112,11 @@
         }
       };
       this._onTouchEnd = () => {
-        let velocity = -touchVelocity * 16; // px per frame at 60fps
+        let velocity = -touchVelocity * 22; // px per frame at 60fps
         const decelerate = () => {
           if (Math.abs(velocity) < 0.5) { momentumRaf = null; return; }
           room.scrollLeft += velocity;
-          velocity *= 0.92;
+          velocity *= 0.96;
           momentumRaf = requestAnimationFrame(decelerate);
         };
         if (Math.abs(velocity) > 0.5) momentumRaf = requestAnimationFrame(decelerate);
@@ -2173,23 +2173,17 @@
         // Ensure general dark mode is off so we don't have conflicting bright photos
         this.overlay.classList.remove('gr-dark');
 
-        // Center the photo item in the viewport
-        this._isProgrammaticScroll = true;
-        const roomWidth = this.room.clientWidth;
-        const itemLeft = photoItem.offsetLeft;
-        const itemWidth = photoItem.clientWidth;
-        // Target scroll to center the item
-        const targetScroll = itemLeft - (roomWidth / 2) + (itemWidth / 2);
-        
-        this.room.scrollTo({
-          left: targetScroll,
-          behavior: 'smooth'
-        });
-
-        // Re-enable scroll-to-clear after the animation finishes
-        setTimeout(() => {
-          this._isProgrammaticScroll = false;
-        }, 800);
+        // On desktop, scroll to center the photo. On mobile the photo is
+        // fixed-positioned so no scroll is needed.
+        if (window.innerWidth > 768) {
+          this._isProgrammaticScroll = true;
+          const roomWidth = this.room.clientWidth;
+          const itemLeft = photoItem.offsetLeft;
+          const itemWidth = photoItem.clientWidth;
+          const targetScroll = itemLeft - (roomWidth / 2) + (itemWidth / 2);
+          this.room.scrollTo({ left: targetScroll, behavior: 'smooth' });
+          setTimeout(() => { this._isProgrammaticScroll = false; }, 800);
+        }
       }
     },
 
