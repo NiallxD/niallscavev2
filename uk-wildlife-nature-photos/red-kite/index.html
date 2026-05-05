@@ -171,11 +171,12 @@
 .gr-room:active { cursor: grabbing; }
 .gr-room.gr-room-visible { opacity: 1; }
 
-/* Scroll track */
+/* Scroll track — height: 100% inherits from the room (.gr-room is inset: 0) so
+   it never overflows vertically regardless of iOS dynamic viewport quirks */
 .gr-scroll-track {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: max-content;
   min-width: 100vw;
 }
@@ -253,6 +254,15 @@
 .gr-dark .gr-darkness,
 .gr-spotlight-mode .gr-darkness { background: rgba(8, 4, 1, 0.94); }
 
+/* On mobile, darkness intercepts taps so they don't fall through to photos behind it.
+   z-index 10 sits above unfocused photos (z-index 2) but below focused (z-index 20). */
+@media (max-width: 768px) {
+  .gr-spotlight-mode .gr-darkness {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+}
+
 /* Photos by default sit below the darkness */
 .gr-wall-item--photo { 
   z-index: 2; 
@@ -301,68 +311,101 @@
 }
 
 @media (max-width: 1000px) {
-  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit { 
+  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit {
     transform: scale(1.02) translateX(-12vw);
   }
 }
 
+/* Pano spotlight: centre image, shift slightly up, caption below */
+.gr-spotlight-mode .gr-wall-item--photo.gr-pano.gr-focused .gr-photo-unit {
+  transform: translateY(-8vh);
+}
+.gr-spotlight-mode .gr-wall-item--photo.gr-pano.gr-focused .gr-frame img.gr-photo {
+  height: 36vh;
+  max-width: 78vw;
+}
+.gr-spotlight-mode .gr-wall-item--photo.gr-pano.gr-focused .gr-spotlight-info {
+  left: 50%;
+  width: 78vw;
+  max-width: 1100px;
+  transform: translateX(-50%);
+  text-align: center;
+  align-items: center;
+  top: auto;
+  bottom: 130px;
+}
+
+/* Hidden on all screen sizes; shown only via the mobile media query below */
+.gr-mobile-modal { display: none; }
+
 @media (max-width: 768px) {
-  /* Pin focused photo just below the ceiling */
-  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-photo-unit {
+  /* Tell iOS not to intercept touch gestures — our JS handles all scroll direction */
+  .gr-room {
+    touch-action: none;
+  }
+
+  /* Mobile spotlight: fixed modal above darkness, wall stays untouched */
+  .gr-mobile-modal {
     position: fixed;
     top: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 25;
-  }
-
-  /* Constrain image height to leave room for the caption panel */
-  .gr-spotlight-mode .gr-wall-item--photo.gr-focused .gr-frame img.gr-photo {
-    height: 34vh;
-    max-width: calc(100vw - 48px);
-  }
-
-  /* Caption sits directly below the pinned photo.
-     Use #gallery-room-overlay to beat the base .gr-spotlight-info rule that
-     appears later in the file and would otherwise win via cascade order. */
-  #gallery-room-overlay .gr-spotlight-info {
-    position: fixed;
-    top: calc(90px + 34vh + 68px);
     left: 0;
     right: 0;
-    width: 100%;
-    max-width: 100%;
-    padding: 0 1.5rem;
-    transform: translateY(10px);
-    text-align: center;
+    bottom: 0;
+    z-index: 20;
+    flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
-    z-index: 25;
+    padding: 0 1.5rem;
+    gap: 0;
+    pointer-events: none;
+    animation: gr-spotlight-fadein 300ms ease forwards;
   }
-
-  #gallery-room-overlay .gr-wall-item--photo.gr-focused .gr-spotlight-info {
-    transform: translateY(0);
+  @keyframes gr-spotlight-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
-
-  /* Hide wall plaque when focused to avoid clutter with the rich caption */
-  .gr-wall-item--photo.gr-focused .gr-plaque {
-    display: none;
+  .gr-spotlight-mode .gr-mobile-modal {
+    display: flex;
   }
-
-  .gr-spotlight-gear {
-    justify-content: center;
-    gap: 6px;
+  .gr-mobile-modal-img {
+    display: block;
+    height: 34vh;
+    max-width: calc(100vw - 96px);
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
   }
-
-  .gr-spotlight-title {
+  .gr-mobile-modal-info {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    padding-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .gr-mobile-modal-info .gr-spotlight-title {
     font-size: 13px;
+    font-family: var(--gr-font-pixel);
+    color: #fff;
   }
-
-  .gr-spotlight-desc {
+  .gr-mobile-modal-info .gr-spotlight-desc {
     line-height: 1.6;
     font-size: 10px;
     max-height: 22vh;
     overflow-y: auto;
+    color: #ddd;
+    text-align: justify;
+    width: 100%;
+  }
+  .gr-mobile-modal-info .gr-spotlight-gear {
+    justify-content: center;
+    gap: 6px;
+  }
+  .gr-mobile-modal-info .gr-spotlight-gear span {
+    font-size: 9px;
   }
 }
 /* Caption on the right */
@@ -646,6 +689,7 @@
   padding-bottom: 44px;
 }
 
+
 /* Photo unit: groups frame + plaque, centered, natural width */
 .gr-photo-unit {
   display: flex;
@@ -823,7 +867,7 @@
     width: 200px;
   }
 
-  [data-deco-type="cctv"] {
+  [data-deco-type="cctv"] .gr-sprite {
     display: none;
   }
 
@@ -1562,10 +1606,16 @@
           </button>
           <div class="gr-ui-bar">
             <button class="gr-light-toggle" aria-label="Turn lights on">Restore Lights</button>
-            <button class="gr-leave-btn" aria-label="Leave the gallery">&larr; Leave The Gallery</button>
+            <button class="gr-leave-btn" aria-label="Exit the gallery">&larr; Exit</button>
           </div>
           <div class="gr-scroll-hint">&#x2192; scroll to explore</div>
           <div class="gr-darkness"></div>
+          <div class="gr-mobile-modal" aria-hidden="true">
+            <div class="gr-frame">
+              <img class="gr-mobile-modal-img" src="" alt="">
+            </div>
+            <div class="gr-mobile-modal-info"></div>
+          </div>
           <div class="gr-scroll-track">
             <div class="gr-ceiling-strip"></div>
             <div class="gr-wall"></div>
@@ -1576,11 +1626,13 @@
       document.body.appendChild(overlay);
       this.overlay     = overlay;
       this.blackout    = overlay.querySelector('.gr-blackout');
+      this.darkness    = overlay.querySelector('.gr-darkness');
       this.welcome     = overlay.querySelector('.gr-welcome-screen');
       this.welcomeText = overlay.querySelector('.gr-welcome-text');
       this.room        = overlay.querySelector('.gr-room');
       this.wall        = overlay.querySelector('.gr-wall');
       this.scrollHint  = overlay.querySelector('.gr-scroll-hint');
+      this.darkness.addEventListener('click', () => this._clearSpotlight());
       overlay.querySelector('.gr-leave-btn').addEventListener('click', () => this.close());
       overlay.querySelector('.gr-light-toggle').addEventListener('click', () => this._toggleLights());
       overlay.querySelector('.gr-mute-btn').addEventListener('click', () => this._toggleMute());
@@ -1712,6 +1764,8 @@
       img.src = item.url || item.src || '';
       img.alt = item.title || '';
       img.loading = 'lazy';
+      const _markPano = () => { if (img.naturalWidth / img.naturalHeight > 2.2) wrap.classList.add('gr-pano'); };
+      if (img.complete && img.naturalWidth) { _markPano(); } else { img.addEventListener('load', _markPano); }
       frame.appendChild(img);
       unit.appendChild(frame);
 
@@ -1759,8 +1813,8 @@
         wrap.appendChild(info);
       }
 
-      // Add spotlight trigger
-      wrap.addEventListener('click', (e) => {
+      // Attach click only to the photo unit (frame + plaque), not the full wall-item height
+      unit.addEventListener('click', (e) => {
         e.stopPropagation();
         this._toggleSpotlight(wrap);
       });
@@ -1773,7 +1827,7 @@
       plant:      { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
       plant2:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
       plant3:     { y: '35px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
-      bench:      { y: '22px',   xRange: ['-80px', '-40px', '0px', '40px', '80px'],       mobileXRange: ['-20px', '0px', '20px'] },
+      bench:      { y: '100px',   xRange: ['-150px', '-80px', '0px', '80px', '150px'],       mobileXRange: ['-20px', '0px', '20px'] },
       'bench-plant': { y: '22px', xRange: ['0px'],                                        mobileXRange: ['0px'] },
       mouse:      { y: '0px',    xRange: ['-80px', '-50px', '-20px', '20px', '50px', '80px'], mobileXRange: ['-20px', '0px', '20px'] },
       cat:        { y: '25px',   xRange: ['-60px', '-30px', '0px', '30px', '60px'],       mobileXRange: ['-20px', '0px', '20px'] },
@@ -2040,11 +2094,9 @@
           this.welcome.classList.add('gr-hidden');
           this.room.classList.add('gr-room-visible');
           this.blackout.classList.add('gr-fade-out');
-        }, 2600);
-        setTimeout(() => {
           this._bindScroll();
           setTimeout(() => this.scrollHint.classList.add('gr-hint-hidden'), 3000);
-        }, 3400);
+        }, 2600);
         setTimeout(() => {
           const fw = this._firework;
           if (!fw) return;
@@ -2092,14 +2144,16 @@
       };
       this._onMouseDown = (e) => {
         if (e.button !== 0) return;
-        isDragging = true; startX = e.pageX; scrollStart = room.scrollLeft;
-        // Clicking the floor/wall should also clear spotlight
-        if (e.target.closest('.gr-wall') && !e.target.closest('.gr-wall-item--photo')) {
-          this._clearSpotlight();
+        if (window.innerWidth <= 768) {
+          // On mobile only handle spotlight clearing, not drag scroll
+          if (!e.target.closest('.gr-photo-unit')) this._clearSpotlight();
+          return;
         }
+        isDragging = true; startX = e.pageX; scrollStart = room.scrollLeft;
+        if (!e.target.closest('.gr-photo-unit')) this._clearSpotlight();
       };
       this._onMouseMove = (e) => {
-        if (!isDragging) return;
+        if (!isDragging || window.innerWidth <= 768) return;
         room.scrollLeft = scrollStart - (e.pageX - startX);
       };
       this._onMouseUp = () => { isDragging = false; };
@@ -2130,7 +2184,9 @@
       this._onTouchMove = (e) => {
         const dx = e.touches[0].clientX - touchStartX;
         const dy = e.touches[0].clientY - touchStartY;
-        if (Math.abs(dy) > Math.abs(dx)) {
+        // Require 5px vertical movement before treating as a scroll gesture.
+        // Below this threshold we don't preventDefault, so taps still fire click events.
+        if (Math.abs(dy) > 5 && Math.abs(dy) > Math.abs(dx)) {
           e.preventDefault();
           const now = Date.now();
           const dt = now - touchLastTime || 1;
@@ -2141,7 +2197,8 @@
         }
       };
       this._onTouchEnd = () => {
-        let velocity = -touchVelocity * 22; // px per frame at 60fps
+        if (Math.abs(touchVelocity) < 0.01) return; // tap — no momentum
+        let velocity = -touchVelocity * 22;
         const decelerate = () => {
           if (Math.abs(velocity) < 0.5) { momentumRaf = null; return; }
           room.scrollLeft += velocity;
@@ -2197,14 +2254,12 @@
       } else {
         this._clearSpotlight();
         this._focusedPhoto = photoItem;
-        this._focusedPhoto.classList.add('gr-focused');
-        this.overlay.classList.add('gr-spotlight-mode');
-        // Ensure general dark mode is off so we don't have conflicting bright photos
         this.overlay.classList.remove('gr-dark');
 
-        // On desktop, scroll to center the photo. On mobile the photo is
-        // fixed-positioned so no scroll is needed.
         if (window.innerWidth > 768) {
+          // Desktop: add classes then scroll to centre
+          this._focusedPhoto.classList.add('gr-focused');
+          this.overlay.classList.add('gr-spotlight-mode');
           this._isProgrammaticScroll = true;
           const roomWidth = this.room.clientWidth;
           const itemLeft = photoItem.offsetLeft;
@@ -2212,13 +2267,26 @@
           const targetScroll = itemLeft - (roomWidth / 2) + (itemWidth / 2);
           this.room.scrollTo({ left: targetScroll, behavior: 'smooth' });
           setTimeout(() => { this._isProgrammaticScroll = false; }, 800);
+        } else {
+          // Mobile: show a fixed modal above the darkness — wall stays completely static
+          const img = photoItem.querySelector('img.gr-photo');
+          const infoEl = photoItem.querySelector('.gr-spotlight-info');
+          const modal = this.overlay.querySelector('.gr-mobile-modal');
+          modal.querySelector('.gr-mobile-modal-img').src = img ? img.src : '';
+          modal.querySelector('.gr-mobile-modal-img').alt = img ? (img.alt || '') : '';
+          modal.querySelector('.gr-mobile-modal-info').innerHTML = infoEl ? infoEl.innerHTML : '';
+          this.overlay.classList.add('gr-spotlight-mode');
+          this._isProgrammaticScroll = true;
+          setTimeout(() => { this._isProgrammaticScroll = false; }, 400);
         }
       }
     },
 
     _clearSpotlight() {
       if (!this._focusedPhoto) return;
-      this._focusedPhoto.classList.remove('gr-focused');
+      if (window.innerWidth > 768) {
+        this._focusedPhoto.classList.remove('gr-focused');
+      }
       this._focusedPhoto = null;
       this.overlay.classList.remove('gr-spotlight-mode');
     },
