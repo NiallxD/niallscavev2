@@ -614,7 +614,7 @@
   gap: 0.75rem;
   align-items: center;
 }
-.gr-leave-btn, .gr-light-toggle, .gr-mute-btn {
+.gr-leave-btn, .gr-light-toggle, .gr-mute-btn, .gr-tour-btn {
   font-family: var(--gr-font-pixel-sm);
   font-size: 0.65rem;
   color: #fff;
@@ -629,7 +629,7 @@
   align-items: center;
   gap: 6px;
 }
-.gr-leave-btn:hover, .gr-light-toggle:hover, .gr-mute-btn:hover {
+.gr-leave-btn:hover, .gr-light-toggle:hover, .gr-mute-btn:hover, .gr-tour-btn:hover {
   background: rgba(60,40,20,0.9);
   border-color: #b8860b;
   color: #b8860b;
@@ -730,7 +730,8 @@
   color: #3a2010;
   text-align: center;
   line-height: 2.2;
-  max-width: 260px;
+  width: max-content;
+  max-width: 28ch;
   text-transform: uppercase;
   padding: 22px 28px;
   border: 2px solid #b8860b;
@@ -899,7 +900,8 @@
 .gr-plaque {
   position: relative;
   min-width: 100px;
-  max-width: 240px;
+  width: max-content;
+  max-width: 26ch;
   min-height: 34px;
   background: var(--gr-plaque-bg);
   border: 2px solid #8b6200;
@@ -969,6 +971,13 @@
 }
 [data-deco-type="visitor-counter"] .gr-sprite {
   height: 35vh; width: auto; aspect-ratio: 18 / 31; image-rendering: pixelated; display: block;
+}
+[data-deco-type="audio-guide-rack"] .gr-sprite {
+  height: 32vh; width: auto; aspect-ratio: 44 / 54; image-rendering: pixelated; display: block;
+  transition: filter 200ms ease;
+}
+[data-deco-type="audio-guide-rack"]:hover .gr-sprite {
+  filter: brightness(1.15);
 }
 [data-deco-type="bench-plant"] .gr-sprite {
   height: 26vh; width: auto; aspect-ratio: 60 / 38; image-rendering: pixelated; display: block;
@@ -1547,6 +1556,8 @@
         
         { title: "Bengal Tiger", url: "/tiger/" },
         
+        { title: "Black Bear", url: "/uk-wildlife-nature-photos/black-bear/" },
+        
         { title: "British Birds", url: "/uk-wildlife-nature-photos/british-birds/" },
         
         { title: "Brown Bear", url: "/uk-wildlife-nature-photos/brown-bear/" },
@@ -1676,6 +1687,25 @@
       </div>
     </a>
     
+    <a href="/uk-wildlife-nature-photos/black-bear/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/BGCkHm0.jpeg" alt="Black Bear" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-meta">
+          
+          <div class="post-card-tags">
+            <span class="tag">mammals</span><span class="tag">wildlife</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">Black Bear</div>
+        <div class="story-card-desc">The American black bear (Ursus americanus) is a versatile omnivore widespread across North America. Unlike the brown bear, it lacks a muscular shoulder hump and possesses curved claws optimised for climbing rather than digging. Though typically black, these bears exhibit diverse coat colours and are easily identified by their straight facial profiles and prominent ears.</div>
+      </div>
+    </a>
+    
     <a href="/uk-wildlife-nature-photos/british-birds/" class="story-card">
       <div class="story-card-img">
         
@@ -1692,25 +1722,6 @@
         </div>
         <div class="story-card-title">British Birds</div>
         <div class="story-card-desc">A collection of Britains frequently seen birds.</div>
-      </div>
-    </a>
-    
-    <a href="/uk-wildlife-nature-photos/brown-bear/" class="story-card">
-      <div class="story-card-img">
-        
-        <img src="https://i.imgur.com/Tip0k1n.jpg" alt="Brown Bear" loading="lazy">
-        
-      </div>
-      <div class="story-card-body">
-        <div class="post-card-meta">
-          
-          <div class="post-card-tags">
-            <span class="tag">mammals</span><span class="tag">wildlife</span>
-          </div>
-          
-        </div>
-        <div class="story-card-title">Brown Bear</div>
-        <div class="story-card-desc">The brown bear (Ursus arctos) is a large bear species native to Eurasia and North America. It’s one of the largest land carnivores, rivalled only by the polar bear. Brown bears are known for their distinctive shoulder hump, which is made of muscle and helps them dig through dirt when creating their dens.</div>
       </div>
     </a>
     
@@ -1806,6 +1817,9 @@
     _domBuilt: false,
     _focusedPhoto: null,
     _isProgrammaticScroll: false,
+    _tourActive: false,
+    _tourTimeout: null,
+    _tourRaf: null,
     _onKeyDown: null,
     _onMouseDown: null,
     _onMouseMove: null,
@@ -1888,6 +1902,7 @@
           </button>
           <div class="gr-ui-bar">
             <button class="gr-light-toggle" aria-label="Turn lights on">Restore Lights</button>
+            <button class="gr-tour-btn" aria-label="Guided tour">&#9654; Tour</button>
             <button class="gr-leave-btn" aria-label="Exit the gallery">&larr; Exit</button>
           </div>
           <div class="gr-scroll-hint">&#x2192; scroll to explore</div>
@@ -1914,10 +1929,13 @@
       this.room        = overlay.querySelector('.gr-room');
       this.wall        = overlay.querySelector('.gr-wall');
       this.scrollHint  = overlay.querySelector('.gr-scroll-hint');
-      this.darkness.addEventListener('click', () => this._clearSpotlight());
+      this.darkness.addEventListener('click', () => { this._stopTour(); this._clearSpotlight(); });
       overlay.querySelector('.gr-leave-btn').addEventListener('click', () => this.close());
       overlay.querySelector('.gr-light-toggle').addEventListener('click', () => this._toggleLights());
       overlay.querySelector('.gr-mute-btn').addEventListener('click', () => this._toggleMute());
+      overlay.querySelector('.gr-tour-btn').addEventListener('click', () => {
+        this._tourActive ? this._stopTour() : this._startTour();
+      });
     },
 
     _setupAudio() {
@@ -1969,6 +1987,7 @@
 
       result.push({ type: 'nameplate' });
       result.push({ type: 'visitor-counter' });
+      result.push({ type: 'audio-guide-rack' });
       // Buffer slot to keep spacing before first photo
       result.push({ type: 'slot', sprite: null });
 
@@ -2231,6 +2250,21 @@
         return wrap;
       }
 
+      if (type === 'audio-guide-rack') {
+        wrap.className = 'gr-wall-item gr-wall-item--deco';
+        wrap.dataset.decoType = 'audio-guide-rack';
+        wrap.style.alignItems = 'flex-end';
+        wrap.style.justifyContent = 'center';
+        wrap.style.paddingBottom = '0';
+        wrap.style.cursor = 'pointer';
+        wrap.title = 'Start guided tour';
+        wrap.innerHTML = this.sprites.audioGuideRack();
+        wrap.addEventListener('click', () => {
+          if (this._tourActive) { this._stopTour(); } else { this._startTour(); }
+        });
+        return wrap;
+      }
+
       if (type === 'nameplate' || type === 'exit') {
         const isExit = type === 'exit';
         wrap.className = 'gr-wall-item gr-nameplate' + (isExit ? ' gr-exit' : '');
@@ -2455,7 +2489,7 @@
       this._onKeyDown = (e) => {
         if (e.key === 'ArrowRight') { e.preventDefault(); this._scrollBy(280); }
         if (e.key === 'ArrowLeft')  { e.preventDefault(); this._scrollBy(-280); }
-        if (e.key === 'Escape')     this.close();
+        if (e.key === 'Escape')     { this._stopTour(); this.close(); }
       };
       this._onMouseDown = (e) => {
         if (e.button !== 0) return;
@@ -2595,6 +2629,66 @@
           setTimeout(() => { this._isProgrammaticScroll = false; }, 400);
         }
       }
+    },
+
+    _tourScrollTo(target, duration, onDone) {
+      const start = this.room.scrollLeft;
+      const dist  = target - start;
+      if (Math.abs(dist) < 1) { onDone(); return; }
+      const startTime = performance.now();
+      const ease = t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t; // ease-in-out quad
+      const tick = (now) => {
+        if (!this._tourActive) return;
+        const t = Math.min((now - startTime) / duration, 1);
+        this.room.scrollLeft = start + dist * ease(t);
+        if (t < 1) { this._tourRaf = requestAnimationFrame(tick); }
+        else        { onDone(); }
+      };
+      this._tourRaf = requestAnimationFrame(tick);
+    },
+
+    _startTour() {
+      const photos = Array.from(this.wall.querySelectorAll('.gr-wall-item--photo'));
+      if (!photos.length) return;
+      this._tourActive = true;
+      const btn = this.overlay.querySelector('.gr-tour-btn');
+      if (btn) btn.textContent = '◼ Stop Tour';
+
+      let idx = 0;
+      const step = () => {
+        if (!this._tourActive || idx >= photos.length) { this._stopTour(); return; }
+        const photo = photos[idx++];
+        const roomWidth = this.room.clientWidth;
+        const target = photo.offsetLeft - (roomWidth / 2) + (photo.clientWidth / 2);
+
+        this._isProgrammaticScroll = true;
+        // Slow pan — 2.8s travel time
+        this._tourScrollTo(target, 2800, () => {
+          if (!this._tourActive) return;
+          // Brief pause before spotlight opens
+          this._tourTimeout = setTimeout(() => {
+            if (!this._tourActive) return;
+            this._isProgrammaticScroll = false;
+            this._toggleSpotlight(photo);
+            // Hold spotlight for 16s, then close and move on
+            this._tourTimeout = setTimeout(() => {
+              if (!this._tourActive) return;
+              this._clearSpotlight();
+              this._tourTimeout = setTimeout(step, 900);
+            }, 16000);
+          }, 400);
+        });
+      };
+      step();
+    },
+
+    _stopTour() {
+      this._tourActive = false;
+      if (this._tourRaf)     { cancelAnimationFrame(this._tourRaf); this._tourRaf = null; }
+      if (this._tourTimeout) { clearTimeout(this._tourTimeout); this._tourTimeout = null; }
+      this._isProgrammaticScroll = false;
+      const btn = this.overlay.querySelector('.gr-tour-btn');
+      if (btn) btn.innerHTML = '&#9654; Tour';
     },
 
     _clearSpotlight() {
@@ -2942,6 +3036,45 @@
   <rect x="4" y="12" width="3" height="10" fill="#4a2810"/>
   <rect x="33" y="12" width="3" height="10" fill="#4a2810"/>
   <rect x="4" y="17" width="32" height="2" fill="#5a3015"/>
+</svg>`,
+
+      'audioGuideRack': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 54" shape-rendering="crispEdges" class="gr-sprite gr-audio-guide-rack">
+  <!-- Sign frame -->
+  <rect x="1"  y="1"  width="42" height="21" fill="#2a1808"/>
+  <rect x="2"  y="2"  width="40" height="19" fill="#8b6200"/>
+  <rect x="3"  y="3"  width="38" height="17" fill="#b8860b"/>
+  <!-- GUIDED (3×5 pixel font, y=6) -->
+  <!-- G --> <rect x="12" y="6" width="2" height="1" fill="#1a0e00"/> <rect x="11" y="7" width="1" height="1" fill="#1a0e00"/> <rect x="11" y="8" width="2" height="1" fill="#1a0e00"/> <rect x="11" y="9" width="1" height="1" fill="#1a0e00"/> <rect x="13" y="9" width="1" height="1" fill="#1a0e00"/> <rect x="12" y="10" width="2" height="1" fill="#1a0e00"/>
+  <!-- U --> <rect x="15" y="6" width="1" height="4" fill="#1a0e00"/> <rect x="17" y="6" width="1" height="4" fill="#1a0e00"/> <rect x="15" y="10" width="3" height="1" fill="#1a0e00"/>
+  <!-- I --> <rect x="19" y="6" width="3" height="1" fill="#1a0e00"/> <rect x="20" y="7" width="1" height="3" fill="#1a0e00"/> <rect x="19" y="10" width="3" height="1" fill="#1a0e00"/>
+  <!-- D --> <rect x="23" y="6" width="2" height="1" fill="#1a0e00"/> <rect x="23" y="7" width="1" height="3" fill="#1a0e00"/> <rect x="25" y="7" width="1" height="3" fill="#1a0e00"/> <rect x="23" y="10" width="2" height="1" fill="#1a0e00"/>
+  <!-- E --> <rect x="27" y="6" width="3" height="1" fill="#1a0e00"/> <rect x="27" y="7" width="1" height="1" fill="#1a0e00"/> <rect x="27" y="8" width="2" height="1" fill="#1a0e00"/> <rect x="27" y="9" width="1" height="1" fill="#1a0e00"/> <rect x="27" y="10" width="3" height="1" fill="#1a0e00"/>
+  <!-- D --> <rect x="31" y="6" width="2" height="1" fill="#1a0e00"/> <rect x="31" y="7" width="1" height="3" fill="#1a0e00"/> <rect x="33" y="7" width="1" height="3" fill="#1a0e00"/> <rect x="31" y="10" width="2" height="1" fill="#1a0e00"/>
+  <!-- TOUR (centred, y=13) -->
+  <!-- T --> <rect x="15" y="13" width="3" height="1" fill="#1a0e00"/> <rect x="16" y="14" width="1" height="4" fill="#1a0e00"/>
+  <!-- O --> <rect x="20" y="13" width="1" height="1" fill="#1a0e00"/> <rect x="19" y="14" width="1" height="3" fill="#1a0e00"/> <rect x="21" y="14" width="1" height="3" fill="#1a0e00"/> <rect x="20" y="17" width="1" height="1" fill="#1a0e00"/>
+  <!-- U --> <rect x="23" y="13" width="1" height="4" fill="#1a0e00"/> <rect x="25" y="13" width="1" height="4" fill="#1a0e00"/> <rect x="23" y="17" width="3" height="1" fill="#1a0e00"/>
+  <!-- R --> <rect x="27" y="13" width="2" height="1" fill="#1a0e00"/> <rect x="27" y="14" width="1" height="1" fill="#1a0e00"/> <rect x="29" y="14" width="1" height="1" fill="#1a0e00"/> <rect x="27" y="15" width="2" height="1" fill="#1a0e00"/> <rect x="27" y="16" width="1" height="1" fill="#1a0e00"/> <rect x="29" y="16" width="1" height="1" fill="#1a0e00"/> <rect x="27" y="17" width="1" height="1" fill="#1a0e00"/> <rect x="29" y="17" width="1" height="1" fill="#1a0e00"/>
+  <!-- Cabinet body -->
+  <rect x="2"  y="22" width="40" height="26" fill="#3a2010"/>
+  <rect x="3"  y="23" width="38" height="24" fill="#4a2c14"/>
+  <rect x="4"  y="24" width="36" height="22" fill="#5a3418"/>
+  <!-- Shelf divider -->
+  <rect x="4"  y="34" width="36" height="2"  fill="#3a2010"/>
+  <!-- Row 1 guides (y=25, 3 cols at x=7,18,29 each 9×8) -->
+  <rect x="7"  y="25" width="9" height="8" fill="#1e1e1e"/> <rect x="8"  y="26" width="7" height="5" fill="#2a2a2a"/> <rect x="9"  y="27" width="5" height="3" fill="#3a7a55"/> <rect x="9"  y="31" width="2" height="1" fill="#555"/> <rect x="13" y="31" width="2" height="1" fill="#555"/>
+  <rect x="18" y="25" width="9" height="8" fill="#1e1e1e"/> <rect x="19" y="26" width="7" height="5" fill="#2a2a2a"/> <rect x="20" y="27" width="5" height="3" fill="#3a7a55"/> <rect x="20" y="31" width="2" height="1" fill="#555"/> <rect x="24" y="31" width="2" height="1" fill="#555"/>
+  <rect x="29" y="25" width="9" height="8" fill="#1e1e1e"/> <rect x="30" y="26" width="7" height="5" fill="#2a2a2a"/> <rect x="31" y="27" width="5" height="3" fill="#3a7a55"/> <rect x="31" y="31" width="2" height="1" fill="#555"/> <rect x="35" y="31" width="2" height="1" fill="#555"/>
+  <!-- Row 2 guides (y=37, cols 1 & 2 filled, col 3 empty — one taken) -->
+  <rect x="7"  y="37" width="9" height="8" fill="#1e1e1e"/> <rect x="8"  y="38" width="7" height="5" fill="#2a2a2a"/> <rect x="9"  y="39" width="5" height="3" fill="#2d6644"/> <rect x="9"  y="43" width="2" height="1" fill="#444"/> <rect x="13" y="43" width="2" height="1" fill="#444"/>
+  <rect x="18" y="37" width="9" height="8" fill="#1e1e1e"/> <rect x="19" y="38" width="7" height="5" fill="#2a2a2a"/> <rect x="20" y="39" width="5" height="3" fill="#2d6644"/> <rect x="20" y="43" width="2" height="1" fill="#444"/> <rect x="24" y="43" width="2" height="1" fill="#444"/>
+  <!-- Empty slot -->
+  <rect x="29" y="37" width="9" height="8" fill="#2a1808"/> <rect x="30" y="38" width="7" height="6" fill="#1a1005"/>
+  <!-- Base legs -->
+  <rect x="6"  y="48" width="8" height="4" fill="#2a1808"/>
+  <rect x="30" y="48" width="8" height="4" fill="#2a1808"/>
+  <rect x="5"  y="51" width="10" height="2" fill="#1a1005"/>
+  <rect x="29" y="51" width="10" height="2" fill="#1a1005"/>
 </svg>`,
 
       'trashCan': () => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 18" shape-rendering="crispEdges" class="gr-entrance-trashcan">

@@ -199,6 +199,27 @@
   </div>
   <div class="story-list">
     
+    <a href="/blog/niallbell-com-updates/" class="story-card">
+      <div class="story-card-img">
+        
+        <img src="https://i.imgur.com/2ijpl7Q.png" alt="niallbell.com Updates" loading="lazy">
+        
+      </div>
+      <div class="story-card-body">
+        <div class="post-card-author">Niall Bell</div>
+        <div class="post-card-meta">
+          <time class="post-card-date" datetime="2026-05-04">4 May 2026</time>
+          
+          <div class="post-card-tags">
+            <span class="tag">photography</span><span class="tag">web</span>
+          </div>
+          
+        </div>
+        <div class="story-card-title">niallbell.com Updates</div>
+        <div class="story-card-desc">After several years of working with the Digital Garden Plugin for Obsidian, I decided I needed to break free of the constrains baked into that plugin (not a bad thing!). Here is what I&#39;m up to!</div>
+      </div>
+    </a>
+    
     <a href="/blog/lessons-from-a-fungi-part-1/" class="story-card">
       <div class="story-card-img">
         
@@ -241,45 +262,78 @@
       </div>
     </a>
     
-    <a href="/blog/ethical-captioning/" class="story-card">
-      <div class="story-card-img">
-        
-        <img src="https://i.imgur.com/eAxWByn.jpeg" alt="Ethical Captioning" loading="lazy">
-        
+  </div>
+</div>
+
+
+
+
+
+
+<div class="home-map-row">
+    <div class="home-map-col">
+      <div class="home-block-header">
+        <p class="section-label">Photo Map</p>
+        <a href="/photo-map/" class="view-all">Full map →</a>
       </div>
-      <div class="story-card-body">
-        <div class="post-card-author">Niall Bell</div>
-        <div class="post-card-meta">
-          <time class="post-card-date" datetime="2025-11-05">5 November 2025</time>
+      <div id="home-photo-map"></div>
+    </div>
+    <aside class="home-reading-col">
+      <div class="home-block-header">
+        <p class="section-label">Reading Now</p>
+        <a href="/bookshelf/" class="view-all">Bookshelf →</a>
+      </div>
+      
+      
+      <a href="/bookshelf/" class="home-reading-card">
+        
+        <img class="home-reading-cover" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1703328303i/18061037.jpg" alt="Understanding A Photograph">
+        
+        <div class="home-reading-info">
+          <p class="home-reading-title">Understanding A Photograph</p>
+          <p class="home-reading-author">John Berger</p>
           
-          <div class="post-card-tags">
-            <span class="tag">photography</span>
+          <div class="home-reading-tags">
+            <span class="tag">history</span><span class="tag">photography</span>
           </div>
           
         </div>
-        <div class="story-card-title">Ethical Captioning</div>
-        <div class="story-card-desc">A case for ethical captioning in photography.</div>
+      </a>
+      
+    </aside>
+</div>
+
+
+
+<div class="home-prints-row">
+  <aside class="home-project-col">
+    <div class="home-block-header">
+      <p class="section-label">Current Project</p>
+      <a href="/side-projects/" class="view-all">Projects →</a>
+    </div>
+    
+    
+    <a href="/blog/niallbell-com-updates/" class="home-reading-card">
+      
+      <img class="home-reading-cover" src="https://i.imgur.com/2ijpl7Q.png" alt="niallbell.com Updates">
+      
+      <div class="home-reading-info">
+        <p class="home-reading-title">niallbell.com Updates</p>
+        <p class="home-reading-excerpt">After several years of working with the Digital Garden Plugin for Obsidian, I decided I needed to break free of the constrains baked into that plugin (not a bad thing!). Here is what I&#39;m up to!</p>
+        
+        <div class="home-reading-tags">
+          <span class="tag">photography</span><span class="tag">web</span><span class="tag">webdevelopment</span>
+        </div>
+        
       </div>
     </a>
     
-  </div>
-</div>
-
-
-
-
-
-
-<div class="home-posts">
-  <div class="home-block-header">
-    <p class="section-label">Photo Map</p>
-    <a href="/photo-map/" class="view-all">Full map →</a>
-  </div>
-  <div id="home-photo-map"></div>
-</div>
-
-
-
+  </aside>
+  <div class="home-prints-col">
+    <div class="home-block-header">
+      <p class="section-label">Prints</p>
+      <a href="/prints/" class="view-all">Prints page →</a>
+    </div>
 <div class="prints-cta prints-cta--compact">
   <div class="prints-cta-mosaic" aria-hidden="true">
     <div class="prints-mosaic-col">
@@ -330,6 +384,8 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -352,7 +408,7 @@
     minZoom: 2,
     maxBounds: worldBounds,
     maxBoundsViscosity: 1.0
-  }).setView([20, 0], 2);
+  }).setView([50, -15], 1);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
