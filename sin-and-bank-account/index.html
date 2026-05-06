@@ -205,19 +205,22 @@ Today was another milestone day for us...we got our SIN numbers and bank account
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter (Session-based)
-    if (!sessionStorage.getItem('nb_visitor_counted')) {
-      // 1. Increment Total Site Visitors
-      fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => {});
-      
-      // 2. Increment Individual Page Hits
-      // We create a slug from the URL: /blog/my-post/ -> blog-my-post
-      const pageSlug = window.location.pathname
-        .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
-        .replace(/\//g, '-')     // Replace internal slashes with dashes
-        || 'home';               // Default to 'home' for root
-      
+    // 1. Total Site Visitors (Once per session)
+    if (!sessionStorage.getItem('nb_total_counted')) {
+      fetch('https://api.counterapi.dev/v1/niallbell/visits/up')
+        .then(() => sessionStorage.setItem('nb_total_counted', 'true'))
+        .catch(err => {});
+    }
+    
+    // 2. Individual Page Hits (Once per page per session)
+    const pageSlug = window.location.pathname
+      .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
+      .replace(/\//g, '-')     // Replace internal slashes with dashes
+      || 'home';               // Default to 'home' for root
+    
+    if (!sessionStorage.getItem(`nb_page_counted_${pageSlug}`)) {
       fetch(`https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`)
-        .then(() => sessionStorage.setItem('nb_visitor_counted', 'true'))
+        .then(() => sessionStorage.setItem(`nb_page_counted_${pageSlug}`, 'true'))
         .catch(err => {});
     }
 
