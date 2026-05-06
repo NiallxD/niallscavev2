@@ -197,9 +197,18 @@
 </div>
 
 <script>
-  // 1. DYNAMICALLY GENERATED PAGE LIST
-  // Build a list of every page and post on the site
-  const pages = [
+  const mainPages = [
+    { id: 'home', label: 'Home Page', url: '/' },
+    { id: 'photography', label: 'Photography', url: '/photography/' },
+    { id: 'blog', label: 'Writing (All)', url: '/blog/' },
+    { id: 'about-me', label: 'About Me', url: '/about-me/' },
+    { id: 'prints', label: 'Prints', url: '/prints/' },
+    { id: 'videography', label: 'Videography', url: '/videography/' },
+    { id: 'side-projects', label: 'Projects', url: '/side-projects/' },
+    { id: 'bookshelf', label: 'Bookshelf', url: '/bookshelf/' }
+  ];
+
+  const allOtherPages = [
     { 
       id: uk-wildlife-nature-photostigers, 
       label: "The Plight of the Tiger",
@@ -601,11 +610,6 @@
       url: "/blog/lessons-from-a-fungi-part-1/"
     },
     { 
-      id: about-me, 
-      label: "About Me",
-      url: "/about-me/"
-    },
-    { 
       id: nature-walks, 
       label: "Nature Walks",
       url: "/nature-walks/"
@@ -629,31 +633,6 @@
       id: uk-wildlife-nature-photosblack-bear, 
       label: "Black Bear",
       url: "/uk-wildlife-nature-photos/black-bear/"
-    },
-    { 
-      id: photography, 
-      label: "Photography",
-      url: "/photography/"
-    },
-    { 
-      id: blog, 
-      label: "Writing",
-      url: "/blog/"
-    },
-    { 
-      id: side-projects, 
-      label: "Side Projects",
-      url: "/side-projects/"
-    },
-    { 
-      id: bookshelf, 
-      label: "Bookshelf",
-      url: "/bookshelf/"
-    },
-    { 
-      id: videography, 
-      label: "Videography",
-      url: "/videography/"
     },
     { 
       id: 404.html, 
@@ -684,11 +663,6 @@
       id: numbirdprivacy-policy, 
       label: "numbird Privacy Policy",
       url: "/numbird/privacy-policy/"
-    },
-    { 
-      id: prints, 
-      label: "Photographic Prints",
-      url: "/prints/"
     },
     { 
       id: bookshelfa-brief-history-of-time, 
@@ -856,21 +830,29 @@
       url: "/cards/example/"
     },
     { 
-      id: "home", 
-      label: "Home",
-      url: "/"
-    },
-    { 
       id: the-vault-stats, 
       label: "The Vault Stats",
       url: "/the-vault-stats/"
     },
-  ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i); // Remove duplicates
+  ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 
   let rawStatsData = [];
+  let isFullLoadTriggered = false;
 
-  async function loadStats() {
+  async function loadStats(forceRefresh = false) {
     const tbody = document.getElementById('page-stats-body');
+    const cachedData = localStorage.getItem('nb_stats_cache');
+    const cachedTime = localStorage.getItem('nb_stats_cache_time');
+    const now = Date.now();
+
+    if (!forceRefresh && cachedData && cachedTime && (now - cachedTime < 30 * 60 * 1000)) {
+      rawStatsData = JSON.parse(cachedData);
+      renderTable(rawStatsData);
+      updateTotalDisplay();
+      return;
+    }
+
+    tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Refreshing core stats...</td></tr>';
     
     const safeFetch = async (url, pageInfo) => {
       try {
@@ -878,50 +860,62 @@
         if (!res.ok) return { ...pageInfo, count: 0 };
         const data = await res.json();
         return { ...pageInfo, count: data.count || 0 };
-      } catch (e) {
-        return { ...pageInfo, count: 0 };
-      }
+      } catch (e) { return { ...pageInfo, count: 0 }; }
     };
 
-    // 1. Fetch Total Site Visitors
-    const totalData = await safeFetch('https://api.counterapi.dev/v1/niallbell/visits/');
-    const totalCount = totalData.count || 0;
-    document.getElementById('total-visits').innerText = totalCount.toLocaleString();
+    updateTotalDisplay();
 
-    // Daily Growth
-    const lastCount = localStorage.getItem('nb_last_total_count');
-    const lastDate = localStorage.getItem('nb_last_stats_date');
-    const today = new Date().toDateString();
-    const existingGrowth = document.getElementById('total-visits-growth');
-    if (existingGrowth) existingGrowth.remove();
-    if (lastCount && lastDate === today) {
-      const growth = totalCount - parseInt(lastCount);
-      if (growth > 0) {
-        const growthEl = document.createElement('span');
-        growthEl.id = 'total-visits-growth';
-        growthEl.style.fontSize = '0.9rem'; growthEl.style.marginLeft = '0.5rem'; growthEl.style.color = '#52b788';
-        growthEl.innerText = `+${growth} today`;
-        document.getElementById('total-visits').parentElement.appendChild(growthEl);
-      }
-    } else {
-      localStorage.setItem('nb_last_total_count', totalCount);
-      localStorage.setItem('nb_last_stats_date', today);
-    }
-
-    // 2. Fetch ALL Page Stats in Parallel Chunks
     try {
-      const chunkSize = 15;
-      rawStatsData = [];
-      
-      for (let i = 0; i < pages.length; i += chunkSize) {
-        const chunk = pages.slice(i, i + chunkSize);
-        const results = await Promise.all(
-          chunk.map(page => safeFetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`, page))
-        );
-        rawStatsData.push(...results);
-        renderTable(rawStatsData); 
+      rawStatsData = await Promise.all(
+        mainPages.map(page => safeFetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`, page))
+      );
+      renderTable(rawStatsData);
+      saveCache();
+
+      if (allOtherPages.length > 0 && !isFullLoadTriggered) {
+        const loadAllRow = document.createElement('tr');
+        loadAllRow.id = 'load-all-row';
+        loadAllRow.innerHTML = `
+          <td colspan="2" style="text-align: center; padding: 2rem;">
+            <button onclick="loadAllRemainingPages()" class="stats-btn" style="background: var(--color-accent); color: #fff; border: none;">
+              Discover visits for ${allOtherPages.length} other pages (Slow load)
+            </button>
+          </td>
+        `;
+        tbody.appendChild(loadAllRow);
       }
     } catch(e) {}
+  }
+
+  async function loadAllRemainingPages() {
+    isFullLoadTriggered = true;
+    const row = document.getElementById('load-all-row');
+    row.innerHTML = `<td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching remaining data... Please wait up to 2-3 mins due to API limits.</td>`;
+
+    const chunkSize = 10; 
+    for (let i = 0; i < allOtherPages.length; i += chunkSize) {
+      const chunk = allOtherPages.slice(i, i + chunkSize);
+      const results = await Promise.all(
+        chunk.map(page => fetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`).then(res => res.json()).then(d => ({...page, count: d.count || 0})).catch(() => ({...page, count: 0})))
+      );
+      rawStatsData.push(...results);
+      renderTable(rawStatsData);
+      saveCache();
+      await new Promise(r => setTimeout(r, 2000));
+    }
+  }
+
+  async function updateTotalDisplay() {
+    try {
+      const res = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
+      const data = await res.json();
+      document.getElementById('total-visits').innerText = data.count.toLocaleString();
+    } catch(e) {}
+  }
+
+  function saveCache() {
+    localStorage.setItem('nb_stats_cache', JSON.stringify(rawStatsData));
+    localStorage.setItem('nb_stats_cache_time', Date.now());
   }
 
   function renderTable(data) {
@@ -931,25 +925,18 @@
 
     let filtered = data.filter(p => p.label.toLowerCase().includes(searchTerm) || p.url.toLowerCase().includes(searchTerm));
 
-    if (sortBy === 'name') {
-      filtered.sort((a, b) => a.label.localeCompare(b.label));
-    } else {
-      filtered.sort((a, b) => b.count - a.count);
-    }
+    if (sortBy === 'name') filtered.sort((a, b) => a.label.localeCompare(b.label));
+    else filtered.sort((a, b) => b.count - a.count);
 
     tbody.innerHTML = filtered.map(p => `
       <tr>
         <td>
           <div style="font-weight: 600;">${p.label}</div>
-          <div style="font-size: 0.75rem; color: var(--color-muted);">${p.url}</div>
+          <div style="font-size: 0.75rem; color: var(--color-muted); padding-top: 2px;">${p.url}</div>
         </td>
         <td class="count-cell">${p.count.toLocaleString()}</td>
       </tr>
     `).join('');
-    
-    if (filtered.length === 0 && data.length > 0) {
-      tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">No pages found.</td></tr>';
-    }
   }
 
   document.getElementById('stats-search').addEventListener('input', () => renderTable(rawStatsData));
