@@ -3775,6 +3775,15 @@ span.wikilink { color: var(--color-secondary); }
   min-height: 0;
 }
 
+@media (max-width: 768px) {
+  .home-prints-row {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .home-prints-col .prints-cta {
+    min-height: 420px;
+  }
+}
 
 .prints-cta {
   position: relative;
@@ -4715,4 +4724,38 @@ span.wikilink { color: var(--color-secondary); }
   .heart-counter-label {
     font-size: 0.45rem !important;
   }
+  }
+
+  .text-accent {
+  color: var(--color-accent) !important;
 }
+
+/* Page Stats Footer */
+  .page-stats-footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0 0.5rem;
+    background: var(--color-bg);
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-stats-footer p {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin: 0;
+    text-align: center;
+  }
+
+
+  .page-stats-footer a {
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  }
+
+  .page-stats-footer a:hover {
+  color: var(--color-link);
+  }

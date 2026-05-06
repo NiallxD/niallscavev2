@@ -6,6 +6,10 @@
   <title>The Indisputable Existence of Santa Clause — Niall Bell</title>
   
   <meta name="robots" content="noarchive">
+  <!-- Privacy & Security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.counterapi.dev https://api.web3forms.com; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta name="referrer" content="no-referrer">
+  
   <!-- Anti-AI Scraping -->
   <meta name="ai-content" content="noai, noimageai">
   <meta name="CCBot" content="nofollow">
@@ -124,12 +128,17 @@
           <a href="/about-me/">About</a>
           <a href="/now/">Now</a>
         </div>
+        
+        <p class="section-label" style="margin-top: 1.5rem !important;">Page Stats</p>
+        <div class="footer-page-stats">
+          <p id="page-view-counter" style="opacity: 0; transition: opacity 0.5s ease; font-size: 0.75rem; color: var(--color-muted); line-height: 1.4;">Page viewed <span id="page-count-val">...</span> times. <br><a href="/the-vault-stats/" style="text-decoration: underline; text-underline-offset: 3px; color: var(--color-accent);">Transparency Report</a></p>
+        </div>
       </div>
 
       <div class="footer-col legal">
         <p class="section-label">Legal</p>
         <p class="copyright">© 2026 Niall Bell</p>
-        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use. <a href="/the-vault-stats/" style="color: var(--color-muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">Site Stats</a></p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use.</p>
       </div>
     </div>
   </footer>
@@ -189,17 +198,40 @@
         .catch(err => {});
     }
     
-    // 2. Individual Page Hits (Once per page per session)
+    // 2. Individual Page Hits & Live Counter Display
     const pageSlug = window.location.pathname
       .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
       .replace(/\//g, '-')     // Replace internal slashes with dashes
       || 'home';               // Default to 'home' for root
     
-    if (!sessionStorage.getItem(`nb_page_counted_${pageSlug}`)) {
-      fetch(`https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`)
-        .then(() => sessionStorage.setItem(`nb_page_counted_${pageSlug}`, 'true'))
-        .catch(err => {});
-    }
+    const countUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/`;
+    const upUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`;
+    
+    const fetchPageCount = async () => {
+      try {
+        let response;
+        if (!sessionStorage.getItem(`nb_page_counted_${pageSlug}`)) {
+          response = await fetch(upUrl);
+          sessionStorage.setItem(`nb_page_counted_${pageSlug}`, 'true');
+        } else {
+          response = await fetch(countUrl);
+        }
+        const data = await response.json();
+        const count = data.count || 0;
+        
+        const countValEl = document.getElementById('page-count-val');
+        const counterEl = document.getElementById('page-view-counter');
+        
+        if (countValEl && counterEl) {
+          countValEl.innerText = count.toLocaleString();
+          counterEl.style.opacity = '1';
+        }
+      } catch (err) {
+        console.error('Failed to fetch page count:', err);
+      }
+    };
+    
+    fetchPageCount();
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {
@@ -239,11 +271,13 @@
       document.querySelectorAll('.reveal-email').forEach(el => {
         el.addEventListener('click', () => {
           const email = el.dataset.u + '@' + el.dataset.d;
+          // Keep classes like 'text-accent' but remove 'reveal-email'
           const cls = el.className.replace('reveal-email', '').trim();
           const inner = el.querySelector('svg')
             ? el.querySelector('svg').outerHTML + email
             : email;
-          el.outerHTML = `<a href="mailto:${email}" class="${cls}">${inner}</a>`;
+          const style = el.getAttribute('style') || '';
+          el.outerHTML = `<a href="mailto:${email}" class="${cls}" style="${style}">${inner}</a>`;
         });
       });
     });
