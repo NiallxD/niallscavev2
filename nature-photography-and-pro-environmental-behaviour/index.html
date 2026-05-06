@@ -19,7 +19,6 @@
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
-  <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMW8BTW903"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-HMW8BTW903'); </script>
   
 </head>
 <body>
@@ -373,7 +372,7 @@ Figure 12 - A bar chart illustrating the average ratings given by participants w
       <div class="footer-col legal">
         <p class="section-label">Legal</p>
         <p class="copyright">© 2026 Niall Bell</p>
-        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use.</p>
+        <p class="copyright-notice">All photographs protected by international copyright laws. No unauthorised use. <a href="/the-vault-stats/" style="color: var(--color-muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">Site Stats</a></p>
       </div>
     </div>
   </footer>
@@ -427,9 +426,19 @@ Figure 12 - A bar chart illustrating the average ratings given by participants w
 
     // Global Site-wide Visitor Counter (Session-based)
     if (!sessionStorage.getItem('nb_visitor_counted')) {
-      fetch('https://api.counterapi.dev/v1/niallbell/visits/up')
+      // 1. Increment Total Site Visitors
+      fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => {});
+      
+      // 2. Increment Individual Page Hits
+      // We create a slug from the URL: /blog/my-post/ -> blog-my-post
+      const pageSlug = window.location.pathname
+        .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
+        .replace(/\//g, '-')     // Replace internal slashes with dashes
+        || 'home';               // Default to 'home' for root
+      
+      fetch(`https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`)
         .then(() => sessionStorage.setItem('nb_visitor_counted', 'true'))
-        .catch(err => console.error('Counter error:', err));
+        .catch(err => {});
     }
 
     // Right-click protection for images
