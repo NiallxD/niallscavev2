@@ -4,28 +4,45 @@ layout: base.njk
 
 <style>
   .stats-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 100px auto 4rem;
     padding: 0 2rem;
   }
   .stats-header {
     margin-bottom: 3rem;
   }
-  .stats-grid {
+  
+  /* Overview Cards */
+  .stats-overview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 4rem;
   }
   .stat-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 1.5rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+  }
+  .stat-card--large {
+    grid-column: span 4;
+    padding: 2rem;
+    align-items: center;
+  }
+  .stat-card--main {
+    grid-column: span 1;
+    padding: 1.25rem;
+  }
+  .stat-card:hover {
+    border-color: var(--color-accent);
   }
   .stat-card-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--color-muted);
@@ -33,9 +50,30 @@ layout: base.njk
     margin-bottom: 0.5rem;
   }
   .stat-card-value {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--color-accent);
+  }
+  .stat-card--large .stat-card-value {
+    font-size: 3rem;
+  }
+  .stat-growth {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #52b788;
+    margin-top: 4px;
+  }
+
+  /* Table Section */
+  .detailed-stats-section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .stats-filter-row {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
   }
   .stats-table-wrapper {
     background: var(--color-surface);
@@ -63,37 +101,15 @@ layout: base.njk
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--color-border);
   }
-  .stats-table tr:last-child td {
-    border-bottom: none;
-  }
   .stats-table .count-cell {
     font-weight: 700;
     color: var(--color-accent);
     text-align: right;
   }
-  .stats-actions {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-  }
-  .stats-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--color-footer-bg);
-    border: 1px solid var(--color-border);
-    padding: 0.6rem 1.2rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-secondary);
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .stats-btn:hover {
-    border-color: var(--color-accent);
-    color: var(--color-text);
+  
+  @media (max-width: 900px) {
+    .stats-overview-grid { grid-template-columns: 1fr 1fr; }
+    .stat-card--large { grid-column: span 2; }
   }
 </style>
 
@@ -102,62 +118,79 @@ layout: base.njk
     <p class="section-label" style="color: var(--color-accent)">Transparency Report</p>
     <h1 class="page-title">The Vault Stats</h1>
     <p class="home-stats-text" style="font-size: 1rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking Overview</p>
-    <p class="home-stats-text">This page is a live look at my site activity. Unlike most websites, niallbell.com uses no cookies, no profiling, and no third-party trackers. I've built this custom dashboard to provide honest insights into what content resonates with readers without compromising their privacy.</p>
-    <p class="home-stats-text">Data is fetched directly from an independent counter API. I don't see who you are, what device you use, or where you've been on the web. I only see that a human being took the time to visit a page. It's a simple, honest way to measure the pulse of this digital home.</p>
+    <p class="home-stats-text">This page is a live look at my site activity. Unlike most websites, niallbell.com uses no cookies, no profiling, and no third-party trackers. Data is fetched directly from an independent counter API. I don't see who you are, what device you use, or where you've been on the web. I only see that a human being took the time to visit a page.</p>
   </header>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <p class="stat-card-label">Total Unique Visitors</p>
+  <!-- High Level Overview -->
+  <div class="stats-overview-grid">
+    <div class="stat-card stat-card--large">
+      <p class="stat-card-label">Total Site Visitors</p>
       <p id="total-visits" class="stat-card-value">...</p>
+      <div id="total-growth" class="stat-growth"></div>
+    </div>
+    
+    <!-- Main Hubs (Will be populated by JS) -->
+    <div id="hub-cards-container" style="display: contents;">
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Home</p><p class="stat-card-value" id="val-home">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Photography</p><p class="stat-card-value" id="val-photography">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Writing</p><p class="stat-card-value" id="val-blog">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Projects</p><p class="stat-card-value" id="val-side-projects">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Bookshelf</p><p class="stat-card-value" id="val-bookshelf">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">About</p><p class="stat-card-value" id="val-about-me">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Prints</p><p class="stat-card-value" id="val-prints">...</p></div>
+      <div class="stat-card stat-card--main"><p class="stat-card-label">Video</p><p class="stat-card-value" id="val-videography">...</p></div>
     </div>
   </div>
 
-  <div class="stats-filter-row" style="margin-bottom: 1.5rem; display: flex; gap: 1rem;">
-    <input type="text" id="stats-search" placeholder="Search all pages..." style="flex: 1; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem;">
-    <select id="stats-sort" style="padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem; cursor: pointer;">
-      <option value="visits">Sort by Visits (High to Low)</option>
-      <option value="name">Sort by Name</option>
-    </select>
-  </div>
+  <!-- Detailed Table -->
+  <div class="detailed-stats-section">
+    <div class="home-block-header">
+      <p class="section-label">Detailed Breakdown</p>
+    </div>
+    
+    <div class="stats-filter-row">
+      <input type="text" id="stats-search" placeholder="Search pages..." style="flex: 1; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem;">
+      <select id="stats-sort" style="padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem; cursor: pointer;">
+        <option value="visits">Sort by Visits</option>
+        <option value="name">Sort by Name</option>
+      </select>
+    </div>
 
-  <div class="stats-table-wrapper">
-    <table class="stats-table">
-      <thead>
-        <tr>
-          <th>Page Name</th>
-          <th style="text-align: right">Unique Visits</th>
-        </tr>
-      </thead>
-      <tbody id="page-stats-body">
-        <tr>
-          <td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching all site data... This may take a moment.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="stats-actions">
-    <button onclick="downloadBackup()" class="stats-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download Backup
-    </button>
+    <div class="stats-table-wrapper">
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th style="text-align: right">Unique Visits</th>
+          </tr>
+        </thead>
+        <tbody id="page-stats-body">
+          <tr>
+            <td colspan="2" style="text-align: center; padding: 2rem;">
+              <button onclick="loadAllRemainingPages()" class="stats-btn" style="background: var(--color-accent); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600;">
+                Load data for all posts & galleries
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <script>
-  const mainPages = [
-    { id: 'home', label: 'Home Page', url: '/' },
-    { id: 'photography', label: 'Photography', url: '/photography/' },
-    { id: 'blog', label: 'Writing (All)', url: '/blog/' },
-    { id: 'about-me', label: 'About Me', url: '/about-me/' },
-    { id: 'prints', label: 'Prints', url: '/prints/' },
-    { id: 'videography', label: 'Videography', url: '/videography/' },
-    { id: 'side-projects', label: 'Projects', url: '/side-projects/' },
-    { id: 'bookshelf', label: 'Bookshelf', url: '/bookshelf/' }
+  const mainHubs = [
+    { id: 'home', label: 'Home Page' },
+    { id: 'photography', label: 'Photography' },
+    { id: 'blog', label: 'Writing (All)' },
+    { id: 'about-me', label: 'About Me' },
+    { id: 'prints', label: 'Prints' },
+    { id: 'videography', label: 'Videography' },
+    { id: 'side-projects', label: 'Projects' },
+    { id: 'bookshelf', label: 'Bookshelf' }
   ];
 
-  const allOtherPages = [
+  const otherPages = [
     {%- for p in collections.all %}
     {%- if p.url and not p.data.eleventyExcludeFromCollections %}
     {%- set isMain = false %}
@@ -175,125 +208,79 @@ layout: base.njk
     {%- endfor %}
   ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
 
-  let rawStatsData = [];
-  let isFullLoadTriggered = false;
+  let fullStatsList = [];
 
-  async function loadStats(forceRefresh = false) {
-    const tbody = document.getElementById('page-stats-body');
-    const cachedData = localStorage.getItem('nb_stats_cache');
-    const cachedTime = localStorage.getItem('nb_stats_cache_time');
-    const now = Date.now();
-
-    if (!forceRefresh && cachedData && cachedTime && (now - cachedTime < 30 * 60 * 1000)) {
-      rawStatsData = JSON.parse(cachedData);
-      renderTable(rawStatsData);
-      updateTotalDisplay();
-      return;
-    }
-
-    tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Refreshing core stats...</td></tr>';
-    
-    const safeFetch = async (url, pageInfo) => {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) return { ...pageInfo, count: 0 };
-        const data = await res.json();
-        return { ...pageInfo, count: data.count || 0 };
-      } catch (e) { return { ...pageInfo, count: 0 }; }
-    };
-
-    updateTotalDisplay();
-
-    try {
-      rawStatsData = await Promise.all(
-        mainPages.map(page => safeFetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`, page))
-      );
-      renderTable(rawStatsData);
-      saveCache();
-
-      if (allOtherPages.length > 0 && !isFullLoadTriggered) {
-        const loadAllRow = document.createElement('tr');
-        loadAllRow.id = 'load-all-row';
-        loadAllRow.innerHTML = `
-          <td colspan="2" style="text-align: center; padding: 2rem;">
-            <button onclick="loadAllRemainingPages()" class="stats-btn" style="background: var(--color-accent); color: #fff; border: none;">
-              Discover visits for ${allOtherPages.length} other pages (Slow load)
-            </button>
-          </td>
-        `;
-        tbody.appendChild(loadAllRow);
-      }
-    } catch(e) {}
-  }
-
-  async function loadAllRemainingPages() {
-    isFullLoadTriggered = true;
-    const row = document.getElementById('load-all-row');
-    row.innerHTML = `<td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching remaining data... Please wait up to 2-3 mins due to API limits.</td>`;
-
-    const chunkSize = 10; 
-    for (let i = 0; i < allOtherPages.length; i += chunkSize) {
-      const chunk = allOtherPages.slice(i, i + chunkSize);
-      const results = await Promise.all(
-        chunk.map(page => fetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`).then(res => res.json()).then(d => ({...page, count: d.count || 0})).catch(() => ({...page, count: 0})))
-      );
-      rawStatsData.push(...results);
-      renderTable(rawStatsData);
-      saveCache();
-      await new Promise(r => setTimeout(r, 2000));
-    }
-  }
-
-  async function updateTotalDisplay() {
+  async function loadInitialStats() {
+    // 1. Load Total
     try {
       const res = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
       const data = await res.json();
-      document.getElementById('total-visits').innerText = data.count.toLocaleString();
+      const count = data.count || 0;
+      document.getElementById('total-visits').innerText = count.toLocaleString();
+      
+      // Growth check
+      const lastCount = localStorage.getItem('nb_last_total');
+      if (lastCount && count > parseInt(lastCount)) {
+        document.getElementById('total-growth').innerText = `+${count - parseInt(lastCount)} today`;
+      }
+      localStorage.setItem('nb_last_total', count);
     } catch(e) {}
+
+    // 2. Load Main Hubs
+    for (const hub of mainHubs) {
+      fetch(`https://api.counterapi.dev/v1/niallbell/page-${hub.id}/`)
+        .then(res => res.json())
+        .then(data => {
+          const el = document.getElementById(`val-${hub.id}`);
+          if (el) el.innerText = (data.count || 0).toLocaleString();
+          fullStatsList.push({...hub, count: data.count || 0});
+        })
+        .catch(() => {
+          const el = document.getElementById(`val-${hub.id}`);
+          if (el) el.innerText = '0';
+        });
+    }
   }
 
-  function saveCache() {
-    localStorage.setItem('nb_stats_cache', JSON.stringify(rawStatsData));
-    localStorage.setItem('nb_stats_cache_time', Date.now());
-  }
-
-  function renderTable(data) {
+  async function loadAllRemainingPages() {
     const tbody = document.getElementById('page-stats-body');
-    const searchTerm = document.getElementById('stats-search').value.toLowerCase();
-    const sortBy = document.getElementById('stats-sort').value;
+    tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching individual post data... this takes ~2 mins due to API limits.</td></tr>';
+    
+    const chunkSize = 15;
+    for (let i = 0; i < otherPages.length; i += chunkSize) {
+      const chunk = otherPages.slice(i, i + chunkSize);
+      const results = await Promise.all(
+        chunk.map(page => fetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`).then(res => res.json()).then(d => ({...page, count: d.count || 0})).catch(() => ({...page, count: 0})))
+      );
+      fullStatsList.push(...results);
+      renderTable();
+      if (i + chunkSize < otherPages.length) await new Promise(r => setTimeout(r, 2000));
+    }
+  }
 
-    let filtered = data.filter(p => p.label.toLowerCase().includes(searchTerm) || p.url.toLowerCase().includes(searchTerm));
+  function renderTable() {
+    const tbody = document.getElementById('page-stats-body');
+    const search = document.getElementById('stats-search').value.toLowerCase();
+    const sort = document.getElementById('stats-sort').value;
 
-    if (sortBy === 'name') filtered.sort((a, b) => a.label.localeCompare(b.label));
-    else filtered.sort((a, b) => b.count - a.count);
+    let filtered = fullStatsList.filter(p => p.label.toLowerCase().includes(search) || p.url.toLowerCase().includes(search));
+    
+    if (sort === 'visits') filtered.sort((a,b) => b.count - a.count);
+    else filtered.sort((a,b) => a.label.localeCompare(b.label));
 
     tbody.innerHTML = filtered.map(p => `
       <tr>
         <td>
           <div style="font-weight: 600;">${p.label}</div>
-          <div style="font-size: 0.75rem; color: var(--color-muted); padding-top: 2px;">${p.url}</div>
+          <div style="font-size: 0.75rem; color: var(--color-muted);">${p.url || ''}</div>
         </td>
         <td class="count-cell">${p.count.toLocaleString()}</td>
       </tr>
     `).join('');
   }
 
-  document.getElementById('stats-search').addEventListener('input', () => renderTable(rawStatsData));
-  document.getElementById('stats-sort').addEventListener('change', () => renderTable(rawStatsData));
+  document.getElementById('stats-search').addEventListener('input', renderTable);
+  document.getElementById('stats-sort').addEventListener('change', renderTable);
 
-  function downloadBackup() {
-    let content = `NIALL BELL SITE STATS BACKUP\nGenerated: ${new Date().toLocaleString()}\n\n`;
-    content += `TOTAL UNIQUE VISITORS: ${document.getElementById('total-visits').innerText}\n\n`;
-    content += `PAGE BREAKDOWN:\n`;
-    rawStatsData.sort((a,b) => b.count - a.count).forEach(p => {
-      content += `${p.label} (${p.url}): ${p.count}\n`;
-    });
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = `niallbell-stats-backup-${new Date().toISOString().split('T')[0]}.txt`;
-    a.click();
-  }
-
-  loadStats();
+  loadInitialStats();
 </script>
