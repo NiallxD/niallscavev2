@@ -200,8 +200,12 @@ In 2023, I decided to enter a new and upcoming photographer competition called D
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
 
-    // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    // Global Site-wide Visitor Counter (Session-based)
+    if (!sessionStorage.getItem('nb_visitor_counted')) {
+      fetch('https://api.counterapi.dev/v1/niallbell/visits/up')
+        .then(() => sessionStorage.setItem('nb_visitor_counted', 'true'))
+        .catch(err => console.error('Counter error:', err));
+    }
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {
