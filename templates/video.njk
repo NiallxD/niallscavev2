@@ -1,7 +1,7 @@
 ---
 layout: page.njk
 ---
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{{ '/static/css/swiper-bundle.min.css' | url }}"/>
 
 {% if heroImage %}
 <div class="home-hero-wrapper">
@@ -123,7 +123,7 @@ layout: page.njk
 </div>
 {% endif %}
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{{ '/static/js/swiper-bundle.min.js' | url }}"></script>
 <script>
   const titleEl = document.getElementById('slide-title');
   const descEl = document.getElementById('slide-desc');

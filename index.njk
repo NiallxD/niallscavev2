@@ -4,10 +4,10 @@ title: Home
 description: The personal site of Niall Bell, a nature photographer, writer, and environmentalist from England, living in BC.
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<link rel="stylesheet" href="{{ '/static/css/swiper-bundle.min.css' | url }}">
+<link rel="stylesheet" href="{{ '/static/css/leaflet.css' | url }}"/>
+<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.css' | url }}"/>
+<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.Default.css' | url }}"/>
 
 <div class="home-hero-wrapper">
   {% if collections.homeGallery and collections.homeGallery.length %}
@@ -285,8 +285,9 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
   updateCounter();
   </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="{{ '/static/js/swiper-bundle.min.js' | url }}"></script>
+<script src="{{ '/static/js/leaflet.js' | url }}"></script>
+<script src="{{ '/static/js/leaflet.markercluster.js' | url }}"></script>
 <script>
   new Swiper('.home-swiper', {
     loop: true,

@@ -1,9 +1,9 @@
 ---
 layout: page.njk
 ---
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<link rel="stylesheet" href="{{ '/static/css/leaflet.css' | url }}"/>
+<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.css' | url }}"/>
+<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.Default.css' | url }}"/>
 
 {% if heroImage %}
 <div class="home-hero-wrapper">
@@ -30,8 +30,8 @@ layout: page.njk
   <div style="display:none;">{{ content | safe }}</div>
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="{{ '/static/js/leaflet.js' | url }}"></script>
+<script src="{{ '/static/js/leaflet.markercluster.js' | url }}"></script>
 <script>
   const pins = {{ content | parseMapBlocks | dump | safe }};
 
