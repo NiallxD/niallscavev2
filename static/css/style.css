@@ -1062,6 +1062,7 @@ main {
     height: auto;
   }
   #home-photo-map {
+    flex: none;
     height: 400px;
   }
   .home-prints-col .prints-cta {
