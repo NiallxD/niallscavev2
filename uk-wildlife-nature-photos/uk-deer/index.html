@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK Deer — Niall Bell</title>
   <meta name="description" content="The regal red deer is one of the UK&#39;s most photographed species. The royals dedicated huge swaths of land to keeping them for hunting which has left us with magical deer parks dotted across the UK. These are one of my favourite animals to photograph.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="UK Deer — Niall Bell">
   <meta property="og:description" content="The regal red deer is one of the UK&#39;s most photographed species. The royals dedicated huge swaths of land to keeping them for hunting which has left us with magical deer parks dotted across the UK. These are one of my favourite animals to photograph.">
   <meta property="og:image" content="https://i.imgur.com/eM38vZ0.png">
@@ -3409,6 +3412,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

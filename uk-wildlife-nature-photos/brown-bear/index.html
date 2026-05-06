@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brown Bear — Niall Bell</title>
   <meta name="description" content="The brown bear (Ursus arctos) is a large bear species native to Eurasia and North America. It’s one of the largest land carnivores, rivalled only by the polar bear. Brown bears are known for their distinctive shoulder hump, which is made of muscle and helps them dig through dirt when creating their dens.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Brown Bear — Niall Bell">
   <meta property="og:description" content="The brown bear (Ursus arctos) is a large bear species native to Eurasia and North America. It’s one of the largest land carnivores, rivalled only by the polar bear. Brown bears are known for their distinctive shoulder hump, which is made of muscle and helps them dig through dirt when creating their dens.">
   <meta property="og:image" content="https://i.imgur.com/Tip0k1n.jpg">
@@ -3090,6 +3093,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to Build a Wildlife Pond — Niall Bell</title>
   <meta name="description" content="In spring 2022 I built a wildlife pond for under £50. Two years on I&#39;m sharing the full process — from planning and digging to lining, planting, and the lessons I learned along the way.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="How to Build a Wildlife Pond — Niall Bell">
   <meta property="og:description" content="In spring 2022 I built a wildlife pond for under £50. Two years on I&#39;m sharing the full process — from planning and digging to lining, planting, and the lessons I learned along the way.">
   <meta property="og:image" content="https://i.imgur.com/KSajmT4.jpeg">
@@ -235,6 +238,9 @@ Firstly, I would suggest making a plan. I took some photos of the spot I wanted 
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

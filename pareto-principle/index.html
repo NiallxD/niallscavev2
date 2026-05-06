@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pareto Principle — Niall Bell</title>
   <meta name="description" content="The Pareto Principle — the idea that roughly 80% of outcomes come from 20% of causes — and how it applies across nature, business, and everyday decision-making.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Pareto Principle — Niall Bell">
   <meta property="og:description" content="The Pareto Principle — the idea that roughly 80% of outcomes come from 20% of causes — and how it applies across nature, business, and everyday decision-making.">
   <meta property="og:image" content="https://i.imgur.com/p6DKgUu.jpeg">
@@ -190,6 +193,9 @@ This principle/rule states that you can roughly 80% of the consequences come fro
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

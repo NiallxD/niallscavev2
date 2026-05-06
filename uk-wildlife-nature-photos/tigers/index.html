@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Plight of the Tiger — Niall Bell</title>
   <meta name="description" content="The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="The Plight of the Tiger — Niall Bell">
   <meta property="og:description" content="The tiger is facing incredible troubles in the wild due to poaching, habitat loss and human-wildlife conflict.">
   <meta property="og:image" content="https://i.imgur.com/rtk0zzy.png">
@@ -411,6 +414,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>India&#39;s Heart: A Tapestry of Nature and Tradition — Niall Bell</title>
   <meta name="description" content="In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="India&#39;s Heart: A Tapestry of Nature and Tradition — Niall Bell">
   <meta property="og:description" content="In November 2022, I packed my bags and headed to India in search of wildlife. Specifically the Royal Bengal Tiger. During my two weeks in India, I gained so much more than I had hoped.">
   <meta property="og:image" content="https://i.imgur.com/diPWwgj.jpeg">
@@ -242,6 +245,9 @@ Tal: <a href="https://www.instagram.com/tigstergram/">Tigstergram</a></p>
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

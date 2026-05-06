@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ethical Wildlife Photography: Where I Stand — Niall Bell</title>
   <meta name="description" content="I&#39;ve been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it&#39;s time to pull it all together, because the more I sit with it, the more I realise these aren&#39;t separate issues. They&#39;re two symptoms of the same disease.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Ethical Wildlife Photography: Where I Stand — Niall Bell">
   <meta property="og:description" content="I&#39;ve been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it&#39;s time to pull it all together, because the more I sit with it, the more I realise these aren&#39;t separate issues. They&#39;re two symptoms of the same disease.">
   <meta property="og:image" content="https://i.imgur.com/AwPl6UT.jpeg">
@@ -226,6 +229,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>International Tiger Day 2024 — Niall Bell</title>
   <meta name="description" content="July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="International Tiger Day 2024 — Niall Bell">
   <meta property="og:description" content="July the 29th marks International Tiger Day, a day dedicated to celebrating the amazing big cat which has captured the imagination of human for millennia.">
   <meta property="og:image" content="https://i.imgur.com/BiYriQv.png">
@@ -269,6 +272,9 @@ Niall.</p>
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

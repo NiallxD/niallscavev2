@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Complexity Blindness — Niall Bell</title>
   <meta name="description" content="Humans consistently underestimate the complexity of systems they interact with, forming mental models from surface-level observations. This is a living note exploring complexity blindness and its implications.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Complexity Blindness — Niall Bell">
   <meta property="og:description" content="Humans consistently underestimate the complexity of systems they interact with, forming mental models from surface-level observations. This is a living note exploring complexity blindness and its implications.">
   <meta property="og:image" content="https://i.imgur.com/p6DKgUu.jpeg">
@@ -199,6 +202,9 @@ So often in my day to day life I run into people/opinions which fall foul to the
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

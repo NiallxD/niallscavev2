@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoTalk: A Greener Phone Network — Niall Bell</title>
   <meta name="description" content="EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="EcoTalk: A Greener Phone Network — Niall Bell">
   <meta property="og:description" content="EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.">
   <meta property="og:image" content="https://i.imgur.com/6HNhbjt.jpeg">
@@ -201,6 +204,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

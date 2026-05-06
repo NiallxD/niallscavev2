@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photographic Prints — Niall Bell</title>
   <meta name="description" content="Exclusive wildlife and nature prints — each one unique, with 20% donated to conservation.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Photographic Prints — Niall Bell">
   <meta property="og:description" content="Exclusive wildlife and nature prints — each one unique, with 20% donated to conservation.">
   <meta property="og:image" content="/static/images/Porteau_Cove_123.jpg">
@@ -412,6 +415,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

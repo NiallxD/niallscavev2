@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photo Map — Niall Bell</title>
   <meta name="description" content="A map of locations from my photography around the world — from the Scottish Highlands to the Canadian Rockies.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Photo Map — Niall Bell">
   <meta property="og:description" content="A map of locations from my photography around the world — from the Scottish Highlands to the Canadian Rockies.">
   <meta property="og:image" content="https://i.imgur.com/eH05uEo.jpeg">
@@ -235,6 +238,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

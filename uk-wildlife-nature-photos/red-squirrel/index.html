@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Red Squirrel — Niall Bell</title>
   <meta name="description" content="The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Red Squirrel — Niall Bell">
   <meta property="og:description" content="The red squirrel is one of the UK&#39;s most endearing species; it&#39;s also one of the UK&#39;s most at-risk species. Their habitats have been destroyed across much of the country and the grey squirrel has out competed them for food. This means the red squirrel is limited to small pockets of the country.">
   <meta property="og:image" content="https://i.imgur.com/pQhjAr7.jpg">
@@ -3380,6 +3383,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

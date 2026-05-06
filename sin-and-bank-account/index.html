@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting an SIN and Bank Account — Niall Bell</title>
   <meta name="description" content="A practical walkthrough of getting your Social Insurance Number and opening a Canadian bank account as a UK national on an IEC work permit — including what documents to bring and what to expect.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Getting an SIN and Bank Account — Niall Bell">
   <meta property="og:description" content="A practical walkthrough of getting your Social Insurance Number and opening a Canadian bank account as a UK national on an IEC work permit — including what documents to bring and what to expect.">
   <meta property="og:image" content="https://i.imgur.com/cSUI4MZ.jpeg">
@@ -201,6 +204,9 @@ Today was another milestone day for us...we got our SIN numbers and bank account
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

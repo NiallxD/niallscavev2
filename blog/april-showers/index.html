@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>April Showers — Niall Bell</title>
   <meta name="description" content="Why do April showers happen? A short explainer on the meteorology behind the UK&#39;s famous spring rainfall — from warming sun angles and rising air pockets to the unstable atmosphere that makes spring so unpredictable.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="April Showers — Niall Bell">
   <meta property="og:description" content="Why do April showers happen? A short explainer on the meteorology behind the UK&#39;s famous spring rainfall — from warming sun angles and rising air pockets to the unstable atmosphere that makes spring so unpredictable.">
   <meta property="og:image" content="https://i.imgur.com/A0HkQd0.jpeg">
@@ -193,6 +196,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

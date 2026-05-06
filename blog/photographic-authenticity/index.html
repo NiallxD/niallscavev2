@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Photographic Authenticity — Niall Bell</title>
   <meta name="description" content="I began exploring the topic of authenticity while thinking about what it means to be an ethical photographer, and what us photographers should push for if we were to improve wildlife photography ethics across the community.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Photographic Authenticity — Niall Bell">
   <meta property="og:description" content="I began exploring the topic of authenticity while thinking about what it means to be an ethical photographer, and what us photographers should push for if we were to improve wildlife photography ethics across the community.">
   <meta property="og:image" content="https://i.imgur.com/a2syp1y.jpeg">
@@ -202,6 +205,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

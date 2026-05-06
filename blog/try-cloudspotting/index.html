@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Try Cloudspotting — Niall Bell</title>
   <meta name="description" content="Cloudspotting, despite what my autocorrect thinks, is a real thing, and I&#39;m here to talk about why I think everybody should try to become just a little bit obsessed with clouds.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Try Cloudspotting — Niall Bell">
   <meta property="og:description" content="Cloudspotting, despite what my autocorrect thinks, is a real thing, and I&#39;m here to talk about why I think everybody should try to become just a little bit obsessed with clouds.">
   <meta property="og:image" content="https://i.imgur.com/ERuqaWk.jpeg">
@@ -202,6 +205,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

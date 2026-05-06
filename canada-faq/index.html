@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canada Travel FAQ — Niall Bell</title>
   <meta name="description" content="I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Canada Travel FAQ — Niall Bell">
   <meta property="og:description" content="I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.">
   <meta property="og:image" content="https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg">
@@ -375,6 +378,9 @@ Different provinces have different rules around cars. Check on the provinces off
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

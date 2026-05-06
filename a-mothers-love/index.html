@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Mothers Love — Niall Bell</title>
   <meta name="description" content="Female grey seals are known for the remarkably strong but fragile bond they form with their pups.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="A Mothers Love — Niall Bell">
   <meta property="og:description" content="Female grey seals are known for the remarkably strong but fragile bond they form with their pups.">
   <meta property="og:image" content="https://i.imgur.com/hpoQKL9.png">
@@ -180,6 +183,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

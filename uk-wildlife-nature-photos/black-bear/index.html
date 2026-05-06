@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Black Bear — Niall Bell</title>
   <meta name="description" content="The American black bear (Ursus americanus) is a versatile omnivore widespread across North America. Unlike the brown bear, it lacks a muscular shoulder hump and possesses curved claws optimised for climbing rather than digging. Though typically black, these bears exhibit diverse coat colours and are easily identified by their straight facial profiles and prominent ears.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Black Bear — Niall Bell">
   <meta property="og:description" content="The American black bear (Ursus americanus) is a versatile omnivore widespread across North America. Unlike the brown bear, it lacks a muscular shoulder hump and possesses curved claws optimised for climbing rather than digging. Though typically black, these bears exhibit diverse coat colours and are easily identified by their straight facial profiles and prominent ears.">
   <meta property="og:image" content="https://i.imgur.com/BGCkHm0.jpeg">
@@ -2974,6 +2977,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

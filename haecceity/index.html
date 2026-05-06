@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Haecceity — Niall Bell</title>
   <meta name="description" content="Haecciety is a Latin term which translates to &#39;thisness&#39; and refers to the something of a thing which makes it itself. It is what determines the difference between &#39;a man&#39; and &#39;Socrates&#39;.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Haecceity — Niall Bell">
   <meta property="og:description" content="Haecciety is a Latin term which translates to &#39;thisness&#39; and refers to the something of a thing which makes it itself. It is what determines the difference between &#39;a man&#39; and &#39;Socrates&#39;.">
   <meta property="og:image" content="https://i.imgur.com/p6DKgUu.jpeg">
@@ -183,6 +186,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

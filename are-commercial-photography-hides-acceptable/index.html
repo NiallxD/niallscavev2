@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Are Commercial Photography Hides Acceptable? — Niall Bell</title>
   <meta name="description" content="A candid look at the ethics of commercial photography hides — are they acceptable practice for wildlife photographers? I work through the facts and share my personal view on a topic that divides the wildlife photography community.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Are Commercial Photography Hides Acceptable? — Niall Bell">
   <meta property="og:description" content="A candid look at the ethics of commercial photography hides — are they acceptable practice for wildlife photographers? I work through the facts and share my personal view on a topic that divides the wildlife photography community.">
   <meta property="og:image" content="https://i.imgur.com/a0xdQzW.jpeg">
@@ -279,6 +282,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

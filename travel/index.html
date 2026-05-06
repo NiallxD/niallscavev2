@@ -6,6 +6,9 @@
   <title>Travel Luggage — Niall Bell</title>
   <meta name="description" content="If you&#39;ve found my luggage, this page will help you get it back to me.">
   <meta name="robots" content="noindex, nofollow">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Travel Luggage — Niall Bell">
   <meta property="og:description" content="If you&#39;ve found my luggage, this page will help you get it back to me.">
   <meta property="og:image" content="https://i.imgur.com/eH05uEo.jpeg">
@@ -200,6 +203,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

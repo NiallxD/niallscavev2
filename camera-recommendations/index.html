@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Camera Recommendations — Niall Bell</title>
   <meta name="description" content="Over the years I&#39;ve used a whole range of camera gear from beginner kits to expensive professional grade gear. Many people who are wanting to get a start in photography, or upgrade their existing gear">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Camera Recommendations — Niall Bell">
   <meta property="og:description" content="Over the years I&#39;ve used a whole range of camera gear from beginner kits to expensive professional grade gear. Many people who are wanting to get a start in photography, or upgrade their existing gear">
   <meta property="og:image" content="https://i.imgur.com/0GszNX9.jpeg">
@@ -384,6 +387,9 @@ Video Recording: Yes (4k)</p>
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

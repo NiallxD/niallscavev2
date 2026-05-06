@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Siril Scripts for Astrophotography — Niall Bell</title>
   <meta name="description" content="Here is how I use custom Siril Scripts for Astrophotography.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Custom Siril Scripts for Astrophotography — Niall Bell">
   <meta property="og:description" content="Here is how I use custom Siril Scripts for Astrophotography.">
   <meta property="og:image" content="https://i.imgur.com/Izkx8aB.jpeg">
@@ -459,6 +462,9 @@ load final_stacked.fit
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

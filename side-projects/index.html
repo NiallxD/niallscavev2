@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Side Projects — Niall Bell</title>
   <meta name="description" content="Things I&#39;ve built and projects I work on outside of photography.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Side Projects — Niall Bell">
   <meta property="og:description" content="Things I&#39;ve built and projects I work on outside of photography.">
   <meta property="og:image" content="https://i.imgur.com/Ez04Sne.jpeg">
@@ -267,6 +270,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

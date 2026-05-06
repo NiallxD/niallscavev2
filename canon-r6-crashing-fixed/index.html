@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canon R6 Crashing - Fixed! — Niall Bell</title>
   <meta name="description" content="During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Canon R6 Crashing - Fixed! — Niall Bell">
   <meta property="og:description" content="During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.">
   <meta property="og:image" content="https://i.imgur.com/zWS53Em.jpeg">
@@ -210,6 +213,9 @@ Date Created: 07/04/2024</p>
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

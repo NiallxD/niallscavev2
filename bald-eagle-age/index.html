@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How To Tell The Age of a Bald Eagle — Niall Bell</title>
   <meta name="description" content="Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I&#39;ve taken.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="How To Tell The Age of a Bald Eagle — Niall Bell">
   <meta property="og:description" content="Bald eagles (Haliaeetus leucocephalus) gradually move into their full plumage over several years, in this post I explore these ages through photographs I&#39;ve taken.">
   <meta property="og:image" content="https://i.imgur.com/FEpNXc5.jpeg">
@@ -258,6 +261,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

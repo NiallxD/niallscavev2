@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Squamish eBird Data — Niall Bell</title>
   <meta name="description" content="I built a data portal to make the Nature Squamish Monthly Bird Count data — spanning over 400 months of community observations — accessible and explorable by anyone.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Squamish eBird Data — Niall Bell">
   <meta property="og:description" content="I built a data portal to make the Nature Squamish Monthly Bird Count data — spanning over 400 months of community observations — accessible and explorable by anyone.">
   <meta property="og:image" content="https://i.imgur.com/6wj3V55.jpeg">
@@ -184,6 +187,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NumBird - iOS App — Niall Bell</title>
   <meta name="description" content="NumBird is an app for iOS which takes a users eBird data and performs a range of data analysis to present the data and allow the user to analyse their birding history.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="NumBird - iOS App — Niall Bell">
   <meta property="og:description" content="NumBird is an app for iOS which takes a users eBird data and performs a range of data analysis to present the data and allow the user to analyse their birding history.">
   <meta property="og:image" content="https://i.imgur.com/ivXjySy.jpeg">
@@ -478,6 +481,9 @@ birding history in a whole new light.</p>
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

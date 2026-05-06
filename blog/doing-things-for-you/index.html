@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doing Things For You — Niall Bell</title>
   <meta name="description" content="In an age dominated by social media likes and follows, many creatives find themselves chasing approval rather than pursuing authentic expression. Photographers, for instance, often measure the worth of their work by the number of likes or comments it receives.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Doing Things For You — Niall Bell">
   <meta property="og:description" content="In an age dominated by social media likes and follows, many creatives find themselves chasing approval rather than pursuing authentic expression. Photographers, for instance, often measure the worth of their work by the number of likes or comments it receives.">
   <meta property="og:image" content="https://i.imgur.com/akBHrZy.jpeg">
@@ -194,6 +197,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

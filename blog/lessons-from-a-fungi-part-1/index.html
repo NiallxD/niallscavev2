@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lessons From a Fungi Part 1 — Niall Bell</title>
   <meta name="description" content="I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="Lessons From a Fungi Part 1 — Niall Bell">
   <meta property="og:description" content="I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.">
   <meta property="og:image" content="https://i.imgur.com/cAFawk5.jpeg">
@@ -198,6 +201,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

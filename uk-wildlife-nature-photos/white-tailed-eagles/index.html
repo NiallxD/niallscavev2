@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>White Tailed Eagle — Niall Bell</title>
   <meta name="description" content="The White Tailed Eagle is the UK&#39;s largest bird of prey and one of the largest predatory birds in the world! Adults are dark brown with a bright white tail and a yellow beak whereas youngsters are mottled brown and white with a blackish beak. I&#39;ve been fortunate enough to photograph White Tailed Eagles in both Scotland and Poland.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="White Tailed Eagle — Niall Bell">
   <meta property="og:description" content="The White Tailed Eagle is the UK&#39;s largest bird of prey and one of the largest predatory birds in the world! Adults are dark brown with a bright white tail and a yellow beak whereas youngsters are mottled brown and white with a blackish beak. I&#39;ve been fortunate enough to photograph White Tailed Eagles in both Scotland and Poland.">
   <meta property="og:image" content="https://i.imgur.com/1COPsvs.png">
@@ -3293,6 +3296,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

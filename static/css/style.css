@@ -4503,3 +4503,123 @@ span.wikilink { color: var(--color-secondary); }
   .booking-cta { padding: 2.25rem 1.5rem; }
   .booking-cta-heading { font-size: 1.4rem; }
 }
+
+/* ── Home Stats Card ─────────────────────────────────────── */
+.home-stats-row {
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.home-stats-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  transition: border-color 200ms ease;
+}
+
+.home-stats-card:hover {
+  border-color: var(--color-accent);
+}
+
+.home-stats-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.home-stats-message {
+  flex: 1;
+}
+
+.home-stats-text {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.home-stats-text:last-child {
+  margin-bottom: 0;
+}
+
+.home-stats-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.home-stats-heart {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  position: relative;
+}
+
+.home-stats-heart svg {
+  animation: heartPulse 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes auraPulse {
+  0% { transform: scale(0.8); opacity: 0.2; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 0.2; }
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+.home-stats-badge-wrapper {
+  flex-shrink: 0;
+}
+
+/* ── Custom Counter Frame ────────────────────────────────── */
+.custom-counter-frame {
+  display: flex;
+  align-items: center;
+  background: var(--color-footer-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  padding: 0.4rem 1.25rem;
+  gap: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.counter-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  border-right: 1px solid var(--color-border);
+  padding-right: 0.75rem;
+}
+
+.counter-value {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  min-width: 2ch;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .home-stats-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+}

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Red Kite — Niall Bell</title>
   <meta name="description" content="The Red Kite (milvus milvus) is a remarkably elegant bird of prey that can be easily recognised by its reddish-brown plumage, angled wings, and distinctive forked tail. Thanks to one of the longest-running conservation programs in the world, this species was rescued from the brink of extinction in the UK. It has since been successfully reintroduced to England and Scotland and is now protected under Schedule 1 of The Wildlife and Countryside Act.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="The Red Kite — Niall Bell">
   <meta property="og:description" content="The Red Kite (milvus milvus) is a remarkably elegant bird of prey that can be easily recognised by its reddish-brown plumage, angled wings, and distinctive forked tail. Thanks to one of the longest-running conservation programs in the world, this species was rescued from the brink of extinction in the UK. It has since been successfully reintroduced to England and Scotland and is now protected under Schedule 1 of The Wildlife and Countryside Act.">
   <meta property="og:image" content="https://i.imgur.com/T8Nox8C.png">
@@ -3119,6 +3122,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Waste Hierarchy — Niall Bell</title>
   <meta name="description" content="The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.">
-  
+  <meta name="robots" content="noarchive">
+  <!-- Anti-AI Scraping -->
+  <meta name="ai-content" content="noai, noimageai">
+  <meta name="CCBot" content="nofollow">
   <meta property="og:title" content="The Waste Hierarchy — Niall Bell">
   <meta property="og:description" content="The waste hierarchy underpins what most of us know about waste processing, but there is more to it than you might think.">
   <meta property="og:image" content="https://i.imgur.com/6zfWazY.jpeg">
@@ -221,6 +224,9 @@
     };
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
+
+    // Global Site-wide Visitor Counter
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {
