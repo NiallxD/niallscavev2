@@ -12,7 +12,7 @@
   <meta property="og:title" content="Travelling To Canada — Niall Bell">
   <meta property="og:description" content="The story of how Claudia and I planned and prepared an eight-year-in-the-making move to Canada on the International Experience Canada work permit — two degrees, tonnes of work experience, and a lot of patience later.">
   <meta property="og:image" content="https://i.imgur.com/yi0XicL.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -199,7 +199,7 @@ Ok, so this post is going to talk a bit about how Claudia and I came around to s
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

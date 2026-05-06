@@ -12,7 +12,7 @@
   <meta property="og:title" content="Canadian Landscapes — Niall Bell">
   <meta property="og:description" content="This is a collection of landscapes taken in Canada. A particular fascination of mine is photographing mountain peaks with a telephoto lens and then stitching them together to create a &#39;mountainscape&#39;.">
   <meta property="og:image" content="https://i.imgur.com/eH05uEo.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -3269,7 +3269,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

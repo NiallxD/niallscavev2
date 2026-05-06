@@ -12,7 +12,7 @@
   <meta property="og:title" content="Home — Niall Bell">
   <meta property="og:description" content="The personal site of Niall Bell, a nature photographer, writer, and environmentalist from England, living in BC.">
   
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -420,12 +420,12 @@
   <script>
   async function updateCounter() {
     try {
-      // Use /get instead of /up to avoid double-counting on the homepage
-      const response = await fetch('https://api.counterapi.dev/v1/niallbell/visits');
+      // Use / instead of nothing to avoid redirects
+      const response = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
       const data = await response.json();
       document.getElementById('visitor-count').innerText = data.count.toLocaleString();
     } catch (err) {
-      document.getElementById('visitor-count').innerText = '1,240'; // Fallback display
+      document.getElementById('visitor-count').innerText = '...'; // Neutral fallback
     }
   }
   updateCounter();
@@ -620,7 +620,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

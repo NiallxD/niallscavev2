@@ -12,7 +12,7 @@
   <meta property="og:title" content="Drone Photography — Niall Bell">
   <meta property="og:description" content="I&#39;ve been flying drones for over a decade and in that time have captured some stunning photographs. Here is a selection of my favourites.">
   <meta property="og:image" content="https://i.imgur.com/F1ef3kt.jpg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -3037,7 +3037,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

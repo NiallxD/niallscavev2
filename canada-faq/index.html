@@ -12,7 +12,7 @@
   <meta property="og:title" content="Canada Travel FAQ — Niall Bell">
   <meta property="og:description" content="I set up this FAQ to track all the frequently asked questions posed in the Alliance Visa group chat.">
   <meta property="og:image" content="https://www.canada.ca/content/dam/pch/images/services/flag-canada/stanley-design-13-point-leaf.jpg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -380,7 +380,7 @@ Different provinces have different rules around cars. Check on the provinces off
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

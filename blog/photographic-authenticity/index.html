@@ -12,7 +12,7 @@
   <meta property="og:title" content="Photographic Authenticity — Niall Bell">
   <meta property="og:description" content="I began exploring the topic of authenticity while thinking about what it means to be an ethical photographer, and what us photographers should push for if we were to improve wildlife photography ethics across the community.">
   <meta property="og:image" content="https://i.imgur.com/a2syp1y.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -207,7 +207,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

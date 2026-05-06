@@ -12,7 +12,7 @@
   <meta property="og:title" content="Nature Photography and its Impact on Engagement in Pro-environmental Behaviour in Adults — Niall Bell">
   <meta property="og:description" content="This is the report I authored for my master&#39;s degree dissertation. I&#39;m sharing here for those interested in this area of research.">
   <meta property="og:image" content="https://i.imgur.com/jxxUz6b.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -426,7 +426,7 @@ Figure 12 - A bar chart illustrating the average ratings given by participants w
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -12,7 +12,7 @@
   <meta property="og:title" content="Bengal Tiger — Niall Bell">
   <meta property="og:description" content="The Bengal Tiger is the true king of the jungle. I&#39;ve been obsessed with tigers since first time I photographed a captive Amur tiger at my local wildlife park.">
   <meta property="og:image" content="https://i.imgur.com/j35mshs.png">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -3165,7 +3165,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -12,7 +12,7 @@
   <meta property="og:title" content="How to Build a Wildlife Pond — Niall Bell">
   <meta property="og:description" content="In spring 2022 I built a wildlife pond for under £50. Two years on I&#39;m sharing the full process — from planning and digging to lining, planting, and the lessons I learned along the way.">
   <meta property="og:image" content="https://i.imgur.com/KSajmT4.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -240,7 +240,7 @@ Firstly, I would suggest making a plan. I took some photos of the spot I wanted 
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

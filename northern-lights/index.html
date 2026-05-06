@@ -12,7 +12,7 @@
   <meta property="og:title" content="Northern Lights in Doncaster! — Niall Bell">
   <meta property="og:description" content="n the early hours, 11th May 2024, the Northern Hemisphere was treated to a Northern Lights bonanza! I’m fortunate enough to have seen the Northern Lights in Iceland but seeing it on my doorstep was special. This isn’t the first time I’ve seen the Aurora at home, but it’s definitely the most prominent!">
   <meta property="og:image" content="https://i.imgur.com/9DONEvA.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -209,7 +209,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

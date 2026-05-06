@@ -12,7 +12,7 @@
   <meta property="og:title" content="Canon R6 Crashing - Fixed! — Niall Bell">
   <meta property="og:description" content="During shooting in mechanical shutter, in H and H+, the camera would appear to continue shooting when you stop shooting. The screen/EVF keeps flickering with a frozen image visible. This doesn’t stop, it will keep going. The only way to fix it is to remove the battery from the camera.">
   <meta property="og:image" content="https://i.imgur.com/zWS53Em.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -215,7 +215,7 @@ Date Created: 07/04/2024</p>
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

@@ -12,7 +12,7 @@
   <meta property="og:title" content="Street Photography — Niall Bell">
   <meta property="og:description" content="Street photography isn&#39;t my main genre nor is it a genre that I&#39;m particularly good at. What it is a way of being creative. Nature photography is often as much about reproducing what we see in nature in our photographs as it is being creative and this can stifle your creativity. Street photograph doesn&#39;t have such a constraint in my eyes. The below are a selection of images I&#39;ve taken when out and about. They&#39;re not great, but they were fun to take and edit.">
   <meta property="og:image" content="https://i.imgur.com/7eKn5qJ.jpg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -3060,7 +3060,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

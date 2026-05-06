@@ -12,7 +12,7 @@
   <meta property="og:title" content="Astrophotography — Niall Bell">
   <meta property="og:description" content="Astrophotography is a photographic discipline that involves taking highly detailed images of objects in the night sky. This can be of things as close as the Moon, to planets, to distant galaxies millions of light-years away.">
   <meta property="og:image" content="https://i.imgur.com/Jzcv1Jl.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -3167,7 +3167,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

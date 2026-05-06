@@ -12,7 +12,7 @@
   <meta property="og:title" content="Cloudspotting — Niall Bell">
   <meta property="og:description" content="Have you ever wondered where the idiom &quot;to be on cloud 9&quot; came from? Well, you&#39;ve got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!">
   <meta property="og:image" content="https://i.imgur.com/EyV94Ox.jpeg">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -246,7 +246,7 @@
     onScroll(); // trigger immediately on load
 
     // Global Site-wide Visitor Counter
-    fetch('https://api.counterapi.dev/v1/niallbell/visits/up').catch(err => console.error('Counter error:', err));
+    fetch('https://api.counterapi.dev/v1/niallbell/visits/up/').catch(err => console.error('Counter error:', err));
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {
