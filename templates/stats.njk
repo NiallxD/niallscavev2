@@ -3,284 +3,396 @@ layout: base.njk
 ---
 
 <style>
-  .stats-container {
-    max-width: 1000px;
-    margin: 100px auto 4rem;
-    padding: 0 2rem;
-  }
   .stats-header {
     margin-bottom: 3rem;
   }
   
-  /* Overview Cards */
-  .stats-overview-grid {
+  /* Top Overview Grid */
+  .stats-overview-top {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     margin-bottom: 4rem;
   }
-  .stat-card {
+
+  .stat-card--top {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    transition: border-color 0.2s ease;
+    transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease, border-color 0.2s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px; /* Reduced height */
   }
-  .stat-card--large {
-    grid-column: span 4;
+  .stat-card--top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent);
+  }
+
+  /* Scrolling Icon Mosaic */
+  .stats-mosaic {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-around;
+    transform: rotate(-12deg) scale(1.2);
+    opacity: 0.15; /* Much more visible */
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+  [data-theme="dark"] .stats-mosaic {
+    opacity: 0.2; /* Even more visible in dark mode */
+  }
+  .stats-mosaic-col {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    animation: stats-mosaic-scroll 30s linear infinite;
+  }
+  .stats-mosaic-col--offset {
+    animation-direction: reverse;
+    animation-duration: 35s;
+  }
+  @keyframes stats-mosaic-scroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+
+  .stat-card-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-card--privacy {
+    background: var(--color-bg);
+    flex-direction: row;
+    text-align: left;
+    gap: 1.5rem;
     padding: 2rem;
     align-items: center;
   }
-  .stat-card--main {
-    grid-column: span 1;
-    padding: 1.25rem;
+  .privacy-shield-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
   }
-  .stat-card:hover {
-    border-color: var(--color-accent);
+  .privacy-card-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 800px) {
+    .stats-overview-top {
+      grid-template-columns: 1fr;
+    }
+    .stat-card--privacy {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
   }
   .stat-card-label {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--color-muted);
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
   .stat-card-value {
-    font-size: 1.4rem;
+    font-size: 4rem;
     font-weight: 800;
     color: var(--color-accent);
-  }
-  .stat-card--large .stat-card-value {
-    font-size: 3rem;
+    line-height: 1;
   }
   .stat-growth {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #52b788;
-    margin-top: 4px;
+    margin-top: 10px;
   }
 
-  /* Table Section */
-  .detailed-stats-section {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
+  /* Values Grid */
+  .privacy-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin: 3rem 0;
   }
-  .stats-filter-row {
-    margin-bottom: 1.5rem;
-    display: flex;
-    gap: 1rem;
+
+  @media (max-width: 1100px) {
+    .privacy-values {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
-  .stats-table-wrapper {
-    background: var(--color-surface);
+
+  @media (max-width: 600px) {
+    .privacy-values {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .value-card {
+    padding: 2rem;
+    background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-  .stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-  }
-  .stats-table th {
     text-align: left;
-    padding: 1rem 1.5rem;
-    background: var(--color-footer-bg);
-    border-bottom: 1px solid var(--color-border);
-    font-size: 0.7rem;
-    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-link);
+  }
+
+  .value-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-link);
+    margin-bottom: 1.25rem;
+  }
+
+  .value-card h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-muted);
+    color: var(--color-link);
+    margin-bottom: 0.75rem;
   }
-  .stats-table td {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
+
+  .value-card p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-secondary);
+    margin: 0;
+    text-align: left;
   }
-  .stats-table .count-cell {
-    font-weight: 700;
-    color: var(--color-accent);
-    text-align: right;
+
+  /* Shared Section Card */
+  .stats-section-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease, border-color 0.2s ease;
+  }
+  .stats-section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-link);
+  }
+  .stats-section-card h2 {
+    margin-top: 0 !important;
+    font-size: 1.3rem;
+  }
+  .stats-section-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Content Sections */
+  .stats-prose {
+    margin-top: 2rem;
   }
   
-  @media (max-width: 900px) {
-    .stats-overview-grid { grid-template-columns: 1fr 1fr; }
-    .stat-card--large { grid-column: span 2; }
+  @media (max-width: 600px) {
+    .stat-card-value { font-size: 3rem; }
   }
 </style>
 
-<div class="stats-container">
+<div class="standard-page" style="margin-top: 100px; margin-bottom: 4rem;">
   <header class="stats-header">
     <p class="section-label" style="color: var(--color-accent)">Transparency Report</p>
     <h1 class="page-title">The Vault Stats</h1>
-    <p class="home-stats-text" style="font-size: 1rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking Overview</p>
-    <p class="home-stats-text">This page is a live look at my site activity. Unlike most websites, niallbell.com uses no cookies, no profiling, and no third-party trackers. Data is fetched directly from an independent counter API. I don't see who you are, what device you use, or where you've been on the web. I only see that a human being took the time to visit a page.</p>
+    <p class="home-stats-text" style="font-size: 1.2rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking Analytics</p>
   </header>
 
-  <!-- High Level Overview -->
-  <div class="stats-overview-grid">
-    <div class="stat-card stat-card--large">
-      <p class="stat-card-label">Total Site Visitors</p>
-      <p id="total-visits" class="stat-card-value">...</p>
-      <div id="total-growth" class="stat-growth"></div>
+  <!-- Top Overview Grid -->
+  <div class="stats-overview-top">
+    <div class="stat-card--top">
+      <div class="stat-card-content">
+        <p class="stat-card-label">Total Site Visitors</p>
+        <p id="total-visits" class="stat-card-value">...</p>
+        <div id="total-growth" class="stat-growth"></div>
+      </div>
     </div>
-    
-    <!-- Main Hubs (Will be populated by JS) -->
-    <div id="hub-cards-container" style="display: contents;">
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Home</p><p class="stat-card-value" id="val-home">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Photography</p><p class="stat-card-value" id="val-photography">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Writing</p><p class="stat-card-value" id="val-blog">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Projects</p><p class="stat-card-value" id="val-side-projects">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Bookshelf</p><p class="stat-card-value" id="val-bookshelf">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">About</p><p class="stat-card-value" id="val-about-me">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Prints</p><p class="stat-card-value" id="val-prints">...</p></div>
-      <div class="stat-card stat-card--main"><p class="stat-card-label">Video</p><p class="stat-card-value" id="val-videography">...</p></div>
+
+    <div class="stat-card--top stat-card--privacy">
+      <div class="privacy-shield-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <p class="privacy-card-text">Built with a Privacy First philosophy. No cookies, no profiling, and zero tracking.</p>
+        <div id="gpc-status" style="margin-top: 0.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted);">
+          Detecting GPC Signal...
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Detailed Table -->
-  <div class="detailed-stats-section">
-    <div class="home-block-header">
-      <p class="section-label">Detailed Breakdown</p>
+  <div class="stats-prose">
+    <div class="stats-section-card">
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin: 0;">This page is a live look at my site activity since <strong>May 2026</strong>, when these privacy-oriented changes were implemented. Unlike the vast majority of the web, niallbell.com is built with a "Privacy First" philosophy. I believe that your browsing habits are your own business, not mine or any advertiser's.</p>
     </div>
     
-    <div class="stats-filter-row">
-      <input type="text" id="stats-search" placeholder="Search pages..." style="flex: 1; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem;">
-      <select id="stats-sort" style="padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-family: var(--font-sans); font-size: 0.9rem; cursor: pointer;">
-        <option value="visits">Sort by Visits</option>
-        <option value="name">Sort by Name</option>
-      </select>
+    <div class="privacy-values">
+      <div class="value-card">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Zero Cookies</h3>
+        <p>I don't use cookies to track you. There is no unique identifier stored in your browser that can be used to follow you across sessions or other websites.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>No Profiling</h3>
+        <p>I don't collect data on your age, gender, location, or interests. I have no idea who you are or what device you are using.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>No IP Logging</h3>
+        <p>Your IP address is never stored in my database. The analytics I use are fully anonymized at the point of collection.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>No Trackers</h3>
+        <p>There is no Google Analytics, no Meta Pixel, and no ad-tech scripts here. Your data is not being sold or shared with anyone.</p>
+      </div>
     </div>
 
-    <div class="stats-table-wrapper">
-      <table class="stats-table">
-        <thead>
-          <tr>
-            <th>Page</th>
-            <th style="text-align: right">Unique Visits</th>
-          </tr>
-        </thead>
-        <tbody id="page-stats-body">
-          <tr>
-            <td colspan="2" style="text-align: center; padding: 2rem;">
-              <button onclick="loadAllRemainingPages()" class="stats-btn" style="background: var(--color-accent); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600;">
-                Load data for all posts & galleries
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="stats-section-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0;">GPC Signalling</h2>
+      </div>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">Global Privacy Control (GPC) is a modern web standard that allows you to set a single, global preference in your browser to opt-out of tracking and data selling across all websites you visit.</p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">I have technically configured this site to detect and honor GPC signals. If you have it enabled, you'll see a green "Active" confirmation in the card at the top of this page.</p>
+      <p style="margin-top: 2rem;"><a href="https://gpccheck.com" target="_blank" rel="noopener" style="display: inline-block; padding: 0.8rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: var(--color-link); text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)';" onmouseout="this.style.borderColor='var(--color-border)'; this.style.color='var(--color-link)';">Learn how to enable GPC →</a></p>
+    </div>
+
+    <div class="stats-section-card">
+      <h2>How I count visitors</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">I use a very simple, custom-built counter system. When you load a page, it sends a single request to an independent API (CounterAPI) to increment a number. That's it. It's the digital equivalent of a person walking through a door and a clicking a handheld counter.</p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">You'll notice a small "Page Stats" section in the footer of every page on this site; that number is pulled directly from this same system in real-time. The total site visitors count shown above is a session-based tally of unique human visits since I launched this version of the site. It helps me understand which parts of my work are resonating, without compromising your right to a private web experience.</p>
+    </div>
+    
+    <div class="stats-section-card">
+      <h2>Form Submissions</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">When you use the enquiry forms on this site (such as for photo prints), the information you provide is sent to me via <strong>Web3Forms</strong>. This is a technical intermediary that allows me to receive your messages without running a complex database-driven backend. They do not sell your data, and your information is only used for the purpose of responding to your specific request.</p>
+    </div>
+
+    <div class="stats-section-card">
+      <h2>Anti-AI Scraping</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">In addition to human privacy, I also value the integrity of my creative work. This site employs meta tags and headers to signal to AI crawlers that my content and photography should not be used for model training without my explicit permission.</p>
+    </div>
+
+    <div class="stats-section-card">
+      <h2>Data Transparency</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">A "Zero-Tracking" site doesn't mean zero network requests. To provide a rich experience, this site communicates with a few trusted external services. You can verify these in your browser's "Network" tab at any time:</p>
+      <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Imgur:</strong> Hosts high-resolution photography. <em>Data sent: Request for image file. No cookies.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CartoDB:</strong> Provides map tiles. <em>Data sent: Request for map tiles. No cookies.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CounterAPI:</strong> Stores anonymous page view counts. <em>Data sent: Page slug. No IP logging.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Web3Forms:</strong> Transmits enquiry messages. <em>Data sent: Form entries only on submission.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Amazon Media:</strong> Serves book covers. <em>Data sent: Request for image file. No cookies.</em></li>
+      </ul>
+    </div>
+
+    <div class="stats-section-card">
+      <h2>Your Data Rights</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">Under modern privacy laws (like GDPR and CCPA), you have rights regarding your personal data. Because I don't use cookies, trackers, or account systems, for the vast majority of visitors, <strong>I hold no data to access, export, or delete.</strong></p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">However, if you have used one of my enquiry forms, I will have the information you explicitly shared (name, email, and message) in my inbox. At any time, you have the right to:</p>
+      <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-top: 1rem; padding-left: 1.5rem; list-style-position: inside;">
+        <li style="margin-bottom: 0.5rem;">Request a copy of the communication you sent me.</li>
+        <li style="margin-bottom: 0.5rem;">Request that I delete our email history and your contact details.</li>
+        <li style="margin-bottom: 0.5rem;">Correct any information you previously provided.</li>
+      </ul>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-top: 1.5rem;">To exercise any of these rights, simply email me at (<span class="reveal-email" data-u="niall" data-d="niallbell.com" style="color: var(--color-link); text-decoration: underline; cursor: pointer;">click to reveal email</span>) and I will handle your request promptly.</p>
+    </div>
+
+    <div class="stats-section-card">
+      <h2 style="text-align: center;">Don't take my word for it</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); text-align: center;">I believe privacy claims should be independently verified so I invite you to audit this site using these respected 3rd party tools:</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; justify-content: center;">
+        <a href="https://themarkup.org/blacklight?url=niallbell.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">Blacklight →</a>
+        <a href="https://webbkoll.dataskydd.net/en/check?url=niallbell.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">Webbkoll →</a>
+        <a href="https://gpccheck.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">GPC Check →</a>
+        <a href="https://developer.mozilla.org/en-US/observatory/analyze?host=niallbell.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">Mozilla Observatory →</a>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--color-muted); margin-top: 2rem; text-align: center;"><em>Note: As I am hosted on GitHub Pages, some "HTTP Header" scores (like HSTS) are controlled by the host. However, I have implemented strict Content Security (CSP) and Referrer policies via internal meta tags.</em></p>
+    </div>
+
+    <div class="stats-section-card" style="margin-bottom: 0;">
+      <h2>Questions?</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">I am committed to maintaining a site that respects your digital rights. If you have any questions about how your data is handled, or if you'd like to suggest improvements to my transparency report, please email me at (<span class="reveal-email" data-u="niall" data-d="niallbell.com" style="color: var(--color-link); text-decoration: underline; cursor: pointer;">click to reveal email</span>). I'm always happy to chat about the open web and digital privacy.</p>
     </div>
   </div>
 </div>
 
 <script>
-  const mainHubs = [
-    { id: 'home', label: 'Home Page' },
-    { id: 'photography', label: 'Photography' },
-    { id: 'blog', label: 'Writing (All)' },
-    { id: 'about-me', label: 'About Me' },
-    { id: 'prints', label: 'Prints' },
-    { id: 'videography', label: 'Videography' },
-    { id: 'side-projects', label: 'Projects' },
-    { id: 'bookshelf', label: 'Bookshelf' }
-  ];
+  async function loadStats() {
+    // Detect GPC Signal
+    const gpcStatusEl = document.getElementById('gpc-status');
+    if (gpcStatusEl) {
+      if (navigator.globalPrivacyControl) {
+        gpcStatusEl.innerHTML = '<span style="color: #52b788;">● GPC Signal Detected: Active</span>';
+      } else {
+        gpcStatusEl.innerHTML = '● GPC Signal: Not Detected (Defaulting to Private)';
+      }
+    }
 
-  const otherPages = [
-    {%- for p in collections.all %}
-    {%- if p.url and not p.data.eleventyExcludeFromCollections %}
-    {%- set isMain = false %}
-    {%- if p.url == '/' or p.url == '/photography/' or p.url == '/blog/' or p.url == '/about-me/' or p.url == '/prints/' or p.url == '/videography/' or p.url == '/side-projects/' or p.url == '/bookshelf/' %}
-      {%- set isMain = true %}
-    {%- endif %}
-    {%- if not isMain %}
-    { 
-      id: {{ p.url | replace("/", "") | replace("/", "-") or "home" | dump | safe }}, 
-      label: {{ (p.data.title or p.url) | dump | safe }},
-      url: {{ p.url | dump | safe }}
-    },
-    {%- endif %}
-    {%- endif %}
-    {%- endfor %}
-  ].filter((v, i, a) => a.findIndex(t => t.id === v.id) === i);
-
-  let fullStatsList = [];
-
-  async function loadInitialStats() {
-    // 1. Load Total
     try {
       const res = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
       const data = await res.json();
       const count = data.count || 0;
       document.getElementById('total-visits').innerText = count.toLocaleString();
       
-      // Growth check
+      // Growth check (Today's new visitors)
       const lastCount = localStorage.getItem('nb_last_total');
       if (lastCount && count > parseInt(lastCount)) {
-        document.getElementById('total-growth').innerText = `+${count - parseInt(lastCount)} today`;
+        document.getElementById('total-growth').innerText = `+${count - parseInt(lastCount)} since your last visit`;
       }
       localStorage.setItem('nb_last_total', count);
-    } catch(e) {}
-
-    // 2. Load Main Hubs
-    for (const hub of mainHubs) {
-      fetch(`https://api.counterapi.dev/v1/niallbell/page-${hub.id}/`)
-        .then(res => res.json())
-        .then(data => {
-          const el = document.getElementById(`val-${hub.id}`);
-          if (el) el.innerText = (data.count || 0).toLocaleString();
-          fullStatsList.push({...hub, count: data.count || 0});
-        })
-        .catch(() => {
-          const el = document.getElementById(`val-${hub.id}`);
-          if (el) el.innerText = '0';
-        });
+    } catch(e) {
+      document.getElementById('total-visits').innerText = '---';
     }
   }
 
-  async function loadAllRemainingPages() {
-    const tbody = document.getElementById('page-stats-body');
-    tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching individual post data... this takes ~2 mins due to API limits.</td></tr>';
-    
-    const chunkSize = 15;
-    for (let i = 0; i < otherPages.length; i += chunkSize) {
-      const chunk = otherPages.slice(i, i + chunkSize);
-      const results = await Promise.all(
-        chunk.map(page => fetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`).then(res => res.json()).then(d => ({...page, count: d.count || 0})).catch(() => ({...page, count: 0})))
-      );
-      fullStatsList.push(...results);
-      renderTable();
-      if (i + chunkSize < otherPages.length) await new Promise(r => setTimeout(r, 2000));
-    }
-  }
-
-  function renderTable() {
-    const tbody = document.getElementById('page-stats-body');
-    const search = document.getElementById('stats-search').value.toLowerCase();
-    const sort = document.getElementById('stats-sort').value;
-
-    let filtered = fullStatsList.filter(p => p.label.toLowerCase().includes(search) || p.url.toLowerCase().includes(search));
-    
-    if (sort === 'visits') filtered.sort((a,b) => b.count - a.count);
-    else filtered.sort((a,b) => a.label.localeCompare(b.label));
-
-    tbody.innerHTML = filtered.map(p => `
-      <tr>
-        <td>
-          <div style="font-weight: 600;">${p.label}</div>
-          <div style="font-size: 0.75rem; color: var(--color-muted);">${p.url || ''}</div>
-        </td>
-        <td class="count-cell">${p.count.toLocaleString()}</td>
-      </tr>
-    `).join('');
-  }
-
-  document.getElementById('stats-search').addEventListener('input', renderTable);
-  document.getElementById('stats-sort').addEventListener('change', renderTable);
-
-  loadInitialStats();
+  loadStats();
 </script>
