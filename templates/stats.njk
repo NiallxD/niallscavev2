@@ -1,0 +1,238 @@
+---
+layout: base.njk
+---
+
+<style>
+  .stats-container {
+    max-width: 800px;
+    margin: 100px auto 4rem;
+    padding: 0 2rem;
+  }
+  .stats-header {
+    margin-bottom: 3rem;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-card-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .stat-card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+  .stats-table-wrapper {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .stats-table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    background: var(--color-footer-bg);
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+  }
+  .stats-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .stats-table tr:last-child td {
+    border-bottom: none;
+  }
+  .stats-table .count-cell {
+    font-weight: 700;
+    color: var(--color-accent);
+    text-align: right;
+  }
+  .stats-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .stats-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-footer-bg);
+    border: 1px solid var(--color-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .stats-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+</style>
+
+<div class="stats-container">
+  <header class="stats-header">
+    <p class="section-label" style="color: var(--color-accent)">Transparency Report</p>
+    <h1 class="page-title">The Vault Stats</h1>
+    <p class="home-stats-text" style="font-size: 1rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking Overview</p>
+    <p class="home-stats-text">This page is a live look at my site activity. Unlike most websites, niallbell.com uses no cookies, no profiling, and no third-party trackers. I've built this custom dashboard to provide honest insights into what content resonates with readers without compromising their privacy.</p>
+    <p class="home-stats-text">Data is fetched directly from an independent counter API. I don't see who you are, what device you use, or where you've been on the web. I only see that a human being took the time to visit a page. It's a simple, honest way to measure the pulse of this digital home.</p>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <p class="stat-card-label">Total Unique Visitors</p>
+      <p id="total-visits" class="stat-card-value">...</p>
+    </div>
+  </div>
+
+  <div class="stats-table-wrapper">
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>Page Name</th>
+          <th style="text-align: right">Visits</th>
+        </tr>
+      </thead>
+      <tbody id="page-stats-body">
+        <tr>
+          <td colspan="2" style="text-align: center; padding: 2rem; color: var(--color-muted);">Fetching page data...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="stats-actions">
+    <button onclick="downloadBackup()" class="stats-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Backup
+    </button>
+  </div>
+</div>
+
+<script>
+  const pages = [
+    { id: 'home', label: 'Home Page' },
+    { id: 'photography', label: 'Photography' },
+    { id: 'blog', label: 'Blog All' },
+    { id: 'about-me', label: 'About Me' },
+    { id: 'prints', label: 'Prints' },
+    { id: 'videography', label: 'Videography' },
+    { id: 'side-projects', label: 'Projects' },
+    { id: 'bookshelf', label: 'Bookshelf' }
+  ];
+
+  async function loadStats() {
+    const tbody = document.getElementById('page-stats-body');
+    tbody.innerHTML = ''; // Clear for reload
+
+    // Helper for robust fetching
+    const safeFetch = async (url) => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) return { count: 0 };
+        return await res.json();
+      } catch (e) {
+        return { count: 0 };
+      }
+    };
+
+    // 1. Fetch Total Site Visitors (Priority #1)
+    const totalData = await safeFetch('https://api.counterapi.dev/v1/niallbell/visits/');
+    const totalCount = totalData.count || 0;
+    document.getElementById('total-visits').innerText = totalCount.toLocaleString();
+
+    // Daily Growth Logic (for you only)
+    const lastCount = localStorage.getItem('nb_last_total_count');
+    const lastDate = localStorage.getItem('nb_last_stats_date');
+    const today = new Date().toDateString();
+
+    // Clear previous growth indicators to avoid duplicates on refresh
+    const existingGrowth = document.getElementById('total-visits-growth');
+    if (existingGrowth) existingGrowth.remove();
+
+    if (lastCount && lastDate === today) {
+      const growth = totalCount - parseInt(lastCount);
+      if (growth > 0) {
+        const growthEl = document.createElement('span');
+        growthEl.id = 'total-visits-growth';
+        growthEl.style.fontSize = '0.9rem';
+        growthEl.style.marginLeft = '0.5rem';
+        growthEl.style.color = '#52b788';
+        growthEl.innerText = `+${growth} today`;
+        document.getElementById('total-visits').parentElement.appendChild(growthEl);
+      }
+    } else {
+      localStorage.setItem('nb_last_total_count', totalCount);
+      localStorage.setItem('nb_last_stats_date', today);
+    }
+
+    // 2. Fetch Page Stats in parallel (spaced slightly from total)
+    try {
+      const pageData = await Promise.all(
+        pages.map(page => safeFetch(`https://api.counterapi.dev/v1/niallbell/page-${page.id}/`))
+      );
+
+      pageData.forEach((data, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${pages[index].label}</td>
+          <td class="count-cell">${data.count ? data.count.toLocaleString() : '0'}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    } catch(e) {
+      tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 2rem;">Partial data loaded. Refresh in a moment.</td></tr>';
+    }
+  }
+
+  function downloadBackup() {
+    const total = document.getElementById('total-visits').innerText;
+    let content = `NIALL BELL SITE STATS BACKUP\nGenerated: ${new Date().toLocaleString()}\n\n`;
+    content += `TOTAL SITE VISITORS: ${total}\n\n`;
+    content += `PAGE BREAKDOWN:\n`;
+    
+    const rows = document.querySelectorAll('#page-stats-body tr');
+    rows.forEach(row => {
+      const name = row.cells[0].innerText;
+      const count = row.cells[1].innerText;
+      content += `${name}: ${count}\n`;
+    });
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `niallbell-stats-backup-${new Date().toISOString().split('T')[0]}.txt`;
+    a.click();
+  }
+
+  loadStats();
+</script>
