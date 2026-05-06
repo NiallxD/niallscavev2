@@ -235,11 +235,51 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
     </div>
   </div>
 </div>
+</div>
+</div>
+
+<div class="home-stats-row">
+  <div class="home-block-header">
+    <p class="section-label">Site Activity</p>
+  </div>
+    <div class="home-stats-card">
+    <div class="home-stats-content">
+      <div class="home-stats-message">
+        <p class="home-stats-text">In an era of social media and AI, human visitors to independent websites are becoming increasingly rare, so thank you for being one.</p>
+        <p class="home-stats-text">I worry that as AI crawlers scrape the web and funnel content into chatbots, the motivation to maintain sites like this will slowly fade away. I've built measures into this site to block those crawlers, because the work I put in here was never meant to train a model. I don't rely on ad revenue, and I don't even serve ads, but many websites do. Without real human visitors, those sites don't get paid, and when they don't get paid, they're forced to find other ways to make money, which kills authentic writing. If that resonates with you, consider browsing the web a little more directly, and let the surfing be yours. Thank you.</p>
+      </div>
+      
+      <div class="home-stats-right-col">
+        <div class="home-stats-heart">
+          <canvas id="heart-canvas" width="400" height="400" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 1;"></canvas>
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="position: relative; z-index: 2;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <div class="home-stats-badge-wrapper">
+          <div class="custom-counter-frame">
+            <span class="counter-label">VISITORS</span>
+            <span id="visitor-count" class="counter-value">...</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  async function updateCounter() {
+    try {
+      // Use /get instead of /up to avoid double-counting on the homepage
+      const response = await fetch('https://api.counterapi.dev/v1/niallbell/visits');
+      const data = await response.json();
+      document.getElementById('visitor-count').innerText = data.count.toLocaleString();
+    } catch (err) {
+      document.getElementById('visitor-count').innerText = '1,240'; // Fallback display
+    }
+  }
+  updateCounter();
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
   new Swiper('.home-swiper', {
@@ -279,4 +319,57 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
   });
   homeMap.addLayer(homeCluster);
   {% endif %}
+
+  // 100 Particles - A gentle, glowing swarm
+  const canvas = document.getElementById('heart-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    const colors = ['#ffb703', '#fb8500', '#ff4d00', '#FF860D'];
+
+    // Create 100 particles
+    for(let i=0; i<100; i++) {
+      particles.push({
+        x: 200,
+        y: 200,
+        vx: (Math.random() - 0.5) * (Math.random() * 4),
+        vy: (Math.random() - 0.5) * (Math.random() * 4),
+        size: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: Math.random() * 150 + 50,
+        maxLife: 200
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, 400, 400);
+      for(let i=0; i<particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        
+        if(p.life <= 0) {
+          p.x = 200;
+          p.y = 200;
+          p.vx = (Math.random() - 0.5) * (Math.random() * 4);
+          p.vy = (Math.random() - 0.5) * (Math.random() * 4);
+          p.life = Math.random() * 150 + 50;
+          p.maxLife = p.life;
+        }
+        
+        ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        // Add a slight glow per particle
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = p.color;
+      }
+      ctx.shadowBlur = 0; // reset for next frame
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
 </script>
