@@ -148,8 +148,8 @@ layout: base.njk
       <p id="vt-total" class="kpi-value">...</p>
     </div>
     <div class="analytics-kpi">
-      <p class="kpi-label">Unique Pages</p>
-      <p id="vt-pages" class="kpi-value">...</p>
+      <p class="kpi-label">Sessions</p>
+      <p id="vt-sessions" class="kpi-value">...</p>
     </div>
     <div class="analytics-kpi">
       <p class="kpi-label">Top Page</p>
@@ -178,7 +178,7 @@ layout: base.njk
       const rows = await res.json();
 
       if (!rows.length) {
-        ['vt-total','vt-pages'].forEach(id => {
+        ['vt-total','vt-sessions'].forEach(id => {
           document.getElementById(id).innerText = '0';
         });
         return;
@@ -192,15 +192,15 @@ layout: base.njk
         const path = url.replace(/^https?:\/\/niallbell\.com/, '') || '/';
         pageCounts[path] = (pageCounts[path] || 0) + 1;
         if (title && !pageTitles[path]) pageTitles[path] = title.replace(/\s*[—–-]\s*Niall Bell\s*$/, '').trim();
-        const day = ts.split(' ')[0];
+        const day = ts.slice(0, 10);
         dayCounts[day] = (dayCounts[day] || 0) + 1;
       });
 
       const topPages = Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
       const days = Object.entries(dayCounts).sort((a, b) => a[0].localeCompare(b[0]));
       const sessionCount = filtered.filter(([url, title, ts, ns]) => ns).length;
-      document.getElementById('vt-total').innerText = sessionCount.toLocaleString();
-      document.getElementById('vt-pages').innerText = Object.keys(pageCounts).length.toLocaleString();
+      document.getElementById('vt-total').innerText = filtered.length.toLocaleString();
+      document.getElementById('vt-sessions').innerText = sessionCount.toLocaleString();
 
       if (topPages.length) {
         const [topPath] = topPages[0];
@@ -214,7 +214,7 @@ layout: base.njk
       renderBarChart(document.getElementById('pages-chart-container'), topPages, pageTitles);
       renderLineChart(document.getElementById('days-chart-container'), days);
     } catch (e) {
-      ['vt-total','vt-pages'].forEach(id => {
+      ['vt-total','vt-sessions'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.innerText = '—';
       });
