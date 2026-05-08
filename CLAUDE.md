@@ -58,6 +58,41 @@ wait
 
 ---
 
+## Inline Script Externalisation (Work In Progress)
+
+### Goal
+Move all inline `<script>` blocks out of Nunjucks templates into external `.js` files so that `'unsafe-inline'` can be removed from the `script-src` CSP directive. This is documented on the transparency report as an active work in progress.
+
+### Current State
+~3,100 lines of JS across 23 inline script blocks in 12 templates. The CSP currently reads `script-src 'self' 'unsafe-inline'` — the `'unsafe-inline'` stays until this is complete.
+
+### Key Pattern
+Many scripts reference Nunjucks template variables inline (e.g. `const galleryData = {{ slides | dump | safe }}`). These must be converted to `data-*` attributes or a small inline data-only `<script>` before the external file can read them. The logic moves out; the data bridge stays minimal.
+
+### File Plan & Effort
+
+| File to create | Source template(s) | Lines | Notes |
+|---|---|---|---|
+| `gallery-room.js` | `gallery.njk` Script 3 | ~1,492 | Most complex — audio, animations, scroll nav, tour mode. Needs careful testing. |
+| `constellation.js` | `constellation.njk` | ~416 | Force-directed book graph |
+| `writing-graph.js` | `blog.njk` Script 2 | ~369 | Force-directed writing graph, similar pattern to constellation |
+| `modals.js` | `standard.njk`, `prints.njk` | ~140 | Booking + enquiry forms — can be unified |
+| `analytics.js` | `analytics.njk` | ~115 | Val.town fetch + SVG chart rendering |
+| `interactive-elements.js` | `base.njk`, `ecard.njk`, `videography.njk` | ~200 | Theme toggle, nav, image protection, email reveal, e-card flip, video fallback |
+| `gallery-filter.js` | `photography.njk` | ~71 | Tag filter with fade animations |
+| `gallery-swiper.js` | `standard.njk`, `video.njk`, `gallery.njk` | ~140 | Swiper init + caption logic (shared pattern) |
+| `map.js` | `map.njk` | ~40 | Leaflet init |
+| `stats.js` | `stats.njk` | ~25 | Val.town fetch + GPC detection |
+
+**Estimated total effort: 4–5 days.** The Gallery Room alone is 2–3 days.
+
+### Notes
+- Start with the small, self-contained scripts (stats, map, analytics) to establish the pattern before tackling gallery-room.
+- `base.njk` scripts (theme detection, tracking) need special care as they run on every page.
+- The theme detection script (6 lines, runs before DOM load) may need to stay inline or use a `blocking` attribute to avoid flash of wrong theme.
+
+---
+
 ### Notes
 - Work one gallery at a time, user reviews between each.
 - User will edit captions afterwards — write good drafts but don't agonise over perfection.

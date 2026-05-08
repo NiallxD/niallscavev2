@@ -274,12 +274,12 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
 
 <script>  async function updateCounter() {
     try {
-      // Use / instead of nothing to avoid redirects
-      const response = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
-      const data = await response.json();
-      document.getElementById('visitor-count').innerText = data.count.toLocaleString();
+      const response = await fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run');
+      const rows = await response.json();
+      const count = rows.filter(([url]) => !url.includes('localhost') && !url.includes('127.0.0.1')).length;
+      document.getElementById('visitor-count').innerText = count.toLocaleString();
     } catch (err) {
-      document.getElementById('visitor-count').innerText = '...'; // Neutral fallback
+      document.getElementById('visitor-count').innerText = '...';
     }
   }
   updateCounter();

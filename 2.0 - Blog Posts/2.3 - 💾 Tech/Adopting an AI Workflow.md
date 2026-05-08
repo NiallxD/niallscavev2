@@ -7,7 +7,7 @@ publish: true
 permalink: /blog/adopting-an-ai-workflow
 description: It’s 2025 and big tech is force feeding us artificial intelligence everywhere we look. If an app on the App Store didn’t use AI, it’s considered outdated.
 excerpt: It’s 2025 and big tech is force feeding us artificial intelligence everywhere we look. If an app on the App Store didn’t use AI, it’s considered outdated.
-featured: true
+featured: false
 tags:
   - ai
   - llm

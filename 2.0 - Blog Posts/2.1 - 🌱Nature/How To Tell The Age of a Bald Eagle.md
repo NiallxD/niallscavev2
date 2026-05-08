@@ -14,6 +14,7 @@ tags:
 heroImage: https://i.imgur.com/FEpNXc5.jpeg
 created: 2025-01-20
 updated: 2025-02-06
+featured: true
 ---
 
 #eagle #ageguide #photography #birding
@@ -36,71 +37,79 @@ The main indicators of age are:
 In case you're not familiar with bird anatomy:
 
 - **Cere:** is the part of the bill where the nostrils are.
-- **Bill:** is another name for a birds beak.
-- **Axillaries:** are the feathers which appear to be in the birds armpit.
+- **Bill:** is another name for a bird's beak.
+- **Axillaries:** are the feathers which appear to be in the bird's armpit.
 - **Terminal Band:** is a dark band across the tail feathers.
 - **Hallux Talons:** are the talons which face backwards.
-- **Talons:** are a birds claws.
+- **Talons:** are a bird's claws.
 
-## First Year
+## Body & Plumage
 
-In the first year, eaglets will moult from downy feathers to full feathers before they fledge. The are mostly brown with patches of white. The bill and cere are dark brown/black and the eyes are dark brown. These birds can be mistaken for golden eagles if you don't know what to look for.
+Body plumage changes dramatically across the first five years. In the **first year**, birds are mostly brown throughout, with the tail dark brown and the wing axillaries occasionally showing patches of lighter feathers. By the **second year**, scattered white feathers begin to appear across the body, though the overall impression remains brown. The **third year** brings a mottled look as white feathers increase, particularly around the head and chest. By the **fourth year**, the body feathers are almost fully brown and uniform, close to the adult pattern, with a dark terminal band becoming visible across the tail. The **full adult** has a rich, uniform dark brown body with a pure white tail and no terminal banding, known as definitive plumage.
 
-![](https://i.imgur.com/4C5LWrf.jpeg)
-*First year birds have brown feathers throughout which can vary from light to dark brown. Tail is mostly dark brown. Wing axillaries can be more white than the rest of the plumage.*
+## gallery-start
 
-![](https://i.imgur.com/zFp7J7Y.jpeg)
-*Eyes are dark brown. Bill and cere are also brown/black with no yellow.*
+## First Year Body [AR]
+First year birds have brown feathers throughout which can vary from light to dark brown. Tail is mostly dark brown. Wing axillaries can be more white than the rest of the plumage.
+https://i.imgur.com/4C5LWrf.jpeg
 
-## Second Year
+## Second Year Body [AR]
+Second year birds are mostly brown with some white feathers throughout. The head is mostly brown with some white starting to show and the tail is all brown.
+https://i.imgur.com/GUzK4vh.jpeg
 
-White feathers are starting to show up on the head, and the bill and cere are starting to lighten with a yellow tinge. The eyes are still very much brown.
+## Third Year Body [AR]
+Third year birds are mottled throughout but start to show the dominant white on the head.
+https://i.imgur.com/XJqbCZL.jpeg
 
-![](https://i.imgur.com/GUzK4vh.jpeg)
-*Second year birds are mostly brown with some white feathers throughout. The head is mostly brown with some white starting to show and the tail is all brown. 
+## Fourth Year Body [AR]
+A fourth year bird showing an almost complete adult plumage.
+https://i.imgur.com/s3KbuK6.jpeg
 
-![](https://i.imgur.com/U3S3aUu.jpeg)
-*In the second year eagle, the bill is a dark brown/black with only a small amount of yellowing. The cere is mostly black with some yellow starting to show. The eyes are deep brown.*
+## Full Adult Body [AR]
+An adult eagle showing definitive plumage with a fully brown body and pure white tail.
+https://i.imgur.com/ISMOKW8.jpeg
 
-## Third Year
+## Fourth Year Tail [AR]
+The black patches at the end of the tail feathers make up the terminal band. This indicates the bird has not yet reached full maturity.
+https://i.imgur.com/J5pMhRg.jpeg
 
-Lots of white feathers on the head and the bill and cere are almost fully yellow, albeit dull. The eyes are starting to lighten too.
+## Full Adult Tail [AR]
+In full adult plumage there is no terminal banding on the tail feathers. The tail is entirely white.
+https://i.imgur.com/OdisaJH.jpeg
 
-![](https://i.imgur.com/XJqbCZL.jpeg)
-*Third year birds are motled throughout but start to show the dominant white on the head.*
+## gallery-end
 
-![](https://i.imgur.com/zbSyPu0.jpeg)
-*Notice the yellowing bill with subtle dark areas and a 50/50 white and brown head. The body feathers are also light brown with patches of white. This indicates a young eagle in its third winter.*
+## Head, Bill & Eyes
 
-## Fourth Year - Sub-Adult
+The head, bill, cere, and eyes are arguably the clearest indicators of age in the bald eagle. In the **first year**, the entire head is dark brown, the bill and cere are brown to black with no yellow, and the eyes are deep brown. By the **second year**, the first white feathers begin appearing on the head, the bill shows a slight yellow tinge, and the eyes remain brown. In the **third year**, the head is roughly half white and half brown, the bill is mostly yellow with some dark areas remaining, and the eyes are beginning to lighten. The **fourth year** brings an almost fully white head with only a few brown feathers persisting, a fully yellow bill, and noticeably pale yellow eyes. The **full adult** has a completely white head, a deep yellow bill and cere, and rich yellow eyes, all vivid and uniform in colour.
 
-Full head of white feathers with only a few brown feathers showing. All body feathers are brown. Bill is fully yellow with a light tinge. Eyes are light yellow. A dark terminal band is visible on the tail feathers.
+## gallery-start
 
-![](https://i.imgur.com/s3KbuK6.jpeg)
-*A fourth year bird showing an almost complete adult plumage.*
+## First Year Head [AR]
+Eyes are dark brown. Bill and cere are brown/black with no yellow.
+https://i.imgur.com/zFp7J7Y.jpeg
 
-![](https://i.imgur.com/YNnED3t.jpeg)
-*Notice the yellow bill and cere, yellow eye, but patches of brown feathers on the head. This indicates the bird is nearing it's full adult plumage but still has a season to go.*
+## Second Year Head [AR]
+The bill is dark brown/black with only a small amount of yellowing. The cere is mostly black with some yellow starting to show. The eyes are deep brown.
+https://i.imgur.com/U3S3aUu.jpeg
 
-![](https://i.imgur.com/J5pMhRg.jpeg)
-*Here you can see the black patches at the end of the tail feathers which make up the terminal band. This indicates the bird has not reached full maturity.*
+## Third Year Head [AR]
+ Notice the yellowing bill with subtle dark areas and a roughly 50/50 white and brown head. This indicates a young eagle in its third winter.
+https://i.imgur.com/zbSyPu0.jpeg
 
-## Full Adult
+## Fourth Year Head [AR]
+Yellow bill and cere, pale yellow eye, but patches of brown feathers remain on the head. This bird is nearing its full adult plumage but still has a season to go.
+https://i.imgur.com/YNnED3t.jpeg
 
-Mature adult has a pure white head, fully brown body, rich yellow bill and cere, and eyes deep yellow. Terminal band completely gone, pure white tail much like the head. This eagle is in its 'definitive plumage', the final version of it's plumage.
+## Full Adult Head [AR]
+In full adult plumage the head is completely white with no brown feathers. The bill, cere, and eyes are all deep yellow.
+https://i.imgur.com/XJExT3w.jpeg
 
-![](https://i.imgur.com/ISMOKW8.jpeg)
-*An adult eagle showing definitive plumage.*
-
-![](https://i.imgur.com/XJExT3w.jpeg)
-*In full adult plumage the head is fully white with no brown feathers. The bill, cere, and eyes are all deep yellow.*
-
-![](https://i.imgur.com/OdisaJH.jpeg)
-*There is no terminal banding on the tail feathers.*
+## gallery-end
 
 ## Comparison Figures
 
-These comparisons should make it clear to see the differences as an eagle ages.
+These side-by-side strips make the progression clear across all ages at a glance.
 
 **Full Body Comparison**
 
@@ -112,34 +121,28 @@ These comparisons should make it clear to see the differences as an eagle ages.
 
 ## Summary
 
-I wanted to wrap this up by just covering a bit about the differences between male and female bald eagles. I'm yet to photograph two together but when I do I'll update this section. There are a few way to try tell the two sexes apart, but there isn't really a fool proof method.
+I wanted to wrap this up by just covering a bit about the differences between male and female bald eagles. There are a few ways to try to tell the two sexes apart, but there isn't really a fool proof method.
 
 1. Females are around 30% larger than males. This is obvious when two are perched side by side but not much use when they're on their own.
 2. Females typically have a deeper bill depth but again, hard to tell in the field.
-3. Females have a longer hallux talons which can be twice as long.
+3. Females have longer hallux talons which can be twice as long.
 4. Finally, males are generally more slender and less stocky owing to their role as chief hunters during breeding.
 
-Update: I now have a photo of a male and female side by side, these images are photoshopped to make it easier to see the difference:
+## gallery-start
 
-### Body Size
+## Body Size [AR]
+Male on the left, female on the right. The female can be up to 25% larger. Here you can see the bird on the right is a tad larger than the one on the left, which makes it easier to tell the sex of the bird.
+https://i.imgur.com/GuGCvdF.jpeg
 
-Here you can see the bird on the right is a tad larger than the one on the left, this makes it easier to tell the sex of the bird.
+## Bill Depth [AR]
+Male on the left, female on the right. The female bill tends to be deeper than the male. The depth of the bill can be an indicator of sex, with the female bill being noticeably deeper.
+https://i.imgur.com/l4G82P6.jpeg
 
-![](https://i.imgur.com/GuGCvdF.jpeg)
-*Male on the left, female on the right. The female can be up to 25% larger.*
+## Original Side by Side [AR]
+The original unedited side-by-side photograph of a male and female bald eagle together.
+https://i.imgur.com/9PWTwgz.jpeg
 
-### Bill Depth
-
-The depth of the bill can also be an indicator of sex with the female bill being deeper. Here you can see the bill depth variance.
-
-![](https://i.imgur.com/l4G82P6.jpeg)
-*Male on the left, female on the right. The female bill tends to be deeper than the male.*
-
-
->[!NOTE] Original Side by Side
->This is the original side by side photograph.
->
->![](https://i.imgur.com/9PWTwgz.jpeg)
+## gallery-end
 
 Thanks for reading, I hope you found this useful. If there is anything you think I should add, or if you noticed any errors please [do let me know](mailto:niall@niallbell.com). I'm learning as I go here!
 

@@ -7,7 +7,7 @@ publish: true
 permalink: /DPOTY24
 description: Deer Photographer of the Year - My highly commended photograph
 excerpt: Deer Photographer of the Year - My highly commended photograph
-featured: true
+featured: false
 tags:
   - nature
   - photography

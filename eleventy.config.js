@@ -82,6 +82,74 @@ function wikilinkPlugin(md, wikilinkMap) {
   });
 }
 
+function parseSlidesFromBlock(blockHtml) {
+  const slides = [];
+  if (!blockHtml.trim()) return slides;
+  const blocks = blockHtml.split(/(?=<h2)/i);
+  for (const block of blocks) {
+    if (!block.trim()) continue;
+    const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+    if (!titleMatch) continue;
+    let rawTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim()
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+    if (!rawTitle || /gallery-(start|end)/i.test(rawTitle)) continue;
+    let nativeAspect = false;
+    if (/\[AR\]/i.test(rawTitle)) {
+      nativeAspect = true;
+      rawTitle = rawTitle.replace(/\[AR\]/i, '').trim();
+    }
+    const blockTitle = rawTitle;
+    const contentWithoutTitle = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
+    const imgRegex = /<img[^>]+src="([^"]+)"/gi;
+    const imgsFound = [];
+    let igm;
+    while ((igm = imgRegex.exec(contentWithoutTitle)) !== null) imgsFound.push(igm[1]);
+    const urlRegex = /((?:https?:\/\/|\/)[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF))/gi;
+    const rawUrls = [];
+    let um;
+    while ((um = urlRegex.exec(contentWithoutTitle)) !== null) {
+      if (!imgsFound.includes(um[1])) rawUrls.push(um[1]);
+    }
+    const uniqueRawUrls = [...new Set(rawUrls)];
+    let pureCaption = contentWithoutTitle
+      .replace(/<img[^>]+>/gi, '')
+      .replace(/<a[^>]+>https?:\/\/[^<]+<\/a>/gi, '')
+      .replace(/https?:\/\/[^\s<"']+\.(?:jpg|jpeg|png|gif|webp|avif|JPG|JPEG|PNG|GIF|WEBP|AVIF)/gi, '')
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+      .replace(/<p>\s*<\/p>/gi, '')
+      .trim();
+    const srcList = imgsFound.length > 0 ? imgsFound : uniqueRawUrls;
+    srcList.forEach((src, idx) => {
+      slides.push({ type: 'image', src, title: blockTitle, nativeAspect, caption: idx === 0 ? pureCaption : '' });
+    });
+  }
+  return slides;
+}
+
+function buildInlineGallery(uid, slides) {
+  const swiperId = `post-swiper-${uid}`;
+  const paginationId = `post-pagination-${uid}`;
+  const captionAreaId = `post-caption-${uid}`;
+  const titleId = `post-slide-title-${uid}`;
+  const descId = `post-slide-desc-${uid}`;
+  const dataVar = `postGalleryData${uid}`;
+  const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const desktopSlides = slides.map(img => {
+    const onload = img.nativeAspect
+      ? `onload="this.classList.add('is-native-ar')"`
+      : `onload="this.classList.add(this.naturalWidth>this.naturalHeight?'is-landscape':'is-portrait')"`;
+    return `<div class="swiper-slide"><div class="slide-inner"><img src="${esc(img.src)}" alt="${esc(img.title)}" loading="lazy" ${onload}></div></div>`;
+  }).join('');
+  const mobileItems = slides.map(img => {
+    const hasContent = img.title || img.caption;
+    return `<div class="mobile-grid-item"><div class="mobile-grid-media"><img src="${esc(img.src)}" alt="${esc(img.title)}" loading="lazy"></div>${hasContent ? `<div class="mobile-grid-content">${img.title ? `<h4 class="mobile-grid-title">${img.title}</h4>` : ''}${img.caption ? `<div class="mobile-grid-caption">${img.caption}</div>` : ''}</div>` : ''}</div>`;
+  }).join('');
+  const slidesJson = JSON.stringify(slides).replace(/<\/script>/gi, '<\\/script>');
+  return `<div class="gallery-body" style="margin-top:2rem;margin-bottom:2rem;"><div class="gallery-slideshow-container no-bg desktop-only"><div class="swiper gallery-swiper" id="${swiperId}"><div class="swiper-wrapper">${desktopSlides}</div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div><div class="gallery-pagination swiper-pagination" id="${paginationId}"></div><div id="${captionAreaId}" class="gallery-caption-external" style="display:none;"><h3 id="${titleId}"></h3><p id="${descId}"></p></div></div><div class="gallery-mobile-grid mobile-only">${mobileItems}</div><script>(function(){var ${dataVar}=${slidesJson};document.addEventListener('DOMContentLoaded',function(){var tEl=document.getElementById('${titleId}');var dEl=document.getElementById('${descId}');var cArea=document.getElementById('${captionAreaId}');function upd(i){var d=${dataVar}[i];if(!d)return;tEl.textContent=d.title||'';dEl.innerHTML=d.caption||'';cArea.style.display=(d.title||d.caption)?'block':'none';}new Swiper('#${swiperId}',{loop:true,keyboard:{enabled:true},speed:600,pagination:{el:'#${paginationId}',type:'fraction',renderFraction:function(c,t){return'<span class="'+c+'"></span> <span class="fraction-sep">of</span> <span class="'+t+'"></span>';}},navigation:{nextEl:'#${swiperId} .swiper-button-next',prevEl:'#${swiperId} .swiper-button-prev'},on:{init:function(){upd(this.realIndex);},slideChange:function(){upd(this.realIndex);}}});});}());</script></div>`;
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("static");
   eleventyConfig.addPassthroughCopy("robots.txt");
@@ -137,6 +205,20 @@ export default function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addTransform("inlineGalleries", (content, outputPath) => {
+    if (typeof outputPath !== "string" || !outputPath.endsWith(".html")) return content;
+    if (!content.includes("gallery-start")) return content;
+    let uid = 0;
+    return content.replace(
+      /<h2[^>]*>\s*gallery-start\s*<\/h2>([\s\S]*?)<h2[^>]*>\s*gallery-end\s*<\/h2>/gi,
+      (_, inner) => {
+        const slides = parseSlidesFromBlock(inner);
+        if (!slides.length) return '';
+        return buildInlineGallery(uid++, slides);
+      }
+    );
+  });
+
   eleventyConfig.addFilter("markdown", (content) => {
     if (!content) return "";
     return md.render(content);
@@ -152,7 +234,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("stripGalleryBlocks", (html) => {
     if (!html) return "";
-    return html.replace(/<h2[^>]*>\s*gallery-start\s*<\/h2>[\s\S]*?<h2[^>]*>\s*gallery-end\s*<\/h2>/gi, "");
+    return html.replace(/<h2[^>]*>\s*gallery-start\s*<\/h2>[\s\S]*?<h2[^>]*>\s*gallery-end\s*<\/h2>/gi, "").replace(/^\s*[\r\n]/gm, '');
   });
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
@@ -257,26 +339,23 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("parseGalleryBlocks", (html) => {
     if (!html) return [];
-    
-    let targetHtml = html;
 
-    // Use a simpler search for the content between the markers
-    const startIdx = html.toLowerCase().indexOf("gallery-start");
-    const endIdx = html.toLowerCase().indexOf("gallery-end");
-
-    if (startIdx !== -1 && endIdx !== -1) {
-      // Find the tag containing the start marker
-      const startTagMatch = html.substring(0, startIdx).match(/<h2[^>]*>$/i);
-      // Find the closing tag after the end marker
-      const endTagMatch = html.substring(endIdx).match(/^[\s\S]*?<\/h2>/i);
-      
-      if (startTagMatch && endTagMatch) {
-        // Extract everything after the <h2>gallery-start</h2> and before the <h2>gallery-end</h2>
-        const actualStart = html.indexOf('>', startIdx) + 1;
-        const actualEnd = html.substring(0, endIdx).lastIndexOf('<');
-        targetHtml = html.substring(actualStart, actualEnd);
-      }
+    // Collect inner content from ALL gallery-start/gallery-end pairs
+    const chunks = [];
+    const lower = html.toLowerCase();
+    let searchFrom = 0;
+    while (true) {
+      const startIdx = lower.indexOf("gallery-start", searchFrom);
+      if (startIdx === -1) break;
+      const endIdx = lower.indexOf("gallery-end", startIdx);
+      if (endIdx === -1) break;
+      const actualStart = html.indexOf('>', startIdx) + 1;
+      const actualEnd = html.substring(0, endIdx).lastIndexOf('<');
+      if (actualStart < actualEnd) chunks.push(html.substring(actualStart, actualEnd));
+      searchFrom = endIdx + 11; // advance past "gallery-end"
     }
+
+    const targetHtml = chunks.length ? chunks.join('') : html;
 
     const hasH2 = /<h2/i.test(targetHtml);
     const slides = [];
@@ -289,10 +368,11 @@ export default function (eleventyConfig) {
         let blockTitle = "";
         let printStatus = "";
         let verticalAlign = "center";
+        let nativeAspect = false;
         const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
         if (titleMatch) {
           let rawTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
-          
+
           // Extract print status: [P] = printable, [E] = exclusive (sold), [X] = private
           const statusMatch = rawTitle.match(/\[([PEX])\]/i);
           if (statusMatch) {
@@ -318,6 +398,12 @@ export default function (eleventyConfig) {
               verticalAlign = (dir === 'U') ? `${percent}%` : `${100 - percent}%`;
             }
             rawTitle = rawTitle.replace(/\[[UD]\d*\]/i, '').trim();
+          }
+
+          // [AR] = native aspect ratio (no crop)
+          if (/\[AR\]/i.test(rawTitle)) {
+            nativeAspect = true;
+            rawTitle = rawTitle.replace(/\[AR\]/i, '').trim();
           }
 
           blockTitle = rawTitle
@@ -400,6 +486,7 @@ export default function (eleventyConfig) {
             title: iframesFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
             printStatus: idx === 0 ? printStatus : "",
             verticalAlign: idx === 0 ? verticalAlign : "center",
+            nativeAspect,
             caption: idx === 0 ? pureCaption : "",
             gear: idx === 0 ? gear : ""
           });
@@ -412,6 +499,7 @@ export default function (eleventyConfig) {
             title: imgsFound.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
             printStatus: (idx === 0 && iframesFound.length === 0) ? printStatus : "",
             verticalAlign: (idx === 0 && iframesFound.length === 0) ? verticalAlign : "center",
+            nativeAspect,
             caption: (idx === 0 && iframesFound.length === 0) ? pureCaption : "",
             gear: (idx === 0 && iframesFound.length === 0) ? gear : ""
           });
@@ -425,6 +513,7 @@ export default function (eleventyConfig) {
               title: uniqueRawUrls.length > 1 ? `${blockTitle} (${idx + 1})` : blockTitle,
               printStatus: idx === 0 ? printStatus : "",
               verticalAlign: idx === 0 ? verticalAlign : "center",
+              nativeAspect,
               caption: idx === 0 ? pureCaption : "",
               gear: idx === 0 ? gear : ""
             });

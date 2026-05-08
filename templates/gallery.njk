@@ -1043,7 +1043,7 @@ isGalleryView: true
               {% if img.type == 'iframe' %}
                 <iframe src="{{ img.src }}" allowfullscreen class="gallery-iframe-viewer"></iframe>
               {% else %}
-                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy"{% if img.verticalAlign and img.verticalAlign != 'center' %} style="object-position: center {{ img.verticalAlign }}"{% endif %} onload="const _r=this.naturalWidth/this.naturalHeight;this.classList.add(_r>1.05?'is-landscape':_r<0.95?'is-portrait':'is-square')">
+                <img src="{{ img.url | default(img.src) }}" alt="{{ img.alt | default(img.title) }}" loading="lazy"{% if img.verticalAlign and img.verticalAlign != 'center' %} style="object-position: center {{ img.verticalAlign }}"{% endif %}{% if img.nativeAspect %} onload="this.classList.add('is-native-ar')"{% else %} onload="const _r=this.naturalWidth/this.naturalHeight;this.classList.add(_r>1.05?'is-landscape':_r<0.95?'is-portrait':'is-square')"{% endif %}>
               {% endif %}
             </div>
           </div>
@@ -1677,14 +1677,22 @@ isGalleryView: true
         visitorLabel.style.fontWeight = 'bold';
         visitorLabel.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
         
-        const badge = document.createElement('img');
+        const badge = document.createElement('div');
         badge.className = 'gr-visitor-badge';
-        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-        // Using b8860b (gold) for the hits.sh badge colors
-        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=b8860b&labelColor=1a1208&label=visitors`;
-        badge.alt = 'visitor count';
-        badge.style.height = '18px';
-        badge.style.filter = 'drop-shadow(1px 1px 0px rgba(0,0,0,0.5))';
+        badge.textContent = '…';
+        badge.style.fontSize = '1.1rem';
+        badge.style.fontWeight = 'bold';
+        badge.style.color = '#b8860b';
+        badge.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
+        badge.style.letterSpacing = '0.05em';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/').replace(/\/$/, '');
+        fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run')
+          .then(r => r.json())
+          .then(rows => {
+            const count = rows.filter(([url]) => url && url.includes(slug)).length;
+            badge.textContent = count.toLocaleString();
+          })
+          .catch(() => { badge.textContent = '—'; });
 
         visitorSign.appendChild(visitorLabel);
         visitorSign.appendChild(badge);

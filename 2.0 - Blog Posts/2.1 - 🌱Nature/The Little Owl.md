@@ -7,7 +7,7 @@ publish: true
 permalink: /The-little-owl
 description: This is a quick dive into the origins of the Little Owls Latin Name
 excerpt: This is a quick dive into the origins of the Little Owls Latin Name
-featured: true
+featured: false
 tags:
   - birds
   - nature

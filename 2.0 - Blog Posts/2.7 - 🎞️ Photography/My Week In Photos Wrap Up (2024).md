@@ -7,7 +7,7 @@ publish: true
 permalink: /my-week-in-photos-wrap-up-2024
 description: This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!
 excerpt: This post is all about the My Week In Photos Project I carried out throughout 2024. Check it out!
-featured: true
+featured: false
 tags:
   - photography
 heroImage: https://i.imgur.com/28al9Ob.jpeg
