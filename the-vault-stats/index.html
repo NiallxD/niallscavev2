@@ -7,7 +7,7 @@
   
   <meta name="robots" content="noindex, nofollow">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -385,6 +385,23 @@
     </div>
 
     <div class="stats-section-card">
+      <h2>Content Security Policy</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">A Content Security Policy (CSP) is a browser instruction that restricts what resources a page is allowed to load and where it can send data — a meaningful defence against cross-site scripting and data injection attacks. This site has a CSP implemented via a meta tag.</p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1rem;">The following directives are active:</p>
+      <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-position: inside;">
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">base-uri 'self'</strong> — prevents attackers injecting a <code>&lt;base&gt;</code> tag to hijack relative URLs.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">form-action 'self' https://api.web3forms.com</strong> — forms can only submit to this site or the trusted contact form handler.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">connect-src</strong> — restricts fetch/XHR requests to only the two endpoints this site actually uses (Web3Forms and Val.town).</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">frame-src</strong> — embedded iframes are limited to YouTube, Vimeo, and Kuula.</li>
+      </ul>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1rem;">Two common CSP recommendations cannot be implemented here, for practical reasons:</p>
+      <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
+        <li style="margin-bottom: 0.75rem;"><strong style="color: var(--color-text);">frame-ancestors</strong> (clickjacking protection) — this directive only works as an HTTP response header sent by the server. This site is hosted on GitHub Pages, which does not allow custom response headers to be configured. It cannot be set via a meta tag.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Removing 'unsafe-inline'</strong> — many page features (galleries, maps, interactive elements) currently rely on inline scripts embedded directly in the HTML templates. Removing <code>'unsafe-inline'</code> requires consolidating these into external script files, which is an active work in progress. Once complete, this will be removed from the policy.</li>
+      </ul>
+    </div>
+
+    <div class="stats-section-card">
       <h2>Data Transparency</h2>
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">A "Zero-Tracking" site doesn't mean zero network requests. To provide a rich experience, this site communicates with a few trusted external services. You can verify these in your browser's "Network" tab at any time:</p>
       <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
@@ -417,7 +434,7 @@
         <a href="https://gpccheck.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">GPC Check →</a>
         <a href="https://developer.mozilla.org/en-US/observatory/analyze?host=niallbell.com" target="_blank" rel="noopener" style="padding: 0.8rem 1.5rem; background: var(--color-accent); border: none; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: #fff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; flex: 1 1 0; text-align: center;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.9';" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1';">Mozilla Observatory →</a>
       </div>
-      <p style="font-size: 0.85rem; color: var(--color-muted); margin-top: 2rem; text-align: center;"><em>Note: As I am hosted on GitHub Pages, some "HTTP Header" scores (like HSTS) are controlled by the host. However, I have implemented strict Content Security (CSP) and Referrer policies via internal meta tags.</em></p>
+      <p style="font-size: 0.85rem; color: var(--color-muted); margin-top: 2rem; text-align: center;"><em>Note: GitHub Pages controls certain HTTP response headers (like HSTS and frame-ancestors). Some audit tools will flag these as missing — see the Content Security Policy section above for a full explanation of what's implemented and why certain things can't be.</em></p>
     </div>
 
     <div class="stats-section-card" style="margin-bottom: 0;">

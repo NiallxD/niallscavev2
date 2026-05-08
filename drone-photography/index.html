@@ -7,7 +7,7 @@
   <meta name="description" content="I&#39;ve been flying drones for over a decade and in that time have captured some stunning photographs. Here is a selection of my favourites.">
   <meta name="robots" content="noarchive">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -1236,7 +1236,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"image","src":"https://i.imgur.com/F1ef3kt.jpeg","title":"Caledonian Pine Forest","printStatus":"","verticalAlign":"center","caption":"<p>Morning light filters through the tall straight trunks of a Scots pine stand, casting long parallel shadows across the needle-covered ground. Scots pine (<em>Pinus sylvestris</em>) is one of only three conifers native to Britain, and the ancient Caledonian Forest once covered vast areas of the Scottish Highlands before centuries of clearance reduced it to scattered fragments.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/Jv4hhtd.jpeg","title":"Edinburgh at Sunset","printStatus":"","verticalAlign":"center","caption":"<p>A wide aerial panorama captures the city at sunset beneath a sky blazing in purple, pink and orange. A motorway junction, golf course and suburban housing spread across the landscape, with the Pentland Hills silhouetted on the horizon. Autumn foliage in the tree canopy below catches the warm tones of the fading light.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/tOlH8YW.jpeg","title":"Highland Lochan","printStatus":"","verticalAlign":"center","caption":"<p>A small highland lochan glows vivid turquoise from directly above, its colour produced by the clarity of the water and the pale mineral substrate beneath. Conifer forest rings the shore and heather moorland climbs the valley sides. The intensely blue appearance is characteristic of clean, shallow highland water over a pale rocky bed.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/esCyvAD.jpeg","title":"Loch an Eilein","printStatus":"","verticalAlign":"center","caption":"<p>The ruined castle on the island of Loch an Eilein sits in still dark water, surrounded by native Scots pine forest in the Cairngorms National Park. The castle dates to the 14th century and was once a stronghold of the Wolf of Badenoch. The loch’s name means “Loch of the Island” in Scottish Gaelic.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/iqFdzU0.jpeg","title":"Loch an Eilein, Rothiemurchus","printStatus":"","verticalAlign":"center","caption":"<p>A wider aerial view reveals the full setting of Loch an Eilein within the Rothiemurchus estate, the castle island mirrored in perfectly still water with the mountains of the Cairngorms rising beyond. The surrounding native pine forest is one of the largest remaining fragments of ancient Caledonian woodland in Scotland.\n</p>","gear":""}];
+      const galleryData = [{"type":"image","src":"https://i.imgur.com/F1ef3kt.jpeg","title":"Caledonian Pine Forest","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>Morning light filters through the tall straight trunks of a Scots pine stand, casting long parallel shadows across the needle-covered ground. Scots pine (<em>Pinus sylvestris</em>) is one of only three conifers native to Britain, and the ancient Caledonian Forest once covered vast areas of the Scottish Highlands before centuries of clearance reduced it to scattered fragments.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/Jv4hhtd.jpeg","title":"Edinburgh at Sunset","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>A wide aerial panorama captures the city at sunset beneath a sky blazing in purple, pink and orange. A motorway junction, golf course and suburban housing spread across the landscape, with the Pentland Hills silhouetted on the horizon. Autumn foliage in the tree canopy below catches the warm tones of the fading light.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/tOlH8YW.jpeg","title":"Highland Lochan","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>A small highland lochan glows vivid turquoise from directly above, its colour produced by the clarity of the water and the pale mineral substrate beneath. Conifer forest rings the shore and heather moorland climbs the valley sides. The intensely blue appearance is characteristic of clean, shallow highland water over a pale rocky bed.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/esCyvAD.jpeg","title":"Loch an Eilein","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>The ruined castle on the island of Loch an Eilein sits in still dark water, surrounded by native Scots pine forest in the Cairngorms National Park. The castle dates to the 14th century and was once a stronghold of the Wolf of Badenoch. The loch’s name means “Loch of the Island” in Scottish Gaelic.\n</p>","gear":""},{"type":"image","src":"https://i.imgur.com/iqFdzU0.jpeg","title":"Loch an Eilein, Rothiemurchus","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>A wider aerial view reveals the full setting of Loch an Eilein within the Rothiemurchus estate, the castle island mirrored in perfectly still water with the mountains of the Cairngorms rising beyond. The surrounding native pine forest is one of the largest remaining fragments of ancient Caledonian woodland in Scotland.\n</p>","gear":""}];
       const galleryTitle = "Drone Photography";
       const galleryDescription = "I've been flying drones for over a decade and in that time have captured some stunning photographs. Here is a selection of my favourites.";
       const galleryUrl = "/drone-photography/";
@@ -1880,14 +1880,22 @@
         visitorLabel.style.fontWeight = 'bold';
         visitorLabel.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
         
-        const badge = document.createElement('img');
+        const badge = document.createElement('div');
         badge.className = 'gr-visitor-badge';
-        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-        // Using b8860b (gold) for the hits.sh badge colors
-        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=b8860b&labelColor=1a1208&label=visitors`;
-        badge.alt = 'visitor count';
-        badge.style.height = '18px';
-        badge.style.filter = 'drop-shadow(1px 1px 0px rgba(0,0,0,0.5))';
+        badge.textContent = '…';
+        badge.style.fontSize = '1.1rem';
+        badge.style.fontWeight = 'bold';
+        badge.style.color = '#b8860b';
+        badge.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
+        badge.style.letterSpacing = '0.05em';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/').replace(/\/$/, '');
+        fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run')
+          .then(r => r.json())
+          .then(rows => {
+            const count = rows.filter(([url]) => url && url.includes(slug)).length;
+            badge.textContent = count.toLocaleString();
+          })
+          .catch(() => { badge.textContent = '—'; });
 
         visitorSign.appendChild(visitorLabel);
         visitorSign.appendChild(badge);

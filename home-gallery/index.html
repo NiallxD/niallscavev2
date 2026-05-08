@@ -7,7 +7,7 @@
   <meta name="description" content="![](https://i.imgur.com/eM38vZ0.png) ![](https://i.imgur.com/pQhjAr7.jpg) ![](https://i.imgur.com/4Msu0Ig.png) ![](https://i.imgur.com/2MrhVQh.jpg) ![](https://i.imgur.com/UudTTEZ.jpg) ![](https://i.i">
   <meta name="robots" content="noarchive">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -1587,14 +1587,22 @@
         visitorLabel.style.fontWeight = 'bold';
         visitorLabel.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
         
-        const badge = document.createElement('img');
+        const badge = document.createElement('div');
         badge.className = 'gr-visitor-badge';
-        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-        // Using b8860b (gold) for the hits.sh badge colors
-        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=b8860b&labelColor=1a1208&label=visitors`;
-        badge.alt = 'visitor count';
-        badge.style.height = '18px';
-        badge.style.filter = 'drop-shadow(1px 1px 0px rgba(0,0,0,0.5))';
+        badge.textContent = '…';
+        badge.style.fontSize = '1.1rem';
+        badge.style.fontWeight = 'bold';
+        badge.style.color = '#b8860b';
+        badge.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
+        badge.style.letterSpacing = '0.05em';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/').replace(/\/$/, '');
+        fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run')
+          .then(r => r.json())
+          .then(rows => {
+            const count = rows.filter(([url]) => url && url.includes(slug)).length;
+            badge.textContent = count.toLocaleString();
+          })
+          .catch(() => { badge.textContent = '—'; });
 
         visitorSign.appendChild(visitorLabel);
         visitorSign.appendChild(badge);

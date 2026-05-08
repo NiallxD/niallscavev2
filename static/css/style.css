@@ -926,6 +926,16 @@ main {
   opacity: 1;
 }
 
+/* [AR] tag — display at native aspect ratio, no crop */
+.slide-inner img.is-native-ar {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 1;
+}
+
 /* ── Photo Map ───────────────────────────────────────────── */
 /* ── Marker cluster overrides ────────────────────────────── */
 .marker-cluster-small,

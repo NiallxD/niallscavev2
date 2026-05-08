@@ -7,7 +7,7 @@
   <meta name="description" content="A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.">
   <meta name="robots" content="noarchive">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -1244,7 +1244,7 @@
     </div>
 
     <script>
-      const galleryData = [{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/WLxzVoE.jpeg&preview=https://i.imgur.com/WLxzVoE.jpeg","title":"Neist Point","printStatus":"","verticalAlign":"center","caption":"<p>Neist Point is a very recognisable peninsula on the west coast of the Isle of Skye. The peninsula is home to an old lighthouse which is now automated in it’s control.\n<br></p>","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/F3ef940.jpeg&preview=https://i.imgur.com/F3ef940.jpeg","title":"Valleycliffe (1)","printStatus":"","verticalAlign":"center","caption":"<p>Valleycliffe is an area in Squamish with excellent views of the surrounding valley. The granite geology here makes for excellent rock climbing and mountain biking for those who are brave enough.\n<br></p>","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/bDr2juW.jpeg&preview=https://i.imgur.com/bDr2juW.jpeg","title":"Valleycliffe (2)","printStatus":"","verticalAlign":"center","caption":"","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/iJIcczb.jpeg&preview=https://i.imgur.com/iJIcczb.jpeg","title":"Valleycliffe (3)","printStatus":"","verticalAlign":"center","caption":"","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/UiXZbs5.jpeg&preview=https://i.imgur.com/UiXZbs5.jpeg","title":"Pemberton Meadows","printStatus":"","verticalAlign":"center","caption":"<p>Pemberton Meadows is a farming community North of the village of Pemberton, in B.C, Canada. In order to ascend to the altitude in the pano below, I had to fly up the side of the mountain so not to exceed 120m AGL. I call this ‘Drone Hiking’.</p>","gear":""}];
+      const galleryData = [{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/WLxzVoE.jpeg&preview=https://i.imgur.com/WLxzVoE.jpeg","title":"Neist Point","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>Neist Point is a very recognisable peninsula on the west coast of the Isle of Skye. The peninsula is home to an old lighthouse which is now automated in it’s control.\n<br></p>","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/F3ef940.jpeg&preview=https://i.imgur.com/F3ef940.jpeg","title":"Valleycliffe (1)","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>Valleycliffe is an area in Squamish with excellent views of the surrounding valley. The granite geology here makes for excellent rock climbing and mountain biking for those who are brave enough.\n<br></p>","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/bDr2juW.jpeg&preview=https://i.imgur.com/bDr2juW.jpeg","title":"Valleycliffe (2)","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/iJIcczb.jpeg&preview=https://i.imgur.com/iJIcczb.jpeg","title":"Valleycliffe (3)","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"","gear":""},{"type":"iframe","src":"https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/UiXZbs5.jpeg&preview=https://i.imgur.com/UiXZbs5.jpeg","title":"Pemberton Meadows","printStatus":"","verticalAlign":"center","nativeAspect":false,"caption":"<p>Pemberton Meadows is a farming community North of the village of Pemberton, in B.C, Canada. In order to ascend to the altitude in the pano below, I had to fly up the side of the mountain so not to exceed 120m AGL. I call this ‘Drone Hiking’.</p>","gear":""}];
       const galleryTitle = "360 Panorama";
       const galleryDescription = "A collection of immersive 360-degree panoramic images documenting incredible landscapes from across the globe.";
       const galleryUrl = "/360-panorama/";
@@ -1920,14 +1920,22 @@
         visitorLabel.style.fontWeight = 'bold';
         visitorLabel.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
         
-        const badge = document.createElement('img');
+        const badge = document.createElement('div');
         badge.className = 'gr-visitor-badge';
-        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/gallery/').replace(/\/$/, '');
-        // Using b8860b (gold) for the hits.sh badge colors
-        badge.src = `https://hits.sh/niallbell.com${slug}.svg?style=flat&color=b8860b&labelColor=1a1208&label=visitors`;
-        badge.alt = 'visitor count';
-        badge.style.height = '18px';
-        badge.style.filter = 'drop-shadow(1px 1px 0px rgba(0,0,0,0.5))';
+        badge.textContent = '…';
+        badge.style.fontSize = '1.1rem';
+        badge.style.fontWeight = 'bold';
+        badge.style.color = '#b8860b';
+        badge.style.textShadow = '1px 1px 0px rgba(0,0,0,0.5)';
+        badge.style.letterSpacing = '0.05em';
+        const slug = (typeof galleryUrl !== 'undefined' ? galleryUrl : '/').replace(/\/$/, '');
+        fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run')
+          .then(r => r.json())
+          .then(rows => {
+            const count = rows.filter(([url]) => url && url.includes(slug)).length;
+            badge.textContent = count.toLocaleString();
+          })
+          .catch(() => { badge.textContent = '—'; });
 
         visitorSign.appendChild(visitorLabel);
         visitorSign.appendChild(badge);
