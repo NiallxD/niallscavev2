@@ -245,10 +245,12 @@ Canon EF 400 f/2.8 vs EF 500mm f/4.5 vs my cat Toby.</p>
 
     // Private visit tracking (Val.town SQLite)
     if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      const newSession = !sessionStorage.getItem('_vs');
+      if (newSession) sessionStorage.setItem('_vs', '1');
       fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: window.location.href, title: document.title })
+        body: JSON.stringify({ url: window.location.href, title: document.title, newSession })
       }).catch(() => {});
     }
 
