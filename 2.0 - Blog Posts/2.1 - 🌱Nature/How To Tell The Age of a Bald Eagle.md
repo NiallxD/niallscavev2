@@ -123,7 +123,7 @@ These side-by-side strips make the progression clear across all ages at a glance
 
 I wanted to wrap this up by just covering a bit about the differences between male and female bald eagles. There are a few ways to try to tell the two sexes apart, but there isn't really a fool proof method.
 
-1. Females are around 30% larger than males. This is obvious when two are perched side by side but not much use when they're on their own.
+1. Females are around 25% larger than males. This is obvious when two are perched side by side but not much use when they're on their own.
 2. Females typically have a deeper bill depth but again, hard to tell in the field.
 3. Females have longer hallux talons which can be twice as long.
 4. Finally, males are generally more slender and less stocky owing to their role as chief hunters during breeding.
