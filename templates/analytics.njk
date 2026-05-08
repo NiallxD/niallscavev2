@@ -1,0 +1,285 @@
+---
+layout: base.njk
+---
+
+<style>
+  .analytics-kpi-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .analytics-kpi {
+    flex: 1 1 140px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    text-align: center;
+    transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease, border-color 0.2s ease;
+  }
+  .analytics-kpi:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--color-accent);
+  }
+  .analytics-kpi .kpi-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+  .analytics-kpi .kpi-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .analytics-kpi .kpi-value--sm {
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 800px) {
+    .chart-grid { grid-template-columns: 1fr; }
+  }
+
+  .chart-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease;
+  }
+  .chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  }
+  .chart-card-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Bar chart */
+  .bar-chart-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+  .bar-chart-page {
+    font-size: 0.72rem;
+    color: var(--color-secondary);
+    width: 130px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .bar-chart-track {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    height: 20px;
+    overflow: hidden;
+  }
+  .bar-chart-fill {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 3px;
+    transition: width 0.8s ease;
+    width: 0;
+  }
+  .bar-chart-count {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .analytics-note {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .analytics-note svg { flex-shrink: 0; color: var(--color-accent); margin-top: 2px; }
+  .analytics-note p { margin: 0; font-size: 0.95rem; line-height: 1.7; color: var(--color-secondary); }
+  .analytics-note a { color: var(--color-link); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+
+<div class="standard-page" style="margin-top: 100px; margin-bottom: 4rem;">
+  <header style="margin-bottom: 3rem;">
+    <p class="section-label" style="color: var(--color-accent);">Transparency</p>
+    <h1 class="page-title">Site Activity</h1>
+    <p style="font-size: 1.1rem; color: var(--color-secondary); font-weight: 600;">Publicly accessible data</p>
+  </header>
+
+  <div class="analytics-note" style="margin-bottom: 2.5rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <p>Everything here is public. I don't look at anything you can't see yourself. All data is logged privately to a database I own, no ad platforms, no third-party data companies. Read the full <a href="/the-vault-stats/">Transparency Report</a> for details on what is and isn't collected.</p>
+  </div>
+
+  <div class="analytics-kpi-row">
+    <div class="analytics-kpi">
+      <p class="kpi-label">Total Page Views</p>
+      <p id="vt-total" class="kpi-value">...</p>
+    </div>
+    <div class="analytics-kpi">
+      <p class="kpi-label">Unique Pages</p>
+      <p id="vt-pages" class="kpi-value">...</p>
+    </div>
+    <div class="analytics-kpi">
+      <p class="kpi-label">Top Page</p>
+      <p id="vt-top-title" class="kpi-value kpi-value--sm">...</p>
+      <a id="vt-top-link" href="#" style="display:none; margin-top: 0.75rem; font-size: 0.8rem; font-weight: 700; color: var(--color-accent); text-decoration: none; border: 1px solid var(--color-accent); border-radius: var(--radius-sm); padding: 0.3rem 0.8rem; transition: background 0.2s ease;" onmouseover="this.style.background='var(--color-accent)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--color-accent)';">Visit →</a>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <p class="chart-card-label">Visits Over Time</p>
+      <div id="days-chart-container"></div>
+    </div>
+    <div class="chart-card">
+      <p class="chart-card-label">Top Pages</p>
+      <div id="pages-chart-container"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  async function loadAnalytics() {
+    try {
+      const res = await fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run');
+      const rows = await res.json();
+
+      if (!rows.length) {
+        ['vt-total','vt-pages'].forEach(id => {
+          document.getElementById(id).innerText = '0';
+        });
+        return;
+      }
+
+      const pageCounts = {};
+      const pageTitles = {};
+      const dayCounts = {};
+      const filtered = rows.filter(([url]) => !url.includes('localhost') && !url.includes('127.0.0.1'));
+      filtered.forEach(([url, title, ts]) => {
+        const path = url.replace(/^https?:\/\/niallbell\.com/, '') || '/';
+        pageCounts[path] = (pageCounts[path] || 0) + 1;
+        if (title && !pageTitles[path]) pageTitles[path] = title.replace(/\s*[—–-]\s*Niall Bell\s*$/, '').trim();
+        const day = ts.split(' ')[0];
+        dayCounts[day] = (dayCounts[day] || 0) + 1;
+      });
+
+      const topPages = Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const days = Object.entries(dayCounts).sort((a, b) => a[0].localeCompare(b[0]));
+      document.getElementById('vt-total').innerText = filtered.length.toLocaleString();
+      document.getElementById('vt-pages').innerText = Object.keys(pageCounts).length.toLocaleString();
+
+      if (topPages.length) {
+        const [topPath] = topPages[0];
+        const topTitle = pageTitles[topPath] || (topPath === '/' ? 'Home' : topPath.replace(/^\/|\/$/g, ''));
+        const topLinkEl = document.getElementById('vt-top-link');
+        document.getElementById('vt-top-title').innerText = topTitle;
+        topLinkEl.href = topPath;
+        topLinkEl.style.display = 'inline-block';
+      }
+
+      renderBarChart(document.getElementById('pages-chart-container'), topPages, pageTitles);
+      renderLineChart(document.getElementById('days-chart-container'), days);
+    } catch (e) {
+      ['vt-total','vt-pages'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = '—';
+      });
+    }
+  }
+
+  function renderBarChart(container, data, titles = {}) {
+    if (!data.length) {
+      container.innerHTML = '<p style="color:var(--color-muted);font-size:0.85rem;">No data yet.</p>';
+      return;
+    }
+    const max = data[0][1];
+    container.innerHTML = data.map(([page, count]) => {
+      const label = titles[page] || (page === '/' ? 'Home' : page.replace(/^\/|\/$/g, ''));
+      return `
+        <div class="bar-chart-row">
+          <span class="bar-chart-page" title="${page}">${label}</span>
+          <div class="bar-chart-track">
+            <div class="bar-chart-fill" style="width:${Math.round((count / max) * 100)}%"></div>
+          </div>
+          <span class="bar-chart-count">${count}</span>
+        </div>`;
+    }).join('');
+  }
+
+  function renderLineChart(container, data) {
+    if (data.length < 2) {
+      container.innerHTML = '<p style="color:var(--color-muted);font-size:0.85rem;">Not enough data yet — check back soon.</p>';
+      return;
+    }
+    const W = container.clientWidth || 340;
+    const H = 180;
+    const pad = { top: 16, right: 16, bottom: 32, left: 32 };
+    const iW = W - pad.left - pad.right;
+    const iH = H - pad.top - pad.bottom;
+    const maxV = Math.max(...data.map(d => d[1]));
+    const n = data.length;
+    const style = getComputedStyle(document.documentElement);
+    const accent = style.getPropertyValue('--color-accent').trim() || '#e07b39';
+    const muted = style.getPropertyValue('--color-muted').trim() || '#999';
+
+    const px = i => pad.left + (i / (n - 1)) * iW;
+    const py = v => pad.top + (1 - v / maxV) * iH;
+
+    const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${px(i)} ${py(d[1])}`).join(' ');
+    const areaPath = `${linePath} L${px(n - 1)} ${py(0)} L${px(0)} ${py(0)} Z`;
+
+    const step = Math.ceil(n / 5);
+    const labels = data
+      .filter((_, i) => i % step === 0 || i === n - 1)
+      .map(d => {
+        const i = data.indexOf(d);
+        return `<text x="${px(i)}" y="${H - 6}" text-anchor="middle" fill="${muted}" font-size="9" font-family="inherit">${d[0].slice(5)}</text>`;
+      }).join('');
+
+    container.innerHTML = `
+      <svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+        <defs>
+          <linearGradient id="vt-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="${accent}" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="${areaPath}" fill="url(#vt-grad)"/>
+        <path d="${linePath}" fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        ${data.map((d, i) => `<circle cx="${px(i)}" cy="${py(d[1])}" r="3" fill="${accent}"/>`).join('')}
+        ${labels}
+      </svg>`;
+  }
+
+  loadAnalytics();
+</script>
