@@ -7,7 +7,7 @@
   
   <meta name="robots" content="noindex, nofollow">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.counterapi.dev https://api.web3forms.com; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -273,6 +273,7 @@
     margin-bottom: 0;
   }
 
+
   /* Content Sections */
   .stats-prose {
     margin-top: 2rem;
@@ -287,16 +288,16 @@
   <header class="stats-header">
     <p class="section-label" style="color: var(--color-accent)">Transparency Report</p>
     <h1 class="page-title">niallbell.com Stats</h1>
-    <p class="home-stats-text" style="font-size: 1.2rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking Analytics</p>
+    <p class="home-stats-text" style="font-size: 1.2rem; color: var(--color-text); font-weight: 600;">100% Private, Zero-Tracking</p>
   </header>
 
   <!-- Top Overview Grid -->
   <div class="stats-overview-top">
     <div class="stat-card--top">
       <div class="stat-card-content">
-        <p class="stat-card-label">Total Site Visitors</p>
+        <p class="stat-card-label">Total Page Views</p>
         <p id="total-visits" class="stat-card-value">...</p>
-        <div id="total-growth" class="stat-growth"></div>
+        <a href="/site-activity/" style="margin-top: 0.75rem; font-size: 0.8rem; font-weight: 700; color: var(--color-accent); text-decoration: none;">View site activity →</a>
       </div>
     </div>
 
@@ -340,7 +341,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <h3>No IP Logging</h3>
-        <p>Your IP address is never stored in my database. The analytics I use are fully anonymized at the point of collection.</p>
+        <p>Your IP address is never stored in my database. The data collected is fully anonymized at the point of collection.</p>
       </div>
 
       <div class="value-card">
@@ -363,10 +364,16 @@
 
     <div class="stats-section-card">
       <h2>How I count visitors</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">I use a very simple, custom-built counter system. When you load a page, it sends a single request to an independent API (CounterAPI) to increment a number. That's it. It's the digital equivalent of a person walking through a door and a clicking a handheld counter.</p>
-      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">You'll notice a small "Page Stats" section in the footer of every page on this site; that number is pulled directly from this same system in real-time. The total site visitors count shown above is a session-based tally of unique human visits since I launched this version of the site. It helps me understand which parts of my work are resonating, without compromising your right to a private web experience.</p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">When you load a page, a single request logs the URL and page title to a SQLite database I own and control entirely, hosted on Val.town, a small, independent developer platform. That's it. No data is stored beyond the URL, title, and timestamp. No IP address, no fingerprint, no cookies.</p>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">The site activity data is fully public. I don't look at anything you can't see yourself. There are no third-party data companies, no ad platforms, and no data sharing.</p>
+      <p style="margin-top: 2rem;"><a href="/site-activity/" style="display: inline-block; padding: 0.8rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700; color: var(--color-link); text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)';" onmouseout="this.style.borderColor='var(--color-border)'; this.style.color='var(--color-link)';">View Site Activity →</a></p>
     </div>
     
+    <div class="stats-section-card">
+      <h2>Why I count visitors</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">This site is a place for my photography, writing, and projects. Knowing which pages and galleries people visit most helps me understand what work is resonating — whether that's a particular wildlife gallery, a blog post, or a set of prints. It informs what I spend time creating and improving, without me needing to know anything about who you are.</p>
+    </div>
+
     <div class="stats-section-card">
       <h2>Form Submissions</h2>
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary);">When you use the enquiry forms on this site (such as for photo prints), the information you provide is sent to me via <strong>Web3Forms</strong>. This is a technical intermediary that allows me to receive your messages without running a complex database-driven backend. They do not sell your data, and your information is only used for the purpose of responding to your specific request.</p>
@@ -383,7 +390,7 @@
       <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Imgur:</strong> Hosts high-resolution photography. <em>Data sent: Request for image file. No cookies.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CartoDB:</strong> Provides map tiles. <em>Data sent: Request for map tiles. No cookies.</em></li>
-        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CounterAPI:</strong> Stores anonymous page view counts. <em>Data sent: Page slug. No IP logging.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Val.town:</strong> Logs page visits. <em>Data sent: Page URL, page title, and timestamp. No IP, no cookies, no third-party access.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Web3Forms:</strong> Transmits enquiry messages. <em>Data sent: Form entries only on submission.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Amazon Media:</strong> Serves book covers. <em>Data sent: Request for image file. No cookies.</em></li>
       </ul>
@@ -422,7 +429,6 @@
 
 <script>
   async function loadStats() {
-    // Detect GPC Signal
     const gpcStatusEl = document.getElementById('gpc-status');
     if (gpcStatusEl) {
       if (navigator.globalPrivacyControl) {
@@ -433,17 +439,10 @@
     }
 
     try {
-      const res = await fetch('https://api.counterapi.dev/v1/niallbell/visits/');
-      const data = await res.json();
-      const count = data.count || 0;
+      const res = await fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run');
+      const rows = await res.json();
+      const count = rows.filter(([url]) => !url.includes('localhost') && !url.includes('127.0.0.1')).length;
       document.getElementById('total-visits').innerText = count.toLocaleString();
-      
-      // Growth check (Today's new visitors)
-      const lastCount = localStorage.getItem('nb_last_total');
-      if (lastCount && count > parseInt(lastCount)) {
-        document.getElementById('total-growth').innerText = `+${count - parseInt(lastCount)} since your last visit`;
-      }
-      localStorage.setItem('nb_last_total', count);
     } catch(e) {
       document.getElementById('total-visits').innerText = '---';
     }
@@ -487,9 +486,10 @@
           <a href="/now/">Now</a>
         </div>
         
-        <p class="section-label" style="margin-top: 1.5rem !important;">Page Stats</p>
-        <div class="footer-page-stats">
-          <p id="page-view-counter" style="opacity: 0; transition: opacity 0.5s ease; font-size: 0.75rem; color: var(--color-muted); line-height: 1.4;">Page viewed <span id="page-count-val">...</span> times. <br><a href="/the-vault-stats/" style="text-decoration: underline; text-underline-offset: 3px; color: var(--color-accent);">Transparency Report</a></p>
+        <p class="section-label" style="margin-top: 1.5rem !important;">Transparency</p>
+        <div class="footer-links-list">
+          <a href="/site-activity/" style="color: var(--color-accent);">Site Activity</a>
+          <a href="/the-vault-stats/" style="color: var(--color-accent);">Transparency</a>
         </div>
       </div>
 
@@ -548,48 +548,14 @@
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
 
-    // Global Site-wide Visitor Counter (Session-based)
-    // 1. Total Site Visitors (Once per session)
-    if (!sessionStorage.getItem('nb_total_counted')) {
-      fetch('https://api.counterapi.dev/v1/niallbell/visits/up')
-        .then(() => sessionStorage.setItem('nb_total_counted', 'true'))
-        .catch(err => {});
+    // Private visit tracking (Val.town SQLite)
+    if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: window.location.href, title: document.title })
+      }).catch(() => {});
     }
-    
-    // 2. Individual Page Hits & Live Counter Display
-    const pageSlug = window.location.pathname
-      .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
-      .replace(/\//g, '-')     // Replace internal slashes with dashes
-      || 'home';               // Default to 'home' for root
-    
-    const countUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/`;
-    const upUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`;
-    
-    const fetchPageCount = async () => {
-      try {
-        let response;
-        if (!sessionStorage.getItem(`nb_page_counted_${pageSlug}`)) {
-          response = await fetch(upUrl);
-          sessionStorage.setItem(`nb_page_counted_${pageSlug}`, 'true');
-        } else {
-          response = await fetch(countUrl);
-        }
-        const data = await response.json();
-        const count = data.count || 0;
-        
-        const countValEl = document.getElementById('page-count-val');
-        const counterEl = document.getElementById('page-view-counter');
-        
-        if (countValEl && counterEl) {
-          countValEl.innerText = count.toLocaleString();
-          counterEl.style.opacity = '1';
-        }
-      } catch (err) {
-        console.error('Failed to fetch page count:', err);
-      }
-    };
-    
-    fetchPageCount();
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {

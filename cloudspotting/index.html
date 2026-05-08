@@ -7,7 +7,7 @@
   <meta name="description" content="Have you ever wondered where the idiom &quot;to be on cloud 9&quot; came from? Well, you&#39;ve got the folks at the Cloud Atlas to thank for that. Cumulonimbus was number 9 on their list of 10 main clouds. The cumulonimbus cloud is the largest riser cloud something reaching from its home as a low cloud all the way up to the high clouds! To be on cloud 9 would to be on top of the world!">
   <meta name="robots" content="noarchive">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.counterapi.dev https://api.web3forms.com; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -192,9 +192,10 @@
           <a href="/now/">Now</a>
         </div>
         
-        <p class="section-label" style="margin-top: 1.5rem !important;">Page Stats</p>
-        <div class="footer-page-stats">
-          <p id="page-view-counter" style="opacity: 0; transition: opacity 0.5s ease; font-size: 0.75rem; color: var(--color-muted); line-height: 1.4;">Page viewed <span id="page-count-val">...</span> times. <br><a href="/the-vault-stats/" style="text-decoration: underline; text-underline-offset: 3px; color: var(--color-accent);">Transparency Report</a></p>
+        <p class="section-label" style="margin-top: 1.5rem !important;">Transparency</p>
+        <div class="footer-links-list">
+          <a href="/site-activity/" style="color: var(--color-accent);">Site Activity</a>
+          <a href="/the-vault-stats/" style="color: var(--color-accent);">Transparency</a>
         </div>
       </div>
 
@@ -253,48 +254,14 @@
     window.addEventListener('scroll', onScroll);
     onScroll(); // trigger immediately on load
 
-    // Global Site-wide Visitor Counter (Session-based)
-    // 1. Total Site Visitors (Once per session)
-    if (!sessionStorage.getItem('nb_total_counted')) {
-      fetch('https://api.counterapi.dev/v1/niallbell/visits/up')
-        .then(() => sessionStorage.setItem('nb_total_counted', 'true'))
-        .catch(err => {});
+    // Private visit tracking (Val.town SQLite)
+    if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: window.location.href, title: document.title })
+      }).catch(() => {});
     }
-    
-    // 2. Individual Page Hits & Live Counter Display
-    const pageSlug = window.location.pathname
-      .replace(/^\/|\/$/g, '') // Remove leading/trailing slashes
-      .replace(/\//g, '-')     // Replace internal slashes with dashes
-      || 'home';               // Default to 'home' for root
-    
-    const countUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/`;
-    const upUrl = `https://api.counterapi.dev/v1/niallbell/page-${pageSlug}/up`;
-    
-    const fetchPageCount = async () => {
-      try {
-        let response;
-        if (!sessionStorage.getItem(`nb_page_counted_${pageSlug}`)) {
-          response = await fetch(upUrl);
-          sessionStorage.setItem(`nb_page_counted_${pageSlug}`, 'true');
-        } else {
-          response = await fetch(countUrl);
-        }
-        const data = await response.json();
-        const count = data.count || 0;
-        
-        const countValEl = document.getElementById('page-count-val');
-        const counterEl = document.getElementById('page-view-counter');
-        
-        if (countValEl && counterEl) {
-          countValEl.innerText = count.toLocaleString();
-          counterEl.style.opacity = '1';
-        }
-      } catch (err) {
-        console.error('Failed to fetch page count:', err);
-      }
-    };
-    
-    fetchPageCount();
 
     // Right-click protection for images
     document.addEventListener('DOMContentLoaded', () => {
