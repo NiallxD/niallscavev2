@@ -195,7 +195,8 @@ layout: base.njk
 
       const topPages = Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
       const days = Object.entries(dayCounts).sort((a, b) => a[0].localeCompare(b[0]));
-      document.getElementById('vt-total').innerText = filtered.length.toLocaleString();
+      const sessionCount = filtered.filter(([url, title, ts, ns]) => ns).length;
+      document.getElementById('vt-total').innerText = sessionCount.toLocaleString();
       document.getElementById('vt-pages').innerText = Object.keys(pageCounts).length.toLocaleString();
 
       if (topPages.length) {
