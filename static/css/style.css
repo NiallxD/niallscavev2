@@ -4770,3 +4770,240 @@ span.wikilink { color: var(--color-secondary); }
   .page-stats-footer a:hover {
   color: var(--color-link);
   }
+/* =============================================
+   Experiences page (Guided Walks / Workshops)
+   ============================================= */
+
+/* Mode toggle */
+.exp-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 3.5rem;
+}
+.exp-toggle {
+  display: inline-flex;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 5px;
+  gap: 4px;
+}
+.exp-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-muted);
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+.exp-toggle-btn.active {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.exp-toggle-btn:not(.active):hover {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* Sections */
+.exp-section {
+  transition: opacity 0.35s ease;
+}
+.exp-section.exp-hidden {
+  display: none;
+}
+
+/* Why cards */
+.exp-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 900px) {
+  .exp-why-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .exp-why-grid { grid-template-columns: 1fr; }
+  .exp-toggle-btn { padding: 0.6rem 1rem; font-size: 0.82rem; }
+}
+.exp-why-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease, border-color 0.2s ease;
+}
+.exp-why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: var(--color-accent);
+}
+.exp-why-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+.exp-why-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+.exp-why-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+/* Format cards */
+.exp-format-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) {
+  .exp-format-grid { grid-template-columns: 1fr; }
+}
+.exp-format-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  position: relative;
+  transition: transform 450ms cubic-bezier(0.2, 0, 0.2, 1), box-shadow 450ms ease, border-color 0.2s ease;
+}
+.exp-format-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: var(--color-link);
+}
+.exp-format-card.exp-format-featured {
+  border-color: var(--color-accent);
+}
+.exp-format-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.exp-format-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.exp-format-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.exp-format-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.2rem;
+}
+.exp-format-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+.exp-format-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-secondary);
+  margin-bottom: 1.25rem;
+}
+.exp-format-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.exp-format-list li {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  padding-left: 1.25rem;
+  position: relative;
+}
+.exp-format-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Currently In card (experiences page) */
+.exp-currently-in {
+  background: var(--color-card-bg, var(--color-bg-alt));
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.exp-currently-in-place {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+.exp-currently-in-desc {
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .exp-currently-in {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .exp-currently-in-label {
+    min-width: unset;
+  }
+}

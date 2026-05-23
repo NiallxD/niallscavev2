@@ -39,6 +39,7 @@
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
+        <a href="/guides/">Guides</a>
         <a href="/about-me/">About</a>
       </nav>
       <div class="header-controls">
@@ -56,90 +57,188 @@
   <div class="nav-overlay"></div>
 
   <main>
-    
-<div class="constrained-wide">
-  <link rel="stylesheet" href="/static/css/leaflet.css"/>
+    <link rel="stylesheet" href="/static/css/leaflet.css"/>
 <link rel="stylesheet" href="/static/css/MarkerCluster.css"/>
 <link rel="stylesheet" href="/static/css/MarkerCluster.Default.css"/>
 
-
-<div class="home-hero-wrapper">
-  <div class="home-slideshow-fs">
-    <img src="https://i.imgur.com/eH05uEo.jpeg" alt="Photo Map" class="img-cover">
-  </div>
-  <section class="home-hero-overlay">
-    <h1 class="home-title">Photo Map</h1>
-    <p class="home-intro">A map of locations from my photography around the world — from the Scottish Highlands to the Canadian Rockies.</p>
-  </section>
-</div>
-
-
-<div class="standard-page">
+<style>
+  body, html { overflow: hidden; }
+  main { height: 100vh; box-sizing: border-box; }
   
+  #photo-map { 
+    width: 100%; 
+    height: 100%; 
+    margin: 0; 
+    border: none; 
+    border-radius: 0; 
+    transition: width 400ms ease; 
+  }
+  .site-footer { display: none; }
+  
+  /* Side Panel */
+  #map-side-panel {
+    position: fixed;
+    top: var(--nav-height);
+    right: -50%;
+    width: 50%;
+    height: calc(100vh - var(--nav-height));
+    background: #111;
+    z-index: 1000;
+    transition: right 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+  #map-side-panel.open { right: 0; }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .panel-title { font-size: 1.5rem; font-weight: bold; margin: 0; }
+  .close-panel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    transition: background 200ms;
+  }
+  .close-panel:hover { background: rgba(255,255,255,0.1); }
+  
+  /* Swiper in Panel */
+  .panel-slider { width: 100%; flex: 1; min-height: 0; }
+  .panel-slider .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .panel-slider img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .slide-filename {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-mono);
+  }
+</style>
 
-  <div id="photo-map"></div>
-
-  <div style="display:none;"><h2>Squamish Estuary</h2>
-<p><a href="https://i.imgur.com/FEpNXc5.jpeg">https://i.imgur.com/FEpNXc5.jpeg</a>
-49.7016, -123.1558</p>
-<h2>Tadoba - India</h2>
-<p><a href="https://i.imgur.com/kt169Lf.jpeg">https://i.imgur.com/kt169Lf.jpeg</a>
-20.33431 , 79.29774</p>
-<h2>Florida</h2>
-<p><a href="https://i.imgur.com/h1MQaAt.jpeg">https://i.imgur.com/h1MQaAt.jpeg</a>
-29.07927, -80.92616</p>
-<h2>Canadian Rockies</h2>
-<p><a href="https://i.imgur.com/eH05uEo.jpeg">https://i.imgur.com/eH05uEo.jpeg</a>
-51.4254, -116.1773</p>
-<h2>Scottish Highlands</h2>
-<p><a href="https://i.imgur.com/T8Nox8C.png">https://i.imgur.com/T8Nox8C.png</a>
-57.1200, -4.7200</p>
-<h2>Finland</h2>
-<p><a href="https://i.imgur.com/velJ7YE.jpeg">https://i.imgur.com/velJ7YE.jpeg</a>
-64.50352, 29.98196</p>
-<h2>Rome</h2>
-<p><a href="https://i.imgur.com/AWWIiR0.jpeg">https://i.imgur.com/AWWIiR0.jpeg</a>
-41.89376, 12.48455</p>
-<h2>Iceland</h2>
-<p><a href="https://i.imgur.com/4p2ZfBs.jpeg">https://i.imgur.com/4p2ZfBs.jpeg</a>
-64.79859, -21.46163</p>
+<div id="photo-map"></div>
+<div id="map-side-panel">
+  <div class="panel-header">
+    <h2 class="panel-title" id="panel-location-name">Location</h2>
+    <button class="close-panel" onclick="closePanel()">Close Explorer</button>
+  </div>
+  <div class="swiper panel-slider" id="panel-swiper">
+    <div class="swiper-wrapper" id="panel-swiper-wrapper">
+      <!-- Dynamic Slides -->
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 </div>
+
+<div style="display:none;"><p>The interactive photo map automatically clusters photos from my vault based on their GPS coordinates. Click on a pin to see all photographs taken within that region.</p>
 </div>
 
+<link rel="stylesheet" href="/static/css/swiper-bundle.min.css"/>
+<script src="/static/js/swiper-bundle.min.js"></script>
 <script src="/static/js/leaflet.js"></script>
 <script src="/static/js/leaflet.markercluster.js"></script>
 <script>
-  const pins = [{"title":"Squamish Estuary","image":"https://i.imgur.com/FEpNXc5.jpeg","lat":49.7016,"lng":-123.1558},{"title":"Tadoba - India","image":"https://i.imgur.com/kt169Lf.jpeg","lat":20.33431,"lng":79.29774},{"title":"Florida","image":"https://i.imgur.com/h1MQaAt.jpeg","lat":29.07927,"lng":-80.92616},{"title":"Canadian Rockies","image":"https://i.imgur.com/eH05uEo.jpeg","lat":51.4254,"lng":-116.1773},{"title":"Scottish Highlands","image":"https://i.imgur.com/T8Nox8C.png","lat":57.12,"lng":-4.72},{"title":"Finland","image":"https://i.imgur.com/velJ7YE.jpeg","lat":64.50352,"lng":29.98196},{"title":"Rome","image":"https://i.imgur.com/AWWIiR0.jpeg","lat":41.89376,"lng":12.48455},{"title":"Iceland","image":"https://i.imgur.com/4p2ZfBs.jpeg","lat":64.79859,"lng":-21.46163}];
+  const pins = [{"title":"Squamish Estuary","lat":49.7016,"lng":-123.1558,"photos":[],"count":0,"image":null},{"title":"Tadoba - India","lat":20.33431,"lng":79.29774,"photos":[],"count":0,"image":null},{"title":"Florida","lat":29.07927,"lng":-80.92616,"photos":[],"count":0,"image":null},{"title":"Canadian Rockies","lat":51.4254,"lng":-116.1773,"photos":[],"count":0,"image":null},{"title":"Scottish Highlands","lat":57.12,"lng":-4.72,"photos":[],"count":0,"image":null},{"title":"Finland","lat":64.50352,"lng":29.98196,"photos":[],"count":0,"image":null},{"title":"Rome","lat":41.89376,"lng":12.48455,"photos":[],"count":0,"image":null},{"title":"Iceland","lat":64.79859,"lng":-21.46163,"photos":[],"count":0,"image":null}];
+
+  const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+  const darkTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
+  const getTileUrl = () => document.documentElement.getAttribute('data-theme') === 'dark' ? darkTiles : lightTiles;
 
   const map = L.map('photo-map', {
-    scrollWheelZoom: false,
+    scrollWheelZoom: true,
     touchZoom: true,
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0
+    maxBoundsViscosity: 1.0,
+    keyboard: true
   }).setView([20, 0], 2);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  const tiles = L.tileLayer(getTileUrl(), {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
   }).addTo(map);
 
+  // Theme Watcher
+  const themeObserver = new MutationObserver(() => {
+    tiles.setUrl(getTileUrl());
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
   const cluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+  let panelSwiper = null;
+
+  function openPanel(pin) {
+    const panel = document.getElementById('map-side-panel');
+    const title = document.getElementById('panel-location-name');
+    const wrapper = document.getElementById('panel-swiper-wrapper');
+    const mapEl = document.getElementById('photo-map');
+    
+    title.textContent = pin.title;
+    wrapper.innerHTML = pin.photos.map(p => `
+      <div class="swiper-slide">
+        <img src="${p.full}" alt="${p.name}" loading="lazy">
+        <div class="slide-filename">${p.name}</div>
+      </div>
+    `).join('');
+    
+    panel.classList.add('open');
+    mapEl.style.width = '50%';
+    map.keyboard.disable();
+    
+    setTimeout(() => {
+      if (panelSwiper) panelSwiper.destroy();
+      panelSwiper = new Swiper('#panel-swiper', {
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', type: 'fraction' },
+        keyboard: { enabled: true, onlyInViewport: true },
+        speed: 400
+      });
+      map.invalidateSize(); 
+    }, 450);
+  }
+
+  window.closePanel = function() {
+    const panel = document.getElementById('map-side-panel');
+    const mapEl = document.getElementById('photo-map');
+    panel.classList.remove('open');
+    mapEl.style.width = '100%';
+    map.keyboard.enable();
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 450);
+  };
+
   pins.forEach(pin => {
+    if (pin.count === 0) return;
     const icon = L.divIcon({
       className: 'photo-marker',
       html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
       iconSize: [56, 56],
       iconAnchor: [28, 28]
     });
-    L.marker([pin.lat, pin.lng], { icon })
-      .bindPopup(`
-        <div class="map-popup">
-          <img src="${pin.image}" alt="${pin.title}" class="map-popup-img">
-          <div class="map-popup-title">${pin.title}</div>
-        </div>
-      `, { maxWidth: 220, className: 'photo-map-popup' })
-      .addTo(cluster);
+    const marker = L.marker([pin.lat, pin.lng], { icon });
+    marker.on('click', () => openPanel(pin));
+    cluster.addLayer(marker);
   });
   map.addLayer(cluster);
 
@@ -148,8 +247,6 @@
     map.fitBounds(group.getBounds().pad(0.3));
   }
 </script>
-
-</div>
 
   </main>
 
@@ -182,6 +279,7 @@
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
+          <a href="/guides/">Guides</a>
           <a href="/about-me/">About</a>
           <a href="/now/">Now</a>
         </div>

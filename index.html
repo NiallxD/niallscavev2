@@ -39,6 +39,7 @@
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
+        <a href="/guides/">Guides</a>
         <a href="/about-me/">About</a>
       </nav>
       <div class="header-controls">
@@ -308,7 +309,7 @@
 
 
 
-
+  
 
 <div class="home-map-row">
     <div class="home-map-col">
@@ -316,7 +317,9 @@
         <p class="section-label">Photo Map</p>
         <a href="/photo-map/" class="view-all">Full map →</a>
       </div>
+      
       <div id="home-photo-map"></div>
+      
     </div>
     <aside class="home-reading-col">
       <div class="home-block-header">
@@ -342,8 +345,6 @@
       
     </aside>
 </div>
-
-
 
 <div class="home-prints-row">
   <aside class="home-project-col">
@@ -453,33 +454,35 @@
   });
 
   
-  const homePins = [{"title":"Squamish Estuary","image":"https://i.imgur.com/FEpNXc5.jpeg","lat":49.7016,"lng":-123.1558},{"title":"Tadoba - India","image":"https://i.imgur.com/kt169Lf.jpeg","lat":20.33431,"lng":79.29774},{"title":"Florida","image":"https://i.imgur.com/h1MQaAt.jpeg","lat":29.07927,"lng":-80.92616},{"title":"Canadian Rockies","image":"https://i.imgur.com/eH05uEo.jpeg","lat":51.4254,"lng":-116.1773},{"title":"Scottish Highlands","image":"https://i.imgur.com/T8Nox8C.png","lat":57.12,"lng":-4.72},{"title":"Finland","image":"https://i.imgur.com/velJ7YE.jpeg","lat":64.50352,"lng":29.98196},{"title":"Rome","image":"https://i.imgur.com/AWWIiR0.jpeg","lat":41.89376,"lng":12.48455},{"title":"Iceland","image":"https://i.imgur.com/4p2ZfBs.jpeg","lat":64.79859,"lng":-21.46163}];
-  const worldBounds = [[-85, -180], [85, 180]];
-  const homeMap = L.map('home-photo-map', {
-    scrollWheelZoom: false,
-    touchZoom: true,
-    minZoom: 2,
-    maxBounds: worldBounds,
-    maxBoundsViscosity: 1.0
-  }).setView([50, -15], 1);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
-  }).addTo(homeMap);
-  const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
-  homePins.forEach(pin => {
-    const icon = L.divIcon({
-      className: 'photo-marker',
-      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
-      iconSize: [56, 56],
-      iconAnchor: [28, 28]
+  const homePins = [{"title":"Squamish Estuary","lat":49.7016,"lng":-123.1558,"photos":[],"count":0,"image":null},{"title":"Tadoba - India","lat":20.33431,"lng":79.29774,"photos":[],"count":0,"image":null},{"title":"Florida","lat":29.07927,"lng":-80.92616,"photos":[],"count":0,"image":null},{"title":"Canadian Rockies","lat":51.4254,"lng":-116.1773,"photos":[],"count":0,"image":null},{"title":"Scottish Highlands","lat":57.12,"lng":-4.72,"photos":[],"count":0,"image":null},{"title":"Finland","lat":64.50352,"lng":29.98196,"photos":[],"count":0,"image":null},{"title":"Rome","lat":41.89376,"lng":12.48455,"photos":[],"count":0,"image":null},{"title":"Iceland","lat":64.79859,"lng":-21.46163,"photos":[],"count":0,"image":null}].filter(p => p.image);
+  if (homePins.length) {
+    const worldBounds = [[-85, -180], [85, 180]];
+    const homeMap = L.map('home-photo-map', {
+      scrollWheelZoom: false,
+      touchZoom: true,
+      minZoom: 2,
+      maxBounds: worldBounds,
+      maxBoundsViscosity: 1.0
+    }).setView([50, -15], 1);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19
+    }).addTo(homeMap);
+    const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+    homePins.forEach(pin => {
+      const icon = L.divIcon({
+        className: 'photo-marker',
+        html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
+        iconSize: [56, 56],
+        iconAnchor: [28, 28]
+      });
+      L.marker([pin.lat, pin.lng], { icon })
+        .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
+          { maxWidth: 220, className: 'photo-map-popup' })
+        .addTo(homeCluster);
     });
-    L.marker([pin.lat, pin.lng], { icon })
-      .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
-        { maxWidth: 220, className: 'photo-map-popup' })
-      .addTo(homeCluster);
-  });
-  homeMap.addLayer(homeCluster);
+    homeMap.addLayer(homeCluster);
+  }
   
 
   // 100 Particles - A gentle, glowing swarm
@@ -584,6 +587,7 @@
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
+          <a href="/guides/">Guides</a>
           <a href="/about-me/">About</a>
           <a href="/now/">Now</a>
         </div>
