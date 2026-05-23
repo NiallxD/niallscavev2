@@ -526,7 +526,8 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("resolveFocalPoints", (focalPoints, allPhotos) => {
-    if (!focalPoints || !allPhotos) return [];
+    if (!focalPoints) return [];
+    const photos = allPhotos || [];
     
     function getDistance(lat1, lon1, lat2, lon2) {
       const R = 6371; // km
@@ -545,7 +546,7 @@ export default function (eleventyConfig) {
       const lng = point.coords[1];
       const radius = point.radius || 10;
       
-      const nearbyPhotos = allPhotos.filter(photo => {
+      const nearbyPhotos = photos.filter(photo => {
         const dist = getDistance(lat, lng, photo.lat, photo.lng);
         return dist <= radius;
       });
@@ -555,9 +556,8 @@ export default function (eleventyConfig) {
         lat,
         lng,
         photos: nearbyPhotos,
-        count: nearbyPhotos.length,
-        // Use the thumbnail of the first photo as the cover for the pin
-        image: nearbyPhotos.length > 0 ? nearbyPhotos[0].thumb : null
+        count: nearbyPhotos.length > 0 ? nearbyPhotos.length : (point.image ? 1 : 0),
+        image: nearbyPhotos.length > 0 ? nearbyPhotos[0].thumb : (point.image || null)
       };
     });
   });
