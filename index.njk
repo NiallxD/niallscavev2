@@ -144,16 +144,24 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
 {% endif %}
 
 {% set mapPage = collections.maps | first %}
-{% if mapPage %}
-{% set mapPins = mapPage.content | parseMapBlocks %}
-{% if mapPins.length %}
+{% if mapPage and mapPage.data.focalPoints %}
+  {% set mapPins = mapPage.data.focalPoints | resolveFocalPoints(photographs) %}
+{% elif mapPage %}
+  {% set mapPins = mapPage.content | parseMapBlocks %}
+{% else %}
+  {% set mapPins = [] %}
+{% endif %}
 <div class="home-map-row">
     <div class="home-map-col">
       <div class="home-block-header">
         <p class="section-label">Photo Map</p>
         <a href="{{ '/photo-map/' | url }}" class="view-all">Full map →</a>
       </div>
+      {% if mapPins.length %}
       <div id="home-photo-map"></div>
+      {% else %}
+      <div class="home-map-empty">Map coming soon — photos are being processed.</div>
+      {% endif %}
     </div>
     <aside class="home-reading-col">
       <div class="home-block-header">
@@ -183,8 +191,6 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
       {% endif %}
     </aside>
 </div>
-{% endif %}
-{% endif %}
 
 <div class="home-prints-row">
   <aside class="home-project-col">
@@ -298,33 +304,35 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
   });
 
   {% if mapPins and mapPins.length %}
-  const homePins = {{ mapPins | dump | safe }};
-  const worldBounds = [[-85, -180], [85, 180]];
-  const homeMap = L.map('home-photo-map', {
-    scrollWheelZoom: false,
-    touchZoom: true,
-    minZoom: 2,
-    maxBounds: worldBounds,
-    maxBoundsViscosity: 1.0
-  }).setView([50, -15], 1);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
-  }).addTo(homeMap);
-  const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
-  homePins.forEach(pin => {
-    const icon = L.divIcon({
-      className: 'photo-marker',
-      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
-      iconSize: [56, 56],
-      iconAnchor: [28, 28]
+  const homePins = {{ mapPins | dump | safe }}.filter(p => p.image);
+  if (homePins.length) {
+    const worldBounds = [[-85, -180], [85, 180]];
+    const homeMap = L.map('home-photo-map', {
+      scrollWheelZoom: false,
+      touchZoom: true,
+      minZoom: 2,
+      maxBounds: worldBounds,
+      maxBoundsViscosity: 1.0
+    }).setView([50, -15], 1);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19
+    }).addTo(homeMap);
+    const homeCluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+    homePins.forEach(pin => {
+      const icon = L.divIcon({
+        className: 'photo-marker',
+        html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
+        iconSize: [56, 56],
+        iconAnchor: [28, 28]
+      });
+      L.marker([pin.lat, pin.lng], { icon })
+        .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
+          { maxWidth: 220, className: 'photo-map-popup' })
+        .addTo(homeCluster);
     });
-    L.marker([pin.lat, pin.lng], { icon })
-      .bindPopup(`<div class="map-popup"><img src="${pin.image}" alt="${pin.title}" class="map-popup-img"><div class="map-popup-title">${pin.title}</div></div>`,
-        { maxWidth: 220, className: 'photo-map-popup' })
-      .addTo(homeCluster);
-  });
-  homeMap.addLayer(homeCluster);
+    homeMap.addLayer(homeCluster);
+  }
   {% endif %}
 
   // 100 Particles - A gentle, glowing swarm

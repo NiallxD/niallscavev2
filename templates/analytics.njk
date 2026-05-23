@@ -76,6 +76,14 @@ layout: base.njk
   }
 
   /* Bar chart */
+  .bar-chart-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+  @media (max-width: 700px) {
+    .bar-chart-columns { grid-template-columns: 1fr; }
+  }
   .bar-chart-row {
     display: flex;
     align-items: center;
@@ -116,6 +124,73 @@ layout: base.njk
     flex-shrink: 0;
   }
 
+  /* Chart tooltip */
+  .chart-tooltip {
+    position: fixed;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+    display: none;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+
+  /* Bar chart link */
+  .bar-chart-link {
+    font-size: 0.8rem;
+    text-decoration: none;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+  }
+  .bar-chart-link:hover { opacity: 1; }
+
+  /* Date filter bar */
+  .analytics-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .analytics-filter label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+  .analytics-filter select,
+  .analytics-filter input[type="date"] {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-family: inherit;
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+  .analytics-filter select:hover,
+  .analytics-filter input[type="date"]:hover {
+    border-color: var(--color-accent);
+  }
+  .analytics-filter select:focus,
+  .analytics-filter input[type="date"]:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .analytics-filter-sep {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
   .analytics-note {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
@@ -142,6 +217,24 @@ layout: base.njk
     <p>Everything here is public. I don't look at anything you can't see yourself. All data is logged privately to a database I own, no ad platforms, no third-party data companies. Read the full <a href="/the-vault-stats/">Transparency Report</a> for details on what is and isn't collected.</p>
   </div>
 
+  <div id="chart-tooltip" class="chart-tooltip"></div>
+
+  <div class="analytics-filter">
+    <label for="filter-preset">Range</label>
+    <select id="filter-preset">
+      <option value="7">Last 7 days</option>
+      <option value="30" selected>Last 30 days</option>
+      <option value="90">Last 90 days</option>
+      <option value="365">Last 365 days</option>
+      <option value="0">All time</option>
+      <option value="custom" disabled hidden>Custom</option>
+    </select>
+    <label for="filter-from">From</label>
+    <input type="date" id="filter-from">
+    <label for="filter-to">To</label>
+    <input type="date" id="filter-to">
+  </div>
+
   <div class="analytics-kpi-row">
     <div class="analytics-kpi">
       <p class="kpi-label">Total Page Views</p>
@@ -159,11 +252,11 @@ layout: base.njk
   </div>
 
   <div class="chart-grid">
-    <div class="chart-card">
+    <div class="chart-card" style="grid-column: 1 / -1;">
       <p class="chart-card-label">Visits Over Time</p>
       <div id="days-chart-container"></div>
     </div>
-    <div class="chart-card">
+    <div class="chart-card" style="grid-column: 1 / -1;">
       <p class="chart-card-label">Top Pages</p>
       <div id="pages-chart-container"></div>
     </div>
@@ -172,47 +265,113 @@ layout: base.njk
 </div>
 
 <script>
+  let allRows = [];
+  let prevLineData = null;
+  let lineAnimId = null;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : -1 + (4-2*t)*t; }
+  function sampleData(data, normX) {
+    const idx = normX * (data.length - 1);
+    const lo = Math.floor(idx);
+    const hi = Math.min(lo + 1, data.length - 1);
+    return lerp(data[lo][1], data[hi][1], idx - lo);
+  }
+
+  function toDateStr(d) {
+    return d.toISOString().slice(0, 10);
+  }
+
+  function applyPreset(days) {
+    const to = new Date();
+    const from = new Date();
+    if (days > 0) from.setDate(from.getDate() - days + 1);
+    else from.setFullYear(2000);
+    document.getElementById('filter-from').value = toDateStr(from);
+    document.getElementById('filter-to').value = toDateStr(to);
+  }
+
+  function render() {
+    const from = document.getElementById('filter-from').value;
+    const to = document.getElementById('filter-to').value;
+
+    const rows = allRows.filter(([url, title, ts]) => {
+      if (!url || url.includes('localhost') || url.includes('127.0.0.1')) return false;
+      if (!ts) return false;
+      const day = ts.slice(0, 10);
+      if (from && day < from) return false;
+      if (to && day > to) return false;
+      return true;
+    });
+
+    const pageCounts = {};
+    const pageTitles = {};
+    const dayCounts = {};
+
+    rows.forEach(([url, title, ts]) => {
+      const path = url.replace(/^https?:\/\/niallbell\.com/, '') || '/';
+      pageCounts[path] = (pageCounts[path] || 0) + 1;
+      if (title && !pageTitles[path]) pageTitles[path] = title.replace(/\s*[—–-]\s*Niall Bell\s*$/, '').trim();
+      const day = ts.slice(0, 10);
+      dayCounts[day] = (dayCounts[day] || 0) + 1;
+    });
+
+    const topPages = Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 30);
+    const days = Object.entries(dayCounts).sort((a, b) => a[0].localeCompare(b[0]));
+    const sessionCount = rows.filter(([url, title, ts, ns]) => ns).length;
+
+    document.getElementById('vt-total').innerText = rows.length.toLocaleString();
+    document.getElementById('vt-sessions').innerText = sessionCount.toLocaleString();
+
+    const topLinkEl = document.getElementById('vt-top-link');
+    if (topPages.length) {
+      const [topPath] = topPages[0];
+      const topTitle = pageTitles[topPath] || (topPath === '/' ? 'Home' : topPath.replace(/^\/|\/$/g, ''));
+      document.getElementById('vt-top-title').innerText = topTitle;
+      topLinkEl.href = topPath;
+      topLinkEl.style.display = 'inline-block';
+    } else {
+      document.getElementById('vt-top-title').innerText = '—';
+      topLinkEl.style.display = 'none';
+    }
+
+    renderBarChart(document.getElementById('pages-chart-container'), topPages, pageTitles);
+    renderLineChart(document.getElementById('days-chart-container'), days);
+  }
+
   async function loadAnalytics() {
     try {
       const res = await fetch('https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run');
-      const rows = await res.json();
+      allRows = await res.json();
 
-      if (!rows.length) {
+      if (!allRows.length) {
         ['vt-total','vt-sessions'].forEach(id => {
           document.getElementById(id).innerText = '0';
         });
         return;
       }
 
-      const pageCounts = {};
-      const pageTitles = {};
-      const dayCounts = {};
-      const filtered = rows.filter(([url]) => !url.includes('localhost') && !url.includes('127.0.0.1'));
-      filtered.forEach(([url, title, ts]) => {
-        const path = url.replace(/^https?:\/\/niallbell\.com/, '') || '/';
-        pageCounts[path] = (pageCounts[path] || 0) + 1;
-        if (title && !pageTitles[path]) pageTitles[path] = title.replace(/\s*[—–-]\s*Niall Bell\s*$/, '').trim();
-        const day = ts.slice(0, 10);
-        dayCounts[day] = (dayCounts[day] || 0) + 1;
+      applyPreset(30);
+      render();
+
+      document.getElementById('filter-preset').addEventListener('change', e => {
+        const val = parseInt(e.target.value);
+        if (!isNaN(val)) {
+          applyPreset(val);
+          render();
+        }
       });
 
-      const topPages = Object.entries(pageCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
-      const days = Object.entries(dayCounts).sort((a, b) => a[0].localeCompare(b[0]));
-      const sessionCount = filtered.filter(([url, title, ts, ns]) => ns).length;
-      document.getElementById('vt-total').innerText = filtered.length.toLocaleString();
-      document.getElementById('vt-sessions').innerText = sessionCount.toLocaleString();
+      document.getElementById('filter-from').addEventListener('change', () => {
+        document.getElementById('filter-preset').value = 'custom';
+        render();
+      });
 
-      if (topPages.length) {
-        const [topPath] = topPages[0];
-        const topTitle = pageTitles[topPath] || (topPath === '/' ? 'Home' : topPath.replace(/^\/|\/$/g, ''));
-        const topLinkEl = document.getElementById('vt-top-link');
-        document.getElementById('vt-top-title').innerText = topTitle;
-        topLinkEl.href = topPath;
-        topLinkEl.style.display = 'inline-block';
-      }
+      document.getElementById('filter-to').addEventListener('change', () => {
+        document.getElementById('filter-preset').value = 'custom';
+        render();
+      });
 
-      renderBarChart(document.getElementById('pages-chart-container'), topPages, pageTitles);
-      renderLineChart(document.getElementById('days-chart-container'), days);
     } catch (e) {
       ['vt-total','vt-sessions'].forEach(id => {
         const el = document.getElementById(id);
@@ -227,46 +386,60 @@ layout: base.njk
       return;
     }
     const max = data[0][1];
-    container.innerHTML = data.map(([page, count]) => {
+    const renderRow = ([page, count]) => {
       const label = titles[page] || (page === '/' ? 'Home' : page.replace(/^\/|\/$/g, ''));
+      const pct = Math.round((count / max) * 100);
       return `
         <div class="bar-chart-row">
-          <span class="bar-chart-page" title="${page}">${label}</span>
+          <span class="bar-chart-page" title="${label}">${label}</span>
+          <a class="bar-chart-link" href="${page}" target="_blank" rel="noopener" title="Open ${label}">🔗</a>
           <div class="bar-chart-track">
-            <div class="bar-chart-fill" style="width:${Math.round((count / max) * 100)}%"></div>
+            <div class="bar-chart-fill" data-width="${pct}%" style="width:0"></div>
           </div>
           <span class="bar-chart-count">${count}</span>
         </div>`;
-    }).join('');
+    };
+    const mid = Math.ceil(data.length / 2);
+    const left = data.slice(0, mid).map(renderRow).join('');
+    const right = data.slice(mid).map(renderRow).join('');
+    container.innerHTML = `<div class="bar-chart-columns"><div>${left}</div><div>${right}</div></div>`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      container.querySelectorAll('.bar-chart-fill').forEach(el => {
+        el.style.width = el.dataset.width;
+      });
+    }));
   }
 
-  function renderLineChart(container, data) {
-    if (data.length < 2) {
+  function renderLineChart(container, toData) {
+    if (toData.length < 2) {
       container.innerHTML = '<p style="color:var(--color-muted);font-size:0.85rem;">Not enough data yet — check back soon.</p>';
+      prevLineData = null;
       return;
     }
-    const W = container.clientWidth || 340;
+
+    if (lineAnimId) { cancelAnimationFrame(lineAnimId); lineAnimId = null; }
+
+    const fromData = prevLineData && prevLineData.length >= 2 ? prevLineData : null;
+    prevLineData = toData;
+
+    const W = container.clientWidth || 800;
     const H = 180;
     const pad = { top: 16, right: 16, bottom: 32, left: 32 };
     const iW = W - pad.left - pad.right;
-    const iH = H - pad.top - pad.bottom;
-    const maxV = Math.max(...data.map(d => d[1]));
-    const n = data.length;
+    const maxV = Math.max(...toData.map(d => d[1]));
+    const n = toData.length;
     const style = getComputedStyle(document.documentElement);
     const accent = style.getPropertyValue('--color-accent').trim() || '#e07b39';
     const muted = style.getPropertyValue('--color-muted').trim() || '#999';
 
     const px = i => pad.left + (i / (n - 1)) * iW;
-    const py = v => pad.top + (1 - v / maxV) * iH;
-
-    const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${px(i)} ${py(d[1])}`).join(' ');
-    const areaPath = `${linePath} L${px(n - 1)} ${py(0)} L${px(0)} ${py(0)} Z`;
+    const py = v => pad.top + (1 - v / maxV) * (H - pad.top - pad.bottom);
 
     const step = Math.ceil(n / 5);
-    const labels = data
+    const labels = toData
       .filter((_, i) => i % step === 0 || i === n - 1)
-      .map(d => {
-        const i = data.indexOf(d);
+      .map((d, _, arr) => {
+        const i = toData.indexOf(d);
         return `<text x="${px(i)}" y="${H - 6}" text-anchor="middle" fill="${muted}" font-size="9" font-family="inherit">${d[0].slice(5)}</text>`;
       }).join('');
 
@@ -278,11 +451,49 @@ layout: base.njk
             <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
           </linearGradient>
         </defs>
-        <path d="${areaPath}" fill="url(#vt-grad)"/>
-        <path d="${linePath}" fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        ${data.map((d, i) => `<circle cx="${px(i)}" cy="${py(d[1])}" r="3" fill="${accent}"/>`).join('')}
+        <path id="vt-area" d="" fill="url(#vt-grad)"/>
+        <path id="vt-line" d="" fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="vt-dots">${toData.map((d, i) => `<circle cx="${px(i)}" cy="${py(0)}" r="4" fill="${accent}" data-label="${d[0]}" data-value="${d[1]}" style="cursor:pointer;"/>`).join('')}</g>
         ${labels}
       </svg>`;
+
+    const lineEl = container.querySelector('#vt-line');
+    const areaEl = container.querySelector('#vt-area');
+    const dots = Array.from(container.querySelectorAll('#vt-dots circle'));
+    const tooltip = document.getElementById('chart-tooltip');
+
+    dots.forEach(c => {
+      c.addEventListener('mouseover', () => {
+        tooltip.textContent = `${c.dataset.label}: ${c.dataset.value} views`;
+        tooltip.style.display = 'block';
+      });
+      c.addEventListener('mousemove', e => {
+        tooltip.style.left = (e.clientX + 14) + 'px';
+        tooltip.style.top = (e.clientY - 32) + 'px';
+      });
+      c.addEventListener('mouseout', () => { tooltip.style.display = 'none'; });
+    });
+
+    function draw(t) {
+      const vals = toData.map((d, i) => {
+        const normX = n > 1 ? i / (n - 1) : 0;
+        const from = fromData ? sampleData(fromData, normX) : 0;
+        return lerp(from, d[1], t);
+      });
+      const linePath = vals.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i)} ${py(v)}`).join(' ');
+      lineEl.setAttribute('d', linePath);
+      areaEl.setAttribute('d', `${linePath} L${px(n-1)} ${py(0)} L${px(0)} ${py(0)} Z`);
+      dots.forEach((c, i) => c.setAttribute('cy', py(vals[i])));
+    }
+
+    const DURATION = 550;
+    const start = performance.now();
+    function frame(now) {
+      const raw = Math.min((now - start) / DURATION, 1);
+      draw(easeInOut(raw));
+      if (raw < 1) lineAnimId = requestAnimationFrame(frame);
+    }
+    lineAnimId = requestAnimationFrame(frame);
   }
 
   loadAnalytics();

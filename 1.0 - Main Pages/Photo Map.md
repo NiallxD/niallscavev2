@@ -14,36 +14,31 @@ tags:
 date: 2025-04-28
 hide: true
 Published: 2025-04-28
+focalPoints:
+  - name: "Squamish Estuary"
+    coords: [49.7016, -123.1558]
+    radius: 10
+  - name: "Tadoba - India"
+    coords: [20.33431, 79.29774]
+    radius: 50
+  - name: "Florida"
+    coords: [29.07927, -80.92616]
+    radius: 50
+  - name: "Canadian Rockies"
+    coords: [51.4254, -116.1773]
+    radius: 100
+  - name: "Scottish Highlands"
+    coords: [57.1200, -4.7200]
+    radius: 100
+  - name: "Finland"
+    coords: [64.50352, 29.98196]
+    radius: 100
+  - name: "Rome"
+    coords: [41.89376, 12.48455]
+    radius: 20
+  - name: "Iceland"
+    coords: [64.79859, -21.46163]
+    radius: 200
 ---
 
-## Squamish Estuary
-https://i.imgur.com/FEpNXc5.jpeg
-49.7016, -123.1558
-
-## Tadoba - India
-https://i.imgur.com/kt169Lf.jpeg
-20.33431 , 79.29774
-
-## Florida
-https://i.imgur.com/h1MQaAt.jpeg
-29.07927, -80.92616
-
-## Canadian Rockies
-https://i.imgur.com/eH05uEo.jpeg
-51.4254, -116.1773
-
-## Scottish Highlands
-https://i.imgur.com/T8Nox8C.png
-57.1200, -4.7200
-
-## Finland
-https://i.imgur.com/velJ7YE.jpeg
-64.50352, 29.98196
-
-## Rome
-https://i.imgur.com/AWWIiR0.jpeg
-41.89376, 12.48455
-
-## Iceland
-https://i.imgur.com/4p2ZfBs.jpeg
-64.79859, -21.46163
+The interactive photo map automatically clusters photos from my vault based on their GPS coordinates. Click on a pin to see all photographs taken within that region.

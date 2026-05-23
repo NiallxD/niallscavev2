@@ -1,69 +1,187 @@
 ---
-layout: page.njk
+layout: base.njk
 ---
 <link rel="stylesheet" href="{{ '/static/css/leaflet.css' | url }}"/>
 <link rel="stylesheet" href="{{ '/static/css/MarkerCluster.css' | url }}"/>
 <link rel="stylesheet" href="{{ '/static/css/MarkerCluster.Default.css' | url }}"/>
 
-{% if heroImage %}
-<div class="home-hero-wrapper">
-  <div class="home-slideshow-fs">
-    <img src="{{ heroImage }}" alt="{{ title }}" class="img-cover">
+<style>
+  body, html { overflow: hidden; }
+  main { height: 100vh; box-sizing: border-box; }
+  
+  #photo-map { 
+    width: 100%; 
+    height: 100%; 
+    margin: 0; 
+    border: none; 
+    border-radius: 0; 
+    transition: width 400ms ease; 
+  }
+  .site-footer { display: none; }
+  
+  /* Side Panel */
+  #map-side-panel {
+    position: fixed;
+    top: var(--nav-height);
+    right: -50%;
+    width: 50%;
+    height: calc(100vh - var(--nav-height));
+    background: #111;
+    z-index: 1000;
+    transition: right 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+  #map-side-panel.open { right: 0; }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .panel-title { font-size: 1.5rem; font-weight: bold; margin: 0; }
+  .close-panel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    transition: background 200ms;
+  }
+  .close-panel:hover { background: rgba(255,255,255,0.1); }
+  
+  /* Swiper in Panel */
+  .panel-slider { width: 100%; flex: 1; min-height: 0; }
+  .panel-slider .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .panel-slider img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .slide-filename {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-mono);
+  }
+</style>
+
+<div id="photo-map"></div>
+<div id="map-side-panel">
+  <div class="panel-header">
+    <h2 class="panel-title" id="panel-location-name">Location</h2>
+    <button class="close-panel" onclick="closePanel()">Close Explorer</button>
   </div>
-  <section class="home-hero-overlay">
-    <h1 class="home-title">{{ title }}</h1>
-    {% if description %}<p class="home-intro">{{ description }}</p>{% endif %}
-  </section>
-</div>
-{% endif %}
-
-<div class="standard-page">
-  {% if not heroImage %}
-  <header class="page-header">
-    <h1>{{ title }}</h1>
-    {% if description %}<p class="page-lead">{{ description }}</p>{% endif %}
-  </header>
-  {% endif %}
-
-  <div id="photo-map"></div>
-
-  <div style="display:none;">{{ content | safe }}</div>
+  <div class="swiper panel-slider" id="panel-swiper">
+    <div class="swiper-wrapper" id="panel-swiper-wrapper">
+      <!-- Dynamic Slides -->
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 </div>
 
+<div style="display:none;">{{ content | safe }}</div>
+
+<link rel="stylesheet" href="{{ '/static/css/swiper-bundle.min.css' | url }}"/>
+<script src="{{ '/static/js/swiper-bundle.min.js' | url }}"></script>
 <script src="{{ '/static/js/leaflet.js' | url }}"></script>
 <script src="{{ '/static/js/leaflet.markercluster.js' | url }}"></script>
 <script>
-  const pins = {{ content | parseMapBlocks | dump | safe }};
+  const pins = {{ focalPoints | resolveFocalPoints(photographs) | dump | safe }};
+
+  const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+  const darkTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
+  const getTileUrl = () => document.documentElement.getAttribute('data-theme') === 'dark' ? darkTiles : lightTiles;
 
   const map = L.map('photo-map', {
-    scrollWheelZoom: false,
+    scrollWheelZoom: true,
     touchZoom: true,
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0
+    maxBoundsViscosity: 1.0,
+    keyboard: true
   }).setView([20, 0], 2);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  const tiles = L.tileLayer(getTileUrl(), {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
   }).addTo(map);
 
+  // Theme Watcher
+  const themeObserver = new MutationObserver(() => {
+    tiles.setUrl(getTileUrl());
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
   const cluster = L.markerClusterGroup({ maxClusterRadius: 60 });
+  let panelSwiper = null;
+
+  function openPanel(pin) {
+    const panel = document.getElementById('map-side-panel');
+    const title = document.getElementById('panel-location-name');
+    const wrapper = document.getElementById('panel-swiper-wrapper');
+    const mapEl = document.getElementById('photo-map');
+    
+    title.textContent = pin.title;
+    wrapper.innerHTML = pin.photos.map(p => `
+      <div class="swiper-slide">
+        <img src="${p.full}" alt="${p.name}" loading="lazy">
+        <div class="slide-filename">${p.name}</div>
+      </div>
+    `).join('');
+    
+    panel.classList.add('open');
+    mapEl.style.width = '50%';
+    map.keyboard.disable();
+    
+    setTimeout(() => {
+      if (panelSwiper) panelSwiper.destroy();
+      panelSwiper = new Swiper('#panel-swiper', {
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        pagination: { el: '.swiper-pagination', type: 'fraction' },
+        keyboard: { enabled: true, onlyInViewport: true },
+        speed: 400
+      });
+      map.invalidateSize(); 
+    }, 450);
+  }
+
+  window.closePanel = function() {
+    const panel = document.getElementById('map-side-panel');
+    const mapEl = document.getElementById('photo-map');
+    panel.classList.remove('open');
+    mapEl.style.width = '100%';
+    map.keyboard.enable();
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 450);
+  };
+
   pins.forEach(pin => {
+    if (pin.count === 0) return;
     const icon = L.divIcon({
       className: 'photo-marker',
       html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
       iconSize: [56, 56],
       iconAnchor: [28, 28]
     });
-    L.marker([pin.lat, pin.lng], { icon })
-      .bindPopup(`
-        <div class="map-popup">
-          <img src="${pin.image}" alt="${pin.title}" class="map-popup-img">
-          <div class="map-popup-title">${pin.title}</div>
-        </div>
-      `, { maxWidth: 220, className: 'photo-map-popup' })
-      .addTo(cluster);
+    const marker = L.marker([pin.lat, pin.lng], { icon });
+    marker.on('click', () => openPanel(pin));
+    cluster.addLayer(marker);
   });
   map.addLayer(cluster);
 

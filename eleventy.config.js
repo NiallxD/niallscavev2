@@ -525,6 +525,43 @@ export default function (eleventyConfig) {
     return slides;
   });
 
+  eleventyConfig.addFilter("resolveFocalPoints", (focalPoints, allPhotos) => {
+    if (!focalPoints || !allPhotos) return [];
+    
+    function getDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // km
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
+    }
+
+    return focalPoints.map(point => {
+      const lat = point.coords[0];
+      const lng = point.coords[1];
+      const radius = point.radius || 10;
+      
+      const nearbyPhotos = allPhotos.filter(photo => {
+        const dist = getDistance(lat, lng, photo.lat, photo.lng);
+        return dist <= radius;
+      });
+
+      return {
+        title: point.name,
+        lat,
+        lng,
+        photos: nearbyPhotos,
+        count: nearbyPhotos.length,
+        // Use the thumbnail of the first photo as the cover for the pin
+        image: nearbyPhotos.length > 0 ? nearbyPhotos[0].thumb : null
+      };
+    });
+  });
+
   eleventyConfig.addFilter("parseMapBlocks", (html) => {
     if (!html) return [];
     const pins = [];
