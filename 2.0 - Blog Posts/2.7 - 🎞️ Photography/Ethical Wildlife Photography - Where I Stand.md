@@ -1,7 +1,7 @@
 ---
 title: "Ethical Wildlife Photography: Where I Stand"
 author: Niall Bell
-date: 2025-04-27
+date: 2026-04-27
 Type: Blog Post
 publish: true
 permalink: /ethical-wildlife-photography-where-i-stand
@@ -13,6 +13,7 @@ tags:
 heroImage: https://i.imgur.com/AwPl6UT.jpeg
 created: 2025-04-27
 updated: 2025-04-27
+Featured: true
 ---
 I've been circling this topic for a few years now, writing about bits of it here and there, commercial hides in one post, ethical captioning in another. But I think it's time to pull it all together, because the more I sit with it, the more I realise these aren't separate issues. They're two symptoms of the same disease.
 

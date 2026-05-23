@@ -97,3 +97,18 @@ Many scripts reference Nunjucks template variables inline (e.g. `const galleryDa
 - Work one gallery at a time, user reviews between each.
 - User will edit captions afterwards — write good drafts but don't agonise over perfection.
 - Some galleries have a mix of imgur URLs and local `/static/images/` paths — caption local files based on the heading/context since they can't be fetched.
+
+---
+
+## Content Security Policy (CSP)
+
+The CSP is set as a `<meta http-equiv="Content-Security-Policy">` tag in `templates/base.njk`. It applies in production (GitHub Pages) and locally.
+
+**When adding new external image sources** (e.g. a new CDN for book covers, a new image host), always check the `img-src` directive and add the domain if it isn't already there. Missing domains silently block images in production with no visible error in dev.
+
+**Current allowed image domains:**
+- `https://i.imgur.com` — photography and page images
+- `https://*.basemaps.cartocdn.com` — map tiles
+- `https://m.media-amazon.com` — Amazon book covers
+- `https://images-na.ssl-images-amazon.com` — Goodreads/Amazon book covers
+- `https://i.gr-assets.com` — Goodreads book covers
