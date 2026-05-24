@@ -7,7 +7,7 @@
   
   <meta name="robots" content="noindex, nofollow">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com https://images-na.ssl-images-amazon.com https://i.gr-assets.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://tiles.openfreemap.org; img-src 'self' data: blob: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com https://images-na.ssl-images-amazon.com https://i.gr-assets.com https://tiles.openfreemap.org https://cdn.jsdelivr.net https://server.arcgisonline.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run https://tiles.openfreemap.org https://cdn.jsdelivr.net https://server.arcgisonline.com https://a.basemaps.cartocdn.com; worker-src blob: https://cdn.jsdelivr.net; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -393,13 +393,14 @@
       <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-position: inside;">
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">base-uri 'self'</strong> — prevents attackers injecting a <code>&lt;base&gt;</code> tag to hijack relative URLs.</li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">form-action 'self' https://api.web3forms.com</strong> — forms can only submit to this site or the trusted contact form handler.</li>
-        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">connect-src</strong> — restricts fetch/XHR requests to only the two endpoints this site actually uses (Web3Forms and Val.town).</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">connect-src</strong> — restricts fetch/XHR requests to only the trusted endpoints this site uses: Web3Forms, Val.town, jsDelivr (CesiumJS assets), CARTO, and Esri (map tiles).</li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">frame-src</strong> — embedded iframes are limited to YouTube, Vimeo, and Kuula.</li>
       </ul>
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1rem;">Two common CSP recommendations cannot be implemented here, for practical reasons:</p>
       <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
         <li style="margin-bottom: 0.75rem;"><strong style="color: var(--color-text);">frame-ancestors</strong> (clickjacking protection) — this directive only works as an HTTP response header sent by the server. This site is hosted on GitHub Pages, which does not allow custom response headers to be configured. It cannot be set via a meta tag.</li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Removing 'unsafe-inline'</strong> — many page features (galleries, maps, interactive elements) currently rely on inline scripts embedded directly in the HTML templates. Removing <code>'unsafe-inline'</code> requires consolidating these into external script files, which is an active work in progress. Once complete, this will be removed from the policy.</li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">'unsafe-eval' and 'wasm-unsafe-eval'</strong> — the CesiumJS library that powers the Photo Map uses WebAssembly and code evaluation internally, which requires these directives. They are necessary for the 3D globe to function and only affect the map page.</li>
       </ul>
     </div>
 
@@ -408,7 +409,9 @@
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-secondary); margin-bottom: 1.5rem;">A "Zero-Tracking" site doesn't mean zero network requests. To provide a rich experience, this site communicates with a few trusted external services. You can verify these in your browser's "Network" tab at any time:</p>
       <ul style="font-size: 0.95rem; color: var(--color-secondary); line-height: 1.6; margin-bottom: 0; padding-left: 1.5rem; list-style-position: inside;">
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Imgur:</strong> Hosts high-resolution photography. <em>Data sent: Request for image file. No cookies.</em></li>
-        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CartoDB:</strong> Provides map tiles. <em>Data sent: Request for map tiles. No cookies.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">CARTO (CartoCDN):</strong> Provides label overlay tiles on the Photo Map. <em>Data sent: Request for map tile images. No cookies.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Esri / ArcGIS Online:</strong> Provides satellite imagery on the Photo Map. <em>Data sent: Request for map tile images. No cookies.</em></li>
+        <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">jsDelivr (cdn.jsdelivr.net):</strong> Serves the CesiumJS library that powers the 3D globe on the Photo Map. <em>Data sent: Request for script and asset files. No cookies.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Val.town:</strong> Logs page visits. <em>Data sent: Page URL, page title, and timestamp. No IP, no cookies, no third-party access.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Web3Forms:</strong> Transmits enquiry messages. <em>Data sent: Form entries only on submission.</em></li>
         <li style="margin-bottom: 0.5rem;"><strong style="color: var(--color-text);">Amazon Media:</strong> Serves book covers. <em>Data sent: Request for image file. No cookies.</em></li>

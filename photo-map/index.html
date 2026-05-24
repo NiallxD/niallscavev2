@@ -7,7 +7,7 @@
   <meta name="description" content="A map of locations from my photography around the world — from the Scottish Highlands to the Canadian Rockies.">
   <meta name="robots" content="noarchive">
   <!-- Privacy & Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com https://images-na.ssl-images-amazon.com https://i.gr-assets.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://tiles.openfreemap.org; img-src 'self' data: blob: https://i.imgur.com https://*.basemaps.cartocdn.com https://m.media-amazon.com https://images-na.ssl-images-amazon.com https://i.gr-assets.com https://tiles.openfreemap.org https://cdn.jsdelivr.net https://server.arcgisonline.com; connect-src https://api.web3forms.com https://niallxd--110a558a4a6d11f191a4ee650bb23af1.web.val.run https://tiles.openfreemap.org https://cdn.jsdelivr.net https://server.arcgisonline.com https://a.basemaps.cartocdn.com; worker-src blob: https://cdn.jsdelivr.net; frame-src https://*.youtube.com https://*.vimeo.com https://*.kuula.co; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
   <meta name="referrer" content="no-referrer">
   
   <!-- Anti-AI Scraping -->
@@ -58,195 +58,380 @@
   <div class="nav-overlay"></div>
 
   <main>
-    <link rel="stylesheet" href="/static/css/leaflet.css"/>
-<link rel="stylesheet" href="/static/css/MarkerCluster.css"/>
-<link rel="stylesheet" href="/static/css/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/Widgets/widgets.css"/>
 
 <style>
   body, html { overflow: hidden; }
   main { height: 100vh; box-sizing: border-box; }
-  
-  #photo-map { 
-    width: 100%; 
-    height: 100%; 
-    margin: 0; 
-    border: none; 
-    border-radius: 0; 
-    transition: width 400ms ease; 
-  }
   .site-footer { display: none; }
-  
-  /* Side Panel */
-  #map-side-panel {
+
+  #cesium-container {
     position: fixed;
-    top: var(--nav-height);
-    right: -50%;
-    width: 50%;
-    height: calc(100vh - var(--nav-height));
-    background: #111;
+    inset: 0;
+    background: #000;
+  }
+
+  /* Hide all Cesium default UI chrome */
+  .cesium-widget-credits,
+  .cesium-viewer-toolbar,
+  .cesium-viewer-animationContainer,
+  .cesium-viewer-timelineContainer,
+  .cesium-viewer-fullscreenContainer,
+  .cesium-viewer-geocoderContainer { display: none !important; }
+
+  /* Return to globe button */
+  #globe-reset {
+    position: fixed;
+    top: calc(var(--nav-height, 64px) + 1rem);
+    left: 1rem;
     z-index: 1000;
-    transition: right 400ms cubic-bezier(0.4, 0, 0.2, 1);
-    color: white;
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-  }
-  #map-side-panel.open { right: 0; }
-  
-  .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  .panel-title { font-size: 1.5rem; font-weight: bold; margin: 0; }
-  .close-panel {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    transition: background 200ms;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .close-panel:hover { background: rgba(255,255,255,0.1); }
-  
-  /* Swiper in Panel */
-  .panel-slider { width: 100%; flex: 1; min-height: 0; }
-  .panel-slider .swiper-slide {
+  #globe-reset:hover { background: var(--color-surface); border-color: var(--color-accent); }
+
+  /* Side panel */
+  #map-panel {
+    position: fixed;
+    top: calc(var(--nav-height, 64px) + 1rem);
+    right: calc(-500px - 2rem);
+    width: 500px;
+    max-width: calc(100vw - 2rem);
+    height: calc(100vh - var(--nav-height, 64px) - 2rem);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md, 12px);
+    z-index: 1000;
+    transition: right 360ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
   }
-  .panel-slider img {
-    max-width: 100%;
-    max-height: 70vh;
+  #map-panel.open { right: 1rem; }
+
+  .panel-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: inherit;
+    z-index: 1;
+    transition: background 0.15s ease;
+  }
+  .panel-close:hover { background: var(--color-border); }
+
+  .panel-img {
+    width: 100%;
+    max-height: 60vh;
     object-fit: contain;
-    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    background: var(--color-surface);
+    display: block;
   }
-  .slide-filename {
-    margin-top: 1rem;
+  .panel-body { padding: 1.5rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; }
+  .panel-caption { flex: 1; }
+  .panel-link-row { margin-top: auto; padding-top: 1rem; }
+  .panel-gallery-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+  .panel-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+    line-height: 1.25;
+  }
+  .panel-caption {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-secondary);
+    margin: 0 0 1.25rem;
+  }
+  .panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .panel-link:hover { background: var(--color-accent); color: #fff; }
+  .panel-link-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .panel-link.ghost { background: transparent; }
+
+  /* Lightbox */
+  #panel-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  #panel-lightbox.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #lightbox-img {
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    display: block;
   }
 </style>
 
-<div id="photo-map"></div>
-<div id="map-side-panel">
-  <div class="panel-header">
-    <h2 class="panel-title" id="panel-location-name">Location</h2>
-    <button class="close-panel" onclick="closePanel()">Close Explorer</button>
-  </div>
-  <div class="swiper panel-slider" id="panel-swiper">
-    <div class="swiper-wrapper" id="panel-swiper-wrapper">
-      <!-- Dynamic Slides -->
+<div id="cesium-container"></div>
+<button id="globe-reset" title="Return to globe view">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  Globe
+</button>
+
+<div id="map-panel">
+  <button class="panel-close" id="panel-close">✕</button>
+  <img class="panel-img" id="panel-img" src="" alt="" style="cursor:zoom-in;">
+  <div class="panel-body">
+    <p class="panel-gallery-label" id="panel-gallery"></p>
+    <h2 class="panel-title" id="panel-title"></h2>
+    <p class="panel-caption" id="panel-caption"></p>
+    <div class="panel-link-row">
+      <button class="panel-link ghost" id="view-large-btn">View Large</button>
+      <a class="panel-link" id="panel-link" href="#">View Gallery →</a>
+      <button class="panel-link ghost" id="prev-pin" title="Previous">←</button>
+      <button class="panel-link ghost" id="next-pin" title="Next">→</button>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
   </div>
 </div>
 
-<div style="display:none;"><p>The interactive photo map automatically clusters photos from my vault based on their GPS coordinates. Click on a pin to see all photographs taken within that region.</p>
+<div id="panel-lightbox">
+  <img id="lightbox-img" src="" alt="">
 </div>
 
-<link rel="stylesheet" href="/static/css/swiper-bundle.min.css"/>
-<script src="/static/js/swiper-bundle.min.js"></script>
-<script src="/static/js/leaflet.js"></script>
-<script src="/static/js/leaflet.markercluster.js"></script>
 <script>
-  const pins = [{"title":"Squamish Estuary","lat":49.7016,"lng":-123.1558,"photos":[],"count":1,"image":"/static/images/S3WWLSO.webp"},{"title":"Tadoba - India","lat":20.33431,"lng":79.29774,"photos":[],"count":1,"image":"/static/images/acHu74e.webp"},{"title":"Florida","lat":29.07927,"lng":-80.92616,"photos":[],"count":1,"image":"/static/images/uSoSGwH.webp"},{"title":"Canadian Rockies","lat":51.4254,"lng":-116.1773,"photos":[],"count":1,"image":"/static/images/l29dLBO.webp"},{"title":"Scottish Highlands","lat":57.12,"lng":-4.72,"photos":[],"count":1,"image":"/static/images/jt3kVwN.webp"},{"title":"Finland","lat":64.50352,"lng":29.98196,"photos":[],"count":1,"image":"/static/images/BWat7Sv.webp"},{"title":"Rome","lat":41.89376,"lng":12.48455,"photos":[],"count":1,"image":"/static/images/07Fmn4O.webp"},{"title":"Iceland","lat":64.79859,"lng":-21.46163,"photos":[],"count":1,"image":"/static/images/xn7lE7w.webp"}];
+  // Must be set before Cesium loads so it can find its Workers and Assets
+  window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/';
+</script>
+<script src="https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/Cesium.js"></script>
+<script>
+  const pins = [{"src":"/static/images/2QJ1hqd.webp","title":"Watching From the Branch","caption":"Bald eagles spend much of the day perched in tall trees overlooking water, watching for fish and other food opportunities. They have exceptionally sharp eyesight, capable of detecting prey from hundreds of metres away. Their large hooked bill is bright yellow in adults and dark grey in young birds.","galleryTitle":"Bald Eagle","galleryUrl":"/uk-wildlife-nature-photos/bald-eagle/","lat":49.731797,"lng":-123.13255},{"src":"/static/images/lugkTJK.webp","title":"Immature Eagle on the Branch","caption":"Immature bald eagles are mottled brown and white, with no distinct white head or tail colouring. Young birds can be confused with golden eagles, though the bald eagle’s heavier bill and different proportions help distinguish them. Full adult plumage is not reached until around five years of age.","galleryTitle":"Bald Eagle","galleryUrl":"/uk-wildlife-nature-photos/bald-eagle/","lat":49.732684,"lng":-123.131348},{"src":"/static/images/u2jGyGd.webp","title":"Immature Eagle Alert","caption":"Young bald eagles spend their first few years ranging widely before settling in a breeding territory. They are not sexually mature until around four or five years of age. During this period they gradually develop their hunting skills, shifting from opportunistic scavenging toward catching live prey.","galleryTitle":"Bald Eagle","galleryUrl":"/uk-wildlife-nature-photos/bald-eagle/","lat":49.730687,"lng":-123.132722},{"src":"/static/images/T2ecO0s.webp","title":"Adult on the Bare Branch","caption":"Bald eagles build some of the largest nests of any bird. Used year after year and added to each breeding season, some nests eventually reach over two metres across and can weigh more than a tonne. Pairs typically return to the same nest and the same mate year after year.","galleryTitle":"Bald Eagle","galleryUrl":"/uk-wildlife-nature-photos/bald-eagle/","lat":49.731242,"lng":-123.133923},{"src":"/static/images/YWitVZt.webp","title":"Eagle Carrying Fish in Flight","caption":"Bald eagles catch fish by swooping low over the water and seizing prey with their feet. Larger fish are sometimes carried in the bill rather than the talons. The soles of their feet are covered in rough, spiny pads that prevent slippery fish from twisting free during the flight back to a perch.","galleryTitle":"Bald Eagle","galleryUrl":"/uk-wildlife-nature-photos/bald-eagle/","lat":49.730687,"lng":-123.132035},{"src":"/static/images/j35mshs.webp","title":"Tigress &amp; Cubs","caption":"After several days of not seeing tigers at all, despite hours and hours of searching, we happened across a female tiger who was caring for three young cubs. She kept her cubs away from the road beside a concrete structure, but still allowed us some stunning views.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.347003,"lng":79.330825},{"src":"/static/images/2ATIWM4.webp","title":"Maya &amp; Cub","caption":"Maya, the princess of Tadoba, teaches her young cub how to behave around eager tourists looking to see tigers in their natural habitat. This was the last safari we had booked in and it was an afternoon I’ll remember for the rest of my life.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.353441,"lng":79.317779},{"src":"/static/images/Z16j3te.webp","title":"Xylo Scent Marking","caption":"Xylo is a large male bengal tiger living in the buffer zones around Tadoba. We happened across him during a safari and spent some time watching him move through the thick bamboo. He offered the best views of the trip and didn’t hold back flaunting his prowess.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.368891,"lng":79.355544},{"src":"/static/images/XlAa0W1.webp","title":"Xylo &amp; Tourists","caption":"This photograph often induces conflict in peoples minds. All these jeeps following a tiger down the track. Many don’t realise how far back the jeeps were. The compression of the telephoto lens makes them appear much closer! Tourists help fund the protections these animals need.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.370179,"lng":79.304733},{"src":"/static/images/tsSyn3v.webp","title":"Maya &amp; Cub Walking Side by Side","caption":"During our encounter with Maya, we were able to sit back and watch her take her cub along the dirt track. It was initially frustrating to be behind them, but on reflection it was a great opportunity to observer these cats in a candid way. They were not looking at us, they were doing their own thing.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.367386,"lng":79.290313},{"src":"/static/images/ofVV4qh.webp","title":"Maya in the jungle","caption":"For this photograph I opted to shoot wider and include the dense, post monsoon, jungle in the shot. This highlights the magical environment in which these cats live and play. Unknown to us at the time, Maya was with her very young cub, we just couldn’t see it in the long grass.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.362236,"lng":79.299239},{"src":"/static/images/HJIcj0q.webp","title":"Xylo’s Piercing Gaze","caption":"As Xylo crossed over to our left, he walked over an area of exposed rock, offering a strong contrast against the orange dirt. As he did, he turned to look right at us, and delivered a piercing gaze. It’s impossible not to be in awe of these magnificent animals.","galleryTitle":"Bengal Tiger","galleryUrl":"/tiger/","lat":20.37511,"lng":79.332198},{"src":"/static/images/kTGIAGs.webp","title":"Kingfisher Breaking the Surface","caption":"Getting a shot like this takes a lot of patience. Once you find a perch frequently used by the bird, you set up low over the water, and then wait. The kingfisher does all the work really, the whole dive is over in under a second. I found the most success in attempting to predict the location of the dive, which reduces hit rate but vastly improves focus!","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.364627,"lng":-1.524261},{"src":"/static/images/RLNBufY.webp","title":"Red Grouse in the Heather","caption":"Red grouse are a moorland bird through and through. You find them by waiting quietly until one simply stands up and looks at you, like this one did. The North Yorkshire Moors are wonderful for them, especially when the heather is in full bloom and the light is soft. This photograph was taken in the Scottish Highlands while my partner and I were eating lunch in the car.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":57.392872,"lng":-3.717135},{"src":"/static/images/971zwGT.webp","title":"Gannet Close-Up","caption":"Those blue eyes are something else. Getting close to a gannet colony is one of the best experiences British wildlife has to offer. The noise, the smell, the sheer number of birds all packed onto a cliff ledge is overwhelming in the best possible way. This one was entirely unbothered by my presence and gave me a long, unhurried look at that extraordinary face.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":54.148785,"lng":-0.165432},{"src":"/static/images/i4yNdKI.webp","title":"Nest Building at the Colony","caption":"Gannets steal nesting material from each other constantly. This one had apparently managed to gather a decent bill-full of vegetation before a neighbour could take it. The colony was absolute chaos behind it, birds landing and taking off in every direction. Finding a clean background in that environment takes some patience.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":54.148483,"lng":-0.165347},{"src":"/static/images/OLUGomN.webp","title":"Hobby Hunting Dragonflies","caption":"Hobbies are one of the great joys of a British summer. Small, incredibly fast, and agile enough to catch dragonflies on the wing, they make hunting look effortless. This one was working low over the water’s edge, picking off dragonflies mid-flight and eating them while still airborne. If you ever get the chance to sit and watch a hobby hunt on a warm afternoon, take it.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.555396,"lng":-0.932294},{"src":"/static/images/LbDmxp6.webp","title":"Grey Heron Tosses a Catch","caption":"Grey herons are a bird I often overlook because they’re so familiar, which is a mistake. Watching one fish properly is a lesson in patience and precision. This one stood absolutely still for several minutes before striking, and when it did the fish didn’t stand a chance. It repositioned it headfirst and swallowed it in one go.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.367207,"lng":-1.522198},{"src":"/static/images/NDyqWib.webp","title":"Crested Tit on Scots Pine","caption":"If you want to see a crested tit you have to go to Scotland. Specifically the old Caledonian pinewoods, where these tiny birds spend their whole lives in the canopy. They’re not shy once you find them, which is lucky because finding them in the first place takes some doing. This one worked its way down a Scots pine right to eye level before moving on.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":57.244883,"lng":-3.695107},{"src":"/static/images/NTLKcg8.webp","title":"Corncrake in the Open","caption":"You hear corncrakes far more often than you see them. That rasping call carries across the meadow all night and you walk towards it and the bird just keeps moving ahead of you through the long grass. So when this one stepped out briefly into the open I wasn’t going to waste it. They’re a bird in real trouble in Britain now, mostly holding on in the Scottish islands.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":56.336583,"lng":-6.397322},{"src":"/static/images/YH81K9D.webp","title":"Jay Calling from the Stump","caption":"Jays are spectacular birds that somehow get treated as ordinary because they’re in every patch of woodland. That blue wing panel stops me every time. This one was up on a stump having a very loud opinion about something. I’ve spent a lot of time watching jays bury acorns in autumn. They remember most of them, but not all, which is quietly important for oak woodland.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.504252,"lng":-1.039619},{"src":"/static/images/QTuFyzV.webp","title":"Bar-tailed Godwit Taking Flight","caption":"Getting low and shooting across the mud is what makes wader photography. This bar-tailed godwit was lifting off from the tideline in its rich rufous breeding plumage, wings thrown wide, just passing through on its way north. Some of these birds fly non-stop from West Africa to the Arctic without landing, which is hard to get your head around when one is standing in front of you on a British estuary.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":50.166671,"lng":-5.095691},{"src":"/static/images/m7FzDKi.webp","title":"Barn Owl in Autumn Woodland","caption":"A barn owl hunting in daylight usually means it’s working hard for some reason, feeding young or making up for poor hunting the night before. This one was quartering the woodland edge in beautiful autumn light, utterly silent. Watching them fly is one of those experiences that doesn’t get old no matter how many times you’ve had it. Pure white and gold against falling leaves.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.469468,"lng":-1.094045},{"src":"/static/images/FzKzxR4.webp","title":"Puffin Peering Through the Clifftop","caption":"Puffins are one of those birds that make people who don’t normally care about birds stop and stare. This one was peering out from the clifftop vegetation, watching the sea below, entirely composed. They’re clumsy on land and in the air but transformed underwater. Coming back to the same burrow year after year with the same partner, carrying a bill full of sand eels. They’re remarkable animals.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":54.148962,"lng":-0.166955},{"src":"/static/images/PLwIfMx.webp","title":"Osprey Empty-Handed","caption":"Ospreys were gone from Britain for most of the twentieth century. Their return is one of the best things that has happened in British conservation in my lifetime. This one hit the water hard and came up empty, hauling itself clear with nothing to show for the effort. They miss more often than you’d expect. It circled, shook the water from its feathers, and went straight back to scanning the surface.","galleryTitle":"British Birds","galleryUrl":"/uk-wildlife-nature-photos/british-birds/","lat":53.498549,"lng":-1.199618},{"src":"/static/images/Westbre.webp","title":"Osprey on the Stump","caption":"Ospreys perch in prominent positions overlooking water, scanning for fish before committing to a dive. They prefer tall, exposed trees near the water’s edge where they have a clear view. The same perches are often used repeatedly throughout the season by the same individual.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499393,"lng":-1.19766},{"src":"/static/images/oYn4ckG.webp","title":"Hitting the Water","caption":"The osprey enters the water feet-first, sometimes submerging completely before hauling itself clear. This moment of impact represents the end of a precise sequence beginning with the bird hovering and locking onto a target from height. The strike can generate enough force to carry the bird fully under.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499597,"lng":-1.199119},{"src":"/static/images/XU42XcW.webp","title":"Lifting Off After the Dive","caption":"After striking, an osprey uses powerful wingbeats to pull itself airborne. Before flying to a perch to eat, it will shake water from its plumage mid-air and rotate the fish so it faces head-first, reducing drag. The whole body is often fully submerged during a deep strike.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499699,"lng":-1.197403},{"src":"/static/images/fJQTPz6.webp","title":"Scanning From Height","caption":"The osprey’s characteristic kinked wing profile, with the carpal joint pushed forward, is distinctive in flight. Ospreys patrol water at height, looking almost directly downward, and can detect fish just below the surface from considerable altitude before folding into a steep dive.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499955,"lng":-1.197403},{"src":"/static/images/W147YfY.webp","title":"Osprey in Autumn Light","caption":"In Britain, ospreys arrive from West Africa in spring to breed and depart again in late summer. The Scottish Highlands hold the largest breeding population, though the range is expanding as the reintroduction programme continues and the population grows across England.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499853,"lng":-1.197059},{"src":"/static/images/jzubMmn.webp","title":"Osprey From Below","caption":"Seen from below, the osprey shows dark brown upperparts and largely white underparts, with a dark wrist patch and streaked breast band. The strongly kinked wings and relatively small head give it a characteristic outline that distinguishes it easily from other large raptors at a distance.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.500057,"lng":-1.196802},{"src":"/static/images/MgUdig4.webp","title":"Drying the Wings","caption":"Ospreys will spread their wings after a wet dive to help dry their plumage. Unlike cormorants, which lack waterproofing entirely, the osprey’s feathers shed water reasonably well, but a deep plunge can leave the bird thoroughly soaked and temporarily heavier in flight.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499342,"lng":-1.197231},{"src":"/static/images/PCGifWt.webp","title":"Entry","caption":"After hovering and targeting, the osprey folds into a steep plunge, feet-first, sometimes from over thirty metres up. The impact can be violent enough to completely submerge the bird beneath the surface. The feet are thrown forward at the last moment to strike the fish from above.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499597,"lng":-1.197145},{"src":"/static/images/I5qHNmM.webp","title":"Osprey Over Autumn Foliage","caption":"Ospreys have one of the widest distributions of any raptor, breeding on every continent except Antarctica. British breeding birds overwinter in West Africa. Young birds make their first migration without guidance from adults, navigating thousands of kilometres by instinct alone.","galleryTitle":"Osprey","galleryUrl":"/uk-wildlife-nature-photos/osprey/","lat":53.499801,"lng":-1.19663},{"src":"/static/images/hfx0ztj.webp","title":"Kingfisher in the Evening Light","caption":"The kingfisher is a solitary and territorial bird, defending a stretch of river or canal year-round. Outside the breeding season, males and females occupy separate territories. Its striking plumage, electric blue above and vivid orange below, makes it one of Britain’s most recognisable birds.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.368965,"lng":-1.516545},{"src":"/static/images/Kak7UDP.webp","title":"The Iridescent Back","caption":"The brilliant blue-green of the kingfisher’s back and crown is not a pigment but a structural colour, produced by the way light interacts with the feather microstructure. The effect shifts with the angle of light, ranging from deep teal to dazzling turquoise.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369196,"lng":-1.515901},{"src":"/static/images/XJ1t2Z0.webp","title":"Hovering Before the Dive","caption":"Before plunging into the water, a kingfisher will hover briefly to line up a strike. It can judge depth and the refraction of light with precision, tilting its head to correct for the bending of light at the water’s surface before committing to the dive.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369042,"lng":-1.516588},{"src":"/static/images/yhkMIfH.webp","title":"The Dive","caption":"The kingfisher dives from a perch or hover, closing its eyes as it enters the water and relying on momentum to carry it to the fish. The whole sequence is over in a fraction of a second. It can plunge to a depth of around 25 centimetres.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369068,"lng":-1.516931},{"src":"/static/images/Brp4AWr.webp","title":"Courtship Feeding","caption":"During courtship, the male kingfisher presents the female with a fish, passing it beak to beak. If she accepts, the pair are likely to breed together. This behaviour helps establish the pair bond early in the season, and a successful pair can raise two or three broods.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.368709,"lng":-1.509335},{"src":"/static/images/o5v5vDC.webp","title":"Watching the Water","caption":"Kingfishers hunt from low perches above the water, scanning for small fish just below the surface. Their eyes are adapted to give clear vision both above and below water. They can detect a fish just two centimetres long from a metre above the surface.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.368889,"lng":-1.506417},{"src":"/static/images/n6eMOz0.webp","title":"Back to the Perch","caption":"A kingfisher returns to its perch after a dive, wings still outstretched as it settles. If the dive was unsuccessful it will resume its watch immediately. Kingfishers typically consume their own body weight in fish each day, making regular successful dives essential to their survival.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369017,"lng":-1.517103},{"src":"/static/images/hzZ67iL.webp","title":"Winter Kingfisher","caption":"Kingfishers remain in Britain year-round but are vulnerable in hard winters when rivers and lakes freeze over. During cold spells they may move to estuaries and the coast where the water stays open. Many do not survive prolonged freezes, and severe winters can significantly reduce the population.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369042,"lng":-1.515687},{"src":"/static/images/ibRRfv7.webp","title":"Low Over the River","caption":"Kingfishers fly fast and low, typically following the course of a stream or river. Their high-pitched, whistling call often announces their presence before they are seen. The whole bird is only around 16 centimetres long, roughly the size of a sparrow, though it looks larger in flight.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.366226,"lng":-1.523111},{"src":"/static/images/YD0LSDY.webp","title":"Kingfisher Hovering","caption":"When hovering, a kingfisher beats its wings rapidly to hold position while fixing its gaze on a target below. The head remains perfectly still even as the body and wings move. This technique is more common where suitable perches are absent, such as over open water or wide slow rivers.","galleryTitle":"The Kingfisher","galleryUrl":"/uk-wildlife-nature-photos/kingfisher/","lat":53.369042,"lng":-1.51603},{"src":"/static/images/ScHEIqI.webp","title":"Low Pass Over the Field","caption":"Red kites are primarily scavengers, feeding on carrion, earthworms, and small mammals. They often fly low over farmland and open ground searching for food. Despite a wingspan of up to 185 centimetres, they are remarkably light, weighing only around one kilogram.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.297751,"lng":-3.514746},{"src":"/static/images/gUVijk6.webp","title":"The Forked Tail","caption":"The deeply forked tail is the red kite’s most distinctive feature and the easiest way to identify it in flight. It twists and flexes independently of the wings, acting as a rudder to make constant fine adjustments to the bird’s course. No other large raptor in Britain shares this characteristic tail shape.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.30153,"lng":-3.511312},{"src":"/static/images/vIA65Ss.webp","title":"Underside in Blue Sky","caption":"Seen from below, the red kite shows a pale, streaked underside with striking white crescents at the base of the primary feathers. The species spends a large part of its day on the wing, riding thermals and scanning wide areas of ground, covering many kilometres without effort.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.293971,"lng":-3.530538},{"src":"/static/images/iscY64n.webp","title":"Banking Over the Treeline","caption":"Red kites are efficient fliers, exploiting thermals and updrafts to cover large distances with minimal energy. Their rufous-red colouring intensifies in direct sunlight, making them unmistakable overhead. They are long-lived birds, with some individuals reaching 25 years or more in the wild.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.296911,"lng":-3.529165},{"src":"/static/images/7QVq4lj.webp","title":"Red Kite Diving","caption":"Despite their large size, red kites are capable of rapid, precise manoeuvres. The white crescents on the wing undersides flash prominently during banking turns. The species is largely a scavenger but will take live prey when available, including small mammals, birds, and large invertebrates.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.291451,"lng":-3.524224},{"src":"/static/images/PQI2Pnm.webp","title":"Coming in to Land","caption":"Red kites occasionally descend to the ground to pick up food, though they are far more at home in the air. Their long wings can make landing in confined spaces awkward. They are opportunistic feeders and will take a wide range of items, from carrion to earthworms surfaced by rain.","galleryTitle":"The Red Kite","galleryUrl":"/uk-wildlife-nature-photos/red-kite/","lat":52.292711,"lng":-3.530403},{"src":"/static/images/0ie7tcg.webp","title":"Eagle Over Autumn Forest","caption":"White-tailed eagles are widespread across Eurasia, from Iceland and Norway east to China and Japan. They favour large bodies of water, including lakes, rivers, estuaries and coastlines, where fish are abundant and tall nesting trees are available in the surrounding landscape.","galleryTitle":"White Tailed Eagle","galleryUrl":"/uk-wildlife-nature-photos/white-tailed-eagles/","lat":52.456397,"lng":22.0533}];
 
-  const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-  const darkTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
-  const getTileUrl = () => document.documentElement.getAttribute('data-theme') === 'dark' ? darkTiles : lightTiles;
+  // Disable Ion — we're using our own tile sources
+  Cesium.Ion.defaultAccessToken = '';
 
-  const map = L.map('photo-map', {
-    scrollWheelZoom: true,
-    touchZoom: true,
-    minZoom: 2,
-    maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0,
-    keyboard: true
-  }).setView([20, 0], 2);
+  // ── Tile providers ─────────────────────────────────────────────────────────
+  function addImageryLayers() {
+    viewer.imageryLayers.removeAll();
+    viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      credit: '© Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN',
+      maximumLevel: 19
+    }));
+  }
 
-  const tiles = L.tileLayer(getTileUrl(), {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
-  }).addTo(map);
-
-  // Theme Watcher
-  const themeObserver = new MutationObserver(() => {
-    tiles.setUrl(getTileUrl());
+  // ── Viewer ─────────────────────────────────────────────────────────────────
+  // imageryProvider/terrainProvider constructor options removed in Cesium 1.107+
+  const viewer = new Cesium.Viewer('cesium-container', {
+    baseLayerPicker:       false,
+    geocoder:              false,
+    homeButton:            false,
+    sceneModePicker:       false,
+    navigationHelpButton:  false,
+    animation:             false,
+    timeline:              false,
+    fullscreenButton:      false,
+    selectionIndicator:    false,
+    infoBox:               false,
+    requestRenderMode:     false
   });
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-  const cluster = L.markerClusterGroup({ maxClusterRadius: 60 });
-  let panelSwiper = null;
+  // Flat ellipsoid terrain — no Ion needed
+  viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider();
 
-  function openPanel(pin) {
-    const panel = document.getElementById('map-side-panel');
-    const title = document.getElementById('panel-location-name');
-    const wrapper = document.getElementById('panel-swiper-wrapper');
-    const mapEl = document.getElementById('photo-map');
-    
-    title.textContent = pin.title;
-    wrapper.innerHTML = pin.photos.map(p => `
-      <div class="swiper-slide">
-        <img src="${p.full}" alt="${p.name}" loading="lazy">
-        <div class="slide-filename">${p.name}</div>
-      </div>
-    `).join('');
-    
-    panel.classList.add('open');
-    mapEl.style.width = '50%';
-    map.keyboard.disable();
-    
-    setTimeout(() => {
-      if (panelSwiper) panelSwiper.destroy();
-      panelSwiper = new Swiper('#panel-swiper', {
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', type: 'fraction' },
-        keyboard: { enabled: true, onlyInViewport: true },
-        speed: 400
+  // Replace default Ion imagery with satellite + labels
+  addImageryLayers();
+
+  // Faster zoom
+  viewer.scene.screenSpaceCameraController.zoomFactor = 12.0;
+
+  // Disable atmosphere and fog so imagery is crisp at all altitudes
+  viewer.scene.skyAtmosphere.show = false;
+  viewer.scene.fog.enabled = false;
+  viewer.scene.globe.enableLighting = false;
+  viewer.scene.globe.showGroundAtmosphere = false;
+  viewer.scene.backgroundColor = Cesium.Color.BLACK;
+
+  // Start high above Earth — shows the full sphere
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(10, 25, 22000000)
+  });
+
+  // Minimum zoom — keeps tiles loaded, prevents going underground
+  viewer.scene.screenSpaceCameraController.minimumZoomDistance = 550;
+
+  // ── Pins ───────────────────────────────────────────────────────────────────
+  const pointColl = viewer.scene.primitives.add(new Cesium.PointPrimitiveCollection());
+  const labelColl = viewer.scene.primitives.add(new Cesium.LabelCollection());
+
+  function isOnFrontHemisphere(world) {
+    const normal = Cesium.Ellipsoid.WGS84.geodeticSurfaceNormal(world, new Cesium.Cartesian3());
+    const toCam  = Cesium.Cartesian3.subtract(viewer.camera.position, world, new Cesium.Cartesian3());
+    return Cesium.Cartesian3.dot(normal, toCam) > 0;
+  }
+
+  function updatePins() {
+    pointColl.removeAll();
+    labelColl.removeAll();
+    const cameraHeight = Cesium.Cartographic.fromCartesian(viewer.camera.position).height;
+    const showLabels   = cameraHeight < 2000000;
+    pins.forEach((pin, i) => {
+      const world = Cesium.Cartesian3.fromDegrees(pin.lng, pin.lat);
+      if (!isOnFrontHemisphere(world)) return;
+      pointColl.add({
+        position: world, pixelSize: 14,
+        color: Cesium.Color.fromCssColorString('#e07b39'),
+        outlineColor: Cesium.Color.WHITE, outlineWidth: 2,
+        id: i
       });
-      map.invalidateSize(); 
-    }, 450);
-  }
-
-  window.closePanel = function() {
-    const panel = document.getElementById('map-side-panel');
-    const mapEl = document.getElementById('photo-map');
-    panel.classList.remove('open');
-    mapEl.style.width = '100%';
-    map.keyboard.enable();
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 450);
-  };
-
-  pins.forEach(pin => {
-    if (pin.count === 0) return;
-    const icon = L.divIcon({
-      className: 'photo-marker',
-      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
-      iconSize: [56, 56],
-      iconAnchor: [28, 28]
+      if (showLabels) {
+        labelColl.add({
+          position: world, text: pin.title,
+          font: '12px sans-serif', fillColor: Cesium.Color.WHITE,
+          outlineColor: Cesium.Color.BLACK, outlineWidth: 3,
+          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+          pixelOffset: new Cesium.Cartesian2(0, -18)
+        });
+      }
     });
-    const marker = L.marker([pin.lat, pin.lng], { icon });
-    marker.on('click', () => openPanel(pin));
-    cluster.addLayer(marker);
-  });
-  map.addLayer(cluster);
-
-  if (pins.length > 0) {
-    const group = L.featureGroup(pins.map(p => L.marker([p.lat, p.lng])));
-    map.fitBounds(group.getBounds().pad(0.3));
   }
+
+  viewer.camera.moveEnd.addEventListener(updatePins);
+  updatePins();
+
+  // ── Click handler ──────────────────────────────────────────────────────────
+  const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+
+  handler.setInputAction(click => {
+    const picked = viewer.scene.pick(click.position);
+    if (!Cesium.defined(picked) || picked.id === undefined) return;
+    const idx = picked.id;
+    if (typeof idx === 'number' && pins[idx]) {
+      openPanel(pins[idx], idx);
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(pins[idx].lng, pins[idx].lat, 500),
+        duration: 2.4
+      });
+    }
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+  // Pointer cursor on hover
+  handler.setInputAction(move => {
+    const picked = viewer.scene.pick(move.endPosition);
+    viewer.canvas.style.cursor =
+      (Cesium.defined(picked) && picked.id !== undefined) ? 'pointer' : 'default';
+  }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+
+
+
+  // ── Globe reset ────────────────────────────────────────────────────────────
+  document.getElementById('globe-reset').addEventListener('click', () => {
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(10, 25, 22000000),
+      duration: 1.8
+    });
+  });
+
+  // ── Side panel ─────────────────────────────────────────────────────────────
+  document.getElementById('panel-close').addEventListener('click', () => {
+    document.getElementById('map-panel').classList.remove('open');
+  });
+
+  // ── Lightbox ───────────────────────────────────────────────────────────────
+  const lightbox     = document.getElementById('panel-lightbox');
+  const lightboxImg  = document.getElementById('lightbox-img');
+  const panelImg     = document.getElementById('panel-img');
+
+  const mapPanel = document.getElementById('map-panel');
+
+  function openLightbox() {
+    lightboxImg.src = panelImg.src;
+    lightboxImg.alt = panelImg.alt;
+    lightbox.classList.add('visible');
+    mapPanel.style.opacity = '0';
+    mapPanel.style.pointerEvents = 'none';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    mapPanel.style.opacity = '';
+    mapPanel.style.pointerEvents = '';
+  }
+
+  panelImg.addEventListener('click', openLightbox);
+  document.getElementById('view-large-btn').addEventListener('click', openLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+
+  let currentPinIdx = 0;
+
+  function openPanel(pin, idx) {
+    currentPinIdx = idx;
+    document.getElementById('panel-img').src             = pin.src;
+    document.getElementById('panel-img').alt             = pin.title;
+    document.getElementById('panel-gallery').textContent = pin.galleryTitle;
+    document.getElementById('panel-title').textContent   = pin.title;
+    document.getElementById('panel-caption').textContent = pin.caption;
+    document.getElementById('panel-link').href           = pin.galleryUrl;
+    document.getElementById('map-panel').classList.add('open');
+  }
+
+  function goToPin(idx) {
+    const pin = pins[idx];
+    openPanel(pin, idx);
+    const height = Cesium.Cartographic.fromCartesian(viewer.camera.position).height;
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(pin.lng, pin.lat, height),
+      duration: 1.2
+    });
+  }
+
+  document.getElementById('prev-pin').addEventListener('click', () => {
+    goToPin((currentPinIdx - 1 + pins.length) % pins.length);
+  });
+  document.getElementById('next-pin').addEventListener('click', () => {
+    goToPin((currentPinIdx + 1) % pins.length);
+  });
 </script>
 
   </main>
