@@ -68,7 +68,7 @@ layout: page.njk
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <h4>Free &amp; Informal</h4>
-        <p>These are relaxed, free of charge guided bird walks for anyone who wants to explore. I'm grateful to be able to explore this wonderful area, and I love little mote than sharing it with others. So whether you're a seasoned birder or have never held a pair of binoculars, come join a walk when you're here in Squamish.</p>
+        <p>These are relaxed, free of charge guided bird walks for anyone who wants to explore. I'm grateful to be able to explore this wonderful area, and I love little more than sharing it with others. So whether you're a seasoned birder or have never held a pair of binoculars, come join a walk when you're here in Squamish.</p>
       </div>
 
     </div>
@@ -167,6 +167,8 @@ layout: page.njk
         </div>
       </div>
     </div>
+
+    {% if testimonials !== false %}{{ content | safe }}{% endif %}
 
   </div><!-- /exp-walks -->
 
@@ -365,6 +367,54 @@ layout: page.njk
 </div>
 
 <script>
+  (() => {
+    const wrap = document.getElementById('exp-testimonials');
+    const track = wrap && wrap.querySelector('.exp-testimonial-track');
+    if (!track) return;
+    const originals = [...track.querySelectorAll('.exp-testimonial-card')];
+    if (originals.length <= 1) return;
+
+    originals.forEach(c => track.appendChild(c.cloneNode(true)));
+
+    const count = originals.length;
+    const GAP = 24; // matches CSS gap: 1.5rem
+    let current = 0;
+    let animating = false;
+
+    function stepPx() {
+      return (wrap.offsetWidth + GAP) / 2;
+    }
+
+    function moveTo(idx, animated) {
+      if (!animated) track.style.transition = 'none';
+      track.style.transform = `translateX(-${idx * stepPx()}px)`;
+      if (!animated) {
+        track.getBoundingClientRect(); // force reflow
+        track.style.transition = '';
+      }
+    }
+
+    track.addEventListener('transitionend', () => {
+      if (current >= count) {
+        current = 0;
+        moveTo(0, false);
+      }
+      animating = false;
+    });
+
+    function advance() {
+      if (animating) return;
+      animating = true;
+      current++;
+      moveTo(current, true);
+    }
+
+    // Recalculate position on resize without animating
+    new ResizeObserver(() => moveTo(current, false)).observe(wrap);
+
+    setInterval(advance, 5000);
+  })();
+
   (() => {
     const WALKS = {
       eyebrow: 'Guided Walk Enquiry',

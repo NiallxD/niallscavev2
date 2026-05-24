@@ -150,6 +150,64 @@ function buildInlineGallery(uid, slides) {
   return `<div class="gallery-body" style="margin-top:2rem;margin-bottom:2rem;"><div class="gallery-slideshow-container no-bg desktop-only"><div class="swiper gallery-swiper" id="${swiperId}"><div class="swiper-wrapper">${desktopSlides}</div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div><div class="gallery-pagination swiper-pagination" id="${paginationId}"></div><div id="${captionAreaId}" class="gallery-caption-external" style="display:none;"><h3 id="${titleId}"></h3><p id="${descId}"></p></div></div><div class="gallery-mobile-grid mobile-only">${mobileItems}</div><script>(function(){var ${dataVar}=${slidesJson};document.addEventListener('DOMContentLoaded',function(){var tEl=document.getElementById('${titleId}');var dEl=document.getElementById('${descId}');var cArea=document.getElementById('${captionAreaId}');function upd(i){var d=${dataVar}[i];if(!d)return;tEl.textContent=d.title||'';dEl.innerHTML=d.caption||'';cArea.style.display=(d.title||d.caption)?'block':'none';}new Swiper('#${swiperId}',{loop:true,keyboard:{enabled:true},speed:600,pagination:{el:'#${paginationId}',type:'fraction',renderFraction:function(c,t){return'<span class="'+c+'"></span> <span class="fraction-sep">of</span> <span class="'+t+'"></span>';}},navigation:{nextEl:'#${swiperId} .swiper-button-next',prevEl:'#${swiperId} .swiper-button-prev'},on:{init:function(){upd(this.realIndex);},slideChange:function(){upd(this.realIndex);}}});});}());</script></div>`;
 }
 
+function parseTestimonialsFromBlock(blockHtml) {
+  const testimonials = [];
+  const blocks = blockHtml.split(/(?=<h2)/i);
+  for (const block of blocks) {
+    if (!block.trim()) continue;
+    const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+    if (!titleMatch) continue;
+    const rawTitle = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+    if (!rawTitle || /testimonials-(start|end)/i.test(rawTitle)) continue;
+
+    const content = block.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '');
+
+    const subheadMatch = content.match(/<h3[^>]*>([\s\S]*?)<\/h3>/i);
+    const subhead = subheadMatch ? subheadMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+
+    const dateMatch = content.match(/<h4[^>]*>([\s\S]*?)<\/h4>/i);
+    const date = dateMatch ? dateMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+
+    let remaining = content
+      .replace(/<h3[^>]*>[\s\S]*?<\/h3>/gi, '')
+      .replace(/<h4[^>]*>[\s\S]*?<\/h4>/gi, '');
+
+    const nameMatch = remaining.match(/<p>\s*-([^<]+)<\/p>/i);
+    const name = nameMatch ? nameMatch[1].trim() : '';
+
+    const body = remaining
+      .replace(/<p>\s*-[^<]+<\/p>/i, '')
+      .replace(/<p>\s*<\/p>/g, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+      .trim();
+
+    const decode = s => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+
+    testimonials.push({ title: decode(rawTitle), subhead: decode(subhead), date: decode(date), body, name: decode(name) });
+  }
+  return testimonials;
+}
+
+function buildTestimonialsSlider(testimonials) {
+  const esc = s => (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const cards = testimonials.map(t => `<div class="exp-testimonial-card">
+      <div class="exp-testimonial-header">
+        <h4 class="exp-testimonial-title">${esc(t.title)}</h4>
+        ${t.date ? `<span class="exp-testimonial-date">${esc(t.date)}</span>` : ''}
+      </div>
+      ${t.subhead ? `<p class="exp-testimonial-subhead">${esc(t.subhead)}</p>` : ''}
+      ${t.body ? `<p class="exp-testimonial-body">${esc(t.body)}</p>` : ''}
+      ${t.name ? `<p class="exp-testimonial-name">${esc(t.name)}</p>` : ''}
+    </div>`).join('\n');
+  return `<p class="section-label" style="margin-top:3rem;">What People Say</p>
+<div class="exp-testimonials" id="exp-testimonials">
+  <div class="exp-testimonial-track">
+    ${cards}
+  </div>
+</div>`;
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("static");
   eleventyConfig.addPassthroughCopy("robots.txt");
@@ -215,6 +273,19 @@ export default function (eleventyConfig) {
         const slides = parseSlidesFromBlock(inner);
         if (!slides.length) return '';
         return buildInlineGallery(uid++, slides);
+      }
+    );
+  });
+
+  eleventyConfig.addTransform("inlineTestimonials", (content, outputPath) => {
+    if (typeof outputPath !== "string" || !outputPath.endsWith(".html")) return content;
+    if (!content.includes("testimonials-start")) return content;
+    return content.replace(
+      /<h2[^>]*>\s*testimonials-start\s*<\/h2>([\s\S]*?)<h2[^>]*>\s*testimonials-end\s*<\/h2>/gi,
+      (_, inner) => {
+        const testimonials = parseTestimonialsFromBlock(inner);
+        if (!testimonials.length) return '';
+        return buildTestimonialsSlider(testimonials);
       }
     );
   });

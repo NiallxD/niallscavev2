@@ -10,6 +10,8 @@ export default {
   },
 
   permalink: (data) => {
+    // Let JS templates honour their own data() permalink
+    if (data.page?.inputPath?.endsWith(".11ty.js")) return data.permalink;
     if (!data.page?.inputPath?.endsWith(".md")) return undefined;
     const publish = String(data.publish).trim().toLowerCase() === "true";
     if (!publish || data.Type === "Project") return false;
