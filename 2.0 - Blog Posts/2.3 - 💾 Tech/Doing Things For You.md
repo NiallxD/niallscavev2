@@ -10,7 +10,7 @@ excerpt: In an age dominated by social media likes and follows, many creatives f
 tags:
   - on-life
   - photography
-heroImage: https://i.imgur.com/akBHrZy.jpeg
+heroImage: /static/images/akBHrZy.webp
 ---
 
 ![]()

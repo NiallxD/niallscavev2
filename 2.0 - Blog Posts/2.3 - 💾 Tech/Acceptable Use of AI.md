@@ -12,7 +12,7 @@ tags:
   - artificial-intelligence
   - critical-thinking
   - photography
-heroImage: https://i.imgur.com/Ti8yODJ.jpeg
+heroImage: /static/images/Ti8yODJ.webp
 ---
 *In this post I use the term AI often. Unless stated this term refers to LLMs, GPTs, and similar generative AI tools*
 
@@ -71,8 +71,8 @@ This is in my opinion and acceptable use of AI.
 Tedious stuff is another area I think LLMs excel. My photography portfolio is a static site generated from markdown files. To add photographs to a gallery I have to actually type the code and then paste in all the links to the images, this is tedious. Here is an example of the code, I have this code block repeated for every image in a gallery:
 
 ```html
-<a href="https://i.imgur.com/kTGIAGs.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/kTGIAGs.jpeg" width="300" height="200">
+<a href="/static/images/kTGIAGs.webp" data-fancybox="gallery">
+        <img src="/static/images/kTGIAGs.webp" width="300" height="200">
 </a>
 ```
 

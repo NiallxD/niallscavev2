@@ -12,7 +12,7 @@ tags:
   - hobbies
   - meteorology
   - photography
-heroImage: https://i.imgur.com/ERuqaWk.jpeg
+heroImage: /static/images/ERuqaWk.webp
 Featured: true
 ---
 Cloudspotting, despite what my autocorrect thinks, is a real thing, and I'm here to talk about why I think everybody should try to become just a little bit obsessed with clouds.

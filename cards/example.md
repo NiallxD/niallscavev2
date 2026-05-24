@@ -4,7 +4,7 @@ Type: ECard
 publish: true
 permalink: /cards/example
 from: Niall
-front: https://i.imgur.com/ZszeHtH.jpeg
-innerLeft: https://i.imgur.com/biwSaaY.jpeg
-innerRight: https://i.imgur.com/RqFmXAc.jpeg
+front: /static/images/ZszeHtH.webp
+innerLeft: /static/images/biwSaaY.webp
+innerRight: /static/images/RqFmXAc.webp
 ---

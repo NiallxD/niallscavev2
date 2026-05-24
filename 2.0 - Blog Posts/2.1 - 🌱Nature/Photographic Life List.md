@@ -13,7 +13,7 @@ tags:
   - nature
   - photography
   - wildlife
-heroImage: https://i.imgur.com/urbFltC.jpeg
+heroImage: /static/images/urbFltC.webp
 created: 2024-04-28
 updated: 2025-06-22
 ---
@@ -46,39 +46,39 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Deer
 
 #### Red Deer
-![](https://i.imgur.com/5V9w3FV.jpeg)
+![](/static/images/5V9w3FV.webp)
 *England - 2022*
 
 #### Elk (Wapiti)
-![](https://i.imgur.com/2b7Ni1U.jpeg)
+![](/static/images/2b7Ni1U.webp)
 *Canada (Alberta) - 2025*
 
 #### Fallow Deer
-![](https://i.imgur.com/V3chxmo.jpeg)
+![](/static/images/V3chxmo.webp)
 *England - 2019*
 
 #### Sika Deer
-![](https://i.imgur.com/QHcFXIH.jpeg)
+![](/static/images/QHcFXIH.webp)
 *England - 2018*
 
 #### Roe Deer
-![](https://i.imgur.com/DcGb0s3.jpeg)
+![](/static/images/DcGb0s3.webp)
 *England - 2022*
 
 #### Sambar Deer
-![](https://i.imgur.com/ix4Zp2z.jpeg)
+![](/static/images/ix4Zp2z.webp)
 *India - 2022*
 
 #### Nilgai
-![](https://i.imgur.com/6cPGkeQ.jpeg)
+![](/static/images/6cPGkeQ.webp)
 *India - 2022*
 
 #### Chital
-![](https://i.imgur.com/WX67ZHE.jpeg)
+![](/static/images/WX67ZHE.webp)
 *India - 2022*
 
 #### Moose
-![](https://i.imgur.com/SqDs4MJ.jpeg)
+![](/static/images/SqDs4MJ.webp)
 *Canada (Alberta) - 2025*
 
 ---
@@ -86,19 +86,19 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Cows, Pigs, and Goat-likes
 
 #### Indian Guar
-![](https://i.imgur.com/5SybP1K.jpeg)
+![](/static/images/5SybP1K.webp)
 *India - 2022*
 
 #### Wild Boar
-![](https://i.imgur.com/Nq3hLNK.jpeg)
+![](/static/images/Nq3hLNK.webp)
 *India - 2022*
 
 #### Bighorn Sheep
-![](https://i.imgur.com/0OGjPFY.jpeg)
+![](/static/images/0OGjPFY.webp)
 *Canada (Alberta) - 2025*
 
 #### Mountain Goat
-![](https://i.imgur.com/Ui0j1Ib.jpeg)
+![](/static/images/Ui0j1Ib.webp)
 *Canada (Alberta) - 2025*
 
 ---
@@ -106,7 +106,7 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Primates
 
 #### Langur
-![](https://i.imgur.com/ou4fm1g.jpeg)
+![](/static/images/ou4fm1g.webp)
 *India - 2022*
 
 ---
@@ -114,7 +114,7 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Felines
 
 #### Royal Bengal Tiger
-![](https://i.imgur.com/7VfFNPl.jpeg)
+![](/static/images/7VfFNPl.webp)
 *India - 2022*
 
 ---
@@ -122,37 +122,37 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Canines
 
 #### Red Fox
-![](https://i.imgur.com/dtLkpyd.jpeg)
+![](/static/images/dtLkpyd.webp)
 *England - 2022*
 
 ---
 ### Bears
 
 #### Brown Bear
-![](https://i.imgur.com/Tip0k1n.jpg)
+![](/static/images/Tip0k1n.webp)
 *Finland - 2024*
 
 #### American Black Bear
-![](https://i.imgur.com/N7YG33S.jpeg)
+![](/static/images/N7YG33S.webp)
 *Canada (British Columbia) - 2025*
 
 ---
 ### Musta-likes
 
 #### European badger
-![](https://i.imgur.com/uOS93Q3.jpeg)
+![](/static/images/uOS93Q3.webp)
 *England - 2023*
 
 #### Stoat
-![](https://i.imgur.com/c48TJZS.jpeg)
+![](/static/images/c48TJZS.webp)
 *England - 2019*
 
 #### Indian Mongoose
-![](https://i.imgur.com/jk3B7C2.jpeg)
+![](/static/images/jk3B7C2.webp)
 *India - 2022*
 
 #### Wolverine
-![](https://i.imgur.com/HQqsiFZ.jpg)
+![](/static/images/HQqsiFZ.webp)
 *Finland - 2024*
 
 ---
@@ -160,11 +160,11 @@ Use these links to jump to specific sections. For those one desktop use the cont
 ### Small Bear-Like Things
 
 #### Raccoon
-![](https://i.imgur.com/hfKFaOi.jpeg)
+![](/static/images/hfKFaOi.webp)
 _Canada (British Columbia) - 2025_
 
 #### Hoary Marmot
-![](https://i.imgur.com/EMrrQIH.jpeg)
+![](/static/images/EMrrQIH.webp)
 *Canada (Alberta) - 2025*
 
 ---
@@ -172,15 +172,15 @@ _Canada (British Columbia) - 2025_
 ### Rabbits and Rodents
 
 ### Mountain Hare
-![](https://i.imgur.com/I7TpBys.jpeg)
+![](/static/images/I7TpBys.webp)
 *England - 2019*
 
 ### European Rabbit
-![](https://i.imgur.com/u8mKuC8.jpeg)
+![](/static/images/u8mKuC8.webp)
 *England - 2022*
 
 #### Wood Mouse
-![](https://i.imgur.com/fphgqLU.jpeg)
+![](/static/images/fphgqLU.webp)
 *England - 2023*
 
 
@@ -189,47 +189,47 @@ _Canada (British Columbia) - 2025_
 ### Wet Mammals
 
 #### American Beaver
-![](https://i.imgur.com/G8zpdqm.jpeg)
+![](/static/images/G8zpdqm.webp)
 *Canada (British Columbia) - 2025*
 
 #### Eurasian Otter
-![](https://i.imgur.com/7aHkiwB.jpeg)
+![](/static/images/7aHkiwB.webp)
 *Scotland - 2023*
 
 #### North American River Otter
-![](https://i.imgur.com/i9ieayq.jpeg)
+![](/static/images/i9ieayq.webp)
 *Canada (British Columbia) - 2025*
 
 #### Grey Seal
-![](https://i.imgur.com/3Vjlcls.jpeg)
+![](/static/images/3Vjlcls.webp)
 *England - 2022*
 
 #### Common Seal
-![](https://i.imgur.com/VZUQpXl.jpeg)
+![](/static/images/VZUQpXl.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### Harbour Seal
-![](https://i.imgur.com/nSRL4cn.jpeg)
+![](/static/images/nSRL4cn.webp)
 *Canada (British Columbia) - 2025*
 
 #### California Sea Lion
-![](https://i.imgur.com/4b8ly9t.jpeg)
+![](/static/images/4b8ly9t.webp)
 *Canada (British Columbia) - 2025*
 
 #### Bottlenose Dolphin
-![](https://i.imgur.com/CfKZXZ3.jpeg)
+![](/static/images/CfKZXZ3.webp)
 *England - 2023*
 
 #### Pacific White-sided Dolphin
-![](https://i.imgur.com/VEcLVqv.jpeg)
+![](/static/images/VEcLVqv.webp)
 *Canada (British Columbia) - 2025*
 
 #### Humpback Whale
-![](https://i.imgur.com/L5ZObW0.jpeg)
+![](/static/images/L5ZObW0.webp)
 *Canada (British Columbia) - 2025*
 
 #### Orca (Resident Killer-whale)
-![](https://i.imgur.com/Mq5KBCV.jpeg)
+![](/static/images/Mq5KBCV.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -237,23 +237,23 @@ _Canada (British Columbia) - 2025_
 ### Squirrels and That
 
 #### Red Squirrel
-![](https://i.imgur.com/3Vzkw2D.jpeg)
+![](/static/images/3Vzkw2D.webp)
 *England - 2023*
 
 #### American Red Squirrel
-![](https://i.imgur.com/Pp0LWv6.jpeg)
+![](/static/images/Pp0LWv6.webp)
 _Canada (British Columbia) - 2025_
 
 #### Grey Squirrel
-![](https://i.imgur.com/qbNmP2L.jpeg)
+![](/static/images/qbNmP2L.webp)
 *England - 2023*
 
 #### Indian Striped Squirrel
-![](https://i.imgur.com/rmRfPkc.jpeg)
+![](/static/images/rmRfPkc.webp)
 *India - 2022*
 
 #### Columbian Ground Squirrel
-![](https://i.imgur.com/rIIawsn.jpeg)
+![](/static/images/rIIawsn.webp)
 *Canada (Alberta) - 2025*
 
 ---
@@ -263,136 +263,136 @@ _Canada (British Columbia) - 2025_
 ### Birds of Prey
 
 #### Bald Eagle
-![](https://i.imgur.com/cr4up8J.jpeg)
+![](/static/images/cr4up8J.webp)
 _Canada (British Columbia) - 2025_
 
 #### Golden Eagle
-![](https://i.imgur.com/RdRgxQZ.jpeg)
+![](/static/images/RdRgxQZ.webp)
 *Canada (Alberta) - 2025*
 
 #### White-tailed Eagle
-![](https://i.imgur.com/FeXjmSF.jpeg)
+![](/static/images/FeXjmSF.webp)
 *Poland - 2023*
 
 #### Short-toed Snake Eagle
-![](https://i.imgur.com/EM5u0um.jpeg)
+![](/static/images/EM5u0um.webp)
 *India - 2022*
 
 #### Sparrowhawk
-![](https://i.imgur.com/PjMnkgV.jpeg)
+![](/static/images/PjMnkgV.webp)
 *England - 2024*
 
 #### Shikra
-![](https://i.imgur.com/FFvZysJ.jpeg)
+![](/static/images/FFvZysJ.webp)
 *India - 2022*
 
 #### Sharp-shinned Hawk
-![](https://i.imgur.com/S1WKy87.jpeg)
+![](/static/images/S1WKy87.webp)
 *Canada (British Columbia) - 2025*
 
 #### Coopers Hawk
-![](https://i.imgur.com/8ylWc4E.jpeg)
+![](/static/images/8ylWc4E.webp)
 *Canada (British Columbia) - 2025*
 
 #### White-eyed Buzzard
-![](https://i.imgur.com/9HW7FNd.jpeg)
+![](/static/images/9HW7FNd.webp)
 *India - 2022*
 
 #### Oriental Honey Buzzard
-![](https://i.imgur.com/Jbfjcgl.jpeg)
+![](/static/images/Jbfjcgl.webp)
 *India - 2022*
 
 #### Red-shouldered Hawk
-![](https://i.imgur.com/2hwiTyI.jpeg)
+![](/static/images/2hwiTyI.webp)
 *Florida - 2016*
 
 #### Common Buzzard
-![](https://i.imgur.com/nNX3GBK.jpeg)
+![](/static/images/nNX3GBK.webp)
 *England - 2019*
 
 #### Red-tailed Hawk
-![](https://i.imgur.com/NVoK2a2.jpeg)
+![](/static/images/NVoK2a2.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Kestrel
-![](https://i.imgur.com/1sTd3Kq.jpeg)
+![](/static/images/1sTd3Kq.webp)
 *England - 2019*
 
 #### American Kestrel
-![](https://i.imgur.com/61eEMUO.jpeg)
+![](/static/images/61eEMUO.webp)
 *Canada (British Columbia) - 2025*
 
 #### Hobby
-![](https://i.imgur.com/StImfXt.jpeg)
+![](/static/images/StImfXt.webp)
 *England - 2023*
 
 #### Merlin
-![](https://i.imgur.com/8sxXq9G.jpeg)
+![](/static/images/8sxXq9G.webp)
 *Canada (British Columbia) - 2025*
 
 #### Red Kite
-![](https://i.imgur.com/ECqTpp1.jpeg)
+![](/static/images/ECqTpp1.webp)
 *Wales - 2021*
 
 #### Western Marsh Harrier
-![](https://i.imgur.com/qT5r2y8.jpeg)
+![](/static/images/qT5r2y8.webp)
 *England -2023*
 
 #### Northern Harrier
-![](https://i.imgur.com/B5ascJe.jpeg)
+![](/static/images/B5ascJe.webp)
 *Canada (British Columbia) - 2025*
 
 #### Osprey
-![](https://i.imgur.com/t0NHEO6.jpeg)
+![](/static/images/t0NHEO6.webp)
 *England - 2022*
 
 #### Peregrine Falcon
-![](https://i.imgur.com/tRKf0qI.jpeg)
+![](/static/images/tRKf0qI.webp)
 *England - 2022*
 
 #### Barred Owl
 
-![](https://i.imgur.com/woglA4l.jpeg)
+![](/static/images/woglA4l.webp)
 *Canada (British Columbia) - 2025*
 
 #### Great Horned Owl
-![](https://i.imgur.com/jt0WdXj.jpeg)
+![](/static/images/jt0WdXj.webp)
 *Canada (British Columbia) - 2025*
 
 #### Tawny Owl
-![](https://i.imgur.com/yGzQaOg.jpeg)
+![](/static/images/yGzQaOg.webp)
 *England - 2023*
 
 #### Little Owl
-![](https://i.imgur.com/0TQyjd6.jpeg)
+![](/static/images/0TQyjd6.webp)
 *England - 2019*
 
 #### Barn Owl
-![](https://i.imgur.com/FD5Lozg.jpeg)
+![](/static/images/FD5Lozg.webp)
 *England - 2023*
 
 #### Short-eared Owl
-![](https://i.imgur.com/Ov1NON5.jpeg)
+![](/static/images/Ov1NON5.webp)
 *England - 2023*
 
 #### Long-eared Owl
-![](https://i.imgur.com/5mqJbqt.jpeg)
+![](/static/images/5mqJbqt.webp)
 *Canada (British Columbia) - 2025*
 
 #### Mottled Wood Owl
-![](https://i.imgur.com/qsP5Klo.jpeg)
+![](/static/images/qsP5Klo.webp)
 *India - 2022*
 
 #### Indian Scops Owl
-![](https://i.imgur.com/4X7Jz0D.jpeg)
+![](/static/images/4X7Jz0D.webp)
 *India - 2022*
 
 #### Jungle Owlet
-![](https://i.imgur.com/wgzQ8XT.jpeg)
+![](/static/images/wgzQ8XT.webp)
 *India - 2022*
 
 #### Turkey Vulture
-![](https://i.imgur.com/O4egMUJ.jpeg)
+![](/static/images/O4egMUJ.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -400,410 +400,410 @@ _Canada (British Columbia) - 2025_
 ### Wet Birds
 
 #### Atlantic Puffin
-![](https://i.imgur.com/UonZX19.jpeg)
+![](/static/images/UonZX19.webp)
 *Scotland - 2023*
 
 #### Razorbill
-![](https://i.imgur.com/S5J7pKN.jpeg)
+![](/static/images/S5J7pKN.webp)
 *England - 2023*
 
 #### Guillemot
-![](https://i.imgur.com/ipsTlsN.jpeg)
+![](/static/images/ipsTlsN.webp)
 *England - 2023*
 
 #### Great Skua
-![](https://i.imgur.com/feyCjEK.jpeg)
+![](/static/images/feyCjEK.webp)
 *Scotland - 2023*
 
 ### Manx Shearwater
-![](https://i.imgur.com/AqYhgW1.jpeg)
+![](/static/images/AqYhgW1.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### Northern Gannet
-![](https://i.imgur.com/KDQaaoa.jpeg)
+![](/static/images/KDQaaoa.webp)
 *England (Bempton Cliffs) - 2023*
 
 #### Common Gull
-![](https://i.imgur.com/nI4bz1X.jpeg)
+![](/static/images/nI4bz1X.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### Herring Gull
-![](https://i.imgur.com/cGJx6Vo.jpeg)
+![](/static/images/cGJx6Vo.webp)
 *England - 2022*
 
 #### Lesser Black-back Gull
-![](https://i.imgur.com/jqt3oAQ.jpeg)
+![](/static/images/jqt3oAQ.webp)
 *England (iPort Lakes) - 2022*
 
 #### Glaucous-winged Gull
-![](https://i.imgur.com/PnXdNuq.jpeg)
+![](/static/images/PnXdNuq.webp)
 _Canada (British Columbia) - 2025_
 
 #### Black-headed Gull
-![](https://i.imgur.com/x06Aa04.jpeg)
+![](/static/images/x06Aa04.webp)
 *England (Porter Valley) - 2023*
 
 #### Short-Billed Gull
-![](https://i.imgur.com/JoIlSpf.jpeg)
+![](/static/images/JoIlSpf.webp)
 *Canada (British Columbia) Juv & Adult - 2025*
 
 #### Black-legged Kittiwake
-![](https://i.imgur.com/Nnsh3ds.jpeg)
+![](/static/images/Nnsh3ds.webp)
 *England (Bempton Cliffs) - 2023*
 
 #### Fulmar
-![](https://i.imgur.com/upU92az.jpeg)
+![](/static/images/upU92az.webp)
 *England (Bempton Cliffs) - 2023*
 
 #### Common Tern
-![](https://i.imgur.com/ecihT5z.jpeg)
+![](/static/images/ecihT5z.webp)
 *England (Attenborough Nature Reserve) - 2023*
 
 #### Caspian Tern
-![](https://i.imgur.com/mHjITxs.jpeg)
+![](/static/images/mHjITxs.webp)
 *Canada (British Columbia) - 2025*
 
 #### Black Tern
-![](https://i.imgur.com/m9aaHJg.jpeg)
+![](/static/images/m9aaHJg.webp)
 *England (Potteric Carr) - 2023*
 
 #### European Shag
-![](https://i.imgur.com/0QBTWIQ.jpeg)
+![](/static/images/0QBTWIQ.webp)
 *Scotland (Isle of Lunga)- 2023*
 
 #### Great Cormorant
-![](https://i.imgur.com/N0JpNrR.jpeg)
+![](/static/images/N0JpNrR.webp)
 *England (Yorkshire Wildlife Park) - 2023*
 
 #### Double-crested Cormorant
-![](https://i.imgur.com/FRbxvEu.jpeg)
+![](/static/images/FRbxvEu.webp)
 *Florida - 2016*
 
 #### Pelagic Cormorant
-![](https://i.imgur.com/yqA1Voj.jpeg)
+![](/static/images/yqA1Voj.webp)
 *Canada (British Columbia) - 2025*
 
 #### White-breasted Kingfisher
-![](https://i.imgur.com/WKRafdb.jpeg)
+![](/static/images/WKRafdb.webp)
 *India (Tadoba) - 2022*
 
 #### Common Kingfisher
-![](https://i.imgur.com/aD3WSZo.jpeg)
+![](/static/images/aD3WSZo.webp)
 *England (Porter Valley) - 2024*
 
 #### Belted Kingfisher
-![](https://i.imgur.com/bX8TBBG.jpeg)
+![](/static/images/bX8TBBG.webp)
 *Canada(British Columbia) - 2025*
 
 #### Brown Pelican
-![](https://i.imgur.com/xlZLOX6.jpeg)
+![](/static/images/xlZLOX6.webp)
 *Florida - 2016*
 
 #### Open-billed Stork
-![](https://i.imgur.com/XPwpcLI.jpeg)
+![](/static/images/XPwpcLI.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Lesser Adjutant Stork
-![](https://i.imgur.com/tKnJucb.jpeg)
+![](/static/images/tKnJucb.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### European Spoonbill
-![](https://i.imgur.com/KmafTyO.jpeg)
+![](/static/images/KmafTyO.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### American White Ibis
-![](https://i.imgur.com/xCnbdzy.jpeg)
+![](/static/images/xCnbdzy.webp)
 *Florida - 2016*
 
 #### Purple Heron
-![](https://i.imgur.com/5fqIVlg.jpeg)
+![](/static/images/5fqIVlg.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Indian Pond Heron
-![](https://i.imgur.com/2ziE4bf.jpeg)
+![](/static/images/2ziE4bf.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Green Heron
-![](https://i.imgur.com/R9PNoIA.jpeg)
+![](/static/images/R9PNoIA.webp)
 *Florida - 2016*
 
 #### Black-crowned Night Heron
-![](https://i.imgur.com/QYTnEgZ.jpeg)
+![](/static/images/QYTnEgZ.webp)
 *England (RSPB Adwick Washlands) - 2023*
 
 #### Grey Heron
-![](https://i.imgur.com/yDn9AmY.jpeg)
+![](/static/images/yDn9AmY.webp)
 *England (Porter Valley) - 2024*
 
 #### Great Blue Heron
-![](https://i.imgur.com/iN45e0O.jpeg)
+![](/static/images/iN45e0O.webp)
 _Canada (British Columbia) - 2025_
 
 #### Little Bittern
-![](https://i.imgur.com/xUND9ja.jpeg)
+![](/static/images/xUND9ja.webp)
 *England (RSPB Old Moor) - 2016*
 
 #### Great Bittern
-![](https://i.imgur.com/OC44NKA.jpeg)
+![](/static/images/OC44NKA.webp)
 *England (RSPB St Aidans) - 2024*
 
 #### American Bittern
-![](https://i.imgur.com/Ax4c9U7.jpeg)
+![](/static/images/Ax4c9U7.webp)
 *Canada (British Columbia) - 2025*
 
 #### Snowy Egret
-![](https://i.imgur.com/lGGgPZX.jpeg)
+![](/static/images/lGGgPZX.webp)
 *Florida - 2016*
 
 #### Little Egret
-![](https://i.imgur.com/0LbOuOg.jpeg)
+![](/static/images/0LbOuOg.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Great White Egret
-![](https://i.imgur.com/aJjAWYB.jpeg)
+![](/static/images/aJjAWYB.webp)
 *Florida - 2016*
 
 #### Eastern Cattle Egret
-![](https://i.imgur.com/DP86i3m.jpeg)
+![](/static/images/DP86i3m.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Indian Darter
-![](https://i.imgur.com/KW962Ls.jpeg)
+![](/static/images/KW962Ls.webp)
 *India (Tadoba Andhari Tiger Reserve) - 2022*
 
 #### Black-winged Pratincole
-![](https://i.imgur.com/evexC6O.jpeg)
+![](/static/images/evexC6O.webp)
 *England (Notts) - 2024*
 
 #### Pied Avocet
-![](https://i.imgur.com/oT9WMem.jpeg)
+![](/static/images/oT9WMem.webp)
 *England (Potteric Carr Nature Reserve) - 2020*
 
 #### Bar-tailed Godwit
-![](https://i.imgur.com/L9xVghP.jpeg)
+![](/static/images/L9xVghP.webp)
 *England - 2022*
 
 #### Black-tailed Godwit
-![](https://i.imgur.com/MpiuGMZ.jpeg)
+![](/static/images/MpiuGMZ.webp)
 *England (Potteric Carr) - 2024*
 
 #### Eurasian Curlew
-![](https://i.imgur.com/bqE6caH.jpeg)
+![](/static/images/bqE6caH.webp)
 *Scotland (Isle of Mull) - 2023*
 
 #### Long-billed Curlew
-![](https://i.imgur.com/ITBDzqU.jpeg)
+![](/static/images/ITBDzqU.webp)
 *Canada (British Columbia) - 2025*
 
 #### Greater Yellowlegs
-![](https://i.imgur.com/ukPH1MS.jpeg)
+![](/static/images/ukPH1MS.webp)
 *Canada (British Columbia) - 2025*
 
 #### Least Sandpiper
-![](https://i.imgur.com/BieY3Tm.jpeg)
+![](/static/images/BieY3Tm.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Sandpiper
-![](https://i.imgur.com/zeMwOfG.jpeg)
+![](/static/images/zeMwOfG.webp)
 *Scotland (Isle of Mull) - 2023*
 
 #### Green Sandpiper
-![](https://i.imgur.com/7jZpKfm.jpeg)
+![](/static/images/7jZpKfm.webp)
 *Finland - 2024*
 
 #### Wood Sandpiper
-![](https://i.imgur.com/Jl8Ld4N.jpeg)
+![](/static/images/Jl8Ld4N.webp)
 *Finland - 2024*
 
 #### Dunlin
-![](https://i.imgur.com/LZOG7WI.jpeg)
+![](/static/images/LZOG7WI.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### Common Ringed Plover
-![](https://i.imgur.com/xhdSaFK.jpeg)
+![](/static/images/xhdSaFK.webp)
 *Scotland (Isle of Mull) - 2023*
 
 #### Little Ringed Plover
-![](https://i.imgur.com/lr8hGsd.jpeg)
+![](/static/images/lr8hGsd.webp)
 *England (Yorkshire Wildlife Park) - 2023*
 
 #### Killdeer
-![](https://i.imgur.com/VHPwNN5.jpeg)
+![](/static/images/VHPwNN5.webp)
 *Canada (British Columbia) - 2025*
 
 #### Ruddy Turnstone
-![](https://i.imgur.com/Ll0qUfR.jpeg)
+![](/static/images/Ll0qUfR.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### Sanderling
-![](https://i.imgur.com/zaSgKRO.jpeg)
+![](/static/images/zaSgKRO.webp)
 *Ireland (Dolly Mount Strand) - 2023*
 
 #### Eurasian Oystercatcher
-![](https://i.imgur.com/i0LKo0d.jpeg)
+![](/static/images/i0LKo0d.webp)
 *Scotland (Isle of Mull) - 2023*
 
 #### Black Oystercatcher
-![](https://i.imgur.com/IpEa6W5.jpeg)
+![](/static/images/IpEa6W5.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Snipe
-![](https://i.imgur.com/Lbu5VSK.jpeg)
+![](/static/images/Lbu5VSK.webp)
 *England - 2018*
 
 #### Wilson's Snipe
-![](https://i.imgur.com/WcLHD4C.jpeg)
+![](/static/images/WcLHD4C.webp)
 _Canada (British Columbia) - 2025_
 
 #### Common Redshank
-![](https://i.imgur.com/3Pu5wel.jpeg)
+![](/static/images/3Pu5wel.webp)
 *England - 2023*
 
 #### Common Greenshank
-![](https://i.imgur.com/w6WMTEj.jpeg)
+![](/static/images/w6WMTEj.webp)
 *Finland - 2024*
 
 #### Black-winged Stilt
-![](https://i.imgur.com/eHGaebW.jpeg)
+![](/static/images/eHGaebW.webp)
 *England - 2023*
 
 #### Northern Lapwing
-![](https://i.imgur.com/r59BEjf.jpeg)
+![](/static/images/r59BEjf.webp)
 *England - 2023*
 
 #### Common Moorhen
-![](https://i.imgur.com/LNYP0dO.jpeg)
+![](/static/images/LNYP0dO.webp)
 *England - 2024*
 
 #### Common Coot
-![](https://i.imgur.com/vWIjO1e.jpeg)
+![](/static/images/vWIjO1e.webp)
 *England - 2023*
 
 #### American Coot
-![](https://i.imgur.com/cDnHEzF.jpeg)
+![](/static/images/cDnHEzF.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Mallard
-![](https://i.imgur.com/j3CvmIw.jpeg)
+![](/static/images/j3CvmIw.webp)
 *England - 2021*
 
 #### Carolina Wood Duck
-![](https://i.imgur.com/pFDdVfs.jpeg)
+![](/static/images/pFDdVfs.webp)
 *England - 2021*
 
 #### Mandarin Duck
-![](https://i.imgur.com/CU54LYT.jpeg)
+![](/static/images/CU54LYT.webp)
 *England - 2024*
 
 #### Common Pochard
-![](https://i.imgur.com/qvawjkW.jpeg)
+![](/static/images/qvawjkW.webp)
 *England - 2024*
 
 #### Tufted Duck
-![](https://i.imgur.com/kk3wqDI.jpeg)
+![](/static/images/kk3wqDI.webp)
 *England - 2023*
 
 #### Barrows's Goldeneye
-![](https://i.imgur.com/1Kxs5bR.jpeg)
+![](/static/images/1Kxs5bR.webp)
 *BC, Canada (Vancouver Port) - 2025*
 
 #### Bufflehead
-![](https://i.imgur.com/gENZQFE.jpeg)
+![](/static/images/gENZQFE.webp)
 *Canada (British Columbia) - 2025*
 
 #### Green-winged Teal
-![](https://i.imgur.com/c9L6Xkr.jpeg)
+![](/static/images/c9L6Xkr.webp)
 *England - 2023*
 
 #### Eurasian Wigeon
-![](https://i.imgur.com/2Shpcaa.jpeg)
+![](/static/images/2Shpcaa.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Shelduck
-![](https://i.imgur.com/Hn2irk6.jpeg)
+![](/static/images/Hn2irk6.webp)
 *England - 2018*
 
 #### Northern Pintail
-![](https://i.imgur.com/awQwYA2.jpeg)
+![](/static/images/awQwYA2.webp)
 *Canada (British Columbia) - 2025*
 
 #### Surf Scoter
-![](https://i.imgur.com/QJn9vrt.jpeg)
+![](/static/images/QJn9vrt.webp)
 _Canada (British Columbia) - 2025_
 
 #### Harlequin Duck
-![](https://i.imgur.com/ZQZuRA6.jpeg)
+![](/static/images/ZQZuRA6.webp)
 *Canada (British Columbia) - 2025*
 
 #### Goosander
-![](https://i.imgur.com/esaXUbM.jpeg)
+![](/static/images/esaXUbM.webp)
 _England (Lake District) - 2024_
 
 #### Hooded Merganser
-![](https://i.imgur.com/l9gzE73.jpeg)
+![](/static/images/l9gzE73.webp)
 _Canada (British Columbia) - 2025_
 
 #### Mute Swan
-![](https://i.imgur.com/eZSGedf.jpeg)
+![](/static/images/eZSGedf.webp)
 *England - 2022*
 
 #### Greylag Goose
-![](https://i.imgur.com/5ysqmf1.jpeg)
+![](/static/images/5ysqmf1.webp)
 *England - 2023*
 
 #### Canda Goose
-![](https://i.imgur.com/0PzAQrr.jpeg)*England - 2023*
+![](/static/images/0PzAQrr.webp)*England - 2023*
 
 #### Cackling Goose
-![](https://i.imgur.com/AUuBXu3.jpeg)
+![](/static/images/AUuBXu3.webp)
 *Canada (British Columbia) - 2025*
 
 #### Egyptian Goose
-![](https://i.imgur.com/E4m0t1c.jpeg)
+![](/static/images/E4m0t1c.webp)
 *England - 2023*
 
 #### Greater-white Fronted Goose
-![](https://i.imgur.com/EgFZKXU.jpeg)
+![](/static/images/EgFZKXU.webp)
 *Canada (British Columbia) - 2025*
 
 #### Snow Goose
-![](https://i.imgur.com/yUbUjAh.jpeg)
+![](/static/images/yUbUjAh.webp)
 *Canada (British Columbia) - 2025*
 
 #### Great Northern Diver (Common Loon)
-![](https://i.imgur.com/eZ20CVv.jpeg)
+![](/static/images/eZ20CVv.webp)
 *Canada (British Columbia) - 2025*
 
 #### Great Crested Grebe
-![](https://i.imgur.com/xJkj66W.jpeg)
+![](/static/images/xJkj66W.webp)
 *England - 2023*
 
 #### Little Grebe
-![](https://i.imgur.com/DcfdeAK.jpeg)
+![](/static/images/DcfdeAK.webp)
 *England - 2023*
 
 #### Slavonian Grebe (Horned Grebe)
-![](https://i.imgur.com/4NqSQrb.jpeg)
+![](/static/images/4NqSQrb.webp)
 *England - 2023*
 
 #### Black-necked Grebe (Eared Grebe)
-![](https://i.imgur.com/VPmhKCu.jpeg)
+![](/static/images/VPmhKCu.webp)
 *England - 2024*
 
 #### Water Rail
-![](https://i.imgur.com/0r32aD9.jpeg)
+![](/static/images/0r32aD9.webp)
 *England - 2022*
 
 #### Virginia Rail
-![](https://i.imgur.com/uMb6xM7.jpeg)
+![](/static/images/uMb6xM7.webp)
 *Canada (British Columbia) - 2025*
 
 #### White-throated Dipper
-![](https://i.imgur.com/Nj97pHI.jpeg)
+![](/static/images/Nj97pHI.webp)
 *England - 2024*
 
 #### American Dipper
-![](https://i.imgur.com/urbFltC.jpeg)
+![](/static/images/urbFltC.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -811,11 +811,11 @@ _Canada (British Columbia) - 2025_
 ### Wagtails
 
 #### Grey Wagtail
-![](https://i.imgur.com/Bgg11CS.jpeg)
+![](/static/images/Bgg11CS.webp)
 *Scotland - 2022*
 
 #### Pied Wagtail
-![](https://i.imgur.com/Qean9Kk.jpeg)
+![](/static/images/Qean9Kk.webp)
 *England - 2023*
 
 ---
@@ -823,46 +823,46 @@ _Canada (British Columbia) - 2025_
 ### Woodpeckers et al.
 
 #### Great Spotted Woodpecker
-![](https://i.imgur.com/AswJJZ0.jpeg)
+![](/static/images/AswJJZ0.webp)
 *England - 2023*
 
 #### Downy Woodpecker
-![](https://i.imgur.com/xlqouDL.jpeg)
+![](/static/images/xlqouDL.webp)
 *Canada (British Columbia) - 2025*
 
 #### Hairy Woodpecker
-![](https://i.imgur.com/EPZikFP.jpeg)
+![](/static/images/EPZikFP.webp)
 *Canada (British Columbia) - 2025*
 
 #### Green Woodpecker
-![](https://i.imgur.com/bvl49eJ.jpeg)
+![](/static/images/bvl49eJ.webp)
 *England - 2023*
 
 #### Black-rumped Flameback
-![](https://i.imgur.com/5n0yaHi.jpeg)
+![](/static/images/5n0yaHi.webp)
 *India - 2022*
 
 #### Pileated Woodpecker
-![](https://i.imgur.com/VnRXMkp.jpeg)
+![](/static/images/VnRXMkp.webp)
 *Canada (British Columbia) - 2025*
 
 #### Northern Flicker
-![](https://i.imgur.com/HlqqCrv.jpeg)
+![](/static/images/HlqqCrv.webp)
 _Canada (British Columbia) - 2025_
 
 #### Red-breasted Sapsucker
-![](https://i.imgur.com/FPGjpdm.jpeg)
+![](/static/images/FPGjpdm.webp)
 _Canada (British Columbia) - 2025_
 
 #### Red-naped Sapsucker
-![](https://i.imgur.com/p0jFIMY.jpeg)
+![](/static/images/p0jFIMY.webp)
 *Canada (British Columbia) - 2025*
 
 ---
 ### Cuckoos
 
 #### Common Cuckoo
-![](https://i.imgur.com/rsqraJi.jpeg)
+![](/static/images/rsqraJi.webp)
 *England (Hatfield Moors) - 2024*
 
 ---
@@ -870,7 +870,7 @@ _Canada (British Columbia) - 2025_
 ### Hoopoes
 
 #### Eurasian Hoopeo
-![](https://i.imgur.com/FPYQzf2.jpeg)
+![](/static/images/FPYQzf2.webp)
 *India - 2022*
 
 ---
@@ -878,11 +878,11 @@ _Canada (British Columbia) - 2025_
 ### Hummingbirds
 
 #### Anna's Hummingbird
-![](https://i.imgur.com/TVvjNEQ.jpeg)
+![](/static/images/TVvjNEQ.webp)
 _Canada (British Columbia) - 2025_
 
 #### Rufous Hummingbird
-![](https://i.imgur.com/r8Th9Is.jpeg)
+![](/static/images/r8Th9Is.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -890,291 +890,291 @@ _Canada (British Columbia) - 2025_
 ### Birds that Sing a lot
 
 #### European Robin
-![](https://i.imgur.com/E7CXMdN.jpeg)
+![](/static/images/E7CXMdN.webp)
 *England - 2018*
 
 #### American Robin
-![](https://i.imgur.com/YWLNcko.jpeg)
+![](/static/images/YWLNcko.webp)
 *Canada (British Columbia) - 2025*
 
 #### Oriental Magpie Robin
-![](https://i.imgur.com/J3MpoV8.jpeg)
+![](/static/images/J3MpoV8.webp)
 *India - 2022*
 
 #### European Blue Tit
-![](https://i.imgur.com/AlfI0tN.jpeg)
+![](/static/images/AlfI0tN.webp)
 *England - 2018*
 
 #### Great Tit
-![](https://i.imgur.com/Ji9kIVP.jpeg)
+![](/static/images/Ji9kIVP.webp)
 *England - 2019*
 
 #### Coal Tit
-![](https://i.imgur.com/HwQ1Q4V.jpeg)
+![](/static/images/HwQ1Q4V.webp)
 *Scotland - 2020*
 
 #### Black-capped Chickadee
-![](https://i.imgur.com/78vZumd.jpeg)
+![](/static/images/78vZumd.webp)
 *Canada (British Columbia) - 2025*
 
 #### Cinereous Tit
-![](https://i.imgur.com/w8TbZoT.jpeg)
+![](/static/images/w8TbZoT.webp)
 *India - 2022*
 
 #### Long-tailed Tit
-![](https://i.imgur.com/qEzRVcq.jpeg)
+![](/static/images/qEzRVcq.webp)
 *England - 2020*
 
 #### Crested Tit
-![](https://i.imgur.com/H5ha2wN.jpeg)
+![](/static/images/H5ha2wN.webp)
 *Scotland - 2020*
 
 #### Bearded Tit
-![](https://i.imgur.com/kY7v020.jpeg)
+![](/static/images/kY7v020.webp)
 *England - 2019*
 
 #### European House Sparrow
-![](https://i.imgur.com/qb4koq8.jpeg)
+![](/static/images/qb4koq8.webp)
 *England - 2023*
 
 #### European Tree Sparrow
-![](https://i.imgur.com/WgCIMzV.jpeg)
+![](/static/images/WgCIMzV.webp)
 *England - 2023*
 
 #### Song Sparrow
-![](https://i.imgur.com/CtayQIS.jpeg)
+![](/static/images/CtayQIS.webp)
 _Canada (British Columbia) - 2025_
 
 #### White-crowned Sparrow
-![](https://i.imgur.com/v8P587R.jpeg)
+![](/static/images/v8P587R.webp)
 *Canada (British Columbia) - 2025*
 
 #### Dark-eyed Junco
-![](https://i.imgur.com/eNAUdJt.jpeg)
+![](/static/images/eNAUdJt.webp)
 _Canada (British Columbia) - 2025_
 
 #### Spotted Towhee
-![](https://i.imgur.com/S33qSlU.jpeg)
+![](/static/images/S33qSlU.webp)
 _Canada (British Columbia) - 2025_
 
 #### European Goldfinch
-![](https://i.imgur.com/gMlsDY0.jpeg)
+![](/static/images/gMlsDY0.webp)
 *England - 2023*
 
 #### Common Chaffinch
-![](https://i.imgur.com/cvx8396.jpeg)
+![](/static/images/cvx8396.webp)
 *England - 2019*
 
 #### European Greenfinch
-![](https://i.imgur.com/bBO7VTU.jpeg)
+![](/static/images/bBO7VTU.webp)
 *England - 2019*
 
 #### Purple Finch
-![](https://i.imgur.com/ahwiMyc.jpeg)
+![](/static/images/ahwiMyc.webp)
 _Canada (British Columbia) - 2025_
 
 #### House Finch
-![](https://i.imgur.com/qYzK0Bb.jpeg)
+![](/static/images/qYzK0Bb.webp)
 *Canada (British Columbia) - 2025*
 
 #### Twite
-![](https://i.imgur.com/xFWyaAy.jpeg)
+![](/static/images/xFWyaAy.webp)
 *Scotland (Isle of skye) - 2024*
 
 #### Common Linnet
-![](https://i.imgur.com/4qWzeYo.jpeg)
+![](/static/images/4qWzeYo.webp)
 *England - 2023*
 
 #### Common Crossbill
-![](https://i.imgur.com/LVrmxLh.jpeg)
+![](/static/images/LVrmxLh.webp)
 *Scotland (Skye) - 2024*
 
 #### Red Crossbill
-![](https://i.imgur.com/iGijNk4.jpeg)
+![](/static/images/iGijNk4.webp)
 *Canada (British Columbia) - 2025*
 
 #### Jungle Babbler
-![](https://i.imgur.com/W9j8lBy.jpeg)
+![](/static/images/W9j8lBy.webp)
 *India - 2022*
 
 #### Common Reed Bunting
-![](https://i.imgur.com/fRyEc1m.jpeg)
+![](/static/images/fRyEc1m.webp)
 *England - 2024*
 
 #### Lazuli Bunting
-![](https://i.imgur.com/ul3Athq.jpeg)
+![](/static/images/ul3Athq.webp)
 *Canada (British Columbia) - 2025*
 
 #### Stonechat
-![](https://i.imgur.com/gExPAW2.jpeg)
+![](/static/images/gExPAW2.webp)
 *England - 2024*
 
 #### Common Redpoll
-![](https://i.imgur.com/S4v5UxL.jpeg)
+![](/static/images/S4v5UxL.webp)
 *England - 2019*
 
 #### Pine Siskin
-![](https://i.imgur.com/vU5EkTr.jpeg)
+![](/static/images/vU5EkTr.webp)
 *England - 2019*
 
 #### Eurasian Siskin
-![](https://i.imgur.com/0KAqKk1.jpeg)
+![](/static/images/0KAqKk1.webp)
 *Scotland - 2023*
 
 #### Dunnock
-![](https://i.imgur.com/SBe4c4i.jpeg)
+![](/static/images/SBe4c4i.webp)
 *England - 2023*
 
 #### Common Chiffchaff
-![](https://i.imgur.com/3Sg2Y6K.jpeg)
+![](/static/images/3Sg2Y6K.webp)
 *England - 2024*
 
 #### Common Whitethroat
-![](https://i.imgur.com/KyTRp2Z.jpeg)
+![](/static/images/KyTRp2Z.webp)
 *England - 2023*
 
 #### Eurasian Blackcap (female)
-![](https://i.imgur.com/8wvn4XK.jpeg)
+![](/static/images/8wvn4XK.webp)
 *England - 2024*
 
 #### Eurasian Reed Warbler
-![](https://i.imgur.com/tOzTENs.jpeg)
+![](/static/images/tOzTENs.webp)
 *England - 2024*
 
 #### Garden Warbler
-![](https://i.imgur.com/35SyuV3.jpeg)
+![](/static/images/35SyuV3.webp)
 *England - 2024*
 
 #### Cetti's Warbler
-![](https://i.imgur.com/0Y21212.jpeg)
+![](/static/images/0Y21212.webp)
 *England - 2024*
 
 #### Willow Warbler
-![](https://i.imgur.com/yAbGQss.jpeg)
+![](/static/images/yAbGQss.webp)
 *England (Hatfield Moors) - 2024*
 
 #### Skylark
-![](https://i.imgur.com/pJEigMg.jpeg)
+![](/static/images/pJEigMg.webp)
 *England - 2024*
 
 #### Meadow Pipit
-![](https://i.imgur.com/ZA7Fkkz.jpeg)
+![](/static/images/ZA7Fkkz.webp)
 *Scotland - 2023*
 
 #### Northern Wheatear
-![](https://i.imgur.com/ocvgh8H.jpeg)
+![](/static/images/ocvgh8H.webp)
 *Scotland (Isle of Skye) - 2024*
 
 #### European Wren
-![](https://i.imgur.com/Jx1OBGR.jpeg)
+![](/static/images/Jx1OBGR.webp)
 *England - 2020*
 
 #### Pacific Wren
-![](https://i.imgur.com/Q6YfL58.jpeg)
+![](/static/images/Q6YfL58.webp)
 _Canada (British Columbia) - 2025_
 
 #### European Goldcrest
-![](https://i.imgur.com/chMwKdD.jpeg)
+![](/static/images/chMwKdD.webp)
 *England - 2024*
 
 #### Golden-crowned Kinglet
-![](https://i.imgur.com/IJH4Rbk.jpeg)
+![](/static/images/IJH4Rbk.webp)
 *Canada (British Columbia) - 2025*
 
 #### Ruby-crowned Kinglet
-![](https://i.imgur.com/shZYCU4.jpeg)
+![](/static/images/shZYCU4.webp)
 _Canada (British Columbia) - 2025_
 
 #### Eurasian Treecreeper
-![](https://i.imgur.com/p2zkuAp.jpeg)
+![](/static/images/p2zkuAp.webp)
 *England - 2024*
 
 #### Nuthatch
-![](https://i.imgur.com/C4wWQrQ.jpeg)
+![](/static/images/C4wWQrQ.webp)
 *England - 2023*
 
 #### European Starling
-![](https://i.imgur.com/YGXEsJG.jpeg)
+![](/static/images/YGXEsJG.webp)
 *England - 2023*
 
 #### European Blackbird
-![](https://i.imgur.com/uZMwnjT.jpeg)
+![](/static/images/uZMwnjT.webp)
 *England - 2023*
 
 #### Red-winged Blackbird
-![](https://i.imgur.com/jvAOIus.jpeg)
+![](/static/images/jvAOIus.webp)
 _Canada (British Columbia) - 2025_
 
 #### Brewer's Blackbird
-![](https://i.imgur.com/heJ6ZLT.jpeg)
+![](/static/images/heJ6ZLT.webp)
 *Canada (British Columbia) - 2025*
 
 #### Redwing
-![](https://i.imgur.com/qSih3JU.jpeg)
+![](/static/images/qSih3JU.webp)
 *England - 2020*
 
 #### Varied Thrush
-![](https://i.imgur.com/Mh4hzGp.jpeg)
+![](/static/images/Mh4hzGp.webp)
 *Canada (British Columbia) - 2025*
 
 #### Song Thrush
-![](https://i.imgur.com/85pGnLj.jpeg)
+![](/static/images/85pGnLj.webp)
 *England - 2018*
 
 #### Bohemian Waxwing
-![](https://i.imgur.com/4uDdvAe.jpeg)
+![](/static/images/4uDdvAe.webp)
 *England - 2023*
 
 #### Cedar Waxwing
-![](https://i.imgur.com/nQKIHUB.jpeg)
+![](/static/images/nQKIHUB.webp)
 *Canada (British Columbia) - 2025*
 
 #### Red-vented Bulbul
-![](https://i.imgur.com/XwQSqYf.jpeg)
+![](/static/images/XwQSqYf.webp)
 *India - 2022*
 
 #### Grey Shrike
-![](https://i.imgur.com/mOOKPSI.jpeg)
+![](/static/images/mOOKPSI.webp)
 *Poland - 2023*
 
 #### Great Northern Shrike
-![](https://i.imgur.com/l74URLe.jpeg)
+![](/static/images/l74URLe.webp)
 *Canada (British Columbia) - 2025*
 
 #### Say's Phoebe
-![](https://i.imgur.com/RA2mdkH.jpeg)
+![](/static/images/RA2mdkH.webp)
 *Canada (British Columbia) - 2025*
 
 #### Barn Swallow
-![](https://i.imgur.com/W2ObNZ0.jpeg)
+![](/static/images/W2ObNZ0.webp)
 *England - 2023*
 
 #### Tree Swallow
-![](https://i.imgur.com/DDbLLGD.jpeg)
+![](/static/images/DDbLLGD.webp)
 *Canada (British Columbia) - 2025*
 
 #### Violet-green Swallow
-![](https://i.imgur.com/jbCdtAj.jpeg)
+![](/static/images/jbCdtAj.webp)
 *Canada (British Columbia) - 2025*
 
 #### Northern Rough-winged Swallow
-![](https://i.imgur.com/a3MrTeD.jpeg)
+![](/static/images/a3MrTeD.webp)
 *Canada (British Columbia) - 2025*
 
 #### Common Swift
-![](https://i.imgur.com/ZtFdptM.jpeg)
+![](/static/images/ZtFdptM.webp)
 *England - 2023*
 
 #### House Martin
-![](https://i.imgur.com/NcZu05A.jpeg)
+![](/static/images/NcZu05A.webp)
 *England - 2024*
 
 #### Sand Martin
-![](https://i.imgur.com/yXpDJi7.jpeg)
+![](/static/images/yXpDJi7.webp)
 *England - 2024*
 
 #### Purple Martin
-![](https://i.imgur.com/1cwDtL4.jpeg)
+![](/static/images/1cwDtL4.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -1182,51 +1182,51 @@ _Canada (British Columbia) - 2025_
 ### Smart Birds
 
 #### Carrion Crow
-![](https://i.imgur.com/BdcMAr1.jpeg)
+![](/static/images/BdcMAr1.webp)
 *England - 2019*
 
 #### American Crow
-![](https://i.imgur.com/QPLRdJq.jpeg)
+![](/static/images/QPLRdJq.webp)
 _Canada (British Columbia) - 2025_
 
 #### Hooded Crow
-![](https://i.imgur.com/s8Rb6Vd.jpeg)
+![](/static/images/s8Rb6Vd.webp)
 *Finland - 2024*
 
 #### Eurasian Jackdaw
-![](https://i.imgur.com/17nyFAd.jpeg)
+![](/static/images/17nyFAd.webp)
 *England - 2023*
 
 #### Common Raven
-![](https://i.imgur.com/wJlHGhK.jpeg)
+![](/static/images/wJlHGhK.webp)
 *Poland - 2023*
 
 #### Red-billed Chough
-![](https://i.imgur.com/vLyFf6j.jpeg)
+![](/static/images/vLyFf6j.webp)
 *Wales - 2023*
 
 #### Common Magpie
-![](https://i.imgur.com/v6UILge.jpeg)
+![](/static/images/v6UILge.webp)
 *England - 2023*
 
 #### Eurasian Jay
-![](https://i.imgur.com/AiT0dPM.jpeg)
+![](/static/images/AiT0dPM.webp)
 *England - 2019*
 
 #### Canada Jay
-![](https://i.imgur.com/sd0c43Z.jpeg)
+![](/static/images/sd0c43Z.webp)
 *Canada (British Columbia) - 2025*
 
 #### Stellar's Jay
-![](https://i.imgur.com/6hte6Bh.jpeg)
+![](/static/images/6hte6Bh.webp)
 _Canada (British Columbia) - 2025_
 
 #### Clark's Nutcracker
-![](https://i.imgur.com/xjOjhNk.jpeg)
+![](/static/images/xjOjhNk.webp)
 *Canada (Alberta) - 2025*
 
 #### Common Grackle
-![](https://i.imgur.com/64bYMem.jpeg)
+![](/static/images/64bYMem.webp)
 *Canada (British Columbia) - 2025*
 
 
@@ -1234,19 +1234,19 @@ _Canada (British Columbia) - 2025_
 
 ### Pigeons and Doves
 #### Spotted Dove
-![](https://i.imgur.com/7sZs1Al.jpeg)
+![](/static/images/7sZs1Al.webp)
 *India - 2022*
 
 #### Collared Dove
-![](https://i.imgur.com/k6Q7vot.jpeg)
+![](/static/images/k6Q7vot.webp)
 *England - 2023*
 
 #### Rock Dove
-![](https://i.imgur.com/eSVXNRP.jpeg)
+![](/static/images/eSVXNRP.webp)
 *England - 2023*
 
 #### Common Woodpigeon
-![](https://i.imgur.com/3a1axn9.jpeg)
+![](/static/images/3a1axn9.webp)
 *England - 2024*
 
 ---
@@ -1254,27 +1254,27 @@ _Canada (British Columbia) - 2025_
 ### Pheasants and That
 
 #### Ring-necked Pheasant
-![](https://i.imgur.com/nKxfFCq.jpeg)
+![](/static/images/nKxfFCq.webp)
 *England - 2023*
 
 #### Grey Partridge
-![](https://i.imgur.com/aSqg0sz.jpeg)
+![](/static/images/aSqg0sz.webp)
 *England - 2023*
 
 #### Red-legged Partridge
-![](https://i.imgur.com/2RMkhX0.jpeg)
+![](/static/images/2RMkhX0.webp)
 *England - 2024*
 
 #### Red Grouse
-![](https://i.imgur.com/pFEisnk.jpeg)
+![](/static/images/pFEisnk.webp)
 *England - 2024*
 
 #### Sooty Grouse
-![](https://i.imgur.com/ebMl0uO.jpeg)
+![](/static/images/ebMl0uO.webp)
 *Canada (Vancouver Island) - 2025*
 
 #### Junglefowl
-![](https://i.imgur.com/QBbkKkZ.jpeg)
+![](/static/images/QBbkKkZ.webp)
 *India - 2022*
 
 ---
@@ -1282,11 +1282,11 @@ _Canada (British Columbia) - 2025_
 ### Parakeets
 
 #### Plum-headed Parakeet
-![](https://i.imgur.com/d17VfrV.jpeg)
+![](/static/images/d17VfrV.webp)
 *India - 2022*
 
 #### Ring-necked Parakeet
-![](https://i.imgur.com/4phqFZd.jpeg)
+![](/static/images/4phqFZd.webp)
 *England - 2023*
 
 ---
@@ -1294,39 +1294,39 @@ _Canada (British Columbia) - 2025_
 ### Birds that I Can't Categorise
 
 #### Indian Roller
-![](https://i.imgur.com/QkKXjRL.jpeg)
+![](/static/images/QkKXjRL.webp)
 *India - 2022*
 
 #### Asian Green Bee-eater
-![](https://i.imgur.com/a6yRuEE.jpeg)
+![](/static/images/a6yRuEE.webp)
 *India - 2022*
 
 #### European Bee-eater
-![](https://i.imgur.com/qA67uDY.jpeg)
+![](/static/images/qA67uDY.webp)
 *England - 2022*
 
 #### Purple-rumped Sunbird
-![](https://i.imgur.com/iasvG1E.jpeg)
+![](/static/images/iasvG1E.webp)
 *India - 2022*
 
 #### Corncrake
-![](https://i.imgur.com/gGakETf.jpeg)
+![](/static/images/gGakETf.webp)
 *Scotland (Iona) - 2023*
 
 #### Indian Nightjar
-![](https://i.imgur.com/UR8SwpY.jpeg)
+![](/static/images/UR8SwpY.webp)
 *India - 2022*
 
 #### Sandhill Crane
-![](https://i.imgur.com/seLrmjN.jpeg)
+![](/static/images/seLrmjN.webp)
 *Florida - 2016*
 
 #### Eastern Kingbird
-![](https://i.imgur.com/2Qhikbh.jpeg)
+![](/static/images/2Qhikbh.webp)
 *Canada (British Columbia) - 2025*
 
 #### Western Wood Pewee
-![](https://i.imgur.com/eGNbYUl.jpeg)
+![](/static/images/eGNbYUl.webp)
 *Canada (British Columbia) - 2025*
 
 
@@ -1336,15 +1336,15 @@ _Canada (British Columbia) - 2025_
 ## Herps
 
 #### Common Frog
-![](https://i.imgur.com/YkJu7zY.jpeg)
+![](/static/images/YkJu7zY.webp)
 *England (My Garden) - 2022*
 
 #### Indian Bullfrog
-![](https://i.imgur.com/7kLUiu0.jpeg)
+![](/static/images/7kLUiu0.webp)
 *India - 2022*
 
 #### Common Toad
-![](https://i.imgur.com/anERBNO.jpeg)
+![](/static/images/anERBNO.webp)
 *England (My Garden) - 2022*
 
 
@@ -1353,215 +1353,215 @@ _Canada (British Columbia) - 2025_
 ## Bugs et al.
 
 #### Zebra Spider
-![](https://i.imgur.com/1qfygyI.jpeg)
+![](/static/images/1qfygyI.webp)
 *England (Yorkshire Wildlife Park) - 2020*
 
 #### Wolf Spider
-![](https://i.imgur.com/m7AhKZX.jpeg)
+![](/static/images/m7AhKZX.webp)
 *England (My Garden) - 2021*
 
 #### Swamp Crab Spider
-![](https://i.imgur.com/Q96SAJT.jpeg)
+![](/static/images/Q96SAJT.webp)
 *England (Potteric Carr) - 2024*
 
 #### Fork-palped Harvestman
-![](https://i.imgur.com/jUGi0nq.jpeg)
+![](/static/images/jUGi0nq.webp)
 *England (Walkers Garden Centre) - 2021*
 
 #### Opilio canestrinii (Harvestman)
-![](https://i.imgur.com/um8t8vR.jpeg)
+![](/static/images/um8t8vR.webp)
 *England (Walkers Garden Centre) - 2021*
 
 #### Common Harvestman
-![](https://i.imgur.com/MuEXz4O.jpeg)
+![](/static/images/MuEXz4O.webp)
 *England (Walkers Garden Centre) - 2021*
 
 #### Scarlet Lily Beetle
-![](https://i.imgur.com/5re0wtX.jpeg)
+![](/static/images/5re0wtX.webp)
 *England (My Garden) - 2020*
 
 #### Green Shield Bug
-![](https://i.imgur.com/HA7SWVE.jpeg)
+![](/static/images/HA7SWVE.webp)
 *England (My Garden) - 2021*
 
 #### Dock Bug
-![](https://i.imgur.com/eMc2gAT.jpeg)
+![](/static/images/eMc2gAT.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Harlequin Lady Beetle (Red with black spots)
-![](https://i.imgur.com/eHzWXKV.jpeg)
+![](/static/images/eHzWXKV.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Harlequin Lady Beetle (Black with red spots)
-![](https://i.imgur.com/sIrpcwD.jpeg)
+![](/static/images/sIrpcwD.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Harlequin Lady Beetle (Yellow with black spots)
-![](https://i.imgur.com/VHRDDL6.jpeg)
+![](/static/images/VHRDDL6.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Cercopis vulnerata (Sp. Froghopper)
-![](https://i.imgur.com/nVs8PWU.jpeg)
+![](/static/images/nVs8PWU.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Rhododendron Leafhopper
-![](https://i.imgur.com/3lpymc8.jpeg)
+![](/static/images/3lpymc8.webp)
 *England (Walkers Garden Centre) - 2021*
 
 #### Meadow Grasshopper
-![](https://i.imgur.com/hI0Qo8B.jpeg)
+![](/static/images/hI0Qo8B.webp)
 *England (Walkers Garden Centre) - 2021*
 
 #### Alder Leaf Beetle
-![](https://i.imgur.com/rIyGPnr.jpeg)
+![](/static/images/rIyGPnr.webp)
 *England (My Garden) - 2024*
 
 #### Rosemary Beetle
-![](https://i.imgur.com/xN1j1X2.jpeg)
+![](/static/images/xN1j1X2.webp)
 *England (My Garden) - 2023*
 
 #### Hawthorn Leaf Beetle
-![](https://i.imgur.com/tnKIpR5.jpeg)
+![](/static/images/tnKIpR5.webp)
 *England (My Garden) - 2021*
 
 #### Athous haemorrhoidalis (sp. Click Beetle)
-![](https://i.imgur.com/3gN4ufS.jpeg)
+![](/static/images/3gN4ufS.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Donacia clavipes (sp. Leaf Beetle)
-![](https://i.imgur.com/mYXB2cS.jpeg)
+![](/static/images/mYXB2cS.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Cantharis nigricans (Sp. Soldier Beetle)
-![](https://i.imgur.com/etgkRpW.jpeg)
+![](/static/images/etgkRpW.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Green Tiger Beetle
-![](https://i.imgur.com/3HAItqH.jpeg)
+![](/static/images/3HAItqH.webp)
 *England (Hatfield Moors Nature Reserve) - 2024*
 
 #### Common Tiger Fly
-![](https://i.imgur.com/AU4ETJM.jpeg)
+![](/static/images/AU4ETJM.webp)
 *England (My Garden) - 2021*
 
 #### Blow Fly
-![](https://i.imgur.com/KoashMr.jpeg)
+![](/static/images/KoashMr.webp)
 *England - 2021*
 
 #### House Fly
-![](https://i.imgur.com/ex7CsE3.jpeg)
+![](/static/images/ex7CsE3.webp)
 *England - 2021*
 
 #### Yellow Dung Fly
-![](https://i.imgur.com/ObxsjPD.jpeg)
+![](/static/images/ObxsjPD.webp)
 *England (My Garden) - 2021*
 
 #### Buff-tailed Bumble Bee
-![](https://i.imgur.com/yeDpNB1.jpeg)
+![](/static/images/yeDpNB1.webp)
 *England - 2020*
 
 #### Common Wasp
-![](https://i.imgur.com/4EjJC4Y.jpeg)
+![](/static/images/4EjJC4Y.webp)
 *England (My Garden) - 2021*
 
 #### Marmalade Hover Fly
-![](https://i.imgur.com/W5I1cQZ.jpeg)
+![](/static/images/W5I1cQZ.webp)
 *England (My Garden) - 2021*
 
 #### Eristalis pertinax (Sp. Hover Fly)
-![](https://i.imgur.com/Lr4KtGp.jpeg)
+![](/static/images/Lr4KtGp.webp)
 *England - 2018*
 
 #### Helophilus pendulus (Sp. Hover Fly)
-![](https://i.imgur.com/Y1ii8QA.jpeg)
+![](/static/images/Y1ii8QA.webp)
 *England - 2024*
 
 #### Common Drone Fly
-![](https://i.imgur.com/8hrwkKg.jpeg)
+![](/static/images/8hrwkKg.webp)
 *England (My Garden) - 2021*
 
 #### Common Darter
-![](https://i.imgur.com/abm4z7r.jpeg)
+![](/static/images/abm4z7r.webp)
 *England (Potteric Carr Nature Reserve) - 2023*
 
 #### Vagrant Darter
-![](https://i.imgur.com/gsrvHRg.jpeg)
+![](/static/images/gsrvHRg.webp)
 *England (Potteric Carr Nature Reserve) - 2023*
 
 #### Four-spotted Chaser
-![](https://i.imgur.com/vCh3gni.jpeg)
+![](/static/images/vCh3gni.webp)
 *England (Hatfield Moors Nature Reserve) - 2024*
 
 #### Southern Hawker
-![](https://i.imgur.com/V3oK9PK.jpeg)
+![](/static/images/V3oK9PK.webp)
 *England (Hatfield Moors Nature Reserve) - 2024*
 
 #### Ground Skimmer
-![](https://i.imgur.com/QtEXK3a.jpeg)
+![](/static/images/QtEXK3a.webp)
 *India (Tadoba) - 2022*
 
 #### Crimson Marsh Glider
-![](https://i.imgur.com/nKzzjZd.jpeg)
+![](/static/images/nKzzjZd.webp)
 *India (Tadoba) - 2022*
 
 #### Emerald Damselfly
-![](https://i.imgur.com/QYOmoR4.jpeg)
+![](/static/images/QYOmoR4.webp)
 *England (Potteric Carr Nature Reserve) - 2023*
 
 #### Large Red Damselfly
-![](https://i.imgur.com/y2rNBPh.jpeg)
+![](/static/images/y2rNBPh.webp)
 *England (Hatfield Moors Nature Reserve) - 2024*
 
 #### Azure Damselfly
-![](https://i.imgur.com/6tr5klo.jpeg)
+![](/static/images/6tr5klo.webp)
 *England (Potteric Carr Nature Reserve) - 2024*
 
 #### Azure Damselfly (Male: right | Female: left)
-![](https://i.imgur.com/yNFaijc.jpeg)
+![](/static/images/yNFaijc.webp)
 *England (Hatfield Moors Nature Reserve) - 2024*
 
 #### Orange Tip
-![](https://i.imgur.com/aIX92u1.jpeg)
+![](/static/images/aIX92u1.webp)
 *England (Idle Valley Nature Reserve) - 2024*
 
 #### Large Skipper
-![](https://i.imgur.com/BNDMkls.jpeg)
+![](/static/images/BNDMkls.webp)
 *England - 2023*
 
 #### Firery Skipper
-![](https://i.imgur.com/CMxmTsI.jpeg)
+![](/static/images/CMxmTsI.webp)
 *India (Tadoba) - 2022*
 
 #### Blue Tiger
-![](https://i.imgur.com/vshNAhL.jpeg)
+![](/static/images/vshNAhL.webp)
 *India (Tadoba) - 2022*
 
 #### Plain Tiger (*theres no such thing as a plain tiger...*)
-![](https://i.imgur.com/SaTHS9u.jpeg)
+![](/static/images/SaTHS9u.webp)
 *India (Tadoba) - 2022*
 
 #### The Baronet
-![](https://i.imgur.com/iHYHPdu.jpeg)
+![](/static/images/iHYHPdu.webp)
 *India (Tadoba) - 2022*
 
 #### Green-veined White
-![](https://i.imgur.com/yAXpjLh.jpeg)
+![](/static/images/yAXpjLh.webp)
 *England - 2022*
 
 #### Painted Lady
-![](https://i.imgur.com/2iICn7r.jpeg)
+![](/static/images/2iICn7r.webp)
 *England (Idle Valley Nature Reserve) - 2019*
 
 #### Red Admiral
-![](https://i.imgur.com/I8N0gpk.jpeg)
+![](/static/images/I8N0gpk.webp)
 *England - 2022*
 
 #### The Commander
-![](https://i.imgur.com/3Zz97V2.jpeg)
+![](/static/images/3Zz97V2.webp)
 *India (Tadoba) - 2022*
 
 #### Dingy Footman
-![](https://i.imgur.com/i6Pdn32.jpeg)
+![](/static/images/i6Pdn32.webp)
 *England - 2020*
 
 
@@ -1570,15 +1570,15 @@ _Canada (British Columbia) - 2025_
 ## Plants
 
 #### English Blue Bell
-![](https://i.imgur.com/eh35J0q.jpeg)
+![](/static/images/eh35J0q.webp)
 *England - 2022*
 
 #### Corncockle
-![](https://i.imgur.com/xZfOPFn.jpeg)
+![](/static/images/xZfOPFn.webp)
 *England - 2020*
 
 #### Fox and Cubs
-![](https://i.imgur.com/aSi24wG.jpeg)
+![](/static/images/aSi24wG.webp)
 *England - 2020*
 
 ---
@@ -1588,48 +1588,48 @@ _Canada (British Columbia) - 2025_
 ### Gills and Pores
 
 #### Fly Agaric
-![](https://i.imgur.com/b4ArZT8.jpeg)
+![](/static/images/b4ArZT8.webp)
 *England - 2021*
 
 #### Birch Bolete
-![](https://i.imgur.com/yphQtUQ.jpeg)
+![](/static/images/yphQtUQ.webp)
 *England - 2021*
 
 #### The Blusher
-![](https://i.imgur.com/xDju4TT.jpeg)
+![](/static/images/xDju4TT.webp)
 *England - 2021*
 
 #### Witches Hat
-![](https://i.imgur.com/x009L17.jpeg)
+![](/static/images/x009L17.webp)
 *England - 2021*
 
 #### Penny Bun (Porchini)
-![](https://i.imgur.com/ejelGup.jpeg)
+![](/static/images/ejelGup.webp)
 *England - 2021*
 
 #### Sulphur Tuft
-![](https://i.imgur.com/SKqm6ML.jpeg)
+![](/static/images/SKqm6ML.webp)
 *England - 2019*
 
 #### Orange Deceiver
-![](https://i.imgur.com/ug3k1jd.jpeg)
+![](/static/images/ug3k1jd.webp)
 *England - 2021*
 
 #### Amethyst Deceiver
-![](https://i.imgur.com/AUZ9LMe.jpeg)
+![](/static/images/AUZ9LMe.webp)
 *England - 2021*
 
 
 #### Red Sickener
-![](https://i.imgur.com/yJoSJrE.jpeg)
+![](/static/images/yJoSJrE.webp)
 *Scotland - 2020*
 
 #### Clouded Funnel
-![](https://i.imgur.com/AHL010r.jpeg)
+![](/static/images/AHL010r.webp)
 *England - 2021*
 
 #### Woolly Birds Nest Fungus
-![](https://i.imgur.com/AFEBTn0.jpeg)
+![](/static/images/AFEBTn0.webp)
 *Canada (British Columbia) - 2025*
 
 ---
@@ -1637,56 +1637,56 @@ _Canada (British Columbia) - 2025_
 ### Spore Shooters
 
 #### Common Puffball
-![](https://i.imgur.com/g4elkJe.jpeg)
+![](/static/images/g4elkJe.webp)
 *England - 2021*
 
 #### Candle Snuff Fungus
-![](https://i.imgur.com/SlVM9Vb.jpeg)
+![](/static/images/SlVM9Vb.webp)
 *England - 2021*
 
 #### Orange Peel Fungus
-![](https://i.imgur.com/qxL5W4S.jpeg)
+![](/static/images/qxL5W4S.webp)
 *England - 2021*
 
 #### Scarlette Elfcup
-![](https://i.imgur.com/L9DI3J5.jpeg)
+![](/static/images/L9DI3J5.webp)
 *England - 2020*
 
 #### Slate Grey Saddle
-![](https://i.imgur.com/mL1buDa.jpeg)
+![](/static/images/mL1buDa.webp)
 *England - 2021*
 
 
 ### Brackets and Similar
 
 #### Chicken of the Woods
-![](https://i.imgur.com/I9MaMCV.jpeg)
+![](/static/images/I9MaMCV.webp)
 *England - 2020*
 
 #### Dryads Saddle
-![](https://i.imgur.com/mgQqxGR.jpeg)
+![](/static/images/mgQqxGR.webp)
 *England - 2020*
 
 #### Beefsteak Fungus
-![](https://i.imgur.com/DnHLU4Z.jpeg)
+![](/static/images/DnHLU4Z.webp)
 *England - 2020*
 
 #### Flat Oystering
-![](https://i.imgur.com/LbfvdXU.jpeg)
+![](/static/images/LbfvdXU.webp)
 *Scotland - 2021*
 
 #### Oyster Mushroom
-![](https://i.imgur.com/b060XZ2.jpeg)
+![](/static/images/b060XZ2.webp)
 *England - 2021*
 
 #### Tinder/Hoof Fungus
-![](https://i.imgur.com/tFFc2wi.jpeg)
+![](/static/images/tFFc2wi.webp)
 *England - 2019*
 
 ### Lichens
 
 #### Toy Soldiers
-![](https://i.imgur.com/o6iS9g0.jpeg)
+![](/static/images/o6iS9g0.webp)
 *England (Hatfield Moors) - 2021*
 
 

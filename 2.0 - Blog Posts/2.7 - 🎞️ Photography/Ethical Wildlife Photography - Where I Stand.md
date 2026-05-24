@@ -10,7 +10,7 @@ excerpt: I've been circling this topic for a few years now, writing about bits o
 tags:
   - photography
   - ethics
-heroImage: https://i.imgur.com/AwPl6UT.jpeg
+heroImage: /static/images/AwPl6UT.webp
 created: 2025-04-27
 updated: 2025-04-27
 Featured: true
@@ -33,7 +33,7 @@ Each of these comes with a different ethical profile. The wild approaches, done 
 
 ## In the Field
 <figure class="image-float-right">
-<img src="https://i.imgur.com/CKZ1P2F.jpeg" alt="Bald eagle on the Squamish River"><figcaption>I use a 500mm lens with a high resolution Canon R5 to ensure I can get 'close' to the animal while staying at a safe distance.</figcaption></figure>
+<img src="/static/images/CKZ1P2F.webp" alt="Bald eagle on the Squamish River"><figcaption>I use a 500mm lens with a high resolution Canon R5 to ensure I can get 'close' to the animal while staying at a safe distance.</figcaption></figure>
 
 Before we even get to hides and captions, there's a more fundamental question that I don't think gets enough airtime: how do you actually behave when you're out there?
 

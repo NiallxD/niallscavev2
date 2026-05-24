@@ -9,7 +9,7 @@ description: 'EcoTalk: A Greener Phone Network. Ever wondered about the carbon i
 excerpt: 'EcoTalk: A Greener Phone Network. Ever wondered about the carbon impact of your phone contract? There is more to it than you think.'
 tags:
   - tech
-heroImage: https://i.imgur.com/6HNhbjt.jpeg
+heroImage: /static/images/6HNhbjt.webp
 created: 2024-02-15
 updated: 2024-04-16
 ---
@@ -44,7 +44,7 @@ So, based on this very rough maths, we can see that in a year, we produce nearly
 
 ## A greener phone network
 
-![](https://i.imgur.com/rvAeGy0.png)
+![](/static/images/rvAeGy0.webp)
 
 As we have seen, a not-insignificant amount of emissions come from using our phones. The root of these emissions are in the energy used. By changing to cleaner energy, we can reduce that emissions figure dramatically as well as supporting a range of other positive initiatives.
 

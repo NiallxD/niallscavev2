@@ -10,7 +10,7 @@ excerpt: Why do April showers happen? A short explainer on the meteorology behin
 tags:
   - weather
   - climate
-heroImage: https://i.imgur.com/A0HkQd0.jpeg
+heroImage: /static/images/A0HkQd0.webp
 ---
 
 # April Showers

@@ -11,7 +11,7 @@ tags:
   - astronomy
   - photography
   - tech
-heroImage: https://i.imgur.com/Izkx8aB.jpeg
+heroImage: /static/images/Izkx8aB.webp
 created: 2024-11-21
 updated: 2024-11-21
 ---
@@ -350,4 +350,4 @@ Niall
 
 The header image for this post was created using these scripts. It shows the Horsehead and Flame Nebula in the Orion constellation.
 
-![](https://i.imgur.com/Izkx8aB.jpeg)
+![](/static/images/Izkx8aB.webp)

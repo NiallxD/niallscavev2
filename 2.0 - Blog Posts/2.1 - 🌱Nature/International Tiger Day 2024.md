@@ -12,7 +12,7 @@ tags:
   - internationaltigerday
   - nature
   - wildlife
-heroImage: https://i.imgur.com/BiYriQv.png
+heroImage: /static/images/BiYriQv.webp
 created: 2024-07-29
 updated: 2024-07-29
 ---
@@ -34,13 +34,13 @@ Make no mistake, I don't profess any ownership over Tschuna, nor do I condone th
 
 Here are some photos of Tschuna I've taken over the years.
 
-![](https://i.imgur.com/YM8JB0f.jpeg)
+![](/static/images/YM8JB0f.webp)
 *Superb backlit photograph of a tiger sprinting as if to chase down her prey (captive).*
 
-![](https://i.imgur.com/4Msu0Ig.png)
+![](/static/images/4Msu0Ig.webp)
 *Tigers, unlike most cats, love to swim and get wet (captive).*
 
-![](https://i.imgur.com/iYijsHA.jpeg)
+![](/static/images/iYijsHA.webp)
 *Tschuna walking through the dandelions (captive)*
 
 ## My Zoo Breakup
@@ -49,10 +49,10 @@ Unfortunately, the zoo where Tschuna lives has fallen out with me for advocating
 
 In reflection of my connection with tigers, I even have a tiger tattooed on my arm. This is one of my photos of Tschuna.
 
-![](https://i.imgur.com/4GjuM6G.jpeg)
+![](/static/images/4GjuM6G.webp)
 *Tschuna tattoo on my arm. This was inked by Dave at Inspired By Ink in Conisbrough and true to a photo I took*
 
-![](https://i.imgur.com/WjD5BWh.jpeg)
+![](/static/images/WjD5BWh.webp)
 *The photo which inspired my tattoo - Tschuna (Captive)*
 
 ## The Plight of the Tiger
@@ -94,50 +94,50 @@ Niall.
 Recently, I was fortunate enough to go and photograph tigers in the wild. The below gallery showcases some of the amazing animals I photographed on my trip to India.
 
 <div class="gallery">
-    <a href="https://i.imgur.com/dO0bcRL.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/dO0bcRL.png" alt="Image 1" width="300">
+    <a href="/static/images/dO0bcRL.webp" data-fancybox="gallery">
+        <img src="/static/images/dO0bcRL.webp" alt="Image 1" width="300">
     </a>
-    <a href="https://i.imgur.com/j35mshs.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/j35mshs.png" alt="Image 2" width="300">
+    <a href="/static/images/j35mshs.webp" data-fancybox="gallery">
+        <img src="/static/images/j35mshs.webp" alt="Image 2" width="300">
     </a>
-    <a href="https://i.imgur.com/2ATIWM4.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/2ATIWM4.png" alt="Image 3" width="300">
+    <a href="/static/images/2ATIWM4.webp" data-fancybox="gallery">
+        <img src="/static/images/2ATIWM4.webp" alt="Image 3" width="300">
     </a>
-    <a href="https://i.imgur.com/Z16j3te.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/Z16j3te.png" alt="Image 4" width="300">
+    <a href="/static/images/Z16j3te.webp" data-fancybox="gallery">
+        <img src="/static/images/Z16j3te.webp" alt="Image 4" width="300">
     </a>
-    <a href="https://i.imgur.com/XlAa0W1.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/XlAa0W1.png" alt="Image 5" width="300">
+    <a href="/static/images/XlAa0W1.webp" data-fancybox="gallery">
+        <img src="/static/images/XlAa0W1.webp" alt="Image 5" width="300">
     </a>
-    <a href="https://i.imgur.com/tsSyn3v.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/tsSyn3v.png" alt="Image 6" width="300">
+    <a href="/static/images/tsSyn3v.webp" data-fancybox="gallery">
+        <img src="/static/images/tsSyn3v.webp" alt="Image 6" width="300">
     </a>
-    <a href="https://i.imgur.com/ofVV4qh.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/ofVV4qh.png" alt="Image 7" width="300">
+    <a href="/static/images/ofVV4qh.webp" data-fancybox="gallery">
+        <img src="/static/images/ofVV4qh.webp" alt="Image 7" width="300">
     </a>
-    <a href="https://i.imgur.com/Hiw8s7z.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/Hiw8s7z.png" alt="Image 8" width="300">
+    <a href="/static/images/Hiw8s7z.webp" data-fancybox="gallery">
+        <img src="/static/images/Hiw8s7z.webp" alt="Image 8" width="300">
     </a>
-    <a href="https://i.imgur.com/HJIcj0q.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/HJIcj0q.png" alt="Image 9" width="300">
+    <a href="/static/images/HJIcj0q.webp" data-fancybox="gallery">
+        <img src="/static/images/HJIcj0q.webp" alt="Image 9" width="300">
     </a>
-    <a href="https://i.imgur.com/BiYriQv.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/BiYriQv.png" alt="Image 10" width="300">
+    <a href="/static/images/BiYriQv.webp" data-fancybox="gallery">
+        <img src="/static/images/BiYriQv.webp" alt="Image 10" width="300">
     </a>
-    <a href="https://i.imgur.com/p3txpd0.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/p3txpd0.png" alt="Image 11" width="300">
+    <a href="/static/images/p3txpd0.webp" data-fancybox="gallery">
+        <img src="/static/images/p3txpd0.webp" alt="Image 11" width="300">
     </a>
-    <a href="https://i.imgur.com/5rnfCrf.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/5rnfCrf.png" alt="Image 12" width="300">
+    <a href="/static/images/5rnfCrf.webp" data-fancybox="gallery">
+        <img src="/static/images/5rnfCrf.webp" alt="Image 12" width="300">
     </a>
-    <a href="https://i.imgur.com/y8UlfUu.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/y8UlfUu.png" alt="Image 13" width="300">
+    <a href="/static/images/y8UlfUu.webp" data-fancybox="gallery">
+        <img src="/static/images/y8UlfUu.webp" alt="Image 13" width="300">
     </a>
-    <a href="https://i.imgur.com/H27bxJn.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/H27bxJn.png" alt="Image 14" width="300">
+    <a href="/static/images/H27bxJn.webp" data-fancybox="gallery">
+        <img src="/static/images/H27bxJn.webp" alt="Image 14" width="300">
     </a>
-    <a href="https://i.imgur.com/YSCJnLQ.png" data-fancybox="gallery">
-        <img src="https://i.imgur.com/YSCJnLQ.png" alt="Image 15" width="300">
+    <a href="/static/images/YSCJnLQ.webp" data-fancybox="gallery">
+        <img src="/static/images/YSCJnLQ.webp" alt="Image 15" width="300">
     </a>
     <!-- Add more images as needed -->
 </div>

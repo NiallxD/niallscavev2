@@ -10,7 +10,7 @@ excerpt: n the early hours, 11th May 2024, the Northern Hemisphere was treated t
 tags:
   - astronomy
   - nature
-heroImage: https://i.imgur.com/9DONEvA.jpeg
+heroImage: /static/images/9DONEvA.webp
 created: 2022-09-23
 updated: 2024-05-11
 ---
@@ -27,7 +27,7 @@ What I found particularly odd was the way in which the streaks of light seemed t
 
 > Perhaps the most enchanting part of seeing the Aurora is that it’s a visual example of the Earth protecting us from what would otherwise wreak havoc on much of what we take for granted. We should definitely engage in visual action to protect the Earth, no?
 
-![](https://i.imgur.com/9DONEvA.jpeg)*Northern Lights, aka Aurora Borealis, photographed from a Doncaster garden*
+![](/static/images/9DONEvA.webp)*Northern Lights, aka Aurora Borealis, photographed from a Doncaster garden*
 
 ## What Causes the Aurora?
 
@@ -49,14 +49,14 @@ I think this is a great example of how the Earth is a living and breathing syste
 
 ## More Photos
 
-![](https://i.imgur.com/xYlCX17.jpeg)
+![](/static/images/xYlCX17.webp)
 *Aurora Borealis - Doncaster 2024*
 
-![](https://i.imgur.com/E7Ita1H.jpeg)
+![](/static/images/E7Ita1H.webp)
 *Aurora Borealis - Doncaster 2024*
 
-![](https://i.imgur.com/tCR7wyk.jpeg)
+![](/static/images/tCR7wyk.webp)
 *Aurora Borealis - Doncaster 2024*
 
-![](https://i.imgur.com/ugwhsrG.jpeg)
+![](/static/images/ugwhsrG.webp)
 *My first experience of the Aurora Borealis - Iceland 2016*

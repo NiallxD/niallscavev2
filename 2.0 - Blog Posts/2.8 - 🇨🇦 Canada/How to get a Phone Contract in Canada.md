@@ -10,7 +10,7 @@ excerpt: Navigating Canadian phone contracts as a new arrival from the UK — fr
 tags:
   - canada
   - guide
-heroImage: https://i.imgur.com/V9XRV4A.jpeg
+heroImage: /static/images/V9XRV4A.webp
 created: 2025-01-23
 updated: 2025-01-23
 ---

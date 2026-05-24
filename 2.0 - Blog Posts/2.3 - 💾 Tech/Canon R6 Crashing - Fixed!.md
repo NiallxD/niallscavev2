@@ -11,7 +11,7 @@ tags:
   - gear
   - photography
   - tech
-heroImage: https://i.imgur.com/zWS53Em.jpeg
+heroImage: /static/images/zWS53Em.webp
 created: 2024-03-01
 updated: 2024-04-15
 ---

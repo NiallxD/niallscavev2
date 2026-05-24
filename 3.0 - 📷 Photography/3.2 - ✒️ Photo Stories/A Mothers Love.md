@@ -7,9 +7,9 @@ publish: true
 permalink: /a-mothers-love
 description: Female grey seals are known for the remarkably strong but fragile bond they form with their pups.
 excerpt: Female grey seals are known for the remarkably strong but fragile bond they form with their pups. This bond is the sole emotional subject of this image.
-heroImage: https://i.imgur.com/hpoQKL9.png
+heroImage: /static/images/hpoQKL9.webp
 hide: true
-header-image: https://i.imgur.com/hpoQKL9.png
+header-image: /static/images/hpoQKL9.webp
 created: 2023-04-18
 updated: 2023-04-18
 title-link:
@@ -20,7 +20,7 @@ title-link:
 # A Mothers Love
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
 
-![](https://i.imgur.com/hpoQKL9.png)
+![](/static/images/hpoQKL9.webp)
 
 Female [[3.1.2.4 - Grey Seal|grey seal]] are known for the remarkably strong but fragile bond they form with their pups. This bond is the sole emotional subject of this image.
 

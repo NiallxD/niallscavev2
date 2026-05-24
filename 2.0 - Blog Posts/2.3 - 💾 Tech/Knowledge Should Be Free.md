@@ -11,7 +11,7 @@ tags:
   - knowledge
   - science
   - research
-heroImage: https://i.imgur.com/p6DKgUu.jpeg
+heroImage: /static/images/p6DKgUu.webp
 ---
 Scientific knowledge should be free for all. What does this mean?
 

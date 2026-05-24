@@ -11,7 +11,7 @@ tags:
   - birds
   - gear
   - tech
-heroImage: https://i.imgur.com/5KKoRpe.jpeg
+heroImage: /static/images/5KKoRpe.webp
 created: 2025-05-17
 updated: 2025-05-17
 ---
@@ -63,7 +63,7 @@ Unfortunately I cannot find a diagram of this scope.
 
 ## Build Quality
 
-![](https://i.imgur.com/5KKoRpe.jpeg)
+![](/static/images/5KKoRpe.webp)
 
 Carl Zeiss are known for making incredibly good optics across the range of products they make. They use high quality materials to produce robust and high performing equipment. I've been lucky enough to use camera lenses produces by Zeiss in the past so I'm no stranger to the incredibly build of these products. 
 
@@ -75,31 +75,31 @@ This spotting scope is no exception.
 
 **Gallery**
 
-![](https://i.imgur.com/aODZjVt.jpeg)
+![](/static/images/aODZjVt.webp)
 *The body is really nice in the hand and the big rubber grip offers a good hold.*
 
-![](https://i.imgur.com/pdzEYGr.jpeg)
+![](/static/images/pdzEYGr.webp)
 *The eyepiece is super smooth to zoom and locks in with a nice click.*
 
-![](https://i.imgur.com/X0cQWe4.jpeg)
+![](/static/images/X0cQWe4.webp)
 *The eyepiece offers different zoom ranges depending on the scope it's used on.*
 
-![](https://i.imgur.com/FBMEasJ.jpeg)
+![](/static/images/FBMEasJ.webp)
 *The eyepiece is marked with zoom markers for both the 65 and 85 mm scopes*
 
-![](https://i.imgur.com/96T6wgK.jpeg)
+![](/static/images/96T6wgK.webp)
 *The eye cup slides up about 12 mm, though I don't tend to use it.*
 
-![](https://i.imgur.com/NDjAwBY.jpeg)
+![](/static/images/NDjAwBY.webp)
 *LotuTec coatings keep the outer elements clean.*
 
-![](https://i.imgur.com/WgAtX65.jpeg)
+![](/static/images/WgAtX65.webp)
 *The tripod collar is super robust, rotates smoothly, and has a nice lock mechanism.*
 
-![](https://i.imgur.com/uFB38mG.jpeg)
+![](/static/images/uFB38mG.webp)
 *The tripod foot is not arca-swiss but does provide all common thread sizes.*
 
-![](https://i.imgur.com/MbR8eBD.jpeg)
+![](/static/images/MbR8eBD.webp)
 *Overall the scope has a very nice design, feels great, and performs well.*
 
 ## Manual Focus
@@ -108,7 +108,7 @@ This spotting scope is no exception.
 
 **Negative:** The coarse knob is not super easy to turn. I don't know if it's overly dampened, or if it's just not been used much so hasn't loosened. Moving from far to near focus can take about 5-10 seconds as you have to rack through quite a few turns. But on the whole this isn't an issue in the field.
 
-![](https://i.imgur.com/FHCCI47.jpeg)
+![](/static/images/FHCCI47.webp)
 *The left most knob is the fine focus and the left most the coarse knob.*
 
 ## Image Quality
@@ -124,35 +124,35 @@ Image quality is the most important thing really. As expected, Zeiss has produce
 
 At 15x, the image is super bright and clear. There is a slight yellow tinge to the image which I read is to do with the older generation of the external coatings. It doesn't make a difference in the real world as lighting changes and our eyes adapt. The centre of the image is tack sharp and this goes out to about the 75% of the circle. The last 25% is slightly softer. The view is distortion free (note the train car lines). There are no visible chromatic aberrations even when pointing at a dark mountain side with overcast skies behind. The field of view is large and the eye relief (exit pupil is large).
 
-![](https://i.imgur.com/I78SENu.jpeg)
+![](/static/images/I78SENu.webp)
 *15x cropped to square. Note the slight corner softness and the yellow tinge*
 
 **25x Zoom**
 
 By 25x zoom, the softness is mostly gone and the colour has improved a bit. The image is super clear with good contrast. Some distortion is present, bowing the train car slightly. The eye relief shortens a tad making it slightly less easy to get right, but on the whole still very good.
 
-![](https://i.imgur.com/4sJkij8.jpeg)
+![](/static/images/4sJkij8.webp)
 *25x cropped to square. Note the improved colour and edge sharpness.*
 
 **35x Zoom**
 
 At 35x we see the same as 25x in terms of quality improvements with more contrast and much better colour. There is some more bowing in the train car due to distortion, bit nothing major. The eye relief shrinks a tiny bit more. This has been reported by many and is an effect of the optics in the eyepiece. That said, everything here is pretty good. I did notice a slight dimming of the view at this point, but nothing to worry about. After all this is a 65 mm optic so wont be as bright as the larger versions.
 
-![](https://i.imgur.com/e7AAzuP.jpeg)
+![](/static/images/e7AAzuP.webp)
 *35x cropped to square. Note a small amount of distortion but great colour and contrast.*
 
 **45x Zoom**
 
 Zooming all the way in sees the eye relief increase back to normal, and gives a great view. The sharpness is incredible though there is some distortion. The view does dim a tiny bit more, maybe by 35% compared to 15x, but it's really not an issue most of the time. If you want to view in darker conditions, you will already by considering the 85 mm version I'm sure. I do not see any chromatic aberration at this zoom level, even against dark trees and overcast sky.
 
-![](https://i.imgur.com/HchWQl2.jpeg)
+![](/static/images/HchWQl2.webp)
 *45x cropped to square. The colour and contrast look great and sharpness is spot on.*
 
 On the whole, it's difficult so say much more than 'this is a really great optic at all zoom levels'. I have used the Vortex Viper, and while this is a fantastic optic, the Zeiss holds out much better when zooming. I have had comments from Viper users who are impressed by the view at 45x compared to 60x on the Viper. 
 
 The image below is another poor attempt at digiscoping, but it really does show the quality of this optic. It was taken at 45x zoom by holding my iPhone up to the eyepiece.
 
-![](https://i.imgur.com/wmSxjhA.jpeg)
+![](/static/images/wmSxjhA.webp)
 *Northern flicker taken at 45x with the DiaScope 65T FL*
 
 >[!Hot]- For more test images, open this card!
@@ -161,19 +161,19 @@ The image below is another poor attempt at digiscoping, but it really does show 
 >
 >**15x**
 >
->![](https://i.imgur.com/aZ3ASi6.jpeg)
+>![](/static/images/aZ3ASi6.webp)
 >
 >**25x**
 >
->![](https://i.imgur.com/WLxRIks.jpeg)
+>![](/static/images/WLxRIks.webp)
 >
 >**35x**
 >
->![](https://i.imgur.com/HAJWtKE.jpeg)
+>![](/static/images/HAJWtKE.webp)
 >
 >**45x**
 >
->![](https://i.imgur.com/voyUAC8.jpeg)
+>![](/static/images/voyUAC8.webp)
 
 ## Summary
 

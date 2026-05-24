@@ -11,12 +11,12 @@ tags:
   - birds
   - nature
   - tech
-heroImage: https://i.imgur.com/6wj3V55.jpeg
+heroImage: /static/images/6wj3V55.webp
 created: 2025-03-16
 updated: 2025-03-16
 ---
 
-![](https://i.imgur.com/XaKZYYT.jpeg)
+![](/static/images/XaKZYYT.webp)
 
 #ebird #birds #nature #data
 # Squamish eBird Data
@@ -27,4 +27,4 @@ updated: 2025-03-16
 
 Here is a screenshot of the application I created. Go explore!🦅
 
-![](https://i.imgur.com/K8iO3Q6.png)
+![](/static/images/K8iO3Q6.webp)

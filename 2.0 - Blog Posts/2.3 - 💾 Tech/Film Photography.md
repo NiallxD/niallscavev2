@@ -11,7 +11,7 @@ tags:
   - film-photography
   - photography
   - dark-room
-heroImage: https://i.imgur.com/9wUq3cS.jpg
+heroImage: /static/images/9wUq3cS.webp
 ---
 
 > [!NOTE] 

@@ -11,7 +11,7 @@ tags:
   - photography
   - web
   - webdevelopment
-heroImage: https://i.imgur.com/2ijpl7Q.png
+heroImage: /static/images/2ijpl7Q.webp
 current_project: true
 ---
 After several years of working with the Digital Garden Plugin for Obsidian, I decided I needed to break free of the constrains baked into that plugin (not a bad thing!). Here is what I'm up to!

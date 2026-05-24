@@ -10,7 +10,7 @@ excerpt: This is the report I authored for my master's degree dissertation. I'm 
 tags:
   - environment
   - nature
-heroImage: https://i.imgur.com/jxxUz6b.jpeg
+heroImage: /static/images/jxxUz6b.webp
 created: 2025-01-31
 updated: 2025-01-31
 ---
@@ -50,7 +50,7 @@ This research project aims to gain understanding and insight into how an enjoyab
 
 There are no formal stakeholders to this research project, however there are several informal stakeholders not directly involved in how the research is executed (See Figure 1). Environmental conservation and protection charities such as RSPB, Wildlife Trusts, Natural England, and WWF could be interested in the indicative findings of this research to inform future research, public engagement and behavioural change initiatives. Additional informal stakeholders consist of organisations working in the educational sector as this research considers development of interests in young people. Departments of local authorities also have an indirect stake in this project as they have responsibility for the development of young people and the protection of the environment.
 
-![](https://i.imgur.com/J8BSobX.png)
+![](/static/images/J8BSobX.webp)
 Figure 1 – A stakeholder map illustrating the indirect stakeholders to this research project.
 
 ## 3.2 Feasibility
@@ -61,7 +61,7 @@ Primary data was chosen for this research project as it was expected to be easy 
 
 Considering the financial requirements of the project was straight forward. The design of the research should be such that no financial input should be required. Software systems that can be used free of charge are available to collect and process data.
 
-![](https://i.imgur.com/rGT06jR.png)
+![](/static/images/rGT06jR.webp)
 Figure 2 - A Gantt chart created to manage the project timeline. Coloured boxes represent task completion allocations and star icons are used to indicate milestones.
 
 ## 3.3 Risks
@@ -70,7 +70,7 @@ This research project is subject to several risks in the form of threats and opp
 
 To enable effective risk management, a risk register (Figure 3) has been created to log and monitor any relevant threats and opportunities. Regular updates to the risk register ensure that new threats and opportunities are accounted for and managed appropriately, and existing risks can be reviewed to ensure their impact or likelihood have not changed.
 
-![](https://i.imgur.com/4YIqVY3.png)
+![](/static/images/4YIqVY3.webp)
 Figure 3 - T803 Risk Register to enable effective management of research project risks (high resolution version in Appendix 3). It is not expected for this figure to be legible and instead illustrates the risk register created. Risks are identified in Table 1 below)
 
 At the beginning of the project, risks were categorised into Project Level and Personal Level risks. As the project progressed, additional considerations were given to Environmental and Ethical risks.
@@ -79,7 +79,7 @@ This research project is conducted independently, therefore traditional methods 
 
 Table 1, presented below, provides a snapshot of the threats and opportunities present in this research project along with a summary of the mitigation/stimulation measures enacted.
 
-![](https://i.imgur.com/h4bW2o4.png)
+![](/static/images/h4bW2o4.webp)
 Table 1 - A table summarising the risks identified in this research project including the mitigation/stimulation measures enacted to manage the threats and opportunities.
 
 ## 3.4 Ethical Considerations
@@ -106,7 +106,7 @@ This research project aims to investigate whether introducing people to nature p
 
 In 2023, the RSPB released their State of Nature Report which found that the UK has lost 19% of its biodiversity in the past 50 years (State of Nature, 2023), with one in six species being threatened with extinction. Richardson _et al.,_ (2022) have shown that people in the UK are some of the least connected with nature when considering a range of indicators, such as biodiversity and energy use (Figure 4). Although, it is worth noting that these relationships do not show causation so this should be considered when discussing this data. Notwithstanding, the relationship between the low levels of nature-connectedness and the poor state of the UK’s nature should not be ignored. Furthermore, the IPCC’s latest report (IPCC, 2024) has indicated that the Earth continues to undergo rapid climatic change because of anthropogenic activities which is a leading cause of biodiversity loss (Habibullah et al., 2022).
 
-![](https://i.imgur.com/z4S2Ggh.png)
+![](/static/images/z4S2Ggh.webp)
 Figure 4 – Comparison of countries nature-connectedness. Source: Guardian (2022) adapted from Richardson et al., (2022)
 
 In recent years, several studies have indicated that encouraging young people to spend more time in nature can increase their propensity to engage in pro-environmental behaviours in adulthood (Wells and Lekies, 2006; Rosa _et al.,_ 2018; Scopelliti _et al_., 2022). On the contrary, van Heezik _et al,._ (2021) found this not to be the case. The Office for National Statistics (2023) published a report which shows that 16-24 year olds are the least likely to make lifestyle changes to benefit the environment. This could be due to the range of variables that can affect connections with nature, including but not limited to geographic location, financial standing and other interests that may develop. This results in difficulty with statistically proving that spending time in nature results in a higher propensity to engage in pro-environmental behaviours in adults. This may explain the contradictory findings of Van Heezik _et al,_. (2021). Furthermore, Norwood _et al.,_ (2019) found that children that engaged in nature didn’t show behavioural change or other long-term effects. Regardless of evidence against nature exposure and behavioural changes, there remains a strong evidence base (Wells and Lekies, 2006; Rosa et al., 2018; Scopelliti et al., 2022) which suggests that overall, spending time in nature does increase nature-connectedness. The data presented by Van Heezik _et al,_. (2021) and Office for National Statistics (2023) could suggest that engaging in nature alone isn’t sufficient to build a strong level of nature-connectedness, something which photography could help with.
@@ -131,7 +131,7 @@ Collectively, this suggests that schemes should be developed to ensure a long-te
 
 This study adopts the naturalistic research paradigm. A research paradigm is a framework in which an approach to carrying out research can be developed (Rehman and Alharthi, 2016). Different research paradigms are better suited to different types of research and therefore selecting the correct approach is critical to a successful research project. Different research paradigms, such as the positivistic or naturalistic paradigms, are based on differing ontologies, epistemologies, and methodologies. These differing approaches are illustrated in the ‘Research Onion’ (Saunders, Lewis and Thornhill, 2019) and form the outermost layer of the ‘Research Onion’ (see Figure 5) because they are fundamental to the research design and therefore are decided on in the early stages of the project.
 
-![](https://i.imgur.com/PTNcslN.png)
+![](/static/images/PTNcslN.webp)
 Figure 5 - The ‘Research Onion’ (The Open University, 2023a), adapted from a diagram by Saunders, Lewis and Thornhill, 2019
 
 Ontology concerns the philosophical concept of the ‘nature of being’ which forms the foundations of the questions we ask about the universe around us (Nasution, 2018). Ontologies therefore inform how we study the universe based on how we view the world around us. Epistemology is rooted in the ontological assumptions made, for example, whether a realist or nominalist philosophy is used. The realist ontology states that there is a single reality which is independent of human experience and perception (The Open University, 2023c). This allows it to be studied objectively using the scientific method. The nominalist philosophy agrees that there may be a single reality, but that how people perceive it can be shaped by the individual (The Open University, 2023d).
@@ -194,7 +194,7 @@ The survey was created over several days, with iterations made to adjust how it 
 
 To collect the data for this study, the online survey was distributed to participants through the social media channels Instagram, Facebook, and WhatsApp group chats. In addition to social media, the survey was passed to some participants via direct messaging apps. See Table 2 for the specific channels used and approximate potential reach.
 
-![](https://i.imgur.com/jWzeAav.png)
+![](/static/images/jWzeAav.webp)
 Table 2 - A table showing the different social media platform and channels used to distribute the survey along with potential reach (number of people who can see it).
 
 Although data collection was scheduled for five weeks, the data collection period ran for six weeks in order to gather additional responses while data analysis was carried out. The survey was shared through direct messages to six people that were known personally to the researcher. The survey was then shared through two social media platforms at regular intervals throughout the data collection period. Permission was sought from the administrators of the Facebook groups to share the survey to its members. Conversations with the administrators resulted in allowing the survey to be shared once per week for the duration of the data collection. Sharing the survey on personal profiles is not restricted, so this was carried out every two to three days.
@@ -251,7 +251,7 @@ Analysis of this data follows three distinct pathways:
 
 Responses from each group of participants were compared against a list of _a priori_ thematic codes. Additional codes were added during the data analysis process (see appendix 2 for a full list of codes used). These codes were then grouped into following themes (see Table 3).
 
-![](https://i.imgur.com/epUkCPm.png)
+![](/static/images/epUkCPm.webp)
 Table 3 - A table showing the key themes used during data analysis.
 
 The participants were divided into two groups for analysis. This allowed for comparisons to be made about the key themes raised by each group. The groups were:
@@ -269,7 +269,7 @@ The dataset for this research project can be broadly described in terms of the d
 
 Those who started nature photography at a young age (<18 years old) tended to suggest they did so because they already had an interest in nature in some form. Several participants stated the main reason being their exposure to nature and the outdoors from a young age, which had inspired an interest in nature which translated to perusing nature photography as they grew older. Two participants reported that they were inspired to take up nature photography because of family members who already practiced the hobby paired with an interest in nature. Several participants referred to their love for nature as the main reason for wanting to start photographing wildlife. See Figure 6 below for more details on these responses.
 
-![](https://i.imgur.com/OOepaZb.png)
+![](/static/images/OOepaZb.webp)
 Figure 6 - A graph showing the main response themes from Early Starters and number of participants that commented each theme.
 
 When asked about how photography might have affected how they feel about nature, 45% of participants commented on how they feel like they now have more respect for nature. Similarly, several (38%) commented on how they care more about nature now than they did before engaging in nature photography. Most participants agree that practicing photography has changed how they feel about nature, often commenting in a positive light by using words such as; better, great, harmony, fascinating, and beauty.
@@ -280,14 +280,14 @@ Participants in this group showed enthusiasm about their engagement in pro-envir
 
 When asked about their desire to engage in more pro-environmental behaviour, responders in this group suggested that they felt there was more they could do. When asked to consider whether pro-environmental behaviour negatively impacts their lives, most suggested engaging does impact their life, commenting on the higher cost and increased difficulty of some life tasks such as buying self-care products.
 
-![](https://i.imgur.com/3qCjbje.png)
+![](/static/images/3qCjbje.webp)
 Table 4 - A table listing the pro-environmental behaviours given when asked if the respondent engaged in pro-environmental behaviour.
 
 ### 7.4.2 Late Starters
 
 Among the late starters (>24 years old), the reasoning was more broad and less focussed around nature itself. Three participants (14%) referred to nature as the main reasons for wanting to take up the hobby; Learning more about nature, helping to identify birds, and wanted a nature related hobby. The themes for this group were more closely related to personal development and the desire to have a hobby. Four participants stated explicitly that they started nature photography purely because they needed a hobby. A common theme did emerge from this group in which recording nature was a crucial element of photographing nature, either for later identification or to create a sightings list. See Figure 7 for more details on these responses.
 
-![](https://i.imgur.com/gYz3f21.png)
+![](/static/images/gYz3f21.webp)
 Figure 7 - A graph showing the main response themes from Late Starters and number of participants that commented each theme.
 
 Considering how photography has affected their perceptions of nature, responders in this group frequently said that they see more nature now and that they have more respect for nature. Four responders (18%) suggested that photography has helped them spend more time in nature and that it has allowed them to enjoy wildlife watching more than they did before.
@@ -304,17 +304,17 @@ One key theme emerged that was consistent across the groups. The was the interes
 
 The most common PEB engaged in is Recycling Waste with participants across both groups adding this to their response (see Figure 8 and 9). Both groups reported that the increased cost of engaging in PEB was a factor in their approach, however the Early Starters group tended to accept the higher costs. This could be because of feeling more passionate about their actions, or due to participants in this group being of working age. In contrast, the Later Starters tended to be older and potentially living on pension funds although it is accepted this isn’t the case for all participants.
 
-![](https://i.imgur.com/qdPzQ5o.png)
+![](/static/images/qdPzQ5o.webp)
 Figure 8 - A graph showing the main PEBs engaged in and the frequency they appeared in the responses.
 
-![](https://i.imgur.com/7MqfONA.png)
+![](/static/images/7MqfONA.webp)
 Figure 9 - A graph showing the main PEBs engaged in and the frequency they appeared in the responses.
 
 
 
 Each participant was asked to describe how they feel about nature using just five words. The results of this provide insight into how each group feels about nature and acts to stimulate deep consideration of the topic. The word clouds below (Figure 10 and 11) illustrate that all participants share similar feelings about nature with the words; worry, important, and exciting being the top three shared terms. However, participants in the Late Starters group provided more words linked to a personal relationship with nature such as; relaxing, amazing, happy, exciting, enjoyable and fun. Those in the Early Starters group provided more words relating to how they perceive nature, for example, unpredictable, important, fragile, sacred, and sad.
 
-![](https://i.imgur.com/dy3IYsW.png)
+![](/static/images/dy3IYsW.webp)
 
 Figure 10 - A word cloud generated from responses given by participants (Early Starters) when asked to describe nature in five words.
 
@@ -322,7 +322,7 @@ Figure 11 - A word cloud generated from responses given by participants (Later S
 
 When asked to rate their level of PEB, those in the Early Starters group gave an average rating of 6.5/10 with the lowest given being 4 and the highest 8. The Late Starters group gave lower scores overall with an average of 5.9/10 and a range of 4-8. The collective average across all participants was 6.25/10. See Figure 12 for rating comparison.
 
-![](https://i.imgur.com/6m1XViZ.png)
+![](/static/images/6m1XViZ.webp)
 Figure 12 - A bar chart illustrating the average ratings given by participants when asked to rate their level of engagement in PEB. Ratings average by group and across all participants.
 
 # 8.0 Conclusions

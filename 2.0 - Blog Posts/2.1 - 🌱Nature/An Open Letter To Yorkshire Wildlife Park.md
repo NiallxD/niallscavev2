@@ -12,7 +12,7 @@ tags:
   - nature
   - photography
   - wildlife
-heroImage: https://i.imgur.com/1pQK9Zn.jpeg
+heroImage: /static/images/1pQK9Zn.webp
 created: 2024-05-12
 updated: 2024-05-12
 ---
@@ -105,7 +105,7 @@ However, I will not be removing any photographs shared online. The photos are no
 I thank YWP for what it has given me, particularly in it's early years. Over the past 10 years, YWP has given me a space to develop my passion for nature, which led me to be the person I am today; someone who advocates for wildlife and is not afraid to call out people and organisations when they behave irresponsibly. Had YWP stayed on track, it would not have come to this. Now, I'm saddened to see how the park has changed, a sentiment echoed by many. But as Elizabeth Gilbert wrote "Resist change at your own peril. When something ends, let it end", it's time to draw a line in the sand.
 
 
-![](https://i.imgur.com/1pQK9Zn.jpeg)
+![](/static/images/1pQK9Zn.webp)
 *I shall forever carry a reminder of the cat which started it all for me, a memory I will cherish forever. - One of my photographs of Tschuna I had tattooed in 2023.*
 
 ### Appendix

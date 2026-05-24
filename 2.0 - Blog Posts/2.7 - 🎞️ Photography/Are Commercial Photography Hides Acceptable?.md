@@ -9,7 +9,7 @@ description: A candid look at the ethics of commercial photography hides — are
 excerpt: A candid look at the ethics of commercial photography hides — are they acceptable practice for wildlife photographers? I work through the facts and share my personal view on a topic that divides the wildlife photography community.
 tags:
   - photography
-heroImage: https://i.imgur.com/a0xdQzW.jpeg
+heroImage: /static/images/a0xdQzW.webp
 created: 2024-04-16
 updated: 2024-04-16
 ---
@@ -98,7 +98,7 @@ We can also argue that we’re leaving bait in the environment that may alter th
 Much like Wild, photographers could cause harm to the wildlife and the environment, but it’s also possible to photograph ethically. Also, in this case, the reserve management will have measures in place to further protect wildlife such as viewing platforms and fenced off areas.
 
 
-![|400](https://i.imgur.com/b1BnOmM.png)
+![|400](/static/images/b1BnOmM.webp)
 
 
 Commercial photography hides in Poland. We had to enter under the cover of night and couldn’t leave until darkness had returned in order to minimise disturbing the wildlife.
@@ -154,7 +154,7 @@ I’ve been to commercial hides, I know what they are like and I now think I und
 
 The first rule was always part of my philosophy when it comes to wildlife photography, but the second is something I’ve recently adopted after my trip to Poland and my experiences during and since. Below is an example of how I’m transparent about the nature of how an image was taken, meaning viewers are clear on the circumstances in which I took the photograph, so not to inflate the bar too high.
 
-![](https://i.imgur.com/H1DR2Qc.png)
+![](/static/images/H1DR2Qc.webp)
 
 If you made it this far, well done. This was a bit of a rant, a bit of self exploration and a bit of an open discussion into a topic I feel is important for other wildlife photographer to be aware of.
 

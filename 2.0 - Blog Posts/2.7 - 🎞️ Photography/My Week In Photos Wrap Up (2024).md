@@ -10,7 +10,7 @@ excerpt: This post is all about the My Week In Photos Project I carried out thro
 featured: false
 tags:
   - photography
-heroImage: https://i.imgur.com/28al9Ob.jpeg
+heroImage: /static/images/28al9Ob.webp
 created: 2024-12-31
 updated: 2024-12-31
 ---
@@ -29,21 +29,21 @@ So the culmination of this was the **My Week In Photos project**.
 
 There have definitely been some highlights of this project. Across several weeks I documented the nesting, growing, and fledging of some adorable dippers. This was magical to watch, but it wasn't without its ups and downs! It was devastating to learn that their nest had been washed away by heavy rain! I was relieved to discover that they had managed to re-nest in a safer location before laying eggs...phew! The chicks successfully fledged thanks to the hard work of their parents!
 
-![](https://i.imgur.com/28al9Ob.jpeg)
+![](/static/images/28al9Ob.webp)
 _**The Week of 6th May:** An adult dipper brings food to a hungry chick!_
 
 ### The Pratincole
 
 One of the most incredible weeks was the 1st of July where an unusual visitor dropped into a nondescript field about two miles from my house. This visitor was a [[Black Winged Pratincole Doncaster 2024|black-winged pratincole]], a bird I'd not even heard of prior to this week. I spent a few warm summer evenings looking for this bird and was grateful to be able to create some photographs of the stunning rarity. A big thanks goes to the knowledgeable birders of the South Yorkshire Birders group for this one as they helped me find it.
 
-![](https://i.imgur.com/29y6xnU.jpeg)
+![](/static/images/29y6xnU.webp)
 _**The Week of 1st July:** A rare visitor, a black-winged pratincole!_
 
 ### Northern Lights
 
 The third highlight of the year has to be the incredible [[Aurora Borealis in Doncaster|Northern Lights]] which most of the UK was treated to in October. I was lucky enough to head up to a local dark sky spot with a good friend to photograph the show. This image is one of my favourites from the evening. It was the first time he had seen the Northern Lights, a bucket list item for him. I had two copies of this printed and we now both have a copy of this proudly displayed on the wall!
 
-![](https://i.imgur.com/vUt5zpH.jpeg)
+![](/static/images/vUt5zpH.webp)
 _**The Week of 7th October:** Dave and I photograph the Northern Lights!_
 
 ## The Full Year
@@ -52,8 +52,8 @@ While the photographs from 2024 can be viewed on the original project page [[My 
 
 I encourage you to view large and have a browse.
 
-![](https://i.imgur.com/OdNkF2B.jpeg)
-_To view in full click [here](https://i.imgur.com/OdNkF2B.jpeg)_
+![](/static/images/OdNkF2B.webp)
+_To view in full click [here](/static/images/OdNkF2B.webp)_
 
 ## To Wrap Up
 

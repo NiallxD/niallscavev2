@@ -11,7 +11,7 @@ tags:
   - gear
   - photography
   - tech
-heroImage: https://i.imgur.com/0GszNX9.jpeg
+heroImage: /static/images/0GszNX9.webp
 updated: 2024-04-22
 ---
 

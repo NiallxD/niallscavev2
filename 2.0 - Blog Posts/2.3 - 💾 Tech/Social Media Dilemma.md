@@ -10,7 +10,7 @@ excerpt: An essay on my thoughts about social media with the hope of understandi
 tags:
   - social media
   - tech
-heroImage: https://i.imgur.com/9wUq3cS.jpg
+heroImage: /static/images/9wUq3cS.webp
 created: 2024-08-14
 updated: 2024-08-14
 ---

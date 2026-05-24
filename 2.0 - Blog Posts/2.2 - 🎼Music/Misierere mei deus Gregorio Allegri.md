@@ -9,7 +9,7 @@ description: Even to those who don’t frequent classical music circles let alon
 excerpt: Even to those who don’t frequent classical music circles let alone those of sacred choral music from the 1600’s, will have heard this music sung in one way or another. Incredibly, this piece was perfo
 tags:
   - music
-heroImage: https://i.imgur.com/Zn891va.jpeg
+heroImage: /static/images/Zn891va.webp
 created: 2024-04-11
 updated: 2024-04-11
 ---

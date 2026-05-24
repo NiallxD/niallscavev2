@@ -9,7 +9,7 @@ description: A brief note on my arrival into Canada.
 excerpt: A brief note on my arrival into Canada.
 tags:
   - canada
-heroImage: https://i.imgur.com/2jQznqY.jpeg
+heroImage: /static/images/2jQznqY.webp
 created: 2025-01-12
 updated: 2025-01-12
 ---
@@ -30,7 +30,7 @@ Flights are regular from Calgary to Vancouver, so we opted for a conservative 5 
 >[!NOTE] Seat Tips
 >If you want views of Greenland and to increase your chance of seeing the Northern lights (only on a night flight), choose seats on the right and side of the aircraft. Depending on the landing regime of Calgary that day, you may also get to see the Rockies on your final approach too!
 
-![](https://i.imgur.com/2jQznqY.jpeg)
+![](/static/images/2jQznqY.webp)
 *Views over Greenland - What was odd with this flight was that we experienced a perpetual sunset. The sun only just dipped below the horizon and it stayed there. This is an effect of traveling West at sunset in winter, you are chasing the sun as it sets. Proof the Earth is spherical!*
 
 ## Calgary Airport
@@ -51,7 +51,7 @@ After this we headed down the ramp into the baggage hall and towards the exit. B
 
 From landing to getting our work permit took about an hour. We found the immigration officers to be firm but friendly, and they were super helpful and no question was too small.
 
-![](https://i.imgur.com/qOY9qI2.jpeg)
+![](/static/images/qOY9qI2.webp)
 _A Moose & A Canada Goose - These were some of the cool art installations at Calgary Airport. We look surprisingly chipper to say we'd been awake for nearly 20 hours at this point!_
 
 ## Vancouver Airport
@@ -64,7 +64,7 @@ A few things to note:
 - The baggage carousel is brutal to your cases, ours came flying out the top and hit a barrier which smashed the corner. my case was one of many which got damaged!
 
 
-![](https://i.imgur.com/IWm00Gf.jpeg)
+![](/static/images/IWm00Gf.webp)
 _Art Installations - If you have time definitely check out the art in the Arrivals area of Vancouver Airport before you leave. Here are some First Nations sculptures. Admittedly I didn't find a sign so this could be original or inspired art. Regardless it was great to see!_
 
 ## Summary

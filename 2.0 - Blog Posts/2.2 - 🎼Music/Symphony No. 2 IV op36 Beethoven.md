@@ -9,7 +9,7 @@ description: The fourth movement of Beethoven’s second symphony.
 excerpt: The fourth movement of Beethoven’s second symphony.
 tags:
   - music
-heroImage: https://i.imgur.com/Zn891va.jpeg
+heroImage: /static/images/Zn891va.webp
 created: 2024-04-18
 updated: 2024-04-18
 ---

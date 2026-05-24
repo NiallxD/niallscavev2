@@ -12,7 +12,7 @@ tags:
   - nature
   - photography
   - wildlife
-heroImage: https://i.imgur.com/8bzvnWQ.png
+heroImage: /static/images/8bzvnWQ.webp
 created: 2024-06-24
 updated: 2024-06-24
 ---
@@ -30,7 +30,7 @@ After nearly a year of careful judging and assessing, the results were finally r
 
 There isn't loads to say about this photograph on top of what I've already shared in my [Photo Stories](https://niallbell.com/the-dragons-breath/) but I did want to make a post celebrating the incredible work of all the photographers who were awarded either winning images, or highly commended.
 
-![](https://i.imgur.com/8bzvnWQ.png)
+![](/static/images/8bzvnWQ.webp)
 
 Here is what I wrote for the competition entry:
 
@@ -46,6 +46,6 @@ You can check out the award on the DPOTY website [here](https://www.dpoty.com/wi
 
 I've now had a certificate through for this image and wanted to add to this post.
 
-![](https://i.imgur.com/tZSbhke.jpeg)
+![](/static/images/tZSbhke.webp)
 
 Cheers!

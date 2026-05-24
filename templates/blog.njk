@@ -32,7 +32,7 @@ layout: page.njk
   <p class="section-label">Featured Writing</p>
   <div class="story-list">
     {% for post in collections.featuredPosts | limit(3) %}
-    <a href="{{ post.url | url }}" class="story-card" data-tags="{{ post.data.tags | join(',') if post.data.tags else '' }}">
+    <a href="{{ post.url | url }}" class="story-card story-card--featured" data-tags="{{ post.data.tags | join(',') if post.data.tags else '' }}">
       <div class="story-card-img">
         {% if post.data.coverImage %}
         <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" loading="lazy">

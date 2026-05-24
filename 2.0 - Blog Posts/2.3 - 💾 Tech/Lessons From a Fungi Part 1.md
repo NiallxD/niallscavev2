@@ -12,7 +12,7 @@ tags:
   - nature
   - science
   - mycology
-heroImage: https://i.imgur.com/cAFawk5.jpeg
+heroImage: /static/images/cAFawk5.webp
 ---
 
 I first started dabbling in mycology in 2020, and became more serious a year or so later when I chose to write my dissertation about fungi. Jumping ahead nearly five years and I can honestly say that I have learned many lessons from these overlooked magicians of the natural world.

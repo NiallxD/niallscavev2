@@ -9,7 +9,7 @@ description: A practical walkthrough of getting your Social Insurance Number and
 excerpt: A practical walkthrough of getting your Social Insurance Number and opening a Canadian bank account as a UK national on an IEC work permit — including what documents to bring and what to expect.
 tags:
   - canada
-heroImage: https://i.imgur.com/cSUI4MZ.jpeg
+heroImage: /static/images/cSUI4MZ.webp
 created: 2025-01-20
 updated: 2025-01-20
 ---

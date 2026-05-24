@@ -30,7 +30,7 @@ layout: page.njk
   <p class="section-label">Featured Galleries</p>
   <div class="story-list">
     {% for gallery in collections.featuredGalleries | limit(3) %}
-    <a href="{{ gallery.url | url }}" class="story-card" data-tags="{{ gallery.data.tags | join(',') if gallery.data.tags else '' }}">
+    <a href="{{ gallery.url | url }}" class="story-card story-card--featured" data-tags="{{ gallery.data.tags | join(',') if gallery.data.tags else '' }}">
       <div class="story-card-img">
         {% if gallery.data.coverImage %}
         <img src="{{ gallery.data.coverImage }}" alt="{{ gallery.data.title }}" loading="lazy">

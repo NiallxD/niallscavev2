@@ -13,7 +13,7 @@ tags:
   - the-self
   - values
   - photography
-heroImage: https://i.imgur.com/a2syp1y.jpeg
+heroImage: /static/images/a2syp1y.webp
 ---
 > [!Abstract] Charles Taylor
 > “Authenticity is the moral ideal of the modern world”

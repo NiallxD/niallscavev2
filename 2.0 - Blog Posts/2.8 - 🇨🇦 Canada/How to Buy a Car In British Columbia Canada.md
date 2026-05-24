@@ -10,7 +10,7 @@ excerpt: A step-by-step guide to buying a used car in British Columbia — from 
 tags:
   - canada
   - guide
-heroImage: https://i.imgur.com/oiwPNEa.jpeg
+heroImage: /static/images/oiwPNEa.webp
 created: 2025-01-25
 updated: 2025-01-25
 ---

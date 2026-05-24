@@ -11,7 +11,7 @@ tags:
   - ageguide
   - birds
   - photography
-heroImage: https://i.imgur.com/FEpNXc5.jpeg
+heroImage: /static/images/FEpNXc5.webp
 created: 2025-01-20
 updated: 2025-02-06
 featured: true
@@ -51,31 +51,31 @@ Body plumage changes dramatically across the first five years. In the **first ye
 
 ## First Year Body [AR]
 First year birds have brown feathers throughout which can vary from light to dark brown. Tail is mostly dark brown. Wing axillaries can be more white than the rest of the plumage.
-https://i.imgur.com/4C5LWrf.jpeg
+/static/images/4C5LWrf.webp
 
 ## Second Year Body [AR]
 Second year birds are mostly brown with some white feathers throughout. The head is mostly brown with some white starting to show and the tail is all brown.
-https://i.imgur.com/GUzK4vh.jpeg
+/static/images/GUzK4vh.webp
 
 ## Third Year Body [AR]
 Third year birds are mottled throughout but start to show the dominant white on the head.
-https://i.imgur.com/XJqbCZL.jpeg
+/static/images/XJqbCZL.webp
 
 ## Fourth Year Body [AR]
 A fourth year bird showing an almost complete adult plumage.
-https://i.imgur.com/s3KbuK6.jpeg
+/static/images/s3KbuK6.webp
 
 ## Full Adult Body [AR]
 An adult eagle showing definitive plumage with a fully brown body and pure white tail.
-https://i.imgur.com/ISMOKW8.jpeg
+/static/images/ISMOKW8.webp
 
 ## Fourth Year Tail [AR]
 The black patches at the end of the tail feathers make up the terminal band. This indicates the bird has not yet reached full maturity.
-https://i.imgur.com/J5pMhRg.jpeg
+/static/images/J5pMhRg.webp
 
 ## Full Adult Tail [AR]
 In full adult plumage there is no terminal banding on the tail feathers. The tail is entirely white.
-https://i.imgur.com/OdisaJH.jpeg
+/static/images/OdisaJH.webp
 
 ## gallery-end
 
@@ -87,23 +87,23 @@ The head, bill, cere, and eyes are arguably the clearest indicators of age in th
 
 ## First Year Head [AR]
 Eyes are dark brown. Bill and cere are brown/black with no yellow.
-https://i.imgur.com/zFp7J7Y.jpeg
+/static/images/zFp7J7Y.webp
 
 ## Second Year Head [AR]
 The bill is dark brown/black with only a small amount of yellowing. The cere is mostly black with some yellow starting to show. The eyes are deep brown.
-https://i.imgur.com/U3S3aUu.jpeg
+/static/images/U3S3aUu.webp
 
 ## Third Year Head [AR]
  Notice the yellowing bill with subtle dark areas and a roughly 50/50 white and brown head. This indicates a young eagle in its third winter.
-https://i.imgur.com/zbSyPu0.jpeg
+/static/images/zbSyPu0.webp
 
 ## Fourth Year Head [AR]
 Yellow bill and cere, pale yellow eye, but patches of brown feathers remain on the head. This bird is nearing its full adult plumage but still has a season to go.
-https://i.imgur.com/YNnED3t.jpeg
+/static/images/YNnED3t.webp
 
 ## Full Adult Head [AR]
 In full adult plumage the head is completely white with no brown feathers. The bill, cere, and eyes are all deep yellow.
-https://i.imgur.com/XJExT3w.jpeg
+/static/images/XJExT3w.webp
 
 ## gallery-end
 
@@ -113,11 +113,11 @@ These side-by-side strips make the progression clear across all ages at a glance
 
 **Full Body Comparison**
 
-![](https://i.imgur.com/JU6xRNv.jpeg)
+![](/static/images/JU6xRNv.webp)
 
 **Head Comparison**
 
-![](https://i.imgur.com/smCNIRM.jpeg)
+![](/static/images/smCNIRM.webp)
 
 ## Summary
 
@@ -132,15 +132,15 @@ I wanted to wrap this up by just covering a bit about the differences between ma
 
 ## Body Size [AR]
 Male on the left, female on the right. The female can be up to 25% larger. Here you can see the bird on the right is a tad larger than the one on the left, which makes it easier to tell the sex of the bird.
-https://i.imgur.com/GuGCvdF.jpeg
+/static/images/GuGCvdF.webp
 
 ## Bill Depth [AR]
 Male on the left, female on the right. The female bill tends to be deeper than the male. The depth of the bill can be an indicator of sex, with the female bill being noticeably deeper.
-https://i.imgur.com/l4G82P6.jpeg
+/static/images/l4G82P6.webp
 
 ## Original Side by Side [AR]
 The original unedited side-by-side photograph of a male and female bald eagle together.
-https://i.imgur.com/9PWTwgz.jpeg
+/static/images/9PWTwgz.webp
 
 ## gallery-end
 

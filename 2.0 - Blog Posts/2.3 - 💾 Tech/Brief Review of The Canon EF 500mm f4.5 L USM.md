@@ -11,7 +11,7 @@ tags:
   - gear
   - photography
   - tech
-heroImage: https://i.imgur.com/jGPwQ43.jpeg
+heroImage: /static/images/jGPwQ43.webp
 created: 2023-11-01
 updated: 2024-04-15
 ---
@@ -39,7 +39,7 @@ Firstly, some history. This lens was Cannon’s first 500mm prime lens and was r
 
 Just want to get this out there too. This is about all the information you will find on the internet, and it’s on Canon’s [‘Museum Page’.](https://global.canon/en/c-museum/product/ef307.html)
 
-![](https://i.imgur.com/ZynXdZn.png)
+![](/static/images/ZynXdZn.webp)
 
 - Lens Construction (group): 7
 - Lens Construction (element) 8
@@ -57,7 +57,7 @@ One super handy bit of information is the type of lens hood this lens uses. In c
 **Update note:** I’ve since redesigned the lens hood, STL file can be downloaded [here](https://www.tinkercad.com/things/0iYNPcLIkrN-lens-hood?sharecode=E6GmXRsx3m0R251j2_E4lQpsSngqS06jX1y-y9Scc0U).
 
 ## Build Quality
- ![](https://i.imgur.com/Wy9JlrV.png)
+ ![](/static/images/Wy9JlrV.webp)
 Canon EF 400 f/2.8 vs EF 500mm f/4.5 vs my cat Toby.
 
 **Positive:** As one would expect with a Canon L lens, the build quality is excellent. The lens is mostly metal with seals and gaskets around the ingress points. The foot is nice and big which is welcome given some primes like the 300 f/2.8 have tiny tripod feet. The lens has a decent weight to it (nothing like my 5 kg+ 400 f/2.8) but is handholdable for the most part. It’s worth noting that this lens does not have image stabilisation, not that’s an issue these days with IBIS (see ‘My Setup’ section).

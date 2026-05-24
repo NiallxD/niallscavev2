@@ -11,9 +11,9 @@ tags:
   - nature
   - photography
   - wildlife
-heroImage: https://i.imgur.com/8bzvnWQ.png
+heroImage: /static/images/8bzvnWQ.webp
 hide: true
-header-image: https://i.imgur.com/8bzvnWQ.png
+header-image: /static/images/8bzvnWQ.webp
 created: 2024-04-17
 updated: 2024-04-17
 title-link:
@@ -24,7 +24,7 @@ title-link:
 # The Dragons Breath
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
 
-![](https://i.imgur.com/8bzvnWQ.png)
+![](/static/images/8bzvnWQ.webp)
 
 The Dragons Breath is an image that I created of a [[3.1.2.2 - UK Deer|Red Deer]] at Bradgate Park in 2019. I spend many cold, frosty mornings with the deer here and it’s images like this that make the experience magical.
 

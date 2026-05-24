@@ -12,9 +12,9 @@ tags:
   - nature
   - photography
   - wildlife
-heroImage: https://i.imgur.com/rtk0zzy.png
+heroImage: /static/images/rtk0zzy.webp
 hide: true
-header-image: https://i.imgur.com/rtk0zzy.png
+header-image: /static/images/rtk0zzy.webp
 created: 2021-07-17
 updated: 2021-07-17
 title-link:
@@ -46,7 +46,7 @@ While these are not extinct, it’s worth noting that they are not all doing gre
 
 There are currently three recognised subspecies of tigers that are classified as extinct in the wild. These are the Bali tiger (Panthera tigris balica), the Caspian tiger (Panthera tigris virgata), and the Javan tiger (Panthera tigris sondaica). Details and photos of these tigers are scarce when compared to extant tigers due to the fact they have been extinct for a number of years. The Bali tiger was declared extinct in 1938, the Javan tiger around the 1960s and the Caspian tiger in the 1970s.
 
-![](https://i.imgur.com/rtk0zzy.png)
+![](/static/images/rtk0zzy.webp)
 *Amur tiger running through the water towards a lump of meat thrown in (Captive).*
 
 ## The Plight of the Tiger
@@ -69,7 +69,7 @@ I’ve been a big cat lover for a long time, and when I picked up my first camer
 
 ~~**Every image of a tiger on this website is taken in captivity.** One day I hope to change that.~~ See my wild tigers [[3.1.2.1 - Bengal Tiger|here]].
 
-![400](https://i.imgur.com/EXjdxrk.png)
+![400](/static/images/EXjdxrk.webp)
 *The first animal I photographed back in 2015 (captive).*
 
 ### My Views On Captive Tigers
@@ -93,22 +93,22 @@ I was actually asked to take these photos down by one of the zoos where I took t
 ## gallery-start
 ## Tiger in Full Sprint
 An Amur tiger charges directly toward the camera, caught mid-stride in sharp backlight. Tigers are capable of short bursts reaching 65 kilometres per hour. Despite their size, they are ambush hunters, relying on stealth and a rapid, explosive approach rather than sustained pursuit to close the distance to prey.
-https://i.imgur.com/YM8JB0f.jpeg
+/static/images/YM8JB0f.webp
 
 ## Cooling in the Shallows
 An Amur tiger lies stretched in shallow water, tongue lolling, in a posture of relaxed heat regulation. Unlike most felids, tigers actively seek water and are strong swimmers, readily crossing rivers. The cool water helps dissipate body heat in warm weather and tigers will readily immerse themselves fully.
-https://i.imgur.com/4Msu0Ig.png
+/static/images/4Msu0Ig.webp
 
 ## Through the Willows
 An Amur tiger peers through a curtain of hanging willow foliage, head low, eyes fixed forward. This crouched, concealed posture mirrors the hunting stance tigers use in long grass and forest understorey. The pale eyes and bold facial markings remain visible even as the body blends into the surrounding vegetation.
-https://i.imgur.com/v3dgeOx.png
+/static/images/v3dgeOx.webp
 
 ## Cub on the Rocks
 An Amur tiger cub rests on a lichen-covered rock in warm golden light, its spotted juvenile coat still faintly visible beneath the emerging adult pattern. Tiger cubs remain with their mother for up to three years, gradually learning to hunt. The Amur subspecies is adapted to cold climates with thicker fur than southern tigers.
-https://i.imgur.com/QXS2OUx.png
+/static/images/QXS2OUx.webp
 
 ## Sumatran Tiger Portrait
 A Sumatran tiger sits upright in dense understorey vegetation, gaze directed upward. The Sumatran tiger is the smallest surviving tiger subspecies, distinguished by closely spaced dark stripes on a rich orange coat. Critically endangered, fewer than 400 individuals survive in the fragmented forest habitats of Sumatra.
-https://i.imgur.com/eDQBDJi.png
+/static/images/eDQBDJi.webp
 
 ## gallery-end

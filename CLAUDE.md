@@ -14,7 +14,7 @@ Going through every photography gallery `.md` file and adding a **title** and **
 ```markdown
 ## Fly Agaric
 Two fly agaric mushrooms (Amanita muscaria) glow red against dark woodland moss. One of Britain's most recognisable fungi, the fly agaric is toxic but forms important mycorrhizal relationships with birch and pine. The white spots are remnants of the universal veil that enclosed the developing mushroom.
-https://i.imgur.com/1WnqV0R.jpeg
+/static/images/1WnqV0R.webp
 ```
 
 **How to view images:**
@@ -22,7 +22,7 @@ https://i.imgur.com/1WnqV0R.jpeg
 
 ```bash
 mkdir -p /tmp/gallery_imgs
-curl -s "https://i.imgur.com/XXXXX.jpeg" -o /tmp/gallery_imgs/img1.jpg &
+curl -s "/static/images/XXXXX.webp" -o /tmp/gallery_imgs/img1.jpg &
 # ... repeat for all images, then wait
 wait
 ```

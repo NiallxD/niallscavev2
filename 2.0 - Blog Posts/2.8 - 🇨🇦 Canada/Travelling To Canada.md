@@ -9,7 +9,7 @@ description: The story of how Claudia and I planned and prepared an eight-year-i
 excerpt: The story of how Claudia and I planned and prepared an eight-year-in-the-making move to Canada on the International Experience Canada work permit — two degrees, tonnes of work experience, and a lot of patience later.
 tags:
   - canada
-heroImage: https://i.imgur.com/yi0XicL.jpeg
+heroImage: /static/images/yi0XicL.webp
 created: 2025-01-09
 updated: 2025-01-09
 ---

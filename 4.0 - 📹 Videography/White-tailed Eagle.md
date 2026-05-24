@@ -11,8 +11,8 @@ tags:
   - nature
   - timelapse
 featured: false
-heroImage: https://i.imgur.com/ZszeHtH.jpeg
-header-image: https://i.imgur.com/ZszeHtH.jpeg
+heroImage: /static/images/ZszeHtH.webp
+header-image: /static/images/ZszeHtH.webp
 location: Gostynin, Poland
 hide: true
 Published: 2025-04-28

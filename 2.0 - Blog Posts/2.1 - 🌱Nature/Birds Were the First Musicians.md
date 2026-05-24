@@ -11,7 +11,7 @@ tags:
   - birds
   - music
   - nature
-heroImage: https://i.imgur.com/rLYIZA3.jpeg
+heroImage: /static/images/rLYIZA3.webp
 created: 2024-04-29
 updated: 2024-05-02
 ---
@@ -33,7 +33,7 @@ What about the birds? The numbers vary on when the songbird emerged, but it's on
 
 I think it's fascinating how nature can cause us to question aspects of life that we usually don't even give a second thought to. I want to dive into the nature-first idea for music. To do so, we need to first define what music is.
 
-![](https://i.imgur.com/rLYIZA3.jpeg)
+![](/static/images/rLYIZA3.webp)
 *The Dipper has a beautiful song, not often heard above the sound of a babbling brook.*
 
 ## What is Music?
@@ -74,7 +74,7 @@ Finally, do bird songs show signs of harmony? Yes, they do! ✅
 
 Below is a screenshot of a spectrogram in the Merlin bird ID app. Notice the defined frequencies that the Eurasian blackbird sings simultaneously? Harmony.
 
-![](https://i.imgur.com/0Pgi4kI.jpeg)
+![](/static/images/0Pgi4kI.webp)
 *Blackbird song spectrogram from Merlin (ebird)*
 
 ## So, do birds make music?

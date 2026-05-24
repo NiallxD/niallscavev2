@@ -11,7 +11,7 @@ featured: false
 tags:
   - birds
   - nature
-heroImage: https://i.imgur.com/4TOgr4b.jpeg
+heroImage: /static/images/4TOgr4b.webp
 created: 2024-04-15
 updated: 2024-05-10
 ---
@@ -26,7 +26,7 @@ As is customary for British landowners, the little owls introduction wasn’t ta
 
 What’s perhaps most fascinating to me is the Latin name given to the little owl, *Athene noctua*. 
 
-![](https://i.imgur.com/GXrCiko.jpeg)
+![](/static/images/GXrCiko.webp)
 *Little owl feeding in a wiggly worm.*
 ## Greek Gods
 
@@ -42,5 +42,5 @@ So there we have it, the humble little owl is actual a god tier creature. One on
 
 I love to learn about the history of how things became to be called what they are. They provide little portals into human history, and one never knows where that portal will take them.
 
-![](https://i.imgur.com/ZfR4CBC.jpeg)
+![](/static/images/ZfR4CBC.webp)
 *A little owl perched in an oak that has succumb to brown rot*

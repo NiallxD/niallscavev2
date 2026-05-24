@@ -11,7 +11,7 @@ tags:
   - birds
   - doncaster
   - nature
-heroImage: https://i.imgur.com/vfEGkKB.jpeg
+heroImage: /static/images/vfEGkKB.webp
 created: 2024-12-22
 updated: 2024-12-22
 ---
@@ -23,7 +23,7 @@ It's been a good year for birding in the UK, and there seems to have been no sho
 
 My home town of Doncaster has had it's fair share of rarities too, some of which I've been lucky enough to see. In July we had a [[Black Winged Pratincole Doncaster 2024|Black Winged Pratincole]] spend some time on some ponds near DSA Airport, which I was able to see on a few occasions. Around the same time we had some great sightings of Caspian Tern too which was also a lifer for me.
 
-![](https://i.imgur.com/d0eDYWW.jpeg)
+![](/static/images/d0eDYWW.webp)
 _Black Winged Pratincole in Doncaster - July 2024_
 
 ## The Hoopoe in Doncaster
@@ -40,7 +40,7 @@ So, residents of Rossington can join the ranks of many British villagers which h
 
 The below map has been created using sightings reported by members of the South Yorkshire Birders group along with some sightings which were reported on local Facebook groups. The data covers a period of 7th November to 21st December 2024.
 
-![](https://i.imgur.com/K5gLVFs.png)
+![](/static/images/K5gLVFs.webp)
 
 > [!NOTE] Logging Sightings
 > Sightings can be logged here: https://forms.office.com/r/xu5iBBjKBr
@@ -52,7 +52,7 @@ Theres lots of info online about the Hoopoe but I wanted to include some info he
 
 The Hoopoe is an awesome bird with striking patterns, a long bill, and a huge crest on it's head which flings up and down as it forages for food. The Hoopoe can be found in it's native ranges of Africa, lower mainland Europe and Asia, with occasional sightings outside of these ranges as vagrant birds.
 
-![](https://i.imgur.com/cOWCB81.jpeg)
+![](/static/images/cOWCB81.webp)
 _A photograph of a Eurasian Hoopoe I created in 2020 at the Leeds Cricket ground._
 
 ### Taxonomy

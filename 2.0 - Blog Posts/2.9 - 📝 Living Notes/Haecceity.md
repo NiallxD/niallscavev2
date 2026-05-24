@@ -11,7 +11,7 @@ tags:
   - philosophy
   - identity
   - on-life
-heroImage: https://i.imgur.com/p6DKgUu.jpeg
+heroImage: /static/images/p6DKgUu.webp
 created: 2024-12-13
 updated: 2024-12-13
 maturity-level: Low

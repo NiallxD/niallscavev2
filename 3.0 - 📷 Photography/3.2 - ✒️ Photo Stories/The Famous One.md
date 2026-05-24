@@ -7,9 +7,9 @@ publish: true
 permalink: /the-famous-one
 description: An opportunistic image of a Grouse taken in the stunning Scottish Highlands near Lochindorb.
 excerpt: An opportunistic image of a Grouse taken in the stunning Scottish Highlands. The heather was starting to bloom as this specimen popped up in the sun.
-heroImage: https://i.imgur.com/CgPJ6f6.jpeg
+heroImage: /static/images/CgPJ6f6.webp
 hide: true
-header-image: https://i.imgur.com/CgPJ6f6.jpeg
+header-image: /static/images/CgPJ6f6.webp
 created: 2022-08-17
 updated: 2022-08-17
 title-link:
@@ -20,7 +20,7 @@ title-link:
 # The Famous One
 <p id="reading-time" style="font-style: italic;">⏱️ Approx Reading Time:  <span id="inserted-text"></span> mins</p>
 
-![](https://i.imgur.com/CgPJ6f6.jpeg)
+![](/static/images/CgPJ6f6.webp)
 
 I was holidaying in the Scottish Highlands, photographing wildlife and landscapes. I headed up to Lochindorb (The Loch of Trouble), not far North-East from the small village of Carrbridge, famous for its pack-horse bridge.  
 

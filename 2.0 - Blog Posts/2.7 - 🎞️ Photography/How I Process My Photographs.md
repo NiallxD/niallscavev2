@@ -9,7 +9,7 @@ description: A transparent look at my wildlife photography workflow and editing 
 excerpt: A transparent look at my wildlife photography workflow and editing philosophy — from RAW import through to final export, with thoughts on what it means to process photographs ethically.
 tags:
   - photography
-heroImage: https://i.imgur.com/jo6fK8O.jpeg
+heroImage: /static/images/jo6fK8O.webp
 created: 2024-05-31
 updated: 2024-05-31
 ---
@@ -50,7 +50,7 @@ When it comes to editing a photograph, again I take a fairly straight forward ap
 
 In essence, editing should be done to ensure an photograph can tell the story you want it to tell. The Aurora Borealis is a great example of where this is totally fine in my opinion. If you've ever seen the [[Aurora Borealis in Doncaster|Northern Lights]], you will know that in real life they don't look anything like what they do in photograph. That might lead you to scorn photos which show a bright and vibrant dance of light in the sky. But wait, how do you **FEEL** when you see the Northern Lights? Well this is a different story. For many, this experience is significant. For many it's a bucket list item. For most, the experience is amazing and in their mind, the lights are so much brighter than in real life. A photograph cannot convey this meaning without using creative tools such as post processing to increase the brightness and saturation of the lights.
 
-![](https://i.imgur.com/oNZ7brv.jpeg)
+![](/static/images/oNZ7brv.webp)
 *A photo from the recent solar storm we had which allowed people across the country to see the Northern Lights - Read more about it [[Aurora Borealis in Doncaster|here]].*
 
 When it comes to adding and removing elements of an photograph, I think this is clear cut. If you add something to an photograph, such as a beautiful sunset or a bird that wasn't there, the image is no longer a photograph. This would be a composite and essentially a form of digital art. Removing elements isn't as bad as long as it's not a crucial part of the photograph. If there is two birds and you wanted one, don't clone it out, wait a bit longer. Things like twigs or a bright street sign can be removed without issue.
@@ -80,15 +80,15 @@ This was a quick write up about what post processing of photographs means to me,
 
 Below is a selection of before and after images. My web skills are not sufficient to make this slider work so you'll have to imagine it works!
 
-![](https://i.imgur.com/7c3mGqp.jpeg)
+![](/static/images/7c3mGqp.webp)
 *Here I had warmed the photograph up and added a bit more colour to reflect the warm day.*
 
-![](https://i.imgur.com/XeY3Nq4.jpeg)
+![](/static/images/XeY3Nq4.webp)
 *This dipper was sat in lovely light but the trees shaded much of the bird. I boosted the shadows to balance the light. Not much changed here*
 
-![](https://i.imgur.com/jo6fK8O.jpeg)
+![](/static/images/jo6fK8O.webp)
 *This is a nice sunset photograph where the only changes were warming the photograph up and increasing the contrast slightly.*
 
 
-![](https://i.imgur.com/F03wIhX.jpeg)
+![](/static/images/F03wIhX.webp)
 *This final example shows how RAW files allow more control in the edit. The sky was bright so I had to balance exposure of the light sky and the dark shadows. These could be tweaks afterwards to make a pleasing photograph.*

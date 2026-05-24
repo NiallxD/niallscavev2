@@ -10,7 +10,7 @@ excerpt: Read about my experience seeing Doncaster's Black Winged Pratincole!
 tags:
   - birds
   - photography
-heroImage: https://i.imgur.com/IJUcoJt.jpeg
+heroImage: /static/images/IJUcoJt.webp
 created: 2024-07-08
 updated: 2024-07-08
 ---
@@ -30,7 +30,7 @@ I'm no expert but searching online, and matching with anecdotes from experience 
 
 Now, this bird is hanging around on a small flash about 50 metres into Nottinghamshire, so it's not technically in Yorkshire currently. It has been spotted flying over into some fields on the Yorkshire side of the border on a few occasions so it has been seen there! I was only fortunate enough to see in Notts, but maybe I'll get lucky if I manage to get back to see it before it moves on.
 
-![](https://i.imgur.com/25Zqna9.jpeg)
+![](/static/images/25Zqna9.webp)
 *This is the flash where the bird is hanging out.*
 
 ## Birding Community
@@ -51,17 +51,17 @@ Of course, here is a gallery of images I've managed to capture of the BWP. The c
 
 
 <div class="gallery">
-    <a href="https://i.imgur.com/IJUcoJt.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/IJUcoJt.jpeg" alt="Image 1" width="300" height="200">
+    <a href="/static/images/IJUcoJt.webp" data-fancybox="gallery">
+        <img src="/static/images/IJUcoJt.webp" alt="Image 1" width="300" height="200">
     </a>
-    <a href="https://i.imgur.com/AU1TknR.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/AU1TknR.jpeg" alt="Image 2" width="300">
+    <a href="/static/images/AU1TknR.webp" data-fancybox="gallery">
+        <img src="/static/images/AU1TknR.webp" alt="Image 2" width="300">
     </a>
-    <a href="https://i.imgur.com/9tj0TxX.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/9tj0TxX.jpeg" alt="Image 2" width="300">
+    <a href="/static/images/9tj0TxX.webp" data-fancybox="gallery">
+        <img src="/static/images/9tj0TxX.webp" alt="Image 2" width="300">
     </a>
-    <a href="https://i.imgur.com/qOlO3d6.jpeg" data-fancybox="gallery">
-        <img src="https://i.imgur.com/qOlO3d6.jpeg" alt="Image 2" width="300">
+    <a href="/static/images/qOlO3d6.webp" data-fancybox="gallery">
+        <img src="/static/images/qOlO3d6.webp" alt="Image 2" width="300">
     </a>
 </div>
 

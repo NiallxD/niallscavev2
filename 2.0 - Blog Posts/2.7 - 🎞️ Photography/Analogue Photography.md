@@ -11,7 +11,7 @@ tags:
   - analogue
   - photography
   - tech
-heroImage: https://i.imgur.com/9wUq3cS.jpg
+heroImage: /static/images/9wUq3cS.webp
 created: 2024-05-02
 updated: 2024-05-09
 ---
@@ -31,7 +31,7 @@ It was several months before I actually did anything with this camera. In June I
 
 Loading the film was fairly straight forward, I just followed the instructions in the Owners Handbook that is, amazingly, still in one piece. I was a tiny bit apprehensive about this process as I spent about £15 on the film and didn't want to throw the money in the bin. Thankfully it was a success; I was ready to shoot.
 
-![](https://i.imgur.com/xmPv56G.jpeg)
+![](/static/images/xmPv56G.webp)
 *This was my 2nd film photograph: The Owners Handbook that came with the camera.*
 
 ### My First Shots
@@ -40,7 +40,7 @@ The first shots I took with the Zenit were a bit silly really. I had this great 
 
 So I sat at my desk, and photographed this:
 
-![](https://i.imgur.com/DGMypbz.jpeg)
+![](/static/images/DGMypbz.webp)
 *My 1st film photograph: A photograph of a box of Kentmere 400 B&W with a post-it.*
 
 Why was I scared? Well the pack of 3 rolls of film had set me back £15 and I still had to develop and scan them. I maybe over-reacted, but on reflection, it was a great experience. Rarely do you get to learn a fundamentally different way of creating images!
@@ -61,26 +61,26 @@ So I had a plan to tackle this brain-rot which was eating me alive. I needed to 
 
 I'll not share more than one because they are...boring. Here is an example.
 
-![](https://i.imgur.com/ZDUAlM4.jpeg)
+![](/static/images/ZDUAlM4.webp)
 *Technically my 3rd film photograph: A brick wall. Actually, my brick wall.*
 
 ### Shooting My Second Roll
 
 This is where I started to put some effort in. I was thrown into a new genre, not just because I was using an SLR, but because I didn't have a big fancy telephoto lens to go after wildlife. I was going to have to shoot something different. I decided to shoot a family event because it was people who meant something to me, and it was a familiar setting. I'll share a selection of images here but ultimately it doesn't matter what you think; I'm sure you understand.
 
-![](https://i.imgur.com/LtBoXKT.jpeg)
+![](/static/images/LtBoXKT.webp)
 *This is Eddy - The daisy tree no longer looks like that.*
 
-![](https://i.imgur.com/r2G5zhJ.jpeg)
+![](/static/images/r2G5zhJ.webp)
 *Ahh the British BBQ.*
 
-![](https://i.imgur.com/s8SUpbN.jpeg)
+![](/static/images/s8SUpbN.webp)
 *My sister gesticulating about something...*
 
-![](https://i.imgur.com/pBICkhp.jpeg)
+![](/static/images/pBICkhp.webp)
 *George - King of the pots!*
 
-![](https://i.imgur.com/56HuO60.jpeg)
+![](/static/images/56HuO60.webp)
 *Family, it's members come and go, but it's memory is cumulative.*
 
 I found this experience incredibly rewarding. From setting my exposure, composing, composing again, checking, and then triggering the shutter. The process is very deliberate. There is a satisfying clunk as the mirror slaps up and the shutter whips across. The process, a cliche word I know, is visceral; it's amazing. These images are highly sentimental, and hold value in pretty much only that regard. Most importantly, they are photographs that I created. 
@@ -93,7 +93,7 @@ I found the chemicals I needed online and ordered them from WEX. I picked up a P
 
 The relief and sheer amazement I felt when I pulled the roll of film out of the tank was brilliant. I remember having an actual grin on my face that it had worked! In fact I was that amazed I took a selfie with the negatives as the hung to dry.
 
-![](https://i.imgur.com/pJgSzwf.jpeg)
+![](/static/images/pJgSzwf.webp)
 *I've applied a B&W filter to make it fit the aesthetic. This was snapped on my phone.*
 
 I felt a huge sense of pride and achievement at this moment. On the whole I think there was a bigger relief from the realisation that I'd successfully proven to myself that I am indeed a photographer. 
@@ -102,27 +102,27 @@ I felt a huge sense of pride and achievement at this moment. On the whole I thin
 
 Since this first run, I've put about 10 rolls through the camera, including a very-out-of-date roll of colour film. Below are some highlight images that I really like, for more please do check out my [[3.1.4.2 - Film Photography|Film Photography]] gallery.
 
-![](https://i.imgur.com/egFW5Tz.jpeg)
+![](/static/images/egFW5Tz.webp)
 *A dear friend. This is a photograph I captured of a good friend of mine whilst out looking for red squirrels in North Yorkshire. There is so much character in the image, more so than you as a viewer can know without knowing my friend. This is a special photograph.*
 
 
-![](https://i.imgur.com/h5MhzNZ.jpeg)
+![](/static/images/h5MhzNZ.webp)
 *This is me and my girlfriend on a day out, the same day as the previous photo. It was my friend who created this image for me using my Zenit-11.*
 
 
-![](https://i.imgur.com/bcTLtXf.jpeg)
+![](/static/images/bcTLtXf.webp)
 *Despite only having a 50mm lens, it wasn't going to stop my trying some wildlife. This is a northern gannet colony in the England.*
 
 
-![](https://i.imgur.com/h4mnSor.jpeg)
+![](/static/images/h4mnSor.webp)
 *Vienna is an outstanding city. This was taken when exploring the outskirts of the city. Images like this need no explaining.*
 
 
-![](https://i.imgur.com/r34ZqUI.jpeg)
+![](/static/images/r34ZqUI.webp)
 *Exploring the beautiful canals of Amsterdam. This was a great trip, we saw so much incredible art and history. Amsterdam is far more than just sex and drugs.*
 
 
-![](https://i.imgur.com/BQb9282.jpeg)
+![](/static/images/BQb9282.webp)
 *The out-of-date colour film. This is the famous Marine Drive looking out onto Back Bay in Mumbai.*
 
 ## To Conclude

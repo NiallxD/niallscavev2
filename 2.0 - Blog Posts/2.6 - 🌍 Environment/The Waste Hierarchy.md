@@ -10,7 +10,7 @@ excerpt: The waste hierarchy underpins what most of us know about waste processi
 tags:
   - environment
   - nature
-heroImage: https://i.imgur.com/6zfWazY.jpeg
+heroImage: /static/images/6zfWazY.webp
 created: 2022-08-28
 updated: 2024-04-16
 ---
@@ -37,7 +37,7 @@ The European Commission suggested a three-step hierarchy to be implemented in Th
 
 So what is the waste hierarchy? You know the catchy phrase: reduce, reuse, recycle? That’s the top half of the hierarchy. In addition to these three steps, we also have recovery and landfill. In short, the hierarchy set out the five steps that must be considered by companies, top to bottom when managing their waste. Applying the waste hierarch to waste is a legal obligation, not something that is optional.
 
-![400](https://i.imgur.com/Haj5jQq.png)
+![400](/static/images/Haj5jQq.webp)
 _The Waste Hirearchy_
 
 ## Reduce

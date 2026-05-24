@@ -10,7 +10,7 @@ excerpt: In spring 2022 I built a wildlife pond for under £50. Two years on I'm
 tags:
   - nature
   - wildlife
-heroImage: https://i.imgur.com/KSajmT4.jpeg
+heroImage: /static/images/KSajmT4.webp
 created: 2024-02-01
 updated: 2024-04-22
 ---
@@ -36,7 +36,7 @@ I got almost everything I needed from Marketplace, including the plants. All I h
 ## Planning
 
 <figure class="image-float-right">
-<img src="https://i.imgur.com/eukJlMi.png" alt="Hand-drawn final pond design sketch showing depths and layout"><figcaption>The final design sketch showing the three depth zones and overall shape.</figcaption></figure>
+<img src="/static/images/eukJlMi.webp" alt="Hand-drawn final pond design sketch showing depths and layout"><figcaption>The final design sketch showing the three depth zones and overall shape.</figcaption></figure>
 Firstly, I would suggest making a plan. I took some photos of the spot I wanted to make my pond and drew over it with the notes app on my phone. I roughly laid out the elements and depths along with position and shape.
 
 Once I was happy with the dimensions and placement, I drafted a more detailed sketch that gave me something to work from. Here's my final design:
@@ -64,15 +64,15 @@ The final thing to note is that you should leave an edge around the pond to add 
 
  <div class="image-pair">
  <figure class="image-float-right">
- <img src="https://i.imgur.com/shadzwn.png" alt="The finished dig showing the staircase-like stepped depths, with a ramp between each level."><figcaption>The finished dig showing the staircase-like stepped depths, with a ramp between each level.</figcaption></figure>
+ <img src="/static/images/shadzwn.webp" alt="The finished dig showing the staircase-like stepped depths, with a ramp between each level."><figcaption>The finished dig showing the staircase-like stepped depths, with a ramp between each level.</figcaption></figure>
  <figure class="image-float-right">
- <img src="https://i.imgur.com/XtglxTS.png" alt=" 20 mm layer of fine sand protects the rubber liner from sharp stones beneath."><figcaption> 20 mm layer of fine sand protects the rubber liner from sharp stones beneath.</figcaption></figure>
+ <img src="/static/images/XtglxTS.webp" alt=" 20 mm layer of fine sand protects the rubber liner from sharp stones beneath."><figcaption> 20 mm layer of fine sand protects the rubber liner from sharp stones beneath.</figcaption></figure>
  </div>
 
 ## Lining Your Pond
 
 <figure class="image-float-right">
-<img src="https://i.imgur.com/ByEoMhm.png" alt="Adding the pond liner and conforming to the shape of the dig."><figcaption>Adding the pond liner and conforming to the shape of the dig.</figcaption></figure>
+<img src="/static/images/ByEoMhm.webp" alt="Adding the pond liner and conforming to the shape of the dig."><figcaption>Adding the pond liner and conforming to the shape of the dig.</figcaption></figure>
 
 Once the hole is sufficiently dug, you can line the pond. Firstly, cover the whole thing with a layer of fine sand. Make sure there isn't anything sharp in the sand by lightly tapping it. Make this layer about 20 mm deep if you can! This layer of sand will soften the base for the rubber liner you add which will help prevent holes developing.
 
@@ -85,7 +85,7 @@ The final task is to trim the liner. I'd fill the pond with water first before y
 ## Planting Your Pond
 
 <figure class="image-float-right">
-<img src="https://i.imgur.com/4AFtlYc.png" alt="Pond freshly planted up."><figcaption>Pond freshly planted up.</figcaption></figure>
+<img src="/static/images/4AFtlYc.webp" alt="Pond freshly planted up."><figcaption>Pond freshly planted up.</figcaption></figure>
 
 Once the pond is full of water you can start planting it up. This includes adding all the additional substrate such as gravel and other bits and bobs. 
 
@@ -101,4 +101,4 @@ I hope this gave some insight into the how I created my wildlife pond and gave s
 
 This is how my pond looked after two weeks.
 
-![](https://i.imgur.com/Ue7ycZg.png)
+![](/static/images/Ue7ycZg.webp)
