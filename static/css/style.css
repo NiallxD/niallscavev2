@@ -3358,6 +3358,10 @@ span.wikilink { color: var(--color-secondary); }
   z-index: 10;
 }
 
+.story-card--featured {
+  border-color: var(--color-accent);
+}
+
 .story-card-img {
   aspect-ratio: 3/2;
   overflow: hidden;
