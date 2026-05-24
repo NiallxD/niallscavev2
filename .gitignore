@@ -4,6 +4,8 @@ _site/
 .env
 .DS_Store
 *.heic
+*.jpeg
+*.afdesign
 *.zip
 CLAUDE.md
 gemini.md
