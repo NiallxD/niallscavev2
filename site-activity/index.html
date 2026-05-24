@@ -247,6 +247,29 @@
     font-size: 0.8rem;
     color: var(--color-muted);
   }
+  .analytics-csv-btn {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  .analytics-csv-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
 
   .analytics-note {
     background: var(--color-bg);
@@ -290,6 +313,10 @@
     <input type="date" id="filter-from">
     <label for="filter-to">To</label>
     <input type="date" id="filter-to">
+    <button class="analytics-csv-btn" id="csv-download" title="Download filtered data as CSV">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      CSV
+    </button>
   </div>
 
   <div class="analytics-kpi-row">
@@ -429,6 +456,8 @@
         render();
       });
 
+      document.getElementById('csv-download').addEventListener('click', downloadCSV);
+
     } catch (e) {
       ['vt-total','vt-sessions'].forEach(id => {
         const el = document.getElementById(id);
@@ -551,6 +580,38 @@
       if (raw < 1) lineAnimId = requestAnimationFrame(frame);
     }
     lineAnimId = requestAnimationFrame(frame);
+  }
+
+  function downloadCSV() {
+    const from = document.getElementById('filter-from').value;
+    const to = document.getElementById('filter-to').value;
+
+    const rows = allRows.filter(([url, title, ts]) => {
+      if (!url || url.includes('localhost') || url.includes('127.0.0.1')) return false;
+      if (!ts) return false;
+      const day = ts.slice(0, 10);
+      if (from && day < from) return false;
+      if (to && day > to) return false;
+      return true;
+    });
+
+    const escape = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+    const header = ['Date', 'Time', 'URL', 'Page Title', 'New Session'];
+    const lines = rows.map(([url, title, ts, ns]) => {
+      const path = url.replace(/^https?:\/\/niallbell\.com/, '') || '/';
+      const cleanTitle = (title || '').replace(/\s*[—–-]\s*Niall Bell\s*$/, '').trim();
+      const date = ts ? ts.slice(0, 10) : '';
+      const time = ts ? ts.slice(11, 19) : '';
+      return [date, time, path, cleanTitle, ns ? 'yes' : 'no'].map(escape).join(',');
+    });
+
+    const csv = [header.join(','), ...lines].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `niallbell-analytics-${from || 'all'}-to-${to || 'now'}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
   }
 
   loadAnalytics();
