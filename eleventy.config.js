@@ -596,6 +596,60 @@ export default function (eleventyConfig) {
     return slides;
   });
 
+  eleventyConfig.addFilter("buildMapPins", (galleries, imageGPS) => {
+    if (!galleries || !imageGPS) return [];
+    const pins = [];
+
+    // Matches both <img src="..."> and bare /static/images/xxx.webp URLs
+    const imgSrcRe  = /<img[^>]+src="(\/static\/images\/([A-Za-z0-9_\-]+\.[a-z]+))"/i;
+    const rawUrlRe  = /(?:^|[\s"'(>])((\/static\/images\/)([A-Za-z0-9_\-]+\.(?:webp|jpg|jpeg|png)))/im;
+
+    for (const gallery of galleries) {
+      const html = gallery.templateContent || '';
+      const galleryTitle = gallery.data.title || '';
+      const galleryUrl = gallery.url || '';
+
+      const blocks = html.split(/(?=<h2)/i);
+      for (const block of blocks) {
+        const titleMatch = block.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+        if (!titleMatch) continue;
+
+        let title = titleMatch[1].replace(/<[^>]+>/g, '').trim();
+        title = title.replace(/\[[A-Z]{1,3}\d*\]/gi, '').trim();
+        if (!title || /gallery-(start|end)|testimonials-(start|end)/i.test(title)) continue;
+
+        // Try <img src> first, then bare URL
+        let src, filename;
+        const imgMatch = block.match(imgSrcRe);
+        if (imgMatch) {
+          src = imgMatch[1];
+          filename = imgMatch[2];
+        } else {
+          const rawMatch = block.match(rawUrlRe);
+          if (!rawMatch) continue;
+          src = rawMatch[1].trim();
+          filename = src.replace('/static/images/', '');
+        }
+
+        const gps = imageGPS[filename];
+        if (!gps) continue;
+
+        const caption = block
+          .replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '')
+          .replace(/<img[^>]+>/gi, '')
+          .replace(/\/static\/images\/[^\s<"']+/gi, '')
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/\s+/g, ' ')
+          .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+          .trim();
+
+        pins.push({ src, title, caption, galleryTitle, galleryUrl, lat: gps.lat, lng: gps.lng });
+      }
+    }
+
+    return pins;
+  });
+
   eleventyConfig.addFilter("resolveFocalPoints", (focalPoints, allPhotos) => {
     if (!focalPoints) return [];
     const photos = allPhotos || [];

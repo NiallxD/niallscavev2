@@ -1,192 +1,378 @@
 ---
 layout: base.njk
 ---
-<link rel="stylesheet" href="{{ '/static/css/leaflet.css' | url }}"/>
-<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.css' | url }}"/>
-<link rel="stylesheet" href="{{ '/static/css/MarkerCluster.Default.css' | url }}"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/Widgets/widgets.css"/>
 
 <style>
   body, html { overflow: hidden; }
   main { height: 100vh; box-sizing: border-box; }
-  
-  #photo-map { 
-    width: 100%; 
-    height: 100%; 
-    margin: 0; 
-    border: none; 
-    border-radius: 0; 
-    transition: width 400ms ease; 
-  }
   .site-footer { display: none; }
-  
-  /* Side Panel */
-  #map-side-panel {
+
+  #cesium-container {
     position: fixed;
-    top: var(--nav-height);
-    right: -50%;
-    width: 50%;
-    height: calc(100vh - var(--nav-height));
-    background: #111;
+    inset: 0;
+    background: #000;
+  }
+
+  /* Hide all Cesium default UI chrome */
+  .cesium-widget-credits,
+  .cesium-viewer-toolbar,
+  .cesium-viewer-animationContainer,
+  .cesium-viewer-timelineContainer,
+  .cesium-viewer-fullscreenContainer,
+  .cesium-viewer-geocoderContainer { display: none !important; }
+
+  /* Return to globe button */
+  #globe-reset {
+    position: fixed;
+    top: calc(var(--nav-height, 64px) + 1rem);
+    left: 1rem;
     z-index: 1000;
-    transition: right 400ms cubic-bezier(0.4, 0, 0.2, 1);
-    color: white;
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-  }
-  #map-side-panel.open { right: 0; }
-  
-  .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  .panel-title { font-size: 1.5rem; font-weight: bold; margin: 0; }
-  .close-panel {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    transition: background 200ms;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .close-panel:hover { background: rgba(255,255,255,0.1); }
-  
-  /* Swiper in Panel */
-  .panel-slider { width: 100%; flex: 1; min-height: 0; }
-  .panel-slider .swiper-slide {
+  #globe-reset:hover { background: var(--color-surface); border-color: var(--color-accent); }
+
+  /* Side panel */
+  #map-panel {
+    position: fixed;
+    top: calc(var(--nav-height, 64px) + 1rem);
+    right: calc(-500px - 2rem);
+    width: 500px;
+    max-width: calc(100vw - 2rem);
+    height: calc(100vh - var(--nav-height, 64px) - 2rem);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md, 12px);
+    z-index: 1000;
+    transition: right 360ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
   }
-  .panel-slider img {
-    max-width: 100%;
-    max-height: 70vh;
+  #map-panel.open { right: 1rem; }
+
+  .panel-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: inherit;
+    z-index: 1;
+    transition: background 0.15s ease;
+  }
+  .panel-close:hover { background: var(--color-border); }
+
+  .panel-img {
+    width: 100%;
+    max-height: 60vh;
     object-fit: contain;
-    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    background: var(--color-surface);
+    display: block;
   }
-  .slide-filename {
-    margin-top: 1rem;
+  .panel-body { padding: 1.5rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; }
+  .panel-caption { flex: 1; }
+  .panel-link-row { margin-top: auto; padding-top: 1rem; }
+  .panel-gallery-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+  .panel-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0 0 0.75rem;
+    line-height: 1.25;
+  }
+  .panel-caption {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-secondary);
+    margin: 0 0 1.25rem;
+  }
+  .panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.9rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .panel-link:hover { background: var(--color-accent); color: #fff; }
+  .panel-link-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .panel-link.ghost { background: transparent; }
+
+  /* Lightbox */
+  #panel-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  #panel-lightbox.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #lightbox-img {
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    display: block;
   }
 </style>
 
-<div id="photo-map"></div>
-<div id="map-side-panel">
-  <div class="panel-header">
-    <h2 class="panel-title" id="panel-location-name">Location</h2>
-    <button class="close-panel" onclick="closePanel()">Close Explorer</button>
-  </div>
-  <div class="swiper panel-slider" id="panel-swiper">
-    <div class="swiper-wrapper" id="panel-swiper-wrapper">
-      <!-- Dynamic Slides -->
+<div id="cesium-container"></div>
+<button id="globe-reset" title="Return to globe view">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  Globe
+</button>
+
+<div id="map-panel">
+  <button class="panel-close" id="panel-close">✕</button>
+  <img class="panel-img" id="panel-img" src="" alt="" style="cursor:zoom-in;">
+  <div class="panel-body">
+    <p class="panel-gallery-label" id="panel-gallery"></p>
+    <h2 class="panel-title" id="panel-title"></h2>
+    <p class="panel-caption" id="panel-caption"></p>
+    <div class="panel-link-row">
+      <button class="panel-link ghost" id="view-large-btn">View Large</button>
+      <a class="panel-link" id="panel-link" href="#">View Gallery →</a>
+      <button class="panel-link ghost" id="prev-pin" title="Previous">←</button>
+      <button class="panel-link ghost" id="next-pin" title="Next">→</button>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
   </div>
 </div>
 
-<div style="display:none;">{{ content | safe }}</div>
+<div id="panel-lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
 
-<link rel="stylesheet" href="{{ '/static/css/swiper-bundle.min.css' | url }}"/>
-<script src="{{ '/static/js/swiper-bundle.min.js' | url }}"></script>
-<script src="{{ '/static/js/leaflet.js' | url }}"></script>
-<script src="{{ '/static/js/leaflet.markercluster.js' | url }}"></script>
 <script>
-  const pins = {{ focalPoints | resolveFocalPoints(photographs) | dump | safe }};
+  // Must be set before Cesium loads so it can find its Workers and Assets
+  window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/';
+</script>
+<script src="https://cdn.jsdelivr.net/npm/cesium/Build/Cesium/Cesium.js"></script>
+<script>
+  const pins = {{ collections.galleries | buildMapPins(imageGPS) | dump | safe }};
 
-  const lightTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-  const darkTiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
-  const getTileUrl = () => document.documentElement.getAttribute('data-theme') === 'dark' ? darkTiles : lightTiles;
+  // Disable Ion — we're using our own tile sources
+  Cesium.Ion.defaultAccessToken = '';
 
-  const map = L.map('photo-map', {
-    scrollWheelZoom: true,
-    touchZoom: true,
-    minZoom: 2,
-    maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0,
-    keyboard: true
-  }).setView([20, 0], 2);
+  // ── Tile providers ─────────────────────────────────────────────────────────
+  function addImageryLayers() {
+    viewer.imageryLayers.removeAll();
+    viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      credit: '© Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN',
+      maximumLevel: 19
+    }));
+  }
 
-  const tiles = L.tileLayer(getTileUrl(), {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
-  }).addTo(map);
-
-  // Theme Watcher
-  const themeObserver = new MutationObserver(() => {
-    tiles.setUrl(getTileUrl());
+  // ── Viewer ─────────────────────────────────────────────────────────────────
+  // imageryProvider/terrainProvider constructor options removed in Cesium 1.107+
+  const viewer = new Cesium.Viewer('cesium-container', {
+    baseLayerPicker:       false,
+    geocoder:              false,
+    homeButton:            false,
+    sceneModePicker:       false,
+    navigationHelpButton:  false,
+    animation:             false,
+    timeline:              false,
+    fullscreenButton:      false,
+    selectionIndicator:    false,
+    infoBox:               false,
+    requestRenderMode:     false
   });
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-  const cluster = L.markerClusterGroup({ maxClusterRadius: 60 });
-  let panelSwiper = null;
+  // Flat ellipsoid terrain — no Ion needed
+  viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider();
 
-  function openPanel(pin) {
-    const panel = document.getElementById('map-side-panel');
-    const title = document.getElementById('panel-location-name');
-    const wrapper = document.getElementById('panel-swiper-wrapper');
-    const mapEl = document.getElementById('photo-map');
-    
-    title.textContent = pin.title;
-    wrapper.innerHTML = pin.photos.map(p => `
-      <div class="swiper-slide">
-        <img src="${p.full}" alt="${p.name}" loading="lazy">
-        <div class="slide-filename">${p.name}</div>
-      </div>
-    `).join('');
-    
-    panel.classList.add('open');
-    mapEl.style.width = '50%';
-    map.keyboard.disable();
-    
-    setTimeout(() => {
-      if (panelSwiper) panelSwiper.destroy();
-      panelSwiper = new Swiper('#panel-swiper', {
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', type: 'fraction' },
-        keyboard: { enabled: true, onlyInViewport: true },
-        speed: 400
+  // Replace default Ion imagery with satellite + labels
+  addImageryLayers();
+
+  // Faster zoom
+  viewer.scene.screenSpaceCameraController.zoomFactor = 12.0;
+
+  // Disable atmosphere and fog so imagery is crisp at all altitudes
+  viewer.scene.skyAtmosphere.show = false;
+  viewer.scene.fog.enabled = false;
+  viewer.scene.globe.enableLighting = false;
+  viewer.scene.globe.showGroundAtmosphere = false;
+  viewer.scene.backgroundColor = Cesium.Color.BLACK;
+
+  // Start high above Earth — shows the full sphere
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(10, 25, 22000000)
+  });
+
+  // Minimum zoom — keeps tiles loaded, prevents going underground
+  viewer.scene.screenSpaceCameraController.minimumZoomDistance = 550;
+
+  // ── Pins ───────────────────────────────────────────────────────────────────
+  const pointColl = viewer.scene.primitives.add(new Cesium.PointPrimitiveCollection());
+  const labelColl = viewer.scene.primitives.add(new Cesium.LabelCollection());
+
+  function isOnFrontHemisphere(world) {
+    const normal = Cesium.Ellipsoid.WGS84.geodeticSurfaceNormal(world, new Cesium.Cartesian3());
+    const toCam  = Cesium.Cartesian3.subtract(viewer.camera.position, world, new Cesium.Cartesian3());
+    return Cesium.Cartesian3.dot(normal, toCam) > 0;
+  }
+
+  function updatePins() {
+    pointColl.removeAll();
+    labelColl.removeAll();
+    const cameraHeight = Cesium.Cartographic.fromCartesian(viewer.camera.position).height;
+    const showLabels   = cameraHeight < 2000000;
+    pins.forEach((pin, i) => {
+      const world = Cesium.Cartesian3.fromDegrees(pin.lng, pin.lat);
+      if (!isOnFrontHemisphere(world)) return;
+      pointColl.add({
+        position: world, pixelSize: 14,
+        color: Cesium.Color.fromCssColorString('#e07b39'),
+        outlineColor: Cesium.Color.WHITE, outlineWidth: 2,
+        id: i
       });
-      map.invalidateSize(); 
-    }, 450);
-  }
-
-  window.closePanel = function() {
-    const panel = document.getElementById('map-side-panel');
-    const mapEl = document.getElementById('photo-map');
-    panel.classList.remove('open');
-    mapEl.style.width = '100%';
-    map.keyboard.enable();
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 450);
-  };
-
-  pins.forEach(pin => {
-    if (pin.count === 0) return;
-    const icon = L.divIcon({
-      className: 'photo-marker',
-      html: `<div class="photo-marker-inner"><img src="${pin.image}" alt="${pin.title}"></div>`,
-      iconSize: [56, 56],
-      iconAnchor: [28, 28]
+      if (showLabels) {
+        labelColl.add({
+          position: world, text: pin.title,
+          font: '12px sans-serif', fillColor: Cesium.Color.WHITE,
+          outlineColor: Cesium.Color.BLACK, outlineWidth: 3,
+          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+          pixelOffset: new Cesium.Cartesian2(0, -18)
+        });
+      }
     });
-    const marker = L.marker([pin.lat, pin.lng], { icon });
-    marker.on('click', () => openPanel(pin));
-    cluster.addLayer(marker);
-  });
-  map.addLayer(cluster);
-
-  if (pins.length > 0) {
-    const group = L.featureGroup(pins.map(p => L.marker([p.lat, p.lng])));
-    map.fitBounds(group.getBounds().pad(0.3));
   }
+
+  viewer.camera.moveEnd.addEventListener(updatePins);
+  updatePins();
+
+  // ── Click handler ──────────────────────────────────────────────────────────
+  const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+
+  handler.setInputAction(click => {
+    const picked = viewer.scene.pick(click.position);
+    if (!Cesium.defined(picked) || picked.id === undefined) return;
+    const idx = picked.id;
+    if (typeof idx === 'number' && pins[idx]) {
+      openPanel(pins[idx], idx);
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(pins[idx].lng, pins[idx].lat, 500),
+        duration: 2.4
+      });
+    }
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+  // Pointer cursor on hover
+  handler.setInputAction(move => {
+    const picked = viewer.scene.pick(move.endPosition);
+    viewer.canvas.style.cursor =
+      (Cesium.defined(picked) && picked.id !== undefined) ? 'pointer' : 'default';
+  }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+
+
+
+  // ── Globe reset ────────────────────────────────────────────────────────────
+  document.getElementById('globe-reset').addEventListener('click', () => {
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(10, 25, 22000000),
+      duration: 1.8
+    });
+  });
+
+  // ── Side panel ─────────────────────────────────────────────────────────────
+  document.getElementById('panel-close').addEventListener('click', () => {
+    document.getElementById('map-panel').classList.remove('open');
+  });
+
+  // ── Lightbox ───────────────────────────────────────────────────────────────
+  const lightbox     = document.getElementById('panel-lightbox');
+  const lightboxImg  = document.getElementById('lightbox-img');
+  const panelImg     = document.getElementById('panel-img');
+
+  const mapPanel = document.getElementById('map-panel');
+
+  function openLightbox() {
+    lightboxImg.src = panelImg.src;
+    lightboxImg.alt = panelImg.alt;
+    lightbox.classList.add('visible');
+    mapPanel.style.opacity = '0';
+    mapPanel.style.pointerEvents = 'none';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    mapPanel.style.opacity = '';
+    mapPanel.style.pointerEvents = '';
+  }
+
+  panelImg.addEventListener('click', openLightbox);
+  document.getElementById('view-large-btn').addEventListener('click', openLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+
+  let currentPinIdx = 0;
+
+  function openPanel(pin, idx) {
+    currentPinIdx = idx;
+    document.getElementById('panel-img').src             = pin.src;
+    document.getElementById('panel-img').alt             = pin.title;
+    document.getElementById('panel-gallery').textContent = pin.galleryTitle;
+    document.getElementById('panel-title').textContent   = pin.title;
+    document.getElementById('panel-caption').textContent = pin.caption;
+    document.getElementById('panel-link').href           = pin.galleryUrl;
+    document.getElementById('map-panel').classList.add('open');
+  }
+
+  function goToPin(idx) {
+    const pin = pins[idx];
+    openPanel(pin, idx);
+    const height = Cesium.Cartographic.fromCartesian(viewer.camera.position).height;
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(pin.lng, pin.lat, height),
+      duration: 1.2
+    });
+  }
+
+  document.getElementById('prev-pin').addEventListener('click', () => {
+    goToPin((currentPinIdx - 1 + pins.length) % pins.length);
+  });
+  document.getElementById('next-pin').addEventListener('click', () => {
+    goToPin((currentPinIdx + 1) % pins.length);
+  });
 </script>
