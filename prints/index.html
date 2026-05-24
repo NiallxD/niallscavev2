@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/static/css/style.css?v=1.1">
   <script>
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    if (savedTheme !== 'light') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
@@ -34,13 +34,14 @@
       </a>
       <nav class="nav-menu">
         <a href="/photography/">Photo</a>
-        <a href="/videography/">Video</a>
-        <a href="/prints/" class="active">Prints</a>
         <a href="/blog/">Writing</a>
         <a href="/side-projects/">Projects</a>
         <a href="/bookshelf/">Bookshelf</a>
-        <a href="/guides/">Guides</a>
         <a href="/about-me/">About</a>
+        <span class="nav-pill-group">
+          <a href="/prints/" class="nav-pill-item active">Prints</a>
+          <a href="/guides/" class="nav-pill-item">Walks</a>
+        </span>
       </nav>
       <div class="header-controls">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
@@ -355,13 +356,13 @@
         <p class="section-label">Site Map</p>
         <div class="footer-links-list footer-links-two-col">
           <a href="/photography/">Photo</a>
-          <a href="/videography/">Video</a>
+
           <a href="/prints/">Prints</a>
           <a href="/blog/">Writing</a>
           <a href="/side-projects/">Projects</a>
           <a href="/bookshelf/">Bookshelf</a>
-          <a href="/guides/">Guides</a>
           <a href="/about-me/">About</a>
+          <a href="/guides/">Walks</a>
           <a href="/now/">Now</a>
         </div>
         
