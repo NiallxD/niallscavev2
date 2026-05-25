@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHD Mind Simulator — Niall Bell</title>
+  <meta name="description" content="A physics-driven simulation of an ADHD morning. Experience the mechanics of attention, initiation cost, and working memory.">
+  <meta name="robots" content="noarchive">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --c-bg: #0a0a0a;
+      --c-primary: #39ff14;
+      --c-primary-dim: rgba(57,255,20,0.6);
+      --c-primary-faint: rgba(57,255,20,0.15);
+      --c-amber: #ffb000;
+      --c-amber-dim: rgba(255,176,0,0.7);
+      --c-red: #ff3131;
+      --c-surface: #111;
+      --c-border: rgba(57,255,20,0.3);
+      --font: 'VT323', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: var(--c-bg);
+      color: var(--c-primary);
+      font-family: var(--font);
+      font-size: 22px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* CRT scanline overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* CRT flicker */
+    @keyframes crt-flicker {
+      0%   { opacity: 1; }
+      92%  { opacity: 1; }
+      93%  { opacity: 0.94; }
+      94%  { opacity: 1; }
+      96%  { opacity: 0.96; }
+      97%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    body { animation: crt-flicker 8s infinite; }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .blink { animation: blink 1s step-start infinite; }
+
+    @keyframes flash-amber-anim {
+      0%, 100% { color: var(--c-primary); }
+      50% { color: var(--c-amber); text-shadow: 0 0 8px var(--c-amber); }
+    }
+    .flash-amber { animation: flash-amber-anim 0.6s ease-in-out infinite; }
+
+    @keyframes flash-red-anim {
+      0%, 100% { color: var(--c-primary); }
+      50% { color: var(--c-red); text-shadow: 0 0 8px var(--c-red); }
+    }
+    .flash-red { animation: flash-red-anim 0.4s ease-in-out infinite; }
+
+    #boot-msg {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font);
+      font-size: 32px;
+      color: var(--c-primary);
+      background: var(--c-bg);
+      z-index: 100;
+      letter-spacing: 0.1em;
+    }
+
+    #app {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Range input styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 2px;
+      background: var(--c-border);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      background: var(--c-primary);
+      cursor: pointer;
+      border-radius: 0;
+      border: none;
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      background: var(--c-primary);
+      cursor: pointer;
+      border-radius: 0;
+      border: none;
+    }
+    input[type=range]:hover {
+      background: var(--c-primary-dim);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--c-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--c-border); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--c-primary-dim); }
+  </style>
+</head>
+<body>
+  <div id="boot-msg">LOADING SYSTEM<span class="blink">_</span></div>
+  <div id="app"></div>
+  <script type="text/babel" data-presets="react" src="/static/js/adhd-game.js"></script>
+</body>
+</html>
