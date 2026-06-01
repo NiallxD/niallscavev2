@@ -20,8 +20,8 @@ const PHYSICS = {
   ATTRACT_BASE: 2800,
   SNAP_THRESHOLD: 20,
   DECAY_TIME_BASE: 8000,
-  TASK_DRIFT_IN_BOX: 0.18,
-  SPAWN_INTERVAL_BASE: 12000,
+  TASK_DRIFT_IN_BOX: 0.32,
+  SPAWN_INTERVAL_BASE: 22000,
   DAMPING: 0.88,
   BOX_BASE_W: 620,
   BOX_BASE_H: 420,
@@ -29,8 +29,8 @@ const PHYSICS = {
 };
 
 const morningTasks = [
-  { id: 'brush_teeth', label: 'BRUSH TEETH', duration: 25, urgency: 'daily', reward: 8, interest: 0.1, initiationCost: 0.95, canHyperfocus: false },
-  { id: 'shower', label: 'SHOWER', duration: 55, urgency: 'daily', reward: 14, interest: 0.15, initiationCost: 0.85, canHyperfocus: false },
+  { id: 'brush_teeth', label: 'BRUSH TEETH', duration: 25, urgency: 'daily', reward: 8, interest: 0.1, initiationCost: 0.95, canHyperfocus: false, isExclusive: true },
+  { id: 'shower', label: 'SHOWER', duration: 55, urgency: 'daily', reward: 14, interest: 0.15, initiationCost: 0.85, canHyperfocus: false, isExclusive: true },
   { id: 'eat_breakfast', label: 'EAT BREAKFAST', duration: 80, urgency: 'health', reward: 16, interest: 0.3, initiationCost: 0.7, canHyperfocus: false },
   { id: 'bins_out', label: 'PUT BINS OUT', duration: 55, urgency: 'weekly', reward: 7, interest: 0.05, initiationCost: 0.98, canHyperfocus: false },
   { id: 'meet_volunteer', label: 'MEET NEW VOLUNTEER', duration: 90, canHyperfocus: true, hyperfocusProbability: 0.55, urgency: 'medium', reward: 30, interest: 0.6, initiationCost: 0.4,
@@ -50,9 +50,28 @@ const morningTasks = [
   },
   { id: 'tell_partner_keys', label: 'TELL PARTNER: KEYS', duration: 12, urgency: 'low', reward: 4, interest: 0.1, initiationCost: 0.6, lockedUntil: 'hang_keys', canHyperfocus: false },
   { id: 'empty_dishwash', label: 'EMPTY DISHWASHER', duration: 65, urgency: 'daily', reward: 7, interest: 0.1, initiationCost: 0.88, canHyperfocus: false },
-  { id: 'take_meds', label: 'TAKE MEDICATION', duration: 8, urgency: 'critical', reward: 30, interest: 0.2, initiationCost: 0.6, canHyperfocus: false },
+  { id: 'take_meds', label: 'TAKE MEDICATION', duration: 8, urgency: 'critical', reward: 30, interest: 0.2, initiationCost: 0.6, canHyperfocus: false, isExclusive: true },
   { id: 'order_shopping', label: 'ORDER SHOPPING', duration: 120, urgency: 'medium', reward: 12, interest: 0.35, initiationCost: 0.8, canHyperfocus: true, hyperfocusProbability: 0.7 },
   { id: 'make_bed', label: 'MAKE BED', duration: 35, urgency: 'low', reward: 6, interest: 0.1, initiationCost: 0.92, canHyperfocus: false },
+  { id: 'feed_cat', label: 'FEED THE CAT', duration: 20, urgency: 'daily', reward: 9, interest: 0.2, initiationCost: 0.75, canHyperfocus: false },
+  { id: 'water_plants', label: 'WATER HOUSEPLANTS', duration: 40, urgency: 'weekly', reward: 8, interest: 0.15, initiationCost: 0.88, canHyperfocus: false },
+  { id: 'make_coffee', label: 'BREW COFFEE', duration: 30, urgency: 'daily', reward: 15, interest: 0.5, initiationCost: 0.5, canHyperfocus: true, hyperfocusProbability: 0.25 },
+  { id: 'unpack_backpack', label: 'UNPACK BACKPACK', duration: 35, urgency: 'daily', reward: 6, interest: 0.1, initiationCost: 0.9, canHyperfocus: false },
+  { id: 'sort_washing', label: 'SORT WASHING', duration: 45, urgency: 'weekly', reward: 8, interest: 0.08, initiationCost: 0.94, canHyperfocus: false },
+  { id: 'clean_bathroom', label: 'CLEAN BATHROOM', duration: 100, urgency: 'weekly', reward: 18, interest: 0.05, initiationCost: 0.97, canHyperfocus: false, isExclusive: true },
+  { id: 'tidy_kitchen', label: 'TIDY KITCHEN', duration: 70, urgency: 'daily', reward: 12, interest: 0.12, initiationCost: 0.88, canHyperfocus: true, hyperfocusProbability: 0.4 },
+  { id: 'feed_dog', label: 'FEED THE DOG', duration: 25, urgency: 'daily', reward: 9, interest: 0.25, initiationCost: 0.72, canHyperfocus: false },
+  { id: 'take_out_recycling', label: 'SORT RECYCLING', duration: 40, urgency: 'weekly', reward: 7, interest: 0.08, initiationCost: 0.93, canHyperfocus: false },
+  { id: 'prep_lunch', label: 'PREP WORK LUNCH', duration: 60, urgency: 'daily', reward: 12, interest: 0.35, initiationCost: 0.82, canHyperfocus: false },
+  { id: 'check_calendar', label: 'CHECK CALENDAR', duration: 15, urgency: 'daily', reward: 10, interest: 0.45, initiationCost: 0.65, canHyperfocus: true, hyperfocusProbability: 0.35 },
+  { id: 'put_on_shoes', label: 'FIND & PUT ON SHOES', duration: 20, urgency: 'daily', reward: 8, interest: 0.1, initiationCost: 0.85, canHyperfocus: false, isExclusive: true },
+  { id: 'reply_to_landlord', label: 'REPLY TO LANDLORD', duration: 45, urgency: 'medium', reward: 15, interest: 0.15, initiationCost: 0.95, canHyperfocus: false },
+  { id: 'research_special_interest', label: 'RESEARCH SPECIAL INTEREST', duration: 140, urgency: 'low', reward: 25, interest: 0.95, initiationCost: 0.1, canHyperfocus: true, hyperfocusProbability: 0.9 },
+  { id: 'wash_dishes', label: 'WASH CRUSTY DISHES', duration: 75, urgency: 'daily', reward: 9, interest: 0.05, initiationCost: 0.96, canHyperfocus: false },
+  { id: 'plan_day', label: "PLAN TODAY'S SCHEDULE", duration: 40, urgency: 'medium', reward: 15, interest: 0.3, initiationCost: 0.8, canHyperfocus: true, hyperfocusProbability: 0.4 },
+  { id: 'fold_laundry', label: 'FOLD THE FLOORDROBE', duration: 80, urgency: 'weekly', reward: 8, interest: 0.08, initiationCost: 0.97, canHyperfocus: false },
+  { id: 'find_wallet', label: 'FIND WALLET & KEYS', duration: 30, urgency: 'critical', reward: 12, interest: 0.1, initiationCost: 0.85, canHyperfocus: false, isExclusive: true },
+  { id: 'pay_utility_bill', label: 'PAY POWER BILL', duration: 25, urgency: 'critical', reward: 18, interest: 0.1, initiationCost: 0.9, canHyperfocus: false },
 ];
 
 const intrusiveThoughtPool = [
@@ -68,6 +87,28 @@ const intrusiveThoughtPool = [
   { label: '~ look up that random fact ~', stickiness: 0.7, rewarding: true },
   { label: '~ what does my horoscope say ~', stickiness: 0.6, rewarding: true },
   { label: '~ i need to call my parents ~', stickiness: 0.55, rewarding: false },
+  { label: "~ ooh, what's that bird on the feeder? ~", stickiness: 0.85, rewarding: true },
+  { label: '~ need to clean the keyboard with a toothpick ~', stickiness: 0.9, rewarding: true },
+  { label: '~ check the fridge for the 4th time ~', stickiness: 0.7, rewarding: false },
+  { label: '~ did i leave the window open in the rain? ~', stickiness: 0.78, rewarding: false },
+  { label: '~ look up the lifespan of a squirrel ~', stickiness: 0.8, rewarding: true },
+  { label: '~ maybe i should paint a mural here ~', stickiness: 0.82, rewarding: true },
+  { label: '~ check the tracking for my parcel ~', stickiness: 0.88, rewarding: true },
+  { label: '~ did i pay the electricity bill? ~', stickiness: 0.85, rewarding: false },
+  { label: '~ what if humans had wings ~', stickiness: 0.72, rewarding: true },
+  { label: '~ read the wikipedia page for obsidian ~', stickiness: 0.9, rewarding: true },
+  { label: '~ is that a spider on the ceiling? ~', stickiness: 0.78, rewarding: false },
+  { label: '~ that strange noise from the radiator ~', stickiness: 0.65, rewarding: false },
+  { label: '~ i should build a custom shelf ~', stickiness: 0.85, rewarding: true },
+  { label: '~ is my plant dying or overwatered ~', stickiness: 0.65, rewarding: false },
+  { label: '~ read the entire history of forks ~', stickiness: 0.9, rewarding: true },
+  { label: '~ what if i started a podcast ~', stickiness: 0.8, rewarding: true },
+  { label: '~ clean the window tracks with a brush ~', stickiness: 0.85, rewarding: true },
+  { label: '~ did i lock the back door ~', stickiness: 0.75, rewarding: false },
+  { label: '~ check if the dog is breathing ~', stickiness: 0.7, rewarding: false },
+  { label: '~ how does a locks mechanism work ~', stickiness: 0.8, rewarding: true },
+  { label: '~ reorganise bookshelf by colour ~', stickiness: 0.9, rewarding: true },
+  { label: '~ what was that actor in... ~', stickiness: 0.75, rewarding: true },
 ];
 
 const URGENCY_COLORS = {
@@ -96,6 +137,12 @@ const HYPERFOCUS_NAGGING = [
   { id: 'nag_laundry', label: 'PUT LAUNDRY ON',        duration: 12, urgency: 'weekly',   reward: 5, interest: 0.1, initiationCost: 0.9 },
   { id: 'nag_reply',   label: 'REPLY TO THAT TEXT',    duration: 10, urgency: 'medium',   reward: 6, interest: 0.3, initiationCost: 0.5 },
   { id: 'nag_water',   label: 'HAVE YOU DRUNK WATER?', duration: 5,  urgency: 'health',   reward: 4, interest: 0.2, initiationCost: 0.1, isBodyTask: true, bodyKey: 'thirst', meterRestore: 70 },
+  { id: 'nag_thirst_critical', label: 'MOUTH IS LIKE SAND', duration: 6, urgency: 'critical', reward: 3, interest: 0.1, initiationCost: 0.05, isBodyTask: true, bodyKey: 'thirst', meterRestore: 80 },
+  { id: 'nag_hungry_growl', label: 'STOMACH IS GROWLING', duration: 15, urgency: 'health', reward: 5, interest: 0.2, initiationCost: 0.1, isBodyTask: true, bodyKey: 'hunger', meterRestore: 80 },
+  { id: 'nag_posture', label: 'FIX SLOUCHED POSTURE', duration: 5, urgency: 'low', reward: 4, interest: 0.15, initiationCost: 0.3 },
+  { id: 'nag_feet_cold', label: 'MY FEET ARE FREEZING', duration: 10, urgency: 'low', reward: 3, interest: 0.1, initiationCost: 0.4 },
+  { id: 'nag_stove', label: 'DID I SHUT THE STOVE?', duration: 8, urgency: 'critical', reward: 5, interest: 0.1, initiationCost: 0.15 },
+  { id: 'nag_car_window', label: 'CAR WINDOW LEFT OPEN?', duration: 12, urgency: 'critical', reward: 6, interest: 0.15, initiationCost: 0.2 },
 ];
 
 const BODY_TASKS = {
@@ -114,9 +161,18 @@ const SEARCH_GRID_LABELS = [
 
 function pickSessionTasks() {
   const mandatory = ['meet_volunteer', 'hang_keys', 'take_meds'];
-  const optional = ['brush_teeth', 'shower', 'eat_breakfast', 'bins_out', 'empty_dishwash', 'order_shopping', 'make_bed'];
+  const optional = [
+    'brush_teeth', 'shower', 'eat_breakfast', 'bins_out', 'empty_dishwash', 
+    'order_shopping', 'make_bed', 'feed_cat', 'water_plants', 'make_coffee', 
+    'unpack_backpack', 'sort_washing', 'clean_bathroom', 'tidy_kitchen',
+    'feed_dog', 'take_out_recycling', 'prep_lunch', 'check_calendar',
+    'put_on_shoes', 'reply_to_landlord',
+    'research_special_interest', 'wash_dishes', 'plan_day', 'fold_laundry',
+    'find_wallet', 'pay_utility_bill'
+  ];
   const shuffled = [...optional].sort(() => Math.random() - 0.5);
-  const chosen = mandatory.concat(shuffled.slice(0, 3));
+  // Pick 7 optional tasks to provide a slightly more varied experience with the larger pool
+  const chosen = mandatory.concat(shuffled.slice(0, 7));
   return morningTasks.filter(t => chosen.includes(t.id));
 }
 
@@ -161,6 +217,27 @@ function getCanvasPos(e, canvas) {
 }
 
 function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function isExclusiveNode(node) {
+  return !!(node.isExclusive || node.isBodyTask);
+}
+
+function spawnBetweenBoxAndEdge(focusBox, canvasW, canvasH) {
+  const boxW = focusBox ? focusBox.w : PHYSICS.BOX_BASE_W;
+  const boxH = focusBox ? focusBox.h : PHYSICS.BOX_BASE_H;
+  const bx = focusBox ? focusBox.x : canvasW / 2;
+  const by = focusBox ? focusBox.y : canvasH / 2;
+  
+  // Choose a random angle and place it just outside the focus box boundary (closer to center)
+  const angle = Math.random() * Math.PI * 2;
+  const rx = boxW / 2 + 25 + Math.random() * 35;
+  const ry = boxH / 2 + 25 + Math.random() * 35;
+  
+  return {
+    x: clamp(bx + Math.cos(angle) * rx, 80, canvasW - 80),
+    y: clamp(by + Math.sin(angle) * ry, 80, canvasH - 80)
+  };
+}
 
 function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW, canvasH) {
   const phys = physicsRef.current;
@@ -218,6 +295,37 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
   for (const node of phys.taskNodes) {
     if (node.status === 'complete' || node.status === 'forgotten') continue;
 
+    // Decrement reappear timer if active (hidden train of thought)
+    if (node.reappearTimer > 0) {
+      node.reappearTimer -= dt;
+      if (node.reappearTimer <= 0) {
+        node.reappearTimer = 0;
+        // Reappear! Place at a random safe spot outside the box
+        const pos = spawnBetweenBoxAndEdge(phys.focusBox, canvasW, canvasH);
+        node.x = pos.x;
+        node.y = pos.y;
+        node.vx = (Math.random() - 0.5) * 2;
+        node.vy = (Math.random() - 0.5) * 2;
+        node.snapFlash = 400; // brief flash
+        events.push({ type: 'train_of_thought_recovered', nodeId: node.id });
+      }
+      continue; // Skip normal update when hidden
+    }
+
+    // Continuous push out for non-exclusive tasks if an exclusive task is active in the box
+    if (phys.exclusiveTaskActive && phys.exclusiveTaskActive !== node.id && node.isInBox) {
+      node.isInBox = false;
+      const pdx = node.x - phys.focusBox.x;
+      const pdy = node.y - phys.focusBox.y;
+      const pdist = Math.sqrt(pdx * pdx + pdy * pdy) || 1;
+      node.vx = (pdx / pdist) * 12 + (Math.random() - 0.5) * 5;
+      node.vy = (pdy / pdist) * 12 + (Math.random() - 0.5) * 5;
+      node.decayTimer = 0;
+      node.decaying = true;
+      node.status = 'pending';
+      continue;
+    }
+
     // Track urgency pending time
     if (node.status === 'pending') node.pendingTime = (node.pendingTime || 0) + dt;
 
@@ -240,6 +348,9 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
         node.progress = 1;
         node.status = 'complete';
         node.isInBox = false;
+        if (isExclusiveNode(node)) {
+          phys.exclusiveTaskActive = null;
+        }
         if (isHyperfocusNode) {
           phys.hyperfocus = false;
           phys.hyperfocusTaskId = null;
@@ -274,6 +385,7 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
         const dy = node.y - phys.focusBox.y;
         if (!isHyperfocusNode && (Math.abs(dx) > phys.focusBox.w / 2 || Math.abs(dy) > phys.focusBox.h / 2)) {
           node.isInBox = false;
+          if (isExclusiveNode(node)) phys.exclusiveTaskActive = null;
           if (node.isBodyTask) phys.bodyTaskActive = null;
           if (node.timeInBox > 5000) {
             driveRef.current = clamp(driveRef.current - 3, 0, 100);
@@ -301,16 +413,40 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
         }
       }
 
-      // Free drift
-      node.vx *= 0.98;
-      node.vy *= 0.98;
+      // Slowly drift toward the screen boundaries (away from focus box centre)
+      const dx = node.x - phys.focusBox.x;
+      const dy = node.y - phys.focusBox.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      // Drift strength: worse focusLevel (less attention) makes them drift faster
+      const driftSpeed = (1.4 - profile.focusLevel) * 0.25 * dtS;
+      node.vx += (dx / dist) * driftSpeed;
+      node.vy += (dy / dist) * driftSpeed;
+
+      // Free drift damping
+      node.vx *= 0.95;
+      node.vy *= 0.95;
     }
 
     if (!node.dragging && !node.isInBox) {
       node.x += node.vx;
       node.y += node.vy;
-      node.x = clamp(node.x, node.w / 2 + 5, canvasW - node.w / 2 - 5);
-      node.y = clamp(node.y, node.h / 2 + 5, canvasH - node.h / 2 - 5);
+      
+      // Check if task node crossed the 5% forget boundary box
+      const forgetMarginX = canvasW * 0.05;
+      const forgetMarginY = canvasH * 0.05;
+      const hitForgetZone = (
+        node.x <= forgetMarginX ||
+        node.x >= canvasW - forgetMarginX ||
+        node.y <= forgetMarginY ||
+        node.y >= canvasH - forgetMarginY
+      );
+      if (hitForgetZone) {
+        node.status = 'forgotten';
+        events.push({ type: 'task_forgotten', nodeId: node.id });
+      } else {
+        node.x = clamp(node.x, node.w / 2 + 5, canvasW - node.w / 2 - 5);
+        node.y = clamp(node.y, node.h / 2 + 5, canvasH - node.h / 2 - 5);
+      }
     }
 
     // Snap flash decay
@@ -336,22 +472,29 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
   let spawnInterval = PHYSICS.SPAWN_INTERVAL_BASE / Math.max(0.1, profile.impulsivity);
   if (driveRef.current < 30) spawnInterval *= 0.5;
   phys.spawnTimer -= dt;
-  if (phys.spawnTimer <= 0 && phys.intrusiveNodes.filter(n => !n.ejected).length < 3) {
+  if (phys.spawnTimer <= 0 && phys.intrusiveNodes.filter(n => !n.ejected).length < 1) {
     phys.spawnTimer = spawnInterval + Math.random() * 4000;
     const pos = spawnFromEdge(canvasW, canvasH);
     const thought = intrusiveThoughtPool[Math.floor(Math.random() * intrusiveThoughtPool.length)];
-    phys.intrusiveNodes.push({
+    const maxDrags = 3 + Math.floor(Math.random() * 3); // 3 to 5
+    const newNode = {
       id: 'int_' + Date.now() + '_' + Math.random(),
       label: thought.label,
       stickiness: thought.stickiness,
       rewarding: thought.rewarding,
+      reward: 35, // High reward
+      maxDrags: maxDrags,
+      dragsLeft: maxDrags,
+      progress: 1.0,
       isMemo: false,
       x: pos.x, y: pos.y,
       vx: (Math.random() - 0.5) * 2, vy: (Math.random() - 0.5) * 2,
-      w: 220, h: 44,
+      w: 220, h: 72,
       ejected: false, isInBox: false, opacity: 1,
       dragOffX: 0, dragOffY: 0,
-    });
+    };
+    phys.intrusiveNodes.push(newNode);
+    console.log(`[Telemetry] Spawning new distraction node. ID: ${newNode.id}, Label: "${newNode.label}", maxDrags/dragsLeft: ${newNode.maxDrags}`);
   }
 
   // Update intrusive nodes
@@ -362,6 +505,7 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
       node.y += node.vy;
       node.opacity -= 0.02;
       if (node.opacity <= 0 || node.x < -200 || node.x > canvasW + 200 || node.y < -200 || node.y > canvasH + 200) {
+        console.log(`[Telemetry] Distraction node boundary/opacity trigger (defeated). Splicing ID: ${node.id}`);
         phys.intrusiveNodes.splice(i, 1);
       }
       continue;
@@ -384,12 +528,15 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
         if (node.y < phys.focusBox.y - hh) { node.y = phys.focusBox.y - hh; node.vy *= -0.5; }
         if (node.y > phys.focusBox.y + hh) { node.y = phys.focusBox.y + hh; node.vy *= -0.5; }
       } else if (!node.attractSuppressed) {
-        // Drifting toward box
+        // Drifting toward box - moderate speed
         const dx = phys.focusBox.x - node.x;
         const dy = phys.focusBox.y - node.y;
         const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const F = (PHYSICS.ATTRACT_BASE * profile.impulsivity * node.stickiness) / (dist * 0.8);
-        const fCapped = Math.min(F, 300);
+        // Balanced attraction strength and cap so they move in a bit slower.
+        // Stickier/stronger distractions (higher maxDrags) are pulled in faster.
+        const dragFactor = (node.maxDrags || 3) / 3;
+        const F = (PHYSICS.ATTRACT_BASE * 1.1 * profile.impulsivity * node.stickiness * dragFactor) / (dist * 0.75);
+        const fCapped = Math.min(F, 280 * dragFactor);
         node.vx += (dx / dist) * fCapped * dtS;
         node.vy += (dy / dist) * fCapped * dtS;
         node.vx *= 0.95;
@@ -418,6 +565,23 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
         events.push({ type: 'distraction_rewarding', nodeId: node.id });
       } else {
         events.push({ type: 'distraction_nonrewarding', nodeId: node.id });
+      }
+
+      // 40% chance to lose train of thought (active task disappears and reappears later)
+      const activeTask = phys.taskNodes.find(t => t.isInBox && t.status === 'active' && !t.reappearTimer);
+      if (activeTask) {
+        const CHANCE_TO_LOSE = 0.40;
+        if (Math.random() < CHANCE_TO_LOSE) {
+          activeTask.isInBox = false;
+          activeTask.status = 'pending';
+          // If the lost task held the exclusive lock, release it so other tasks aren't blocked
+          if (phys.exclusiveTaskActive === activeTask.id) {
+            phys.exclusiveTaskActive = null;
+          }
+          // Random timer between 20s and 45s (20000ms to 45000ms)
+          activeTask.reappearTimer = 20000 + Math.random() * 25000;
+          events.push({ type: 'train_of_thought_lost', nodeId: activeTask.id });
+        }
       }
     }
   }
@@ -464,10 +628,13 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
       phys.meterWarning[key] = true;
       if (!phys.intrusiveNodes.find(n => n.id === 'body_warn_' + key)) {
         const pos = spawnFromEdge(canvasW, canvasH);
+        const maxDrags = 3 + Math.floor(Math.random() * 3);
         phys.intrusiveNodes.push({
           id: 'body_warn_' + key, label: warningLabels[key],
-          stickiness: 0.55, rewarding: false, isMemo: false,
-          x: pos.x, y: pos.y, vx: 0, vy: 0, w: 240, h: 44,
+          stickiness: 0.55, rewarding: false, reward: 35,
+          maxDrags: maxDrags, dragsLeft: maxDrags, progress: 1.0,
+          isMemo: false,
+          x: pos.x, y: pos.y, vx: 0, vy: 0, w: 220, h: 72,
           ejected: false, isInBox: false, opacity: 1,
         });
       }
@@ -479,17 +646,20 @@ function physicsUpdate(physicsRef, profileRef, driveRef, metersRef, dt, canvasW,
       // Intrusive thought
       if (!phys.intrusiveNodes.find(n => n.id === 'body_' + key)) {
         const pos = spawnFromEdge(canvasW, canvasH);
+        const maxDrags = 3 + Math.floor(Math.random() * 3);
         phys.intrusiveNodes.push({
           id: 'body_' + key, label: criticalLabels[key],
-          stickiness: 0.95, rewarding: false, isMemo: false,
-          x: pos.x, y: pos.y, vx: 0, vy: 0, w: 240, h: 44,
+          stickiness: 0.95, rewarding: false, reward: 35,
+          maxDrags: maxDrags, dragsLeft: maxDrags, progress: 1.0,
+          isMemo: false,
+          x: pos.x, y: pos.y, vx: 0, vy: 0, w: 220, h: 72,
           ejected: false, isInBox: false, opacity: 1,
         });
       }
-      // Task node — spawn near canvas edge so player can drag it in
+      // Task node — spawn between attention box and edge so player can drag it in
       if (!phys.taskNodes.find(n => n.id === BODY_TASKS[key].id)) {
         const taskDef = BODY_TASKS[key];
-        const pos2 = spawnFromEdge(canvasW, canvasH);
+        const pos2 = spawnBetweenBoxAndEdge(phys.focusBox, canvasW, canvasH);
         phys.taskNodes.push({
           ...taskDef,
           x: pos2.x, y: pos2.y,
@@ -518,6 +688,68 @@ function renderCanvas(ctx, phys, profile, drive) {
   ctx.fillStyle = C.BG;
   ctx.fillRect(0, 0, W, H);
 
+  // Forget Zone (5% boundary box)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(57,255,20,0.18)'; // light primary green
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 6]);
+  const fX = W * 0.05;
+  const fY = H * 0.05;
+  const fW = W * 0.9;
+  const fH = H * 0.9;
+  ctx.strokeRect(fX, fY, fW, fH);
+  
+  // Repeating diagonal warning text stamps in the Forget Zone margins
+  ctx.font = 'bold 16px VT323, monospace';
+  ctx.fillStyle = 'rgba(255, 155, 0, 0.12)'; // faded orange
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  const rotateAngle = -Math.PI / 6; // -30 degrees
+  const stepH = 80; // horizontal repeat step (closer spacing)
+  const stepV = 45;  // vertical repeat step (closer spacing)
+
+  // Top border repeating stamps
+  for (let x = stepH / 2; x < W; x += stepH) {
+    ctx.save();
+    ctx.translate(x, H * 0.025);
+    ctx.rotate(rotateAngle);
+    ctx.fillText('forget zone', 0, 0);
+    ctx.restore();
+  }
+
+  // Bottom border repeating stamps
+  for (let x = stepH / 2; x < W; x += stepH) {
+    ctx.save();
+    ctx.translate(x, H * 0.975);
+    ctx.rotate(rotateAngle);
+    ctx.fillText('forget zone', 0, 0);
+    ctx.restore();
+  }
+
+  // Left border repeating stamps
+  for (let y = stepV / 2; y < H; y += stepV) {
+    // Avoid drawing directly on corners to prevent overlap
+    if (y < H * 0.05 || y > H * 0.95) continue;
+    ctx.save();
+    ctx.translate(W * 0.025, y);
+    ctx.rotate(rotateAngle);
+    ctx.fillText('forget zone', 0, 0);
+    ctx.restore();
+  }
+
+  // Right border repeating stamps
+  for (let y = stepV / 2; y < H; y += stepV) {
+    if (y < H * 0.05 || y > H * 0.95) continue;
+    ctx.save();
+    ctx.translate(W * 0.975, y);
+    ctx.rotate(rotateAngle);
+    ctx.fillText('forget zone', 0, 0);
+    ctx.restore();
+  }
+
+  ctx.restore();
+
   // Connection lines between related tasks
   ctx.save();
   ctx.setLineDash([4, 8]);
@@ -539,40 +771,89 @@ function renderCanvas(ctx, phys, profile, drive) {
   }
   ctx.restore();
 
-  // Intrusive thought nodes
+  // Intrusive thought nodes (drawn to look like tasks, but orange/amber)
   for (const node of phys.intrusiveNodes) {
     if (node.ejected && node.opacity <= 0) continue;
     ctx.save();
 
-    // Fade in as node approaches box; ejected nodes use their own fading opacity
+    // Only visible when they get near to the attention box (unless already dragged)
     let drawOpacity = node.opacity;
-    if (!node.ejected && !node.isInBox) {
-      const fdx = node.x - phys.focusBox.x;
-      const fdy = node.y - phys.focusBox.y;
-      const fDist = Math.sqrt(fdx * fdx + fdy * fdy);
-      const FADE_START = 480; // invisible beyond this distance
-      const FADE_END = 120;   // fully visible at this distance
-      drawOpacity = Math.max(0, Math.min(1, (FADE_START - fDist) / (FADE_START - FADE_END)));
+    const hasBeenDragged = node.dragsLeft < node.maxDrags;
+    if (!node.ejected && !node.isInBox && !node.dragging && !hasBeenDragged) {
+      const dx = Math.max(0, Math.abs(node.x - phys.focusBox.x) - phys.focusBox.w / 2);
+      const dy = Math.max(0, Math.abs(node.y - phys.focusBox.y) - phys.focusBox.h / 2);
+      const distToBoxEdge = Math.sqrt(dx * dx + dy * dy);
+      const FADE_START = 60; // starts appearing when within 60px of box edge
+      const FADE_END = 15;    // fully visible when within 15px of box edge
+      if (distToBoxEdge >= FADE_START) {
+        drawOpacity = 0;
+      } else {
+        drawOpacity = Math.max(0, Math.min(1, (FADE_START - distToBoxEdge) / (FADE_START - FADE_END)));
+      }
     }
     if (drawOpacity <= 0) { ctx.restore(); continue; }
     ctx.globalAlpha = drawOpacity;
-    ctx.setLineDash([4, 4]);
+
+    // Snap progress: amber glow + thicker border while holding cursor inside/at boundary to snap out
+    const sp = node.snapProgress || 0;
+    if (sp > 0) {
+      ctx.shadowBlur = 8 + sp * 24;
+      ctx.shadowColor = C.AMBER;
+    }
+
+    // Solid border line (looks like task) in amber
     ctx.strokeStyle = C.AMBER;
-    ctx.lineWidth = 1;
+    ctx.lineWidth = sp > 0 ? 1 + sp * 3 : (node.dragging ? 2 : 1);
+    ctx.setLineDash([]);
     ctx.strokeRect(node.x - node.w / 2, node.y - node.h / 2, node.w, node.h);
-    ctx.fillStyle = 'rgba(255,176,0,0.05)';
+
+    // Fill with orange background
+    ctx.fillStyle = node.isInBox ? `rgba(255,155,0,${0.12 + sp * 0.12})` : (sp > 0 ? `rgba(255,155,0,${0.05 + sp * 0.12})` : 'rgba(255,155,0,0.04)');
     ctx.fillRect(node.x - node.w / 2, node.y - node.h / 2, node.w, node.h);
-    ctx.font = 'italic 22px VT323, monospace';
+
+    // Snap progress bar along top edge of node
+    if (sp > 0) {
+      ctx.fillStyle = C.AMBER;
+      ctx.fillRect(node.x - node.w / 2, node.y - node.h / 2, node.w * sp, 3);
+    }
+
+    // Reset shadow blur
+    ctx.shadowBlur = 0;
+
+    // Label (cleaned up uppercase text)
+    ctx.font = '22px VT323, monospace';
     ctx.fillStyle = C.AMBER;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(node.label, node.x, node.y);
+    const statusIcon = node.isInBox ? STATUS_ICONS['active'] : STATUS_ICONS['pending'];
+    const cleanLabel = (node.label || '').replace(/^~\s*|\s*~$/g, '').toUpperCase();
+    ctx.fillText(statusIcon + ' ' + cleanLabel, node.x, node.y - 14);
+
+    // Reward indicator (usually always has high reward, default to 35)
+    const REWARD_MAX = 40;
+    const filled = Math.round(((node.reward || 35) / REWARD_MAX) * 5);
+    ctx.font = '16px VT323, monospace';
+    let diamonds = '';
+    for (let d = 0; d < 5; d++) diamonds += d < filled ? '◆' : '◇';
+    ctx.fillText(diamonds, node.x, node.y + 2);
+
+    // Progress bar (empty orange bar matching task design)
+    const barW = node.w - 16;
+    const barH = 4;
+    const barX = node.x - barW / 2;
+    const barY = node.y + 14;
+    ctx.fillStyle = 'rgba(255, 155, 0, 0.2)';
+    ctx.fillRect(barX, barY, barW, barH);
+    ctx.fillStyle = C.AMBER;
+    ctx.fillRect(barX, barY, barW * (node.progress || 0), barH);
+
     ctx.restore();
   }
 
   // Task nodes
   for (const node of phys.taskNodes) {
-    if (node.status === 'forgotten') continue;
+    if (node.status === 'complete' || node.status === 'forgotten') continue;
+    if (node.reappearTimer > 0) continue;
     ctx.save();
     const isSelected = node.id === phys.selectedTaskId;
     const isHyperfocusNode = phys.hyperfocus && node.id === phys.hyperfocusTaskId;
@@ -604,29 +885,37 @@ function renderCanvas(ctx, phys, profile, drive) {
       ctx.shadowColor = C.PRIMARY;
     }
 
+    // Blocked by exclusive visual glow
+    const isBlocked = !!(phys.exclusiveTaskActive && phys.exclusiveTaskActive !== node.id);
+    if (isBlocked) {
+      ctx.shadowBlur = 12 + Math.abs(Math.sin(now / 150)) * 8;
+      ctx.shadowColor = '#ff3131'; // glowing red
+    }
+
     // Snap progress: amber glow + thicker border while holding cursor in box
     const sp = node.snapProgress || 0;
-    if (sp > 0) {
+    if (sp > 0 && !isBlocked) {
       ctx.shadowBlur = 8 + sp * 24;
       ctx.shadowColor = C.AMBER;
     }
 
-    ctx.strokeStyle = sp > 0 ? C.AMBER : borderColor;
-    ctx.lineWidth = sp > 0 ? 1 + sp * 3 : (isSelected ? 2 : 1);
+    ctx.strokeStyle = isBlocked ? '#ff3131' : (sp > 0 ? C.AMBER : borderColor);
+    ctx.lineWidth = isBlocked ? 2 : (sp > 0 ? 1 + sp * 3 : (isSelected ? 2 : 1));
     ctx.setLineDash([]);
     ctx.strokeRect(node.x - node.w / 2, node.y - node.h / 2, node.w, node.h);
-    ctx.fillStyle = node.isInBox ? 'rgba(57,255,20,0.12)' : (sp > 0 ? `rgba(255,176,0,${0.05 + sp * 0.12})` : 'rgba(57,255,20,0.04)');
+    
+    ctx.fillStyle = node.isInBox ? 'rgba(57,255,20,0.12)' : (isBlocked ? 'rgba(255,49,49,0.06)' : (sp > 0 ? `rgba(255,176,0,${0.05 + sp * 0.12})` : 'rgba(57,255,20,0.04)'));
     ctx.fillRect(node.x - node.w / 2, node.y - node.h / 2, node.w, node.h);
 
     // Snap progress bar along top edge of node
-    if (sp > 0) {
+    if (sp > 0 && !isBlocked) {
       ctx.fillStyle = C.AMBER;
       ctx.fillRect(node.x - node.w / 2, node.y - node.h / 2, node.w * sp, 3);
     }
 
     // Label
     ctx.font = '22px VT323, monospace';
-    ctx.fillStyle = node.status === 'complete' ? C.PRIMARY_DIM : C.PRIMARY;
+    ctx.fillStyle = isBlocked ? '#ff3131' : (node.status === 'complete' ? C.PRIMARY_DIM : C.PRIMARY);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     const statusIcon = STATUS_ICONS[node.status] || '';
@@ -636,9 +925,8 @@ function renderCanvas(ctx, phys, profile, drive) {
     const REWARD_MAX = 40;
     const filled = Math.round((node.reward / REWARD_MAX) * 5);
     const isHighReward = node.reward >= 25;
-    const rewardColor = isHighReward ? C.AMBER : 'rgba(57,255,20,0.5)';
-    const dimColor = 'rgba(57,255,20,0.15)';
-    if (isHighReward && node.status !== 'complete') {
+    const rewardColor = isBlocked ? '#ff3131' : (isHighReward ? C.AMBER : 'rgba(57,255,20,0.5)');
+    if (isHighReward && node.status !== 'complete' && !isBlocked) {
       ctx.shadowBlur = 6;
       ctx.shadowColor = C.AMBER;
     }
@@ -653,14 +941,20 @@ function renderCanvas(ctx, phys, profile, drive) {
 
     // Progress bar
     if (node.status !== 'complete') {
-      const barW = node.w - 16;
-      const barH = 4;
-      const barX = node.x - barW / 2;
-      const barY = node.y + 14;
-      ctx.fillStyle = 'rgba(57,255,20,0.2)';
-      ctx.fillRect(barX, barY, barW, barH);
-      ctx.fillStyle = C.PRIMARY;
-      ctx.fillRect(barX, barY, barW * node.progress, barH);
+      if (isBlocked) {
+        ctx.font = '16px VT323, monospace';
+        ctx.fillStyle = '#ff3131';
+        ctx.fillText('PREOCCUPIED', node.x, node.y + 14);
+      } else {
+        const barW = node.w - 16;
+        const barH = 4;
+        const barX = node.x - barW / 2;
+        const barY = node.y + 14;
+        ctx.fillStyle = 'rgba(57,255,20,0.2)';
+        ctx.fillRect(barX, barY, barW, barH);
+        ctx.fillStyle = C.PRIMARY;
+        ctx.fillRect(barX, barY, barW * node.progress, barH);
+      }
     } else {
       ctx.font = '18px VT323, monospace';
       ctx.fillStyle = C.PRIMARY_DIM;
@@ -862,10 +1156,12 @@ function LeftPanel({ meters, medicated }) {
 }
 
 // ── TemporalClock ─────────────────────────────────────────────
-function TemporalClock({ gameTime, drive }) {
+function TemporalClock({ gameTime, drive, hyperfocus }) {
   const SESSION_START_HOUR = 7 * 3600000; // 07:00 in ms
   const actualMs = SESSION_START_HOUR + gameTime;
-  const perceivedMs = drive > 70
+  const perceivedMs = hyperfocus
+    ? SESSION_START_HOUR + gameTime * 3.5
+    : drive > 70
     ? SESSION_START_HOUR + gameTime * 0.5
     : drive < 20
     ? SESSION_START_HOUR + gameTime * 2
@@ -887,7 +1183,7 @@ function TemporalClock({ gameTime, drive }) {
     <div style={{ marginBottom: 10, fontSize: 15 }}>
       <div style={{ opacity: 0.6, fontSize: 21, marginBottom: 3 }}>CLOCK</div>
       <div>ACTUAL  <span>{pad(ah)}</span><span className="blink">:</span><span>{pad(am)}</span><span className="blink">:</span><span>{pad(as)}</span></div>
-      <div style={{ color: drive > 70 ? '#00cfff' : drive < 20 ? '#ff8c00' : '#39ff14' }}>
+      <div style={{ color: hyperfocus ? '#a855f7' : drive > 70 ? '#00cfff' : drive < 20 ? '#ff8c00' : '#39ff14' }}>
         PERCEIVED <span>{pad(ph)}</span><span className="blink">:</span><span>{pad(pm)}</span><span className="blink">:</span><span>{pad(ps)}</span>
       </div>
     </div>
@@ -952,9 +1248,10 @@ function TaskListItem({ task, isSelected, onClick }) {
 }
 
 // ── TaskList ──────────────────────────────────────────────────
-function TaskList({ tasks, selectedTaskId, onSelectTask }) {
+function TaskList({ tasks, selectedTaskId, onSelectTask, hyperfocus }) {
+  const dimStyle = { opacity: hyperfocus ? 0.12 : 1, transition: 'opacity 1.2s ease' };
   return (
-    <div style={{ marginBottom: 10, flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ ...dimStyle, marginBottom: 10, flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <div style={{ opacity: 0.6, fontSize: 21, marginBottom: 5 }}>TASK QUEUE</div>
       <div style={{ overflow: 'auto', flex: 1 }}>
         {tasks.map(t => (
@@ -1001,7 +1298,8 @@ function EventLog({ events }) {
 }
 
 // ── RightPanel ────────────────────────────────────────────────
-function RightPanel({ gameTime, drive, tasks, selectedTaskId, onSelectTask, score, elapsedMs, lastDriveEvent, eventLog, mood }) {
+function RightPanel({ gameTime, drive, tasks, selectedTaskId, onSelectTask, score, elapsedMs, lastDriveEvent, eventLog, mood, hyperfocus }) {
+  const dimStyle = { opacity: hyperfocus ? 0.12 : 1, transition: 'opacity 1.2s ease' };
   return (
     <div style={{
       background: 'rgba(0,0,0,0.6)',
@@ -1012,20 +1310,24 @@ function RightPanel({ gameTime, drive, tasks, selectedTaskId, onSelectTask, scor
       height: '100%',
       overflow: 'hidden',
     }}>
-      <div style={{ fontSize: 20, marginBottom: 12, borderBottom: '1px solid rgba(57,255,20,0.2)', paddingBottom: 6, letterSpacing: 2 }}>
+      <div style={{ ...dimStyle, fontSize: 20, marginBottom: 12, borderBottom: '1px solid rgba(57,255,20,0.2)', paddingBottom: 6, letterSpacing: 2 }}>
         [ STATUS ]
       </div>
       {mood < 100 && (
-        <div style={{ marginBottom: 8, fontSize: 13 }}>
+        <div style={{ ...dimStyle, marginBottom: 8, fontSize: 13 }}>
           MOOD <span style={{ color: mood < 80 ? '#ff3131' : '#ffb000' }}>{mood < 0 ? mood : '+0'}/{100}</span>
           <span style={{ float: 'right' }}>{mood}</span>
         </div>
       )}
-      <TemporalClock gameTime={gameTime} drive={drive} />
-      <DriveBar drive={drive} lastEvent={lastDriveEvent} />
-      <TaskList tasks={tasks} selectedTaskId={selectedTaskId} onSelectTask={onSelectTask} />
-      <EventLog events={eventLog} />
-      <SessionScore score={score} tasks={tasks} elapsedMs={elapsedMs} />
+      <TemporalClock gameTime={gameTime} drive={drive} hyperfocus={hyperfocus} />
+      <div style={dimStyle}>
+        <DriveBar drive={drive} lastEvent={lastDriveEvent} />
+      </div>
+      <TaskList tasks={tasks} selectedTaskId={selectedTaskId} onSelectTask={onSelectTask} hyperfocus={hyperfocus} />
+      <div style={dimStyle}>
+        <EventLog events={eventLog} />
+        <SessionScore score={score} tasks={tasks} elapsedMs={elapsedMs} />
+      </div>
     </div>
   );
 }
@@ -1507,16 +1809,11 @@ function ActivityMap({
       const alreadyStarted = node.decaying || node.timeInBox > 0;
 
       // Hold-to-snap: cursor must stay inside box for this long before node pops in
-      // Block non-body tasks from entering while a body task is active
-      if (phys.bodyTaskActive && !node.isBodyTask) {
-        node.x = desiredX; node.y = desiredY;
-        ds.velX = pos.x - ds.lastX; ds.velY = pos.y - ds.lastY;
-        ds.lastX = pos.x; ds.lastY = pos.y;
-        return;
-      }
+      // If an exclusive task is currently active in the box, initiation energy is infinite!
+      const isBlockedByExclusive = phys.exclusiveTaskActive && phys.exclusiveTaskActive !== node.id;
 
-      const HOLD_REQUIRED_MS = alreadyStarted ? 0 : costMod * 3200;
-      const REPULSION_RADIUS = alreadyStarted ? 0 : 300;
+      const HOLD_REQUIRED_MS = isBlockedByExclusive ? Infinity : (alreadyStarted ? 0 : costMod * 3200);
+      const REPULSION_RADIUS = isBlockedByExclusive ? 450 : (alreadyStarted ? 0 : 300);
 
       // Vector from box centre to desired node position
       const bdx = desiredX - phys.focusBox.x;
@@ -1527,83 +1824,133 @@ function ActivityMap({
       const halfH = phys.focusBox.h / 2;
       const cursorInBox = Math.abs(bdx) < halfW && Math.abs(bdy) < halfH;
 
+      if (isBlockedByExclusive) {
+        let dirX = bdx / bDist;
+        let dirY = bdy / bDist;
+        if (bdx === 0 && bdy === 0) {
+          dirX = 1;
+          dirY = 0;
+        }
+
+        let push = 0;
+        if (bDist < REPULSION_RADIUS) {
+          const proximity = 1 - (bDist / REPULSION_RADIUS);
+          const pushFactor = 40.0;
+          push = proximity * proximity * pushFactor * 260;
+        }
+
+        // Check if the node at this push distance would intersect/touch the box
+        const testX = desiredX + dirX * push;
+        const testY = desiredY + dirY * push;
+        const intersectX = testX + node.w / 2 >= phys.focusBox.x - halfW && testX - node.w / 2 <= phys.focusBox.x + halfW;
+        const intersectY = testY + node.h / 2 >= phys.focusBox.y - halfH && testY - node.h / 2 <= phys.focusBox.y + halfH;
+        const touchesBox = intersectX && intersectY;
+
+        if (touchesBox || cursorInBox) {
+          // Force it to remain outside the box by keeping a minimum push distance
+          const minPush = Math.max(halfW + node.w / 2, halfH + node.h / 2) + 30;
+          push = Math.max(push, minPush);
+        }
+
+        node.x = desiredX + dirX * push;
+        node.y = desiredY + dirY * push;
+        node.snapProgress = 0;
+        node.blockedByExclusive = true;
+
+        ds.velX = pos.x - ds.lastX;
+        ds.velY = pos.y - ds.lastY;
+        ds.lastX = pos.x;
+        ds.lastY = pos.y;
+        return;
+      }
+
       if (cursorInBox) {
         // Cursor inside box — hold timer runs, node pinned to box edge
-        if (!ds.holdStart) ds.holdStart = Date.now();
-        const held = Date.now() - ds.holdStart;
-        node.snapProgress = Math.min(1, held / HOLD_REQUIRED_MS);
-
-        if (held >= HOLD_REQUIRED_MS) {
-          // ── SNAP IN ──
-          node.x = phys.focusBox.x;
-          node.y = phys.focusBox.y;
-          node.vx = 0;
-          node.vy = 0;
-          node.isInBox = true;
-          node.dragging = false;
-          node.timeInBox = 0;
-          node.decaying = false;
-          node.decayTimer = 0;
-          node.snapFlash = 500;
-          // Body task: eject everything else from box and claim exclusivity
-          if (node.isBodyTask) {
-            phys.bodyTaskActive = node.bodyKey;
-            phys.taskNodes.forEach(n => {
-              if (n.isInBox && n.id !== node.id) {
-                n.isInBox = false;
-                n.vx = (Math.random() - 0.5) * 10;
-                n.vy = (Math.random() - 0.5) * 10;
-                n.decaying = true; n.decayTimer = 0;
-              }
-            });
-          }
+        if (isBlockedByExclusive) {
+          node.blockedByExclusive = true;
           node.snapProgress = 0;
-          ds.type = null;
           ds.holdStart = null;
-          playSnap(audioRef);
-          // Hyperfocus trigger — only on eligible tasks, only once per session
-          if (node.canHyperfocus && !phys.hyperfocus && !phys.forcedEventFired['hyperfocus_' + node.id] && Math.random() < (node.hyperfocusProbability || 0)) {
-            phys.forcedEventFired['hyperfocus_' + node.id] = true;
-            phys.hyperfocus = true;
-            phys.hyperfocusTaskId = node.id;
-            // Eject all other in-box tasks
-            phys.taskNodes.forEach(n => {
-              if (n.isInBox && n.id !== node.id) {
-                n.isInBox = false;
-                n.vx = (Math.random() - 0.5) * 10;
-                n.vy = (Math.random() - 0.5) * 10;
-                n.decaying = true; n.decayTimer = 0;
+        } else {
+          node.blockedByExclusive = false;
+          if (!ds.holdStart) ds.holdStart = Date.now();
+          const held = Date.now() - ds.holdStart;
+          node.snapProgress = Math.min(1, held / HOLD_REQUIRED_MS);
+
+          if (held >= HOLD_REQUIRED_MS) {
+            // ── SNAP IN ──
+            node.x = phys.focusBox.x;
+            node.y = phys.focusBox.y;
+            node.vx = 0;
+            node.vy = 0;
+            node.isInBox = true;
+            node.dragging = false;
+            node.timeInBox = 0;
+            node.decaying = false;
+            node.decayTimer = 0;
+            node.snapFlash = 500;
+            // Exclusive/Body task: eject everything else from box and claim exclusivity
+            if (isExclusiveNode(node)) {
+              phys.exclusiveTaskActive = node.id;
+              if (node.isBodyTask) {
+                phys.bodyTaskActive = node.bodyKey;
               }
-            });
-            // Pick 4 nagging thoughts, spread across canvas
-            const cw = canvas ? canvas.width : 800;
-            const ch = canvas ? canvas.height : 600;
-            const shuffled = [...HYPERFOCUS_NAGGING].sort(() => Math.random() - 0.5).slice(0, 4);
-            phys.nagThoughts = shuffled.map((n, i) => {
-              const margin = 80;
-              return {
-                ...n,
-                x: margin + Math.random() * (cw - margin * 2),
-                y: margin + Math.random() * (ch - margin * 2),
-                alpha: 0,
-                speed: 0.25 + Math.random() * 0.5,
-                phase: Math.random() * Math.PI * 2,
-              };
-            });
+              phys.taskNodes.forEach(n => {
+                if (n.isInBox && n.id !== node.id) {
+                  n.isInBox = false;
+                  n.vx = (Math.random() - 0.5) * 10;
+                  n.vy = (Math.random() - 0.5) * 10;
+                  n.decaying = true; n.decayTimer = 0;
+                }
+              });
+            }
+            node.snapProgress = 0;
+            ds.type = null;
+            ds.holdStart = null;
+            playSnap(audioRef);
+            // Hyperfocus trigger — only on eligible tasks, only once per session
+            if (node.canHyperfocus && !phys.hyperfocus && !phys.forcedEventFired['hyperfocus_' + node.id] && Math.random() < (node.hyperfocusProbability || 0)) {
+              phys.forcedEventFired['hyperfocus_' + node.id] = true;
+              phys.hyperfocus = true;
+              phys.hyperfocusTaskId = node.id;
+              // Eject all other in-box tasks
+              phys.taskNodes.forEach(n => {
+                if (n.isInBox && n.id !== node.id) {
+                  n.isInBox = false;
+                  n.vx = (Math.random() - 0.5) * 10;
+                  n.vy = (Math.random() - 0.5) * 10;
+                  n.decaying = true; n.decayTimer = 0;
+                }
+              });
+              // Pick 4 nagging thoughts, spread across canvas
+              const cw = canvas ? canvas.width : 800;
+              const ch = canvas ? canvas.height : 600;
+              const shuffled = [...HYPERFOCUS_NAGGING].sort(() => Math.random() - 0.5).slice(0, 4);
+              phys.nagThoughts = shuffled.map((n, i) => {
+                const margin = 80;
+                return {
+                  ...n,
+                  x: margin + Math.random() * (cw - margin * 2),
+                  y: margin + Math.random() * (ch - margin * 2),
+                  alpha: 0,
+                  speed: 0.25 + Math.random() * 0.5,
+                  phase: Math.random() * Math.PI * 2,
+                };
+              });
+            }
+            if (node.conversationEvent && !phys.forcedEventFired['conv_' + node.id]) {
+              phys.forcedEventFired['conv_' + node.id] = true;
+              phys.pendingOverlay = { type: 'conversation', nodeId: node.id, data: node.conversationData };
+            }
+            if (node.id === 'email_volunteer' && !phys.forcedEventFired['email_select']) {
+              phys.forcedEventFired['email_select'] = true;
+              phys.pendingOverlay = { type: 'name_select', nodeId: node.id, data: node.conversationData || morningTasks.find(t => t.id === 'meet_volunteer').conversationData };
+            }
+            if (node.id === 'tell_partner_keys' && !phys.forcedEventFired['location_tell']) {
+              phys.forcedEventFired['location_tell'] = true;
+              phys.pendingOverlay = { type: 'location_tell', nodeId: node.id, data: { correctLocation: phys.keysActualLocation } };
+            }
+            return;
           }
-          if (node.conversationEvent && !phys.forcedEventFired['conv_' + node.id]) {
-            phys.forcedEventFired['conv_' + node.id] = true;
-            phys.pendingOverlay = { type: 'conversation', nodeId: node.id, data: node.conversationData };
-          }
-          if (node.id === 'email_volunteer' && !phys.forcedEventFired['email_select']) {
-            phys.forcedEventFired['email_select'] = true;
-            phys.pendingOverlay = { type: 'name_select', nodeId: node.id, data: node.conversationData || morningTasks.find(t => t.id === 'meet_volunteer').conversationData };
-          }
-          if (node.id === 'tell_partner_keys' && !phys.forcedEventFired['location_tell']) {
-            phys.forcedEventFired['location_tell'] = true;
-            phys.pendingOverlay = { type: 'location_tell', nodeId: node.id, data: { correctLocation: phys.keysActualLocation } };
-          }
-          return;
         }
 
         // Pin node to box boundary in the approach direction
@@ -1618,12 +1965,14 @@ function ActivityMap({
         // Cursor outside box — reset hold timer, apply repulsion
         ds.holdStart = null;
         node.snapProgress = 0;
+        node.blockedByExclusive = false;
 
         if (bDist < REPULSION_RADIUS) {
           // Exponential repulsion: strongest near box edge, fades to zero at radius
           const proximity = 1 - (bDist / REPULSION_RADIUS);
-          // push magnitude: up to REPULSION_RADIUS worth of displacement at full cost/proximity
-          const push = proximity * proximity * costMod * 260;
+          // push magnitude: strong repulsion if blocked by exclusive
+          const pushFactor = isBlockedByExclusive ? 40.0 : costMod;
+          const push = proximity * proximity * pushFactor * 260;
           node.x = desiredX + (bdx / bDist) * push;
           node.y = desiredY + (bdy / bDist) * push;
         } else {
@@ -1639,8 +1988,57 @@ function ActivityMap({
     } else if (ds.type === 'intrusive') {
       const node = phys.intrusiveNodes.find(n => n.id === ds.nodeId);
       if (!node) return;
-      node.x = pos.x - ds.offsetX;
-      node.y = pos.y - ds.offsetY;
+
+      const desiredX = pos.x - ds.offsetX;
+      const desiredY = pos.y - ds.offsetY;
+
+      if (node.isInBox) {
+        // Trapped inside — cannot be dragged out without holding to snap out
+        const hw = phys.focusBox.w / 2 - node.w / 2 - 4;
+        const hh = phys.focusBox.h / 2 - node.h / 2 - 4;
+        
+        // Are we dragging it towards the outside?
+        const bdx = desiredX - phys.focusBox.x;
+        const bdy = desiredY - phys.focusBox.y;
+        const outside = Math.abs(bdx) > hw || Math.abs(bdy) > hh;
+
+        if (outside) {
+          // Pin to inner boundary
+          node.x = clamp(desiredX, phys.focusBox.x - hw, phys.focusBox.x + hw);
+          node.y = clamp(desiredY, phys.focusBox.y - hh, phys.focusBox.y + hh);
+
+          // Reverse initiation energy hold
+          if (!ds.holdStart) ds.holdStart = Date.now();
+          const held = Date.now() - ds.holdStart;
+          const costMod = node.stickiness || 0.75;
+          const HOLD_REQUIRED_MS = costMod * 2200; // time required to snap out (e.g. ~1.65 seconds)
+          node.snapProgress = Math.min(1, held / HOLD_REQUIRED_MS);
+
+          if (held >= HOLD_REQUIRED_MS) {
+            // SNAP OUT!
+            node.isInBox = false;
+            node.x = desiredX;
+            node.y = desiredY;
+            node.snapProgress = 0;
+            node.justSnappedOut = true;
+            ds.holdStart = null;
+            playSnap(audioRef);
+          }
+        } else {
+          // Dragging freely inside
+          node.x = desiredX;
+          node.y = desiredY;
+          node.snapProgress = 0;
+          ds.holdStart = null;
+        }
+      } else {
+        // Already outside: drag freely
+        node.x = desiredX;
+        node.y = desiredY;
+        node.snapProgress = 0;
+        ds.holdStart = null;
+      }
+
       ds.velX = pos.x - ds.lastX;
       ds.velY = pos.y - ds.lastY;
       ds.lastX = pos.x;
@@ -1657,15 +2055,41 @@ function ActivityMap({
       const node = phys.intrusiveNodes.find(n => n.id === ds.nodeId);
       if (node) {
         node.dragging = false;
-        const speed = Math.sqrt(ds.velX * ds.velX + ds.velY * ds.velY);
-        if (speed > 5) {
-          node.vx = ds.velX * 4;
-          node.vy = ds.velY * 4;
-          node.ejected = true;
-          if (node.rewarding) {
-            driveRef.current = clamp(driveRef.current - 5, 0, 100);
+        node.snapProgress = 0; // Reset hold progress on release
+        
+        console.log(`[Telemetry] handleMouseUp for intrusive node. ID: ${node.id}, isInBox: ${node.isInBox}, dragsLeft: ${node.dragsLeft}`);
+        // Dragging a distraction away (so it is outside the box) and releasing it always counts as a drag-away!
+        if (!node.isInBox) {
+          if (node.dragsLeft > 1) {
+            node.dragsLeft -= 1;
+            node.progress = node.dragsLeft / (node.maxDrags || 3);
+            console.log(`[Telemetry] Distraction drag-away. ID: ${node.id}, Remaining dragsLeft: ${node.dragsLeft}`);
+            
+            // Push away velocity: a gentle push away from the box so it starts drifting back in
+            const dx = node.x - phys.focusBox.x;
+            const dy = node.y - phys.focusBox.y;
+            const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            node.vx = (dx / dist) * 6;
+            node.vy = (dy / dist) * 6;
+            
+            playSnap(audioRef);
+          } else {
+            // Defeated! Fly away quickly off-screen
+            node.dragsLeft = 0;
+            node.progress = 0;
+            const dx = node.x - phys.focusBox.x;
+            const dy = node.y - phys.focusBox.y;
+            const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            node.vx = (dx / dist) * 18;
+            node.vy = (dy / dist) * 18;
+            node.ejected = true;
+            console.log(`[Telemetry] Distraction DEFEATED. ID: ${node.id}, flying off-screen.`);
+            
+            if (node.rewarding) {
+              driveRef.current = clamp(driveRef.current - 5, 0, 100);
+            }
+            playEject(audioRef);
           }
-          playEject(audioRef);
         }
       }
     } else if (ds.type === 'task') {
@@ -1846,14 +2270,14 @@ function GameLayout({
     <div style={{
       width: '100vw', height: '100vh',
       display: 'grid',
-      gridTemplateColumns: '180px 1fr 220px',
+      gridTemplateColumns: '240px 1fr 260px',
       gridGap: 4,
       padding: 8,
       background: '#0a0a0a',
       boxSizing: 'border-box',
     }}>
       <div style={{ opacity: panelOpacity, transition: panelTransition }}>
-      <LeftPanel meters={meters} medicated={medicated} />
+        <LeftPanel meters={meters} medicated={medicated} />
       </div>
       <ActivityMap
         physicsRef={physicsRef}
@@ -1866,7 +2290,6 @@ function GameLayout({
         pendingInitRef={pendingInitRef}
         initPhysics={initPhysics}
       />
-      <div style={{ opacity: panelOpacity, transition: panelTransition }}>
       <RightPanel
         gameTime={gameTime}
         drive={drive}
@@ -1878,8 +2301,8 @@ function GameLayout({
         lastDriveEvent={lastDriveEvent}
         eventLog={eventLog}
         mood={mood}
+        hyperfocus={hyperfocus}
       />
-      </div>
     </div>
   );
 }
@@ -1935,23 +2358,30 @@ function App() {
     // Scatter task nodes — place with overlap avoidance
     const NODE_W = 220, NODE_H = 60, MIN_GAP = 24;
     const placed = [];
+    const forgetMarginX = canvasW * 0.05;
+    const forgetMarginY = canvasH * 0.05;
+    const spawnBuffer = 30; // buffer inside the forget zone boundary
+    const minX = forgetMarginX + NODE_W / 2 + spawnBuffer;
+    const maxX = canvasW - forgetMarginX - NODE_W / 2 - spawnBuffer;
+    const minY = forgetMarginY + NODE_H / 2 + spawnBuffer;
+    const maxY = canvasH - forgetMarginY - NODE_H / 2 - spawnBuffer;
+
     const tryPlace = () => {
-      const margin = 60;
       for (let attempt = 0; attempt < 120; attempt++) {
-        const x = margin + Math.random() * (canvasW - margin * 2);
-        const y = margin + Math.random() * (canvasH - margin * 2);
-        // Reject if too close to canvas centre (focus box starts there)
+        const x = minX + Math.random() * (maxX - minX);
+        const y = minY + Math.random() * (maxY - minY);
+        // Reject only if inside the starting focus box area (near the middle)
         const cx = canvasW / 2, cy = canvasH / 2;
-        if (Math.abs(x - cx) < 360 && Math.abs(y - cy) < 260) continue;
+        if (Math.abs(x - cx) < 290 && Math.abs(y - cy) < 200) continue;
         // Reject if overlapping another placed node
         const clash = placed.some(p =>
           Math.abs(p.x - x) < NODE_W + MIN_GAP && Math.abs(p.y - y) < NODE_H + MIN_GAP
         );
         if (!clash) { placed.push({ x, y }); return { x, y }; }
       }
-      // Fallback: just place without overlap check
-      const x = margin + Math.random() * (canvasW - margin * 2);
-      const y = margin + Math.random() * (canvasH - margin * 2);
+      // Fallback: place in safe range
+      const x = minX + Math.random() * (maxX - minX);
+      const y = minY + Math.random() * (maxY - minY);
       placed.push({ x, y });
       return { x, y };
     };
@@ -1975,10 +2405,36 @@ function App() {
       };
     });
 
+    // Pre-spawn a couple of intrusive thoughts right at start-up
+    const initialIntrusive = [];
+    for (let i = 0; i < 1; i++) {
+      const pos = spawnFromEdge(canvasW, canvasH);
+      const thought = intrusiveThoughtPool[Math.floor(Math.random() * intrusiveThoughtPool.length)];
+      const maxDrags = 3 + Math.floor(Math.random() * 3); // 3 to 5
+      const initNode = {
+        id: 'int_init_' + i + '_' + Date.now(),
+        label: thought.label,
+        stickiness: thought.stickiness,
+        rewarding: thought.rewarding,
+        reward: 35, // High reward
+        maxDrags: maxDrags,
+        dragsLeft: maxDrags,
+        progress: 1.0,
+        isMemo: false,
+        x: pos.x, y: pos.y,
+        vx: (Math.random() - 0.5) * 2, vy: (Math.random() - 0.5) * 2,
+        w: 220, h: 72,
+        ejected: false, isInBox: false, opacity: 1,
+        dragOffX: 0, dragOffY: 0,
+      };
+      initialIntrusive.push(initNode);
+      console.log(`[Telemetry] Pre-spawning startup distraction node. ID: ${initNode.id}, Label: "${initNode.label}", maxDrags/dragsLeft: ${initNode.maxDrags}`);
+    }
+
     physicsRef.current = {
       focusBox: { x: canvasW / 2, y: canvasH / 2, w: PHYSICS.BOX_BASE_W, h: PHYSICS.BOX_BASE_H, vx: 0, vy: 0 },
       taskNodes,
-      intrusiveNodes: [],
+      intrusiveNodes: initialIntrusive,
       frameCount: 0,
       spawnTimer: 8000,
       draggingBox: false,
@@ -1986,6 +2442,7 @@ function App() {
       meterCritical: {},
       meterWarning: {},
       bodyTaskActive: null,
+      exclusiveTaskActive: null,
       hyperfocus: false,
       hyperfocusTaskId: null,
       hyperfocusTimer: 50000 + Math.random() * 30000,
@@ -2051,7 +2508,7 @@ function App() {
           if (phys.nagThoughts && phys.nagThoughts.length > 0) {
             phys.nagThoughts.forEach(nag => {
               if (!phys.taskNodes.find(n => n.id === nag.id)) {
-                const pos = spawnFromEdge(canvasW, canvasH);
+                const pos = spawnBetweenBoxAndEdge(phys.focusBox, canvasW, canvasH);
                 phys.taskNodes.push({
                   ...nag,
                   x: pos.x, y: pos.y,
@@ -2088,7 +2545,7 @@ function App() {
               .filter(t => t.lockedUntil === ev.nodeId)
               .forEach(lockedTask => {
                 if (!phys.taskNodes.find(n => n.id === lockedTask.id)) {
-                  const pos = spawnFromEdge(canvasW, canvasH);
+                  const pos = spawnBetweenBoxAndEdge(phys.focusBox, canvasW, canvasH);
                   phys.taskNodes.push({
                     ...lockedTask,
                     x: pos.x, y: pos.y,
@@ -2118,12 +2575,15 @@ function App() {
         if (ev.type === 'location_event_trigger') {
           // Spawn forced intrusive thought
           const pos = spawnFromEdge(canvasW, canvasH);
+          const maxDrags = 3 + Math.floor(Math.random() * 3); // 3 to 5
           phys.intrusiveNodes.push({
             id: 'forced_int_' + Date.now(),
             label: '~ wait, what was i doing ~',
-            stickiness: 0.95, rewarding: false, isMemo: false,
+            stickiness: 0.95, rewarding: false, reward: 35,
+            maxDrags: maxDrags, dragsLeft: maxDrags, progress: 1.0,
+            isMemo: false,
             x: pos.x, y: pos.y, vx: 0, vy: 0,
-            w: 240, h: 44,
+            w: 220, h: 72,
             ejected: false, isInBox: false, opacity: 1,
           });
           // Keys location NOT committed
@@ -2139,6 +2599,32 @@ function App() {
         }
         if (ev.type === 'task_forgotten') {
           playError(audioRef);
+        }
+        if (ev.type === 'train_of_thought_lost') {
+          playError(audioRef);
+          const task = morningTasks.find(t => t.id === ev.nodeId);
+          const taskLabel = task ? task.label : 'TASK';
+          setState(prev => ({
+            ...prev,
+            eventLog: [...prev.eventLog, {
+              type: 'thought_lost',
+              summary: `[ TRAIN OF THOUGHT LOST ]\nDistraction blocked focus!\nForgot about: "${taskLabel}"`,
+              timestamp: Date.now(),
+            }],
+          }));
+        }
+        if (ev.type === 'train_of_thought_recovered') {
+          playDriveSpike(audioRef);
+          const task = morningTasks.find(t => t.id === ev.nodeId);
+          const taskLabel = task ? task.label : 'TASK';
+          setState(prev => ({
+            ...prev,
+            eventLog: [...prev.eventLog, {
+              type: 'thought_recovered',
+              summary: `[ TRAIN OF THOUGHT RECOVERED ]\nRemembered: "${taskLabel}"!`,
+              timestamp: Date.now(),
+            }],
+          }));
         }
       }
 
@@ -2161,13 +2647,16 @@ function App() {
       if (phys.forcedEventFired['conv_meet_volunteer'] && !phys.forcedEventFired['memo_spawned']) {
         phys.forcedEventFired['memo_spawned'] = true;
         const pos = spawnFromEdge(canvasW, canvasH);
+        const maxDrags = 3 + Math.floor(Math.random() * 3); // 3 to 5
         phys.intrusiveNodes.push({
           id: 'memo_volunteer',
           label: '~ volunteer name: Jamie Reeves ~',
-          stickiness: 0.9, rewarding: false, isMemo: true,
+          stickiness: 0.9, rewarding: false, reward: 35,
+          maxDrags: maxDrags, dragsLeft: maxDrags, progress: 1.0,
+          isMemo: true,
           fadeMultiplier: 2.5,
           x: pos.x, y: pos.y, vx: 0, vy: 0,
-          w: 260, h: 44,
+          w: 220, h: 72,
           ejected: false, isInBox: false, opacity: 1,
         });
       }
@@ -2188,10 +2677,12 @@ function App() {
         lastSyncRef.current = timestamp;
         const currentPhys = physicsRef.current;
         const taskMirror = currentPhys
-          ? currentPhys.taskNodes.map(n => ({
-              id: n.id, label: n.label, status: n.status,
-              progress: n.progress, urgency: n.urgency,
-            }))
+          ? currentPhys.taskNodes
+              .filter(n => !n.reappearTimer || n.reappearTimer <= 0)
+              .map(n => ({
+                  id: n.id, label: n.label, status: n.status,
+                  progress: n.progress, urgency: n.urgency,
+              }))
           : [];
 
         // Count done tasks for exec function score
