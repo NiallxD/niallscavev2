@@ -14,6 +14,7 @@ tags:
 heroImage: /static/images/jGPwQ43.webp
 created: 2023-11-01
 updated: 2024-04-15
+Featured: true
 ---
 
 #tech #cameras #photography 

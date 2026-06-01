@@ -1,114 +1,123 @@
-# Claude Code - Session Context
+# Claude Code — Project Context
 
-## Gallery Caption Project
+## The Site
 
-### What We Are Doing
-Going through every photography gallery `.md` file and adding a **title** and **caption** to each image that currently only has a placeholder (`## Photo N`) or no caption at all.
+**niallbell.com** — a personal site built with **Eleventy v3** (static site generator), no bundler, deployed to GitHub Pages. Source is this Obsidian vault; `.md` files are the content, Nunjucks templates handle layout.
 
-**Caption format:**
-- Title: a few words describing the image (e.g. `## Fly Agaric`)
-- Caption: ~45 words, 3 lines when rendered. Factual, about the subject's biology or behaviour. No personal anecdotes or first-person language.
-- Image URL follows on the next line after the caption.
+- `templates/` — Nunjucks layouts (base.njk, gallery.njk, blog.njk, etc.)
+- `static/` — CSS, JS, images served as-is
+- `1.0 - Main Pages/` — top-level page content
+- `2.0 - Writing/` — blog posts
+- `3.1.x - Photography/` — gallery collections
+- `_site/` — build output (gitignored)
 
-**Example of finished format:**
+**No bundler.** All JS either lives inline in templates or in `static/js/` as plain files. CDN scripts (React, Babel, Swiper, Leaflet) are loaded via `<script>` tags. Do not introduce a build step.
+
+**Dev server:** `npx @11ty/eleventy --serve` — live at `localhost:8080`.
+
+---
+
+## Active Project: ADHD Mind Simulator (`/adhd/`)
+
+### What It Is
+A physics-driven, empathy-through-mechanics web game at `/adhd/`. The player experiences a simulated ADHD morning — dragging tasks into a wandering "focus box", fighting intrusive thoughts, managing body system meters, and experiencing scripted failure events that demonstrate how ADHD actually affects cognition. The goal is understanding, not gamification.
+
+### Files
+| File | Purpose |
+|---|---|
+| `templates/adhd.njk` | Standalone full-screen page (no nav, no base.njk). Loads VT323, React 18, ReactDOM 18, Babel Standalone 7 via CDN. Inline terminal CSS. |
+| `static/js/adhd-game.js` | The entire game (~2300 lines JSX). Loaded via `<script type="text/babel" data-presets="react">`. |
+| `1.0 - Main Pages/ADHD Game.md` | Eleventy content file — `permalink: /adhd/`, `layout: adhd.njk`, `noindex: true` |
+
+### Technical Stack
+- **React 18 UMD + ReactDOM 18 UMD** via unpkg (global `window.React` / `window.ReactDOM`)
+- **Babel Standalone 7** — enables JSX in an external file without a bundler
+- **HTML5 Canvas 2D** for the physics activity map
+- **Web Audio API** for oscillator-based sound effects (no audio files)
+- **VT323** Google Font; phosphor green `#39ff14`; CRT scanline aesthetic
+
+### Architecture (`adhd-game.js`)
+The file is divided into 6 sections:
+
+```
+§1  CONSTANTS & GAME DATA    — palette, PHYSICS constants, morningTasks[], HYPERFOCUS_NAGGING[], BODY_TASKS{}
+§2  PHYSICS UTILITIES        — physicsUpdate(), renderCanvas(), pure helper fns
+§3  CANVAS RENDER            — renderCanvas() — draw order: bg → connection lines → intrusive nodes → task nodes → focus box → nagging text
+§4  WEB AUDIO ENGINE         — initAudio(), playSnap(), playError(), playDriveSpike(), playEject()
+§5  REACT COMPONENTS         — ConfigScreen, GameLayout, LeftPanel, ActivityMap, RightPanel, overlays
+§6  APP ROOT                 — App component + ReactDOM.createRoot mount
+```
+
+**State separation pattern:**
+- Physics state lives in `physicsRef` (mutated in rAF loop, no re-renders)
+- React `useState` synced every 200ms from the rAF loop
+- `driveRef`, `metersRef`, `profileRef` mirror React state for rAF reads
+
+**Canvas init pattern (`pendingInitRef`):**
+`startGame` sets `pendingInitRef.current = profile` and `physicsRef.current = null`. The `ResizeObserver` in `ActivityMap` calls `initPhysics(pendingInitRef.current, w, h)` on its first fire once the canvas has real dimensions. This avoids the 0×0 canvas problem.
+
+### Core Mechanics
+- **Hold-to-snap:** drag a task toward the focus box — cursor must stay inside for `initiationCost × 3200ms` before the node pops in. Per-task `initiationCost` controls how hard each task is to start.
+- **In-box drift:** tasks inside the box slowly drift outward; player must keep re-dragging them back. Rate: `TASK_DRIFT_IN_BOX: 0.18` × focus level.
+- **Intrusive thoughts:** spawn from canvas edges, attract toward the box. Drag-and-flick to eject. Suppressed (drift away) during hyperfocus.
+- **Body meters:** BLADDER, HUNGER, THIRST, FATIGUE drain continuously. At 35% → intrusive thought spawns. At 12% → body task node spawns; dragging it in ejects all other tasks and locks the box until complete.
+- **Drive bar:** rises on task complete, falls when idle. Affects box size, task drift, spawn rate.
+
+### Hyperfocus
+Triggered when a `canHyperfocus: true` task snaps into the box (probabilistic, once per task per session):
+- Box turns purple, panels fade to 12% opacity
+- All other in-box tasks ejected; hyperfocus task locked in (cannot be dragged out)
+- Intrusive thoughts actively drift away
+- 4 random nagging thoughts from `HYPERFOCUS_NAGGING[]` appear as ghostly amber text on canvas
+- On complete: nagging thoughts spawn as urgent flashing task nodes; everything fades back in
+
+### Scripted Failure Events
+**Event 1 — Volunteer conversation (`meet_volunteer`):**
+Word-by-word NPC dialogue; key details highlighted amber. If task leaves box mid-conversation, words replaced with `[...]`. On complete → email subtask unlocks. When email task snaps, `NameSelectOverlay` shows 5 wrong name options (all wrong by design). Response always triggers awkward relationship outcome.
+
+**Event 2 — Keys location (`hang_keys`):**
+At 85% progress, a forced intrusive thought spawns and `keysActualLocation` is set to `null` (location never committed to memory). Task shows as `✓ COMPLETE`. When `tell_partner_keys` subtask snaps, `LocationSelectOverlay` shows 4 options (all wrong). Leads to `LocationSearchGrid` — 12-cell grid, timed wrong guesses, partner mood drain.
+
+---
+
+## Ongoing: Gallery Captions
+
+Adding titles and captions to photography gallery `.md` files. Format:
 ```markdown
-## Fly Agaric
-Two fly agaric mushrooms (Amanita muscaria) glow red against dark woodland moss. One of Britain's most recognisable fungi, the fly agaric is toxic but forms important mycorrhizal relationships with birch and pine. The white spots are remnants of the universal veil that enclosed the developing mushroom.
-/static/images/1WnqV0R.webp
+## Title Here
+~45-word factual caption about the subject. No first-person. No personal anecdotes.
+/static/images/filename.webp
 ```
 
-**How to view images:**
-`i.imgur.com` URLs cannot be fetched directly via WebFetch. Workaround: download with `curl` to `/tmp/gallery_imgs/` then use the Read tool to view the image file.
+**Viewing images:** `i.imgur.com` URLs can't be fetched directly. Download with `curl -s <url> -o /tmp/img.jpg` then use the Read tool to view.
 
-```bash
-mkdir -p /tmp/gallery_imgs
-curl -s "/static/images/XXXXX.webp" -o /tmp/gallery_imgs/img1.jpg &
-# ... repeat for all images, then wait
-wait
-```
+**Status:**
+- ✅ British Birds, Bengal Tiger, Astrophotography, Brown Bear, The Zoo, Canadian Wildlife, Fungi, UK Deer, Red Squirrel, Grey Seal
+- ⏳ Photomicrography (13), Film Photography (17), Street Photography (8), Drone Photography (5), Environments (17), Macro Photography (14), Canadian Landscapes (13)
+- Skip: Architecture (HTML/iframe), 360 Panoramas (HTML/iframe)
 
 ---
 
-### Gallery Audit Status
+## Ongoing: Inline Script Externalisation
 
-**Galleries with full captions already (skip these):**
-- 3.1.1.x - British Birds ✅
-- 3.1.2.1 - Bengal Tiger ✅
-- 3.1.5.x - Astrophotography ✅
-- 3.1.2.5 - Brown Bear ✅ (completed this session)
-- 3.1.4.7 - The Zoo ✅ (completed this session)
-- 3.1.6.2 - Canadian Wildlife ✅ (completed this session)
-- 3.1.3.1 - Fungi ✅ (completed this session)
-- 3.1.2.2 - UK Deer ✅ (completed earlier)
-- 3.1.2.3 - Red Squirrel ✅ (completed earlier)
-- 3.1.2.4 - Grey Seal ✅ (completed earlier)
+Moving inline `<script>` blocks from Nunjucks templates into `static/js/` files to allow removal of `'unsafe-inline'` from the CSP `script-src` directive.
 
-**Galleries with different formats (HTML/iframe — no caption work needed):**
-- 3.1.4.3 - Architecture
-- 3.1.4.5 - 360 Panoramas
+**Pattern:** scripts that reference Nunjucks template variables (e.g. `{{ slides | dump | safe }}`) must bridge data via `data-*` attributes or a minimal inline data-only `<script>` tag first.
 
-**Galleries still needing captions:**
-- 3.1.4.1 - Photomicrography (13 photos) — **IN PROGRESS** — images downloaded to `/tmp/gallery_imgs/micro1.jpg` through `micro13.jpg`, all 13 viewed, file not yet edited
-- 3.1.4.2 - Film Photography (17 photos)
-- 3.1.4.4 - Street Photography (8 photos)
-- 3.1.4.6 - Drone Photography (5 photos)
-- 3.1.4.8 - Environments (17 photos)
-- 3.1.4.9 - Macro Photography (14 photos)
-- 3.1.6.1 - Canadian Landscapes (13 photos)
+**Remaining work (largest first):**
+- `gallery-room.js` — from `gallery.njk` (~1,492 lines, audio/animations/scroll nav)
+- `constellation.js` — from `constellation.njk` (~416 lines)
+- `writing-graph.js` — from `blog.njk` (~369 lines)
+- `modals.js`, `analytics.js`, `interactive-elements.js`, `gallery-filter.js`, `gallery-swiper.js`, `map.js`, `stats.js`
+
+The theme detection script (6 lines, runs before DOM load) may need to stay inline to avoid flash of wrong theme.
 
 ---
 
-## Inline Script Externalisation (Work In Progress)
+## Content Security Policy
 
-### Goal
-Move all inline `<script>` blocks out of Nunjucks templates into external `.js` files so that `'unsafe-inline'` can be removed from the `script-src` CSP directive. This is documented on the transparency report as an active work in progress.
+Set as `<meta http-equiv="Content-Security-Policy">` in `templates/base.njk`. Applies in production and locally.
 
-### Current State
-~3,100 lines of JS across 23 inline script blocks in 12 templates. The CSP currently reads `script-src 'self' 'unsafe-inline'` — the `'unsafe-inline'` stays until this is complete.
+**When adding new external image sources**, add the domain to `img-src` — missing domains silently block images in production.
 
-### Key Pattern
-Many scripts reference Nunjucks template variables inline (e.g. `const galleryData = {{ slides | dump | safe }}`). These must be converted to `data-*` attributes or a small inline data-only `<script>` before the external file can read them. The logic moves out; the data bridge stays minimal.
-
-### File Plan & Effort
-
-| File to create | Source template(s) | Lines | Notes |
-|---|---|---|---|
-| `gallery-room.js` | `gallery.njk` Script 3 | ~1,492 | Most complex — audio, animations, scroll nav, tour mode. Needs careful testing. |
-| `constellation.js` | `constellation.njk` | ~416 | Force-directed book graph |
-| `writing-graph.js` | `blog.njk` Script 2 | ~369 | Force-directed writing graph, similar pattern to constellation |
-| `modals.js` | `standard.njk`, `prints.njk` | ~140 | Booking + enquiry forms — can be unified |
-| `analytics.js` | `analytics.njk` | ~115 | Val.town fetch + SVG chart rendering |
-| `interactive-elements.js` | `base.njk`, `ecard.njk`, `videography.njk` | ~200 | Theme toggle, nav, image protection, email reveal, e-card flip, video fallback |
-| `gallery-filter.js` | `photography.njk` | ~71 | Tag filter with fade animations |
-| `gallery-swiper.js` | `standard.njk`, `video.njk`, `gallery.njk` | ~140 | Swiper init + caption logic (shared pattern) |
-| `map.js` | `map.njk` | ~40 | Leaflet init |
-| `stats.js` | `stats.njk` | ~25 | Val.town fetch + GPC detection |
-
-**Estimated total effort: 4–5 days.** The Gallery Room alone is 2–3 days.
-
-### Notes
-- Start with the small, self-contained scripts (stats, map, analytics) to establish the pattern before tackling gallery-room.
-- `base.njk` scripts (theme detection, tracking) need special care as they run on every page.
-- The theme detection script (6 lines, runs before DOM load) may need to stay inline or use a `blocking` attribute to avoid flash of wrong theme.
-
----
-
-### Notes
-- Work one gallery at a time, user reviews between each.
-- User will edit captions afterwards — write good drafts but don't agonise over perfection.
-- Some galleries have a mix of imgur URLs and local `/static/images/` paths — caption local files based on the heading/context since they can't be fetched.
-
----
-
-## Content Security Policy (CSP)
-
-The CSP is set as a `<meta http-equiv="Content-Security-Policy">` tag in `templates/base.njk`. It applies in production (GitHub Pages) and locally.
-
-**When adding new external image sources** (e.g. a new CDN for book covers, a new image host), always check the `img-src` directive and add the domain if it isn't already there. Missing domains silently block images in production with no visible error in dev.
-
-**Current allowed image domains:**
-- `https://i.imgur.com` — photography and page images
-- `https://*.basemaps.cartocdn.com` — map tiles
-- `https://m.media-amazon.com` — Amazon book covers
-- `https://images-na.ssl-images-amazon.com` — Goodreads/Amazon book covers
-- `https://i.gr-assets.com` — Goodreads book covers
+Current `img-src` domains: `https://i.imgur.com`, `https://*.basemaps.cartocdn.com`, `https://m.media-amazon.com`, `https://images-na.ssl-images-amazon.com`, `https://i.gr-assets.com`

@@ -10,6 +10,7 @@ excerpt: A case for ethical captioning in photography.
 tags:
   - photography
 heroImage: /static/images/eAxWByn.webp
+Featured: true
 ---
 A case for ethical captioning in photography.
 
