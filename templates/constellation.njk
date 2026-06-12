@@ -53,14 +53,7 @@ layout: page.njk
         <div class="book-card-body">
           <div class="book-card-title">{{ book.data.title }}</div>
           {% if book.data.author %}<div class="book-card-author">{{ book.data.author }}</div>{% endif %}
-          {% if book.data.rating %}
-          <div class="book-card-rating">
-            {% for i in range(0, 5) %}
-              <span class="star{% if i < book.data.rating %} filled{% endif %}">★</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-          {% if book.data.read %}<div class="book-card-date">Read {{ book.data.read | readableDate }}</div>{% endif %}
+{% if book.data.read %}<div class="book-card-date">Read {{ book.data.read | readableDate }}</div>{% endif %}
         </div>
       </a>
       {% endfor %}
