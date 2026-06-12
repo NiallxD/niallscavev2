@@ -14,7 +14,7 @@ fi
 
 git commit -m "Updated Website Content"
 
-git push
+git push --set-upstream origin main
 
 echo ""
 echo "Done! Committed and pushed successfully."
