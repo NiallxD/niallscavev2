@@ -25,10 +25,50 @@ layout: page.njk
   </div>
   {% endif %}
 
-  <p class="section-label">Book Constellation</p>
-  <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+  <div class="bookshelf-view-toggle">
+    <button class="view-toggle-btn" data-view="grid" aria-label="Grid view" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Grid
+    </button>
+    <button class="view-toggle-btn" data-view="constellation" aria-label="Constellation view" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Constellation
+    </button>
+  </div>
 
-  <div class="tag-cloud-filter" id="tag-cloud"></div>
+  <!-- Grid view -->
+  <div id="bookshelf-grid-view" style="display:none;">
+    <div class="book-grid">
+      {% for book in collections.books %}
+      <a href="{{ book.url | url }}" class="book-card">
+        <div class="book-card-cover">
+          {% if book.data.heroImage %}
+          <img src="{{ book.data.heroImage }}" alt="{{ book.data.title }}" loading="lazy">
+          {% else %}
+          <div class="book-card-placeholder"></div>
+          {% endif %}
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">{{ book.data.title }}</div>
+          {% if book.data.author %}<div class="book-card-author">{{ book.data.author }}</div>{% endif %}
+          {% if book.data.rating %}
+          <div class="book-card-rating">
+            {% for i in range(0, 5) %}
+              <span class="star{% if i < book.data.rating %} filled{% endif %}">★</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if book.data.read %}<div class="book-card-date">Read {{ book.data.read | readableDate }}</div>{% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Constellation view -->
+  <div id="bookshelf-constellation-view">
+    <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+    <div class="tag-cloud-filter" id="tag-cloud"></div>
 
   <div class="constellation-wrap" id="constellation-wrap">
     <svg class="constellation-svg" id="constellation-svg"
@@ -74,9 +114,33 @@ layout: page.njk
     </div>
   </div>
 
+  </div>{# end constellation-view #}
+
 </div>
 
 <script>
+(function () {
+  // ── View toggle ───────────────────────────────────────────
+  const STORAGE_KEY = 'bookshelf-view';
+  const gridView    = document.getElementById('bookshelf-grid-view');
+  const constView   = document.getElementById('bookshelf-constellation-view');
+  const toggleBtns  = document.querySelectorAll('.view-toggle-btn');
+
+  function setView(v) {
+    const isGrid = v === 'grid';
+    gridView.style.display  = isGrid ? '' : 'none';
+    constView.style.display = isGrid ? 'none' : '';
+    toggleBtns.forEach(b => b.classList.toggle('active', b.dataset.view === v));
+    try { localStorage.setItem(STORAGE_KEY, v); } catch(_) {}
+  }
+
+  toggleBtns.forEach(btn => btn.addEventListener('click', () => setView(btn.dataset.view)));
+
+  let saved = 'constellation';
+  try { saved = localStorage.getItem(STORAGE_KEY) || 'constellation'; } catch(_) {}
+  setView(saved);
+}());
+
 (function () {
   const SKIP_TAGS = new Set(['books']);
 
@@ -105,7 +169,7 @@ layout: page.njk
   const closeBtn = document.getElementById('float-card-close');
   const hintText = document.getElementById('constellation-hint-text');
   const tagCloud = document.getElementById('tag-cloud');
-  const starBtns = Array.from(document.querySelectorAll('.star'));
+  const starBtns = Array.from(wrap.querySelectorAll('.star'));
 
   let activeTag     = null;
   let activeId      = null;
