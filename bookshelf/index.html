@@ -79,10 +79,560 @@
 
   
 
-  <p class="section-label">Book Constellation</p>
-  <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+  <div class="bookshelf-view-toggle">
+    <button class="view-toggle-btn" data-view="grid" aria-label="Grid view" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Grid
+    </button>
+    <button class="view-toggle-btn" data-view="constellation" aria-label="Constellation view" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Constellation
+    </button>
+  </div>
 
-  <div class="tag-cloud-filter" id="tag-cloud"></div>
+  <!-- Grid view -->
+  <div id="bookshelf-grid-view" style="display:none;">
+    <div class="book-grid">
+      
+      <a href="/bookshelf/the-secret-lives-of-bats/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1698701920i/131868709.jpg" alt="The Secret Lives of Bats: My Adventures with the World&#39;s Most Misunderstood Mammals" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Secret Lives of Bats: My Adventures with the World&#39;s Most Misunderstood Mammals</div>
+          <div class="book-card-author">Merlin Tuttle</div>
+          
+          <div class="book-card-rating">
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star">★</span>
+            
+          </div>
+          
+          <div class="book-card-date">Read 11 June 2026</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/understanding-a-photograph/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1703328303i/18061037.jpg" alt="Understanding A Photograph" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Understanding A Photograph</div>
+          <div class="book-card-author">John Berger</div>
+          
+          <div class="book-card-date">Read 5 April 2026</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/a-most-remarkable-creature/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1596429654i/54390345.jpg" alt="A Most Remarkable Creature: The Hidden Life and Epic Journey of the World’s Smartest Birds of Prey" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">A Most Remarkable Creature: The Hidden Life and Epic Journey of the World’s Smartest Birds of Prey</div>
+          <div class="book-card-author">Johnathan Meiburg</div>
+          
+          <div class="book-card-date">Read 1 March 2025</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/what-if/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593704431i/54363390.jpg" alt="What If?: Serious Scientific Answers to Absurd Hypothetical Questions" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">What If?: Serious Scientific Answers to Absurd Hypothetical Questions</div>
+          <div class="book-card-author">Randall Munroe</div>
+          
+          <div class="book-card-date">Read 15 December 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/bird-sense/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1349052013i/13169605.jpg" alt="Bird Sense: What It&#39;s Like to Be a Bird" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Bird Sense: What It&#39;s Like to Be a Bird</div>
+          <div class="book-card-author">Tim Birkhead</div>
+          
+          <div class="book-card-date">Read 10 December 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/what-is-real/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500753932i/35604796.jpg" alt="What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics</div>
+          <div class="book-card-author">Adam Becker</div>
+          
+          <div class="book-card-date">Read 3 December 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/pale-blue-dot/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1500191671i/61663.jpg" alt="Pale Blue Dot" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Pale Blue Dot</div>
+          <div class="book-card-author">Carl Sagan</div>
+          
+          <div class="book-card-rating">
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+          </div>
+          
+          <div class="book-card-date">Read 20 November 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/the-genius-of-birds/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1445790452i/25938481.jpg" alt="The Genius of Birds" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Genius of Birds</div>
+          <div class="book-card-author">Jennifer Ackerman</div>
+          
+          <div class="book-card-date">Read 12 November 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/eight-bears/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg" alt="Eight Bears" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Eight Bears</div>
+          <div class="book-card-author">Gloria Dickie</div>
+          
+          <div class="book-card-date">Read 2 November 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/flight-paths/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1675640806i/61319748.jpg" alt="Flight Paths" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Flight Paths</div>
+          <div class="book-card-author">Rebecca Heisman</div>
+          
+          <div class="book-card-date">Read 28 October 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/so-you-want-to-move-to-canada-eh/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560796547i/42283458.jpg" alt="So You Want To Move to Canada, Eh?" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">So You Want To Move to Canada, Eh?</div>
+          <div class="book-card-author">Jennifer McCartney</div>
+          
+          <div class="book-card-date">Read 20 October 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/how-to-be-an-epicurean/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550705869i/43886051.jpg" alt="How To Be An Epicurean" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">How To Be An Epicurean</div>
+          <div class="book-card-author">Catherine Wilson</div>
+          
+          <div class="book-card-date">Read 27 May 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/how-to-be-a-stoic/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1473595733i/31423245.jpg" alt="How To Be A Stoic" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">How To Be A Stoic</div>
+          <div class="book-card-author">Massimo Pigliucci</div>
+          
+          <div class="book-card-date">Read 7 May 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/not-the-end-of-the-world/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1690311764l/145624737._SY475_.jpg" alt="Not the End of the World" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Not the End of the World</div>
+          <div class="book-card-author">Hannah Richie</div>
+          
+          <div class="book-card-date">Read 27 April 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/was-beethoven-a-birdwatcher/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1344677247i/10897859.jpg" alt="Was Beethoven a Birdwatcher?" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Was Beethoven a Birdwatcher?</div>
+          <div class="book-card-author">David Turner</div>
+          
+          <div class="book-card-date">Read 20 April 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/beethoven-the-man-revealed/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1356148856i/16655520.jpg" alt="Beethoven: The Man Revealed" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Beethoven: The Man Revealed</div>
+          <div class="book-card-author">John Suchet</div>
+          
+          <div class="book-card-date">Read 8 April 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/stray-birds/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347260590i/166350.jpg" alt="Stray Birds" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Stray Birds</div>
+          <div class="book-card-author">Rabindranath Tagore</div>
+          
+          <div class="book-card-date">Read 28 March 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/the-cloud-book/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1677903133i/74580667.jpg" alt="The Cloud Book: How To Understand The Skies" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Cloud Book: How To Understand The Skies</div>
+          <div class="book-card-author">Richard Hamblyn</div>
+          
+          <div class="book-card-date">Read 1 March 2024</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/inglorious-conflict-in-the-uplands/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1428638876i/23848399.jpg" alt="Inglorious: Conflict in the Uplands" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Inglorious: Conflict in the Uplands</div>
+          <div class="book-card-author">Mark Avery</div>
+          
+          <div class="book-card-date">Read 31 December 2023</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/humble-pi/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1552885037i/39074550.jpg" alt="Humble Pi: A Comedy of Maths Errors" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Humble Pi: A Comedy of Maths Errors</div>
+          <div class="book-card-author">Matt Parker</div>
+          
+          <div class="book-card-date">Read 5 October 2023</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/enemy-at-the-gates/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696624480i/133612195.jpg" alt="Enemy at the Gates: The Battle for Stalingrad" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Enemy at the Gates: The Battle for Stalingrad</div>
+          <div class="book-card-author">William Craig</div>
+          
+          <div class="book-card-date">Read 15 August 2023</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/mozart-the-man-revealed/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468508169i/30732469.jpg" alt="Mozart: The Man Revealed" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Mozart: The Man Revealed</div>
+          <div class="book-card-author">John Suchet</div>
+          
+          <div class="book-card-date">Read 10 July 2023</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/the-indisputable-existence-of-santa-clause/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1468165901i/30983000.jpg" alt="The Indisputable Existence of Santa Clause" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Indisputable Existence of Santa Clause</div>
+          <div class="book-card-author">Hannah Fry</div>
+          
+          <div class="book-card-date">Read 3 December 2022</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/thinking-fast-and-slow/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg" alt="Thinking, Fast and Slow" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Thinking, Fast and Slow</div>
+          <div class="book-card-author">Daniel Kahneman</div>
+          
+          <div class="book-card-rating">
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star">★</span>
+            
+          </div>
+          
+          <div class="book-card-date">Read 30 November 2022</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/inglorious-empire/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490075230i/34185892.jpg" alt="Inglorious Empire: What the British Did to India" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Inglorious Empire: What the British Did to India</div>
+          <div class="book-card-author">Shashi Tharoor</div>
+          
+          <div class="book-card-date">Read 30 November 2022</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/where-the-wildflowers-grow/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1648223861i/60229535.jpg" alt="Where the Wildflowers Grwo" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Where the Wildflowers Grwo</div>
+          <div class="book-card-author">Leif Bersweden</div>
+          
+          <div class="book-card-date">Read 10 September 2022</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/a-brief-history-of-time/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg" alt="A Brief History of Time" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">A Brief History of Time</div>
+          <div class="book-card-author">Stephen Hawking</div>
+          
+          <div class="book-card-rating">
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star filled">★</span>
+            
+              <span class="star">★</span>
+            
+          </div>
+          
+          <div class="book-card-date">Read 1 September 2022</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/wildling/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1521964296i/38891828.jpg" alt="Wildling" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Wildling</div>
+          <div class="book-card-author">Isabella Tree</div>
+          
+          <div class="book-card-date">Read 28 August 2021</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/how-bad-are-bananas/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1330541999i/7230015.jpg" alt="How Bad Are Bananas: The Carbon Footprint of Everything" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">How Bad Are Bananas: The Carbon Footprint of Everything</div>
+          <div class="book-card-author">Mike Berners-Lee</div>
+          
+          <div class="book-card-date">Read 18 July 2021</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/how-to-avoid-a-climate-disaster/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1609355352i/52275335.jpg" alt="How to Avoid a Climate Disaster" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">How to Avoid a Climate Disaster</div>
+          <div class="book-card-author">Bill Gates</div>
+          
+          <div class="book-card-date">Read 11 April 2021</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/mycelium-running/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924218i/239395.jpg" alt="Mycelium Running: How Mushrooms Can Help Save the World" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Mycelium Running: How Mushrooms Can Help Save the World</div>
+          <div class="book-card-author">Paul Stametes</div>
+          
+          <div class="book-card-date">Read 18 February 2021</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/mushrooms/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354449995i/16204477.jpg" alt="Mushrooms" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Mushrooms</div>
+          <div class="book-card-author">Peter Marren</div>
+          
+          <div class="book-card-rating">
+            
+              <span class="star filled">★</span>
+            
+              <span class="star">★</span>
+            
+              <span class="star">★</span>
+            
+              <span class="star">★</span>
+            
+              <span class="star">★</span>
+            
+          </div>
+          
+          <div class="book-card-date">Read 10 February 2021</div>
+        </div>
+      </a>
+      
+      <a href="/bookshelf/heaven-and-earth/" class="book-card">
+        <div class="book-card-cover">
+          
+          <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696297458i/125453392.jpg" alt="Heaven &amp; Earth: Unseen by the Naked Eye" loading="lazy">
+          
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">Heaven &amp; Earth: Unseen by the Naked Eye</div>
+          <div class="book-card-author">Katherine Roucoux</div>
+          
+          <div class="book-card-date">Read 1 February 2005</div>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- Constellation view -->
+  <div id="bookshelf-constellation-view">
+    <p class="constellation-hint">Each star is a book. Books sharing a tag are connected. Click a star or a tag to explore.</p>
+    <div class="tag-cloud-filter" id="tag-cloud"></div>
 
   <div class="constellation-wrap" id="constellation-wrap">
     <svg class="constellation-svg" id="constellation-svg"
@@ -95,7 +645,7 @@
     
     <button
       class="star"
-      data-id="The Secret Lives of Bats My Adventures with the World&#39;s Most Misunderstood Mammalsindex.html"
+      data-id="the-secret-lives-of-batsindex.html"
       style="left: 15%; top: 90%"
       aria-label="Open details for The Secret Lives of Bats: My Adventures with the World&#39;s Most Misunderstood Mammals"
       type="button">
@@ -576,9 +1126,33 @@
     </div>
   </div>
 
+  </div>
+
 </div>
 
 <script>
+(function () {
+  // ── View toggle ───────────────────────────────────────────
+  const STORAGE_KEY = 'bookshelf-view';
+  const gridView    = document.getElementById('bookshelf-grid-view');
+  const constView   = document.getElementById('bookshelf-constellation-view');
+  const toggleBtns  = document.querySelectorAll('.view-toggle-btn');
+
+  function setView(v) {
+    const isGrid = v === 'grid';
+    gridView.style.display  = isGrid ? '' : 'none';
+    constView.style.display = isGrid ? 'none' : '';
+    toggleBtns.forEach(b => b.classList.toggle('active', b.dataset.view === v));
+    try { localStorage.setItem(STORAGE_KEY, v); } catch(_) {}
+  }
+
+  toggleBtns.forEach(btn => btn.addEventListener('click', () => setView(btn.dataset.view)));
+
+  let saved = 'constellation';
+  try { saved = localStorage.getItem(STORAGE_KEY) || 'constellation'; } catch(_) {}
+  setView(saved);
+}());
+
 (function () {
   const SKIP_TAGS = new Set(['books']);
 
@@ -588,7 +1162,7 @@
     
     
     {
-      id: "The Secret Lives of Bats My Adventures with the World's Most Misunderstood Mammalsindex.html",
+      id: "the-secret-lives-of-batsindex.html",
       title: "The Secret Lives of Bats: My Adventures with the World's Most Misunderstood Mammals",
       author: "Merlin Tuttle",
       cover: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1698701920i/131868709.jpg",
@@ -1087,7 +1661,7 @@
   const closeBtn = document.getElementById('float-card-close');
   const hintText = document.getElementById('constellation-hint-text');
   const tagCloud = document.getElementById('tag-cloud');
-  const starBtns = Array.from(document.querySelectorAll('.star'));
+  const starBtns = Array.from(wrap.querySelectorAll('.star'));
 
   let activeTag     = null;
   let activeId      = null;

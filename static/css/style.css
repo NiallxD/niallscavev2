@@ -1766,7 +1766,9 @@ p.section-label,
 .book-card {
   display: block;
   transition: transform var(--ease);
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .book-card:hover {
@@ -1832,6 +1834,39 @@ p.section-label,
 /* ── Constellation Bookshelf ──────────────────────────────── */
 .constellation-page {
   padding-bottom: 4rem;
+}
+
+.bookshelf-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.view-toggle-btn:hover {
+  border-color: var(--color-link);
+  color: var(--color-link);
+}
+
+.view-toggle-btn.active {
+  background: var(--color-link);
+  border-color: var(--color-link);
+  color: #fff;
 }
 
 .constellation-hint {
