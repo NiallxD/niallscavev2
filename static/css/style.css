@@ -1816,7 +1816,6 @@ p.section-label,
 .book-card {
   display: block;
   transition: transform var(--ease);
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
 }

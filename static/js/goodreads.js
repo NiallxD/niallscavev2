@@ -19,9 +19,13 @@
     }[c]));
   }
 
+  function truncate(str, max) {
+    return str.length > max ? `${str.slice(0, max - 1).trimEnd()}…` : str;
+  }
+
   function readingCardHtml(book) {
     return `
-      <a href="${escapeHtml(book.link)}" class="home-reading-card" target="_blank" rel="noopener">
+      <a href="/bookshelf/" class="home-reading-card">
         ${book.cover ? `<img class="home-reading-cover" src="${escapeHtml(book.cover)}" alt="${escapeHtml(book.title)}" loading="lazy">` : ''}
         <div class="home-reading-info">
           <p class="home-reading-title">${escapeHtml(book.title)}</p>
@@ -81,21 +85,21 @@
       books.sort((a, b) => new Date(b.readAt || b.dateAdded) - new Date(a.readAt || a.dateAdded));
 
       root.innerHTML = books.map((book) => `
-        <a href="${escapeHtml(book.link)}" class="book-card" target="_blank" rel="noopener">
+        <div class="book-card">
           <div class="book-card-cover">
             ${book.cover ? `<img src="${escapeHtml(book.cover)}" alt="${escapeHtml(book.title)}" loading="lazy">` : '<div class="book-card-placeholder"></div>'}
           </div>
           <div class="book-card-body">
-            <div class="book-card-title">${escapeHtml(book.title)}</div>
+            <div class="book-card-title">${escapeHtml(truncate(book.title, 35))}</div>
             ${book.author ? `<div class="book-card-author">${escapeHtml(book.author)}</div>` : ''}
+            ${book.readAt ? `<div class="book-card-date">Read ${new Date(book.readAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</div>` : ''}
             ${book.rating ? `
               <div class="book-card-rating">
-                ${Array.from({ length: 5 }, (_, i) => `<span class="star${i < book.rating ? ' filled' : ''}">★</span>`).join('')}
+                ${Array.from({ length: book.rating }, () => '<span class="star filled">★</span>').join('')}
               </div>
             ` : ''}
-            ${book.readAt ? `<div class="book-card-date">Read ${new Date(book.readAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</div>` : ''}
           </div>
-        </a>
+        </div>
       `).join('');
     } catch (err) {
       root.innerHTML = '<p class="empty-state">Could not load the bookshelf right now — try refreshing.</p>';
