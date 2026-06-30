@@ -164,27 +164,11 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
         <p class="section-label">Reading Now</p>
         <a href="{{ '/bookshelf/' | url }}" class="view-all">Bookshelf →</a>
       </div>
-      {% set currentBook = collections.currentlyReading | first %}
-      {% if currentBook %}
-      <a href="{{ '/bookshelf/' | url }}" class="home-reading-card">
-        {% if currentBook.data.heroImage %}
-        <img class="home-reading-cover" src="{{ currentBook.data.heroImage }}" alt="{{ currentBook.data.title }}">
-        {% endif %}
-        <div class="home-reading-info">
-          <p class="home-reading-title">{{ currentBook.data.title }}</p>
-          {% if currentBook.data.author %}<p class="home-reading-author">{{ currentBook.data.author }}</p>{% endif %}
-          {% if currentBook.data.tags %}
-          <div class="home-reading-tags">
-            {% for tag in currentBook.data.tags | limit(3) %}<span class="tag">{{ tag }}</span>{% endfor %}
-          </div>
-          {% endif %}
+      <div id="home-reading-root" class="home-reading-root" data-shelf="currently-reading"
+        <div class="home-reading-card home-reading-card--empty">
+          <p class="home-reading-empty">Loading…</p>
         </div>
-      </a>
-      {% else %}
-      <div class="home-reading-card home-reading-card--empty">
-        <p class="home-reading-empty">Nothing on the shelf right now.</p>
       </div>
-      {% endif %}
     </aside>
 </div>
 
@@ -290,6 +274,7 @@ description: The personal site of Niall Bell, a nature photographer, writer, and
 <script src="{{ '/static/js/swiper-bundle.min.js' | url }}"></script>
 <script src="{{ '/static/js/leaflet.js' | url }}"></script>
 <script src="{{ '/static/js/leaflet.markercluster.js' | url }}"></script>
+<script src="{{ '/static/js/goodreads.js' | url }}"></script>
 <script>
   new Swiper('.home-swiper', {
     loop: true,

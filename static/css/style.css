@@ -1104,6 +1104,56 @@ main {
   overflow: hidden;
 }
 
+.home-reading-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.home-reading-ticker {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.home-reading-ticker-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms ease;
+}
+
+.home-reading-ticker-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.home-reading-ticker-slide .home-reading-card {
+  width: 100%;
+}
+
+.home-reading-ticker-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+}
+
+.home-reading-ticker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 200ms ease;
+}
+
+.home-reading-ticker-dot.active {
+  background: var(--color-accent, #888);
+}
+
 @media (max-width: 768px) {
   .home-map-row,
   .home-prints-row {

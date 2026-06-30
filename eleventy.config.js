@@ -787,21 +787,6 @@ export default function (eleventyConfig) {
       .map(r => r.item);
   });
 
-  eleventyConfig.addCollection("books", (api) =>
-    api.getAll()
-      .filter((i) => String(i.data.publish).trim().toLowerCase() === "true" && i.data.Type === "Bookshelf")
-      .sort((a, b) => {
-        const aDate = a.data.read ? new Date(a.data.read) : new Date(0);
-        const bDate = b.data.read ? new Date(b.data.read) : new Date(0);
-        return bDate - aDate;
-      })
-  );
-
-  eleventyConfig.addCollection("currentlyReading", (api) =>
-    api.getAll()
-      .filter((i) => i.data.Type === "Bookshelf" && i.data.currently_reading === true)
-  );
-
   eleventyConfig.addCollection("currentProject", (api) =>
     api.getAll()
       .filter((i) => i.data.current_project === true)
