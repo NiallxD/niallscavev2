@@ -125,13 +125,8 @@
         : '';
       backdrop.querySelector('#book-modal-date').textContent = book.readAt ? `Read ${formatDate(book.readAt)}` : '';
       const reviewText = book.review ? formatMultiline(book.review) : '';
-      const descriptionText = book.description ? formatMultiline(book.description) : '';
       const reviewEl = backdrop.querySelector('#book-modal-review');
-      reviewEl.innerHTML = reviewText
-        ? `<p class="book-modal-review-label">My review</p><p>${reviewText}</p>`
-        : descriptionText
-          ? `<p>${descriptionText}</p>`
-          : '';
+      reviewEl.innerHTML = reviewText ? `<p class="book-modal-review-label">My review</p><p>${reviewText}</p>` : '';
       reviewEl.style.display = reviewEl.innerHTML ? '' : 'none';
       backdrop.classList.add('open');
       backdrop.querySelector('.book-modal').classList.add('open');
