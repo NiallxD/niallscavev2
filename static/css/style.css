@@ -1813,6 +1813,18 @@ p.section-label,
   padding-bottom: 4rem;
 }
 
+.bookshelf-section {
+  margin-bottom: 1rem;
+}
+
+.book-grid--current {
+  padding-bottom: 0;
+}
+
+.constrained-wide .bookshelf-section + .section-label {
+  margin-top: 1rem !important;
+}
+
 .book-card {
   appearance: none;
   -webkit-appearance: none;
