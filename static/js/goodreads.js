@@ -87,6 +87,32 @@
     }
   }
 
+  function bookCardHtml(book, idx) {
+    return `
+      <button type="button" class="book-card" data-idx="${idx}">
+        <div class="book-card-cover">
+          ${book.cover ? `<img src="${escapeHtml(book.cover)}" alt="${escapeHtml(book.title)}" loading="lazy">` : '<div class="book-card-placeholder"></div>'}
+        </div>
+        <div class="book-card-body">
+          <div class="book-card-title">${escapeHtml(truncate(book.title, 35))}</div>
+          ${book.author ? `<div class="book-card-author">${escapeHtml(book.author)}</div>` : ''}
+          ${book.readAt ? `<div class="book-card-date">Read ${formatDate(book.readAt)}</div>` : ''}
+          ${book.rating ? `
+            <div class="book-card-rating">
+              ${Array.from({ length: book.rating }, () => '<span class="star filled">★</span>').join('')}
+            </div>
+          ` : ''}
+        </div>
+      </button>
+    `;
+  }
+
+  let sharedModal = null;
+  function getBookModal() {
+    if (!sharedModal) sharedModal = buildBookModal();
+    return sharedModal;
+  }
+
   function buildBookModal() {
     const backdrop = document.createElement('div');
     backdrop.className = 'book-modal-backdrop';
@@ -143,45 +169,36 @@
     return { open };
   }
 
-  async function initBookshelfGrid() {
-    const root = document.getElementById('bookshelf-grid-root');
+  async function initGrid(rootId, { sort = true, hideSectionIfEmpty = false, emptyMessage } = {}) {
+    const root = document.getElementById(rootId);
     if (!root) return;
     const shelf = root.dataset.shelf;
+    const section = root.closest('.bookshelf-section') || root;
     try {
       const books = await fetchBooks(shelf);
-      books.sort((a, b) => new Date(b.readAt || b.dateAdded) - new Date(a.readAt || a.dateAdded));
+      if (!books.length) throw new Error('No books on this shelf');
+      if (sort) books.sort((a, b) => new Date(b.readAt || b.dateAdded) - new Date(a.readAt || a.dateAdded));
 
-      root.innerHTML = books.map((book, i) => `
-        <button type="button" class="book-card" data-idx="${i}">
-          <div class="book-card-cover">
-            ${book.cover ? `<img src="${escapeHtml(book.cover)}" alt="${escapeHtml(book.title)}" loading="lazy">` : '<div class="book-card-placeholder"></div>'}
-          </div>
-          <div class="book-card-body">
-            <div class="book-card-title">${escapeHtml(truncate(book.title, 35))}</div>
-            ${book.author ? `<div class="book-card-author">${escapeHtml(book.author)}</div>` : ''}
-            ${book.readAt ? `<div class="book-card-date">Read ${formatDate(book.readAt)}</div>` : ''}
-            ${book.rating ? `
-              <div class="book-card-rating">
-                ${Array.from({ length: book.rating }, () => '<span class="star filled">★</span>').join('')}
-              </div>
-            ` : ''}
-          </div>
-        </button>
-      `).join('');
+      root.innerHTML = books.map((book, i) => bookCardHtml(book, i)).join('');
 
-      const modal = buildBookModal();
+      const modal = getBookModal();
       root.addEventListener('click', (e) => {
         const card = e.target.closest('.book-card');
         if (!card) return;
         modal.open(books[Number(card.dataset.idx)]);
       });
     } catch (err) {
-      root.innerHTML = '<p class="empty-state">Could not load the bookshelf right now — try refreshing.</p>';
+      if (hideSectionIfEmpty) {
+        section.style.display = 'none';
+      } else {
+        root.innerHTML = `<p class="empty-state">${emptyMessage || 'Could not load the bookshelf right now — try refreshing.'}</p>`;
+      }
     }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     initHomeReading();
-    initBookshelfGrid();
+    initGrid('bookshelf-current-root', { sort: true, hideSectionIfEmpty: true });
+    initGrid('bookshelf-grid-root', { sort: true });
   });
 }());

@@ -26,10 +26,17 @@ layout: page.njk
   <div class="post-content">{{ content | safe }}</div>
   {% endif %}
 
+  <div class="bookshelf-section" id="bookshelf-current-section">
+    <p class="section-label">Currently Reading</p>
+    <div class="book-grid book-grid--current" id="bookshelf-current-root" data-shelf="currently-reading">
+      <p class="empty-state">Loading…</p>
+    </div>
+  </div>
+
   <p class="section-label">Bookshelf</p>
   <div class="book-grid" id="bookshelf-grid-root" data-shelf="read">
     <p class="empty-state">Loading…</p>
   </div>
 </div>
 
-<script src="{{ '/static/js/goodreads.js' | url }}?v=5"></script>
+<script src="{{ '/static/js/goodreads.js' | url }}?v=6"></script>
