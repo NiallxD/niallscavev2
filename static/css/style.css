@@ -1814,8 +1814,11 @@ p.section-label,
 }
 
 .book-card {
+  appearance: none;
+  -webkit-appearance: none;
   display: block;
   width: 100%;
+  align-self: start;
   transition: transform var(--ease);
   text-decoration: none;
   color: inherit;
